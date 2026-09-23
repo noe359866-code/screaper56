@@ -7,6 +7,7 @@ import { YtsCrawler } from './crawlers/yts.js';
 import { EztvCrawler } from './crawlers/eztv.js';
 import { ThePirateBayCrawler } from './crawlers/thepiratebay.js';
 import { MejorTorrentCrawler } from './crawlers/mejortorrent.js';
+import { EliteTorrentCrawler } from './crawlers/elitetorrent.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
@@ -32,7 +33,8 @@ async function main() {
     yts: () => new YtsCrawler(),
     eztv: () => new EztvCrawler(),
     thepiratebay: () => new ThePirateBayCrawler(),
-    mejortorrent: () => new MejorTorrentCrawler()
+    mejortorrent: () => new MejorTorrentCrawler(),
+    elitetorrent: () => new EliteTorrentCrawler()
   };
 
   const summary: ScraperExecutionSummary = {
