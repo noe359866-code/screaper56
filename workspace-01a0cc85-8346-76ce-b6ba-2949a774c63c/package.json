@@ -1,0 +1,43 @@
+{
+  "name": "async-torrent-indexer",
+  "version": "1.0.0",
+  "description": "Enterprise-grade asynchronous torrent crawler and metadata indexer with Spanish-language filtering and Supabase UPSERT synchronization",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "torrent",
+    "crawler",
+    "scraper",
+    "supabase",
+    "postgresql",
+    "p2p",
+    "bittorrent",
+    "github-actions"
+  ],
+  "author": "Backend Engineering Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "axios": "^1.8.2",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "p-limit": "^6.2.0",
+    "playwright": "^1.50.1",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
