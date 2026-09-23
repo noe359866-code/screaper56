@@ -44,6 +44,20 @@ jobs:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
 
+      # Detecta automáticamente si los archivos están dentro de una subcarpeta y los sube a la raíz
+      - name: "Normalize Project Directory Structure"
+        run: |
+          if [ ! -f "package.json" ]; then
+            SUBDIR=$(find . -maxdepth 2 -name "package.json" -not -path "*/.*" | head -n 1 | xargs dirname)
+            if [ -n "$SUBDIR" ] && [ "$SUBDIR" != "." ]; then
+              echo "Project found in subfolder: $SUBDIR. Moving files to root..."
+              shopt -s dotglob
+              mv "$SUBDIR"/* .
+            fi
+          fi
+          echo "Repository root contents:"
+          ls -la
+
       - name: "Set up Node.js LTS"
         uses: actions/setup-node@v4
         with:
