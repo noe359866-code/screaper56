@@ -8,6 +8,8 @@ import { EztvCrawler } from './crawlers/eztv.js';
 import { ThePirateBayCrawler } from './crawlers/thepiratebay.js';
 import { MejorTorrentCrawler } from './crawlers/mejortorrent.js';
 import { EliteTorrentCrawler } from './crawlers/elitetorrent.js';
+import { LimeTorrentsCrawler } from './crawlers/limetorrent.js';
+import { NyaaCrawler } from './crawlers/nyaa.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
@@ -25,7 +27,7 @@ async function main() {
 
   const repository = new SupabaseTorrentRepository();
 
-  // Registro de todos los crawlers activos
+  // Registro de todos los 10 crawlers activos
   const crawlerRegistry: Record<string, () => BaseCrawler> = {
     pelispanda: () => new PelispandaCrawler(),
     leech1337x: () => new Leech1337xCrawler(),
@@ -34,7 +36,9 @@ async function main() {
     eztv: () => new EztvCrawler(),
     thepiratebay: () => new ThePirateBayCrawler(),
     mejortorrent: () => new MejorTorrentCrawler(),
-    elitetorrent: () => new EliteTorrentCrawler()
+    elitetorrent: () => new EliteTorrentCrawler(),
+    limetorrents: () => new LimeTorrentsCrawler(),
+    nyaa: () => new NyaaCrawler()
   };
 
   const summary: ScraperExecutionSummary = {
@@ -73,12 +77,12 @@ async function main() {
       const discoveredRecords = await crawler.crawl(config.maxPagesPerSource);
       stats.discovered = discoveredRecords.length;
 
-      // 2. Aplicar filtro estricto de audio o subtítulos en español
+      // 2. Aplicar filtro estricto de audio o subtítulos en español o inglés
       const { accepted, discarded } = crawler.filterSpanishReleases(discoveredRecords);
       stats.filteredSpanish = accepted.length;
       stats.discardedNonSpanish = discarded.length;
 
-      console.log(`[${crawler.name}] Language Filter: ${accepted.length} accepted (Spanish content), ${discarded.length} discarded (non-Spanish).`);
+      console.log(`[${crawler.name}] Language Filter: ${accepted.length} accepted (Spanish / English content), ${discarded.length} discarded (other foreign languages).`);
 
       // 3. Ejecutar UPSERT en Supabase (sobre info_hash_clean)
       if (accepted.length > 0) {
@@ -87,7 +91,7 @@ async function main() {
         stats.upserted = upsertCount;
         console.log(`[${crawler.name}] Successfully synchronized ${upsertCount} records to database.`);
       } else {
-        console.log(`[${crawler.name}] No Spanish records found to upsert in this run.`);
+        console.log(`[${crawler.name}] No Spanish/English records found to upsert in this run.`);
       }
     } catch (err: unknown) {
       stats.errors++;
@@ -112,7 +116,7 @@ async function main() {
   console.table(summary.crawlers.map(c => ({
     Source: c.name,
     Discovered: c.discovered,
-    'Spanish OK': c.filteredSpanish,
+    'Accepted OK': c.filteredSpanish,
     Discarded: c.discardedNonSpanish,
     Upserted: c.upserted,
     Errors: c.errors,
@@ -120,8 +124,8 @@ async function main() {
   })));
 
   console.log(`Total Discovered:       ${summary.totalDiscovered}`);
-  console.log(`Total Spanish Accepted: ${summary.totalSpanishAccepted}`);
-  console.log(`Total Non-Spanish Dropped: ${summary.totalDiscarded}`);
+  console.log(`Total Accepted:         ${summary.totalSpanishAccepted}`);
+  console.log(`Total Dropped (Foreign): ${summary.totalDiscarded}`);
   console.log(`Total Database Upserts: ${summary.totalUpserted}`);
   console.log(`Finished at:            ${summary.finishedAt}`);
   console.log('===============================================================\n');
