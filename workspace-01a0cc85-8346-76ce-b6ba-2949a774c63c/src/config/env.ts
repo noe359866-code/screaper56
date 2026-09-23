@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file if available
 dotenv.config();
 
 export interface EnvironmentConfig {
@@ -41,7 +40,18 @@ export function loadConfig(): EnvironmentConfig {
 
   const targetCrawlersRaw = process.env.TARGET_CRAWLERS || 'all';
   const targetCrawlers = targetCrawlersRaw === 'all'
-    ? ['pelispanda', 'leech1337x', 'torrentgalaxy', 'yts', 'eztv', 'thepiratebay', 'mejortorrent']
+    ? [
+        'pelispanda',
+        'leech1337x',
+        'torrentgalaxy',
+        'yts',
+        'eztv',
+        'thepiratebay',
+        'mejortorrent',
+        'elitetorrent',
+        'limetorrents',
+        'nyaa'
+      ]
     : targetCrawlersRaw.split(',').map(s => s.trim().toLowerCase());
 
   return {
