@@ -2,9 +2,11 @@
  * Language detection and validation module for BitTorrent releases.
  * 
  * Enforces business rule:
- * - Releases MUST contain Spanish audio (Castellano or Latino) OR Spanish subtitles.
+ * - Releases MUST contain Spanish audio (Castellano or Latino) OR English audio
+ *   OR Spanish / English subtitles.
  * - Dual/Multi-audio releases (e.g. ['Spanish', 'English']) are VALID and retained.
- * - Purely English (or other foreign languages without Spanish audio/subs) are DISCARDED.
+ * - Exclusively other foreign languages (e.g. French, German, Russian, Hindi)
+ *   without Spanish or English audio/subs are DISCARDED.
  */
 
 export interface DetectedLanguages {
@@ -12,10 +14,10 @@ export interface DetectedLanguages {
   subtitles: string[];
 }
 
-// Canonical Spanish audio tags
-const SPANISH_AUDIO_CANONICAL = 'Spanish';
-const LATINO_AUDIO_CANONICAL = 'Spanish (Latino)';
-const ENGLISH_AUDIO_CANONICAL = 'English';
+// Canonical Audio tags
+export const SPANISH_AUDIO_CANONICAL = 'Spanish';
+export const LATINO_AUDIO_CANONICAL = 'Spanish (Latino)';
+export const ENGLISH_AUDIO_CANONICAL = 'English';
 
 /**
  * Detects audio and subtitle languages from title text, tags, and page metadata.
@@ -28,7 +30,7 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
 
   // 1. Detect Spanish Latino Audio
   if (
-    /\b(latino|lat|audio[\s._-]*latino|spanish[\s._-]*\(?latino\)?|lat[\s._-]*audio)\b/i.test(combinedText) ||
+    /\b(latino|lat|audio[\s._-]*latino|spanish[\s._-]*\(?latino\)?|lat[\s._-]*audio|espanol[\s._-]*latino|español[\s._-]*latino)\b/i.test(combinedText) ||
     /-(lat|latino)\b/i.test(rawText) ||
     /\[latino\]/i.test(combinedText)
   ) {
@@ -42,7 +44,6 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
     /\[castellano\]/i.test(combinedText) ||
     /\[espa[ñn]ol\]/i.test(combinedText)
   ) {
-    // Only add generic Spanish if not exclusively marked as Latino, or add alongside
     if (!audioSet.has(LATINO_AUDIO_CANONICAL) || /\b(castellano|espa[ñn]ol)\b/i.test(combinedText)) {
       audioSet.add(SPANISH_AUDIO_CANONICAL);
     }
@@ -50,7 +51,7 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
 
   // 3. Detect English Audio
   if (
-    /\b(english|eng|audio[\s._-]*en|audio[\s._-]*english)\b/i.test(combinedText) ||
+    /\b(english|eng|ingl[eé]s|audio[\s._-]*en|audio[\s._-]*english)\b/i.test(combinedText) ||
     /-(eng)\b/i.test(rawText) ||
     /\[english\]/i.test(combinedText)
   ) {
@@ -59,12 +60,12 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
 
   // 4. Handle Dual / Multi-Audio indicators
   if (/\b(dual|dual[\s._-]*audio|multi[\s._-]*audio|tri[\s._-]*audio)\b/i.test(combinedText)) {
-    // If dual/multi is specified and Spanish is present, English is almost universally the second track in western releases
     if (audioSet.has(SPANISH_AUDIO_CANONICAL) || audioSet.has(LATINO_AUDIO_CANONICAL)) {
       audioSet.add(ENGLISH_AUDIO_CANONICAL);
     } else if (audioSet.has(ENGLISH_AUDIO_CANONICAL)) {
-      // If found in a Spanish source/tracker with "Dual", assume Spanish is the second track
       audioSet.add(SPANISH_AUDIO_CANONICAL);
+    } else {
+      audioSet.add(ENGLISH_AUDIO_CANONICAL);
     }
   }
 
@@ -87,7 +88,7 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
 
   // Sub_EN / English Subtitles
   if (
-    /\b(sub_?en|subs?[\s._-]*en(?:g(?:lish)?)?)\b/i.test(combinedText) ||
+    /\b(sub_?en|subs?[\s._-]*en(?:g(?:lish)?)?|english[\s._-]*subtitles)\b/i.test(combinedText) ||
     /\[sub[._\-]?en\]/i.test(combinedText)
   ) {
     subtitlesSet.add('Sub_EN');
@@ -108,9 +109,19 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
     subtitlesSet.add('Subtitulado');
   }
 
-  // If no audio is identified yet but the source is a purely Spanish site (divxtotal, pelispanda)
-  if (audioSet.size === 0 && /\b(divxtotal|pelispanda)\b/i.test(combinedText)) {
-    audioSet.add(SPANISH_AUDIO_CANONICAL);
+  // 6. Default Fallback Logic when no explicit audio tag is in the title
+  if (audioSet.size === 0) {
+    // If from a purely Spanish tracker
+    if (/\b(pelispanda|mejortorrent|elitetorrent)\b/i.test(combinedText)) {
+      audioSet.add(SPANISH_AUDIO_CANONICAL);
+    } else {
+      // Check if release is explicitly tagged with another foreign language without English or Spanish
+      const isOtherForeign = /\b(french|truefrench|vostfr|german|deutsch|hindi|tamil|telugu|malayalam|korean|japanese|russian|polish|turkish|mandarin)\b/i.test(combinedText);
+      if (!isOtherForeign) {
+        // Western / international releases on YTS, EZTV, 1337x, TPB, TorrentGalaxy default to English
+        audioSet.add(ENGLISH_AUDIO_CANONICAL);
+      }
+    }
   }
 
   return {
@@ -121,12 +132,18 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
 
 /**
  * MANDATORY SELECTION RULE ENFORCEMENT:
- * - Must have Spanish audio (Castellano or Latino) OR Spanish subtitles.
- * - Releases exclusively in English or other languages without Spanish MUST be discarded.
+ * - Must have Spanish audio (Castellano or Latino) OR English audio
+ *   OR Spanish / English subtitles.
+ * - Releases exclusively in other foreign languages (e.g. Russian, Hindi, French)
+ *   without Spanish or English are discarded.
  * 
- * @returns true if the release satisfies the Spanish content constraint, false otherwise.
+ * @returns true if the release satisfies the Spanish/English constraint, false otherwise.
  */
 export function hasValidSpanishRelease(audio: string[], subtitles: string[]): boolean {
+  return hasValidLanguageRelease(audio, subtitles);
+}
+
+export function hasValidLanguageRelease(audio: string[], subtitles: string[]): boolean {
   // Check Spanish audio presence
   const hasSpanishAudio = audio.some(a => {
     const val = a.toLowerCase();
@@ -139,6 +156,18 @@ export function hasValidSpanishRelease(audio: string[], subtitles: string[]): bo
       val === 'spa' ||
       val === 'esp' ||
       val === 'lat'
+    );
+  });
+
+  // Check English audio presence
+  const hasEnglishAudio = audio.some(a => {
+    const val = a.toLowerCase();
+    return (
+      val === 'english' ||
+      val === 'eng' ||
+      val === 'en' ||
+      val === 'inglés' ||
+      val === 'ingles'
     );
   });
 
@@ -158,5 +187,16 @@ export function hasValidSpanishRelease(audio: string[], subtitles: string[]): bo
     );
   });
 
-  return hasSpanishAudio || hasSpanishSubs;
+  // Check English subtitle presence
+  const hasEnglishSubs = subtitles.some(s => {
+    const val = s.toLowerCase();
+    return (
+      val === 'sub_en' ||
+      val === 'multi-subs' ||
+      val === 'english' ||
+      val === 'eng'
+    );
+  });
+
+  return hasSpanishAudio || hasEnglishAudio || hasSpanishSubs || hasEnglishSubs;
 }
