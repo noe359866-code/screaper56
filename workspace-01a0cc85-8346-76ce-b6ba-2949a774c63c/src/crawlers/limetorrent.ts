@@ -134,15 +134,14 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     for (const q of spanishQueries) {
       try {
         console.log(`[${this.name}] Querying search for "${q}"...`);
-        const searchResp = await this.httpClient.post<string>(
-          `${workingMirror}/search`,
-          new URLSearchParams({ q }).toString(),
-          {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
+        const searchResp = await this.httpClient.request<string>({
+          method: 'POST',
+          url: `${workingMirror}/search`,
+          data: new URLSearchParams({ q }).toString(),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
           }
-        );
+        });
 
         const html = searchResp.data;
         if (html && typeof html === 'string') {
