@@ -5,7 +5,8 @@ import { Leech1337xCrawler } from './crawlers/leech1337x.js';
 import { TorrentGalaxyCrawler } from './crawlers/torrentgalaxy.js';
 import { YtsCrawler } from './crawlers/yts.js';
 import { EztvCrawler } from './crawlers/eztv.js';
-import { DivxTotalCrawler } from './crawlers/divxtotal.js';
+import { ThePirateBayCrawler } from './crawlers/thepiratebay.js';
+import { MejorTorrentCrawler } from './crawlers/mejortorrent.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
@@ -23,14 +24,15 @@ async function main() {
 
   const repository = new SupabaseTorrentRepository();
 
-  // Registry of all available crawlers
+  // Registro de todos los crawlers activos
   const crawlerRegistry: Record<string, () => BaseCrawler> = {
     pelispanda: () => new PelispandaCrawler(),
     leech1337x: () => new Leech1337xCrawler(),
     torrentgalaxy: () => new TorrentGalaxyCrawler(),
     yts: () => new YtsCrawler(),
     eztv: () => new EztvCrawler(),
-    divxtotal: () => new DivxTotalCrawler()
+    thepiratebay: () => new ThePirateBayCrawler(),
+    mejortorrent: () => new MejorTorrentCrawler()
   };
 
   const summary: ScraperExecutionSummary = {
@@ -65,18 +67,18 @@ async function main() {
     console.log(`\n>>> Launching crawler [${crawler.name}] (${crawler.baseUrl}) <<<`);
 
     try {
-      // 1. Fetch raw torrent candidates
+      // 1. Obtener candidatos crudos del tracker
       const discoveredRecords = await crawler.crawl(config.maxPagesPerSource);
       stats.discovered = discoveredRecords.length;
 
-      // 2. Apply Spanish audio/subtitles mandatory filter
+      // 2. Aplicar filtro estricto de audio o subtítulos en español
       const { accepted, discarded } = crawler.filterSpanishReleases(discoveredRecords);
       stats.filteredSpanish = accepted.length;
       stats.discardedNonSpanish = discarded.length;
 
       console.log(`[${crawler.name}] Language Filter: ${accepted.length} accepted (Spanish content), ${discarded.length} discarded (non-Spanish).`);
 
-      // 3. Perform Database UPSERT operations in PostgreSQL / Supabase
+      // 3. Ejecutar UPSERT en Supabase (sobre info_hash_clean)
       if (accepted.length > 0) {
         console.log(`[${crawler.name}] Commencing UPSERT for ${accepted.length} records into public.torrents...`);
         const upsertCount = await repository.upsertBatch(accepted);
@@ -101,7 +103,7 @@ async function main() {
 
   summary.finishedAt = new Date().toISOString();
 
-  // Print formatted operational summary
+  // Resumen final de la ejecución
   console.log('\n===============================================================');
   console.log('                   SCRAPER EXECUTION SUMMARY                   ');
   console.log('===============================================================');
