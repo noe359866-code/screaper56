@@ -41,7 +41,7 @@ export function loadConfig(): EnvironmentConfig {
 
   const targetCrawlersRaw = process.env.TARGET_CRAWLERS || 'all';
   const targetCrawlers = targetCrawlersRaw === 'all'
-    ? ['pelispanda', 'leech1337x', 'torrentgalaxy', 'yts', 'eztv', 'divxtotal']
+    ? ['pelispanda', 'leech1337x', 'torrentgalaxy', 'yts', 'eztv', 'thepiratebay', 'mejortorrent']
     : targetCrawlersRaw.split(',').map(s => s.trim().toLowerCase());
 
   return {
