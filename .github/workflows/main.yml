@@ -2,12 +2,11 @@ name: "Torrent Crawler & Supabase Indexer"
 
 on:
   schedule:
-    # Se ejecuta automáticamente cada 6 horas (00:00, 06:00, 12:00, 18:00 UTC)
     - cron: "0 */6 * * *"
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Target crawlers to execute (all, pelispanda, leech1337x, torrentgalaxy, yts, eztv, divxtotal)"
+        description: "Target crawlers to execute (all, pelispanda, leech1337x, torrentgalaxy, yts, eztv, thepiratebay, mejortorrent, elitetorrent)"
         required: false
         default: "all"
         type: choice
@@ -18,7 +17,9 @@ on:
           - torrentgalaxy
           - yts
           - eztv
-          - divxtotal
+          - thepiratebay
+          - mejortorrent
+          - elitetorrent
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
@@ -36,7 +37,7 @@ concurrency:
 
 jobs:
   crawl-and-sync:
-    name: "Crawl, Filter Spanish & Supabase Upsert"
+    name: "Crawl, Filter Spanish/English & Supabase Upsert"
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -44,7 +45,6 @@ jobs:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
 
-      # Detecta automáticamente si los archivos están dentro de una subcarpeta y los sube a la raíz
       - name: "Normalize Project Directory Structure"
         run: |
           if [ ! -f "package.json" ]; then
