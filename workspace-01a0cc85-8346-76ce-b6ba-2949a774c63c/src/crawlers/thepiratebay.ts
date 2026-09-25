@@ -4,7 +4,6 @@ import { TorrentRecord, ContentType } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
-import pLimit from 'p-limit';
 
 interface ApibayItem {
   id: string;
@@ -25,14 +24,74 @@ export class ThePirateBayCrawler extends BaseCrawler {
   private readonly webMirrors = [
     'https://thepiratebay10.org',
     'https://tpb.party',
-    'https://pirate-bays.net'
+    'https://pirate-bays.net',
+    'https://thehiddenbay.com'
   ];
+
+  // Tracker por defecto para crear magnets de la API
+  private readonly defaultTrackers = [
+    'udp://tracker.opentrackr.org:1337/announce',
+    'udp://tracker.openbittorrent.com:6969/announce'
+  ];
+
+  /**
+   * Resuelve URLs relativas de forma segura
+   */
+  private resolveUrl(target: string, base: string): string {
+    try {
+      return new URL(target, base).href;
+    } catch {
+      return target;
+    }
+  }
+
+  /**
+   * Genera un Magnet URI estándar
+   */
+  private buildMagnet(infoHash: string, name: string): string {
+    let magnet = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(name)}`;
+    for (const tr of this.defaultTrackers) {
+      magnet += `&tr=${encodeURIComponent(tr)}`;
+    }
+    return magnet;
+  }
+
+  /**
+   * Busca el primer espejo web activo (evitando saturarlos a todos a la vez)
+   */
+  private async getWorkingWebMirror(): Promise<string | null> {
+    for (const mirror of this.webMirrors) {
+      try {
+        console.log(`[${this.name}] Checking web mirror connectivity: ${mirror}...`);
+        const resp = await this.httpClient.get<string>(`${mirror}/search/test/1/99/200`, {
+          timeout: 7000,
+          headers: {
+            'Accept': 'text/html,application/xhtml+xml',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          }
+        });
+
+        // Verificamos que no sea un captcha de Cloudflare y que exista la tabla de resultados
+        if (resp.status === 200 && resp.data.includes('searchResult')) {
+          console.log(`[${this.name}] Connected to active web mirror: ${mirror}`);
+          return mirror;
+        }
+      } catch (err) {
+        console.warn(`[${this.name}] Web mirror ${mirror} unreachable or blocked.`);
+      }
+    }
+    return null;
+  }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     console.log(`[${this.name}] Starting The Pirate Bay crawl (maxPages=${maxPages})...`);
+    
     const results: TorrentRecord[] = [];
+    const uniqueHashes = new Set<string>(); // Para deduplicar resultados cruzados
 
-    // 1. Ingesta ultrarrápida vía API oficial de The Pirate Bay (Top 100 por categorías)
+    // ========================================================================
+    // FASE 1: Ingesta rápida vía API Oficial (Top 100)
+    // ========================================================================
     const apiEndpoints = [
       '/precompiled/data_top100_200.json', // Video General
       '/precompiled/data_top100_201.json', // Películas
@@ -45,43 +104,59 @@ export class ThePirateBayCrawler extends BaseCrawler {
       try {
         const apiUrl = `${this.apibayBase}${ep}`;
         console.log(`[${this.name}] Querying Apibay: ${apiUrl}`);
+        
         const resp = await this.httpClient.get<ApibayItem[]>(apiUrl);
         const items = resp.data || [];
 
         if (Array.isArray(items)) {
           for (const item of items) {
             const rec = this.mapApibayItem(item);
-            if (rec) results.push(rec);
+            if (rec && !uniqueHashes.has(rec.info_hash)) {
+              uniqueHashes.add(rec.info_hash);
+              results.push(rec);
+            }
           }
         }
-      } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : String(err);
-        console.warn(`[${this.name}] Apibay ${ep} warning: ${msg}`);
+      } catch (err: any) {
+        console.warn(`[${this.name}] Apibay ${ep} failed: ${err.message}`);
       }
     }
 
-    // 2. Búsquedas específicas de contenido en español en espejos de The Pirate Bay
-    const searchTerms = ['spanish', 'castellano', 'latino'];
-    const limit = pLimit(2);
+    // ========================================================================
+    // FASE 2: Búsquedas Web Scraping (Contenido en español)
+    // ========================================================================
+    const workingMirror = await this.getWorkingWebMirror();
+    
+    if (!workingMirror) {
+      console.warn(`[${this.name}] No working web mirrors found. Skipping Phase 2.`);
+    } else {
+      const searchTerms = ['spanish', 'castellano', 'latino'];
 
-    for (const term of searchTerms) {
-      for (let page = 1; page <= maxPages; page++) {
-        const searchTasks = this.webMirrors.map(mirror => limit(async () => {
-          const searchUrl = `${mirror}/search/${term}/${page}/99/200`;
+      for (const term of searchTerms) {
+        for (let page = 1; page <= maxPages; page++) {
+          const searchUrl = `${workingMirror}/search/${term}/${page}/99/200`;
+          
           try {
+            console.log(`[${this.name}] Scraping search term '${term}': ${searchUrl}`);
             const resp = await this.httpClient.get<string>(searchUrl);
             const $ = cheerio.load(resp.data);
-            const pageRecords: TorrentRecord[] = [];
+            let addedInPage = 0;
 
-            $('#searchResult tr, table#searchResult tbody tr').each((_, el) => {
+            $('#searchResult tr:not(.header)').each((_, el) => {
               const titleEl = $(el).find('.detName a, a.detLink');
               const magnetEl = $(el).find('a[href^="magnet:?xt="]');
+              
               if (!titleEl.length || !magnetEl.length) return;
 
               const title = titleEl.text().trim();
               const magnetUrl = magnetEl.attr('href') || '';
+              const detailHref = titleEl.attr('href') || '';
+              
               const parsedMagnet = parseMagnetUri(magnetUrl);
               if (!parsedMagnet || !parsedMagnet.infoHash) return;
+
+              const infoHash = parsedMagnet.infoHash.toLowerCase();
+              if (uniqueHashes.has(infoHash)) return; // Deduplicación
 
               const tds = $(el).find('td');
               const seeders = parseInt(tds.eq(tds.length - 2).text().trim(), 10) || 0;
@@ -92,9 +167,12 @@ export class ThePirateBayCrawler extends BaseCrawler {
               const sizeBytes = sizeMatch ? parseSizeToBytes(sizeMatch[1]) : 0;
 
               const meta = parseTorrentTitle(title, 'movie');
-              const langs = detectLanguages(title, ['thepiratebay', term]);
+              const langs = detectLanguages(title, ['thepiratebay', term]); // Pasamos 'term' como contexto de idioma
 
-              pageRecords.push({
+              uniqueHashes.add(infoHash);
+              addedInPage++;
+              
+              results.push({
                 imdb_id: null,
                 tmdb_id: null,
                 kitsu_id: null,
@@ -105,7 +183,10 @@ export class ThePirateBayCrawler extends BaseCrawler {
                 episode: meta.episode,
                 absolute_episode: meta.absoluteEpisode,
                 file_index: null,
-                info_hash: parsedMagnet.infoHash,
+                info_hash: infoHash,
+                magnet_url: magnetUrl,
+                torrent_file_url: null, // TPB casi no maneja .torrent crudos ya
+                source_url: this.resolveUrl(detailHref, workingMirror),
                 title,
                 release_group: meta.releaseGroup,
                 quality: meta.quality,
@@ -114,30 +195,28 @@ export class ThePirateBayCrawler extends BaseCrawler {
                 audio: langs.audio,
                 subtitles: langs.subtitles,
                 channels: meta.channels,
-                size_bytes: sizeBytes || 0,
+                size_bytes: sizeBytes,
                 seeders,
                 leechers,
-                source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
+                source_tracker: parsedMagnet.trackers[0] || this.defaultTrackers[0]
               });
             });
 
-            return pageRecords;
-          } catch {
-            return [];
-          }
-        }));
+            // Si la página no arrojó resultados válidos, cortamos el loop de paginación para este término
+            if (addedInPage === 0) {
+              console.log(`[${this.name}] No more results for '${term}' at page ${page}.`);
+              break; 
+            }
 
-        const nested = await Promise.all(searchTasks);
-        for (const list of nested) {
-          if (list.length > 0) {
-            results.push(...list);
-            break;
+          } catch (err: any) {
+            console.warn(`[${this.name}] Failed scraping ${searchUrl}: ${err.message}`);
+            break; // Si hay timeout o error 500, pasamos al siguiente término
           }
         }
       }
     }
 
-    console.log(`[${this.name}] Total records discovered: ${results.length}`);
+    console.log(`[${this.name}] Crawl completed. Total unique records discovered: ${results.length}`);
     return results;
   }
 
@@ -146,6 +225,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       return null;
     }
 
+    const infoHash = item.info_hash.toLowerCase();
     const catNum = Number(item.category);
     let defaultType: ContentType = 'movie';
     if (catNum === 205 || catNum === 208) {
@@ -156,7 +236,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
     const langs = detectLanguages(item.name, ['thepiratebay']);
 
     let validImdbId: string | null = null;
-    if (item.imdb && /^tt[0-9]+$/.test(item.imdb.trim())) {
+    if (item.imdb && /^tt[0-9]{7,8}$/.test(item.imdb.trim())) {
       validImdbId = item.imdb.trim();
     }
 
@@ -171,7 +251,10 @@ export class ThePirateBayCrawler extends BaseCrawler {
       episode: meta.episode,
       absolute_episode: meta.absoluteEpisode,
       file_index: null,
-      info_hash: item.info_hash.toLowerCase(),
+      info_hash: infoHash,
+      magnet_url: this.buildMagnet(infoHash, item.name),
+      torrent_file_url: null,
+      source_url: `https://thepiratebay.org/description.php?id=${item.id}`, // Reconstruimos URL base de TPB
       title: item.name,
       release_group: meta.releaseGroup,
       quality: meta.quality,
@@ -183,7 +266,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       size_bytes: Number(item.size) || 0,
       seeders: Number(item.seeders) || 0,
       leechers: Number(item.leechers) || 0,
-      source_tracker: 'udp://tracker.opentrackr.org:1337/announce'
+      source_tracker: this.defaultTrackers[0]
     };
   }
 }
