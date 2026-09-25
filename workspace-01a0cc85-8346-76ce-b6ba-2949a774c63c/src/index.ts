@@ -23,11 +23,11 @@ async function main() {
   console.log(`[INIT] Dry Run Mode: ${config.dryRun ? 'ENABLED (No DB writes)' : 'DISABLED (Live DB Sync)'}`);
   console.log(`[INIT] Active Targets: ${config.targetCrawlers.join(', ')}`);
   console.log(`[INIT] Max Pages Per Source: ${config.maxPagesPerSource}`);
+  console.log(`[INIT] Concurrency Limit: ${config.concurrencyLimit} parallel workers`);
   console.log('---------------------------------------------------------------\n');
 
   const repository = new SupabaseTorrentRepository();
 
-  // Registro de todos los 10 crawlers activos
   const crawlerRegistry: Record<string, () => BaseCrawler> = {
     pelispanda: () => new PelispandaCrawler(),
     leech1337x: () => new Leech1337xCrawler(),
@@ -51,11 +51,32 @@ async function main() {
     crawlers: []
   };
 
-  for (const crawlerKey of config.targetCrawlers) {
+  // 1. Motor de Concurrencia Nativo (Promise Pool)
+  // Permite ejecutar múltiples crawlers a la vez respetando el límite de RAM y CPU
+  async function runWithConcurrency(tasks: string[], limit: number) {
+    const executing = new Set<Promise<void>>();
+    
+    for (const crawlerKey of tasks) {
+      // Envolvemos la ejecución individual en una promesa
+      const p = processCrawler(crawlerKey).finally(() => executing.delete(p));
+      executing.add(p);
+      
+      // Si alcanzamos el límite, esperamos a que el más rápido termine antes de lanzar otro
+      if (executing.size >= limit) {
+        await Promise.race(executing);
+      }
+    }
+    
+    // Esperamos a que terminen los últimos rezagados
+    await Promise.all(executing);
+  }
+
+  // 2. Lógica aislada por cada Crawler
+  async function processCrawler(crawlerKey: string): Promise<void> {
     const crawlerFactory = crawlerRegistry[crawlerKey];
     if (!crawlerFactory) {
       console.warn(`[ROUTER] Unknown crawler module requested: "${crawlerKey}". Skipping.`);
-      continue;
+      return;
     }
 
     const crawler = crawlerFactory();
@@ -70,26 +91,26 @@ async function main() {
     };
 
     const crawlStart = Date.now();
-    console.log(`\n>>> Launching crawler [${crawler.name}] (${crawler.baseUrl}) <<<`);
+    const baseUrlLog = crawler.baseUrl ? ` (${crawler.baseUrl})` : ' (Dynamic Mirrors)';
+    console.log(`\n>>> Launching crawler [${crawler.name}]${baseUrlLog} <<<`);
 
     try {
-      // 1. Obtener candidatos crudos del tracker
-      const discoveredRecords = await crawler.crawl(config.maxPagesPerSource);
-      stats.discovered = discoveredRecords.length;
+      // A. Obtener candidatos crudos
+      const rawRecords = await crawler.crawl(config.maxPagesPerSource);
+      
+      // B. Deduplicar primero (Ahorra CPU en los siguientes pasos)
+      const uniqueRecords = crawler.deduplicateRecords(rawRecords);
+      stats.discovered = uniqueRecords.length;
 
-      // 2. Aplicar filtro estricto de audio o subtítulos en español o inglés
-      const { accepted, discarded } = crawler.filterSpanishReleases(discoveredRecords);
+      // C. Aplicar filtro
+      const { accepted, discarded } = crawler.filterSpanishReleases(uniqueRecords);
       stats.filteredSpanish = accepted.length;
       stats.discardedNonSpanish = discarded.length;
 
-      console.log(`[${crawler.name}] Language Filter: ${accepted.length} accepted (Spanish / English content), ${discarded.length} discarded (other foreign languages).`);
-
-      // 3. Ejecutar UPSERT en Supabase (sobre info_hash_clean)
+      // D. UPSERT en Base de Datos
       if (accepted.length > 0) {
-        console.log(`[${crawler.name}] Commencing UPSERT for ${accepted.length} records into public.torrents...`);
         const upsertCount = await repository.upsertBatch(accepted);
         stats.upserted = upsertCount;
-        console.log(`[${crawler.name}] Successfully synchronized ${upsertCount} records to database.`);
       } else {
         console.log(`[${crawler.name}] No Spanish/English records found to upsert in this run.`);
       }
@@ -99,6 +120,9 @@ async function main() {
       console.error(`[FATAL] Unhandled failure in crawler [${crawler.name}]:`, errorMsg);
     } finally {
       stats.executionTimeMs = Date.now() - crawlStart;
+      
+      // Al ser un entorno asíncrono concurrente, bloqueamos los push al summary 
+      // mutando directamente los acumuladores (es seguro en Node.js al ser single-threaded)
       summary.crawlers.push(stats);
       summary.totalDiscovered += stats.discovered;
       summary.totalSpanishAccepted += stats.filteredSpanish;
@@ -107,13 +131,20 @@ async function main() {
     }
   }
 
+  // 3. Iniciar ejecución concurrente
+  await runWithConcurrency(config.targetCrawlers, config.concurrencyLimit);
+
   summary.finishedAt = new Date().toISOString();
 
-  // Resumen final de la ejecución
+  // 4. Resumen Final
   console.log('\n===============================================================');
   console.log('                   SCRAPER EXECUTION SUMMARY                   ');
   console.log('===============================================================');
-  console.table(summary.crawlers.map(c => ({
+  
+  // Ordenar los resultados por tiempo de ejecución (opcional, ayuda al profiling)
+  const sortedStats = [...summary.crawlers].sort((a, b) => b.executionTimeMs - a.executionTimeMs);
+  
+  console.table(sortedStats.map(c => ({
     Source: c.name,
     Discovered: c.discovered,
     'Accepted OK': c.filteredSpanish,
