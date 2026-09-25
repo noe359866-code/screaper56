@@ -1,139 +1,187 @@
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
-import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
-import pLimit from 'p-limit';
 
-interface YtsMovieItem {
-  id: number;
-  title: string;
-  original_language?: string;
-  release_date?: string;
-  vote_average?: number;
-}
-
-interface YtsTorrentHit {
-  title: string;
+// Interfaces para la API oficial de YTS (yts.mx/api/v2)
+interface YtsApiTorrent {
+  url: string;
+  hash: string;
+  quality: string;
+  type: string;
+  is_repack: string;
+  video_codec: string;
+  bit_depth: string;
+  audio_channels: string;
   seeds: number;
   peers: number;
-  bytes: number;
-  magnetUrl: string;
-  hash: string;
-  source: string;
+  size_bytes: number;
+}
+
+interface YtsApiMovie {
+  id: number;
+  url: string;
+  imdb_code: string;
+  title: string;
+  title_english: string;
+  year: number;
+  rating: number;
+  language: string;
+  torrents?: YtsApiTorrent[];
 }
 
 export class YtsCrawler extends BaseCrawler {
   public readonly name = 'yts';
-  public readonly baseUrl = 'https://en.yts-official.com';
+  
+  // Usamos el dominio oficial primario y algunos espejos oficiales/conocidos
+  private readonly domains = [
+    'https://yts.mx',
+    'https://yts.do',
+    'https://yts.rs'
+  ];
+
+  // Trackers estándar que usa YTS en sus magnets
+  private readonly defaultTrackers = [
+    'udp://open.demonii.com:1337/announce',
+    'udp://tracker.openbittorrent.com:80',
+    'udp://tracker.coppersurfer.tk:6969',
+    'udp://glotorrents.pw:6969/announce',
+    'udp://tracker.opentrackr.org:1337/announce'
+  ];
+
+  /**
+   * Construye un magnet URI estándar inyectando los trackers
+   */
+  private buildMagnet(infoHash: string, title: string): string {
+    let magnet = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(title)}`;
+    for (const tr of this.defaultTrackers) {
+      magnet += `&tr=${encodeURIComponent(tr)}`;
+    }
+    return magnet;
+  }
+
+  /**
+   * Busca un dominio de YTS que esté activo y responda a la API
+   */
+  private async getWorkingDomain(): Promise<string | null> {
+    for (const domain of this.domains) {
+      try {
+        console.log(`[${this.name}] Testing domain: ${domain}...`);
+        const resp = await this.httpClient.get<any>(`${domain}/api/v2/list_movies.json?limit=1`, {
+          timeout: 5000
+        });
+        
+        if (resp.status === 200 && resp.data?.status === 'ok') {
+          console.log(`[${this.name}] Active domain found: ${domain}`);
+          return domain;
+        }
+      } catch (err) {
+        console.warn(`[${this.name}] Domain ${domain} unreachable.`);
+      }
+    }
+    return null;
+  }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     console.log(`[${this.name}] Starting YTS crawl (maxPages=${maxPages})...`);
+    
+    const activeDomain = await this.getWorkingDomain();
+    if (!activeDomain) {
+      console.error(`[${this.name}] CRITICAL: No working YTS mirrors found. Aborting crawl.`);
+      return [];
+    }
+
     const results: TorrentRecord[] = [];
-    const limit = pLimit(3);
+    const uniqueHashes = new Set<string>();
 
-    const discoveryModes = ['popular', 'trending'];
+    // 'download_count' equivale a Popular, 'date_added' equivale a Recientes/Trending
+    const sortModes = ['download_count', 'date_added'];
 
-    for (const mode of discoveryModes) {
+    for (const sortMode of sortModes) {
       for (let page = 1; page <= maxPages; page++) {
         try {
-          const listUrl = `${this.baseUrl}/?api=${mode}&mode=movie&page=${page}`;
-          console.log(`[${this.name}] Fetching movie catalog: ${listUrl}`);
+          // La magia de V2: Trae las películas Y sus torrents en la misma petición
+          const listUrl = `${activeDomain}/api/v2/list_movies.json?sort_by=${sortMode}&limit=50&page=${page}`;
+          console.log(`[${this.name}] Fetching ${sortMode} movies: ${listUrl}`);
+          
           const resp = await this.httpClient.get<any>(listUrl);
-          const movies: YtsMovieItem[] = resp.data?.results || [];
+          const movies: YtsApiMovie[] = resp.data?.data?.movies || [];
 
-          if (!movies || movies.length === 0) break;
-
-          console.log(`[${this.name}] Found ${movies.length} movies on ${mode} page ${page}. Querying torrent feeds...`);
-
-          const movieTorrentTasks = movies.map(movie => limit(async () => {
-            try {
-              return await this.fetchTorrentsForMovie(movie);
-            } catch (err: unknown) {
-              const msg = err instanceof Error ? err.message : String(err);
-              console.warn(`[${this.name}] Failed fetching torrents for "${movie.title}": ${msg}`);
-              return [];
-            }
-          }));
-
-          const movieRecordsNested = await Promise.all(movieTorrentTasks);
-          for (const records of movieRecordsNested) {
-            results.push(...records);
+          if (movies.length === 0) {
+            console.log(`[${this.name}] No more movies found on page ${page}.`);
+            break;
           }
-        } catch (err: unknown) {
-          const msg = err instanceof Error ? err.message : String(err);
-          console.warn(`[${this.name}] Error reading YTS ${mode} page ${page}: ${msg}`);
-          break;
+
+          for (const movie of movies) {
+            if (!movie.torrents || movie.torrents.length === 0) continue;
+
+            for (const torrent of movie.torrents) {
+              const infoHash = torrent.hash.toLowerCase();
+              
+              // Deduplicación: Si una película es "Popular" y "Reciente", no la insertamos dos veces
+              if (uniqueHashes.has(infoHash)) continue;
+              uniqueHashes.add(infoHash);
+
+              // Formateamos el título del torrent (Ej: "Movie Name 2023 1080p BluRay YTS")
+              const torrentTitle = `${movie.title_english || movie.title} ${movie.year} ${torrent.quality} ${torrent.type === 'bluray' ? 'BluRay' : torrent.type} YTS`;
+              
+              const parsedMeta = parseTorrentTitle(torrentTitle, 'movie');
+              
+              // Lógica de idiomas usando el campo nativo de la API de YTS
+              const langHints = ['YTS'];
+              if (movie.language === 'es' || movie.language === 'es-mx') {
+                langHints.push('spanish', 'latino');
+              }
+              const langs = detectLanguages(torrentTitle, langHints);
+              
+              if (movie.language && movie.language.includes('es') && langs.audio.length === 0) {
+                langs.audio.push('Spanish');
+              }
+
+              // Normalizamos IMDB ID
+              let imdbId: string | null = null;
+              if (movie.imdb_code && /^tt[0-9]{7,8}$/.test(movie.imdb_code)) {
+                imdbId = movie.imdb_code;
+              }
+
+              results.push({
+                imdb_id: imdbId,
+                tmdb_id: null,
+                kitsu_id: null,
+                anilist_id: null,
+                mal_id: null,
+                type: 'movie', // YTS es exclusivo de películas
+                season: null,
+                episode: null,
+                absolute_episode: null,
+                file_index: null,
+                info_hash: infoHash,
+                magnet_url: this.buildMagnet(infoHash, torrentTitle),
+                torrent_file_url: torrent.url || null,
+                source_url: movie.url || `${activeDomain}/movies/${movie.slug}`,
+                title: torrentTitle,
+                release_group: 'YTS',
+                quality: torrent.quality || parsedMeta.quality,
+                codec: torrent.video_codec || parsedMeta.codec,
+                hdr_format: parsedMeta.hdrFormat,
+                audio: langs.audio.length > 0 ? langs.audio : ['English'], // YTS por defecto siempre incluye Inglés
+                subtitles: langs.subtitles,
+                channels: parsedMeta.channels,
+                size_bytes: torrent.size_bytes || 0,
+                seeders: torrent.seeds || 0,
+                leechers: torrent.peers || 0,
+                source_tracker: this.defaultTrackers[0]
+              });
+            }
+          }
+        } catch (err: any) {
+          console.warn(`[${this.name}] Error reading YTS ${sortMode} page ${page}: ${err.message}`);
+          break; // Si falla la página, saltamos al siguiente modo de ordenamiento
         }
       }
     }
 
-    console.log(`[${this.name}] Crawl completed. Total records retrieved: ${results.length}`);
+    console.log(`[${this.name}] Crawl completed. Total unique records retrieved: ${results.length}`);
     return results;
-  }
-
-  private async fetchTorrentsForMovie(movie: YtsMovieItem): Promise<TorrentRecord[]> {
-    const year = movie.release_date ? movie.release_date.substring(0, 4) : '';
-    const queryUrl = `${this.baseUrl}/?api=torrents&mode=movie&name=${encodeURIComponent(movie.title)}&year=${year}&quality=all`;
-
-    const resp = await this.httpClient.get<any>(queryUrl);
-    const hits: YtsTorrentHit[] = resp.data?.hits || [];
-    if (!hits || hits.length === 0) return [];
-
-    const records: TorrentRecord[] = [];
-
-    for (const hit of hits) {
-      if (!hit.magnetUrl) continue;
-
-      const parsedMagnet = parseMagnetUri(hit.magnetUrl);
-      const infoHash = hit.hash || parsedMagnet?.infoHash;
-      if (!infoHash) continue;
-
-      const parsedMeta = parseTorrentTitle(hit.title, 'movie');
-
-      // Extra language hints based on original language of the movie
-      const langHints = [hit.source || ''];
-      if (movie.original_language === 'es') {
-        langHints.push('spanish');
-      }
-
-      const langs = detectLanguages(hit.title, langHints);
-
-      // If original language is Spanish and no audio detected yet, add Spanish
-      if (movie.original_language === 'es' && langs.audio.length === 0) {
-        langs.audio.push('Spanish');
-      }
-
-      records.push({
-        imdb_id: null,
-        tmdb_id: movie.id ? Number(movie.id) : null,
-        kitsu_id: null,
-        anilist_id: null,
-        mal_id: null,
-        type: 'movie',
-        season: null,
-        episode: null,
-        absolute_episode: null,
-        file_index: null,
-        info_hash: infoHash.toLowerCase(),
-        magnet_url: hit.magnetUrl,
-        torrent_file_url: null,
-        source_url: `${this.baseUrl}/movie/${movie.id}`,
-        title: hit.title,
-        release_group: parsedMeta.releaseGroup || hit.source,
-        quality: parsedMeta.quality,
-        codec: parsedMeta.codec,
-        hdr_format: parsedMeta.hdrFormat,
-        audio: langs.audio,
-        subtitles: langs.subtitles,
-        channels: parsedMeta.channels,
-        size_bytes: hit.bytes || null,
-        seeders: hit.seeds || 0,
-        leechers: hit.peers || 0,
-        source_tracker: parsedMagnet?.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
-      });
-    }
-
-    return records;
   }
 }
