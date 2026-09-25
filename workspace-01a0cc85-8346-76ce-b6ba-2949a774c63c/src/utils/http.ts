@@ -14,26 +14,47 @@ export function getRandomUserAgent(): string {
   return USER_AGENTS[index];
 }
 
-export function getDefaultHeaders(): Record<string, string> {
-  return {
-    'User-Agent': getRandomUserAgent(),
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+/**
+ * Generates dynamic headers matching the provided User-Agent to prevent fingerprint mismatch.
+ */
+export function getHeadersForUserAgent(ua: string = getRandomUserAgent()): Record<string, string> {
+  const isFirefox = ua.includes('Firefox');
+  const isEdge = ua.includes('Edg/');
+  const isMac = ua.includes('Macintosh') || ua.includes('Mac OS X');
+  const isLinux = ua.includes('Linux') && !ua.includes('Android');
+
+  const platform = isMac ? '"macOS"' : isLinux ? '"Linux"' : '"Windows"';
+  
+  const headers: Record<string, string> = {
+    'User-Agent': ua,
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
     'Accept-Language': 'es-ES,es;q=0.9,en-US;q=0.8,en;q=0.7',
     'Accept-Encoding': 'gzip, deflate, br',
     'Cache-Control': 'no-cache',
     'Pragma': 'no-cache',
-    'Sec-Ch-Ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
-    'Sec-Ch-Ua-Mobile': '?0',
-    'Sec-Ch-Ua-Platform': '"Windows"',
-    'Sec-Fetch-Dest': 'document',
-    'Sec-Fetch-Mode': 'navigate',
-    'Sec-Fetch-Site': 'none',
-    'Sec-Fetch-User': '?1',
-    'Upgrade-Insecure-Requests': '1'
   };
+
+  // Firefox does not use Chromium Client Hints
+  if (!isFirefox) {
+    const match = ua.match(/Chrome\/(\d+)/);
+    const major = match ? match[1] : '126';
+    const brand = isEdge ? 'Microsoft Edge' : 'Google Chrome';
+    
+    headers['Sec-Ch-Ua'] = `"Not/A)Brand";v="8", "Chromium";v="${major}", "${brand}";v="${major}"`;
+    headers['Sec-Ch-Ua-Mobile'] = '?0';
+    headers['Sec-Ch-Ua-Platform'] = platform;
+  }
+
+  headers['Sec-Fetch-Dest'] = 'document';
+  headers['Sec-Fetch-Mode'] = 'navigate';
+  headers['Sec-Fetch-Site'] = 'none';
+  headers['Sec-Fetch-User'] = '?1';
+  headers['Upgrade-Insecure-Requests'] = '1';
+
+  return headers;
 }
 
-export interface HttpClientOptions {
+export interface HttpClientOptions extends AxiosRequestConfig {
   timeoutMs?: number;
   maxRetries?: number;
   baseDelayMs?: number;
@@ -51,9 +72,12 @@ export class ResilientHttpClient {
     this.baseDelayMs = options.baseDelayMs ?? 1500;
     this.autoSolveCloudflare = options.autoSolveCloudflare ?? true;
 
+    const initialUA = getRandomUserAgent();
+
     this.client = axios.create({
+      ...options,
       timeout: options.timeoutMs ?? 20000,
-      headers: getDefaultHeaders(),
+      headers: getHeadersForUserAgent(initialUA),
       maxRedirects: 5,
       validateStatus: (status) => (status >= 200 && status < 300) || status === 304
     });
@@ -64,27 +88,46 @@ export class ResilientHttpClient {
   }
 
   /**
+   * Safely resolves a URL, supporting both absolute URLs and relative paths with Axios baseURL.
+   */
+  private resolveFullUrl(url?: string): string {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    const baseURL = this.client.defaults.baseURL || '';
+    if (baseURL) {
+      return `${baseURL.replace(/\/$/, '')}/${url.replace(/^\//, '')}`;
+    }
+    return url;
+  }
+
+  /**
    * Executes an HTTP request with automatic clearance cookie injection and exponential backoff.
    */
   public async request<T = unknown>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     let attempt = 0;
     let lastError: unknown = null;
-    const url = config.url || '';
-
-    // Check if clearance session exists for this domain
+    
+    const fullUrl = this.resolveFullUrl(config.url);
     const clearanceEngine = CloudflareBypassEngine.getInstance();
-    const cachedSession = clearanceEngine.getCachedSession(url);
 
     while (attempt <= this.maxRetries) {
       try {
+        // Fetch cached session for this domain if available
+        const cachedSession = fullUrl ? clearanceEngine.getCachedSession(fullUrl) : null;
+        
+        // Use cached UA if session exists, otherwise generate a fresh aligned header set
+        const activeUA = cachedSession ? cachedSession.userAgent : getRandomUserAgent();
+        const baseHeaders = getHeadersForUserAgent(activeUA);
+
         const mergedHeaders: Record<string, any> = {
-          ...getDefaultHeaders(),
+          ...baseHeaders,
           ...(config.headers || {})
         };
 
         if (cachedSession) {
           mergedHeaders['Cookie'] = cachedSession.cookieHeader;
-          mergedHeaders['User-Agent'] = cachedSession.userAgent;
         }
 
         const response = await this.client.request<T>({
@@ -106,40 +149,33 @@ export class ResilientHttpClient {
         const status = isAxiosError ? err.response?.status : undefined;
         const responseData = isAxiosError && typeof err.response?.data === 'string' ? err.response.data : '';
 
-        // If Cloudflare 403/503 is detected and autoSolve is enabled
+        // Check if it's a Cloudflare block (403, 503 or 200 challenge page)
         const isCloudflare = status === 403 || status === 503 || this.isCloudflareChallenge(responseData);
 
-        if (isCloudflare && this.autoSolveCloudflare && url && attempt === 1) {
-          console.warn(`[HTTP] Cloudflare WAF detected on ${url} (Status: ${status}). Activating stealth solver...`);
+        if (isCloudflare && this.autoSolveCloudflare && fullUrl && attempt === 1) {
+          console.warn(`[HTTP] Cloudflare WAF detected on ${fullUrl} (Status: ${status || 'Challenge Page'}). Activating stealth solver...`);
           try {
-            const bypassResult = await clearanceEngine.solveAndFetch(url, 12000);
-            if (bypassResult && bypassResult.html && !this.isCloudflareChallenge(bypassResult.html)) {
-              console.log(`[HTTP] Cloudflare successfully bypassed for ${url}!`);
-              return {
-                data: bypassResult.html as unknown as T,
-                status: 200,
-                statusText: 'OK',
-                headers: {},
-                config: config as any
-              };
+            const bypassResult = await clearanceEngine.solveAndFetch(fullUrl, 30000);
+            if (bypassResult && bypassResult.cookies) {
+              console.log(`[HTTP] Cloudflare successfully bypassed for ${fullUrl}! Retrying original request with new clearance session...`);
+              // Restart loop or continue immediately to let the next iteration pick up the cached session
+              continue; 
             }
           } catch (bypassErr: unknown) {
             const msg = bypassErr instanceof Error ? bypassErr.message : String(bypassErr);
-            console.warn(`[HTTP] Cloudflare stealth solve attempt timed out or failed: ${msg}`);
+            console.warn(`[HTTP] Cloudflare stealth solve attempt failed: ${msg}`);
           }
-          // Do not do multiple retries on Cloudflare 403 if solve failed once; fail fast for mirror failover
-          throw err;
         }
 
         if (attempt > this.maxRetries) break;
 
-        // Skip permanent client errors
-        if (status === 404 || status === 400 || status === 401 || status === 403) {
+        // Skip retrying permanent client errors (except 403 which might be CF)
+        if (status === 400 || status === 401 || status === 404) {
           throw err;
         }
 
         const delay = this.baseDelayMs * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 500);
-        console.warn(`[HTTP] Retry ${attempt}/${this.maxRetries} for ${url} (Status: ${status || 'Network/Timeout'}). Waiting ${delay}ms...`);
+        console.warn(`[HTTP] Retry ${attempt}/${this.maxRetries} for ${fullUrl || config.url} (Status: ${status || 'Network/Timeout'}). Waiting ${delay}ms...`);
         await this.sleep(delay);
       }
     }
@@ -155,9 +191,10 @@ export class ResilientHttpClient {
       lower.includes('<title>un momento') ||
       lower.includes('id="challenge-stage"') ||
       lower.includes('id="challenge-error-title"') ||
-      lower.includes('enable javascript and cookies to continue')
+      lower.includes('enable javascript and cookies to continue') ||
+      lower.includes('challenges.cloudflare.com/turnstile')
     );
-    const hasRealContent = lower.includes('<table') || lower.includes('magnet:?') || lower.includes('<article');
+    const hasRealContent = lower.includes('<table') || lower.includes('magnet:?') || lower.includes('<article') || lower.includes('"json"');
     return hasChallengeIndicators && !hasRealContent;
   }
 
