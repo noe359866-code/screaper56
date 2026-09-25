@@ -3,8 +3,11 @@
  * Matches existing PostgreSQL schema in `public.torrents`.
  */
 
-export type ContentType = 'movie' | 'series' | 'anime';
+export type ContentType = 'movie' | 'series' | 'anime' | 'documentary';
 
+/**
+ * Representa un registro completo de torrent tal como se almacena en PostgreSQL.
+ */
 export interface TorrentRecord {
   // External Provider IDs
   imdb_id?: string | null;
@@ -35,7 +38,7 @@ export interface TorrentRecord {
   codec?: string | null;
   hdr_format?: string | null;
 
-  // Audio, Subtitles and Audio Channels
+  // Audio, Subtitles and Audio Channels (códigos de idioma ISO normalizados, ej: 'es', 'en')
   audio: string[];
   subtitles: string[];
   channels?: string | null;
@@ -46,9 +49,20 @@ export interface TorrentRecord {
   leechers?: number | null;
   source_tracker?: string | null;
 
-  // Timestamps (managed by PostgreSQL / Supabase, but useful for upsert tracking)
+  // Timestamps (manejados por PostgreSQL)
+  created_at?: string | null;
   updated_at?: string | null;
 }
+
+/**
+ * Tipo útil para operaciones de Inserción (omite campos autogenerados por la BD).
+ */
+export type InsertTorrentRecord = Omit<TorrentRecord, 'created_at' | 'updated_at'>;
+
+/**
+ * Tipo útil para operaciones de Actualización parcial en la BD.
+ */
+export type UpdateTorrentRecord = Partial<InsertTorrentRecord>;
 
 export interface CrawlerStats {
   name: string;
@@ -68,4 +82,17 @@ export interface ScraperExecutionSummary {
   totalDiscarded: number;
   totalUpserted: number;
   crawlers: CrawlerStats[];
+}
+
+/**
+ * Expresión regular optimizada para validar un Info Hash de BitTorrent (SHA-1 en hex de 40 caracteres).
+ */
+const INFO_HASH_REGEX = /^[a-f0-9]{40}$/;
+
+/**
+ * Type Guard para validar en tiempo de ejecución si una cadena es un info_hash válido.
+ */
+export function isValidInfoHash(hash: string): boolean {
+  if (typeof hash !== 'string') return false;
+  return INFO_HASH_REGEX.test(hash.toLowerCase());
 }
