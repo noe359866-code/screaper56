@@ -12,10 +12,15 @@ interface PelispandaItemSummary {
   type?: string;
 }
 
+// Interfaz para tipar la respuesta de la lista en lugar de usar "any"
+interface PelispandaListResponse {
+  [key: string]: PelispandaItemSummary[] | undefined;
+}
+
 interface PelispandaDownload {
   quality?: string;
   size?: string;
-  subs?: number;
+  subs?: number | boolean;
   download_type?: string;
   download_link?: string;
   language?: string;
@@ -26,7 +31,7 @@ interface PelispandaDetail {
   slug: string;
   title: string;
   year?: string | number;
-  tmdb_id?: number;
+  tmdb_id?: number | string;
   imdb?: string | number;
   type?: string;
   downloads?: PelispandaDownload[];
@@ -39,16 +44,21 @@ interface PelispandaDetail {
   }>;
 }
 
+type CategoryType = 'movie' | 'series' | 'anime';
+
 export class PelispandaCrawler extends BaseCrawler {
   public readonly name = 'pelispanda';
   public readonly baseUrl = 'https://pelispanda.org';
+  
+  // Limita la concurrencia globalmente dentro de una ejecución de crawl
+  private readonly CONCURRENCY_LIMIT = 3;
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     console.log(`[${this.name}] Starting crawl across movies, series, and animes (maxPages=${maxPages})...`);
     const results: TorrentRecord[] = [];
-    const limit = pLimit(3);
+    const limit = pLimit(this.CONCURRENCY_LIMIT);
 
-    const categories: Array<{ path: string; type: 'movie' | 'series' | 'anime' }> = [
+    const categories: Array<{ path: string; type: CategoryType }> = [
       { path: 'movies', type: 'movie' },
       { path: 'series', type: 'series' },
       { path: 'animes', type: 'anime' }
@@ -58,17 +68,24 @@ export class PelispandaCrawler extends BaseCrawler {
       for (let page = 1; page <= maxPages; page++) {
         try {
           const listUrl = `${this.baseUrl}/wp-json/wpreact/v1/${cat.path}?page=${page}`;
-          const response = await this.httpClient.get<any>(listUrl);
+          const response = await this.httpClient.get<PelispandaListResponse | PelispandaItemSummary[]>(listUrl);
           const data = response.data;
 
-          const items: PelispandaItemSummary[] = data?.[cat.path] || (Array.isArray(data) ? data : []);
+          // Manejo seguro del payload dependiendo si devuelve un array directo o un objeto con la llave de la categoría
+          const items: PelispandaItemSummary[] = Array.isArray(data) 
+            ? data 
+            : (data?.[cat.path] || []);
+
           if (!items || items.length === 0) {
-            break; // No more items in this category
+            console.log(`[${this.name}] No more items found on ${cat.path} page ${page}. Moving to next category.`);
+            break; 
           }
 
           console.log(`[${this.name}] Found ${items.length} items on ${cat.path} page ${page}`);
 
           const detailTasks = items.map(item => limit(async () => {
+            if (!item.slug) return [];
+            
             try {
               return await this.crawlDetail(cat.type, item.slug);
             } catch (err: unknown) {
@@ -79,13 +96,16 @@ export class PelispandaCrawler extends BaseCrawler {
           }));
 
           const itemRecordsNested = await Promise.all(detailTasks);
-          for (const records of itemRecordsNested) {
-            results.push(...records);
-          }
-        } catch (err: unknown) {
+          results.push(...itemRecordsNested.flat());
+
+        } catch (err: any) {
+          const statusCode = err?.response?.status;
           const msg = err instanceof Error ? err.message : String(err);
           console.warn(`[${this.name}] Error reading ${cat.path} page ${page}: ${msg}`);
-          break;
+          
+          // Si es un 404, significa que ya no hay más páginas, rompemos el bucle
+          if (statusCode === 404) break;
+          // Si es un 500+ o un timeout, continuamos a la siguiente página para no perder todo el proceso
         }
       }
     }
@@ -94,125 +114,120 @@ export class PelispandaCrawler extends BaseCrawler {
     return results;
   }
 
-  private async crawlDetail(categoryType: 'movie' | 'series' | 'anime', slug: string): Promise<TorrentRecord[]> {
+  private async crawlDetail(categoryType: CategoryType, slug: string): Promise<TorrentRecord[]> {
     const routeType = categoryType === 'movie' ? 'movie' : categoryType === 'series' ? 'serie' : 'anime';
     const detailUrl = `${this.baseUrl}/wp-json/wpreact/v1/${routeType}/${slug}`;
+    
     const response = await this.httpClient.get<PelispandaDetail>(detailUrl);
     const detail = response.data;
     if (!detail) return [];
 
     const records: TorrentRecord[] = [];
-    const tmdbId = detail.tmdb_id ? Number(detail.tmdb_id) : null;
+    
+    // Evitar que un string vacío ("") se convierta en 0 numérico (que es falso pero un ID inválido)
+    const tmdbId = detail.tmdb_id ? Number(detail.tmdb_id) || null : null;
     const imdbId = detail.imdb && String(detail.imdb).startsWith('tt') ? String(detail.imdb) : null;
 
     // 1. Process Movie / Direct Downloads
-    if (detail.downloads && Array.isArray(detail.downloads)) {
+    if (Array.isArray(detail.downloads)) {
       for (const dl of detail.downloads) {
-        if (!dl.download_link || !dl.download_link.startsWith('magnet:?')) continue;
-
-        const parsedMagnet = parseMagnetUri(dl.download_link);
-        if (!parsedMagnet || !parsedMagnet.infoHash) continue;
-
-        const releaseTitle = parsedMagnet.displayName || `${detail.title} ${dl.quality || ''}`.trim();
-        const parsedMeta = parseTorrentTitle(releaseTitle, categoryType);
-        const langHints = [dl.language || '', dl.subs ? 'sub_es' : '', 'pelispanda'];
-        const langs = detectLanguages(releaseTitle, langHints);
-
-        // Ensure Spanish is set if marked as Latino/Spanish
-        if (dl.language && /latino/i.test(dl.language) && !langs.audio.includes('Spanish (Latino)')) {
-          langs.audio.push('Spanish (Latino)');
-        } else if (dl.language && /castellano|español/i.test(dl.language) && !langs.audio.includes('Spanish')) {
-          langs.audio.push('Spanish');
-        }
-
-        if (dl.subs && !langs.subtitles.includes('Sub_ES')) {
-          langs.subtitles.push('Sub_ES');
-        }
-
-        const sizeBytes = dl.size ? parseSizeToBytes(dl.size) : null;
-
-        records.push({
-          imdb_id: imdbId,
-          tmdb_id: tmdbId,
-          kitsu_id: null,
-          anilist_id: null,
-          mal_id: null,
-          type: categoryType,
-          season: parsedMeta.season,
-          episode: parsedMeta.episode,
-          absolute_episode: parsedMeta.absoluteEpisode,
-          file_index: null,
-          info_hash: parsedMagnet.infoHash,
-          magnet_url: dl.download_link,
-          torrent_file_url: null,
-          source_url: detailUrl,
-          title: releaseTitle,
-          release_group: parsedMeta.releaseGroup,
-          quality: dl.quality || parsedMeta.quality,
-          codec: parsedMeta.codec,
-          hdr_format: parsedMeta.hdrFormat,
-          audio: langs.audio,
-          subtitles: langs.subtitles,
-          channels: parsedMeta.channels,
-          size_bytes: sizeBytes,
-          seeders: 10, // Default active seed floor for indexer
-          leechers: 2,
-          source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
-        });
+        const fallbackTitle = `${detail.title} ${dl.quality || ''}`.trim();
+        const record = this.buildTorrentRecord(dl, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
+        if (record) records.push(record);
       }
     }
 
     // 2. Process Episodic Series / Animes if seasons exist
-    if (detail.seasons && Array.isArray(detail.seasons)) {
+    if (Array.isArray(detail.seasons)) {
       for (const season of detail.seasons) {
-        if (!season.episodes || !Array.isArray(season.episodes)) continue;
+        if (!Array.isArray(season.episodes)) continue;
 
         for (const ep of season.episodes) {
-          if (!ep.downloads || !Array.isArray(ep.downloads)) continue;
+          if (!Array.isArray(ep.downloads)) continue;
 
           for (const dl of ep.downloads) {
-            if (!dl.download_link || !dl.download_link.startsWith('magnet:?')) continue;
+            const seasonStr = String(season.season_number).padStart(2, '0');
+            const epStr = String(ep.episode_number).padStart(2, '0');
+            const fallbackTitle = `${detail.title} S${seasonStr}E${epStr}`;
 
-            const parsedMagnet = parseMagnetUri(dl.download_link);
-            if (!parsedMagnet || !parsedMagnet.infoHash) continue;
-
-            const epTitle = parsedMagnet.displayName || `${detail.title} S${String(season.season_number).padStart(2, '0')}E${String(ep.episode_number).padStart(2, '0')}`;
-            const parsedMeta = parseTorrentTitle(epTitle, categoryType);
-            const langs = detectLanguages(epTitle, [dl.language || '', dl.subs ? 'sub_es' : '', 'pelispanda']);
-
-            records.push({
-              imdb_id: imdbId,
-              tmdb_id: tmdbId,
-              kitsu_id: null,
-              anilist_id: null,
-              mal_id: null,
-              type: categoryType,
-              season: season.season_number,
-              episode: ep.episode_number,
-              absolute_episode: parsedMeta.absoluteEpisode,
-              file_index: null,
-              info_hash: parsedMagnet.infoHash,
-              magnet_url: dl.download_link,
-              torrent_file_url: null,
-              source_url: detailUrl,
-              title: epTitle,
-              release_group: parsedMeta.releaseGroup,
-              quality: dl.quality || parsedMeta.quality,
-              codec: parsedMeta.codec,
-              hdr_format: parsedMeta.hdrFormat,
-              audio: langs.audio,
-              subtitles: langs.subtitles,
-              channels: parsedMeta.channels,
-              size_bytes: dl.size ? parseSizeToBytes(dl.size) : null,
-              seeders: 8,
-              leechers: 1,
-              source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
-            });
+            const record = this.buildTorrentRecord(dl, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId, season.season_number, ep.episode_number);
+            if (record) records.push(record);
           }
         }
       }
     }
 
     return records;
+  }
+
+  /**
+   * Centraliza la lógica de conversión de un "Download" genérico a un TorrentRecord,
+   * aplicando las validaciones de Magnet, Idioma y Parseo.
+   */
+  private buildTorrentRecord(
+    dl: PelispandaDownload,
+    sourceUrl: string,
+    categoryType: CategoryType,
+    fallbackTitle: string,
+    tmdbId: number | null,
+    imdbId: string | null,
+    season?: number,
+    episode?: number
+  ): TorrentRecord | null {
+    if (!dl.download_link || !dl.download_link.startsWith('magnet:?')) return null;
+
+    const parsedMagnet = parseMagnetUri(dl.download_link);
+    if (!parsedMagnet || !parsedMagnet.infoHash) return null;
+
+    const releaseTitle = parsedMagnet.displayName || fallbackTitle;
+    const parsedMeta = parseTorrentTitle(releaseTitle, categoryType);
+    
+    const langHints = [dl.language || '', dl.subs ? 'sub_es' : '', 'pelispanda'];
+    const langs = detectLanguages(releaseTitle, langHints);
+
+    // Ajuste seguro de idiomas (español / latino)
+    if (dl.language) {
+      if (/latino/i.test(dl.language) && !langs.audio.includes('Spanish (Latino)')) {
+        langs.audio.push('Spanish (Latino)');
+      } else if (/castellano|español/i.test(dl.language) && !langs.audio.includes('Spanish')) {
+        langs.audio.push('Spanish');
+      }
+    }
+
+    if (dl.subs && !langs.subtitles.includes('Sub_ES')) {
+      langs.subtitles.push('Sub_ES');
+    }
+
+    const sizeBytes = dl.size ? parseSizeToBytes(dl.size) : null;
+    const isEpisode = season !== undefined && episode !== undefined;
+
+    return {
+      imdb_id: imdbId,
+      tmdb_id: tmdbId,
+      kitsu_id: null,
+      anilist_id: null,
+      mal_id: null,
+      type: categoryType,
+      season: season ?? parsedMeta.season,
+      episode: episode ?? parsedMeta.episode,
+      absolute_episode: parsedMeta.absoluteEpisode,
+      file_index: null,
+      info_hash: parsedMagnet.infoHash,
+      magnet_url: dl.download_link,
+      torrent_file_url: null,
+      source_url: sourceUrl,
+      title: releaseTitle,
+      release_group: parsedMeta.releaseGroup,
+      quality: dl.quality || parsedMeta.quality,
+      codec: parsedMeta.codec,
+      hdr_format: parsedMeta.hdrFormat,
+      audio: langs.audio,
+      subtitles: langs.subtitles,
+      channels: parsedMeta.channels,
+      size_bytes: sizeBytes,
+      seeders: isEpisode ? 8 : 10,
+      leechers: isEpisode ? 1 : 2,
+      source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
+    };
   }
 }
