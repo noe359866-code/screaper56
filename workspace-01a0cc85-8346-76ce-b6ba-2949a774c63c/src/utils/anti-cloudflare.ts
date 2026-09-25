@@ -36,6 +36,7 @@ export class CloudflareBypassEngine {
       if (session && Date.now() < session.expiresAt) {
         return session;
       }
+      this.sessionCache.delete(hostname);
       return null;
     } catch {
       return null;
@@ -47,14 +48,14 @@ export class CloudflareBypassEngine {
    */
   public async solveAndFetch(url: string, timeoutMs = 45000): Promise<{ html: string; cookies: string; userAgent: string }> {
     console.log(`[ANTI-CLOUDFLARE] Engaging stealth browser session for: ${url}`);
-    const hostname = new URL(url).hostname;
+    const targetUrl = new URL(url);
+    const hostname = targetUrl.hostname;
 
     let context: BrowserContext | null = null;
     let page: Page | null = null;
 
     try {
       const browser = await this.getOrCreateBrowser();
-
       const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 
       context = await browser.newContext({
@@ -77,10 +78,8 @@ export class CloudflareBypassEngine {
 
       // Deep evasions injected into execution context
       await page.addInitScript(() => {
-        // Strip webdriver flag
         Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
 
-        // Mock window.chrome
         (globalThis as any).chrome = {
           runtime: {},
           loadTimes: () => {},
@@ -88,12 +87,10 @@ export class CloudflareBypassEngine {
           app: {}
         };
 
-        // Mock plugins
         Object.defineProperty(navigator, 'plugins', {
           get: () => [1, 2, 3, 4, 5]
         });
 
-        // Mock languages
         Object.defineProperty(navigator, 'languages', {
           get: () => ['es-ES', 'es', 'en-US', 'en']
         });
@@ -102,27 +99,34 @@ export class CloudflareBypassEngine {
       console.log(`[ANTI-CLOUDFLARE] Navigating to ${url}...`);
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
 
-      // Check if Cloudflare challenge is present
-      const isChallengeActive = async () => {
-        const title = (await page!.title()).toLowerCase();
-        const content = (await page!.content()).toLowerCase();
-        const hasChallengeIndicators = (
-          title.includes('just a moment') ||
-          title.includes('un momento') ||
-          title.includes('checking your browser') ||
-          content.includes('id="challenge-stage"') ||
-          content.includes('id="challenge-error-title"') ||
-          content.includes('enable javascript and cookies to continue')
-        );
-        const hasRealContent = content.includes('<table') || content.includes('magnet:?') || content.includes('<article');
-        return hasChallengeIndicators && !hasRealContent;
+      // Robust check if Cloudflare challenge is active (Generic for any website type)
+      const isChallengeActive = async (): Promise<boolean> => {
+        try {
+          if (!page || page.isClosed()) return false;
+          const title = (await page.title()).toLowerCase();
+          const content = (await page.content()).toLowerCase();
+          
+          const hasChallengeIndicators = (
+            title.includes('just a moment') ||
+            title.includes('un momento') ||
+            title.includes('checking your browser') ||
+            content.includes('id="challenge-stage"') ||
+            content.includes('id="challenge-error-title"') ||
+            content.includes('enable javascript and cookies to continue') ||
+            content.includes('challenges.cloudflare.com/turnstile')
+          );
+
+          return hasChallengeIndicators;
+        } catch {
+          return false;
+        }
       };
 
       if (await isChallengeActive()) {
         console.log('[ANTI-CLOUDFLARE] Cloudflare Managed Challenge / Turnstile detected. Attempting bypass...');
 
         const startTime = Date.now();
-        const maxWaitTime = 10000;
+        const maxWaitTime = Math.min(timeoutMs, 25000);
 
         while (Date.now() - startTime < maxWaitTime) {
           if (!(await isChallengeActive())) {
@@ -130,7 +134,7 @@ export class CloudflareBypassEngine {
             break;
           }
 
-          // Search frames for Turnstile widget
+          // Search frames for Turnstile widget and interact safely
           const frames = page.frames();
           let clicked = false;
 
@@ -138,23 +142,25 @@ export class CloudflareBypassEngine {
             const frameUrl = frame.url();
             if (frameUrl.includes('challenges.cloudflare.com') || frameUrl.includes('turnstile')) {
               try {
-                // Find checkbox inside the frame
                 const checkbox = await frame.$('input[type="checkbox"], .ctp-checkbox-label, #challenge-stage, span.mark');
-                if (checkbox) {
+                if (checkbox && (await checkbox.isVisible())) {
                   console.log('[ANTI-CLOUDFLARE] Found Turnstile interactive element. Simulating natural click...');
                   const box = await checkbox.boundingBox();
                   if (box) {
-                    // Humanized mouse movement with jitter
-                    await page.mouse.move(box.x + box.width / 2 + (Math.random() * 4 - 2), box.y + box.height / 2 + (Math.random() * 4 - 2));
-                    await page.waitForTimeout(200 + Math.random() * 300);
+                    const targetX = box.x + box.width / 2 + (Math.random() * 6 - 3);
+                    const targetY = box.y + box.height / 2 + (Math.random() * 6 - 3);
+                    
+                    await page.mouse.move(targetX, targetY, { steps: 5 });
+                    await page.waitForTimeout(150 + Math.random() * 200);
                     await page.mouse.down();
-                    await page.waitForTimeout(50 + Math.random() * 100);
+                    await page.waitForTimeout(40 + Math.random() * 80);
                     await page.mouse.up();
                     clicked = true;
+                    break;
                   }
                 }
               } catch {
-                // Ignore transient frame errors
+                // Ignore transient frame evaluation errors
               }
             }
           }
@@ -172,17 +178,25 @@ export class CloudflareBypassEngine {
         }
       }
 
-      // Collect cookies and HTML
+      // Wait a brief moment for final cookie propagation after solving
+      await page.waitForTimeout(1000);
+
+      // Collect and filter cookies specifically relevant to the target domain
       const rawCookies = await context.cookies();
-      const cookieHeader = rawCookies.map(c => `${c.name}=${c.value}`).join('; ');
+      const relevantCookies = rawCookies.filter(c => {
+        const domainClean = c.domain.startsWith('.') ? c.domain.substring(1) : c.domain;
+        return hostname === domainClean || hostname.endsWith('.' + domainClean) || domainClean.endsWith('.' + hostname);
+      });
+
+      const cookieHeader = relevantCookies.map(c => `${c.name}=${c.value}`).join('; ');
       const html = await page.content();
 
-      // Check for cf_clearance
-      const hasClearance = rawCookies.some(c => c.name === 'cf_clearance');
+      const hasClearance = relevantCookies.some(c => c.name === 'cf_clearance') || rawCookies.some(c => c.name === 'cf_clearance');
+      
       if (hasClearance) {
         console.log(`[ANTI-CLOUDFLARE] Successfully harvested cf_clearance cookie for ${hostname}!`);
         this.sessionCache.set(hostname, {
-          cookieHeader,
+          cookieHeader: rawCookies.map(c => `${c.name}=${c.value}`).join('; '), // Save all session cookies to be safe
           userAgent,
           solvedAt: Date.now(),
           expiresAt: Date.now() + 30 * 60 * 1000 // Valid for 30 minutes
