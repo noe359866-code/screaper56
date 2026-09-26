@@ -147,9 +147,11 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       const seeders = parseInt(seedersText.replace(/,/g, ''), 10) || 0; // NUNCA falsear datos (0 por defecto)
       const leechers = parseInt(leechersText.replace(/,/g, ''), 10) || 0;
 
-      // 4. TAMAÑO
-      // En TGX, el tamaño suele estar en un div con clase 'badge' o simplemente texto en la celda
-      const sizeText = $(el).find('span.badge').first().text().trim() \vert{}\vert{}$(el).find('div.tgxtablecell').eq(3).text().trim();
+      // 4. TAMAÑO (Separado en varias líneas para evitar conflictos de compilación)
+      let sizeText = $(el).find('span.badge').first().text().trim();
+      if (!sizeText) {
+        sizeText = $(el).find('div.tgxtablecell').eq(3).text().trim();
+      }
       const sizeBytes = parseSizeToBytes(sizeText);
 
       // 5. IMDB ID
