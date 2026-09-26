@@ -22,11 +22,11 @@ interface EztvApiTorrent {
   torrent_url?: string;
   magnet_url?: string;
   title?: string;
-  imdb_id?: string;
+  imdb_id?: string | number;
   season?: string | number;
   episode?: string | number;
-  seeds?: number;
-  peers?: number;
+  seeds?: string | number;
+  peers?: string | number;
   size_bytes?: string | number;
 }
 
@@ -35,9 +35,8 @@ interface EztvApiResponse {
 }
 
 /**
- * EZTV: JSON API first, HTML catalogue as a fallback (some mirrors disable the
- * API while keeping the public listing). Missing season/episode values stay
- * `null` instead of collapsing into zero.
+ * EZTV: JSON API primer intento, catálogo HTML como fallback (algunos espejos
+ * desactivan la API manteniendo el catálogo público).
  */
 export class EztvCrawler extends BaseCrawler {
   public readonly name = 'eztv';
@@ -76,7 +75,6 @@ export class EztvCrawler extends BaseCrawler {
           validate: (data: unknown) => Array.isArray((data as EztvApiResponse | undefined)?.torrents)
         },
         {
-          // The API may be disabled while the HTML catalogue remains public.
           path: '/home',
           label: 'catálogo HTML',
           timeoutMs: 6000,
@@ -95,7 +93,9 @@ export class EztvCrawler extends BaseCrawler {
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
 
-    // -------- API phase --------
+    let apiSuccess = false;
+
+    // -------- Fase 1: API JSON --------
     try {
       for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
@@ -103,10 +103,12 @@ export class EztvCrawler extends BaseCrawler {
         this.log.debug(`Querying EZTV API: ${apiUrl}`);
 
         const payload = await this.fetchJson<EztvApiResponse>(apiUrl);
-        if (!Array.isArray(payload?.torrents)) throw new Error('Invalid EZTV API payload');
+        if (!Array.isArray(payload?.torrents)) {
+          throw new Error('Invalid EZTV API payload structure');
+        }
         this.metrics.add('listings');
 
-        if (!payload.torrents.length) {
+        if (payload.torrents.length === 0) {
           this.log.debug(`API returned no more results at page ${page}.`);
           break;
         }
@@ -120,18 +122,19 @@ export class EztvCrawler extends BaseCrawler {
           }
         }
       }
-
-      if (results.length) {
-        const deduplicated = this.deduplicateRecords(results);
-        this.logRunSummary(deduplicated);
-        return deduplicated;
-      }
+      apiSuccess = true;
     } catch (error) {
       this.metrics.add('listingErrors');
-      this.log.warn(`EZTV API failed (${describe(error)}). Falling back to the HTML catalogue...`);
+      this.log.warn(`EZTV API failed (${formatError(error)}). Falling back to HTML catalogue...`);
     }
 
-    // -------- HTML fallback --------
+    if (apiSuccess && results.length > 0) {
+      const deduplicated = this.deduplicateRecords(results);
+      this.logRunSummary(deduplicated);
+      return deduplicated;
+    }
+
+    // -------- Fase 2: Fallback HTML --------
     try {
       for (let page = 0; page < maxPages; page++) {
         if (this.deadline.expired) break;
@@ -140,12 +143,13 @@ export class EztvCrawler extends BaseCrawler {
 
         const html = await this.fetchHtml(pageUrl);
         this.metrics.add('listings');
-        const added = this.collectHtmlRows(html, activeDomain, uniqueHashes, results);
-        if (!added) break;
+
+        const rowCount = this.collectHtmlRows(html, activeDomain, uniqueHashes, results);
+        if (rowCount === 0) break;
       }
     } catch (error) {
       this.metrics.add('listingErrors');
-      this.log.error(`HTML fallback error: ${describe(error)}`);
+      this.log.error(`HTML fallback error: ${formatError(error)}`);
     }
 
     const deduplicated = this.deduplicateRecords(results);
@@ -160,13 +164,16 @@ export class EztvCrawler extends BaseCrawler {
     sink: TorrentRecord[]
   ): number {
     const $ = cheerio.load(html);
-    let added = 0;
+    const rows = $('tr.forum_header_border');
+    if (rows.length === 0) return 0;
 
-    $('tr.forum_header_border').each((_, el) => {
+    rows.each((_, el) => {
       const row = $(el);
       const titleAnchor = row.find('a.epinfo');
+      if (!titleAnchor.length) return;
+
       const magnetLink = row.find('a.magnet').attr('href');
-      if (!titleAnchor.length || !magnetLink) return;
+      if (!magnetLink) return;
 
       const parsedMagnet = parseMagnetUri(magnetLink);
       if (!parsedMagnet?.infoHash || uniqueHashes.has(parsedMagnet.infoHash)) return;
@@ -178,6 +185,10 @@ export class EztvCrawler extends BaseCrawler {
       const meta = parseTorrentTitle(title, 'series');
       const langs = detectLanguages(title, ['eztv', 'tv']);
 
+      const tds = row.find('td');
+      const sizeText = tds.length >= 4 ? cleanText($(tds[3]).text()) : '';
+      const seedersText = tds.length >= 6 ? cleanText($(tds[5]).find('font').text() \vert{}\vert{}$(tds[5]).text()) : '';
+
       const record = buildTorrentRecord({
         title,
         type: 'series',
@@ -185,14 +196,13 @@ export class EztvCrawler extends BaseCrawler {
         magnetUrl: magnetLink,
         torrentFileUrl: torrentLink ? this.resolveUrl(torrentLink, activeDomain) : null,
         sourceUrl: this.resolveUrl(titleAnchor.attr('href') || '', activeDomain),
-        trackers: parsedMagnet.trackers,
+        trackers: parsedMagnet.trackers.length ? parsedMagnet.trackers : this.defaultTrackers,
         audio: langs.audio,
         subtitles: langs.subtitles,
         meta,
         quality: qualityOf(meta),
-        sizeBytes: parseSizeToBytes(cleanText(row.find('td:nth-child(4)').text())),
-        seeders: parseCount(row.find('td:nth-child(6) font').text()),
-        // The HTML catalogue does not publish leechers: unknown stays unknown.
+        sizeBytes: parseSizeToBytes(sizeText),
+        seeders: parseCount(seedersText),
         leechers: null,
         sourceTracker: parsedMagnet.trackers[0] || this.defaultTrackers[0]
       });
@@ -201,10 +211,9 @@ export class EztvCrawler extends BaseCrawler {
       uniqueHashes.add(record.info_hash);
       sink.push(record);
       this.metrics.add('records');
-      added++;
     });
 
-    return added;
+    return rows.length;
   }
 
   public mapApiTorrentToRecord(torrent: EztvApiTorrent, activeDomain: string): TorrentRecord | null {
@@ -220,27 +229,43 @@ export class EztvCrawler extends BaseCrawler {
     const langs = detectLanguages(fullTitle, ['eztv', 'tv']);
 
     let imdbId: string | null = null;
-    const rawImdb = torrent.imdb_id ? String(torrent.imdb_id).trim() : '';
-    if (/^(?:tt)?\d{1,10}$/.test(rawImdb) && Number(rawImdb.replace(/^tt/, '')) > 0) {
-      imdbId = `tt${rawImdb.replace(/^tt/, '').padStart(7, '0')}`;
+    if (torrent.imdb_id) {
+      const rawImdb = String(torrent.imdb_id).trim().replace(/^tt/i, '');
+      if (/^\d{1,10}$/.test(rawImdb) && parseInt(rawImdb, 10) > 0) {
+        imdbId = `tt${rawImdb.padStart(7, '0')}`;
+      }
     }
 
-    const season = torrent.season !== undefined && torrent.season !== null && torrent.season !== ''
-      ? parseCount(torrent.season)
-      : meta.season ?? null;
-    const episode = torrent.episode !== undefined && torrent.episode !== null && torrent.episode !== ''
-      ? parseCount(torrent.episode)
-      : meta.episode ?? null;
+    const parsedSeason = parseCount(torrent.season);
+    const parsedEpisode = parseCount(torrent.episode);
 
-    const magnetUrl = torrent.magnet_url && torrent.magnet_url.includes('tr=') ? torrent.magnet_url : null;
+    const season = (parsedSeason !== null && parsedSeason > 0)
+      ? parsedSeason
+      : (meta.season ?? (parsedSeason === 0 ? 0 : null));
+
+    const episode = (parsedEpisode !== null && parsedEpisode > 0)
+      ? parsedEpisode
+      : (meta.episode ?? (parsedEpisode === 0 ? 0 : null));
+
+    // Si el magnet_url no viene en la API o es incompleto, construimos uno válido
+    let magnetUrl = torrent.magnet_url || null;
+    if (!magnetUrl) {
+      const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
+      magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(fullTitle)}&${trackersQuery}`;
+    }
+
+    const torrentFileUrl = torrent.torrent_url ? this.resolveUrl(torrent.torrent_url, activeDomain) : null;
+    const sourceUrl = torrent.episode_url
+      ? this.resolveUrl(torrent.episode_url, activeDomain)
+      : `${activeDomain}/ep/${torrent.id ?? ''}`;
 
     return buildTorrentRecord({
       title: fullTitle,
       type: 'series',
       infoHash,
       magnetUrl,
-      torrentFileUrl: torrent.torrent_url || null,
-      sourceUrl: torrent.episode_url || `${activeDomain}/ep/${torrent.id ?? ''}`,
+      torrentFileUrl,
+      sourceUrl,
       trackers: this.defaultTrackers,
       audio: langs.audio,
       subtitles: langs.subtitles,
@@ -249,15 +274,15 @@ export class EztvCrawler extends BaseCrawler {
       episode,
       quality: qualityOf(meta),
       sizeBytes: parseCount(torrent.size_bytes),
-      seeders: torrent.seeds ?? null,
-      leechers: torrent.peers ?? null,
+      seeders: parseCount(torrent.seeds),
+      leechers: parseCount(torrent.peers),
       imdbId,
       sourceTracker: this.defaultTrackers[0]
     });
   }
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
