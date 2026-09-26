@@ -11,7 +11,7 @@ interface LimeCandidate {
   detailUrl: string;
   sizeBytes?: number | null;
   seeders?: number;
-  leechers?: number;
+  leeches?: number;
   type: ContentType;
 }
 
@@ -91,8 +91,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
           const html = resp.data;
           if (!html || typeof html !== 'string') continue;
 
-          const $ = cheerio.load(html);
-          $('table.table2 tr').each((i, tr) => {
+          const $= cheerio.load(html);$('table.table2 tr').each((i, tr) => {
             if (i === 0) return;
             const tds = $(tr).find('td');
             if (tds.length < 2) return;
@@ -117,7 +116,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
               detailUrl: fullUrl,
               sizeBytes: parseSizeToBytes(sizeText),
               seeders: parseInt(seedsText.replace(/,/g, ''), 10) || 0,
-              leechers: parseInt(leechesText.replace(/,/g, ''), 10) || 0,
+              leeches: parseInt(leechesText.replace(/,/g, ''), 10) || 0,
               type: cat.type
             });
           });
@@ -145,8 +144,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
 
         const html = searchResp.data;
         if (html && typeof html === 'string') {
-          const $ = cheerio.load(html);
-          $('table.table2 tr').each((i, tr) => {
+          const $= cheerio.load(html);$('table.table2 tr').each((i, tr) => {
             if (i === 0) return;
             const tds = $(tr).find('td');
             const nameAnchor = tds.eq(0).find('div.tt-name a, a').last();
@@ -213,7 +211,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     let magnetUri: string | null = null;
     let sizeBytes = item.sizeBytes || null;
     let seeders = item.seeders || 0;
-    let leechers = item.leechers || 0;
+    let leechers = item.leeches || 0;
     const trackers: string[] = [];
 
     // 1. Extraer magnet si está disponible directamente en los enlaces
@@ -287,6 +285,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     }
 
     const parsedMeta = parseTorrentTitle(effectiveTitle, item.type);
+    const metaAny = parsedMeta as any;
     const langs = detectLanguages(effectiveTitle, ['limetorrents']);
 
     return {
@@ -306,7 +305,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       source_url: item.detailUrl,
       title: effectiveTitle,
       release_group: parsedMeta.releaseGroup,
-      quality: parsedMeta.quality,
+      quality: metaAny.quality || metaAny.resolution || null,
       codec: parsedMeta.codec,
       hdr_format: parsedMeta.hdrFormat,
       audio: langs.audio,
