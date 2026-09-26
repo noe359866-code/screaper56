@@ -181,6 +181,7 @@ export class PelispandaCrawler extends BaseCrawler {
 
     const releaseTitle = parsedMagnet.displayName || fallbackTitle;
     const parsedMeta = parseTorrentTitle(releaseTitle, categoryType);
+    const metaAny = parsedMeta as any;
     
     const langHints = [dl.language || '', dl.subs ? 'sub_es' : '', 'pelispanda'];
     const langs = detectLanguages(releaseTitle, langHints);
@@ -218,7 +219,7 @@ export class PelispandaCrawler extends BaseCrawler {
       source_url: sourceUrl,
       title: releaseTitle,
       release_group: parsedMeta.releaseGroup,
-      quality: dl.quality || parsedMeta.quality,
+      quality: dl.quality || metaAny.quality || metaAny.resolution || null,
       codec: parsedMeta.codec,
       hdr_format: parsedMeta.hdrFormat,
       audio: langs.audio,
@@ -231,3 +232,5 @@ export class PelispandaCrawler extends BaseCrawler {
     };
   }
 }
+
+export default PelispandaCrawler;
