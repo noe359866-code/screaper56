@@ -17,26 +17,6 @@ import {
   sameOrigin
 } from './support.js';
 
-/**
- * DonTorrent (dontorrent.moi and its official mirrors).
- *
- * Layout observed on the live site:
- *   - Catalogues `/peliculas`, `/series`, `/documentales`, paginated with `?p=N`.
- *   - Poster grids and `.card-body p` rows linking to
- *     `/pelicula/:id/:slug`, `/serie/:id/:id/:slug`, `/documental/:id/:slug`.
- *   - Detail pages expose `Formato:`, `Episodios:` and, for series, an episode
- *     table whose rows are labelled `1x01`, `1x02`, ...
- *   - Search is a POST to `/buscar` (`valor=<term>&Buscar=Buscar`, page `p`).
- *
- * IMPORTANT / LÍMITE CONOCIDO: current DonTorrent templates hide the `.torrent`
- * behind a JavaScript challenge (proof-of-work posted to their own API) plus a
- * download rate limit. This adapter does **not** solve, emulate or bypass that
- * protection, does not automate CAPTCHAs and never invents an infohash. It reads
- * the links the page publishes as plain HTML (magnet, `.torrent`, same-site
- * download handlers, literal `data-*`/`atob` values). When a page only offers the
- * protected button, the release is reported as `gated` and skipped.
- */
-
 export interface DonTorrentSection {
   path: string;
   type: ContentType;
@@ -71,8 +51,8 @@ export interface DonTorrentDetail {
   gated: boolean;
 }
 
-const DETAIL_PATH = /^\/(pelicula|serie|documental|variado|musica|juego)\/\d+(?:\/\d+)?\/[^/]+\/?$/i;
-const EPISODE_LABEL = /^(\d{1,2})\s*[x×]\s*(\d{1,3})$/i;
+const DETAIL_PATH = /^\/(pelicula|serie|documental|variado|musica|juego)\/\d+(?:\/\d+)*(?:\/[^/]+)?\/?$/i;
+const EPISODE_REGEX = /\b(\d{1,2})\s*[x×]\s*(\d{1,3})\b/i;
 
 const SECTION_TYPES: Record<string, ContentType> = {
   pelicula: 'movie',
@@ -82,7 +62,10 @@ const SECTION_TYPES: Record<string, ContentType> = {
   documental: 'documentary',
   documentales: 'documentary',
   variado: 'movie',
-  variados: 'movie'
+  variados: 'movie',
+  musica: 'music',
+  juego: 'game',
+  juegos: 'game'
 };
 
 /** Curated official domains (see `/dominios` on the live site for the full list). */
@@ -103,14 +86,20 @@ export const DONTORRENT_DEFAULT_MIRRORS: readonly string[] = [
   'https://dontorrent.cloud'
 ];
 
-/** Hosts allowed to serve the actual metainfo file (DonTorrent uses a CDN). */
-function cdnHostAllowList(): RegExp[] {
+let cachedCdnAllowList: RegExp[] | null = null;
+
+/** Returns cached regex patterns for allowed metainfo hosts. */
+function getCdnHostAllowList(): RegExp[] {
+  if (cachedCdnAllowList) return cachedCdnAllowList;
+
   const configured = (process.env.DONTORRENT_CDN_HOSTS || 'doncdn.com')
     .split(/[,\s]+/)
     .map(value => value.trim().toLowerCase())
     .filter(Boolean)
     .map(host => new RegExp(`(^|\\.)${host.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i'));
-  return [...configured, /(^|\.)dontorrent\.[a-z]{2,}$/i];
+
+  cachedCdnAllowList = [...configured, /(^|\.)dontorrent\.[a-z]{2,15}$/i];
+  return cachedCdnAllowList;
 }
 
 /**
@@ -121,7 +110,7 @@ function cdnHostAllowList(): RegExp[] {
 export function dontorrentDownloadUrl(value: string | undefined | null, base: string): string | null {
   if (!value) return null;
   const candidate = value.trim();
-  if (candidate.startsWith('magnet:?')) return candidate;
+  if (/^magnet:\?/i.test(candidate)) return candidate;
 
   const resolved = absoluteHttpUrl(candidate, base);
   if (!resolved) return null;
@@ -135,7 +124,8 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
 
   const host = url.hostname.toLowerCase();
   const isTorrentFile = /\.torrent$/i.test(url.pathname);
-  const trusted = sameOrigin(resolved, base) || cdnHostAllowList().some(pattern => pattern.test(host));
+  const allowList = getCdnHostAllowList();
+  const trusted = sameOrigin(resolved, base) || allowList.some(pattern => pattern.test(host));
 
   if (isTorrentFile && trusted) return url.href;
 
@@ -147,21 +137,19 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
   return null;
 }
 
-/** Minimal structural view of a Cheerio selection: only attribute reads are needed. */
-interface AttributeReader {
-  attr(name: string): string | undefined;
-}
-
 /** Literal URL candidates embedded in attributes or inline handlers (never evaluated). */
-function literalUrlCandidates(node: AttributeReader): string[] {
+function literalUrlCandidates(node: cheerio.Cheerio<cheerio.Element>): string[] {
   const values: string[] = [];
   for (const attr of ['href', 'data-url', 'data-href', 'data-torrent', 'data-magnet', 'data-download', 'data-file']) {
     const value = node.attr(attr);
     if (value) values.push(value);
   }
+
   const onclick = node.attr('onclick') || '';
   if (onclick) {
-    for (const match of onclick.matchAll(/['"]([^'"\n]+)['"]/g)) values.push(match[1]);
+    for (const match of onclick.matchAll(/['"]([^'"\n]+)['"]/g)) {
+      values.push(match[1]);
+    }
     for (const match of onclick.matchAll(/atob\(['"]([A-Za-z0-9+/=]+)['"]\)/g)) {
       try {
         values.push(Buffer.from(match[1], 'base64').toString('utf8'));
@@ -175,13 +163,21 @@ function literalUrlCandidates(node: AttributeReader): string[] {
 
 function labelledValue($: cheerio.CheerioAPI, labels: string[]): string | null {
   for (const label of labels) {
-    const holder = $(`b, strong, span, dt, td, th`).filter((_, el) => {
+    const holder = $('b, strong, span, dt, td, th').filter((_, el) => {
       const text = cleanText($(el).text()).toLowerCase();
       return text === `${label}:` || text === label;
     }).first();
+
     if (holder.length) {
-      const inline = cleanText(holder.parent().clone().children('b, strong, dt, th').remove().end().text());
-      if (inline) return inline;
+      const parent = holder.parent();
+      const parentText = cleanText(parent.text());
+      const labelRegex = new RegExp(`^${label}\\s*:\\s*`, 'i');
+
+      if (labelRegex.test(parentText)) {
+        const val = cleanText(parentText.replace(labelRegex, ''));
+        if (val) return val;
+      }
+
       const sibling = cleanText(holder.next().text());
       if (sibling) return sibling;
     }
@@ -251,7 +247,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       const row = anchor.closest('p, li, div.card-body, td');
       const title = cleanText(anchor.attr('title') || anchor.text() || anchor.find('img').attr('alt') || '');
       // `<span>(BluRay-1080p)</span>` sits next to the title inside the same row.
-      const quality = cleanText(row.find('span > span, span.badge-secondary').first().text()).replace(/^\(|\)$/g, '');
+      const quality = cleanText(row.find('span > span, span.badge-secondary').first().text()).replace(/^\(\vert{}\)$/g, '');
       const category = cleanText(row.find('span.badge, .badge-primary').first().text());
 
       const existing = items.get(link);
@@ -274,6 +270,7 @@ export class DonTorrentCrawler extends BaseCrawler {
     const $ = cheerio.load(html);
     const current = new URL(currentUrl);
     const currentPage = Number.parseInt(current.searchParams.get('p') || '1', 10) || 1;
+    const currentPath = current.pathname.replace(/\/$/, '');
 
     for (const el of $('a[href]').toArray()) {
       const anchor = $(el);
@@ -285,7 +282,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       if (!link || !sameOrigin(link, currentUrl)) continue;
 
       const target = new URL(link);
-      if (target.pathname !== current.pathname) continue;
+      if (target.pathname.replace(/\/$/, '') !== currentPath) continue;
 
       const page = Number.parseInt(target.searchParams.get('p') || '0', 10) || 0;
       if (page === currentPage + 1) return target.href;
@@ -304,8 +301,7 @@ export class DonTorrentCrawler extends BaseCrawler {
 
     const heading = cleanText(
       $('h1').first().text() ||
-      $('h2').first().text() ||
-      $('meta[property="og:title"]').attr('content') ||
+      $('h2').first().text() \vert{}\vert{}$('meta[property="og:title"]').attr('content') ||
       ''
     );
     const title = heading
@@ -332,23 +328,22 @@ export class DonTorrentCrawler extends BaseCrawler {
         seen.add(target);
 
         const row = node.closest('tr, li, .card-body');
-        const rowLabel = cleanText(row.find('td, .col, span').first().text());
-        const episodeMatch = rowLabel.match(EPISODE_LABEL);
+        const rowText = cleanText(row.text());
+        const episodeMatch = rowText.match(EPISODE_REGEX);
 
         downloads.push({
           url: target,
-          title: episodeMatch ? `${title} ${rowLabel}` : title,
-          hints: dedupeStrings([format, rowLabel && !episodeMatch ? rowLabel : null]),
+          title: episodeMatch ? `${title} ${episodeMatch[0]}` : title,
+          hints: dedupeStrings([format, rowText && !episodeMatch ? rowText : null]),
           season: episodeMatch ? Number.parseInt(episodeMatch[1], 10) : null,
           episode: episodeMatch ? Number.parseInt(episodeMatch[2], 10) : null
         });
       }
     });
 
-    const bodyText = $.root().text();
     const gated = downloads.length === 0 && (
-      /api_validate_pow|pow_challenge|validate_pow/i.test(html) ||
-      /descargar/i.test(bodyText)
+      /api_validate_pow|pow_challenge|validate_pow|obtener_torrent/i.test(html) ||
+      $('a[onclick*="pow"], button[onclick*="pow"]').length > 0
     );
 
     return { title, type, format, year, episodes, sizeBytes, downloads, gated };
@@ -369,6 +364,8 @@ export class DonTorrentCrawler extends BaseCrawler {
       probes: this.probes,
       maxCandidates: Number.parseInt(process.env.DONTORRENT_MAX_MIRROR_PROBES || '10', 10) || 10
     });
+
+    this.baseUrl = mirror;
 
     await this.refreshOfficialMirrors(mirror);
 
@@ -430,6 +427,8 @@ export class DonTorrentCrawler extends BaseCrawler {
           this.metrics.add('listings');
 
           const items = this.parseListing(html, listUrl);
+          if (!items.length) break;
+
           let added = 0;
           for (const item of items) {
             if (isBlockedTitle(item.title)) continue;
@@ -452,8 +451,6 @@ export class DonTorrentCrawler extends BaseCrawler {
 
   /**
    * Optional POST search (`DONTORRENT_SEARCH="castellano,1080p"`).
-   * Disabled by default: catalogues already cover new releases and the site
-   * applies stricter rate limits to the search endpoint.
    */
   private async collectSearches(
     mirror: string,
@@ -558,9 +555,11 @@ export class DonTorrentCrawler extends BaseCrawler {
 
     const defaultType: ContentType = download.episode !== null ? 'series' : detail.type ?? item.type;
     const meta = parseTorrentTitle(context, defaultType);
-    // DonTorrent publishes Spanish (Castellano) releases; the tracker hint only
-    // applies when the title itself carries no explicit language tag.
     const languages = detectLanguages(context, ['dontorrent']);
+
+    const trackers = (magnet?.trackers && magnet.trackers.length > 0)
+      ? magnet.trackers
+      : (metainfo?.trackers ?? []);
 
     return buildTorrentRecord({
       title,
@@ -569,7 +568,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       sourceUrl: item.url,
       magnetUrl: magnet ? download.url : null,
       torrentFileUrl: magnet ? null : download.url,
-      trackers: magnet?.trackers ?? metainfo?.trackers ?? [],
+      trackers,
       audio: languages.audio,
       subtitles: languages.subtitles,
       meta,
@@ -577,25 +576,19 @@ export class DonTorrentCrawler extends BaseCrawler {
       episode: download.episode ?? meta.episode ?? null,
       quality: item.quality || detail.format || qualityOf(meta),
       sizeBytes: metainfo?.sizeBytes ?? detail.sizeBytes ?? null,
-      // DonTorrent does not publish swarm counters: never fabricate them.
       seeders: null,
       leechers: null,
-      sourceTracker: metainfo?.primaryTracker ?? magnet?.trackers[0] ?? null
+      sourceTracker: metainfo?.primaryTracker ?? trackers[0] ?? null
     });
   }
 
-  /**
-   * Reads the site's own "Dominios Oficiales" page and feeds the extra domains
-   * into the mirror pool for the rest of the process. Purely additive: the
-   * operator can still pin everything with DONTORRENT_BASE_URL / _MIRRORS.
-   */
   private async refreshOfficialMirrors(mirror: string): Promise<void> {
     if ((process.env.DONTORRENT_DISCOVER_MIRRORS || 'true').toLowerCase() === 'false') return;
     if (DonTorrentCrawler.discoveredMirrors.length) return;
 
     try {
       const html = await this.fetchHtml(`${mirror}/dominios`, { timeout: 8000 });
-      const mirrors = extractBrandMirrors(html, /(^|\.)dontorrent\.[a-z]{2,}$/i, 40);
+      const mirrors = extractBrandMirrors(html, /(^|\.)dontorrent\.[a-z]{2,15}$/i, 40);
       if (mirrors.length) {
         DonTorrentCrawler.discoveredMirrors = mirrors;
         this.log.info(`Official domain list refreshed: ${mirrors.length} mirrors available as fallback.`);
