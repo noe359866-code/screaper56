@@ -66,6 +66,8 @@ export type UpdateTorrentRecord = Partial<InsertTorrentRecord>;
 
 export interface CrawlerStats {
   name: string;
+  /** Dominio que realmente sirvió los datos (se resuelve en tiempo de ejecución). */
+  mirror?: string | null;
   discovered: number;
   filteredSpanish: number;
   discardedNonSpanish: number;

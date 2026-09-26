@@ -64,7 +64,8 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
     'limetorrents',
     'nyaa',
     'wolftorrent',
-    'sinsitio'
+    'sinsitio',
+    'dontorrent'
   ];
 
   const targetCrawlers = targetCrawlersRaw === 'all'

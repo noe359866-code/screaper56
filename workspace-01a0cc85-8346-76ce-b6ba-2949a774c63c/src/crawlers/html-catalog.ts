@@ -1,11 +1,19 @@
 import * as cheerio from 'cheerio';
-import pLimit from 'p-limit';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, MirrorSetup } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseTorrentBuffer } from '../utils/bencode2.js';
-import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
+import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  dedupeStrings,
+  isBlockedTitle,
+  mapWithConcurrency,
+  qualityOf
+} from './support.js';
 
 export interface DownloadLink {
   url: string;
@@ -13,18 +21,35 @@ export interface DownloadLink {
   hints?: string[];
   buffer?: Buffer;
 }
+
 export interface CatalogDetail {
   title: string;
   type: ContentType;
   downloads: DownloadLink[];
 }
 
-/** Shared transport only; selectors, routes and link decoding belong to each site. */
+/**
+ * Shared transport for plain HTML catalogues.
+ *
+ * Only the generic plumbing lives here (mirror selection, pagination guards,
+ * per-detail concurrency, metainfo validation and record building). Routes,
+ * selectors and link decoding stay in each site adapter.
+ */
 export abstract class HtmlCatalogCrawler extends BaseCrawler {
-  public abstract readonly baseUrl: string;
+  public abstract baseUrl: string;
   protected abstract readonly sections: string[];
   public abstract parseListing(html: string, url: string): string[];
   public abstract parseDetail(html: string, url: string): CatalogDetail;
+
+  /** Optional mirror pool; resolution is soft so the adapter can still report a precise error. */
+  protected get mirrorSetup(): MirrorSetup | null {
+    return null;
+  }
+
+  /** Parallel detail pages per adapter (`CATALOG_DETAIL_CONCURRENCY`). */
+  protected get detailConcurrency(): number {
+    return Math.max(1, Number.parseInt(process.env.CATALOG_DETAIL_CONCURRENCY || '2', 10) || 2);
+  }
 
   protected async discoverDownloads(html: string, url: string): Promise<CatalogDetail> {
     return this.parseDetail(html, url);
@@ -44,102 +69,155 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+
+    const setup = this.mirrorSetup;
+    const base = setup
+      ? await this.resolveMirror({ ...setup, fallback: setup.fallback ?? this.baseUrl })
+      : this.baseUrl;
+    this.baseUrl = base;
+
     const results: TorrentRecord[] = [];
     const seenDetails = new Set<string>();
     const seenListings = new Set<string>();
-    const limit = pLimit(2);
     let listingsRead = 0;
+
     for (const section of this.sections) {
-      let listUrl: string | null = new URL(section, this.baseUrl).href;
+      let listUrl: string | null = new URL(section, `${base}/`).href;
+
       for (let page = 0; listUrl && page < maxPages; page++) {
-        if (seenListings.has(listUrl)) break;
+        if (seenListings.has(listUrl) || this.deadline.expired) break;
         seenListings.add(listUrl);
+
         try {
-          const response = await this.httpClient.get<string>(listUrl);
-          if (typeof response.data !== 'string') throw new Error('Expected HTML catalog');
+          const html = await this.fetchHtml(listUrl);
           listingsRead++;
-          const details = this.parseListing(response.data, listUrl).filter(url => {
+          this.metrics.add('listings');
+
+          const details = this.parseListing(html, listUrl).filter(url => {
             if (seenDetails.has(url)) return false;
             seenDetails.add(url);
             return true;
           });
-          const batches = await Promise.all(details.map(url => limit(async () => {
-            try {
-              const response = await this.httpClient.get<string>(url, { headers: { Referer: this.baseUrl } });
-              const detail = await this.discoverDownloads(response.data, url);
-              const records: TorrentRecord[] = [];
-              const seenDownloads = new Set<string>();
-              for (const download of detail.downloads) {
-                if (seenDownloads.has(download.url)) continue;
-                seenDownloads.add(download.url);
-                try {
-                  const record = await this.buildDownload(download, detail, url);
-                  if (record) records.push(record);
-                } catch (error) {
-                  console.warn(`[${this.name}] Invalid/unavailable download ${download.url}: ${String(error)}`);
-                }
-              }
-              if (!records.length) console.warn(`[${this.name}] No valid torrent in ${url} (layout, login or download unavailable).`);
-              return records;
-            } catch (error) {
-              console.warn(`[${this.name}] Detail failed ${url}: ${String(error)}`);
-              return [];
-            }
-          })));
+
+          const batches = await mapWithConcurrency(details, this.detailConcurrency, async url => {
+            if (this.deadline.expired) return [];
+            return this.crawlDetail(url);
+          });
           results.push(...batches.flat());
+
           // Follow real pagination links, not guessed routes; visited URLs break loops.
-          listUrl = this.nextPage(response.data, listUrl);
+          listUrl = this.nextPage(html, listUrl);
         } catch (error) {
-          console.warn(`[${this.name}] Catalog failed ${listUrl}: ${String(error)}`);
+          this.metrics.add('listingErrors');
+          this.log.warn(`Catalog failed ${listUrl}: ${String(error)}`);
           break;
         }
       }
     }
-    if (!listingsRead || !seenDetails.size || !results.length) {
-      throw new Error(`[${this.name}] No usable releases: catalogs=${listingsRead}, details=${seenDetails.size}. Check connectivity, layout and public downloads.`);
+
+    const deduplicated = this.deduplicateRecords(results);
+    this.logRunSummary(deduplicated);
+
+    if (!listingsRead || !seenDetails.size || !deduplicated.length) {
+      throw new Error(
+        `[${this.name}] No usable releases: catalogs=${listingsRead}, details=${seenDetails.size}, ` +
+        `records=${deduplicated.length} on ${base}. Check connectivity, layout and public downloads.`
+      );
     }
-    return this.deduplicateRecords(results);
+    return deduplicated;
   }
 
-  private async buildDownload(download: DownloadLink, detail: CatalogDetail, sourceUrl: string): Promise<TorrentRecord | null> {
+  private async crawlDetail(url: string): Promise<TorrentRecord[]> {
+    try {
+      const html = await this.fetchHtml(url, { headers: { Referer: this.baseUrl } });
+      this.metrics.add('details');
+
+      const detail = await this.discoverDownloads(html, url);
+      const records: TorrentRecord[] = [];
+      const seenDownloads = new Set<string>();
+
+      for (const download of detail.downloads) {
+        if (seenDownloads.has(download.url)) continue;
+        seenDownloads.add(download.url);
+        try {
+          const record = await this.buildDownload(download, detail, url);
+          if (record) {
+            records.push(record);
+            this.metrics.add('records');
+          }
+        } catch (error) {
+          this.metrics.add('downloadErrors');
+          this.log.warn(`Invalid/unavailable download ${download.url}: ${String(error)}`);
+        }
+      }
+
+      if (!records.length) {
+        this.metrics.add('skipped');
+        this.log.warn(`No valid torrent in ${url} (layout, login or download unavailable).`);
+      }
+      return records;
+    } catch (error) {
+      this.metrics.add('detailErrors');
+      this.log.warn(`Detail failed ${url}: ${String(error)}`);
+      return [];
+    }
+  }
+
+  private async buildDownload(
+    download: DownloadLink,
+    detail: CatalogDetail,
+    sourceUrl: string
+  ): Promise<TorrentRecord | null> {
     const magnet = parseMagnetUri(download.url);
     let torrent = null;
+
     if (!magnet) {
-      if (!download.buffer && !httpUrl(download.url, sourceUrl)) return null;
-      const buffer = download.buffer ?? await this.httpClient.getBuffer(download.url, {
-        maxContentLength: 10 * 1024 * 1024,
-        headers: { Referer: sourceUrl, Accept: 'application/x-bittorrent,application/octet-stream;q=0.9,*/*;q=0.5' }
-      });
-      torrent = parseTorrentBuffer(buffer);
-      if (!torrent) throw new Error('Response is not valid v1/hybrid torrent metainfo');
+      if (download.buffer) {
+        // Already downloaded by the adapter (e.g. a real browser download event).
+        torrent = parseTorrentBuffer(download.buffer);
+        if (!torrent) throw new Error('Downloaded payload is not valid v1/hybrid torrent metainfo');
+      } else {
+        if (!httpUrl(download.url, sourceUrl)) return null;
+        // Capped, validated metainfo download (hash calculation only).
+        torrent = await this.fetchTorrentMetainfo(download.url, sourceUrl);
+      }
+      this.metrics.add('downloads');
     }
+
     const hash = magnet?.infoHash || torrent?.infoHash;
     if (!hash) return null;
-    const title = magnet?.displayName || download.title || torrent?.name || detail.title;
-    const context = [title, torrent?.name || '', ...(download.hints || [])].join(' ');
+
+    const title = cleanText(magnet?.displayName || download.title || torrent?.name || detail.title);
+    if (isBlockedTitle(title)) return null;
+
+    const context = dedupeStrings([title, torrent?.name ?? null, ...(download.hints || [])]).join(' ');
     const meta = parseTorrentTitle(context, detail.type);
     const languages = detectLanguages(context, [], false);
     const trackers = magnet?.trackers || torrent?.trackers || [];
-    return {
-      title, type: meta.type, info_hash: hash,
-      magnet_url: magnet ? download.url : buildMagnetUri(hash, title, trackers),
-      torrent_file_url: magnet ? null : httpUrl(download.url, sourceUrl), source_url: sourceUrl,
-      season: meta.season, episode: meta.episode, absolute_episode: meta.absoluteEpisode,
-      quality: meta.resolution || meta.source, codec: meta.codec, hdr_format: meta.hdrFormat,
-      release_group: meta.releaseGroup, channels: meta.channels,
-      audio: languages.audio, subtitles: languages.subtitles,
-      size_bytes: torrent?.sizeBytes ?? null, seeders: null, leechers: null,
-      source_tracker: trackers[0] || null
-    };
+
+    return buildTorrentRecord({
+      title,
+      type: meta.type,
+      infoHash: hash,
+      magnetUrl: magnet ? download.url : null,
+      torrentFileUrl: magnet ? null : httpUrl(download.url, sourceUrl),
+      sourceUrl,
+      trackers,
+      audio: languages.audio,
+      subtitles: languages.subtitles,
+      meta,
+      quality: qualityOf(meta),
+      sizeBytes: torrent?.sizeBytes ?? null,
+      // Neither adapter publishes swarm counters: unknown stays unknown.
+      seeders: null,
+      leechers: null,
+      sourceTracker: trackers[0] || null
+    });
   }
 }
 
+/** Resolves a link and rejects anything that is not plain http(s). */
 export function httpUrl(value: string | undefined, base: string): string | null {
-  if (!value || value.startsWith('#')) return null;
-  try {
-    const url = new URL(value, base);
-    if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return null;
-    url.hash = '';
-    return url.href;
-  } catch { return null; }
+  return absoluteHttpUrl(value, base);
 }

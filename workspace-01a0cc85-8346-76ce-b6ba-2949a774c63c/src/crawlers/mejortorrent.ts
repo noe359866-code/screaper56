@@ -1,278 +1,288 @@
-import { parseTorrentBuffer } from '../utils/bencode2.js';
 import * as cheerio from 'cheerio';
-import pLimit from 'p-limit';
 import { BaseCrawler } from './base.js';
-import { TorrentRecord, ContentType } from '../types/torrent.js';
-import { buildMagnetUri } from '../utils/magnet.js';
+import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  isBlockedTitle,
+  mapWithConcurrency,
+  qualityOf
+} from './support.js';
 
+type MirrorMode = 'legacy_eu' | 'modern_me';
+
+/**
+ * MejorTorrent: legacy `.eu` templates and the WordPress based mirrors.
+ * The infohash always comes from the downloaded metainfo (shared bencode parser),
+ * never from a guessed ID, and unknown swarm counters remain `null`.
+ */
 export class MejorTorrentCrawler extends BaseCrawler {
   public readonly name = 'mejortorrent';
-  public readonly baseUrl: string;
-  private readonly CONCURRENCY = 8;
+  public baseUrl: string;
 
-  private readonly defaultMirrors = [
+  /** Known MejorTorrent domains; extend with MEJORTORRENT_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://www45.mejortorrent.eu',
     'https://mejortorrent.me',
     'https://mejortorrent.wtf',
-    'https://mejortorrent.app'
+    'https://mejortorrent.app',
+    'https://www.mejortorrent.icu',
+    'https://mejortorrent1.com',
+    'https://mejortorrents.net',
+    'https://mejortorrent.nz',
+    'https://www50.mejortorrent.eu'
   ];
+
+  private readonly concurrency = Math.max(1, Number.parseInt(process.env.MEJORTORRENT_CONCURRENCY || '8', 10) || 8);
 
   constructor() {
     super();
-    this.baseUrl = process.env.MEJORTORRENT_BASE_URL || 'https://www45.mejortorrent.eu';
+    this.baseUrl = process.env.MEJORTORRENT_BASE_URL || MejorTorrentCrawler.DEFAULT_MIRRORS[0];
   }
 
-  /**
-   * Resuelve URLs relativas de forma segura
-   */
   private resolveUrl(target: string, base: string): string {
-    try {
-      return new URL(target, base).href;
-    } catch {
-      return target; // Fallback
-    }
+    return absoluteHttpUrl(target, base) ?? target;
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    console.log(`[${this.name}] Starting crawl across movies and series (maxPages=${maxPages})...`);
-    
-    const mirrorsToTry = [this.baseUrl, ...this.defaultMirrors.filter(m => m !== this.baseUrl)];
-    let workingMirror: string | null = null;
-    let mirrorMode: 'legacy_eu' | 'modern_me' = 'legacy_eu';
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting crawl across movies and series (maxPages=${maxPages})...`);
 
-    // 1. Detectar el primer mirror vivo y sin bloqueo de Cloudflare
-    for (const mirror of mirrorsToTry) {
-      try {
-        console.log(`[${this.name}] Testing connectivity to ${mirror}...`);
-        const resp = await this.httpClient.get<string>(mirror, {
-          timeout: 5000,
-          headers: {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
-          }
-        });
+    const validate = htmlMarkerValidator([/wp-json/i, /href=["'][^"']*\/(?:pelicula|serie)\//i]);
+    const mirror = await this.resolveMirror({
+      envPrefix: 'MEJORTORRENT',
+      defaults: MejorTorrentCrawler.DEFAULT_MIRRORS,
+      probes: [
+        { path: '/', label: 'portada', timeoutMs: 6000, validate },
+        { path: '/peliculas-hd', label: 'catálogo HD', timeoutMs: 6000, validate }
+      ]
+    });
 
-        const html = resp.data || '';
-        if (resp.status === 200 && typeof html === 'string' && /wp-json|href=["'][^"']*\/(?:pelicula|serie)\//i.test(html) && !/Just a moment|Un momento|cf-mitigated/i.test(html)) {
-          workingMirror = mirror;
-          // Heurística de detección de template
-          mirrorMode = html.includes('wp-json/wp/v2') ? 'modern_me' : 'legacy_eu';
-          console.log(`[${this.name}] Connected to active endpoint: ${mirror} (mode=${mirrorMode})`);
-          break;
-        }
-      } catch (err: unknown) {
-        console.warn(`[${this.name}] Mirror ${mirror} unreachable. Trying next...`);
-      }
+    const mode = await this.detectTemplate(mirror);
+    this.log.info(`Connected to ${mirror} (mode=${mode}).`);
+
+    const records = mode === 'legacy_eu'
+      ? await this.crawlLegacyEuMode(mirror, maxPages)
+      : await this.crawlModernMeMode(mirror, maxPages);
+
+    const deduplicated = this.deduplicateRecords(records);
+    this.logRunSummary(deduplicated);
+    return deduplicated;
+  }
+
+  /** WordPress mirrors expose `wp-json`; the legacy `.eu` template does not. */
+  private async detectTemplate(mirror: string): Promise<MirrorMode> {
+    try {
+      const html = await this.fetchHtml(mirror, { timeout: 6000 });
+      return html.includes('wp-json/wp/v2') ? 'modern_me' : 'legacy_eu';
+    } catch {
+      return 'legacy_eu';
     }
-
-    if (!workingMirror) {
-      throw new Error(`[${this.name}] No compatible MejorTorrent mirror available.`);
-    }
-
-    const limit = pLimit(this.CONCURRENCY);
-    const records = mirrorMode === 'legacy_eu' 
-      ? await this.crawlLegacyEuMode(workingMirror, maxPages, limit)
-      : await this.crawlModernMeMode(workingMirror, maxPages, limit);
-
-    console.log(`[${this.name}] Crawl completed. Total records discovered: ${records.length}`);
-    return records;
   }
 
   // ==========================================================================
   // MODE: LEGACY EU (.eu, .wtf, .app)
   // ==========================================================================
-  private async crawlLegacyEuMode(mirror: string, maxPages: number, limit: ReturnType<typeof pLimit>): Promise<TorrentRecord[]> {
+  private async crawlLegacyEuMode(mirror: string, maxPages: number): Promise<TorrentRecord[]> {
     const results: TorrentRecord[] = [];
     const detailUrls = new Set<string>();
 
-    const categories = [
+    const categories: Array<{ path: string; type: ContentType }> = [
       { path: '/inicio', type: 'movie' },
       { path: '/peliculas-hd', type: 'movie' },
-      { path: '/series-hd', type: 'series' }
+      { path: '/peliculas-4k', type: 'movie' },
+      { path: '/series-hd', type: 'series' },
+      { path: '/documentales', type: 'documentary' }
     ];
 
     for (const cat of categories) {
       for (let page = 1; page <= maxPages; page++) {
-        let listUrl = `${mirror}${cat.path}`;
-        if (page > 1) {
-          if (cat.path === '/inicio') break;
-          listUrl = `${mirror}${cat.path}/page/${page}`;
-        }
+        if (this.deadline.expired) break;
+        if (page > 1 && cat.path === '/inicio') break;
 
+        const listUrl = page > 1 ? `${mirror}${cat.path}/page/${page}` : `${mirror}${cat.path}`;
         try {
-          const resp = await this.httpClient.get<string>(listUrl);
-          if (!resp.data || typeof resp.data !== 'string') continue;
-
-          const $= cheerio.load(resp.data);$('a[href*="/pelicula/"], a[href*="/serie/"]').each((_, el) => {
+          const html = await this.fetchHtml(listUrl);
+          this.metrics.add('listings');
+          const $ = cheerio.load(html);
+          $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
             const href = $(el).attr('href');
-            if (href && !/genre|year|quality/i.test(href)) {
-              detailUrls.add(this.resolveUrl(href, mirror));
-            }
+            if (href && !/genre|year|quality/i.test(href)) detailUrls.add(this.resolveUrl(href, mirror));
           });
-        } catch {
-          break; // Si falla la pagina, salta a la siguiente categoría
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.debug(`Listing failed ${listUrl}: ${describe(error)}`);
+          break;
         }
       }
     }
 
-    const tasks = Array.from(detailUrls).slice(0, maxPages * 35).map(url =>
-      limit(async () => {
-        try {
-          const resp = await this.httpClient.get<string>(url);
-          const $ = cheerio.load(resp.data);
-          
-          let title = $('h1').first().text().trim() || $('title').text().replace(/\Vert{}.*$/, '').trim();
-          const defaultType: ContentType = url.includes('/serie/') ? 'series' : 'movie';
-          const torrentAnchors = $('a[href*="/torrents/"][href$=".torrent"], a:contains("Descargar")');
+    const targets = [...detailUrls].slice(0, maxPages * 35);
+    const nested = await mapWithConcurrency(targets, this.concurrency, async url => {
+      if (this.deadline.expired) return [];
+      try {
+        const html = await this.fetchHtml(url);
+        this.metrics.add('details');
+        const $ = cheerio.load(html);
 
-          for (let i = 0; i < torrentAnchors.length; i++) {
-            const a = torrentAnchors.eq(i);
-            const href = a.attr('href');
-            if (!href?.endsWith('.torrent')) continue;
+        const title = cleanText($('h1').first().text()) || cleanText($('title').text().split(/[|\-–]/)[0]);
+        const defaultType: ContentType = url.includes('/serie/')
+          ? 'series'
+          : url.includes('/documental/') ? 'documentary' : 'movie';
 
-            const torrentUrl = this.resolveUrl(href, mirror);
-            let itemTitle = title;
-            
-            // Si es serie, trata de extraer el episodio de la tabla
-            if (defaultType === 'series') {
-              const epText = a.closest('tr').find('td').eq(1).text().trim();
-              if (epText) itemTitle = `${title} ${epText}`;
-            }
+        const anchors = $('a[href$=".torrent"], a[href*="/torrents/"]').toArray();
+        const records: TorrentRecord[] = [];
 
-            const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType);
-            if (record) results.push(record);
+        for (const el of anchors) {
+          const anchor = $(el);
+          const href = anchor.attr('href');
+          if (!href?.toLowerCase().endsWith('.torrent')) continue;
+
+          const torrentUrl = this.resolveUrl(href, url);
+          let itemTitle = title;
+          if (defaultType === 'series') {
+            const epText = cleanText(anchor.closest('tr').find('td').eq(1).text());
+            if (epText) itemTitle = `${title} ${epText}`;
           }
-        } catch (err: any) {
-          console.warn(`[${this.name}] Error parsing EU detail ${url}: ${err.message}`);
-        }
-      })
-    );
 
-    await Promise.all(tasks);
+          const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType);
+          if (record) {
+            records.push(record);
+            this.metrics.add('records');
+          }
+        }
+        return records;
+      } catch (error) {
+        this.metrics.add('detailErrors');
+        this.log.warn(`Error parsing EU detail ${url}: ${describe(error)}`);
+        return [];
+      }
+    });
+
+    results.push(...nested.flat());
     return results;
   }
 
   // ==========================================================================
-  // MODE: MODERN ME (API REST de WordPress + Scraping)
+  // MODE: MODERN ME (WordPress REST API + scraping)
   // ==========================================================================
-  private async crawlModernMeMode(mirror: string, maxPages: number, limit: ReturnType<typeof pLimit>): Promise<TorrentRecord[]> {
-    const results: TorrentRecord[] = [];
+  private async crawlModernMeMode(mirror: string, maxPages: number): Promise<TorrentRecord[]> {
     const detailUrls = new Set<string>();
 
-    // 1. Obtener links vía WordPress API (Más rápido y preciso)
     for (let page = 1; page <= maxPages; page++) {
+      if (this.deadline.expired) break;
       try {
-        const apiUrl = `${mirror}/wp-json/wp/v2/posts?page=${page}&per_page=30`;
-        const resp = await this.httpClient.get<Array<{ link: string }>>(apiUrl);
-        if (Array.isArray(resp.data)) {
-          resp.data.forEach(post => post.link && detailUrls.add(this.resolveUrl(post.link, mirror)));
+        const posts = await this.fetchJson<Array<{ link?: string }>>(
+          `${mirror}/wp-json/wp/v2/posts?page=${page}&per_page=30`
+        );
+        if (!Array.isArray(posts) || !posts.length) break;
+        this.metrics.add('listings');
+        for (const post of posts) {
+          if (post?.link) detailUrls.add(this.resolveUrl(post.link, mirror));
         }
-      } catch {
+      } catch (error) {
+        this.metrics.add('listingErrors');
+        this.log.debug(`WP API page ${page} failed: ${describe(error)}`);
         break;
       }
     }
 
-    const tasks = Array.from(detailUrls).slice(0, maxPages * 40).map(url =>
-      limit(async () => {
-        try {
-          const resp = await this.httpClient.get<string>(url);
-          const $ = cheerio.load(resp.data);
-          
-          const torrentUrls = new Set<string>();
-          $('a[href$=".torrent"]').each((_, el) => {
-            const href = $(el).attr('href');
-            if (href) torrentUrls.add(this.resolveUrl(href, mirror));
-          });
+    const targets = [...detailUrls].slice(0, maxPages * 40);
+    const nested = await mapWithConcurrency(targets, this.concurrency, async url => {
+      if (this.deadline.expired) return [];
+      try {
+        const html = await this.fetchHtml(url);
+        this.metrics.add('details');
+        const $ = cheerio.load(html);
 
-          // Fallback regex if no standard anchors found
-          if (torrentUrls.size === 0) {
-            const matches = resp.data.match(/https?:\/\/[^\s"'<>]+\.torrent/gi);
-            matches?.forEach(m => torrentUrls.add(m));
-          }
-
-          const pageText = resp.data.toLowerCase();
-          const defaultType: ContentType = /(temporada|episodios|s\d{1,2})/i.test(pageText) ? 'series' : 'movie';
-          const pageTitle = $('h1').first().text().trim() || url.split('/').filter(Boolean).pop()?.replace(/-/g, ' ') || '';
-
-          for (const torrentUrl of torrentUrls) {
-            
-            const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType);
-            if (record) results.push(record);
-          }
-        } catch (err: any) {
-          console.warn(`[${this.name}] Error parsing ME detail ${url}: ${err.message}`);
+        const torrentUrls = new Set<string>();
+        $('a[href$=".torrent"]').each((_, el) => {
+          const href = $(el).attr('href');
+          if (href) torrentUrls.add(this.resolveUrl(href, url));
+        });
+        if (!torrentUrls.size) {
+          for (const match of html.match(/https?:\/\/[^\s"'<>]+\.torrent/gi) ?? []) torrentUrls.add(match);
         }
-      })
-    );
 
-    await Promise.all(tasks);
-    return results;
+        const pageTitle = cleanText($('h1').first().text()) ||
+          cleanText(decodeURIComponent(url.split('/').filter(Boolean).pop() || '').replace(/-/g, ' '));
+        const defaultType: ContentType = /(temporada|episodios|\bs\d{1,2}\b)/i.test(html.toLowerCase())
+          ? 'series'
+          : 'movie';
+
+        const records: TorrentRecord[] = [];
+        for (const torrentUrl of torrentUrls) {
+          const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType);
+          if (record) {
+            records.push(record);
+            this.metrics.add('records');
+          }
+        }
+        return records;
+      } catch (error) {
+        this.metrics.add('detailErrors');
+        this.log.warn(`Error parsing ME detail ${url}: ${describe(error)}`);
+        return [];
+      }
+    });
+
+    return nested.flat();
   }
 
   // ==========================================================================
   // UNIFIED TORRENT PROCESSOR (DRY)
   // ==========================================================================
-  private async downloadAndBuildRecord(
+  public async downloadAndBuildRecord(
     torrentUrl: string,
     sourceUrl: string,
     fallbackTitle: string,
     defaultType: ContentType
   ): Promise<TorrentRecord | null> {
     try {
-      const resp = await this.httpClient.get<ArrayBuffer>(torrentUrl, { responseType: 'arraybuffer', maxContentLength: 10 * 1024 * 1024, headers: { Referer: sourceUrl } });
-      const buf = Buffer.from(resp.data);
-      
-      const parsedTorrent = parseTorrentBuffer(buf);
-      if (!parsedTorrent || !parsedTorrent.infoHash) return null;
+      const parsedTorrent = await this.fetchTorrentMetainfoViaGet(torrentUrl, sourceUrl);
+      this.metrics.add('downloads');
 
-      const effectiveTitle = (parsedTorrent.name && parsedTorrent.name.length > 3) 
-        ? parsedTorrent.name 
-        : fallbackTitle;
+      const effectiveTitle = cleanText(
+        parsedTorrent.name && parsedTorrent.name.length > 3 ? parsedTorrent.name : fallbackTitle
+      );
+      if (!effectiveTitle || isBlockedTitle(effectiveTitle)) return null;
 
-      const parsedMeta = parseTorrentTitle(effectiveTitle, defaultType);
-      const metaAny = parsedMeta as any;
-      
-      // Regla de dominio: MejorTorrent es español por defecto
+      const meta = parseTorrentTitle(effectiveTitle, defaultType);
+      // Domain rule: MejorTorrent publishes Spanish releases.
       const langs = detectLanguages(effectiveTitle, ['mejortorrent', 'castellano']);
-      if (langs.audio.length === 0) langs.audio.push('Castellano');
+      if (!langs.audio.length) langs.audio.push('Castellano');
 
-      const magnetUrl = buildMagnetUri(parsedTorrent.infoHash, effectiveTitle, parsedTorrent.trackers);
-
-      return {
-        imdb_id: null,
-        tmdb_id: null,
-        kitsu_id: null,
-        anilist_id: null,
-        mal_id: null,
-        type: parsedMeta.type,
-        season: parsedMeta.season,
-        episode: parsedMeta.episode,
-        absolute_episode: parsedMeta.absoluteEpisode,
-        file_index: null,
-        info_hash: parsedTorrent.infoHash,
-        magnet_url: magnetUrl,
-        torrent_file_url: torrentUrl,
-        source_url: sourceUrl,
+      return buildTorrentRecord({
         title: effectiveTitle,
-        release_group: parsedMeta.releaseGroup,
-        quality: metaAny.quality || metaAny.resolution || null,
-        codec: parsedMeta.codec,
-        hdr_format: parsedMeta.hdrFormat,
+        type: meta.type,
+        infoHash: parsedTorrent.infoHash,
+        torrentFileUrl: torrentUrl,
+        sourceUrl,
+        trackers: parsedTorrent.trackers,
         audio: langs.audio,
         subtitles: langs.subtitles,
-        channels: parsedMeta.channels,
-        size_bytes: parsedTorrent.sizeBytes || null,
+        meta,
+        quality: qualityOf(meta),
+        sizeBytes: parsedTorrent.sizeBytes || null,
         seeders: null,
         leechers: null,
-        source_tracker: parsedTorrent.primaryTracker || 'udp://tracker.opentrackr.org:1337/announce'
-      };
-    } catch (err: any) {
-      console.warn(`[${this.name}] Failed to process torrent ${torrentUrl}: ${err.message}`);
+        sourceTracker: parsedTorrent.primaryTracker || null
+      });
+    } catch (error) {
+      this.metrics.add('downloadErrors');
+      this.log.warn(`Failed to process torrent ${torrentUrl}: ${describe(error)}`);
       return null;
     }
   }
+}
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 export default MejorTorrentCrawler;
