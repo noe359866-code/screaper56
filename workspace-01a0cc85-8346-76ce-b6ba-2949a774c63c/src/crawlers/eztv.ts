@@ -25,7 +25,6 @@ export class EztvCrawler extends BaseCrawler {
   public readonly name = 'eztv';
   public readonly baseUrl = 'https://eztv1.xyz';
   
-  // Añadimos dominios extra conocidos de EZTV
   private readonly fallbackMirrors = [
     'https://eztv.re', 
     'https://eztv.wf', 
@@ -38,9 +37,6 @@ export class EztvCrawler extends BaseCrawler {
     'udp://tracker.coppersurfer.tk:6969/announce'
   ];
 
-  /**
-   * Construye un magnet con trackers si la API no lo provee completo
-   */
   private buildMagnet(infoHash: string, name: string): string {
     let magnet = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(name)}`;
     for (const tr of this.defaultTrackers) {
@@ -49,9 +45,6 @@ export class EztvCrawler extends BaseCrawler {
     return magnet;
   }
 
-  /**
-   * Resuelve URLs relativas de forma segura
-   */
   private resolveUrl(target: string, base: string): string {
     try {
       return new URL(target, base).href;
@@ -60,9 +53,6 @@ export class EztvCrawler extends BaseCrawler {
     }
   }
 
-  /**
-   * Busca un dominio base activo probando el endpoint de la API
-   */
   private async getWorkingDomain(): Promise<string | null> {
     const domains = [this.baseUrl, ...this.fallbackMirrors];
     
@@ -70,7 +60,7 @@ export class EztvCrawler extends BaseCrawler {
       try {
         console.log(`[${this.name}] Testing domain: ${domain}...`);
         const resp = await this.httpClient.get<any>(`${domain}/api/get-torrents?limit=1`, {
-          timeout: 5000 // Timeout corto para no perder tiempo en espejos caídos
+          timeout: 5000
         });
         
         if (resp.status === 200 && resp.data) {
@@ -94,12 +84,9 @@ export class EztvCrawler extends BaseCrawler {
     }
 
     const results: TorrentRecord[] = [];
-    const uniqueHashes = new Set<string>(); // Para deduplicación
+    const uniqueHashes = new Set<string>();
     let apiSuccess = false;
 
-    // ========================================================================
-    // FASE 1: Intento de extracción por API
-    // ========================================================================
     try {
       for (let page = 1; page <= maxPages; page++) {
         const apiUrl = `${activeDomain}/api/get-torrents?limit=80&page=${page}`;
@@ -120,7 +107,7 @@ export class EztvCrawler extends BaseCrawler {
             results.push(rec);
           }
         }
-        apiSuccess = true; // Si llegamos aquí, la API funcionó para al menos una página
+        apiSuccess = true;
       }
 
       if (results.length > 0) {
@@ -131,9 +118,6 @@ export class EztvCrawler extends BaseCrawler {
       console.warn(`[${this.name}] EZTV API failed (${apiErr.message}). Falling back to HTML scraper...`);
     }
 
-    // ========================================================================
-    // FASE 2: Fallback Scraper HTML (Solo si la API falló por completo)
-    // ========================================================================
     if (!apiSuccess || results.length === 0) {
       try {
         for (let page = 0; page < maxPages; page++) {
@@ -155,7 +139,6 @@ export class EztvCrawler extends BaseCrawler {
 
             const infoHash = parsedMagnet.infoHash.toLowerCase();
             
-            // Deduplicación en el scraper
             if (uniqueHashes.has(infoHash)) return; 
 
             const title = titleAnchor.text().trim();
@@ -168,6 +151,7 @@ export class EztvCrawler extends BaseCrawler {
 
             const parsedMeta = parseTorrentTitle(title, 'series');
             const langs = detectLanguages(title, ['eztv', 'tv']);
+            const metaAny = parsedMeta as any;
 
             uniqueHashes.add(infoHash);
             addedInPage++;
@@ -178,7 +162,7 @@ export class EztvCrawler extends BaseCrawler {
               kitsu_id: null,
               anilist_id: null,
               mal_id: null,
-              type: 'series', // EZTV es exclusivo de series
+              type: 'series',
               season: parsedMeta.season,
               episode: parsedMeta.episode,
               absolute_episode: parsedMeta.absoluteEpisode,
@@ -189,7 +173,7 @@ export class EztvCrawler extends BaseCrawler {
               source_url: this.resolveUrl(detailPath, activeDomain),
               title,
               release_group: parsedMeta.releaseGroup,
-              quality: parsedMeta.quality,
+              quality: metaAny.quality || metaAny.resolution || null,
               codec: parsedMeta.codec,
               hdr_format: parsedMeta.hdrFormat,
               audio: langs.audio,
@@ -197,12 +181,12 @@ export class EztvCrawler extends BaseCrawler {
               channels: parsedMeta.channels,
               size_bytes: parseSizeToBytes(sizeText),
               seeders,
-              leechers: 0, // EZTV HTML no suele mostrar leechers
+              leechers: 0,
               source_tracker: parsedMagnet.trackers[0] || this.defaultTrackers[0]
             });
           });
 
-          if (addedInPage === 0) break; // Termina si la página está vacía
+          if (addedInPage === 0) break;
         }
       } catch (htmlErr: any) {
         console.error(`[${this.name}] HTML fallback error: ${htmlErr.message}`);
@@ -220,8 +204,8 @@ export class EztvCrawler extends BaseCrawler {
     const fullTitle = t.filename || t.title;
     const parsedMeta = parseTorrentTitle(fullTitle, 'series');
     const langs = detectLanguages(fullTitle, ['eztv', 'tv']);
+    const metaAny = parsedMeta as any;
 
-    // Estandarización robusta de IMDB ID
     let imdbId: string | null = null;
     if (t.imdb_id && t.imdb_id !== '0') {
       const raw = String(t.imdb_id).replace(/^tt/, '').trim();
@@ -232,7 +216,6 @@ export class EztvCrawler extends BaseCrawler {
     const episode = t.episode ? parseInt(String(t.episode), 10) : parsedMeta.episode;
     const sizeBytes = t.size_bytes ? parseInt(String(t.size_bytes), 10) : null;
 
-    // Aseguramos que el magnet tenga trackers si viene de la API
     const magnetUrl = t.magnet_url && t.magnet_url.includes('tr=') 
       ? t.magnet_url 
       : this.buildMagnet(infoHash, fullTitle);
@@ -254,7 +237,7 @@ export class EztvCrawler extends BaseCrawler {
       source_url: t.episode_url || `${activeDomain}/ep/${t.id}`,
       title: fullTitle,
       release_group: parsedMeta.releaseGroup,
-      quality: parsedMeta.quality,
+      quality: metaAny.quality || metaAny.resolution || null,
       codec: parsedMeta.codec,
       hdr_format: parsedMeta.hdrFormat,
       audio: langs.audio,
@@ -267,3 +250,5 @@ export class EztvCrawler extends BaseCrawler {
     };
   }
 }
+
+export default EztvCrawler;
