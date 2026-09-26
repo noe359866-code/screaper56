@@ -46,7 +46,10 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     'https://www.limetorrents.to'
   ];
 
-  private readonly detailConcurrency = Math.max(1, Number.parseInt(process.env.LIMETORRENTS_CONCURRENCY || '3', 10) || 3);
+  private readonly detailConcurrency = Math.max(
+    1,
+    Number.parseInt(process.env.LIMETORRENTS_CONCURRENCY || '3', 10) || 3
+  );
 
   constructor() {
     super();
@@ -67,6 +70,9 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         { path: '/top100', label: 'top100', timeoutMs: 6000, validate }
       ]
     });
+
+    // Actualizamos la propiedad baseUrl para sincronizarla con el mirror activo
+    this.baseUrl = mirror;
 
     const candidateMap = new Map<string, LimeCandidate>();
 
@@ -120,7 +126,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     const records = await mapWithConcurrency(candidates, this.detailConcurrency, async item => {
       if (this.deadline.expired) return null;
       try {
-        await sleep(100);
+        await sleep(50);
         const record = await this.parseLimeDetail(item, mirror);
         if (record) this.metrics.add('records');
         return record;
@@ -146,7 +152,9 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         data: new URLSearchParams({ q: query }).toString(),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       });
-      if (typeof response.data === 'string' && response.data.includes('table2')) return response.data;
+      if (typeof response.data === 'string' && response.data.includes('table2')) {
+        return response.data;
+      }
     } catch (error) {
       this.log.debug(`POST search failed for "${query}": ${describe(error)}`);
     }
@@ -175,30 +183,45 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       const tds = $(tr).find('td');
       if (tds.length < 2) return;
 
-      const nameAnchor = tds.eq(0).find('div.tt-name a, a').last();
+      // Se utiliza una selección precisa del enlace del título para evitar enlaces secundarios o íconos de descarga
+      const nameAnchor = tds.find('div.tt-name a[href*=".html"], a[href*=".html"]').first();
       const href = nameAnchor.attr('href');
       const title = cleanText(nameAnchor.text());
-      if (!href || !title || !href.endsWith('.html')) return;
-      if (isBlockedTitle(title)) return;
+
+      if (!href || !title || isBlockedTitle(title)) return;
 
       const fullUrl = absoluteHttpUrl(href, sourceUrl) ?? absoluteHttpUrl(href, mirror);
       if (!fullUrl || sink.has(fullUrl)) return;
 
-      // Columns: name, age, size, seeds, leeches. Some mirrors omit age.
-      const sizeIndex = tds.toArray().findIndex((td, position) =>
-        position > 0 && /[KMGT]i?B/i.test($(td).text()) && parseSizeToBytes(cleanText($(td).text())) !== null
-      );
-      const sizeText = sizeIndex >= 0 ? cleanText(tds.eq(sizeIndex).text()) : '';
-      const seedsText = sizeIndex >= 0 ? cleanText(tds.eq(sizeIndex + 1).text()) : '';
-      const leechesText = sizeIndex >= 0 ? cleanText(tds.eq(sizeIndex + 2).text()) : '';
+      const tdsArray = tds.toArray();
+      const sizeIndex = tdsArray.findIndex((td, position) => {
+        if (position === 0) return false;
+        const text = cleanText($(td).text());
+        return /[KMGT]i?B/i.test(text) && parseSizeToBytes(text) !== null;
+      });
+
+      let sizeBytes: number | null = null;
+      let seeders: number | null = null;
+      let leeches: number | null = null;
+
+      // Solución a desbordamiento / wrap-around cuando sizeIndex === -1
+      if (sizeIndex !== -1) {
+        sizeBytes = parseSizeToBytes(cleanText(tds.eq(sizeIndex).text()));
+        if (sizeIndex + 1 < tds.length) {
+          seeders = parseCount(cleanText(tds.eq(sizeIndex + 1).text()));
+        }
+        if (sizeIndex + 2 < tds.length) {
+          leeches = parseCount(cleanText(tds.eq(sizeIndex + 2).text()));
+        }
+      }
 
       sink.set(fullUrl, {
         title,
         detailUrl: fullUrl,
-        sizeBytes: parseSizeToBytes(sizeText),
-        seeders: parseCount(seedsText),
-        leeches: parseCount(leechesText),
-        type: forcedType ?? (/s\d{1,2}|season|temporada/i.test(title) ? 'series' : 'movie')
+        sizeBytes,
+        seeders,
+        leeches,
+        type: forcedType ?? (/s\d{1,2}|season|temporada|capitulo|capít/i.test(title) ? 'series' : 'movie')
       });
     });
   }
@@ -218,6 +241,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     let leechers = item.leeches ?? null;
     const trackers: string[] = [];
 
+    // 1. Extracción de URI Magnet
     const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
     if (magnetHref) {
       magnetUri = magnetHref;
@@ -228,28 +252,60 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       }
     }
 
+    // 2. Búsqueda de Hash, Size, Seeders/Leechers en las tablas de detalles
     $('table tr').each((_, tr) => {
       const tds = $(tr).find('td');
       if (tds.length < 2) return;
-      const key = cleanText(tds.eq(0).text());
+      const key = cleanText(tds.eq(0).text()).toLowerCase();
       const value = cleanText(tds.eq(1).text());
 
-      if (/torrent hash/i.test(key) && !infoHash) {
+      if (key.includes('hash') && !infoHash) {
         const hashMatch = value.match(/([0-9a-fA-F]{40})/);
         if (hashMatch) infoHash = hashMatch[1].toLowerCase();
       }
-      if (/torrent size/i.test(key) && !sizeBytes) sizeBytes = parseSizeToBytes(value);
-      if (/^(udp|https?):\/\//i.test(key) && !trackers.includes(key)) trackers.push(key);
+      if (key.includes('size') && !sizeBytes) {
+        sizeBytes = parseSizeToBytes(value);
+      }
+      if (key.includes('seeder') && seeders === null) {
+        seeders = parseCount(value);
+      }
+      if (key.includes('leecher') && leechers === null) {
+        leechers = parseCount(value);
+      }
     });
 
+    // 3. Extracción de Trackers adicionales listados en la página
+    $('a[href^="udp://"], a[href^="http://"], a[href^="https://"]').each((_, a) => {
+      const href = $(a).attr('href');
+      if (href && (href.includes('/announce') || href.includes(':6969') || href.includes(':1337'))) {
+        if (!trackers.includes(href)) trackers.push(href);
+      }
+    });
+
+    // Fallback focalizado para seeders/leechers en lugar de escanear todo $.root().text()
     if (seeders === null || leechers === null) {
-      const text = $.root().text();
-      if (seeders === null) seeders = parseCount(text.match(/Seeders?\s*:\s*([\d,.]+)/i)?.[1]);
-      if (leechers === null) leechers = parseCount(text.match(/Leechers?\s*:\s*([\d,.]+)/i)?.[1]);
+      $('.table2, .torrentinfo').find('tr, div, span').each((_, el) => {
+        const txt = $(el).text();
+        if (seeders === null) {
+          const m = txt.match(/Seeders?\s*:\s*([\d,.]+)/i);
+          if (m) seeders = parseCount(m[1]);
+        }
+        if (leechers === null) {
+          const m = txt.match(/Leechers?\s*:\s*([\d,.]+)/i);
+          if (m) leechers = parseCount(m[1]);
+        }
+      });
     }
 
     if (!infoHash) return null;
+
     if (!trackers.length) trackers.push(...DEFAULT_TRACKERS.slice(0, 3));
+
+    // Si no existía el enlace magnet directo en el HTML pero sí obtuvimos el infoHash, se construye sintéticamente
+    if (!magnetUri) {
+      const trParams = trackers.map(t => `&tr=${encodeURIComponent(t)}`).join('');
+      magnetUri = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(effectiveTitle)}${trParams}`;
+    }
 
     const meta = parseTorrentTitle(effectiveTitle, item.type);
     const langs = detectLanguages(effectiveTitle, ['limetorrents']);
