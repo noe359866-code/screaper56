@@ -167,6 +167,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
               const sizeBytes = sizeMatch ? parseSizeToBytes(sizeMatch[1]) : 0;
 
               const meta = parseTorrentTitle(title, 'movie');
+              const metaAny = meta as any;
               const langs = detectLanguages(title, ['thepiratebay', term]); // Pasamos 'term' como contexto de idioma
 
               uniqueHashes.add(infoHash);
@@ -189,7 +190,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
                 source_url: this.resolveUrl(detailHref, workingMirror),
                 title,
                 release_group: meta.releaseGroup,
-                quality: meta.quality,
+                quality: metaAny.quality || metaAny.resolution || null,
                 codec: meta.codec,
                 hdr_format: meta.hdrFormat,
                 audio: langs.audio,
@@ -233,6 +234,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
     }
 
     const meta = parseTorrentTitle(item.name, defaultType);
+    const metaAny = meta as any;
     const langs = detectLanguages(item.name, ['thepiratebay']);
 
     let validImdbId: string | null = null;
@@ -257,7 +259,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       source_url: `https://thepiratebay.org/description.php?id=${item.id}`, // Reconstruimos URL base de TPB
       title: item.name,
       release_group: meta.releaseGroup,
-      quality: meta.quality,
+      quality: metaAny.quality || metaAny.resolution || null,
       codec: meta.codec,
       hdr_format: meta.hdrFormat,
       audio: langs.audio,
