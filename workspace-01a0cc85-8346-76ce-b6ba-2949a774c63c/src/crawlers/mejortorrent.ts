@@ -15,8 +15,13 @@ import {
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
 
+interface ListingTarget {
+  url: string;
+  type: ContentType;
+}
+
 /**
- * MejorTorrent: legacy `.eu` templates and the WordPress based mirrors.
+ * MejorTorrent: legacy `.eu` templates and WordPress-based mirrors.
  * The infohash always comes from the downloaded metainfo (shared bencode parser),
  * never from a guessed ID, and unknown swarm counters remain `null`.
  */
@@ -37,7 +42,10 @@ export class MejorTorrentCrawler extends BaseCrawler {
     'https://www50.mejortorrent.eu'
   ];
 
-  private readonly concurrency = Math.max(1, Number.parseInt(process.env.MEJORTORRENT_CONCURRENCY || '8', 10) || 8);
+  private readonly concurrency = Math.max(
+    1,
+    Number.parseInt(process.env.MEJORTORRENT_CONCURRENCY || '8', 10) || 8
+  );
 
   constructor() {
     super();
@@ -89,9 +97,6 @@ export class MejorTorrentCrawler extends BaseCrawler {
   // MODE: LEGACY EU (.eu, .wtf, .app)
   // ==========================================================================
   private async crawlLegacyEuMode(mirror: string, maxPages: number): Promise<TorrentRecord[]> {
-    const results: TorrentRecord[] = [];
-    const detailUrls = new Set<string>();
-
     const categories: Array<{ path: string; type: ContentType }> = [
       { path: '/inicio', type: 'movie' },
       { path: '/peliculas-hd', type: 'movie' },
@@ -100,27 +105,36 @@ export class MejorTorrentCrawler extends BaseCrawler {
       { path: '/documentales', type: 'documentary' }
     ];
 
+    const listingTargets: ListingTarget[] = [];
     for (const cat of categories) {
       for (let page = 1; page <= maxPages; page++) {
-        if (this.deadline.expired) break;
         if (page > 1 && cat.path === '/inicio') break;
-
-        const listUrl = page > 1 ? `${mirror}${cat.path}/page/${page}` : `${mirror}${cat.path}`;
-        try {
-          const html = await this.fetchHtml(listUrl);
-          this.metrics.add('listings');
-          const $ = cheerio.load(html);
-          $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
-            const href = $(el).attr('href');
-            if (href && !/genre|year|quality/i.test(href)) detailUrls.add(this.resolveUrl(href, mirror));
-          });
-        } catch (error) {
-          this.metrics.add('listingErrors');
-          this.log.debug(`Listing failed ${listUrl}: ${describe(error)}`);
-          break;
-        }
+        const url = page > 1 ? `${mirror}${cat.path}/page/${page}` : `${mirror}${cat.path}`;
+        listingTargets.push({ url, type: cat.type });
       }
     }
+
+    const detailUrls = new Set<string>();
+
+    // Extraer páginas de listado en paralelo con control de concurrencia
+    await mapWithConcurrency(listingTargets, this.concurrency, async ({ url }) => {
+      if (this.deadline.expired) return;
+      try {
+        const html = await this.fetchHtml(url);
+        this.metrics.add('listings');
+        const $ = cheerio.load(html);
+
+        $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
+          const href = $(el).attr('href');
+          if (href && !/genre|year|quality/i.test(href)) {
+            detailUrls.add(this.resolveUrl(href, url));
+          }
+        });
+      } catch (error) {
+        this.metrics.add('listingErrors');
+        this.log.debug(`Listing failed ${url}: ${describe(error)}`);
+      }
+    });
 
     const targets = [...detailUrls].slice(0, maxPages * 35);
     const nested = await mapWithConcurrency(targets, this.concurrency, async url => {
@@ -130,18 +144,18 @@ export class MejorTorrentCrawler extends BaseCrawler {
         this.metrics.add('details');
         const $ = cheerio.load(html);
 
-        const title = cleanText($('h1').first().text()) || cleanText($('title').text().split(/[|\-–]/)[0]);
+        const title = cleanText($('h1').first().text()) \vert{}\vert{} cleanText($('title').text().split(/[|\-–]/)[0]);
         const defaultType: ContentType = url.includes('/serie/')
           ? 'series'
           : url.includes('/documental/') ? 'documentary' : 'movie';
 
-        const anchors = $('a[href$=".torrent"], a[href*="/torrents/"]').toArray();
+        const anchors = $('a[href]').toArray();
         const records: TorrentRecord[] = [];
 
         for (const el of anchors) {
           const anchor = $(el);
           const href = anchor.attr('href');
-          if (!href?.toLowerCase().endsWith('.torrent')) continue;
+          if (!href || !/\.torrent(\?.*)?$/i.test(href) && !/\/torrents\//i.test(href)) continue;
 
           const torrentUrl = this.resolveUrl(href, url);
           let itemTitle = title;
@@ -164,8 +178,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
       }
     });
 
-    results.push(...nested.flat());
-    return results;
+    return nested.flat();
   }
 
   // ==========================================================================
@@ -187,7 +200,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         }
       } catch (error) {
         this.metrics.add('listingErrors');
-        this.log.debug(`WP API page ${page} failed: ${describe(error)}`);
+        this.log.debug(`WP API page ${page} finished or failed: ${describe(error)}`);
         break;
       }
     }
@@ -201,12 +214,16 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const $ = cheerio.load(html);
 
         const torrentUrls = new Set<string>();
-        $('a[href$=".torrent"]').each((_, el) => {
+        $('a[href]').each((_, el) => {
           const href = $(el).attr('href');
-          if (href) torrentUrls.add(this.resolveUrl(href, url));
+          if (href && /\.torrent(\?.*)?$/i.test(href)) {
+            torrentUrls.add(this.resolveUrl(href, url));
+          }
         });
+
         if (!torrentUrls.size) {
-          for (const match of html.match(/https?:\/\/[^\s"'<>]+\.torrent/gi) ?? []) torrentUrls.add(match);
+          const matches = html.match(/https?:\/\/[^\s"'<>]+\.torrent(\?[^\s"'<>]*)?/gi) ?? [];
+          for (const match of matches) torrentUrls.add(match);
         }
 
         const pageTitle = cleanText($('h1').first().text()) ||
