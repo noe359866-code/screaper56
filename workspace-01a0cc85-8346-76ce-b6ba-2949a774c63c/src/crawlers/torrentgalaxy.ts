@@ -166,6 +166,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       const isSeries = detailUrl.includes('cat=41') || /S\d{1,2}/i.test(title);
       const defaultType: ContentType = isSeries ? 'series' : 'movie';
       const parsedMeta = parseTorrentTitle(title, defaultType);
+      const metaAny = parsedMeta as any;
       
       // Idiomas: Si es de los endpoints de español, lo pasamos como pista
       const isSpanishEndpoint = sourceUrl.includes('search=spanish') || sourceUrl.includes('search=latino');
@@ -196,7 +197,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
         source_url: detailUrl,
         title: title || parsedMeta.cleanTitle,
         release_group: parsedMeta.releaseGroup,
-        quality: parsedMeta.quality,
+        quality: metaAny.quality || metaAny.resolution || null,
         codec: parsedMeta.codec,
         hdr_format: parsedMeta.hdrFormat,
         audio: langs.audio,
