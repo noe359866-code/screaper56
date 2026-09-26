@@ -1,5 +1,6 @@
 import { TorrentRecord } from '../types/torrent.js';
 import { ResilientHttpClient } from '../utils/http.js';
+import { normalizeInfoHash } from '../utils/magnet.js';
 import { hasValidSpanishRelease } from '../utils/language.js';
 
 export abstract class BaseCrawler {
@@ -32,10 +33,11 @@ export abstract class BaseCrawler {
     for (const record of records) {
       if (!record.info_hash) continue;
       
-      const hash = record.info_hash.toLowerCase();
+      const hash = normalizeInfoHash(record.info_hash);
+      if (!hash || /^0{40}$/.test(hash)) continue;
       if (!uniqueHashes.has(hash)) {
         uniqueHashes.add(hash);
-        deduplicated.push(record);
+        deduplicated.push({ ...record, info_hash: hash });
       }
     }
     

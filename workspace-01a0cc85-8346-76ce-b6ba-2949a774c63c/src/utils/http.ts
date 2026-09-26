@@ -54,6 +54,8 @@ export function getHeadersForUserAgent(ua: string = getRandomUserAgent()): Recor
   return headers;
 }
 
+class CloudflareChallengeError extends Error {}
+
 export interface HttpClientOptions extends AxiosRequestConfig {
   timeoutMs?: number;
   maxRetries?: number;
@@ -76,7 +78,7 @@ export class ResilientHttpClient {
 
     this.client = axios.create({
       ...options,
-      timeout: options.timeoutMs ?? 20000,
+      timeout: options.timeoutMs ?? options.timeout ?? (Number(process.env.REQUEST_TIMEOUT_MS) >= 1000 ? Number(process.env.REQUEST_TIMEOUT_MS) : 20000),
       headers: getHeadersForUserAgent(initialUA),
       maxRedirects: 5,
       validateStatus: (status) => (status >= 200 && status < 300) || status === 304
@@ -137,7 +139,7 @@ export class ResilientHttpClient {
 
         // Check if response is a disguised Cloudflare 200 challenge page
         if (typeof response.data === 'string' && this.isCloudflareChallenge(response.data)) {
-          throw new Error('Cloudflare Challenge encountered in 200 response');
+          throw new CloudflareChallengeError('Cloudflare Challenge encountered in 200 response');
         }
 
         return response;
@@ -150,7 +152,7 @@ export class ResilientHttpClient {
         const responseData = isAxiosError && typeof err.response?.data === 'string' ? err.response.data : '';
 
         // Check if it's a Cloudflare block (403, 503 or 200 challenge page)
-        const isCloudflare = status === 403 || status === 503 || this.isCloudflareChallenge(responseData);
+        const isCloudflare = err instanceof CloudflareChallengeError || status === 403 || status === 503 || this.isCloudflareChallenge(responseData);
 
         if (isCloudflare && this.autoSolveCloudflare && fullUrl && attempt === 1) {
           console.warn(`[HTTP] Cloudflare WAF detected on ${fullUrl} (Status: ${status || 'Challenge Page'}). Activating stealth solver...`);

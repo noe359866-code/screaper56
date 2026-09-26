@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
-import { parseMagnetUri } from '../utils/magnet.js';
+import { parseMagnetUri, normalizeInfoHash } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
 
@@ -63,12 +63,16 @@ export class EztvCrawler extends BaseCrawler {
           timeout: 5000
         });
         
-        if (resp.status === 200 && resp.data) {
+        if (resp.status === 200 && Array.isArray(resp.data?.torrents)) {
           console.log(`[${this.name}] Active domain found: ${domain}`);
           return domain;
         }
-      } catch (err) {
-        console.warn(`[${this.name}] Domain ${domain} unreachable.`);
+      } catch { /* API may be disabled while the HTML catalog remains public. */ }
+      try {
+        const html = await this.httpClient.get<string>(`${domain}/home`, { timeout: 5000 });
+        if (typeof html.data === 'string' && /class=["'][^"']*epinfo/.test(html.data)) return domain;
+      } catch {
+        console.warn(`[${this.name}] API and HTML unavailable at ${domain}.`);
       }
     }
     return null;
@@ -79,8 +83,7 @@ export class EztvCrawler extends BaseCrawler {
     
     const activeDomain = await this.getWorkingDomain();
     if (!activeDomain) {
-      console.error(`[${this.name}] CRITICAL: No working EZTV mirrors found. Aborting crawl.`);
-      return [];
+      throw new Error(`[${this.name}] No compatible mirror available.`);
     }
 
     const results: TorrentRecord[] = [];
@@ -93,7 +96,8 @@ export class EztvCrawler extends BaseCrawler {
         console.log(`[${this.name}] Querying EZTV API: ${apiUrl}`);
 
         const resp = await this.httpClient.get<any>(apiUrl);
-        const torrents: EztvApiTorrent[] = resp.data?.torrents || [];
+        if (!Array.isArray(resp.data?.torrents)) throw new Error('Invalid EZTV API payload');
+        const torrents: EztvApiTorrent[] = resp.data.torrents;
 
         if (!torrents || torrents.length === 0) {
           console.log(`[${this.name}] API returned no more results at page ${page}.`);
@@ -169,7 +173,7 @@ export class EztvCrawler extends BaseCrawler {
               file_index: null,
               info_hash: infoHash,
               magnet_url: magnetLink,
-              torrent_file_url: torrentLink,
+              torrent_file_url: torrentLink ? this.resolveUrl(torrentLink, activeDomain) : null,
               source_url: this.resolveUrl(detailPath, activeDomain),
               title,
               release_group: parsedMeta.releaseGroup,
@@ -200,14 +204,15 @@ export class EztvCrawler extends BaseCrawler {
   private mapApiTorrentToRecord(t: EztvApiTorrent, activeDomain: string): TorrentRecord | null {
     if (!t.hash) return null;
 
-    const infoHash = t.hash.toLowerCase();
+    const infoHash = normalizeInfoHash(t.hash);
+    if (!infoHash) return null;
     const fullTitle = t.filename || t.title;
     const parsedMeta = parseTorrentTitle(fullTitle, 'series');
     const langs = detectLanguages(fullTitle, ['eztv', 'tv']);
     const metaAny = parsedMeta as any;
 
     let imdbId: string | null = null;
-    if (t.imdb_id && t.imdb_id !== '0') {
+    if (t.imdb_id && /^(?:tt)?\d{1,10}$/.test(String(t.imdb_id)) && Number(String(t.imdb_id).replace(/^tt/, '')) > 0) {
       const raw = String(t.imdb_id).replace(/^tt/, '').trim();
       imdbId = `tt${raw.padStart(7, '0')}`;
     }
@@ -227,8 +232,8 @@ export class EztvCrawler extends BaseCrawler {
       anilist_id: null,
       mal_id: null,
       type: 'series',
-      season: isNaN(Number(season)) ? null : Number(season),
-      episode: isNaN(Number(episode)) ? null : Number(episode),
+      season: season == null || !Number.isFinite(Number(season)) ? null : Number(season),
+      episode: episode == null || !Number.isFinite(Number(episode)) ? null : Number(episode),
       absolute_episode: parsedMeta.absoluteEpisode,
       file_index: null,
       info_hash: infoHash,

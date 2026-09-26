@@ -1,9 +1,9 @@
-import * as crypto from 'node:crypto';
+import { parseTorrentBuffer } from '../utils/bencode2.js';
 import * as cheerio from 'cheerio';
 import pLimit from 'p-limit';
 import { BaseCrawler } from './base.js';
 import { TorrentRecord, ContentType } from '../types/torrent.js';
-import { buildMagnetUri } from '../utils/magnet.js';
+import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
 
@@ -36,7 +36,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
           }
         });
 
-        if (resp.status === 200 && resp.data && resp.data.length > 1000) {
+        if (resp.status === 200 && resp.data && typeof resp.data === 'string' && /href=["'][^"']*\/(peliculas|series)\/[^"']+/i.test(resp.data)) {
           console.log(`[${this.name}] Connected to active mirror: ${mirror}`);
           return mirror;
         }
@@ -52,8 +52,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
     
     const workingMirror = await this.getWorkingMirror();
     if (!workingMirror) {
-      console.error(`[${this.name}] CRITICAL: No working mirrors found. Aborting.`);
-      return [];
+      throw new Error(`[${this.name}] No compatible mirror available.`);
     }
 
     const results: TorrentRecord[] = [];
@@ -170,7 +169,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
     $('a').each((_, el) => {
       const href = $(el).attr('href') || '';
       if (href.includes('acortame-esto.com/s.php?i=')) {
-        const param = href.split('?i=')[1];
+        const param = new URL(href, url).searchParams.get('i');
         if (param) {
           const decoded = decodeAcortameString(param);
           if (decoded.startsWith('magnet:') && !magnetLink) magnetLink = decoded;
@@ -178,22 +177,21 @@ export class EliteTorrentCrawler extends BaseCrawler {
         }
       } else if (href.startsWith('magnet:') && !magnetLink) {
         magnetLink = href;
-      } else if (href.endsWith('.torrent') && !torrentDownloadUrl) {
-        torrentDownloadUrl = href.startsWith('http') ? href : `${mirror}${href.startsWith('/') ? '' : '/'}${href}`;
+      } else if (/\.torrent(?:[?#]|$)/i.test(href) && !torrentDownloadUrl) {
+        torrentDownloadUrl = new URL(href, url).href;
       }
     });
 
     let infoHash: string | null = null;
     if (magnetLink) {
-      const match = (magnetLink as string).match(/urn:btih:([0-9a-fA-F]{40})/i);
-      if (match) infoHash = match[1].toLowerCase();
+      infoHash = parseMagnetUri(magnetLink)?.infoHash ?? null;
     }
 
     let sizeBytes = parseSizeToBytes(sizeStr);
 
     if ((!infoHash || !sizeBytes) && torrentDownloadUrl) {
       try {
-        const tResp = await this.httpClient.get<Buffer>(torrentDownloadUrl, { responseType: 'arraybuffer' });
+        const tResp = await this.httpClient.get<Buffer>(torrentDownloadUrl, { responseType: 'arraybuffer', maxContentLength: 10 * 1024 * 1024, headers: { Referer: url } });
         const parsed = parseTorrentBuffer(Buffer.from(tResp.data));
         if (parsed) {
           if (!infoHash) infoHash = parsed.infoHash;
@@ -213,7 +211,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
       return `S${s.padStart(2, '0')}E${e.padStart(2, '0')}`;
     });
 
-    const parsedMeta = parseTorrentTitle(normalizedTitleForParsing, defaultType);
+    const parsedMeta = parseTorrentTitle(`${normalizedTitleForParsing} ${calidadStr} ${formatoStr}`, defaultType);
     const hints = ['elitetorrent', idiomaStr, calidadStr, formatoStr];
     const langs = detectLanguages(cleanTitle, hints);
 
@@ -264,14 +262,6 @@ export class EliteTorrentCrawler extends BaseCrawler {
   }
 }
 
-interface ParsedTorrentMeta {
-  infoHash: string;
-  name: string;
-  sizeBytes: number;
-  primaryTracker: string | null;
-  trackers: string[];
-}
-
 function rot13(str: string): string {
   return str.replace(/[a-zA-Z]/g, (char) => {
     const code = char.charCodeAt(0);
@@ -293,96 +283,6 @@ function decodeAcortameString(raw: string): string {
     }
   }
   return rot13(s);
-}
-
-function parseTorrentBuffer(buf: Buffer): ParsedTorrentMeta | null {
-  if (!buf || buf.length < 20) return null;
-  const target = Buffer.from('4:info');
-  const targetIdx = buf.indexOf(target);
-  if (targetIdx === -1) return null;
-
-  const startPos = targetIdx + target.length;
-  if (buf[startPos] !== 0x64) return null;
-
-  try {
-    const endPos = skipBencodeValue(buf, startPos);
-    const infoSlice = buf.subarray(startPos, endPos);
-    const infoHash = crypto.createHash('sha1').update(infoSlice).digest('hex').toLowerCase();
-    
-    const decoded = decodeBencode(buf) as Record<string, any>;
-    const info = decoded?.info || {};
-
-    let sizeBytes = typeof info.length === 'number' ? info.length : 0;
-    if (Array.isArray(info.files)) {
-      sizeBytes = info.files.reduce((acc: number, f: any) => acc + (typeof f?.length === 'number' ? f.length : 0), 0);
-    }
-
-    const primaryTracker = typeof decoded?.announce === 'string' ? decoded.announce : (Buffer.isBuffer(decoded?.announce) ? decoded.announce.toString('utf-8') : null);
-
-    return {
-      infoHash,
-      name: typeof info.name === 'string' ? info.name : (Buffer.isBuffer(info.name) ? info.name.toString('utf-8') : ''),
-      sizeBytes,
-      primaryTracker,
-      trackers: primaryTracker ? [primaryTracker] : []
-    };
-  } catch {
-    return null;
-  }
-}
-
-function skipBencodeValue(buf: Buffer, p: number): number {
-  if (p >= buf.length) throw new Error('Out of bounds');
-  const char = buf[p];
-  if (char === 0x69) return buf.indexOf(0x65, p) + 1;
-  if (char === 0x6c || char === 0x64) {
-    let cur = p + 1;
-    while (cur < buf.length && buf[cur] !== 0x65) cur = skipBencodeValue(buf, cur);
-    return cur + 1;
-  }
-  const colon = buf.indexOf(0x3a, p);
-  const len = parseInt(buf.subarray(p, colon).toString('ascii'), 10);
-  return colon + 1 + len;
-}
-
-function decodeBencode(buf: Buffer): any {
-  let pos = 0;
-  function parse(): any {
-    if (pos >= buf.length) return null;
-    const byte = buf[pos];
-    if (byte === 0x69) {
-      pos++;
-      const end = buf.indexOf(0x65, pos);
-      const str = buf.subarray(pos, end).toString('ascii');
-      pos = end + 1;
-      return parseInt(str, 10);
-    }
-    if (byte === 0x6c) {
-      pos++;
-      const list = [];
-      while (pos < buf.length && buf[pos] !== 0x65) list.push(parse());
-      pos++;
-      return list;
-    }
-    if (byte === 0x64) {
-      pos++;
-      const dict: Record<string, any> = {};
-      while (pos < buf.length && buf[pos] !== 0x65) {
-        const key = parse();
-        const val = parse();
-        if (typeof key === 'string') dict[key] = val;
-      }
-      pos++;
-      return dict;
-    }
-    const colon = buf.indexOf(0x3a, pos);
-    const len = parseInt(buf.subarray(pos, colon).toString('ascii'), 10);
-    pos = colon + 1;
-    const valBuf = buf.subarray(pos, pos + len);
-    pos += len;
-    return valBuf.toString('utf-8');
-  }
-  return parse();
 }
 
 export default EliteTorrentCrawler;

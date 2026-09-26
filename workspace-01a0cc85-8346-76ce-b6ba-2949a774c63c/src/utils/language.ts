@@ -55,7 +55,7 @@ const REGEX_OTHER_FOREIGN = /\b(french|truefrench|vostfr|german|deutsch|hindi|ta
 /**
  * Detects audio and subtitle languages from title text, tags, and page metadata.
  */
-export function detectLanguages(rawText: string, metadataHints: string[] = []): DetectedLanguages {
+export function detectLanguages(rawText: string, metadataHints: string[] = [], inferDefaults = true): DetectedLanguages {
   const combinedText = [rawText, ...metadataHints].join(' ');
 
   const audioSet = new Set<string>();
@@ -81,7 +81,7 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
   }
 
   // 4. Handle Dual / Multi-Audio indicators
-  if (REGEX_DUAL.test(combinedText)) {
+  if (inferDefaults && REGEX_DUAL.test(combinedText)) {
     if (audioSet.has(SPANISH_AUDIO_CANONICAL) || audioSet.has(LATINO_AUDIO_CANONICAL)) {
       audioSet.add(ENGLISH_AUDIO_CANONICAL);
     } else if (audioSet.has(ENGLISH_AUDIO_CANONICAL)) {
@@ -102,7 +102,7 @@ export function detectLanguages(rawText: string, metadataHints: string[] = []): 
   }
 
   // 6. Default Fallback Logic when no explicit audio tag is in the title
-  if (audioSet.size === 0) {
+  if (inferDefaults && audioSet.size === 0) {
     // If from a purely Spanish tracker
     if (REGEX_ES_TRACKERS.test(combinedText)) {
       audioSet.add(SPANISH_AUDIO_CANONICAL);

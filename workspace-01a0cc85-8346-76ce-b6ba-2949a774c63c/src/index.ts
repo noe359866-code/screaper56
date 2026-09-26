@@ -10,6 +10,8 @@ import { MejorTorrentCrawler } from './crawlers/mejortorrent.js';
 import { EliteTorrentCrawler } from './crawlers/elitetorrent.js';
 import { LimeTorrentsCrawler } from './crawlers/limetorrent.js';
 import { NyaaCrawler } from './crawlers/nyaa.js';
+import { WolftorrentCrawler } from './crawlers/wolftorrent.js';
+import { SinsitioCrawler } from './crawlers/sinsitio.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
@@ -38,7 +40,9 @@ async function main() {
     mejortorrent: () => new MejorTorrentCrawler(),
     elitetorrent: () => new EliteTorrentCrawler(),
     limetorrents: () => new LimeTorrentsCrawler(),
-    nyaa: () => new NyaaCrawler()
+    nyaa: () => new NyaaCrawler(),
+    wolftorrent: () => new WolftorrentCrawler(),
+    sinsitio: () => new SinsitioCrawler()
   };
 
   const summary: ScraperExecutionSummary = {

@@ -27,7 +27,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
         const resp = await this.httpClient.get<string>(mirror, { timeout: 7000 });
         
         // Verificamos que devuelva HTML válido de TGX
-        if (resp.status === 200 && resp.data && resp.data.includes('tgx')) {
+        if (resp.status === 200 && resp.data && typeof resp.data === 'string' && /tgxtable|href=["'][^"']*torrents\.php/i.test(resp.data)) {
           console.log(`[${this.name}] Active mirror found: ${mirror}`);
           return mirror;
         }
@@ -43,8 +43,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
     
     const activeMirror = await this.getWorkingMirror();
     if (!activeMirror) {
-      console.error(`[${this.name}] CRITICAL: No working mirrors found. Aborting crawl.`);
-      return [];
+      throw new Error(`[${this.name}] No compatible mirror available.`);
     }
 
     const results: TorrentRecord[] = [];
@@ -113,7 +112,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
     $('.tgxtablerow').each((_, el) => {
       
       // 1. TÍTULO Y URL
-      const titleLink = $(el).find('a.txlight, a[href^="/torrent/"]');
+      const titleLink = $(el).find('a[href*="/torrent/"]:not([href*=".torrent"])').first();
       if (titleLink.length === 0) return; // Fila inválida
 
       const title = titleLink.attr('title') || titleLink.text().trim();
@@ -152,7 +151,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       if (!sizeText) {
         sizeText = $(el).find('div.tgxtablecell').eq(3).text().trim();
       }
-      const sizeBytes = parseSizeToBytes(sizeText);
+      const sizeBytes = parseSizeToBytes(sizeText) ?? $(el).find('.tgxtablecell').toArray().map(cell => parseSizeToBytes($(cell).text().trim())).find(size => size !== null) ?? null;
 
       // 5. IMDB ID
       let imdbId: string | null = null;
@@ -163,22 +162,17 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       }
 
       // 6. METADATOS Y LIMPIEZA
-      const isSeries = detailUrl.includes('cat=41') || /S\d{1,2}/i.test(title);
+      const isSeries = /\bS\d{1,2}E\d+|\b\d{1,2}x\d{1,3}\b/i.test(title);
       const defaultType: ContentType = isSeries ? 'series' : 'movie';
       const parsedMeta = parseTorrentTitle(title, defaultType);
       const metaAny = parsedMeta as any;
       
-      // Idiomas: Si es de los endpoints de español, lo pasamos como pista
-      const isSpanishEndpoint = sourceUrl.includes('search=spanish') || sourceUrl.includes('search=latino');
+      // Idioma del lanzamiento, no del término buscado.
       const hints = ['tgx', 'torrentgalaxy'];
-      if (isSpanishEndpoint) hints.push('spanish', 'latino');
+      // Search terms are discovery hints, not proof of a release's audio language.
       
       const langs = detectLanguages(title, hints);
 
-      // Si viene del endpoint latino pero el regex no lo detectó en el título
-      if (isSpanishEndpoint && langs.audio.length === 0) {
-        langs.audio.push(sourceUrl.includes('latino') ? 'Spanish (Latino)' : 'Spanish');
-      }
 
       records.push({
         imdb_id: imdbId,

@@ -1,3 +1,4 @@
+import { normalizeInfoHash } from '../utils/magnet.js';
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { detectLanguages } from '../utils/language.js';
@@ -72,7 +73,7 @@ export class YtsCrawler extends BaseCrawler {
           timeout: 5000
         });
         
-        if (resp.status === 200 && resp.data?.status === 'ok') {
+        if (resp.status === 200 && resp.data?.status === 'ok' && resp.data?.data && (Array.isArray(resp.data.data.movies) || resp.data.data.movie_count === 0)) {
           console.log(`[${this.name}] Active domain found: ${domain}`);
           return domain;
         }
@@ -88,8 +89,7 @@ export class YtsCrawler extends BaseCrawler {
     
     const activeDomain = await this.getWorkingDomain();
     if (!activeDomain) {
-      console.error(`[${this.name}] CRITICAL: No working YTS mirrors found. Aborting crawl.`);
-      return [];
+      throw new Error(`[${this.name}] No compatible mirror available.`);
     }
 
     const results: TorrentRecord[] = [];
@@ -106,7 +106,9 @@ export class YtsCrawler extends BaseCrawler {
           console.log(`[${this.name}] Fetching ${sortMode} movies: ${listUrl}`);
           
           const resp = await this.httpClient.get<any>(listUrl);
-          const movies: YtsApiMovie[] = resp.data?.data?.movies || [];
+          if (resp.data?.status !== 'ok' || !resp.data?.data) throw new Error('Invalid YTS API payload');
+          const movies: YtsApiMovie[] = resp.data.data.movies || [];
+          if (!Array.isArray(movies)) throw new Error('Invalid YTS movies array');
 
           if (movies.length === 0) {
             console.log(`[${this.name}] No more movies found on page ${page}.`);
@@ -117,7 +119,8 @@ export class YtsCrawler extends BaseCrawler {
             if (!movie.torrents || movie.torrents.length === 0) continue;
 
             for (const torrent of movie.torrents) {
-              const infoHash = torrent.hash.toLowerCase();
+              const infoHash = normalizeInfoHash(torrent.hash);
+              if (!infoHash) continue;
               
               // Deduplicación: Si una película es "Popular" y "Reciente", no la insertamos dos veces
               if (uniqueHashes.has(infoHash)) continue;
@@ -130,15 +133,13 @@ export class YtsCrawler extends BaseCrawler {
               const metaAny = parsedMeta as any;
               
               // Lógica de idiomas usando el campo nativo de la API de YTS
-              const langHints = ['YTS'];
-              if (movie.language === 'es' || movie.language === 'es-mx') {
-                langHints.push('spanish', 'latino');
-              }
+              const nativeLanguage = (movie.language || '').toLowerCase();
+              const langHints = nativeLanguage === 'es' || nativeLanguage === 'es-es'
+                ? ['spanish'] : /^es[-_](mx|ar|419)$/.test(nativeLanguage)
+                ? ['latino'] : nativeLanguage === 'en' ? ['english'] : [];
               const langs = detectLanguages(torrentTitle, langHints);
-              
-              if (movie.language && movie.language.includes('es') && langs.audio.length === 0) {
-                langs.audio.push('Spanish');
-              }
+              // Do not turn a French/Japanese API release into English by default.
+              if (nativeLanguage && !langHints.length) langs.audio = [];
 
               // Normalizamos IMDB ID
               let imdbId: string | null = null;
@@ -168,9 +169,9 @@ export class YtsCrawler extends BaseCrawler {
                 quality: torrent.quality || metaAny.quality || metaAny.resolution || null,
                 codec: torrent.video_codec || metaAny.codec || null,
                 hdr_format: metaAny.hdrFormat || null,
-                audio: langs.audio.length > 0 ? langs.audio : ['English'], // YTS por defecto siempre incluye Inglés
+                audio: langs.audio,
                 subtitles: langs.subtitles,
-                channels: metaAny.channels || null,
+                channels: torrent.audio_channels || parsedMeta.channels || null,
                 size_bytes: torrent.size_bytes || 0,
                 seeders: torrent.seeds || 0,
                 leechers: torrent.peers || 0,

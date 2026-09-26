@@ -62,12 +62,17 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
     'mejortorrent',
     'elitetorrent',
     'limetorrents',
-    'nyaa'
+    'nyaa',
+    'wolftorrent',
+    'sinsitio'
   ];
 
   const targetCrawlers = targetCrawlersRaw === 'all'
     ? defaultCrawlers
-    : targetCrawlersRaw.split(',').map(s => s.trim()).filter(Boolean);
+    : [...new Set(targetCrawlersRaw.split(',').map(s => s.trim()).filter(Boolean))];
+
+  const unknown = targetCrawlers.filter(name => !defaultCrawlers.includes(name));
+  if (unknown.length) throw new Error(`Unknown TARGET_CRAWLERS: ${unknown.join(', ')}`);
 
   // 2. INMUTABILIDAD: Congelamos el objeto para prevenir mutaciones accidentales.
   cachedConfig = Object.freeze({

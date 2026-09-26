@@ -49,7 +49,7 @@ export function base32ToHex(base32Str: string): string {
  * - 32-char Base32 (e.g. "TWEGM72J6QRRE4U4FBENGRVTOIN4IQMR")
  */
 export function normalizeInfoHash(rawHash: string): string | null {
-  if (!rawHash) return null;
+  if (typeof rawHash !== 'string' || !rawHash) return null;
   const clean = rawHash.trim().replace(REGEX_BTIH_PREFIX, '');
 
   // 40-character Hex

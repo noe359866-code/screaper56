@@ -1,238 +1,95 @@
-import * as crypto from 'node:crypto';
+import { createHash } from 'node:crypto';
 
 export interface ParsedTorrentFile {
-  infoHash: string; // 40 caracteres hexadecimales en minúsculas
+  infoHash: string;
   name: string;
   sizeBytes: number;
   primaryTracker: string | null;
   trackers: string[];
 }
 
-/**
- * Salta un elemento bencode individual a partir de un índice dado y retorna el índice posterior.
- * Retorna -1 si la estructura bencode está mal formada.
+type Value = Buffer | number | Value[] | { [key: string]: Value };
+const isDict = (v: Value | undefined): v is { [key: string]: Value } =>
+  !!v && typeof v === 'object' && !Buffer.isBuffer(v) && !Array.isArray(v);
+
+/** Parse the entire metainfo, hashing the original bytes of the ROOT info value.
+ * Bounds/depth checks prevent malformed downloads (including HTML) hanging a worker.
  */
-function skipBencodedItem(buffer: Buffer, startIndex: number): number {
-  let i = startIndex;
-  if (i >= buffer.length) return -1;
-
-  const byte = buffer[i];
-
-  // Entero: i<number>e
-  if (byte === 0x69) {
-    i++;
-    while (i < buffer.length && buffer[i] !== 0x65) {
-      i++;
+export function parseTorrentBuffer(buffer: Buffer): ParsedTorrentFile | null {
+  if (!buffer.length || buffer.length > 10 * 1024 * 1024 || buffer[0] !== 100) return null;
+  let pos = 0;
+  let infoBytes: Buffer | undefined;
+  function parse(depth = 0): Value {
+    if (depth > 64 || pos >= buffer.length) throw new Error('Invalid bencode bounds');
+    const token = buffer[pos];
+    if (token === 105) {
+      const end = buffer.indexOf(101, ++pos);
+      if (end < 0) throw new Error('Unterminated integer');
+      const text = buffer.toString('ascii', pos, end);
+      if (!/^(0|-?[1-9]\d*)$/.test(text)) throw new Error('Invalid integer');
+      const value = Number(text);
+      if (!Number.isSafeInteger(value)) throw new Error('Unsafe integer');
+      pos = end + 1;
+      return value;
     }
-    if (i >= buffer.length) return -1;
-    return i + 1; // Salta 'e'
-  } 
-  // Lista ('l') o Diccionario ('d')
-  else if (byte === 0x6c || byte === 0x64) {
-    i++; // Salta 'l' o 'd'
-    let depth = 1;
-    while (i < buffer.length && depth > 0) {
-      const nextByte = buffer[i];
-      if (nextByte === 0x65) { // 'e'
-        depth--;
-        i++;
-      } else {
-        const nextI = skipBencodedItem(buffer, i);
-        if (nextI === -1) return -1;
-        i = nextI;
-      }
-    }
-    return depth === 0 ? i : -1;
-  } 
-  // Cadena de texto: <length>:<data>
-  else if (byte >= 0x30 && byte <= 0x39) {
-    let colonIndex = -1;
-    for (let j = i; j < Math.min(i + 20, buffer.length); j++) {
-      if (buffer[j] === 0x3a) { // ':'
-        colonIndex = j;
-        break;
-      }
-    }
-    if (colonIndex === -1) return -1;
-
-    const lenStr = buffer.toString('utf8', i, colonIndex);
-    const strLen = parseInt(lenStr, 10);
-    if (isNaN(strLen) || strLen < 0) return -1;
-
-    const nextI = colonIndex + 1 + strLen;
-    if (nextI > buffer.length) return -1;
-    return nextI;
-  } 
-  else {
-    return -1; // Token bencode inválido
-  }
-}
-
-/**
- * Extrae una cadena de texto de un búfer bencode en un índice de cadena válido.
- */
-function parseBencodedStringContent(buffer: Buffer, startIndex: number): { value: string; nextIndex: number } | null {
-  const colonIdx = buffer.indexOf(0x3a, startIndex);
-  if (colonIdx === -1) return null;
-
-  const lenStr = buffer.toString('utf8', startIndex, colonIdx);
-  const strLen = parseInt(lenStr, 10);
-  if (isNaN(strLen) || strLen < 0) return null;
-
-  const dataStart = colonIdx + 1;
-  const dataEnd = dataStart + strLen;
-  if (dataEnd > buffer.length) return null;
-
-  const value = buffer.toString('utf8', dataStart, dataEnd);
-  return { value, nextIndex: dataEnd };
-}
-
-/**
- * Analiza de forma ligera y ultra rápida un diccionario 'info' bencode para extraer name y sizeBytes.
- */
-function parseInfoDictionary(buffer: Buffer, startIdx: number, endIdx: number): { name: string; sizeBytes: number } {
-  let i = startIdx + 1; // Salta 'd' inicial del info dict
-  let name = '';
-  let sizeBytes = 0;
-
-  while (i < endIdx - 1) {
-    const keyResult = parseBencodedStringContent(buffer, i);
-    if (!keyResult) break;
-
-    const key = keyResult.value;
-    const valStart = keyResult.nextIndex;
-    const valEnd = skipBencodedItem(buffer, valStart);
-    if (valEnd === -1 || valEnd > endIdx) break;
-
-    if (key === 'name') {
-      const nameResult = parseBencodedStringContent(buffer, valStart);
-      if (nameResult) name = nameResult.value;
-    } else if (key === 'length') {
-      // Entero bencode: i<number>e
-      if (buffer[valStart] === 0x69) {
-        const intStr = buffer.toString('utf8', valStart + 1, valEnd - 1);
-        const len = parseInt(intStr, 10);
-        if (!isNaN(len)) sizeBytes = len;
-      }
-    } else if (key === 'files') {
-      // Torrents multi-archivo
-      if (buffer[valStart] === 0x6c) { // 'l'
-        let fileIdx = valStart + 1;
-        while (fileIdx < valEnd - 1) {
-          const fileDictEnd = skipBencodedItem(buffer, fileIdx);
-          if (fileDictEnd === -1) break;
-
-          // Parsear cada subdiccionario de archivo buscando 'length'
-          let subI = fileIdx + 1;
-          while (subI < fileDictEnd - 1) {
-            const subKeyRes = parseBencodedStringContent(buffer, subI);
-            if (!subKeyRes) break;
-            const subKey = subKeyRes.value;
-            const subValStart = subKeyRes.nextIndex;
-            const subValEnd = skipBencodedItem(buffer, subValStart);
-            if (subValEnd === -1) break;
-
-            if (subKey === 'length' && buffer[subValStart] === 0x69) {
-              const lenStr = buffer.toString('utf8', subValStart + 1, subValEnd - 1);
-              const fileLen = parseInt(lenStr, 10);
-              if (!isNaN(fileLen)) sizeBytes += fileLen;
-            }
-            subI = subValEnd;
-          }
-          fileIdx = fileDictEnd;
+    if (token === 108 || token === 100) {
+      pos++;
+      const list: Value[] = [];
+      const dict: { [key: string]: Value } = Object.create(null);
+      while (buffer[pos] !== 101) {
+        if (token === 108) list.push(parse(depth + 1));
+        else {
+          const key = parse(depth + 1);
+          if (!Buffer.isBuffer(key)) throw new Error('Invalid dictionary key');
+          const name = key.toString('utf8');
+          if (Object.hasOwn(dict, name)) throw new Error('Duplicate dictionary key');
+          const start = pos;
+          dict[name] = parse(depth + 1);
+          if (depth === 0 && name === 'info') infoBytes = buffer.subarray(start, pos);
         }
       }
+      pos++;
+      return token === 108 ? list : dict;
     }
-
-    i = valEnd;
+    const colon = buffer.indexOf(58, pos);
+    if (colon < 0 || colon - pos > 10) throw new Error('Invalid string length');
+    const text = buffer.toString('ascii', pos, colon);
+    if (!/^(0|[1-9]\d*)$/.test(text)) throw new Error('Invalid string');
+    const end = colon + 1 + Number(text);
+    if (end > buffer.length) throw new Error('Truncated string');
+    const value = buffer.subarray(colon + 1, end);
+    pos = end;
+    return value;
   }
-
-  return { name, sizeBytes };
-}
-
-/**
- * Decodificador Bencode seguro, de pasada única y cálculo exacto de SHA-1 info_hash (BEP 0003).
- */
-export function parseTorrentBuffer(buf: Buffer): ParsedTorrentFile | null {
-  if (!buf || buf.length < 20 || buf[0] !== 0x64 /* 'd' */) {
-    return null;
-  }
-
-  let i = 1; // Salta el 'd' del diccionario raíz
-  let infoHash = '';
-  let name = '';
-  let sizeBytes = 0;
-  let primaryTracker: string | null = null;
-  const trackers: string[] = [];
-
-  // Recorrer el diccionario raíz clave por clave de manera estructural (sin falsos positivos)
-  while (i < buf.length) {
-    if (buf[i] === 0x65) { // 'e' final del diccionario raíz
-      break;
-    }
-
-    const keyResult = parseBencodedStringContent(buf, i);
-    if (!keyResult) return null;
-
-    const key = keyResult.value;
-    const valStart = keyResult.nextIndex;
-    const valEnd = skipBencodedItem(buf, valStart);
-    if (valEnd === -1) return null;
-
-    if (key === 'announce') {
-      const announceRes = parseBencodedStringContent(buf, valStart);
-      if (announceRes) {
-        const trackerUrl = announceRes.value;
-        if (!primaryTracker) primaryTracker = trackerUrl;
-        if (!trackers.includes(trackerUrl)) trackers.push(trackerUrl);
+  try {
+    const root = parse();
+    if (pos !== buffer.length || !isDict(root) || !isDict(root.info) || !infoBytes) return null;
+    const info = root.info;
+    // v2-only metainfo cannot be represented by our v1 BTIH schema.
+    if (info['meta version'] === 2 && !Buffer.isBuffer(info.pieces)) return null;
+    const length = (v: Value | undefined): number => {
+      if (typeof v !== 'number' || v < 0) throw new Error('Invalid file length');
+      return v;
+    };
+    const sizeBytes = Array.isArray(info.files)
+      ? info.files.reduce<number>((sum, file) => {
+          if (!isDict(file)) throw new Error('Invalid file');
+          return sum + length(file.length);
+        }, 0)
+      : length(info.length);
+    if (!Number.isSafeInteger(sizeBytes)) return null;
+    const text = (v: Value | undefined) => Buffer.isBuffer(v) ? v.toString('utf8') : '';
+    const trackers = new Set<string>();
+    if (text(root.announce)) trackers.add(text(root.announce));
+    if (Array.isArray(root['announce-list'])) {
+      for (const tier of root['announce-list']) {
+        if (Array.isArray(tier)) for (const tr of tier) if (text(tr)) trackers.add(text(tr));
       }
-    } else if (key === 'announce-list') {
-      // Estructura de listas anidadas de tiers de trackers
-      if (buf[valStart] === 0x6c) {
-        let tierIdx = valStart + 1;
-        while (tierIdx < valEnd - 1) {
-          const tierEnd = skipBencodedItem(buf, tierIdx);
-          if (tierEnd === -1) break;
-
-          if (buf[tierIdx] === 0x6c) {
-            let trIdx = tierIdx + 1;
-            while (trIdx < tierEnd - 1) {
-              const trRes = parseBencodedStringContent(buf, trIdx);
-              if (trRes) {
-                const trUrl = trRes.value;
-                if (!trackers.includes(trUrl)) trackers.push(trUrl);
-              }
-              const nextTr = skipBencodedItem(buf, trIdx);
-              if (nextTr === -1) break;
-              trIdx = nextTr;
-            }
-          }
-          tierIdx = tierEnd;
-        }
-      }
-    } else if (key === 'info') {
-      // Extraer infoHash matemáticamente exacto (BEP 0003)
-      const infoSlice = buf.subarray(valStart, valEnd);
-      infoHash = crypto.createHash('sha1').update(infoSlice).digest('hex').toLowerCase();
-
-      // Analizar metadatos internos del diccionario info de forma ligera
-      const infoMeta = parseInfoDictionary(buf, valStart, valEnd);
-      name = infoMeta.name;
-      sizeBytes = infoMeta.sizeBytes;
     }
-
-    i = valEnd;
-  }
-
-  if (!infoHash) {
-    return null;
-  }
-
-  return {
-    infoHash,
-    name,
-    sizeBytes,
-    primaryTracker,
-    trackers
-  };
+    return {
+      infoHash: createHash('sha1').update(infoBytes).digest('hex'),
+      name: text(info['name.utf-8']) || text(info.name), sizeBytes,
+      trackers: [...trackers], primaryTracker: [...trackers][0] || null
+    };
+  } catch { return null; }
 }
