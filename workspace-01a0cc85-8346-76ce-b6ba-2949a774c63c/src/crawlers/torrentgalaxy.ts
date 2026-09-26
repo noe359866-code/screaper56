@@ -56,6 +56,8 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
     this.log.info(`Starting TorrentGalaxy crawl (maxPages=${maxPages})...`);
 
     const activeMirror = await this.getWorkingMirror();
+    this.baseUrl = activeMirror;
+
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
 
@@ -85,6 +87,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
 
           const records = this.parseTorrentGalaxyHtml(html, fullUrl, activeMirror);
           let added = 0;
+
           for (const record of records) {
             if (uniqueHashes.has(record.info_hash)) continue;
             uniqueHashes.add(record.info_hash);
@@ -100,7 +103,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${fullUrl}: ${describe(error)}. Skipping endpoint.`);
+          this.log.warn(`Failed fetching ${fullUrl}: ${formatError(error)}. Skipping endpoint.`);
           break;
         }
       }
@@ -131,35 +134,47 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       // 2. Magnet / infohash (falls back to the iTorrents hash in the file link).
       let magnetHref = row.find('a[href^="magnet:?xt="]').first().attr('href');
       let infoHash: string | null = null;
+      let parsedMagnet = magnetHref ? parseMagnetUri(magnetHref) : null;
 
-      if (magnetHref) {
-        infoHash = parseMagnetUri(magnetHref)?.infoHash ?? null;
+      if (parsedMagnet?.infoHash) {
+        infoHash = parsedMagnet.infoHash;
       } else {
         const itorrentLink = row.find('a[href*="/torrent/"][href$=".torrent"]').attr('href') || '';
         const hashMatch = itorrentLink.match(/torrent\/([0-9a-fA-F]{40})/i);
         if (hashMatch) {
           infoHash = hashMatch[1].toLowerCase();
           magnetHref = buildMagnetUri(infoHash, title);
+          parsedMagnet = parseMagnetUri(magnetHref);
         }
       }
+
       if (!infoHash || !magnetHref) return;
 
       // 3. Swarm counters (TGX colours them with <font> or classes).
-      const seeders = parseCount(row.find('font[color="green"], span.seeders').first().text());
-      const leechers = parseCount(row.find('font[color="#ff0000"], span.leechers').first().text());
+      const seeders = parseCount(row.find('font[color="green"], font[color="lime"], span.seeders, .seeders').first().text());
+      const leechers = parseCount(row.find('font[color="#ff0000"], font[color="red"], span.leechers, .leechers').first().text());
 
-      // 4. Size: badge first, then any cell that parses as a size.
-      const badgeSize = parseSizeToBytes(cleanText(row.find('span.badge').first().text()));
-      const cellSize = row.find('.tgxtablecell').toArray()
-        .map(cell => parseSizeToBytes(cleanText($(cell).text())))
-        .find(size => size !== null) ?? null;
+      // 4. Size: badge first, then short-circuit evaluation on cells.
+      let sizeBytes = parseSizeToBytes(cleanText(row.find('span.badge').first().text()));
 
-      // 5. IMDb
-      const imdbMatch = (row.find('a[href*="imdb.com/title/tt"]').attr('href') || '').match(/tt\d{7,8}/);
+      if (sizeBytes === null) {
+        const cells = row.find('.tgxtablecell').toArray();
+        for (const cell of cells) {
+          const parsed = parseSizeToBytes(cleanText($(cell).text()));
+          if (parsed !== null) {
+            sizeBytes = parsed;
+            break;
+          }
+        }
+      }
+
+      // 5. IMDb ID (up to 10 digits)
+      const imdbMatch = (row.find('a[href*="imdb.com/title/tt"]').attr('href') || '').match(/tt\d{7,10}/);
 
       const isSeries = /\bS\d{1,2}E\d+|\b\d{1,2}x\d{1,3}\b/i.test(title);
       const defaultType: ContentType = isSeries ? 'series' : 'movie';
       const meta = parseTorrentTitle(title, defaultType);
+      
       // Search terms are discovery hints, not proof of a release's audio language.
       const langs = detectLanguages(title, ['tgx', 'torrentgalaxy']);
 
@@ -171,12 +186,12 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
         // TGX redirects .torrent links to iTorrents; the magnet is the reliable source.
         torrentFileUrl: null,
         sourceUrl: detailUrl ?? sourceUrl,
-        trackers: parseMagnetUri(magnetHref)?.trackers ?? [],
+        trackers: parsedMagnet?.trackers ?? [],
         audio: langs.audio,
         subtitles: langs.subtitles,
         meta,
         quality: qualityOf(meta),
-        sizeBytes: badgeSize ?? cellSize,
+        sizeBytes,
         seeders,
         leechers,
         imdbId: imdbMatch ? imdbMatch[0] : null,
@@ -190,7 +205,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
   }
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
