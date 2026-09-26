@@ -148,7 +148,7 @@ export class PelispandaCrawler extends BaseCrawler {
           for (const dl of ep.downloads) {
             const seasonStr = String(season.season_number).padStart(2, '0');
             const epStr = String(ep.episode_number).padStart(2, '0');
-            const fallbackTitle = `${detail.title} S${seasonStr}E${epStr}`;
+            const fallbackTitle = `${detail.title} S${seasonStr}E${epStr} ${dl.quality || ''}`.trim();
 
             const record = this.buildTorrentRecord(dl, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId, season.season_number, ep.episode_number);
             if (record) records.push(record);
@@ -200,7 +200,6 @@ export class PelispandaCrawler extends BaseCrawler {
     }
 
     const sizeBytes = dl.size ? parseSizeToBytes(dl.size) : null;
-    const isEpisode = season !== undefined && episode !== undefined;
 
     return {
       imdb_id: imdbId,
@@ -226,8 +225,8 @@ export class PelispandaCrawler extends BaseCrawler {
       subtitles: langs.subtitles,
       channels: parsedMeta.channels,
       size_bytes: sizeBytes,
-      seeders: isEpisode ? 8 : 10,
-      leechers: isEpisode ? 1 : 2,
+      seeders: null,
+      leechers: null,
       source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
     };
   }

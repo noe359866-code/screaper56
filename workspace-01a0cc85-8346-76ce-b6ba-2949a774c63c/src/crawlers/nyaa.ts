@@ -69,13 +69,7 @@ export class NyaaCrawler extends BaseCrawler {
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     console.log(`[${this.name}] Starting Nyaa anime crawl (maxPages=${maxPages})...`);
     
-    let workingMirror: string;
-    try {
-      workingMirror = await this.getWorkingMirror();
-    } catch (error: any) {
-      console.error(error.message);
-      return []; // Aborta inmediatamente si Nyaa está totalmente caído
-    }
+    const workingMirror = await this.getWorkingMirror();
 
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
@@ -139,8 +133,8 @@ export class NyaaCrawler extends BaseCrawler {
             const metaAny = parsedMeta as any;
 
             // Como Nyaa a veces mezcla idiomas en 1_3, enviamos el endpoint a detectLanguages como contexto
-            const contextCategory = endpoint.includes('1_2') ? 'english' : (endpoint.includes('1_3') ? 'non-english' : 'spanish');
-            const langs = detectLanguages(title, ['nyaa', contextCategory]);
+            // 1_2 means English subtitles, NOT English audio; a search is not language evidence.
+            const langs = detectLanguages(title, endpoint.includes('1_2') ? ['nyaa', 'sub_en'] : ['nyaa'], false);
 
             // Descarga directa del .torrent (si existe)
             const torrentHref = tds.eq(2).find('a[href^="/download/"]').attr('href');

@@ -41,7 +41,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       ...this.defaultMirrors.filter(m => m !== this.baseUrl)
     ];
 
-    let workingMirror = 'https://limetorrent.store';
+    let workingMirror: string | null = null;
     for (const mirror of mirrorsToTry) {
       try {
         console.log(`[${this.name}] Testing connectivity to ${mirror}...`);
@@ -53,7 +53,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
           }
         });
 
-        if (resp.status === 200 && resp.data && resp.data.length > 500) {
+        if (resp.status === 200 && resp.data && typeof resp.data === 'string' && /class=["'][^"']*table2/.test(resp.data)) {
           workingMirror = mirror;
           console.log(`[${this.name}] Connected to active mirror: ${mirror}`);
           break;
@@ -63,6 +63,9 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         console.warn(`[${this.name}] Mirror ${mirror} unreachable: ${msg}. Trying next...`);
       }
     }
+
+    if (!workingMirror) throw new Error(`[${this.name}] No compatible LimeTorrents mirror available.`);
+    const activeMirror = workingMirror;
 
     const candidateMap = new Map<string, LimeCandidate>();
 
@@ -107,9 +110,11 @@ export class LimeTorrentsCrawler extends BaseCrawler {
             const fullUrl = href.startsWith('http') ? href : `${workingMirror}${href.startsWith('/') ? '' : '/'}${href}`;
             if (candidateMap.has(fullUrl)) return;
 
-            const sizeText = tds.eq(1).text().trim().includes('ago') ? tds.eq(2).text().trim() : tds.eq(1).text().trim();
-            const seedsText = tds.eq(2).text().trim().includes('ago') ? tds.eq(3).text().trim() : tds.eq(2).text().trim();
-            const leechesText = tds.eq(3).text().trim().includes('ago') ? tds.eq(4).text().trim() : tds.eq(3).text().trim();
+            // Table2: name, age, size, seeds, leeches. Some mirrors omit age.
+            const sizeIndex = tds.toArray().findIndex((td, index) => index > 0 && /[KMGT]i?B/i.test($(td).text()) && parseSizeToBytes($(td).text().trim()) !== null);
+            const sizeText = sizeIndex >= 0 ? tds.eq(sizeIndex).text().trim() : '';
+            const seedsText = sizeIndex >= 0 ? tds.eq(sizeIndex + 1).text().trim() : '';
+            const leechesText = sizeIndex >= 0 ? tds.eq(sizeIndex + 2).text().trim() : '';
 
             candidateMap.set(fullUrl, {
               title,
@@ -180,7 +185,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       limit(async () => {
         try {
           await new Promise(r => setTimeout(r, 100));
-          const record = await this.parseLimeDetail(item, workingMirror);
+          const record = await this.parseLimeDetail(item, activeMirror);
           if (record) {
             results.push(record);
           }
@@ -210,7 +215,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     let infoHash: string | null = null;
     let magnetUri: string | null = null;
     let sizeBytes = item.sizeBytes || null;
-    let seeders = item.seeders || 0;
+    let seeders = item.seeders ?? 0;
     let leechers = item.leeches || 0;
     const trackers: string[] = [];
 

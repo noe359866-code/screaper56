@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Target crawlers to execute (all, pelispanda, leech1337x, torrentgalaxy, yts, eztv, thepiratebay, mejortorrent, elitetorrent)"
+        description: "Crawler a ejecutar (all incluye las 12 fuentes)"
         required: false
         default: "all"
         type: choice
@@ -20,6 +20,10 @@ on:
           - thepiratebay
           - mejortorrent
           - elitetorrent
+          - limetorrents
+          - nyaa
+          - wolftorrent
+          - sinsitio
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
@@ -64,7 +68,7 @@ jobs:
           node-version: 22
 
       - name: "Install Node Dependencies"
-        run: npm install
+        run: npm ci
 
       - name: "Cache Playwright Chromium Binaries"
         id: playwright-cache
@@ -81,6 +85,9 @@ jobs:
 
       - name: "Build TypeScript to JavaScript"
         run: npm run build
+
+      - name: "Offline crawler regression tests"
+        run: npm test
 
       - name: "Run Asynchronous Crawler and Database Upsert"
         env:

@@ -48,7 +48,7 @@ export class Leech1337xCrawler extends BaseCrawler {
         });
 
         const html = resp.data || '';
-        if (resp.status === 200 && !/Just a moment|Attention Required!|cf-mitigated|Cloudflare/i.test(html) && html.includes('table')) {
+        if (resp.status === 200 && !/Just a moment|Attention Required!|cf-mitigated|Cloudflare/i.test(html) && /table-list|href=["'][^"']*\/torrent\//.test(html)) {
           console.log(`[${this.name}] Connected to active endpoint: ${mirror}`);
           return mirror;
         }
@@ -63,16 +63,11 @@ export class Leech1337xCrawler extends BaseCrawler {
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     console.log(`[${this.name}] Starting 1337x crawl (maxPages=${maxPages})...`);
     
-    let workingMirror: string;
-    try {
-      workingMirror = await this.getWorkingMirror();
-    } catch (error: any) {
-      console.error(error.message);
-      return [];
-    }
+    const workingMirror = await this.getWorkingMirror();
 
     const results: TorrentRecord[] = [];
     const limit = pLimit(this.CONCURRENCY);
+    const visitedDetails = new Set<string>();
 
     const searchEndpoints = [
       '/sort-search/spanish/seeders/desc',
@@ -103,14 +98,17 @@ export class Leech1337xCrawler extends BaseCrawler {
             if (!nameEl.length) return;
 
             const href = nameEl.attr('href') || '';
+            const detailUrl = this.resolveUrl(href, workingMirror);
+            if (visitedDetails.has(detailUrl)) return;
+            visitedDetails.add(detailUrl);
             const title = nameEl.text().trim();
-            const seeders = parseInt($(el).find('td.seeds').text().trim(), 10) || 0;
-            const leechers = parseInt($(el).find('td.leeches').text().trim(), 10) || 0;
+            const seeders = parseInt($(el).find('td.seeds').text().replace(/[,\s]/g, ''), 10) || 0;
+            const leechers = parseInt($(el).find('td.leeches').text().replace(/[,\s]/g, ''), 10) || 0;
             
             const sizeStr = $(el).find('td.size').clone().children().remove().end().text().trim();
 
             rows.push({
-              detailUrl: this.resolveUrl(href, workingMirror),
+              detailUrl,
               title,
               seeders,
               leechers,
@@ -118,11 +116,12 @@ export class Leech1337xCrawler extends BaseCrawler {
             });
           });
 
-          if (rows.length === 0) {
+          if ($('table.table-list tbody tr').length === 0) {
             console.log(`[${this.name}] No rows found on ${url}. Moving to next endpoint.`);
             break;
           }
 
+          if (rows.length === 0) continue; // Overlap with another category is not end-of-pagination.
           console.log(`[${this.name}] Processing ${rows.length} torrent rows from ${url}...`);
 
           const detailTasks = rows.map(row => limit(async () => {
@@ -159,8 +158,13 @@ export class Leech1337xCrawler extends BaseCrawler {
     const parsedMagnet = parseMagnetUri(magnetHref);
     if (!parsedMagnet || !parsedMagnet.infoHash) return null;
 
-    const pageCategory = $('.torrent-category-detail strong:contains("Category")').next().text().trim().toLowerCase();
-    const pageLanguage = $('.torrent-category-detail strong:contains("Language")').next().text().trim();
+    const field = (label: string): string => {
+      const strong = $('.torrent-category-detail strong').filter((_, el) => $(el).text().replace(':', '').trim().toLowerCase() === label).first();
+      // 1337x templates use text nodes, spans or anchors after the label.
+      return strong.parent().clone().children('strong').remove().end().text().trim();
+    };
+    const pageCategory = field('category').toLowerCase();
+    const pageLanguage = field('language');
 
     let defaultType: ContentType = 'movie';
     if (pageCategory.includes('tv') || pageCategory.includes('television') || pageCategory.includes('episodes')) {

@@ -28,7 +28,7 @@ export interface ParsedMetadata {
 // Seasons & Episodes
 const REGEX_SXX_EXX = /\b[sS](\d{1,2})[\s._-]*[eE](\d{1,3})\b/;
 const REGEX_SEASON_WORD = /\b(?:Season|Temporada|Temp)[\s._-]*(\d{1,2})\b/i;
-const REGEX_EPISODE_WORD = /\b(?:Episode|Capitulo|Cap|Ep|Episodio)[\s._-]*(\d{1,4})\b/i;
+const REGEX_EPISODE_WORD = /\b(?:Episode|Cap[ií]tulo|Cap|Ep|Episodio)[\s._-]*(\d{1,4})\b/i;
 const REGEX_ABS_EP = /(?:[\s._\-]|\b)(?:#|-)\s*(\d{2,4})(?:[\s._\-\[v]|$)/;
 
 // Year (Fixed to support 1900 - 2099)
@@ -75,7 +75,7 @@ const REGEX_PREFIX_BRACKETS = /^\[[^\]]+\]\s*/;
 const REGEX_BOUNDARY = /(?:[\s._\-])(?:19\d{2}|20\d{2}|[sS]\d{1,2}|season|temporada|2160p|1080p|720p|480p|bluray|web-?dl|hdtv|dvdrip|latino|castellano|spanish|vose)\b/i;
 const REGEX_CLEAN_PUNCTUATION = /[._]/g;
 const REGEX_MULTIPLE_SPACES = /\s+/g;
-const REGEX_FILE_SIZE = /^([\d.]+)\s*([KkMmGgTt]?[Bb]?)$/;
+const REGEX_FILE_SIZE = /^(\d+(?:[.,]\d+)?)\s*([KMGT]?(?:i?B)?)$/i;
 
 /**
  * Parses release title string and extracts structured metadata.
@@ -93,12 +93,12 @@ export function parseTorrentTitle(rawTitle: string, defaultType?: ContentType): 
   let absoluteEpisode: number | null = null;
 
   // 1. Detect Season and Episode
-  const sxxExxMatch = rawTitle.match(REGEX_SXX_EXX);
+  const sxxExxMatch = rawTitle.match(REGEX_SXX_EXX) || rawTitle.match(/\b(\d{1,2})[x×](\d{1,3})\b/i);
   if (sxxExxMatch) {
     season = parseInt(sxxExxMatch[1], 10);
     episode = parseInt(sxxExxMatch[2], 10);
   } else {
-    const seasonMatch = rawTitle.match(REGEX_SEASON_WORD);
+    const seasonMatch = rawTitle.match(REGEX_SEASON_WORD) || rawTitle.match(/\b(\d{1,2})[ªºa]?\s*Temporada\b/i) || rawTitle.match(/\b[ST](\d{1,2})\b/i);
     if (seasonMatch) season = parseInt(seasonMatch[1], 10);
 
     const epMatch = rawTitle.match(REGEX_EPISODE_WORD);
@@ -219,10 +219,10 @@ export function parseSizeToBytes(sizeStr: string): number | null {
   const match = sizeStr.trim().match(REGEX_FILE_SIZE);
   if (!match) return null;
 
-  const value = parseFloat(match[1]);
+  const value = Number(match[1].replace(',', '.'));
   if (isNaN(value)) return null;
 
-  const unit = match[2].toUpperCase();
+  const unit = match[2].toUpperCase().replace('IB', 'B');
   switch (unit) {
     case 'TB':
     case 'T': return Math.round(value * 1099511627776); // 1024^4 (Exact math is slightly faster)

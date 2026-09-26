@@ -133,7 +133,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       const searchTerms = ['spanish', 'castellano', 'latino'];
 
       for (const term of searchTerms) {
-        for (let page = 1; page <= maxPages; page++) {
+        for (let page = 0; page < maxPages; page++) {
           const searchUrl = `${workingMirror}/search/${term}/${page}/99/200`;
           
           try {
@@ -168,7 +168,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
               const meta = parseTorrentTitle(title, 'movie');
               const metaAny = meta as any;
-              const langs = detectLanguages(title, ['thepiratebay', term]); // Pasamos 'term' como contexto de idioma
+              const langs = detectLanguages(title, ['thepiratebay']); // A search term is not language evidence.
 
               uniqueHashes.add(infoHash);
               addedInPage++;
@@ -228,6 +228,8 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
     const infoHash = item.info_hash.toLowerCase();
     const catNum = Number(item.category);
+    // APiBay search includes software, audio and ebooks: only video belongs here.
+    if (catNum < 200 || catNum >= 300 || /^0{40}$/.test(infoHash)) return null;
     let defaultType: ContentType = 'movie';
     if (catNum === 205 || catNum === 208) {
       defaultType = 'series';

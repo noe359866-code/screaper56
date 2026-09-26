@@ -1,185 +1,134 @@
-# Async Torrent Crawler & Metadata Indexer (Production Ready)
+# Crawler asíncrono de metadatos torrent
 
-Motor asíncrono de alto rendimiento desarrollado en **Node.js 20 LTS** y **TypeScript**, diseñado para ejecutarse automáticamente mediante **GitHub Actions** en un repositorio privado e indexar lanzamientos de torrents en una base de datos **PostgreSQL / Supabase** mediante operaciones atómicas de **UPSERT**.
+Node.js 20+ / TypeScript. Adaptadores independientes para **12 fuentes**, normalización de
+infohash BTIH, filtrado de idiomas y UPSERT en Supabase. Solo descarga el metainfo
+`.torrent` para calcular el hash; no descarga el contenido compartido por BitTorrent.
+Usa únicamente fuentes y contenidos que tengas autorización para consultar.
 
-Implementa filtrado obligatorio estricto de idioma español (Castellano / Latino / Dual / Subtitulado), rotación de cabeceras, backoff exponencial, decodificación Bencode SHA-1 y cálculo/normalización de InfoHash de 40 caracteres hexadecimales.
+## Ejecutar
 
----
-
-## 📁 Arquitectura y Estructura del Proyecto
-
-```text
-torrent-crawler/
-├── .github/
-│   └── workflows/
-│       └── scraper.yml              # Pipeline CI/CD GitHub Actions (cron + workflow_dispatch)
-├── src/
-│   ├── config/
-│   │   └── env.ts                   # Carga, tipado y validación de variables de entorno
-│   ├── crawlers/
-│   │   ├── base.ts                  # Clase base abstracta con filtrado de idioma y ciclo de vida
-│   │   ├── pelispanda.ts            # Crawler para https://pelispanda.org/ (REST API + Pelis/Series/Animes)
-│   │   ├── leech1337x.ts            # Crawler para https://www.1337x.tw/ (Espejos, tablas y detalles)
-│   │   ├── torrentgalaxy.ts         # Crawler para https://en.torrentgalaxy-official.is/ (HTTP + Playwright)
-│   │   ├── yts.ts                   # Crawler para https://en.yts-official.com/ (Discovery API + Torrents)
-│   │   ├── eztv.ts                  # Crawler para https://eztv1.xyz/home (API JSON + Fallback HTML)
-│   │   └── divxtotal.ts             # Crawler para https://divxtotal.foo/ (Base64 + Bencode SHA1)
-│   ├── services/
-│   │   └── supabase.ts              # Repositorio Supabase (Sanitización + UPSERT onConflict batching)
-│   ├── types/
-│   │   └── torrent.ts               # Interfaces TypeScript alineadas 1:1 con columnas PostgreSQL
-│   ├── utils/
-│   │   ├── bencode.ts               # Parser bencoding para cálculo nativo de SHA1 info_hash
-│   │   ├── http.ts                  # Cliente Axios resiliente con User-Agent rotativo y jitter
-│   │   ├── language.ts              # Motor de categorización de audio[]/subtitles[] y reglas de descarte
-│   │   ├── magnet.ts                # Parser BTIH (Hex / Base32), extractores y constructores Magnet
-│   │   └── regex.ts                 # Expresiones regulares para metadatos (Calidad, Codec, HDR, Temporada)
-│   └── index.ts                     # Orquestador principal, reportes de estadísticas y logging
-├── .env.example                     # Plantilla de variables de entorno
-├── .gitignore                       # Ignorado estricto de credenciales, logs y artefactos
-├── package.json                     # Scripts y dependencias
-├── tsconfig.json                    # Configuración estricta del compilador TypeScript
-└── README.md                        # Documentación técnica completa
-```
-
----
-
-### 🛡️ Motor Avanzado Anti-Cloudflare (Bypass de Retos WAF y Turnstile)
-
-El proyecto incorpora un subsistema de evasión anti-bot multicapa (`src/utils/anti-cloudflare.ts`) diseñado específicamente para sortear protecciones de Cloudflare WAF, Turnstile y Cloudflare Under Attack Mode:
-
-1. **Red de Espejos y Failover Automático**:
-   - Para sitios que activan periódicamente desafíos Managed Challenge (como TorrentGalaxy o 1337x), el scraper rota instantáneamente entre una lista de espejos de alta disponibilidad (`torrentgalaxy.one`, `torrentgalaxy.buzz`, `tgx.rs`) minimizando la latencia y asegurando un 99.9% de uptime sin bloqueos.
-
-2. **Navegador Sigiloso Headless (`playwright-extra` + `puppeteer-extra-plugin-stealth`)**:
-   - Ofusca banderas del motor Chromium:
-     - Enmascara `navigator.webdriver` devolviendo `undefined`.
-     - Inyecta el objeto `window.chrome` con llamadas `runtime` simuladas.
-     - Simula plugins, dimensiones de pantalla reales y perfiles de audio/WebGL idénticos a navegadores reales.
-     - Simula movimiento humano del ratón con desviaciones aleatorias y clics con retardo (jitter) en el widget interactivo de Turnstile.
-
-3. **Cosecha y Persistencia de Cookies `cf_clearance`**:
-   - Una vez superado el desafío, el motor extrae las cookies criptográficas de sesión (`cf_clearance`, `__cf_bm`) y las almacena en memoria (`Map<domain, ClearanceSession>`) durante 30 minutos.
-   - Las peticiones HTTP posteriores inyectan automáticamente estas cookies en sus cabeceras, permitiendo extraer miles de registros a velocidad nativa sin sobrecargar el runner de GitHub Actions con navegadores pesados.
-
-| Sitio | URL Objetivo | Estrategia de Ingesta | Particularidad Técnica |
-|---|---|---|---|
-| **Pelispanda** | `https://pelispanda.org/` | REST API (`/wpreact/v1/movies`, `series`, `animes`) | Extracción directa de magnet, TMDB ID, calidad y campo de idioma. |
-| **1337x** | `https://www.1337x.tw/` | Espejos activos (`1337x.la`), catálogos y búsquedas | Búsqueda ordenada por seeders en español; extracción de magnet y tracker list. |
-| **TorrentGalaxy**| `https://en.torrentgalaxy-official.is/movies` | Dual-mode: HTTP + Headless Playwright | Bypass de retos Cloudflare mediante Chromium automatizado si se detecta Turnstile. |
-| **YTS** | `https://en.yts-official.com/` | API Discovery + Endpoint Torrents | Consulta parámetros `?api=popular` y `?api=torrents` extrayendo hash y peers. |
-| **EZTV** | `https://eztv1.xyz/home` | API JSON (`/api/get-torrents`) + Fallback HTML | Extracción de series, temporada, episodio e IDs de IMDb (`tt\d+`). |
-| **DivxTotal** | `https://divxtotal.foo/` | Web Scraping + Bencode Engine | Enlaces `.torrent` codificados en Base64; descarga de buffer y cálculo de SHA-1. |
-
----
-
-## 🌐 Detección y Filtrado de Idiomas
-
-La aplicación categoriza y etiqueta estrictamente los campos `audio[]` y `subtitles[]`:
-
-1. **Audio**:
-   - Español Castellano: `'Spanish'`
-   - Español Latino: `'Spanish (Latino)'`
-   - Inglés: `'English'`
-2. **Subtítulos**:
-   - Español: `'Sub_ES'`
-   - Latino: `'Sub_LAT'`
-   - Inglés: `'Sub_EN'`
-   - Multilenguaje: `'Multi-Subs'`
-   - Subtitulado general: `'Subtitulado'`
-
-### Regla de Oro de Filtrado (`hasValidSpanishRelease`):
-- **Admitidos**: 
-  - Audio en Español (`Spanish` o `Spanish (Latino)`)
-  - Subtítulos en Español (`Sub_ES`, `Sub_LAT`, `Multi-Subs`, `Spanish`)
-  - Lanzamientos Duales o Multi-idioma (ej. Audio: `['Spanish', 'English']` o Subs: `['Sub_ES', 'Sub_EN']`)
-- **Descartados Inmediatamente**:
-  - Lanzamientos exclusivamente en inglés o lenguas extranjeras sin audio ni subtítulos en español. **No se envían a Supabase**.
-
----
-
-## 🗄️ Mapeo de Base de Datos y Estrategia de UPSERT
-
-Los registros coinciden exactamente con las columnas de `public.torrents`:
-
-```typescript
-{
-  imdb_id: string | null;           // TEXT (ej. 'tt1234567')
-  tmdb_id: number | null;           // BIGINT
-  kitsu_id: number | null;          // BIGINT
-  anilist_id: number | null;        // BIGINT
-  mal_id: number | null;            // BIGINT
-  type: 'movie'|'series'|'anime';   // VARCHAR
-  season: number | null;            // INTEGER
-  episode: number | null;           // INTEGER
-  absolute_episode: number | null;  // INTEGER
-  file_index: number | null;        // INTEGER
-  info_hash: string;                // VARCHAR(40) - Clave Única Primaria / Conflicto
-  magnet_url: string | null;        // TEXT
-  torrent_file_url: string | null;  // TEXT
-  source_url: string | null;        // TEXT
-  title: string;                    // TEXT
-  release_group: string | null;     // VARCHAR
-  quality: string | null;           // VARCHAR
-  codec: string | null;             // VARCHAR
-  hdr_format: string | null;        // VARCHAR
-  audio: string[];                  // TEXT[]
-  subtitles: string[];              // TEXT[]
-  channels: string | null;          // VARCHAR
-  size_bytes: number | null;        // BIGINT
-  seeders: number | null;           // INTEGER
-  leechers: number | null;          // INTEGER
-  source_tracker: string | null;    // VARCHAR
-  updated_at: string;               // TIMESTAMPTZ
-}
-```
-
-### Resolución de Conflictos:
-Ante duplicados en `info_hash`:
-- Se actualizan en la base de datos los campos dinámicos: `seeders`, `leechers`, `magnet_url`, `torrent_file_url`, `updated_at` y metadatos complementarios (`imdb_id`, `tmdb_id`).
-
----
-
-## ⚙️ Despliegue en Repositorio Privado de GitHub
-
-### 1. Configuración de Secretos en GitHub
-En tu repositorio privado de GitHub, navega a:
-**Settings** -> **Secrets and variables** -> **Actions** -> **Repository secrets** y define:
-
-1. `SUPABASE_URL`: Tu endpoint HTTPS del proyecto Supabase (ej. `https://xyzproject.supabase.co`).
-2. `SUPABASE_SERVICE_ROLE_KEY`: La clave **Service Role (secret)** con permisos para omitir RLS e insertar registros backend.
-
-### 2. Disparadores del Workflow (`.github/workflows/scraper.yml`)
-- **Automático (Cron)**: Se ejecuta cada 6 horas (`0 */6 * * *`).
-- **Manual (`workflow_dispatch`)**: Puedes iniciar el scraper en cualquier momento desde la pestaña **Actions**, seleccionando:
-  - Crawler específico (`all`, `pelispanda`, `leech1337x`, etc.).
-  - Modo `dry_run` (para depuración sin escribir en DB).
-  - Límite de páginas `max_pages`.
-
----
-
-## 🚀 Ejecución Local
+Desde este directorio (el que contiene `package.json`):
 
 ```bash
-# 1. Clonar el repositorio privado
-git clone git@github.com:tu-organizacion/torrent-crawler.git
-cd torrent-crawler
-
-# 2. Instalar dependencias
 npm ci
-
-# 3. Copiar y configurar variables de entorno
 cp .env.example .env
-
-# 4. Verificación estricta de tipos
-npm run lint
-
-# 5. Compilación a JavaScript optimizado
 npm run build
+npm test
 
-# 6. Ejecución de producción
-npm start
-
-# Modo desarrollo con recarga en caliente
-npm run dev
+# Comprobar las nuevas fuentes sin escribir en la base de datos:
+DRY_RUN=true TARGET_CRAWLERS=wolftorrent,sinsitio MAX_PAGES=1 npm start
 ```
+
+El fallback de descarga con navegador de Wolf necesita Chromium:
+
+```bash
+npx playwright install chromium
+# En un runner Linux, puede necesitar: npx playwright install --with-deps chromium
+```
+
+`npm run lint` comprueba tipos. `npm run dev` ejecuta el orquestador en modo watch;
+**no implica dry-run**, configura `DRY_RUN=true` explícitamente.
+
+## Estrategia propia de cada web
+
+| TARGET_CRAWLERS | Archivo en `src/crawlers/` | Tratamiento específico |
+|---|---|---|
+| `pelispanda` | `pelispanda.ts` | API WordPress wpreact; películas, temporadas y episodios; calidad/idioma por descarga. Seeders no publicados = `null`. |
+| `leech1337x` | `leech1337x.ts` | Tablas `table-list`, ficha individual, etiquetas Category/Language con texto o elementos HTML; deduplicación de visitas entre búsquedas. |
+| `torrentgalaxy` | `torrentgalaxy.ts` | Filas `tgxtablerow`, título de ficha sin concatenar comentarios, magnet o hash de iTorrents, tamaño por celda. La búsqueda no prueba el idioma. |
+| `yts` | `yts.ts` | API v2 validada; torrents por calidad, idioma nativo `es`/`es-mx`/`en`, canales de audio y hashes normalizados. No etiqueta francés como inglés. |
+| `eztv` | `eztv.ts` | API `get-torrents` y fallback HTML `epinfo`, incluso si la API no está disponible al detectar el dominio. Temporada/episodio ausentes = `null`. |
+| `thepiratebay` | `thepiratebay.ts` | APiBay (solo categorías de vídeo), tablas HTML y paginación desde cero; ignora resultados centinela. |
+| `mejortorrent` | `mejortorrent.ts` | Plantillas legacy y WordPress; descarga de metainfo con Referer y parser Bencode común. Sin contadores inventados. |
+| `elitetorrent` | `elitetorrent.ts` | Fichas, acortador Base64/ROT13, magnets hex/Base32, URLs `.torrent` relativas con query y metadatos fuera del título. |
+| `limetorrents` | `limetorrent.ts` | Tablas `table2`; distingue la columna de antigüedad de tamaño, seeders y leechers; fallback de hash en ficha. |
+| `nyaa` | `nyaa.ts` | Tablas `torrent-list`, tamaños MiB/GiB, anime y categoría de subtítulos ingleses. MultiSubs no se convierte en audio español. |
+| `wolftorrent` | `wolftorrent.ts` | Catálogos `/peliculas` y `/series`; fichas `/pelicula/:id/:slug` y `/serie/:id/:slug`; enlaces, atributos de descarga y URLs literales en botones. Fallback de clic normal con Playwright. |
+| `sinsitio` | `sinsitio.ts` | Posts DLE `/<categoría>/<id>-<slug>.html`; decodifica `ddlUrl.php?url=<Base64>&name=...` hacia adjuntos públicos `index.php?do=download&id=...` o `engine/download.php?id=...`. Conserva variantes de calidad. |
+
+Los dos adaptadores nuevos comparten únicamente el transporte en `html-catalog.ts`:
+concurrencia de dos fichas, enlaces relativos, paginación publicada por la web,
+protección contra bucles, deduplicación y validación de metainfo. Sus rutas y
+selectores permanecen en archivos separados. No se siguen anuncios ni se inventan
+endpoints a partir de IDs.
+
+### Wolftorrent: botones JavaScript
+
+Si no aparecen enlaces estáticos, se abre la ficha en un navegador normal y se
+escucha su evento de descarga tras pulsar **Descargar**. El navegador siempre se
+cierra; el buffer se valida como metainfo. Los enlaces `blob:` no se guardan como
+URLs públicas. Se puede desactivar con `WOLFTORRENT_BROWSER=false`.
+
+No se automatizan logins ni CAPTCHA en este adaptador. Si el botón devuelve un
+ZIP, HTML, un login o un formato no compatible, se avisa y no se inventa un hash.
+
+### Sinsitio: adjuntos DLE
+
+El parámetro `url` se decodifica sin ejecutar scripts. Solo se aceptan adjuntos
+HTTP(S) del mismo origen, IDs numéricos y `.torrent` públicos (además de magnets).
+El nombre de cada adjunto se usa para no mezclar un BDrip con una versión 1080p.
+Los enlaces de comentarios y bloques `.related` se excluyen de las descargas.
+
+## Configuración
+
+| Variable | Predeterminado | Uso |
+|---|---|---|
+| `DRY_RUN` | `false` | `true`: no escribe en Supabase ni requiere sus credenciales. |
+| `TARGET_CRAWLERS` | `all` | Todas las fuentes o lista separada por comas; rechaza nombres desconocidos. |
+| `MAX_PAGES` | `3` | Máximo de páginas **por sección/búsqueda**, no total global. |
+| `REQUEST_TIMEOUT_MS` | `20000` | Timeout HTTP; las sondas de espejos usan límites más cortos. |
+| `CRAWLER_CONCURRENCY` | `2` | Crawlers simultáneos; cada adaptador limita sus propias fichas. |
+| `SUPABASE_URL` | — | Necesario si `DRY_RUN=false`. |
+| `SUPABASE_SERVICE_ROLE_KEY` | — | Necesario si `DRY_RUN=false`; guardar en `.env` local o secretos de Actions. |
+| `WOLFTORRENT_BASE_URL` | `https://wolftorrent.com/` | Dominio de Wolf. |
+| `SINSITIO_BASE_URL` | `https://www.sinsitio.site/` | Dominio de Sinsitio. |
+| `WOLFTORRENT_BROWSER` | `true` | Fallback de navegador; `false` para extracción estática únicamente. |
+
+También se conservan `NYAA_BASE_URL`, `ELITETORRENT_BASE_URL`,
+`MEJORTORRENT_BASE_URL` y `LIMETORRENTS_BASE_URL`.
+
+## Validación y límites
+
+- Parser Bencode único en `utils/bencode2.ts`: hash SHA-1 de los **bytes originales**
+  del diccionario `info` de raíz, tamaños multifichero, trackers, comprobaciones de
+  límites/profundidad y rechazo de descargas dañadas. `bencode.ts` conserva la API
+  de compatibilidad. Metainfo v2-only no es compatible con el esquema BTIH v1.
+- Los registros se deduplican con infohash normalizado de 40 caracteres hexadecimales.
+- El filtro existente acepta **español o inglés**, en audio o subtítulos; pese al
+  nombre histórico `hasValidSpanishRelease`, no es un filtro exclusivo de español.
+  También conserva los tags genéricos Multi-Subs/Subtitulado. Algunos adaptadores
+  antiguos tienen heurísticas de idioma por fuente; las nuevas fuentes y Nyaa no
+  asignan inglés automáticamente cuando no hay evidencia. Un registro de idioma
+  desconocido puede descubrirse pero quedar descartado antes del UPSERT.
+- Seeders/leechers desconocidos no se fabrican en Pelispanda, MejorTorrent ni las
+  fuentes nuevas. La capa de persistencia existente convierte valores desconocidos
+  a sus defaults de base de datos.
+- Las descargas de metainfo de las nuevas fuentes, EliteTorrent y MejorTorrent se
+  limitan a 10 MiB. No se extraen ni se ejecutan ficheros descargados.
+- Ningún espejo está garantizado: un sitio puede cambiar de plantilla, cerrar,
+  limitar solicitudes o requerir autenticación. Los adaptadores nuevos emiten
+  diagnóstico y fallan explícitamente si no consiguen ningún torrent válido.
+  El orquestador aísla errores por fuente y muestra el resumen `Errors`.
+
+## Pruebas y verificación
+
+`npm test` ejecuta pruebas **sin conexión y sin Supabase**, con HTML sintético y
+respuestas HTTP simuladas específicas de las 12 fuentes. Incluye descargas DLE,
+Base64, episodios, variantes, paginación cíclica, fallback API→HTML, tamaños,
+idiomas, hashes, metainfo corrupto y normalización. Los fixtures documentan rutas
+observadas, pero **no son capturas completas de las webs ni certifican disponibilidad**.
+El clic real de Playwright de Wolf requiere una comprobación en vivo.
+
+En esta revisión (26-09-2026) se pudieron consultar las páginas públicas de
+Wolftorrent y Sinsitio mediante la herramienta de lectura web, incluyendo las
+rutas de fichas y el enlace DLE codificado de Sinsitio. La conexión HTTPS directa
+del entorno de ejecución falló con `SSL_ERROR_SYSCALL`: **no se ha verificado una
+extracción completa en vivo ni el UPSERT real**. Ejecuta primero el dry-run de una
+página desde tu runner y revisa `Discovered`, `Accepted OK` y `Errors`.
+
+## GitHub Actions
+
+El workflow `.github/workflows/main.yml` se ejecuta cada seis horas o manualmente.
+Permite elegir las 12 fuentes, incluidas Wolftorrent y Sinsitio; `all` incluye ambas.
+Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
+Configura las claves de Supabase como secretos del repositorio para escritura real.
