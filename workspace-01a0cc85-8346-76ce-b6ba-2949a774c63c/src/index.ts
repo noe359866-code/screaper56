@@ -53,7 +53,7 @@ async function main() {
 
   // 1. Motor de Concurrencia Nativo (Promise Pool)
   // Permite ejecutar múltiples crawlers a la vez respetando el límite de RAM y CPU
-  async function runWithConcurrency(tasks: string[], limit: number) {
+  async function runWithConcurrency(tasks: readonly string[], limit: number) {
     const executing = new Set<Promise<void>>();
     
     for (const crawlerKey of tasks) {
@@ -138,7 +138,7 @@ async function main() {
 
   // 4. Resumen Final
   console.log('\n===============================================================');
-  console.log('                   SCRAPER EXECUTION SUMMARY                   ');
+  console.log('                     SCRAPER EXECUTION SUMMARY                 ');
   console.log('===============================================================');
   
   // Ordenar los resultados por tiempo de ejecución (opcional, ayuda al profiling)
@@ -154,12 +154,12 @@ async function main() {
     'Time (s)': (c.executionTimeMs / 1000).toFixed(1)
   })));
 
-  console.log(`Total Discovered:       ${summary.totalDiscovered}`);
-  console.log(`Total Accepted:         ${summary.totalSpanishAccepted}`);
+  console.log(`Total Discovered:        ${summary.totalDiscovered}`);
+  console.log(`Total Accepted:          ${summary.totalSpanishAccepted}`);
   console.log(`Total Dropped (Foreign): ${summary.totalDiscarded}`);
   console.log(`Total Database Upserts: ${summary.totalUpserted}`);
-  console.log(`Finished at:            ${summary.finishedAt}`);
-  console.log('===============================================================\n');
+  console.log(`Finished at:             ${summary.finishedAt}`);
+  console.log('==============================================================-\n');
 }
 
 main().catch((err) => {
