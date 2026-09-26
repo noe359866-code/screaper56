@@ -136,6 +136,8 @@ export class NyaaCrawler extends BaseCrawler {
             const leechers = parseInt(tds.eq(6).text().trim(), 10) || 0;
 
             const parsedMeta = parseTorrentTitle(title, 'anime');
+            const metaAny = parsedMeta as any;
+
             // Como Nyaa a veces mezcla idiomas en 1_3, enviamos el endpoint a detectLanguages como contexto
             const contextCategory = endpoint.includes('1_2') ? 'english' : (endpoint.includes('1_3') ? 'non-english' : 'spanish');
             const langs = detectLanguages(title, ['nyaa', contextCategory]);
@@ -148,7 +150,7 @@ export class NyaaCrawler extends BaseCrawler {
             results.push({
               imdb_id: null,
               tmdb_id: null,
-              kitsu_id: null, // Si en el futuro quieres añadir Kitsun/Anilist ID, aquí irían
+              kitsu_id: null,
               anilist_id: null,
               mal_id: null,
               type: 'anime',
@@ -162,7 +164,7 @@ export class NyaaCrawler extends BaseCrawler {
               source_url: sourceUrl,
               title,
               release_group: parsedMeta.releaseGroup,
-              quality: parsedMeta.quality,
+              quality: metaAny.quality || metaAny.resolution || null,
               codec: parsedMeta.codec,
               hdr_format: parsedMeta.hdrFormat,
               audio: langs.audio,
