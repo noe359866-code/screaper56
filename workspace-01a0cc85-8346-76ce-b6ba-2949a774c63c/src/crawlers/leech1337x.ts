@@ -23,11 +23,8 @@ export class Leech1337xCrawler extends BaseCrawler {
     'https://1337x.st',
     'https://x1337x.ws'
   ];
-  private readonly CONCURRENCY = 2; // 1337x banea rápido, 2 es un buen límite seguro
+  private readonly CONCURRENCY = 2;
 
-  /**
-   * Resuelve URLs relativas de forma segura
-   */
   private resolveUrl(target: string, base: string): string {
     try {
       return new URL(target, base).href;
@@ -36,15 +33,12 @@ export class Leech1337xCrawler extends BaseCrawler {
     }
   }
 
-  /**
-   * Busca el primer mirror activo que no esté bloqueado por Cloudflare
-   */
   private async getWorkingMirror(): Promise<string> {
     const mirrorsToTry = [this.baseUrl, ...this.fallbackMirrors];
 
     for (const mirror of mirrorsToTry) {
       try {
-        console.log(`[${this.name}] Testing connectivity to${mirror}...`);
+        console.log(`[${this.name}] Testing connectivity to ${mirror}...`);
         const resp = await this.httpClient.get<string>(mirror, {
           timeout: 7000,
           headers: {
@@ -54,13 +48,12 @@ export class Leech1337xCrawler extends BaseCrawler {
         });
 
         const html = resp.data || '';
-        // 1337x usa mucha protección anti-DDoS, verificamos que cargue el DOM real
         if (resp.status === 200 && !/Just a moment|Attention Required!|cf-mitigated|Cloudflare/i.test(html) && html.includes('table')) {
-          console.log(`[${this.name}] Connected to active endpoint:${mirror}`);
+          console.log(`[${this.name}] Connected to active endpoint: ${mirror}`);
           return mirror;
         }
       } catch (err) {
-        console.warn(`[${this.name}] Mirror${mirror} unreachable or blocked. Trying next...`);
+        console.warn(`[${this.name}] Mirror ${mirror} unreachable or blocked. Trying next...`);
       }
     }
 
@@ -75,7 +68,7 @@ export class Leech1337xCrawler extends BaseCrawler {
       workingMirror = await this.getWorkingMirror();
     } catch (error: any) {
       console.error(error.message);
-      return []; // Cortamos la ejecución si no hay espejos vivos
+      return [];
     }
 
     const results: TorrentRecord[] = [];
@@ -93,7 +86,6 @@ export class Leech1337xCrawler extends BaseCrawler {
       for (let page = 1; page <= maxPages; page++) {
         const isSearch = endpoint.includes('sort-search');
         
-        // Las listas populares normalmente no tienen paginación directa en la misma ruta
         const url = isSearch 
           ? `${workingMirror}${endpoint}/${page}/` 
           : (page === 1 ? `${workingMirror}${endpoint}` : null);
@@ -101,7 +93,7 @@ export class Leech1337xCrawler extends BaseCrawler {
         if (!url) break;
 
         try {
-          console.log(`[${this.name}] Scraping listing:${url}`);
+          console.log(`[${this.name}] Scraping listing: ${url}`);
           const response = await this.httpClient.get<string>(url);
           const $ = cheerio.load(response.data);
 
@@ -115,7 +107,6 @@ export class Leech1337xCrawler extends BaseCrawler {
             const seeders = parseInt($(el).find('td.seeds').text().trim(), 10) || 0;
             const leechers = parseInt($(el).find('td.leeches').text().trim(), 10) || 0;
             
-            // Truco clásico de jQuery/Cheerio para obtener el texto sin el de los hijos (íconos, spans)
             const sizeStr = $(el).find('td.size').clone().children().remove().end().text().trim();
 
             rows.push({
@@ -128,11 +119,11 @@ export class Leech1337xCrawler extends BaseCrawler {
           });
 
           if (rows.length === 0) {
-            console.log(`[${this.name}] No rows found on${url}. Moving to next endpoint.`);
+            console.log(`[${this.name}] No rows found on ${url}. Moving to next endpoint.`);
             break;
           }
 
-          console.log(`[${this.name}] Processing ${rows.length} torrent rows from${url}...`);
+          console.log(`[${this.name}] Processing ${rows.length} torrent rows from ${url}...`);
 
           const detailTasks = rows.map(row => limit(async () => {
             try {
@@ -148,8 +139,8 @@ export class Leech1337xCrawler extends BaseCrawler {
             if (rec) results.push(rec);
           }
         } catch (err: any) {
-          console.warn(`[${this.name}] Failed loading listing ${url}:${err.message}`);
-          break; // Si falla la página, rompemos el bucle de paginación para este endpoint
+          console.warn(`[${this.name}] Failed loading listing ${url}: ${err.message}`);
+          break;
         }
       }
     }
@@ -162,14 +153,12 @@ export class Leech1337xCrawler extends BaseCrawler {
     const response = await this.httpClient.get<string>(row.detailUrl);
     const $ = cheerio.load(response.data);
 
-    // Extraer el enlace Magnet
     const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
     if (!magnetHref) return null;
 
     const parsedMagnet = parseMagnetUri(magnetHref);
     if (!parsedMagnet || !parsedMagnet.infoHash) return null;
 
-    // Extraer meta-información desde la tabla de detalles
     const pageCategory = $('.torrent-category-detail strong:contains("Category")').next().text().trim().toLowerCase();
     const pageLanguage = $('.torrent-category-detail strong:contains("Language")').next().text().trim();
 
@@ -182,11 +171,10 @@ export class Leech1337xCrawler extends BaseCrawler {
 
     const title = row.title || parsedMagnet.displayName || $('div.box-info-heading h1').text().trim();
     const parsedMeta = parseTorrentTitle(title, defaultType);
+    const metaAny = parsedMeta as any;
     
-    // Pasamos el language de la página como pista extra
     const langs = detectLanguages(title, [pageLanguage, pageCategory]);
 
-    // Buscar ID de IMDB con Regex robusto (a veces los enlaces tienen parámetros query)
     let imdbId: string | null = null;
     const htmlString = response.data;
     const imdbMatch = htmlString.match(/imdb\.com\/title\/(tt\d{7,8})/i);
@@ -207,11 +195,11 @@ export class Leech1337xCrawler extends BaseCrawler {
       file_index: null,
       info_hash: parsedMagnet.infoHash,
       magnet_url: magnetHref,
-      torrent_file_url: null, // 1337x depende fuertemente de magnets, no de archivos .torrent raw
+      torrent_file_url: null,
       source_url: row.detailUrl,
       title,
       release_group: parsedMeta.releaseGroup,
-      quality: parsedMeta.quality,
+      quality: metaAny.quality || metaAny.resolution || null,
       codec: parsedMeta.codec,
       hdr_format: parsedMeta.hdrFormat,
       audio: langs.audio,
@@ -224,3 +212,5 @@ export class Leech1337xCrawler extends BaseCrawler {
     };
   }
 }
+
+export default Leech1337xCrawler;
