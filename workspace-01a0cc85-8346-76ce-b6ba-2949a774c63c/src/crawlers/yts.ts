@@ -3,7 +3,7 @@ import { TorrentRecord } from '../types/torrent.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
 
-// Interfaces para la API oficial de YTS (yts.mx/api/v2)
+// Interfaces para la oficial de YTS (yts.mx/api/v2)
 interface YtsApiTorrent {
   url: string;
   hash: string;
@@ -21,6 +21,7 @@ interface YtsApiTorrent {
 interface YtsApiMovie {
   id: number;
   url: string;
+  slug?: string;
   imdb_code: string;
   title: string;
   title_english: string;
@@ -126,6 +127,7 @@ export class YtsCrawler extends BaseCrawler {
               const torrentTitle = `${movie.title_english || movie.title} ${movie.year} ${torrent.quality} ${torrent.type === 'bluray' ? 'BluRay' : torrent.type} YTS`;
               
               const parsedMeta = parseTorrentTitle(torrentTitle, 'movie');
+              const metaAny = parsedMeta as any;
               
               // Lógica de idiomas usando el campo nativo de la API de YTS
               const langHints = ['YTS'];
@@ -144,6 +146,8 @@ export class YtsCrawler extends BaseCrawler {
                 imdbId = movie.imdb_code;
               }
 
+              const sourceUrl = movie.url || (movie.slug ? `${activeDomain}/movies/${movie.slug}` : `${activeDomain}/movie/${movie.id}`);
+
               results.push({
                 imdb_id: imdbId,
                 tmdb_id: null,
@@ -158,15 +162,15 @@ export class YtsCrawler extends BaseCrawler {
                 info_hash: infoHash,
                 magnet_url: this.buildMagnet(infoHash, torrentTitle),
                 torrent_file_url: torrent.url || null,
-                source_url: movie.url || `${activeDomain}/movies/${movie.slug}`,
+                source_url: sourceUrl,
                 title: torrentTitle,
                 release_group: 'YTS',
-                quality: torrent.quality || parsedMeta.quality,
-                codec: torrent.video_codec || parsedMeta.codec,
-                hdr_format: parsedMeta.hdrFormat,
+                quality: torrent.quality || metaAny.quality || metaAny.resolution || null,
+                codec: torrent.video_codec || metaAny.codec || null,
+                hdr_format: metaAny.hdrFormat || null,
                 audio: langs.audio.length > 0 ? langs.audio : ['English'], // YTS por defecto siempre incluye Inglés
                 subtitles: langs.subtitles,
-                channels: parsedMeta.channels,
+                channels: metaAny.channels || null,
                 size_bytes: torrent.size_bytes || 0,
                 seeders: torrent.seeds || 0,
                 leechers: torrent.peers || 0,
