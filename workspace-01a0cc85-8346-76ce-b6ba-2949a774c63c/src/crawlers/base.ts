@@ -43,7 +43,7 @@ export abstract class BaseCrawler {
   public baseUrl?: string;
 
   protected httpClient: ResilientHttpClient;
-  protected readonly metrics = new CrawlerMetrics();
+  protected readonly metrics: CrawlerMetrics = new CrawlerMetrics();
 
   private cachedLogger?: CrawlerLogger;
   private cachedDeadline?: Deadline;
@@ -54,18 +54,28 @@ export abstract class BaseCrawler {
 
   /** Prefixed logger (`LOG_LEVEL=debug|info|warn|error|silent`). */
   protected get log(): CrawlerLogger {
-    if (!this.cachedLogger) this.cachedLogger = new CrawlerLogger(this.name);
+    if (!this.cachedLogger) {
+      this.cachedLogger = new CrawlerLogger(this.name);
+    }
     return this.cachedLogger;
   }
 
   /** Optional wall-clock budget shared by the whole adapter run. */
   protected get deadline(): Deadline {
-    if (!this.cachedDeadline) this.cachedDeadline = new Deadline();
+    if (!this.cachedDeadline) {
+      this.cachedDeadline = new Deadline();
+    }
     return this.cachedDeadline;
   }
 
+  /**
+   * Resets the runtime state for a new crawl execution run.
+   */
   protected resetRunState(): void {
     this.cachedDeadline = new Deadline();
+    if (typeof (this.metrics as unknown as { reset?: () => void }).reset === 'function') {
+      (this.metrics as unknown as { reset: () => void }).reset();
+    }
   }
 
   /**
@@ -79,10 +89,11 @@ export abstract class BaseCrawler {
 
   /** Resolves the first mirror that actually serves the expected content. */
   protected async resolveMirror(setup: MirrorSetup): Promise<string> {
+    const defaults = setup.defaults ?? [];
     const mirrors = buildMirrorPool({
       name: this.name,
       envPrefix: setup.envPrefix,
-      defaults: setup.defaults,
+      defaults,
       extra: setup.extra
     });
 
@@ -120,12 +131,11 @@ export abstract class BaseCrawler {
   }
 
   /**
-   * Same as `fetchTorrentMetainfo` but through `GET` + `responseType: arraybuffer`,
-   * for sites whose download handler needs the regular request pipeline.
+   * Downloads a `.torrent` metainfo file via GET ArrayBuffer and validates it.
    */
   protected async fetchTorrentMetainfoViaGet(url: string, referer?: string): Promise<ParsedTorrentFile> {
     await politePause();
-    const response = await this.httpClient.get<ArrayBuffer>(url, {
+    const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, {
       responseType: 'arraybuffer',
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
@@ -134,14 +144,18 @@ export abstract class BaseCrawler {
         ...(referer ? { Referer: referer } : {})
       }
     });
-    const parsed = parseTorrentBuffer(Buffer.from(response.data as ArrayBuffer));
-    if (!parsed) throw new Error(`Response from ${url} is not valid v1/hybrid torrent metainfo`);
+
+    const data = response.data;
+    const buffer = Buffer.isBuffer(data) ? data : Buffer.from(data as ArrayBuffer);
+    const parsed = parseTorrentBuffer(buffer);
+    if (!parsed) {
+      throw new Error(`Response from ${url} is not valid v1/hybrid torrent metainfo`);
+    }
     return parsed;
   }
 
   /**
    * Downloads a `.torrent` metainfo file (capped) and validates it.
-   * Only the info dictionary is hashed; nothing is extracted or executed.
    */
   protected async fetchTorrentMetainfo(url: string, referer?: string): Promise<ParsedTorrentFile> {
     await politePause();
@@ -154,7 +168,9 @@ export abstract class BaseCrawler {
       }
     });
     const parsed = parseTorrentBuffer(buffer);
-    if (!parsed) throw new Error(`Response from ${url} is not valid v1/hybrid torrent metainfo`);
+    if (!parsed) {
+      throw new Error(`Response from ${url} is not valid v1/hybrid torrent metainfo`);
+    }
     return parsed;
   }
 
@@ -168,10 +184,12 @@ export abstract class BaseCrawler {
    * para conservar la información más completa (nunca se inventan valores).
    */
   public deduplicateRecords(records: TorrentRecord[]): TorrentRecord[] {
+    if (!Array.isArray(records)) return [];
+
     const byHash = new Map<string, TorrentRecord>();
 
     for (const record of records) {
-      if (!record || !record.info_hash) continue;
+      if (!record || typeof record !== 'object' || !record.info_hash) continue;
 
       const hash = normalizeInfoHash(record.info_hash);
       if (!hash || /^0{40}$/.test(hash)) continue;
@@ -189,10 +207,11 @@ export abstract class BaseCrawler {
         continue;
       }
 
-      // Keep the richer record as the base, then fill its gaps with the other one.
+      // Conserva el registro más rico como base y completa sus vacíos con el otro.
       const [primary, secondary] = recordScore(normalized) > recordScore(existing)
         ? [normalized, existing]
         : [existing, normalized];
+
       byHash.set(hash, mergeRecords(primary, secondary));
     }
 
@@ -210,15 +229,23 @@ export abstract class BaseCrawler {
     const accepted: TorrentRecord[] = [];
     const discarded: TorrentRecord[] = [];
 
+    if (!Array.isArray(records)) {
+      return { accepted, discarded };
+    }
+
     for (const record of records) {
-      if (hasValidSpanishRelease(record.audio, record.subtitles)) {
+      if (!record || typeof record !== 'object') continue;
+
+      const audio = Array.isArray(record.audio) ? record.audio : [];
+      const subtitles = Array.isArray(record.subtitles) ? record.subtitles : [];
+
+      if (hasValidSpanishRelease(audio, subtitles)) {
         accepted.push(record);
       } else {
         discarded.push(record);
       }
     }
 
-    // En lugar de hacer "spam" en la consola 1000 veces, mostramos un resumen analítico.
     if (discarded.length > 0) {
       this.log.info(
         `Language filter: accepted ${accepted.length} records, discarded ${discarded.length} without Spanish/English evidence.`
