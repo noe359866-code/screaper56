@@ -10,9 +10,15 @@ import {
   buildTorrentRecord,
   cleanText,
   isBlockedTitle,
+  mapWithConcurrency,
   parseCount,
   qualityOf
 } from './support.js';
+
+interface ListingTarget {
+  url: string;
+  endpoint: string;
+}
 
 /**
  * Nyaa: anime torrent lists. A category or a search term is a discovery hint,
@@ -32,6 +38,11 @@ export class NyaaCrawler extends BaseCrawler {
     'https://nyaa.iss.ink',
     'https://nyaa.unblockit.day'
   ];
+
+  private readonly concurrency = Math.max(
+    1,
+    Number.parseInt(process.env.NYAA_CONCURRENCY || '6', 10) || 6
+  );
 
   constructor() {
     super();
@@ -63,8 +74,6 @@ export class NyaaCrawler extends BaseCrawler {
     this.log.info(`Starting Nyaa anime crawl (maxPages=${maxPages})...`);
 
     const mirror = await this.getWorkingMirror();
-    const results: TorrentRecord[] = [];
-    const uniqueHashes = new Set<string>();
 
     const queryEndpoints: string[] = [
       '/?f=0&c=1_2',                 // Anime - English-translated
@@ -77,76 +86,90 @@ export class NyaaCrawler extends BaseCrawler {
       '/?f=0&c=0_0&q=dual+audio'
     ];
 
+    const listingTargets: ListingTarget[] = [];
     for (const endpoint of queryEndpoints) {
+      const separator = endpoint.includes('?') ? '&' : '?';
       for (let page = 1; page <= maxPages; page++) {
-        if (this.deadline.expired) break;
-
-        const separator = endpoint.includes('?') ? '&' : '?';
-        const targetUrl = `${mirror}${endpoint}${separator}p=${page}`;
-
-        try {
-          this.log.debug(`Fetching anime catalog: ${targetUrl}`);
-          const html = await this.fetchHtml(targetUrl);
-          this.metrics.add('listings');
-
-          const rows = this.parseRows(html, targetUrl, mirror, endpoint);
-          if (!rows.length) {
-            this.log.debug(`No rows on ${targetUrl}; stopping pagination for this endpoint.`);
-            break;
-          }
-
-          for (const record of rows) {
-            if (uniqueHashes.has(record.info_hash)) continue;
-            uniqueHashes.add(record.info_hash);
-            results.push(record);
-            this.metrics.add('records');
-          }
-        } catch (error) {
-          this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${targetUrl}: ${describe(error)}`);
-          break;
-        }
+        listingTargets.push({
+          url: `${mirror}${endpoint}${separator}p=${page}`,
+          endpoint
+        });
       }
     }
 
-    const deduplicated = this.deduplicateRecords(results);
+    const nestedRecords = await mapWithConcurrency(
+      listingTargets,
+      this.concurrency,
+      async ({ url, endpoint }) => {
+        if (this.deadline.expired) return [];
+
+        try {
+          this.log.debug(`Fetching anime catalog: ${url}`);
+          const html = await this.fetchHtml(url);
+          this.metrics.add('listings');
+
+          const rows = this.parseRows(html, url, mirror, endpoint);
+          if (rows.length > 0) {
+            this.metrics.add('records', rows.length);
+          }
+          return rows;
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed fetching ${url}: ${describe(error)}`);
+          return [];
+        }
+      }
+    );
+
+    const allRecords = nestedRecords.flat();
+    const deduplicated = this.deduplicateRecords(allRecords);
     this.logRunSummary(deduplicated);
     return deduplicated;
   }
 
   /** Extracted for testability: one HTML page -> records. */
-  public parseRows(html: string, sourceUrl: string, mirror: string, endpoint = ''): TorrentRecord[] {
+  public parseRows(
+    html: string,
+    sourceUrl: string,
+    mirror: string,
+    endpoint = ''
+  ): TorrentRecord[] {
     const $ = cheerio.load(html);
     const records: TorrentRecord[] = [];
+
+    // Hints dinámicos basados en la consulta/endpoint de búsqueda
+    const hints: string[] = ['nyaa'];
+    if (endpoint.includes('1_2')) hints.push('sub_en');
+    if (/spanish|castellano/i.test(endpoint)) hints.push('castellano');
+    if (/latino/i.test(endpoint)) hints.push('latino');
+    if (/multisub/i.test(endpoint)) hints.push('multi');
 
     $('table.torrent-list tbody tr').each((_, tr) => {
       const tds = $(tr).find('td');
       if (tds.length < 7) return;
 
-      // `a.comments` is the comment counter; the real title link is the other one.
-      const titleAnchor = tds.eq(1).find('a:not(.comments)').last();
+      // Seleccionar específicamente el enlace que lleva a la vista del torrent (/view/)
+      const titleAnchor = tds.eq(1).find('a[href*="/view/"]').last();
       const title = cleanText(titleAnchor.text());
       const viewHref = titleAnchor.attr('href') || '';
       const magnetHref = tds.eq(2).find('a[href^="magnet:"]').attr('href');
+
       if (!title || !magnetHref || isBlockedTitle(title)) return;
 
       const parsedMagnet = parseMagnetUri(magnetHref);
       if (!parsedMagnet?.infoHash) return;
 
       const meta = parseTorrentTitle(title, 'anime');
-      // Category 1_2 means English *subtitles*, not English audio.
-      const hints = endpoint.includes('1_2') ? ['nyaa', 'sub_en'] : ['nyaa'];
       const langs = detectLanguages(title, hints, false);
-
-      const torrentHref = tds.eq(2).find('a[href^="/download/"]').attr('href');
+      const torrentHref = tds.eq(2).find('a[href*="/download/"]').attr('href');
 
       const record = buildTorrentRecord({
         title,
         type: 'anime',
         infoHash: parsedMagnet.infoHash,
         magnetUrl: magnetHref,
-        torrentFileUrl: torrentHref ? this.resolveUrl(torrentHref, mirror) : null,
-        sourceUrl: viewHref ? this.resolveUrl(viewHref, mirror) : sourceUrl,
+        torrentFileUrl: torrentHref ? this.resolveUrl(torrentHref, sourceUrl) : null,
+        sourceUrl: viewHref ? this.resolveUrl(viewHref, sourceUrl) : sourceUrl,
         trackers: parsedMagnet.trackers,
         audio: langs.audio,
         subtitles: langs.subtitles,
