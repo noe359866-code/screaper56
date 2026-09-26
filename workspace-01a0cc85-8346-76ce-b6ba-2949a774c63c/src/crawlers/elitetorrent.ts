@@ -57,8 +57,8 @@ export class EliteTorrentCrawler extends BaseCrawler {
     }
 
     const results: TorrentRecord[] = [];
-    const visitedUrls = new Set<string>(); // Evita procesar la misma URL si aparece en varias categorías
-    const limit = pLimit(5); // Reducido a 5 para no saturar sitios HTML y evitar bloqueos (Cloudflare)
+    const visitedUrls = new Set<string>();
+    const limit = pLimit(5);
 
     const sectionRoutes: Array<{ path: string; hasPagination: boolean; type: ContentType }> = [
       { path: '/', hasPagination: false, type: 'movie' },
@@ -106,12 +106,11 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
           if (pageDetailUrls.length === 0) {
             console.log(`[${this.name}] No new records found on page ${page} for ${route.path}. Stopping route.`);
-            break; // Si no hay URLs nuevas, llegamos al final de la paginación de esta sección
+            break;
           }
 
           console.log(`[${this.name}] Found ${pageDetailUrls.length} new items on page ${page}. Parsing details...`);
 
-          // Procesamos los detalles de ESTA PÁGINA antes de continuar a la siguiente
           const pageTasks = pageDetailUrls.map(url =>
             limit(async () => {
               try {
@@ -127,7 +126,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
         } catch (err: any) {
           console.warn(`[${this.name}] Failed fetching ${listUrl}: ${err.message}. Skipping to next route.`);
-          break; // Rompemos el bucle de páginas si la ruta falla (ej. 404 por pasarnos del límite)
+          break;
         }
       }
     }
@@ -192,7 +191,6 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     let sizeBytes = parseSizeToBytes(sizeStr);
 
-    // Evitamos descargar el .torrent si ya tenemos el Hash y el Tamaño
     if ((!infoHash || !sizeBytes) && torrentDownloadUrl) {
       try {
         const tResp = await this.httpClient.get<Buffer>(torrentDownloadUrl, { responseType: 'arraybuffer' });
@@ -202,7 +200,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
           if (!sizeBytes && parsed.sizeBytes > 0) sizeBytes = parsed.sizeBytes;
         }
       } catch {
-        // Ignorar error y seguir con lo que tengamos
+        // Ignorar error
       }
     }
 
@@ -233,6 +231,8 @@ export class EliteTorrentCrawler extends BaseCrawler {
       'udp://tracker.openbittorrent.com:80/announce'
     ];
 
+    const metaAny = parsedMeta as any;
+
     return {
       imdb_id: null,
       tmdb_id: null,
@@ -250,23 +250,19 @@ export class EliteTorrentCrawler extends BaseCrawler {
       source_url: url,
       title: cleanTitle,
       release_group: parsedMeta.releaseGroup,
-      quality: calidadStr || parsedMeta.quality || null,
+      quality: calidadStr || metaAny.quality || metaAny.resolution || null,
       codec: parsedMeta.codec,
       hdr_format: parsedMeta.hdrFormat,
       audio: langs.audio,
       subtitles: langs.subtitles,
       channels: parsedMeta.channels,
       size_bytes: sizeBytes,
-      seeders: 0, // No falsifiques datos duros (mocking data), pon 0 y deja que tu DHT/Tracker scraper lo actualice después
+      seeders: 0,
       leechers: 0,
       source_tracker: 'udp://tracker.opentrackr.org:1337/announce'
     };
   }
 }
-
-// ============================================================================
-// UTILIDADES (Idealmente deberías mover esto a ../utils/bencode.ts)
-// ============================================================================
 
 interface ParsedTorrentMeta {
   infoHash: string;
