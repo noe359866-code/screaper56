@@ -9,6 +9,7 @@ import {
   dedupeStrings,
   isBlockedTitle,
   mapWithConcurrency,
+  parseCount,
   qualityOf
 } from './support.js';
 
@@ -26,7 +27,7 @@ interface PelispandaListResponse {
 interface PelispandaDownload {
   quality?: string;
   size?: string;
-  subs?: number | boolean;
+  subs?: number | boolean | string;
   download_type?: string;
   download_link?: string;
   language?: string;
@@ -42,9 +43,9 @@ interface PelispandaDetail {
   type?: string;
   downloads?: PelispandaDownload[];
   seasons?: Array<{
-    season_number: number;
+    season_number: number | string;
     episodes: Array<{
-      episode_number: number;
+      episode_number: number | string;
       downloads?: PelispandaDownload[];
     }>;
   }>;
@@ -77,8 +78,6 @@ export class PelispandaCrawler extends BaseCrawler {
     this.resetRunState();
     this.log.info(`Starting crawl across movies, series and animes (maxPages=${maxPages})...`);
 
-    // Soft resolution: if no mirror validates we keep the configured domain and
-    // let the per-category errors explain what happened.
     const mirror = await this.resolveMirror({
       envPrefix: 'PELISPANDA',
       defaults: PelispandaCrawler.DEFAULT_MIRRORS,
@@ -100,6 +99,8 @@ export class PelispandaCrawler extends BaseCrawler {
     });
 
     const results: TorrentRecord[] = [];
+    const visitedSlugs = new Set<string>();
+
     const categories: Array<{ path: string; type: CategoryType }> = [
       { path: 'movies', type: 'movie' },
       { path: 'series', type: 'series' },
@@ -113,31 +114,47 @@ export class PelispandaCrawler extends BaseCrawler {
         const listUrl = `${mirror}/wp-json/wpreact/v1/${category.path}?page=${page}`;
         try {
           const data = await this.fetchJson<PelispandaListResponse | PelispandaItemSummary[]>(listUrl);
-          const items: PelispandaItemSummary[] = Array.isArray(data) ? data : (data?.[category.path] ?? []);
+          const rawItems = Array.isArray(data) ? data : (data?.[category.path] ?? []);
+          const items = Array.isArray(rawItems) ? rawItems : [];
 
           if (!items.length) {
             this.log.debug(`No more items on ${category.path} page ${page}.`);
             break;
           }
+
           this.metrics.add('listings');
           this.log.debug(`Found ${items.length} items on ${category.path} page ${page}.`);
 
-          const nested = await mapWithConcurrency(items, this.concurrency, async item => {
-            if (!item?.slug || this.deadline.expired) return [];
+          const unvisitedItems = items.filter(item => {
+            if (!item?.slug) return false;
+            const key = `${category.type}:${item.slug}`;
+            if (visitedSlugs.has(key)) return false;
+            visitedSlugs.add(key);
+            return true;
+          });
+
+          if (!unvisitedItems.length) continue;
+
+          const detailRecords = await mapWithConcurrency(unvisitedItems, this.concurrency, async item => {
+            if (this.deadline.expired) return [];
             try {
               return await this.crawlDetail(category.type, item.slug, mirror);
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Failed to fetch detail for "${item.slug}": ${describe(error)}`);
+              this.log.warn(`Failed to fetch detail for "${item.slug}": ${formatError(error)}`);
               return [];
             }
           });
 
-          results.push(...nested.flat());
+          for (const records of detailRecords) {
+            if (records && records.length > 0) {
+              results.push(...records);
+            }
+          }
         } catch (error) {
           const status = (error as { response?: { status?: number } })?.response?.status;
           this.metrics.add('listingErrors');
-          this.log.warn(`Error reading ${category.path} page ${page}: ${describe(error)}`);
+          this.log.warn(`Error reading ${category.path} page ${page}: ${formatError(error)}`);
           if (status === 404) break;
         }
       }
@@ -157,10 +174,17 @@ export class PelispandaCrawler extends BaseCrawler {
     this.metrics.add('details');
 
     const records: TorrentRecord[] = [];
-    const tmdbId = detail.tmdb_id ? Number(detail.tmdb_id) || null : null;
-    const imdbId = detail.imdb && String(detail.imdb).startsWith('tt') ? String(detail.imdb) : null;
 
-    // 1. Movies / direct downloads
+    const tmdbId = detail.tmdb_id ? parseCount(detail.tmdb_id) : null;
+    let imdbId: string | null = null;
+    if (detail.imdb) {
+      const rawImdb = String(detail.imdb).trim().replace(/^tt/i, '');
+      if (/^\d{1,10}$/.test(rawImdb) && parseInt(rawImdb, 10) > 0) {
+        imdbId = `tt${rawImdb.padStart(7, '0')}`;
+      }
+    }
+
+    // 1. Películas / Descargas directas
     for (const download of detail.downloads ?? []) {
       const fallbackTitle = cleanText(`${detail.title} ${download.quality ?? ''}`);
       const record = this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
@@ -170,17 +194,20 @@ export class PelispandaCrawler extends BaseCrawler {
       }
     }
 
-    // 2. Episodic content
+    // 2. Contenido episódico (Series / Animes)
     for (const season of detail.seasons ?? []) {
+      const seasonNum = parseCount(season.season_number);
       for (const episode of season.episodes ?? []) {
+        const episodeNum = parseCount(episode.episode_number);
+        const seasonStr = seasonNum !== null ? String(seasonNum).padStart(2, '0') : '01';
+        const episodeStr = episodeNum !== null ? String(episodeNum).padStart(2, '0') : '01';
+
         for (const download of episode.downloads ?? []) {
-          const seasonStr = String(season.season_number).padStart(2, '0');
-          const episodeStr = String(episode.episode_number).padStart(2, '0');
           const fallbackTitle = cleanText(`${detail.title} S${seasonStr}E${episodeStr} ${download.quality ?? ''}`);
 
           const record = this.buildRecord(
             download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId,
-            season.season_number, episode.episode_number
+            seasonNum ?? undefined, episodeNum ?? undefined
           );
           if (record) {
             records.push(record);
@@ -203,9 +230,10 @@ export class PelispandaCrawler extends BaseCrawler {
     season?: number,
     episode?: number
   ): TorrentRecord | null {
-    if (!download.download_link?.startsWith('magnet:?')) return null;
+    const rawLink = download.download_link?.trim();
+    if (!rawLink || !/^magnet:\?/i.test(rawLink)) return null;
 
-    const parsedMagnet = parseMagnetUri(download.download_link);
+    const parsedMagnet = parseMagnetUri(rawLink);
     if (!parsedMagnet?.infoHash) return null;
 
     const releaseTitle = cleanText(parsedMagnet.displayName || fallbackTitle);
@@ -215,30 +243,34 @@ export class PelispandaCrawler extends BaseCrawler {
     const hints = dedupeStrings([download.language ?? '', download.subs ? 'sub_es' : '', 'pelispanda']);
     const langs = detectLanguages(releaseTitle, hints);
 
+    const audioLangs = [...langs.audio];
     if (download.language) {
-      if (/latino/i.test(download.language) && !langs.audio.includes('Spanish (Latino)')) {
-        langs.audio.push('Spanish (Latino)');
-      } else if (/castellano|español/i.test(download.language) && !langs.audio.includes('Spanish')) {
-        langs.audio.push('Spanish');
+      if (/latino/i.test(download.language) && !audioLangs.includes('Spanish (Latino)')) {
+        audioLangs.push('Spanish (Latino)');
+      } else if (/castellano|español/i.test(download.language) && !audioLangs.includes('Spanish')) {
+        audioLangs.push('Spanish');
       }
     }
-    if (download.subs && !langs.subtitles.includes('Sub_ES')) langs.subtitles.push('Sub_ES');
+
+    const subLangs = [...langs.subtitles];
+    if (download.subs && !subLangs.includes('Sub_ES')) {
+      subLangs.push('Sub_ES');
+    }
 
     return buildTorrentRecord({
       title: releaseTitle,
       type: categoryType,
       infoHash: parsedMagnet.infoHash,
-      magnetUrl: download.download_link,
+      magnetUrl: rawLink,
       sourceUrl,
       trackers: parsedMagnet.trackers,
-      audio: langs.audio,
-      subtitles: langs.subtitles,
+      audio: audioLangs,
+      subtitles: subLangs,
       meta,
       season: season ?? meta.season ?? null,
       episode: episode ?? meta.episode ?? null,
       quality: download.quality || qualityOf(meta),
       sizeBytes: download.size ? parseSizeToBytes(download.size) : null,
-      // The API does not publish swarm counters.
       seeders: null,
       leechers: null,
       tmdbId,
@@ -248,7 +280,7 @@ export class PelispandaCrawler extends BaseCrawler {
   }
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
