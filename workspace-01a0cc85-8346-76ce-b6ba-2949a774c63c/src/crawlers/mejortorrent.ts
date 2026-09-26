@@ -385,6 +385,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         : fallbackTitle;
 
       const parsedMeta = parseTorrentTitle(effectiveTitle, defaultType);
+      const metaAny = parsedMeta as any;
       
       // Regla de dominio: MejorTorrent es español por defecto
       const langs = detectLanguages(effectiveTitle, ['mejortorrent', 'castellano']);
@@ -410,7 +411,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         source_url: sourceUrl,
         title: effectiveTitle,
         release_group: parsedMeta.releaseGroup,
-        quality: parsedMeta.quality,
+        quality: metaAny.quality || metaAny.resolution || null,
         codec: parsedMeta.codec,
         hdr_format: parsedMeta.hdrFormat,
         audio: langs.audio,
