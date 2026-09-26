@@ -1,8 +1,9 @@
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
+import { normalizeInfoHash } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
-import { buildTorrentRecord, cleanText, isBlockedTitle, qualityOf } from './support.js';
+import { buildTorrentRecord, cleanText, isBlockedTitle, parseCount, qualityOf } from './support.js';
 
 interface YtsApiTorrent {
   url?: string;
@@ -13,9 +14,9 @@ interface YtsApiTorrent {
   video_codec?: string;
   bit_depth?: string;
   audio_channels?: string;
-  seeds?: number;
-  peers?: number;
-  size_bytes?: number;
+  seeds?: number | string;
+  peers?: number | string;
+  size_bytes?: number | string;
 }
 
 interface YtsApiMovie {
@@ -95,14 +96,17 @@ export class YtsCrawler extends BaseCrawler {
     this.log.info(`Starting YTS crawl (maxPages=${maxPages})...`);
 
     const activeDomain = await this.getWorkingDomain();
+    this.baseUrl = activeDomain;
+
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
 
-    // Popular + newest, plus an explicit Spanish-language query supported by the API.
+    // Popular + newest, plus explicit Spanish-language queries supported by the API.
     const queries = [
       'sort_by=download_count&order_by=desc',
       'sort_by=date_added&order_by=desc',
-      'sort_by=date_added&order_by=desc&quality=2160p'
+      'sort_by=date_added&order_by=desc&quality=2160p',
+      'query_term=spanish&sort_by=date_added&order_by=desc'
     ];
 
     for (const query of queries) {
@@ -134,7 +138,7 @@ export class YtsCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Error reading YTS page ${page} (${query}): ${describe(error)}`);
+          this.log.warn(`Error reading YTS page ${page} (${query}): ${formatError(error)}`);
           break;
         }
       }
@@ -150,15 +154,32 @@ export class YtsCrawler extends BaseCrawler {
     if (!movie?.torrents?.length) return [];
 
     const records: TorrentRecord[] = [];
-    const nativeLanguage = (movie.language || '').toLowerCase();
-    const langHints = nativeLanguage === 'es' || nativeLanguage === 'es-es'
+    const nativeLanguage = (movie.language || '').toLowerCase().trim();
+    const langHints = nativeLanguage === 'es' || nativeLanguage === 'es-es' || nativeLanguage === 'spanish'
       ? ['spanish']
-      : /^es[-_](mx|ar|419)$/.test(nativeLanguage)
+      : /^es[-_](mx|ar|419)$/.test(nativeLanguage) || nativeLanguage === 'latino'
         ? ['latino']
-        : nativeLanguage === 'en' ? ['english'] : [];
+        : nativeLanguage === 'en' || nativeLanguage === 'english' ? ['english'] : [];
+
+    let imdbId: string | null = null;
+    if (movie.imdb_code) {
+      const rawImdb = String(movie.imdb_code).trim().replace(/^tt/i, '');
+      if (/^\d{1,10}$/.test(rawImdb) && parseInt(rawImdb, 10) > 0) {
+        imdbId = `tt${rawImdb.padStart(7, '0')}`;
+      }
+    }
+
+    const sourceUrl = movie.url
+      || (movie.slug ? `${activeDomain}/movies/${movie.slug}` : `${activeDomain}/movie/${movie.id}`);
+
+    const baseTitle = cleanText(movie.title_english || movie.title);
 
     for (const torrent of movie.torrents) {
-      const baseTitle = cleanText(movie.title_english || movie.title);
+      if (!torrent?.hash) continue;
+
+      const infoHash = normalizeInfoHash(torrent.hash);
+      if (!infoHash) continue;
+
       if (!baseTitle || isBlockedTitle(baseTitle)) continue;
 
       const torrentTitle = cleanText(
@@ -168,20 +189,25 @@ export class YtsCrawler extends BaseCrawler {
 
       const meta = parseTorrentTitle(torrentTitle, 'movie');
       const langs = detectLanguages(torrentTitle, langHints);
+      
+      const audioLangs = [...langs.audio];
       // Do not turn a French/Japanese API release into English by default.
-      if (nativeLanguage && !langHints.length) langs.audio = [];
+      if (nativeLanguage && !langHints.length) {
+        audioLangs.length = 0;
+      }
 
-      const sourceUrl = movie.url
-        || (movie.slug ? `${activeDomain}/movies/${movie.slug}` : `${activeDomain}/movie/${movie.id}`);
+      const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
+      const magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(torrentTitle)}&${trackersQuery}`;
 
       const record = buildTorrentRecord({
         title: torrentTitle,
         type: 'movie', // YTS is movies only.
-        infoHash: torrent.hash,
+        infoHash,
+        magnetUrl,
         torrentFileUrl: torrent.url || null,
         sourceUrl,
         trackers: this.defaultTrackers,
-        audio: langs.audio,
+        audio: audioLangs,
         subtitles: langs.subtitles,
         meta,
         season: null,
@@ -190,10 +216,10 @@ export class YtsCrawler extends BaseCrawler {
         quality: torrent.quality || qualityOf(meta),
         codec: torrent.video_codec || meta.codec,
         channels: torrent.audio_channels || meta.channels,
-        sizeBytes: torrent.size_bytes ?? null,
-        seeders: torrent.seeds ?? null,
-        leechers: torrent.peers ?? null,
-        imdbId: movie.imdb_code && /^tt[0-9]{7,8}$/.test(movie.imdb_code) ? movie.imdb_code : null,
+        sizeBytes: parseCount(torrent.size_bytes),
+        seeders: parseCount(torrent.seeds),
+        leechers: parseCount(torrent.peers),
+        imdbId,
         sourceTracker: this.defaultTrackers[0]
       });
 
@@ -204,7 +230,7 @@ export class YtsCrawler extends BaseCrawler {
   }
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
