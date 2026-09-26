@@ -2,7 +2,7 @@ import { chromium } from 'playwright-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 import type { Browser, BrowserContext, Page } from 'playwright';
 
-// Initialize the stealth plugin on Playwright's chromium launcher
+// Activar plugin de evasión stealth
 chromium.use(stealthPlugin());
 
 export interface ClearanceSession {
@@ -12,10 +12,20 @@ export interface ClearanceSession {
   expiresAt: number;
 }
 
+export interface BypassResult {
+  html: string;
+  cookies: string;
+  userAgent: string;
+}
+
 export class CloudflareBypassEngine {
   private static instance: CloudflareBypassEngine;
   private sessionCache = new Map<string, ClearanceSession>();
   private activeBrowser: Browser | null = null;
+  private browserPromise: Promise<Browser> | null = null;
+
+  private readonly DEFAULT_USER_AGENT =
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 
   private constructor() {}
 
@@ -27,16 +37,19 @@ export class CloudflareBypassEngine {
   }
 
   /**
-   * Retrieves cached clearance cookies for a domain if still valid (valid for up to 30 minutes).
+   * Obtiene las cookies de paso previo almacenadas en caché si aún son válidas.
    */
   public getCachedSession(url: string): ClearanceSession | null {
     try {
       const hostname = new URL(url).hostname;
       const session = this.sessionCache.get(hostname);
-      if (session && Date.now() < session.expiresAt) {
-        return session;
+
+      if (session) {
+        if (Date.now() < session.expiresAt) {
+          return session;
+        }
+        this.sessionCache.delete(hostname);
       }
-      this.sessionCache.delete(hostname);
       return null;
     } catch {
       return null;
@@ -44,22 +57,39 @@ export class CloudflareBypassEngine {
   }
 
   /**
-   * Solves a Cloudflare Turnstile / Managed Challenge and returns the rendered HTML along with clearance cookies.
+   * Limpia entradas expiradas del caché de sesiones para liberar memoria.
    */
-  public async solveAndFetch(url: string, timeoutMs = 45000): Promise<{ html: string; cookies: string; userAgent: string }> {
-    console.log(`[ANTI-CLOUDFLARE] Engaging stealth browser session for: ${url}`);
-    const targetUrl = new URL(url);
-    const hostname = targetUrl.hostname;
+  public purgeExpiredSessions(): void {
+    const now = Date.now();
+    for (const [hostname, session] of this.sessionCache.entries()) {
+      if (now >= session.expiresAt) {
+        this.sessionCache.delete(hostname);
+      }
+    }
+  }
+
+  /**
+   * Navega a la URL objetivo, resuelve desafíos de Cloudflare (Turnstile/Managed Challenge) y extrae contenido y cookies.
+   */
+  public async solveAndFetch(url: string, timeoutMs = 45000): Promise<BypassResult> {
+    this.purgeExpiredSessions();
+
+    let hostname: string;
+    try {
+      hostname = new URL(url).hostname;
+    } catch {
+      throw new Error(`[ANTI-CLOUDFLARE] URL inválida provista: ${url}`);
+    }
+
+    console.log(`[ANTI-CLOUDFLARE] Iniciando sesión sigilosa para: ${hostname}`);
 
     let context: BrowserContext | null = null;
-    let page: Page | null = null;
 
     try {
       const browser = await this.getOrCreateBrowser();
-      const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 
       context = await browser.newContext({
-        userAgent,
+        userAgent: this.DEFAULT_USER_AGENT,
         locale: 'es-ES,es',
         viewport: { width: 1920, height: 1080 },
         deviceScaleFactor: 1,
@@ -74,139 +104,134 @@ export class CloudflareBypassEngine {
         }
       });
 
-      page = await context.newPage();
+      const page: Page = await context.newPage();
 
-      // Deep evasions injected into execution context
+      // Scripts de evasión ejecutados en la carga del contexto
       await page.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+        try {
+          // Eliminar marca de webdriver de la manera estándar
+          delete (Object.getPrototypeOf(navigator) as Record<string, unknown>).webdriver;
+        } catch {}
 
-        (globalThis as any).chrome = {
+        // Simular presencia del objeto chrome
+        (window as unknown as { chrome: unknown }).chrome = {
           runtime: {},
           loadTimes: () => {},
           csi: () => {},
           app: {}
         };
-
-        Object.defineProperty(navigator, 'plugins', {
-          get: () => [1, 2, 3, 4, 5]
-        });
-
-        Object.defineProperty(navigator, 'languages', {
-          get: () => ['es-ES', 'es', 'en-US', 'en']
-        });
       });
 
-      console.log(`[ANTI-CLOUDFLARE] Navigating to ${url}...`);
+      console.log(`[ANTI-CLOUDFLARE] Navegando a ${url}...`);
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
 
-      // Robust check if Cloudflare challenge is active (Generic for any website type)
+      // Verificación ligera del desafío Cloudflare sin parsear todo el HTML
       const isChallengeActive = async (): Promise<boolean> => {
         try {
-          if (!page || page.isClosed()) return false;
+          if (page.isClosed()) return false;
+
           const title = (await page.title()).toLowerCase();
-          const content = (await page.content()).toLowerCase();
-          
-          const hasChallengeIndicators = (
+          if (
             title.includes('just a moment') ||
             title.includes('un momento') ||
-            title.includes('checking your browser') ||
-            content.includes('id="challenge-stage"') ||
-            content.includes('id="challenge-error-title"') ||
-            content.includes('enable javascript and cookies to continue') ||
-            content.includes('challenges.cloudflare.com/turnstile')
-          );
+            title.includes('checking your browser')
+          ) {
+            return true;
+          }
 
-          return hasChallengeIndicators;
+          const hasChallengeDOM = await page.evaluate(() => {
+            return !!(
+              document.getElementById('challenge-stage') ||
+              document.getElementById('challenge-error-title') ||
+              document.querySelector('iframe[src*="challenges.cloudflare.com"]')
+            );
+          });
+
+          return hasChallengeDOM;
         } catch {
           return false;
         }
       };
 
       if (await isChallengeActive()) {
-        console.log('[ANTI-CLOUDFLARE] Cloudflare Managed Challenge / Turnstile detected. Attempting bypass...');
+        console.log('[ANTI-CLOUDFLARE] Desafío Cloudflare/Turnstile detectado. Intentando bypass...');
 
         const startTime = Date.now();
-        const maxWaitTime = Math.min(timeoutMs, 25000);
+        const maxWaitTime = Math.min(timeoutMs, 30000);
 
         while (Date.now() - startTime < maxWaitTime) {
           if (!(await isChallengeActive())) {
-            console.log('[ANTI-CLOUDFLARE] Challenge solved automatically without interaction!');
+            console.log('[ANTI-CLOUDFLARE] Desafío resuelto automáticante.');
             break;
           }
 
-          // Search frames for Turnstile widget and interact safely
+          // Búsqueda de iframe Turnstile e interacción mediante Playwright locators
           const frames = page.frames();
-          let clicked = false;
+          let interacted = false;
 
           for (const frame of frames) {
-            const frameUrl = frame.url();
-            if (frameUrl.includes('challenges.cloudflare.com') || frameUrl.includes('turnstile')) {
+            if (frame.url().includes('challenges.cloudflare.com')) {
               try {
-                const checkbox = await frame.$('input[type="checkbox"], .ctp-checkbox-label, #challenge-stage, span.mark');
-                if (checkbox && (await checkbox.isVisible())) {
-                  console.log('[ANTI-CLOUDFLARE] Found Turnstile interactive element. Simulating natural click...');
-                  const box = await checkbox.boundingBox();
-                  if (box) {
-                    const targetX = box.x + box.width / 2 + (Math.random() * 6 - 3);
-                    const targetY = box.y + box.height / 2 + (Math.random() * 6 - 3);
-                    
-                    await page.mouse.move(targetX, targetY, { steps: 5 });
-                    await page.waitForTimeout(150 + Math.random() * 200);
-                    await page.mouse.down();
-                    await page.waitForTimeout(40 + Math.random() * 80);
-                    await page.mouse.up();
-                    clicked = true;
-                    break;
-                  }
+                const targetCheckbox = frame.locator('input[type="checkbox"], .ctp-checkbox-label, #challenge-stage, span.mark').first();
+
+                if (await targetCheckbox.isVisible({ timeout: 500 })) {
+                  console.log('[ANTI-CLOUDFLARE] Elemento interactivo Turnstile localizado. Simulando clic...');
+                  
+                  // Uso directo de .click() en el locator del frame para evitar descalces de coordenadas
+                  await targetCheckbox.click({ delay: 50 + Math.random() * 50 });
+                  interacted = true;
+                  break;
                 }
               } catch {
-                // Ignore transient frame evaluation errors
+                // Ignorar errores transitorios durante el renderizado del iframe
               }
             }
           }
 
-          if (clicked) {
-            console.log('[ANTI-CLOUDFLARE] Turnstile clicked. Waiting for clearance resolution...');
-            await page.waitForTimeout(3000);
+          if (interacted) {
+            await page.waitForTimeout(2500);
             if (!(await isChallengeActive())) {
-              console.log('[ANTI-CLOUDFLARE] Verification confirmed! Challenge passed.');
+              console.log('[ANTI-CLOUDFLARE] Verificación completada con éxito.');
               break;
             }
           }
 
-          await page.waitForTimeout(1500);
+          await page.waitForTimeout(1000);
         }
       }
 
-      // Wait a brief moment for final cookie propagation after solving
+      // Tiempo de asentamiento para asegurar la propagación de la cookie
       await page.waitForTimeout(1000);
 
-      // Collect and filter cookies specifically relevant to the target domain
       const rawCookies = await context.cookies();
-      const relevantCookies = rawCookies.filter(c => {
+      const relevantCookies = rawCookies.filter((c) => {
         const domainClean = c.domain.startsWith('.') ? c.domain.substring(1) : c.domain;
-        return hostname === domainClean || hostname.endsWith('.' + domainClean) || domainClean.endsWith('.' + hostname);
+        return (
+          hostname === domainClean ||
+          hostname.endsWith('.' + domainClean) ||
+          domainClean.endsWith('.' + hostname)
+        );
       });
 
-      const cookieHeader = relevantCookies.map(c => `${c.name}=${c.value}`).join('; ');
+      const cookieHeader = relevantCookies.map((c) => `${c.name}=${c.value}`).join('; ');
       const html = await page.content();
 
-      const hasClearance = relevantCookies.some(c => c.name === 'cf_clearance') || rawCookies.some(c => c.name === 'cf_clearance');
-      
+      const hasClearance = rawCookies.some((c) => c.name === 'cf_clearance');
+
       if (hasClearance) {
-        console.log(`[ANTI-CLOUDFLARE] Successfully harvested cf_clearance cookie for ${hostname}!`);
+        console.log(`[ANTI-CLOUDFLARE] Cookie cf_clearance cosechada para ${hostname}`);
         this.sessionCache.set(hostname, {
-          cookieHeader: rawCookies.map(c => `${c.name}=${c.value}`).join('; '), // Save all session cookies to be safe
-          userAgent,
+          cookieHeader: rawCookies.map((c) => `${c.name}=${c.value}`).join('; '),
+          userAgent: this.DEFAULT_USER_AGENT,
           solvedAt: Date.now(),
-          expiresAt: Date.now() + 30 * 60 * 1000 // Valid for 30 minutes
+          expiresAt: Date.now() + 30 * 60 * 1000 // Válida por 30 minutos
         });
       }
 
       return {
         html,
         cookies: cookieHeader,
-        userAgent
+        userAgent: this.DEFAULT_USER_AGENT
       };
     } finally {
       if (context) {
@@ -215,30 +240,52 @@ export class CloudflareBypassEngine {
     }
   }
 
+  /**
+   * Garantiza la creación de una única instancia de Browser segura ante llamadas concurrentes.
+   */
   private async getOrCreateBrowser(): Promise<Browser> {
-    if (!this.activeBrowser || !this.activeBrowser.isConnected()) {
-      this.activeBrowser = await chromium.launch({
-        headless: true,
-        args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-blink-features=AutomationControlled',
-          '--disable-infobars',
-          '--no-first-run',
-          '--no-zygote',
-          '--window-size=1920,1080',
-          '--disable-web-security'
-        ]
-      });
+    if (this.activeBrowser && this.activeBrowser.isConnected()) {
+      return this.activeBrowser;
     }
-    return this.activeBrowser;
+
+    if (this.browserPromise) {
+      return this.browserPromise;
+    }
+
+    this.browserPromise = (async () => {
+      try {
+        const browser = await chromium.launch({
+          headless: true,
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-blink-features=AutomationControlled',
+            '--disable-infobars',
+            '--no-first-run',
+            '--no-zygote',
+            '--window-size=1920,1080'
+          ]
+        });
+
+        this.activeBrowser = browser;
+        return browser;
+      } finally {
+        this.browserPromise = null;
+      }
+    })();
+
+    return this.browserPromise;
   }
 
+  /**
+   * Cierra el navegador activo y resetea las referencias.
+   */
   public async close(): Promise<void> {
     if (this.activeBrowser) {
       await this.activeBrowser.close().catch(() => {});
       this.activeBrowser = null;
     }
+    this.browserPromise = null;
   }
 }
