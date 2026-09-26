@@ -1,20 +1,30 @@
 import { config } from './config/env.js';
 import { BaseCrawler } from './crawlers/base.js';
-import { PelispandaCrawler } from './crawlers/pelispanda.js';
-import { Leech1337xCrawler } from './crawlers/leech1337x.js';
-import { TorrentGalaxyCrawler } from './crawlers/torrentgalaxy.js';
-import { YtsCrawler } from './crawlers/yts.js';
-import { EztvCrawler } from './crawlers/eztv.js';
-import { ThePirateBayCrawler } from './crawlers/thepiratebay.js';
-import { MejorTorrentCrawler } from './crawlers/mejortorrent.js';
-import { EliteTorrentCrawler } from './crawlers/elitetorrent.js';
-import { LimeTorrentsCrawler } from './crawlers/limetorrent.js';
-import { NyaaCrawler } from './crawlers/nyaa.js';
-import { WolftorrentCrawler } from './crawlers/wolftorrent.js';
-import { SinsitioCrawler } from './crawlers/sinsitio.js';
-import { DonTorrentCrawler } from './crawlers/dontorrent.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
+
+// Type mapping para la carga perezosa (Lazy Dynamic Import)
+type CrawlerFactory = () => Promise<BaseCrawler>;
+
+/**
+ * Mapeo de crawlers con Dynamic Imports.
+ * Solo carga en memoria el código JS de los crawlers activos en la ejecución.
+ */
+const CRAWLER_REGISTRY: Record<string, CrawlerFactory> = {
+  pelispanda: async () => new (await import('./crawlers/pelispanda.js')).PelispandaCrawler(),
+  leech1337x: async () => new (await import('./crawlers/leech1337x.js')).Leech1337xCrawler(),
+  torrentgalaxy: async () => new (await import('./crawlers/torrentgalaxy.js')).TorrentGalaxyCrawler(),
+  yts: async () => new (await import('./crawlers/yts.js')).YtsCrawler(),
+  eztv: async () => new (await import('./crawlers/eztv.js')).EztvCrawler(),
+  thepiratebay: async () => new (await import('./crawlers/thepiratebay.js')).ThePirateBayCrawler(),
+  mejortorrent: async () => new (await import('./crawlers/mejortorrent.js')).MejorTorrentCrawler(),
+  elitetorrent: async () => new (await import('./crawlers/elitetorrent.js')).EliteTorrentCrawler(),
+  limetorrents: async () => new (await import('./crawlers/limetorrent.js')).LimeTorrentsCrawler(),
+  nyaa: async () => new (await import('./crawlers/nyaa.js')).NyaaCrawler(),
+  wolftorrent: async () => new (await import('./crawlers/wolftorrent.js')).WolftorrentCrawler(),
+  sinsitio: async () => new (await import('./crawlers/sinsitio.js')).SinsitioCrawler(),
+  dontorrent: async () => new (await import('./crawlers/dontorrent.js')).DonTorrentCrawler()
+};
 
 async function main() {
   const startedAt = new Date().toISOString();
@@ -31,22 +41,6 @@ async function main() {
 
   const repository = new SupabaseTorrentRepository();
 
-  const crawlerRegistry: Record<string, () => BaseCrawler> = {
-    pelispanda: () => new PelispandaCrawler(),
-    leech1337x: () => new Leech1337xCrawler(),
-    torrentgalaxy: () => new TorrentGalaxyCrawler(),
-    yts: () => new YtsCrawler(),
-    eztv: () => new EztvCrawler(),
-    thepiratebay: () => new ThePirateBayCrawler(),
-    mejortorrent: () => new MejorTorrentCrawler(),
-    elitetorrent: () => new EliteTorrentCrawler(),
-    limetorrents: () => new LimeTorrentsCrawler(),
-    nyaa: () => new NyaaCrawler(),
-    wolftorrent: () => new WolftorrentCrawler(),
-    sinsitio: () => new SinsitioCrawler(),
-    dontorrent: () => new DonTorrentCrawler()
-  };
-
   const summary: ScraperExecutionSummary = {
     startedAt,
     finishedAt: '',
@@ -57,38 +51,44 @@ async function main() {
     crawlers: []
   };
 
-  // 1. Motor de Concurrencia Nativo (Promise Pool)
-  // Permite ejecutar múltiples crawlers a la vez respetando el límite de RAM y CPU
-  async function runWithConcurrency(tasks: readonly string[], limit: number) {
-    const executing = new Set<Promise<void>>();
-    
+  /**
+   * Motor de concurrencia optimizado (Promise Pool estricto).
+   */
+  async function runWithConcurrency(tasks: readonly string[], limit: number): Promise<void> {
+    const pool = new Set<Promise<void>>();
+
     for (const crawlerKey of tasks) {
-      // Envolvemos la ejecución individual en una promesa
-      const p = processCrawler(crawlerKey).finally(() => executing.delete(p));
-      executing.add(p);
-      
-      // Si alcanzamos el límite, esperamos a que el más rápido termine antes de lanzar otro
-      if (executing.size >= limit) {
-        await Promise.race(executing);
+      const taskPromise: Promise<void> = (async () => {
+        await processCrawler(crawlerKey);
+      })();
+
+      pool.add(taskPromise);
+
+      // Limpieza segura del Set cuando finaliza la promesa
+      const cleanUp = () => pool.delete(taskPromise);
+      taskPromise.then(cleanUp, cleanUp);
+
+      if (pool.size >= limit) {
+        await Promise.race(pool);
       }
     }
-    
-    // Esperamos a que terminen los últimos rezagados
-    await Promise.all(executing);
+
+    await Promise.all(pool);
   }
 
-  // 2. Lógica aislada por cada Crawler
+  /**
+   * Procesamiento aislado y seguro de cada crawler.
+   */
   async function processCrawler(crawlerKey: string): Promise<void> {
-    const crawlerFactory = crawlerRegistry[crawlerKey];
+    const crawlerFactory = CRAWLER_REGISTRY[crawlerKey];
     if (!crawlerFactory) {
       console.warn(`[ROUTER] Unknown crawler module requested: "${crawlerKey}". Skipping.`);
       return;
     }
 
-    const crawler = crawlerFactory();
     const stats: CrawlerStats = {
-      name: crawler.name,
-      mirror: crawler.baseUrl ?? null,
+      name: crawlerKey,
+      mirror: null,
       discovered: 0,
       filteredSpanish: 0,
       discardedNonSpanish: 0,
@@ -98,18 +98,24 @@ async function main() {
     };
 
     const crawlStart = Date.now();
-    const baseUrlLog = crawler.baseUrl ? ` (${crawler.baseUrl})` : ' (Dynamic Mirrors)';
-    console.log(`\n>>> Launching crawler [${crawler.name}]${baseUrlLog} <<<`);
 
     try {
-      // A. Obtener candidatos crudos
+      // Carga perezosa de la instancia del crawler
+      const crawler = await crawlerFactory();
+      stats.name = crawler.name;
+      stats.mirror = crawler.baseUrl ?? null;
+
+      const baseUrlLog = crawler.baseUrl ? ` (${crawler.baseUrl})` : ' (Dynamic Mirrors)';
+      console.log(`\n>>> Launching crawler [${crawler.name}]${baseUrlLog} <<<`);
+
+      // A. Obtener candidatos
       const rawRecords = await crawler.crawl(config.maxPagesPerSource);
-      
-      // B. Deduplicar primero (Ahorra CPU en los siguientes pasos)
+
+      // B. Deduplicar
       const uniqueRecords = crawler.deduplicateRecords(rawRecords);
       stats.discovered = uniqueRecords.length;
 
-      // C. Aplicar filtro
+      // C. Filtrar
       const { accepted, discarded } = crawler.filterSpanishReleases(uniqueRecords);
       stats.filteredSpanish = accepted.length;
       stats.discardedNonSpanish = discarded.length;
@@ -121,18 +127,16 @@ async function main() {
       } else {
         console.log(`[${crawler.name}] No Spanish/English records found to upsert in this run.`);
       }
+
+      stats.mirror = crawler.baseUrl ?? stats.mirror ?? null;
     } catch (err: unknown) {
       stats.errors++;
       const errorMsg = err instanceof Error ? err.message : String(err);
-      console.error(`[FATAL] Unhandled failure in crawler [${crawler.name}]:`, errorMsg);
+      console.error(`[FATAL] Unhandled failure in crawler [${stats.name}]:`, errorMsg);
     } finally {
       stats.executionTimeMs = Date.now() - crawlStart;
-      // El adaptador actualiza `baseUrl` al elegir espejo: así el resumen muestra
-      // el dominio que respondió, no el que estaba configurado por defecto.
-      stats.mirror = crawler.baseUrl ?? stats.mirror ?? null;
-      
-      // Al ser un entorno asíncrono concurrente, bloqueamos los push al summary 
-      // mutando directamente los acumuladores (es seguro en Node.js al ser single-threaded)
+
+      // Actualizar métricas globales
       summary.crawlers.push(stats);
       summary.totalDiscovered += stats.discovered;
       summary.totalSpanishAccepted += stats.filteredSpanish;
@@ -141,39 +145,47 @@ async function main() {
     }
   }
 
-  // 3. Iniciar ejecución concurrente
+  // Ejecución concurrente
   await runWithConcurrency(config.targetCrawlers, config.concurrencyLimit);
 
   summary.finishedAt = new Date().toISOString();
 
-  // 4. Resumen Final
+  // Imprimir Resumen Final
   console.log('\n===============================================================');
   console.log('                     SCRAPER EXECUTION SUMMARY                 ');
   console.log('===============================================================');
-  
-  // Ordenar los resultados por tiempo de ejecución (opcional, ayuda al profiling)
+
   const sortedStats = [...summary.crawlers].sort((a, b) => b.executionTimeMs - a.executionTimeMs);
-  
-  console.table(sortedStats.map(c => ({
-    Source: c.name,
-    Mirror: c.mirror ? c.mirror.replace(/^https?:\/\//, '') : '-',
-    Discovered: c.discovered,
-    'Accepted OK': c.filteredSpanish,
-    Discarded: c.discardedNonSpanish,
-    Upserted: c.upserted,
-    Errors: c.errors,
-    'Time (s)': (c.executionTimeMs / 1000).toFixed(1)
-  })));
+
+  console.table(
+    sortedStats.map(c => ({
+      Source: c.name,
+      Mirror: c.mirror ? c.mirror.replace(/^https?:\/\//, '') : '-',
+      Discovered: c.discovered,
+      'Accepted OK': c.filteredSpanish,
+      Discarded: c.discardedNonSpanish,
+      Upserted: c.upserted,
+      Errors: c.errors,
+      'Time (s)': (c.executionTimeMs / 1000).toFixed(1)
+    }))
+  );
 
   console.log(`Total Discovered:        ${summary.totalDiscovered}`);
   console.log(`Total Accepted:          ${summary.totalSpanishAccepted}`);
   console.log(`Total Dropped (Foreign): ${summary.totalDiscarded}`);
-  console.log(`Total Database Upserts: ${summary.totalUpserted}`);
+  console.log(`Total Database Upserts:  ${summary.totalUpserted}`);
   console.log(`Finished at:             ${summary.finishedAt}`);
-  console.log('==============================================================-\n');
+  console.log('===============================================================\n');
+
+  // Si hubo errores en algún crawler, marcar el exit code para CI/CD
+  const totalErrors = summary.crawlers.reduce((acc, curr) => acc + curr.errors, 0);
+  if (totalErrors > 0) {
+    process.exitCode = 1;
+  }
 }
 
-main().catch((err) => {
+// Manejo de excepciones globales
+main().catch(err => {
   console.error('[CRITICAL] Uncaught exception during scraper execution:', err);
   process.exit(1);
 });
