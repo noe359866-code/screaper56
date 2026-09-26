@@ -2,9 +2,41 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { TorrentRecord } from '../types/torrent.js';
 import { config } from '../config/env.js';
 
+// Estructura sanitizada garantizada lista para persistir en la BD
+export interface SanitizedTorrentRecord {
+  info_hash: string;
+  title: string;
+  type: 'movie' | 'series' | 'anime';
+  imdb_id: string | null;
+  tmdb_id: number | null;
+  kitsu_id: number | null;
+  anilist_id: number | null;
+  mal_id: number | null;
+  season: number | null;
+  episode: number | null;
+  absolute_episode: number | null;
+  file_index: number | null;
+  release_group: string | null;
+  quality: string;
+  codec: string | null;
+  hdr_format: string | null;
+  audio: string[];
+  subtitles: string[];
+  channels: string | null;
+  size_bytes: number;
+  seeders: number;
+  leechers: number;
+  source_tracker: string | null;
+}
+
+// Regex pre-compilados fuera del flujo de ejecución (Ahorro importante de CPU)
+const HEX_40_REGEX = /^[0-9a-f]{40}$/;
+const IMDB_REGEX = /^tt\d+$/;
+const DIGITS_ONLY_REGEX = /^\d+$/;
+
 export class SupabaseTorrentRepository {
   private client: SupabaseClient | null = null;
-  private isDryRun: boolean;
+  private readonly isDryRun: boolean;
 
   constructor() {
     this.isDryRun = config.dryRun;
@@ -19,15 +51,18 @@ export class SupabaseTorrentRepository {
     }
   }
 
-  // --- MÉTODOS ESTÁTICOS DE UTILIDAD (Optimizan CPU y Memoria) ---
+  // --- MÉTODOS ESTÁTICOS DE UTILIDAD ---
 
   private static parseNonNegativeInt(val: unknown, defaultValue: number | null = null): number | null {
-    if (typeof val === 'number' && !isNaN(val)) {
-      return val >= 0 ? Math.floor(val) : defaultValue;
+    if (typeof val === 'number' && Number.isFinite(val) && val >= 0) {
+      return Math.floor(val);
     }
     if (typeof val === 'string') {
-      const parsed = parseInt(val.trim(), 10);
-      if (!isNaN(parsed) && parsed >= 0) return parsed;
+      const trimmed = val.trim();
+      if (DIGITS_ONLY_REGEX.test(trimmed)) {
+        const parsed = Number.parseInt(trimmed, 10);
+        if (Number.isSafeInteger(parsed)) return parsed;
+      }
     }
     return defaultValue;
   }
@@ -39,57 +74,73 @@ export class SupabaseTorrentRepository {
     return trimmed.substring(0, maxLength);
   }
 
-  /**
-   * Sanitiza y valida según las restricciones exactas de tu tabla SQL
-   */
-  public sanitizeRecord(raw: TorrentRecord): Record<string, any> | null {
-    if (typeof raw.info_hash !== 'string') return null;
-    const cleanHash = raw.info_hash.toLowerCase().trim();
-    
-    // 1. Info hash obligatorio: 40 caracteres hexadecimales
-    if (!/^[0-9a-f]{40}$/.test(cleanHash)) return null;
+  private static isNonRetriableError(code?: string): boolean {
+    if (!code) return false;
+    // Códigos de PostgreSQL: 22*** (Data Exception), 23*** (Integrity Violation), 42*** (Syntax/Schema Error)
+    return code.startsWith('22') || code.startsWith('23') || code.startsWith('42');
+  }
 
-    // 2. Título obligatorio
+  /**
+   * Sanitiza y valida un registro según las restricciones del esquema
+   */
+  public sanitizeRecord(raw: TorrentRecord): SanitizedTorrentRecord | null {
+    if (!raw || typeof raw.info_hash !== 'string') return null;
+
+    const cleanHash = raw.info_hash.toLowerCase().trim();
+    if (!HEX_40_REGEX.test(cleanHash)) return null;
+
     const title = typeof raw.title === 'string' ? raw.title.trim() : '';
     if (title.length === 0) return null;
 
-    // 3. Validación de constraint torrents_imdb_format (^tt[0-9]+$)
     let validImdbId: string | null = null;
     if (typeof raw.imdb_id === 'string') {
       const trimmedId = raw.imdb_id.trim();
-      if (/^tt[0-9]+$/.test(trimmedId)) validImdbId = trimmedId;
+      if (IMDB_REGEX.test(trimmedId)) validImdbId = trimmedId;
     }
 
-    // 4. Validación de constraint torrents_type_valid ('movie', 'series', 'anime')
     let validType: 'movie' | 'series' | 'anime' = 'movie';
     if (raw.type === 'series' || raw.type === 'anime') validType = raw.type;
 
-    // 5. Limpieza de Arrays (Evita guardar strings vacíos en los arrays)
-    const cleanAudio = Array.isArray(raw.audio) 
-      ? Array.from(new Set(raw.audio.filter(a => typeof a === 'string' && a.trim().length > 0))) 
+    // Trimeado y deduplicado estricto de elementos en arrays
+    const cleanAudio = Array.isArray(raw.audio)
+      ? Array.from(
+          new Set(
+            raw.audio
+              .filter((a): a is string => typeof a === 'string')
+              .map(a => a.trim())
+              .filter(a => a.length > 0)
+          )
+        )
       : [];
-    const cleanSubs = Array.isArray(raw.subtitles) 
-      ? Array.from(new Set(raw.subtitles.filter(s => typeof s === 'string' && s.trim().length > 0))) 
+
+    const cleanSubs = Array.isArray(raw.subtitles)
+      ? Array.from(
+          new Set(
+            raw.subtitles
+              .filter((s): s is string => typeof s === 'string')
+              .map(s => s.trim())
+              .filter(s => s.length > 0)
+          )
+        )
       : [];
 
     return {
+      info_hash: cleanHash,
+      title,
+      type: validType,
       imdb_id: validImdbId,
       tmdb_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.tmdb_id),
       kitsu_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.kitsu_id),
       anilist_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.anilist_id),
       mal_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.mal_id),
 
-      type: validType,
-
       season: SupabaseTorrentRepository.parseNonNegativeInt(raw.season),
       episode: SupabaseTorrentRepository.parseNonNegativeInt(raw.episode),
       absolute_episode: SupabaseTorrentRepository.parseNonNegativeInt(raw.absolute_episode),
       file_index: SupabaseTorrentRepository.parseNonNegativeInt(raw.file_index),
 
-      info_hash: cleanHash,
-      title: title,
       release_group: SupabaseTorrentRepository.safeString(raw.release_group, 100),
-      quality: SupabaseTorrentRepository.safeString(raw.quality, 20, 'Unknown'),
+      quality: SupabaseTorrentRepository.safeString(raw.quality, 20, 'Unknown') ?? 'Unknown',
       codec: SupabaseTorrentRepository.safeString(raw.codec, 20),
       hdr_format: SupabaseTorrentRepository.safeString(raw.hdr_format, 20),
 
@@ -97,21 +148,25 @@ export class SupabaseTorrentRepository {
       subtitles: cleanSubs,
       channels: SupabaseTorrentRepository.safeString(raw.channels, 10),
 
-      size_bytes: SupabaseTorrentRepository.parseNonNegativeInt(raw.size_bytes, 0),
-      seeders: SupabaseTorrentRepository.parseNonNegativeInt(raw.seeders, 0),
-      leechers: SupabaseTorrentRepository.parseNonNegativeInt(raw.leechers, 0),
+      size_bytes: SupabaseTorrentRepository.parseNonNegativeInt(raw.size_bytes, 0) ?? 0,
+      seeders: SupabaseTorrentRepository.parseNonNegativeInt(raw.seeders, 0) ?? 0,
+      leechers: SupabaseTorrentRepository.parseNonNegativeInt(raw.leechers, 0) ?? 0,
       source_tracker: SupabaseTorrentRepository.safeString(raw.source_tracker, 100)
     };
   }
 
   /**
-   * Ejecuta UPSERT masivo sobre el índice único idx_torrents_unique_hash (info_hash_clean)
+   * Ejecuta UPSERT masivo deduplicado por info_hash
    */
-  public async upsertBatch(records: TorrentRecord[], batchSize = 100): Promise<number> {
-    if (records.length === 0) return 0;
+  public async upsertBatch(
+    records: TorrentRecord[],
+    batchSize = 100,
+    onConflictColumn = 'info_hash'
+  ): Promise<number> {
+    if (!Array.isArray(records) || records.length === 0) return 0;
 
-    // Deduplica por info_hash en memoria para evitar el error de lote en PostgreSQL
-    const uniqueMap = new Map<string, Record<string, any>>();
+    // Deduplicación en memoria por info_hash antes del envío a la BD
+    const uniqueMap = new Map<string, SanitizedTorrentRecord>();
     for (const record of records) {
       const sanitized = this.sanitizeRecord(record);
       if (sanitized) uniqueMap.set(sanitized.info_hash, sanitized);
@@ -126,7 +181,7 @@ export class SupabaseTorrentRepository {
     }
 
     if (!this.client) {
-      throw new Error('[SUPABASE] Client uninitialized. Database connection missing.');
+      throw new Error('[SUPABASE] Client uninitialized. Database connection or credentials missing.');
     }
 
     let totalUpserted = 0;
@@ -135,40 +190,44 @@ export class SupabaseTorrentRepository {
     for (let i = 0; i < validRecords.length; i += batchSize) {
       const chunk = validRecords.slice(i, i + batchSize);
       let success = false;
+      const currentBatchNumber = Math.floor(i / batchSize) + 1;
 
-      // Mecanismo de Retry para caídas temporales de red o de Supabase API
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
           const { error } = await this.client
             .from('torrents')
             .upsert(chunk, {
-              onConflict: 'info_hash_clean', // Verifica que este nombre coincida con la columna/restricción
+              onConflict: onConflictColumn,
               ignoreDuplicates: false
             });
 
           if (error) {
-            console.error(`[SUPABASE] Batch ${Math.floor(i / batchSize) + 1} (Attempt ${attempt}) failed:`, error.message);
-            // Si el error es de sintaxis (400), reintentar no ayudará, abortamos el retry.
-            if (error.code && error.code.startsWith('22')) break; 
-            
+            console.error(`[SUPABASE] Batch ${currentBatchNumber} (Attempt ${attempt}) failed:`, error.message);
+
+            // Cancelar reintentos si el error no es solucionable reintentando (ej. error de sintaxis o constraint)
+            if (SupabaseTorrentRepository.isNonRetriableError(error.code)) break;
+
             if (attempt < maxRetries) {
-              await new Promise(res => setTimeout(res, 2000 * attempt)); // Backoff exponencial corto
+              await new Promise(res => setTimeout(res, 1000 * Math.pow(2, attempt))); // Backoff exponencial
               continue;
             }
           } else {
             success = true;
             totalUpserted += chunk.length;
-            console.log(`[SUPABASE] Batch ${Math.floor(i / batchSize) + 1} saved: ${chunk.length} torrents.`);
-            break; // Saliendo del bucle de retries
+            console.log(`[SUPABASE] Batch ${currentBatchNumber} saved: ${chunk.length} torrents.`);
+            break;
           }
-        } catch (err: any) {
-          console.error(`[SUPABASE] Network crash on batch [${i} to ${i + chunk.length}]:`, err.message);
-          if (attempt < maxRetries) await new Promise(res => setTimeout(res, 2000 * attempt));
+        } catch (err: unknown) {
+          const errorMessage = err instanceof Error ? err.message : String(err);
+          console.error(`[SUPABASE] Network crash on batch [${i} to ${i + chunk.length}]:`, errorMessage);
+          if (attempt < maxRetries) {
+            await new Promise(res => setTimeout(res, 1000 * Math.pow(2, attempt)));
+          }
         }
       }
 
       if (!success) {
-        console.error(`[SUPABASE] ❌ Critical: Batch ${Math.floor(i / batchSize) + 1} permanently failed after ${maxRetries} attempts.`);
+        console.error(`[SUPABASE] ❌ Critical: Batch ${currentBatchNumber} permanently failed after attempts.`);
       }
     }
 
