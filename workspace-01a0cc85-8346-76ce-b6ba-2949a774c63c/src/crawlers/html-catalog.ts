@@ -39,7 +39,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
   public abstract baseUrl: string;
   protected abstract readonly sections: string[];
   public abstract parseListing(html: string, url: string): string[];
-  public abstract parseDetail(html: string, url: string): CatalogDetail;
+  public abstract parseDetail(html: string, url: string): CatalogDetail | Promise<CatalogDetail>;
 
   /** Optional mirror pool; resolution is soft so the adapter can still report a precise error. */
   protected get mirrorSetup(): MirrorSetup | null {
@@ -56,13 +56,39 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
   }
 
   public nextPage(html: string, current: string): string | null {
-    const $ = cheerio.load(html);
-    const currentUrl = new URL(current);
-    for (const el of $('a[rel="next"], .pagination a, .navigation a, .pages a, .pagi a').toArray()) {
-      const a = $(el);
-      if (a.attr('rel') !== 'next' && !/siguiente|next|[»›→]/i.test(a.text())) continue;
-      const next = httpUrl(a.attr('href'), current);
-      if (next && new URL(next).origin === currentUrl.origin && next !== current) return next;
+    try {
+      const $ = cheerio.load(html);
+      const currentUrl = new URL(current);
+      currentUrl.hash = '';
+      const normalizedCurrent = currentUrl.href;
+
+      const selectors = 'a[rel="next"], .pagination a, .navigation a, .pages a, .pagi a, .paginacion a';
+      for (const el of $(selectors).toArray()) {
+        const a = $(el);
+        const isRelNext = a.attr('rel') === 'next';
+        const text = cleanText(a.text());
+
+        if (!isRelNext && !/siguiente|next|[»›→]/i.test(text)) continue;
+
+        const rawHref = a.attr('href');
+        if (!rawHref) continue;
+
+        const next = httpUrl(rawHref, current);
+        if (!next) continue;
+
+        try {
+          const nextUrl = new URL(next);
+          nextUrl.hash = '';
+
+          if (nextUrl.origin === currentUrl.origin && nextUrl.href !== normalizedCurrent) {
+            return nextUrl.href;
+          }
+        } catch {
+          continue;
+        }
+      }
+    } catch {
+      return null;
     }
     return null;
   }
@@ -94,23 +120,32 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           listingsRead++;
           this.metrics.add('listings');
 
-          const details = this.parseListing(html, listUrl).filter(url => {
-            if (seenDetails.has(url)) return false;
-            seenDetails.add(url);
-            return true;
-          });
+          // Resolver URLs relativas a absolutas e ignorar duplicados/inválidos
+          const details = this.parseListing(html, listUrl)
+            .map(rawUrl => httpUrl(rawUrl, listUrl!))
+            .filter((url): url is string => {
+              if (!url || seenDetails.has(url)) return false;
+              seenDetails.add(url);
+              return true;
+            });
 
           const batches = await mapWithConcurrency(details, this.detailConcurrency, async url => {
             if (this.deadline.expired) return [];
             return this.crawlDetail(url);
           });
-          results.push(...batches.flat());
 
-          // Follow real pagination links, not guessed routes; visited URLs break loops.
+          // Inserción segura para evitar Stack Overflow con arrays masivos
+          for (const batch of batches) {
+            for (const record of batch) {
+              results.push(record);
+            }
+          }
+
+          // Seguir enlaces reales de paginación
           listUrl = this.nextPage(html, listUrl);
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Catalog failed ${listUrl}: ${String(error)}`);
+          this.log.warn(`Catalog failed ${listUrl}: ${describe(error)}`);
           break;
         }
       }
@@ -148,7 +183,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('downloadErrors');
-          this.log.warn(`Invalid/unavailable download ${download.url}: ${String(error)}`);
+          this.log.warn(`Invalid/unavailable download ${download.url}: ${describe(error)}`);
         }
       }
 
@@ -159,7 +194,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       return records;
     } catch (error) {
       this.metrics.add('detailErrors');
-      this.log.warn(`Detail failed ${url}: ${String(error)}`);
+      this.log.warn(`Detail failed ${url}: ${describe(error)}`);
       return [];
     }
   }
@@ -171,16 +206,18 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
   ): Promise<TorrentRecord | null> {
     const magnet = parseMagnetUri(download.url);
     let torrent = null;
+    let resolvedTorrentUrl: string | null = null;
 
     if (!magnet) {
       if (download.buffer) {
-        // Already downloaded by the adapter (e.g. a real browser download event).
+        // Ya descargado por el adaptador
         torrent = parseTorrentBuffer(download.buffer);
         if (!torrent) throw new Error('Downloaded payload is not valid v1/hybrid torrent metainfo');
       } else {
-        if (!httpUrl(download.url, sourceUrl)) return null;
-        // Capped, validated metainfo download (hash calculation only).
-        torrent = await this.fetchTorrentMetainfo(download.url, sourceUrl);
+        const resolved = httpUrl(download.url, sourceUrl);
+        if (!resolved) return null;
+        resolvedTorrentUrl = resolved;
+        torrent = await this.fetchTorrentMetainfo(resolved, sourceUrl);
       }
       this.metrics.add('downloads');
     }
@@ -201,7 +238,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       type: meta.type,
       infoHash: hash,
       magnetUrl: magnet ? download.url : null,
-      torrentFileUrl: magnet ? null : httpUrl(download.url, sourceUrl),
+      torrentFileUrl: magnet ? null : (resolvedTorrentUrl || httpUrl(download.url, sourceUrl)),
       sourceUrl,
       trackers,
       audio: languages.audio,
@@ -209,7 +246,6 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       meta,
       quality: qualityOf(meta),
       sizeBytes: torrent?.sizeBytes ?? null,
-      // Neither adapter publishes swarm counters: unknown stays unknown.
       seeders: null,
       leechers: null,
       sourceTracker: trackers[0] || null
@@ -220,4 +256,8 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
 /** Resolves a link and rejects anything that is not plain http(s). */
 export function httpUrl(value: string | undefined, base: string): string | null {
   return absoluteHttpUrl(value, base);
+}
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
