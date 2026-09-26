@@ -25,8 +25,7 @@ interface ScrapedRow {
 
 /**
  * 1337x: `table-list` grids + per-release detail pages. Category/Language labels
- * are read from the detail page (text nodes, spans or anchors), and every detail
- * page is visited at most once per run.
+ * are read from the detail page, and every detail page is visited at most once per run.
  */
 export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
@@ -107,32 +106,38 @@ export class Leech1337xCrawler extends BaseCrawler {
           this.metrics.add('listings');
           const $ = cheerio.load(html);
 
+          const tableRows = $('table.table-list tbody tr');
+          if (tableRows.length === 0) {
+            this.log.debug(`No rows found on ${url}. Moving to next endpoint.`);
+            break;
+          }
+
           const rows: ScrapedRow[] = [];
-          $('table.table-list tbody tr').each((_, el) => {
-            const nameEl = $(el).find('td.name a[href^="/torrent/"]');
+          tableRows.each((_, el) => {
+            const $row =$(el);
+            const nameEl = $row.find('td.name a[href^="/torrent/"]').first();
             if (!nameEl.length) return;
 
             const detailUrl = this.resolveUrl(nameEl.attr('href') || '', mirror);
             if (visitedDetails.has(detailUrl)) return;
-            visitedDetails.add(detailUrl);
 
             const title = cleanText(nameEl.text());
             if (!title || isBlockedTitle(title)) return;
 
+            visitedDetails.add(detailUrl);
+
+            const sizeTdText = $row.find('td.size, td.coll-4').text();
+            const sizeMatch = sizeTdText.match(/[\d.]+\s*(?:[KMGT]?B|Bytes)/i);
+
             rows.push({
               detailUrl,
               title,
-              seeders: parseCount($(el).find('td.seeds').text()),
-              leechers: parseCount($(el).find('td.leeches').text()),
-              sizeStr: cleanText($(el).find('td.size').clone().children().remove().end().text())
+              seeders: parseCount($row.find('td.seeds').text()),
+              leechers: parseCount($row.find('td.leeches').text()),
+              sizeStr: sizeMatch ? sizeMatch[0] : cleanText(sizeTdText)
             });
           });
 
-          if ($('table.table-list tbody tr').length === 0) {
-            this.log.debug(`No rows found on ${url}. Moving to next endpoint.`);
-            break;
-          }
-          // Overlap with another category is not end-of-pagination.
           if (!rows.length) continue;
 
           this.log.debug(`Processing ${rows.length} torrent rows from ${url}...`);
@@ -144,15 +149,17 @@ export class Leech1337xCrawler extends BaseCrawler {
               return record;
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Failed to scrape detail for "${row.title}": ${describe(error)}`);
+              this.log.warn(`Failed to scrape detail for "${row.title}": ${formatError(error)}`);
               return null;
             }
           });
 
-          for (const record of records) if (record) results.push(record);
+          for (const record of records) {
+            if (record) results.push(record);
+          }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed loading listing ${url}: ${describe(error)}`);
+          this.log.warn(`Failed loading listing ${url}: ${formatError(error)}`);
           break;
         }
       }
@@ -174,16 +181,21 @@ export class Leech1337xCrawler extends BaseCrawler {
     const parsedMagnet = parseMagnetUri(magnetHref);
     if (!parsedMagnet?.infoHash) return null;
 
-    const field = (label: string): string => {
-      const strong = $('.torrent-category-detail strong')
-        .filter((_, el) => cleanText($(el).text()).replace(':', '').toLowerCase() === label)
-        .first();
-      // 1337x templates use text nodes, spans or anchors after the label.
-      return cleanText(strong.parent().clone().children('strong').remove().end().text());
-    };
+    const detailsMap = new Map<string, string>();
+    $('.torrent-category-detail li, .torrent-detail-page li').each((_, el) => {
+      const $li =$(el);
+      const strong = $li.find('strong').first();
+      if (!strong.length) return;
 
-    const pageCategory = field('category').toLowerCase();
-    const pageLanguage = field('language');
+      const key = cleanText(strong.text()).replace(':', '').toLowerCase();
+      if (!key) return;
+
+      const val = cleanText($li.children('span').text() \vert{}\vert{}$li.contents().not(strong).text());
+      detailsMap.set(key, val);
+    });
+
+    const pageCategory = (detailsMap.get('category') || '').toLowerCase();
+    const pageLanguage = detailsMap.get('language') || '';
 
     let defaultType: ContentType = 'movie';
     if (/tv|television|episodes/.test(pageCategory)) defaultType = 'series';
@@ -194,7 +206,11 @@ export class Leech1337xCrawler extends BaseCrawler {
     const meta = parseTorrentTitle(title, defaultType);
     const langs = detectLanguages(title, [pageLanguage, pageCategory]);
 
-    const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,8})/i);
+    const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
+
+    const finalSizeStr = row.sizeStr || detailsMap.get('total size') || detailsMap.get('size') || '';
+    const seeders = row.seeders ?? parseCount(detailsMap.get('seeders'));
+    const leechers = row.leechers ?? parseCount(detailsMap.get('leechers'));
 
     return buildTorrentRecord({
       title,
@@ -207,16 +223,16 @@ export class Leech1337xCrawler extends BaseCrawler {
       subtitles: langs.subtitles,
       meta,
       quality: qualityOf(meta),
-      sizeBytes: parseSizeToBytes(row.sizeStr),
-      seeders: row.seeders,
-      leechers: row.leechers,
+      sizeBytes: parseSizeToBytes(finalSizeStr),
+      seeders,
+      leechers,
       imdbId: imdbMatch ? imdbMatch[1] : null,
       sourceTracker: parsedMagnet.trackers[0] ?? null
     });
   }
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
