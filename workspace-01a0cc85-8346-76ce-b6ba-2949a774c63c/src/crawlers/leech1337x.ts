@@ -23,15 +23,10 @@ interface ScrapedRow {
   sizeStr: string;
 }
 
-/**
- * 1337x: `table-list` grids + per-release detail pages. Category/Language labels
- * are read from the detail page, and every detail page is visited at most once per run.
- */
 export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
   public baseUrl = process.env.LEECH1337X_BASE_URL || 'https://1337x.la';
 
-  /** Known 1337x front-ends; extend with LEECH1337X_MIRRORS. */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://1337x.la',
     'https://www.1337x.tw',
