@@ -1,391 +1,336 @@
-/**
- * Shared toolkit for every adapter in `src/crawlers/`.
- *
- * The site-specific logic (routes, selectors, link decoding) stays inside each
- * adapter. What lives here is the boring, easy-to-get-wrong plumbing that used to
- * be copy-pasted a dozen times: logging, counters, URL handling, numeric parsing,
- * deadlines, concurrency and the construction of a valid `TorrentRecord`.
- */
-
+import * as cheerio from 'cheerio';
+import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
-import { buildMagnetUri, normalizeInfoHash } from '../utils/magnet.js';
-import { ParsedMetadata } from '../utils/regex.js';
+import { parseMagnetUri } from '../utils/magnet.js';
+import { detectLanguages } from '../utils/language.js';
+import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  DEFAULT_TRACKERS,
+  isBlockedTitle,
+  mapWithConcurrency,
+  parseCount,
+  qualityOf,
+  sleep
+} from './support.js';
 
-// ============================================================================
-// Logging
-// ============================================================================
-
-export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'silent';
-
-const LEVEL_WEIGHT: Record<LogLevel, number> = { debug: 10, info: 20, warn: 30, error: 40, silent: 100 };
-
-function currentLevel(): LogLevel {
-  const raw = (process.env.LOG_LEVEL || '').trim().toLowerCase();
-  if (raw in LEVEL_WEIGHT) return raw as LogLevel;
-  return 'info';
-}
-
-/** Small prefixed logger so every line can be traced back to its adapter. */
-export class CrawlerLogger {
-  constructor(private readonly scope: string) {}
-
-  private enabled(level: LogLevel): boolean {
-    return LEVEL_WEIGHT[level] >= LEVEL_WEIGHT[currentLevel()];
-  }
-
-  public debug(message: string): void {
-    if (this.enabled('debug')) console.log(`[${this.scope}] ${message}`);
-  }
-
-  public info(message: string): void {
-    if (this.enabled('info')) console.log(`[${this.scope}] ${message}`);
-  }
-
-  public warn(message: string): void {
-    if (this.enabled('warn')) console.warn(`[${this.scope}] ${message}`);
-  }
-
-  public error(message: string): void {
-    if (this.enabled('error')) console.error(`[${this.scope}] ${message}`);
-  }
-}
-
-// ============================================================================
-// Metrics
-// ============================================================================
-
-export type MetricKey =
-  | 'listings'
-  | 'listingErrors'
-  | 'details'
-  | 'detailErrors'
-  | 'downloads'
-  | 'downloadErrors'
-  | 'records'
-  | 'skipped'
-  | 'gated';
-
-/** Per-run counters used for the end-of-crawl diagnostic line. */
-export class CrawlerMetrics {
-  private readonly counters = new Map<string, number>();
-
-  public add(key: MetricKey | string, amount = 1): void {
-    this.counters.set(key, (this.counters.get(key) ?? 0) + amount);
-  }
-
-  public get(key: MetricKey | string): number {
-    return this.counters.get(key) ?? 0;
-  }
-
-  public snapshot(): Record<string, number> {
-    return Object.fromEntries([...this.counters.entries()]);
-  }
-
-  public toString(): string {
-    const entries = [...this.counters.entries()].filter(([, value]) => value !== 0);
-    if (!entries.length) return 'no activity';
-    return entries.map(([key, value]) => `${key}=${value}`).join(' ');
-  }
-}
-
-// ============================================================================
-// Timing / pacing
-// ============================================================================
-
-export function sleep(ms: number): Promise<void> {
-  if (!(ms > 0)) return Promise.resolve();
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export function jitter(baseMs: number, spreadMs = baseMs / 2): number {
-  if (!(baseMs > 0)) return 0;
-  return Math.round(baseMs + (Math.random() * 2 - 1) * spreadMs);
-}
-
-function envInt(name: string, fallback: number, min = 0): number {
-  const raw = process.env[name];
-  if (!raw) return fallback;
-  const parsed = Number.parseInt(raw.trim(), 10);
-  if (!Number.isFinite(parsed)) return fallback;
-  return Math.max(min, parsed);
-}
-
-/** Optional politeness delay between requests (`CRAWLER_REQUEST_DELAY_MS`). */
-export function requestDelayMs(): number {
-  return envInt('CRAWLER_REQUEST_DELAY_MS', 0);
-}
-
-export async function politePause(): Promise<void> {
-  const delay = requestDelayMs();
-  if (delay > 0) await sleep(jitter(delay));
+interface LimeCandidate {
+  title: string;
+  detailUrl: string;
+  sizeBytes?: number | null;
+  seeders?: number | null;
+  leeches?: number | null;
+  type: ContentType;
 }
 
 /**
- * Wall-clock budget for a single adapter. A dead mirror used to be able to burn
- * the whole GitHub Actions timeout; now the adapter stops and reports instead.
+ * LimeTorrents: `table2` listings plus search. The age column is detected
+ * dynamically so size/seeders/leechers never shift by one cell.
  */
-export class Deadline {
-  private readonly endsAt: number | null;
+export class LimeTorrentsCrawler extends BaseCrawler {
+  public readonly name = 'limetorrents';
+  public baseUrl: string;
 
-  constructor(budgetMs?: number | null) {
-    const budget = budgetMs ?? envInt('CRAWLER_TIME_BUDGET_MS', 0);
-    this.endsAt = budget > 0 ? Date.now() + budget : null;
+  /** Known LimeTorrents domains; extend with LIMETORRENTS_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://limetorrent.store',
+    'https://www.limetorrents.fun',
+    'https://limetorrents.lol',
+    'https://limetorrents.asia',
+    'https://limetorrents.pro',
+    'https://limetorrent.net',
+    'https://limetorrents.cc',
+    'https://www.limetorrents.to'
+  ];
+
+  private readonly detailConcurrency = Math.max(
+    1,
+    Number.parseInt(process.env.LIMETORRENTS_CONCURRENCY || '3', 10) || 3
+  );
+
+  constructor() {
+    super();
+    this.baseUrl = process.env.LIMETORRENTS_BASE_URL || LimeTorrentsCrawler.DEFAULT_MIRRORS[0];
   }
 
-  public get enabled(): boolean {
-    return this.endsAt !== null;
+  public async crawl(maxPages: number): Promise<TorrentRecord[]> {
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting crawl across catalogs and searches (maxPages=${maxPages})...`);
+
+    const validate = htmlMarkerValidator([/class=["'][^"']*table2/]);
+    const mirror = await this.resolveMirror({
+      envPrefix: 'LIMETORRENTS',
+      defaults: LimeTorrentsCrawler.DEFAULT_MIRRORS,
+      probes: [
+        { path: '/latest100', label: 'latest100', timeoutMs: 6000, validate },
+        { path: '/top100', label: 'top100', timeoutMs: 6000, validate }
+      ]
+    });
+
+    // Actualizamos la propiedad baseUrl para sincronizarla con el mirror activo
+    this.baseUrl = mirror;
+
+    const candidateMap = new Map<string, LimeCandidate>();
+
+    // 1. Catalogues
+    const categories: Array<{ path: string; type: ContentType; paginated: boolean }> = [
+      { path: '/latest100', type: 'movie', paginated: false },
+      { path: '/top100', type: 'movie', paginated: false },
+      { path: '/browse-torrents/Movies/', type: 'movie', paginated: true },
+      { path: '/browse-torrents/TV-shows/', type: 'series', paginated: true },
+      { path: '/browse-torrents/Anime/', type: 'anime', paginated: true }
+    ];
+
+    for (const cat of categories) {
+      for (let page = 1; page <= maxPages; page++) {
+        if (this.deadline.expired) break;
+        if (page > 1 && !cat.paginated) break;
+
+        const listUrl = page > 1 ? `${mirror}${cat.path}${page}/` : `${mirror}${cat.path}`;
+        try {
+          this.log.debug(`Fetching catalog listing: ${listUrl}`);
+          const html = await this.fetchHtml(listUrl);
+          this.metrics.add('listings');
+          this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed fetching listing ${listUrl}: ${describe(error)}`);
+          break;
+        }
+      }
+    }
+
+    // 2. Spanish-oriented searches (discovery only, never language evidence)
+    const spanishQueries = (process.env.LIMETORRENTS_SEARCH || 'spanish,castellano,latino')
+      .split(/[,\s]+/)
+      .map(q => q.trim())
+      .filter(Boolean);
+
+    for (const query of spanishQueries) {
+      if (this.deadline.expired) break;
+      const html = await this.searchHtml(mirror, query);
+      if (!html) continue;
+      this.metrics.add('listings');
+      this.collectRows(html, `${mirror}/search`, mirror, null, candidateMap);
+    }
+
+    this.log.info(`Discovered ${candidateMap.size} candidates. Extracting release details...`);
+
+    const maxCandidates = Math.max(30, maxPages * 25);
+    const candidates = [...candidateMap.values()].slice(0, maxCandidates);
+
+    const records = await mapWithConcurrency(candidates, this.detailConcurrency, async item => {
+      if (this.deadline.expired) return null;
+      try {
+        await sleep(50);
+        const record = await this.parseLimeDetail(item, mirror);
+        if (record) this.metrics.add('records');
+        return record;
+      } catch (error) {
+        this.metrics.add('detailErrors');
+        this.log.warn(`Error parsing ${item.detailUrl}: ${describe(error)}`);
+        return null;
+      }
+    });
+
+    const deduplicated = this.deduplicateRecords(records.filter((r): r is TorrentRecord => Boolean(r)));
+    this.logRunSummary(deduplicated);
+    return deduplicated;
   }
 
-  public get expired(): boolean {
-    return this.endsAt !== null && Date.now() >= this.endsAt;
-  }
+  /** POST search with a GET fallback: mirrors disagree on which one they expose. */
+  private async searchHtml(mirror: string, query: string): Promise<string | null> {
+    this.log.debug(`Querying search for "${query}"...`);
+    try {
+      const response = await this.httpClient.request<string>({
+        method: 'POST',
+        url: `${mirror}/search`,
+        data: new URLSearchParams({ q: query }).toString(),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      });
+      if (typeof response.data === 'string' && response.data.includes('table2')) {
+        return response.data;
+      }
+    } catch (error) {
+      this.log.debug(`POST search failed for "${query}": ${describe(error)}`);
+    }
 
-  public get remainingMs(): number {
-    if (this.endsAt === null) return Number.POSITIVE_INFINITY;
-    return Math.max(0, this.endsAt - Date.now());
-  }
-}
-
-// ============================================================================
-// Text / URL helpers
-// ============================================================================
-
-export function cleanText(value: string | null | undefined): string {
-  if (!value) return '';
-  return value.replace(/\s+/g, ' ').trim();
-}
-
-/** Resolves a possibly relative link and rejects anything that is not plain http(s). */
-export function absoluteHttpUrl(value: string | undefined | null, base: string): string | null {
-  if (!value) return null;
-  const candidate = value.trim();
-  if (!candidate || candidate.startsWith('#') || /^(javascript|data|mailto|tel):/i.test(candidate)) return null;
-  try {
-    const url = new URL(candidate, base);
-    if (!['http:', 'https:'].includes(url.protocol)) return null;
-    if (url.username || url.password) return null;
-    url.hash = '';
-    return url.href;
-  } catch {
-    return null;
-  }
-}
-
-export function sameOrigin(a: string, b: string): boolean {
-  try {
-    return new URL(a).origin === new URL(b).origin;
-  } catch {
-    return false;
-  }
-}
-
-/** Parses "1,234" / "1 234" / "N/A" swarm counters. Unknown stays `null`. */
-export function parseCount(value: string | number | null | undefined): number | null {
-  if (typeof value === 'number') return Number.isFinite(value) && value >= 0 ? Math.floor(value) : null;
-  if (!value) return null;
-  const match = String(value).replace(/[\s,.\u00a0]/g, '').match(/-?\d+/);
-  if (!match) return null;
-  const parsed = Number.parseInt(match[0], 10);
-  if (!Number.isFinite(parsed) || parsed < 0) return null;
-  return parsed;
-}
-
-export function clampNonNegative(value: number | null | undefined): number | null {
-  if (value === null || value === undefined) return null;
-  if (!Number.isFinite(value) || value < 0) return null;
-  return Math.floor(value);
-}
-
-/** `quality` column: resolution first, release source as a fallback. */
-export function qualityOf(meta: Pick<ParsedMetadata, 'resolution' | 'source'>): string | null {
-  return meta.resolution || meta.source || null;
-}
-
-export function dedupeStrings(values: readonly (string | null | undefined)[]): string[] {
-  const seen = new Set<string>();
-  const output: string[] = [];
-  for (const value of values) {
-    const clean = cleanText(value ?? '');
-    if (!clean) continue;
-    const key = clean.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    output.push(clean);
-  }
-  return output;
-}
-
-/** Adult / non-catalogue noise that should never reach the media database. */
-const BLOCKED_TITLE_REGEX = /\b(xxx|porn(?:o|hub)?|onlyfans|brazzers|hentai|camrip[-_]?xxx|sexo\s+explicito)\b/i;
-
-export function isBlockedTitle(title: string | null | undefined): boolean {
-  if (!title) return false;
-  return BLOCKED_TITLE_REGEX.test(title);
-}
-
-export const DEFAULT_TRACKERS: readonly string[] = [
-  'udp://tracker.opentrackr.org:1337/announce',
-  'udp://open.stealth.si:80/announce',
-  'udp://tracker.torrent.eu.org:451/announce',
-  'udp://open.demonii.com:1337/announce',
-  'udp://tracker.openbittorrent.com:6969/announce'
-];
-
-// ============================================================================
-// Concurrency
-// ============================================================================
-
-/** Runs `worker` over `items` with a bounded pool, preserving input order. */
-export async function mapWithConcurrency<T, R>(
-  items: readonly T[],
-  limit: number,
-  worker: (item: T, index: number) => Promise<R>
-): Promise<R[]> {
-  const size = Math.max(1, Math.floor(limit));
-  const results = new Array<R>(items.length);
-  let cursor = 0;
-
-  async function runner(): Promise<void> {
-    while (cursor < items.length) {
-      const index = cursor++;
-      results[index] = await worker(items[index], index);
+    try {
+      return await this.fetchHtml(`${mirror}/search/all/${encodeURIComponent(query)}/seeds/1/`);
+    } catch (error) {
+      this.metrics.add('listingErrors');
+      this.log.warn(`Search error for "${query}": ${describe(error)}`);
+      return null;
     }
   }
 
-  await Promise.all(Array.from({ length: Math.min(size, items.length) }, runner));
-  return results;
-}
+  /** Parses a `table2` grid; the age column is located by content, not by index. */
+  private collectRows(
+    html: string,
+    sourceUrl: string,
+    mirror: string,
+    forcedType: ContentType | null,
+    sink: Map<string, LimeCandidate>
+  ): void {
+    const $ = cheerio.load(html);
 
-// ============================================================================
-// Record construction
-// ============================================================================
+    $('table.table2 tr').each((index, tr) => {
+      if (index === 0) return;
+      const tds = $(tr).find('td');
+      if (tds.length < 2) return;
 
-export interface RecordDraft {
-  title: string;
-  type: ContentType;
-  infoHash: string;
-  sourceUrl?: string | null;
-  magnetUrl?: string | null;
-  torrentFileUrl?: string | null;
-  trackers?: readonly string[];
-  audio?: readonly string[];
-  subtitles?: readonly string[];
-  meta?: ParsedMetadata | null;
-  season?: number | null;
-  episode?: number | null;
-  absoluteEpisode?: number | null;
-  quality?: string | null;
-  codec?: string | null;
-  hdrFormat?: string | null;
-  releaseGroup?: string | null;
-  channels?: string | null;
-  sizeBytes?: number | null;
-  seeders?: number | null;
-  leechers?: number | null;
-  imdbId?: string | null;
-  tmdbId?: number | null;
-  sourceTracker?: string | null;
-  fileIndex?: number | null;
-}
+      // Se utiliza una selección precisa del enlace del título para evitar enlaces secundarios o íconos de descarga
+      const nameAnchor = tds.find('div.tt-name a[href*=".html"], a[href*=".html"]').first();
+      const href = nameAnchor.attr('href');
+      const title = cleanText(nameAnchor.text());
 
-function normalizeImdb(value: string | null | undefined): string | null {
-  if (!value) return null;
-  const trimmed = String(value).trim();
-  return /^tt\d{7,9}$/.test(trimmed) ? trimmed : null;
-}
+      if (!href || !title || isBlockedTitle(title)) return;
 
-/**
- * Single place where a `TorrentRecord` is created. It validates the infohash,
- * refuses sentinel/zero hashes, keeps unknown swarm counters as `null` (never
- * fabricates a zero) and always produces a usable magnet URI.
- */
-export function buildTorrentRecord(draft: RecordDraft): TorrentRecord | null {
-  const infoHash = normalizeInfoHash(draft.infoHash);
-  if (!infoHash || /^0{40}$/.test(infoHash)) return null;
+      const fullUrl = absoluteHttpUrl(href, sourceUrl) ?? absoluteHttpUrl(href, mirror);
+      if (!fullUrl || sink.has(fullUrl)) return;
 
-  const title = cleanText(draft.title) || cleanText(draft.meta?.cleanTitle ?? '');
-  if (!title) return null;
+      const tdsArray = tds.toArray();
+      const sizeIndex = tdsArray.findIndex((td, position) => {
+        if (position === 0) return false;
+        const text = cleanText($(td).text());
+        return /[KMGT]i?B/i.test(text) && parseSizeToBytes(text) !== null;
+      });
 
-  const meta = draft.meta ?? null;
-  const trackers = dedupeStrings([...(draft.trackers ?? [])]);
-  const magnet = draft.magnetUrl && draft.magnetUrl.startsWith('magnet:?')
-    ? draft.magnetUrl
-    : buildMagnetUri(infoHash, title, trackers);
+      let sizeBytes: number | null = null;
+      let seeders: number | null = null;
+      let leeches: number | null = null;
 
-  return {
-    imdb_id: normalizeImdb(draft.imdbId),
-    tmdb_id: draft.tmdbId && Number.isFinite(draft.tmdbId) ? Number(draft.tmdbId) : null,
-    kitsu_id: null,
-    anilist_id: null,
-    mal_id: null,
-    type: draft.type,
-    season: clampNonNegative(draft.season ?? meta?.season ?? null),
-    episode: clampNonNegative(draft.episode ?? meta?.episode ?? null),
-    absolute_episode: clampNonNegative(draft.absoluteEpisode ?? meta?.absoluteEpisode ?? null),
-    file_index: draft.fileIndex ?? null,
-    info_hash: infoHash,
-    magnet_url: magnet,
-    torrent_file_url: draft.torrentFileUrl ?? null,
-    source_url: draft.sourceUrl ?? null,
-    title,
-    release_group: draft.releaseGroup ?? meta?.releaseGroup ?? null,
-    quality: draft.quality ?? (meta ? qualityOf(meta) : null),
-    codec: draft.codec ?? meta?.codec ?? null,
-    hdr_format: draft.hdrFormat ?? meta?.hdrFormat ?? null,
-    audio: dedupeStrings(draft.audio ?? []),
-    subtitles: dedupeStrings(draft.subtitles ?? []),
-    channels: draft.channels ?? meta?.channels ?? null,
-    size_bytes: clampNonNegative(draft.sizeBytes ?? null),
-    seeders: clampNonNegative(draft.seeders ?? null),
-    leechers: clampNonNegative(draft.leechers ?? null),
-    source_tracker: draft.sourceTracker ?? trackers[0] ?? null
-  };
-}
+      // Solución a desbordamiento / wrap-around cuando sizeIndex === -1
+      if (sizeIndex !== -1) {
+        sizeBytes = parseSizeToBytes(cleanText(tds.eq(sizeIndex).text()));
+        if (sizeIndex + 1 < tds.length) {
+          seeders = parseCount(cleanText(tds.eq(sizeIndex + 1).text()));
+        }
+        if (sizeIndex + 2 < tds.length) {
+          leeches = parseCount(cleanText(tds.eq(sizeIndex + 2).text()));
+        }
+      }
 
-/** Counts how much real information a record carries, used when merging duplicates. */
-export function recordScore(record: TorrentRecord): number {
-  let score = 0;
-  const fields: Array<keyof TorrentRecord> = [
-    'imdb_id', 'tmdb_id', 'season', 'episode', 'absolute_episode', 'magnet_url', 'torrent_file_url',
-    'source_url', 'release_group', 'quality', 'codec', 'hdr_format', 'channels', 'size_bytes',
-    'seeders', 'leechers', 'source_tracker'
-  ];
-  for (const field of fields) {
-    const value = record[field];
-    if (value !== null && value !== undefined && value !== '') score++;
+      sink.set(fullUrl, {
+        title,
+        detailUrl: fullUrl,
+        sizeBytes,
+        seeders,
+        leeches,
+        type: forcedType ?? (/s\d{1,2}|season|temporada|capitulo|capít/i.test(title) ? 'series' : 'movie')
+      });
+    });
   }
-  score += record.audio.length + record.subtitles.length;
-  return score;
+
+  private async parseLimeDetail(item: LimeCandidate, mirror: string): Promise<TorrentRecord | null> {
+    const html = await this.fetchHtml(item.detailUrl);
+    this.metrics.add('details');
+    const $ = cheerio.load(html);
+
+    const effectiveTitle = cleanText($('h1').first().text()) || item.title;
+    if (!effectiveTitle || isBlockedTitle(effectiveTitle)) return null;
+
+    let infoHash: string | null = null;
+    let magnetUri: string | null = null;
+    let sizeBytes = item.sizeBytes ?? null;
+    let seeders = item.seeders ?? null;
+    let leechers = item.leeches ?? null;
+    const trackers: string[] = [];
+
+    // 1. Extracción de URI Magnet
+    const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
+    if (magnetHref) {
+      magnetUri = magnetHref;
+      const parsed = parseMagnetUri(magnetHref);
+      if (parsed?.infoHash) {
+        infoHash = parsed.infoHash;
+        trackers.push(...parsed.trackers);
+      }
+    }
+
+    // 2. Búsqueda de Hash, Size, Seeders/Leechers en las tablas de detalles
+    $('table tr').each((_, tr) => {
+      const tds = $(tr).find('td');
+      if (tds.length < 2) return;
+      const key = cleanText(tds.eq(0).text()).toLowerCase();
+      const value = cleanText(tds.eq(1).text());
+
+      if (key.includes('hash') && !infoHash) {
+        const hashMatch = value.match(/([0-9a-fA-F]{40})/);
+        if (hashMatch) infoHash = hashMatch[1].toLowerCase();
+      }
+      if (key.includes('size') && !sizeBytes) {
+        sizeBytes = parseSizeToBytes(value);
+      }
+      if (key.includes('seeder') && seeders === null) {
+        seeders = parseCount(value);
+      }
+      if (key.includes('leecher') && leechers === null) {
+        leechers = parseCount(value);
+      }
+    });
+
+    // 3. Extracción de Trackers adicionales listados en la página
+    $('a[href^="udp://"], a[href^="http://"], a[href^="https://"]').each((_, a) => {
+      const href = $(a).attr('href');
+      if (href && (href.includes('/announce') || href.includes(':6969') || href.includes(':1337'))) {
+        if (!trackers.includes(href)) trackers.push(href);
+      }
+    });
+
+    // Fallback focalizado para seeders/leechers en lugar de escanear todo $.root().text()
+    if (seeders === null || leechers === null) {
+      $('.table2, .torrentinfo').find('tr, div, span').each((_, el) => {
+        const txt = $(el).text();
+        if (seeders === null) {
+          const m = txt.match(/Seeders?\s*:\s*([\d,.]+)/i);
+          if (m) seeders = parseCount(m[1]);
+        }
+        if (leechers === null) {
+          const m = txt.match(/Leechers?\s*:\s*([\d,.]+)/i);
+          if (m) leechers = parseCount(m[1]);
+        }
+      });
+    }
+
+    if (!infoHash) return null;
+
+    if (!trackers.length) trackers.push(...DEFAULT_TRACKERS.slice(0, 3));
+
+    // Si no existía el enlace magnet directo en el HTML pero sí obtuvimos el infoHash, se construye sintéticamente
+    if (!magnetUri) {
+      const trParams = trackers.map(t => `&tr=${encodeURIComponent(t)}`).join('');
+      magnetUri = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(effectiveTitle)}${trParams}`;
+    }
+
+    const meta = parseTorrentTitle(effectiveTitle, item.type);
+    const langs = detectLanguages(effectiveTitle, ['limetorrents']);
+
+    return buildTorrentRecord({
+      title: effectiveTitle,
+      type: meta.type,
+      infoHash,
+      magnetUrl: magnetUri,
+      sourceUrl: item.detailUrl,
+      trackers,
+      audio: langs.audio,
+      subtitles: langs.subtitles,
+      meta,
+      quality: qualityOf(meta),
+      sizeBytes,
+      seeders,
+      leechers,
+      sourceTracker: trackers[0] ?? null
+    });
+  }
 }
 
-/** Field-wise merge that prefers real values over nulls without inventing data. */
-export function mergeRecords(primary: TorrentRecord, secondary: TorrentRecord): TorrentRecord {
-  const pick = <K extends keyof TorrentRecord>(key: K): TorrentRecord[K] => {
-    const value = primary[key];
-    if (value === null || value === undefined || value === '') return secondary[key];
-    return value;
-  };
-
-  return {
-    ...primary,
-    imdb_id: pick('imdb_id'),
-    tmdb_id: pick('tmdb_id'),
-    season: pick('season'),
-    episode: pick('episode'),
-    absolute_episode: pick('absolute_episode'),
-    magnet_url: pick('magnet_url'),
-    torrent_file_url: pick('torrent_file_url'),
-    source_url: pick('source_url'),
-    release_group: pick('release_group'),
-    quality: pick('quality'),
-    codec: pick('codec'),
-    hdr_format: pick('hdr_format'),
-    channels: pick('channels'),
-    size_bytes: pick('size_bytes'),
-    seeders: pick('seeders'),
-    leechers: pick('leechers'),
-    source_tracker: pick('source_tracker'),
-    audio: dedupeStrings([...primary.audio, ...secondary.audio]),
-    subtitles: dedupeStrings([...primary.subtitles, ...secondary.subtitles])
-  };
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
+
+export default LimeTorrentsCrawler;
