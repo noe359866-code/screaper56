@@ -1,13 +1,39 @@
 import * as cheerio from 'cheerio';
+import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
+import { htmlMarkerValidator } from './mirrors.js';
 
 /** WolfMax4K catalog: /pelicula/:id/:slug and /serie/:id/:slug.
  * Download URLs are discovered from the page, never manufactured from an ID.
  */
 export class WolftorrentCrawler extends HtmlCatalogCrawler {
   public readonly name = 'wolftorrent';
-  public readonly baseUrl = process.env.WOLFTORRENT_BASE_URL || 'https://wolftorrent.com/';
+  public baseUrl = process.env.WOLFTORRENT_BASE_URL || 'https://wolftorrent.com/';
   protected readonly sections = ['/peliculas', '/series'];
+
+  /** Known Wolf/WolfMax4K domains; add your own with WOLFTORRENT_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://wolftorrent.com',
+    'https://wolfmax4k.com',
+    'https://www.wolfmax4k.com',
+    'https://wolftorrent.net',
+    'https://wolfmax4k.org'
+  ];
+
+  protected override get mirrorSetup(): MirrorSetup {
+    return {
+      envPrefix: 'WOLFTORRENT',
+      defaults: WolftorrentCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/peliculas',
+          label: 'catálogo de películas',
+          timeoutMs: 8000,
+          validate: htmlMarkerValidator([/href=["'][^"']*\/(?:pelicula|serie)\/[^"']+\/[^"']+/i])
+        }
+      ]
+    };
+  }
 
   public parseListing(html: string, url: string): string[] {
     const $ = cheerio.load(html);
@@ -79,7 +105,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
           detail.downloads.push({ url: download.url(), title: detail.title, buffer: Buffer.concat(chunks) });
           await download.delete();
         } catch (error) {
-          console.warn(`[${this.name}] Download button failed in ${url}: ${String(error)}`);
+          this.log.warn(`Download button failed in ${url}: ${String(error)}`);
         }
       }
       return detail;

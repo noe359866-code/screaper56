@@ -1,0 +1,17 @@
+<!-- Synthetic fixture: DonTorrent movie detail whose download button is behind
+     the site's JavaScript proof-of-work. No public link is published here. -->
+<html><head><title>Descargar Poli malo Torrent Gratis - DonTorrent</title></head><body>
+<h1>Descargar Poli malo Torrent Gratis</h1>
+<p><b>Año:</b> 2025</p>
+<p><b>Género:</b> Comedia</p>
+<p><b>Formato:</b> BluRay-1080p</p>
+<p><b>Tamaño:</b> 2.1 GB</p>
+<p><b>Descripción:</b> Ficha sintética para pruebas offline.</p>
+
+<a class="btn btn-primary" id="download">Descargar</a>
+<script>
+  // The real site solves a SHA-256 challenge and posts it to its own endpoint.
+  // This adapter never emulates it.
+  startPow().then(r => fetch('/api_validate_pow.php', { method: 'POST', body: r }));
+</script>
+</body></html>

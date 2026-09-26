@@ -1,220 +1,223 @@
 import * as cheerio from 'cheerio';
-import pLimit from 'p-limit';
 import { BaseCrawler } from './base.js';
-import { TorrentRecord, ContentType } from '../types/torrent.js';
+import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
-import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
+import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  isBlockedTitle,
+  mapWithConcurrency,
+  parseCount,
+  qualityOf
+} from './support.js';
 
 interface ScrapedRow {
   detailUrl: string;
   title: string;
-  seeders: number;
-  leechers: number;
+  seeders: number | null;
+  leechers: number | null;
   sizeStr: string;
 }
 
+/**
+ * 1337x: `table-list` grids + per-release detail pages. Category/Language labels
+ * are read from the detail page (text nodes, spans or anchors), and every detail
+ * page is visited at most once per run.
+ */
 export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
-  public readonly baseUrl = 'https://1337x.la'; 
-  private readonly fallbackMirrors = [
-    'https://www.1337x.tw', 
-    'https://1337x.to', 
+  public baseUrl = process.env.LEECH1337X_BASE_URL || 'https://1337x.la';
+
+  /** Known 1337x front-ends; extend with LEECH1337X_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://1337x.la',
+    'https://www.1337x.tw',
+    'https://1337x.to',
     'https://1337x.st',
-    'https://x1337x.ws'
+    'https://x1337x.ws',
+    'https://x1337x.eu',
+    'https://x1337x.se',
+    'https://1337x.is',
+    'https://1337x.gd',
+    'https://1377x.to'
   ];
-  private readonly CONCURRENCY = 2;
+
+  private readonly concurrency = Math.max(1, Number.parseInt(process.env.LEECH1337X_CONCURRENCY || '2', 10) || 2);
 
   private resolveUrl(target: string, base: string): string {
-    try {
-      return new URL(target, base).href;
-    } catch {
-      return target;
-    }
+    return absoluteHttpUrl(target, base) ?? target;
   }
 
   private async getWorkingMirror(): Promise<string> {
-    const mirrorsToTry = [this.baseUrl, ...this.fallbackMirrors];
-
-    for (const mirror of mirrorsToTry) {
-      try {
-        console.log(`[${this.name}] Testing connectivity to ${mirror}...`);
-        const resp = await this.httpClient.get<string>(mirror, {
-          timeout: 7000,
-          headers: {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-          }
-        });
-
-        const html = resp.data || '';
-        if (resp.status === 200 && !/Just a moment|Attention Required!|cf-mitigated|Cloudflare/i.test(html) && /table-list|href=["'][^"']*\/torrent\//.test(html)) {
-          console.log(`[${this.name}] Connected to active endpoint: ${mirror}`);
-          return mirror;
+    return this.resolveMirror({
+      envPrefix: 'LEECH1337X',
+      defaults: Leech1337xCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/',
+          label: 'portada',
+          timeoutMs: 7000,
+          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
+        },
+        {
+          path: '/popular-movies',
+          label: 'populares',
+          timeoutMs: 7000,
+          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
         }
-      } catch (err) {
-        console.warn(`[${this.name}] Mirror ${mirror} unreachable or blocked. Trying next...`);
-      }
-    }
-
-    throw new Error(`[${this.name}] All 1337x mirrors are down or blocked by Cloudflare.`);
+      ]
+    });
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    console.log(`[${this.name}] Starting 1337x crawl (maxPages=${maxPages})...`);
-    
-    const workingMirror = await this.getWorkingMirror();
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting 1337x crawl (maxPages=${maxPages})...`);
 
+    const mirror = await this.getWorkingMirror();
     const results: TorrentRecord[] = [];
-    const limit = pLimit(this.CONCURRENCY);
     const visitedDetails = new Set<string>();
 
     const searchEndpoints = [
       '/sort-search/spanish/seeders/desc',
       '/sort-search/latino/seeders/desc',
       '/sort-search/castellano/seeders/desc',
+      '/sort-search/dual%20audio/seeders/desc',
       '/popular-movies',
       '/popular-tv'
     ];
 
     for (const endpoint of searchEndpoints) {
       for (let page = 1; page <= maxPages; page++) {
+        if (this.deadline.expired) break;
+
         const isSearch = endpoint.includes('sort-search');
-        
-        const url = isSearch 
-          ? `${workingMirror}${endpoint}/${page}/` 
-          : (page === 1 ? `${workingMirror}${endpoint}` : null);
-        
+        const url = isSearch
+          ? `${mirror}${endpoint}/${page}/`
+          : (page === 1 ? `${mirror}${endpoint}` : null);
         if (!url) break;
 
         try {
-          console.log(`[${this.name}] Scraping listing: ${url}`);
-          const response = await this.httpClient.get<string>(url);
-          const $ = cheerio.load(response.data);
+          this.log.debug(`Scraping listing: ${url}`);
+          const html = await this.fetchHtml(url);
+          this.metrics.add('listings');
+          const $ = cheerio.load(html);
 
           const rows: ScrapedRow[] = [];
           $('table.table-list tbody tr').each((_, el) => {
             const nameEl = $(el).find('td.name a[href^="/torrent/"]');
             if (!nameEl.length) return;
 
-            const href = nameEl.attr('href') || '';
-            const detailUrl = this.resolveUrl(href, workingMirror);
+            const detailUrl = this.resolveUrl(nameEl.attr('href') || '', mirror);
             if (visitedDetails.has(detailUrl)) return;
             visitedDetails.add(detailUrl);
-            const title = nameEl.text().trim();
-            const seeders = parseInt($(el).find('td.seeds').text().replace(/[,\s]/g, ''), 10) || 0;
-            const leechers = parseInt($(el).find('td.leeches').text().replace(/[,\s]/g, ''), 10) || 0;
-            
-            const sizeStr = $(el).find('td.size').clone().children().remove().end().text().trim();
+
+            const title = cleanText(nameEl.text());
+            if (!title || isBlockedTitle(title)) return;
 
             rows.push({
               detailUrl,
               title,
-              seeders,
-              leechers,
-              sizeStr
+              seeders: parseCount($(el).find('td.seeds').text()),
+              leechers: parseCount($(el).find('td.leeches').text()),
+              sizeStr: cleanText($(el).find('td.size').clone().children().remove().end().text())
             });
           });
 
           if ($('table.table-list tbody tr').length === 0) {
-            console.log(`[${this.name}] No rows found on ${url}. Moving to next endpoint.`);
+            this.log.debug(`No rows found on ${url}. Moving to next endpoint.`);
             break;
           }
+          // Overlap with another category is not end-of-pagination.
+          if (!rows.length) continue;
 
-          if (rows.length === 0) continue; // Overlap with another category is not end-of-pagination.
-          console.log(`[${this.name}] Processing ${rows.length} torrent rows from ${url}...`);
-
-          const detailTasks = rows.map(row => limit(async () => {
+          this.log.debug(`Processing ${rows.length} torrent rows from ${url}...`);
+          const records = await mapWithConcurrency(rows, this.concurrency, async row => {
+            if (this.deadline.expired) return null;
             try {
-              return await this.crawlDetail(row);
-            } catch (err: any) {
-              console.warn(`[${this.name}] Failed to scrape detail for "${row.title}": ${err.message}`);
+              const record = await this.crawlDetail(row);
+              if (record) this.metrics.add('records');
+              return record;
+            } catch (error) {
+              this.metrics.add('detailErrors');
+              this.log.warn(`Failed to scrape detail for "${row.title}": ${describe(error)}`);
               return null;
             }
-          }));
+          });
 
-          const records = await Promise.all(detailTasks);
-          for (const rec of records) {
-            if (rec) results.push(rec);
-          }
-        } catch (err: any) {
-          console.warn(`[${this.name}] Failed loading listing ${url}: ${err.message}`);
+          for (const record of records) if (record) results.push(record);
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed loading listing ${url}: ${describe(error)}`);
           break;
         }
       }
     }
 
-    console.log(`[${this.name}] Crawl completed. Total records retrieved: ${results.length}`);
-    return results;
+    const deduplicated = this.deduplicateRecords(results);
+    this.logRunSummary(deduplicated);
+    return deduplicated;
   }
 
   private async crawlDetail(row: ScrapedRow): Promise<TorrentRecord | null> {
-    const response = await this.httpClient.get<string>(row.detailUrl);
-    const $ = cheerio.load(response.data);
+    const html = await this.fetchHtml(row.detailUrl);
+    this.metrics.add('details');
+    const $ = cheerio.load(html);
 
     const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
     if (!magnetHref) return null;
 
     const parsedMagnet = parseMagnetUri(magnetHref);
-    if (!parsedMagnet || !parsedMagnet.infoHash) return null;
+    if (!parsedMagnet?.infoHash) return null;
 
     const field = (label: string): string => {
-      const strong = $('.torrent-category-detail strong').filter((_, el) => $(el).text().replace(':', '').trim().toLowerCase() === label).first();
+      const strong = $('.torrent-category-detail strong')
+        .filter((_, el) => cleanText($(el).text()).replace(':', '').toLowerCase() === label)
+        .first();
       // 1337x templates use text nodes, spans or anchors after the label.
-      return strong.parent().clone().children('strong').remove().end().text().trim();
+      return cleanText(strong.parent().clone().children('strong').remove().end().text());
     };
+
     const pageCategory = field('category').toLowerCase();
     const pageLanguage = field('language');
 
     let defaultType: ContentType = 'movie';
-    if (pageCategory.includes('tv') || pageCategory.includes('television') || pageCategory.includes('episodes')) {
-      defaultType = 'series';
-    } else if (pageCategory.includes('anime')) {
-      defaultType = 'anime';
-    }
+    if (/tv|television|episodes/.test(pageCategory)) defaultType = 'series';
+    else if (pageCategory.includes('anime')) defaultType = 'anime';
+    else if (pageCategory.includes('documentar')) defaultType = 'documentary';
 
-    const title = row.title || parsedMagnet.displayName || $('div.box-info-heading h1').text().trim();
-    const parsedMeta = parseTorrentTitle(title, defaultType);
-    const metaAny = parsedMeta as any;
-    
+    const title = row.title || parsedMagnet.displayName || cleanText($('div.box-info-heading h1').text());
+    const meta = parseTorrentTitle(title, defaultType);
     const langs = detectLanguages(title, [pageLanguage, pageCategory]);
 
-    let imdbId: string | null = null;
-    const htmlString = response.data;
-    const imdbMatch = htmlString.match(/imdb\.com\/title\/(tt\d{7,8})/i);
-    if (imdbMatch && imdbMatch[1]) {
-      imdbId = imdbMatch[1];
-    }
+    const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,8})/i);
 
-    return {
-      imdb_id: imdbId,
-      tmdb_id: null,
-      kitsu_id: null,
-      anilist_id: null,
-      mal_id: null,
-      type: parsedMeta.type,
-      season: parsedMeta.season,
-      episode: parsedMeta.episode,
-      absolute_episode: parsedMeta.absoluteEpisode,
-      file_index: null,
-      info_hash: parsedMagnet.infoHash,
-      magnet_url: magnetHref,
-      torrent_file_url: null,
-      source_url: row.detailUrl,
+    return buildTorrentRecord({
       title,
-      release_group: parsedMeta.releaseGroup,
-      quality: metaAny.quality || metaAny.resolution || null,
-      codec: parsedMeta.codec,
-      hdr_format: parsedMeta.hdrFormat,
+      type: meta.type,
+      infoHash: parsedMagnet.infoHash,
+      magnetUrl: magnetHref,
+      sourceUrl: row.detailUrl,
+      trackers: parsedMagnet.trackers,
       audio: langs.audio,
       subtitles: langs.subtitles,
-      channels: parsedMeta.channels,
-      size_bytes: parseSizeToBytes(row.sizeStr),
+      meta,
+      quality: qualityOf(meta),
+      sizeBytes: parseSizeToBytes(row.sizeStr),
       seeders: row.seeders,
       leechers: row.leechers,
-      source_tracker: parsedMagnet.trackers[0] || 'udp://tracker.opentrackr.org:1337/announce'
-    };
+      imdbId: imdbMatch ? imdbMatch[1] : null,
+      sourceTracker: parsedMagnet.trackers[0] ?? null
+    });
   }
+}
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 export default Leech1337xCrawler;

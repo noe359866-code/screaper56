@@ -1,0 +1,29 @@
+<!-- Synthetic fixture reproducing the observed DonTorrent catalogue layout:
+     date headings + card rows linking to /pelicula/:id/:slug and /serie/:id/:id/:slug. -->
+<html><body>
+<h2>El Martes día 22 de Septiembre</h2>
+
+<div class="card">
+  <div class="card-body">
+    <p>
+      <span><a class="text-decoration-none" href="/pelicula/31014/Poli-malo" title="Poli malo">Poli malo</a> <span>(BluRay-1080p)</span></span>
+      <span class="badge badge-primary float-right">Películas</span>
+    </p>
+    <p>
+      <span><a class="text-decoration-none" href="/serie/130189/130189/Like-a-Dragon-Yakuza-1-Temporada-4K">Like a Dragon Yakuza - 1ª Temporada</a> <span>(4K)</span></span>
+      <span class="badge badge-primary float-right">Series</span>
+    </p>
+  </div>
+</div>
+
+<!-- Same release linked again from its poster: must be deduplicated. -->
+<a href="/pelicula/31014/Poli-malo"><img src="https://images.weserv.nl/?url=doncdn.com/imagenes/peliculas/Poli-malo.jpg" alt="Poli malo"></a>
+
+<!-- Navigation and offsite noise that must never be treated as a release. -->
+<a href="/peliculas">Todas las películas</a>
+<a href="/dominios">Dominios oficiales</a>
+<a href="https://ads.example/pelicula/999/Anuncio">Anuncio</a>
+<a href="https://t.me/s/DonTorrent">Telegram</a>
+
+<nav><a href="?p=2">2</a><a href="/series?p=2">Series página 2</a></nav>
+</body></html>

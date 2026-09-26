@@ -49,7 +49,7 @@ const REGEX_SUB_EN_BRACKET = /\[sub[._\-]?en\]/i;
 const REGEX_MULTI_SUB = /\b(multi[\s._-]*subs?|multisubs?|multiple[\s._-]*subtitles)\b/i;
 const REGEX_GENERIC_SUB = /\b(subbed|subtitulado)\b/i;
 
-const REGEX_ES_TRACKERS = /\b(pelispanda|mejortorrent|elitetorrent)\b/i;
+const REGEX_ES_TRACKERS = /\b(pelispanda|mejortorrent|elitetorrent|dontorrent|wolftorrent|sinsitio)\b/i;
 const REGEX_OTHER_FOREIGN = /\b(french|truefrench|vostfr|german|deutsch|hindi|tamil|telugu|malayalam|korean|japanese|russian|polish|turkish|mandarin)\b/i;
 
 /**

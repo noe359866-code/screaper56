@@ -12,6 +12,7 @@ import { LimeTorrentsCrawler } from './crawlers/limetorrent.js';
 import { NyaaCrawler } from './crawlers/nyaa.js';
 import { WolftorrentCrawler } from './crawlers/wolftorrent.js';
 import { SinsitioCrawler } from './crawlers/sinsitio.js';
+import { DonTorrentCrawler } from './crawlers/dontorrent.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
@@ -42,7 +43,8 @@ async function main() {
     limetorrents: () => new LimeTorrentsCrawler(),
     nyaa: () => new NyaaCrawler(),
     wolftorrent: () => new WolftorrentCrawler(),
-    sinsitio: () => new SinsitioCrawler()
+    sinsitio: () => new SinsitioCrawler(),
+    dontorrent: () => new DonTorrentCrawler()
   };
 
   const summary: ScraperExecutionSummary = {
@@ -86,6 +88,7 @@ async function main() {
     const crawler = crawlerFactory();
     const stats: CrawlerStats = {
       name: crawler.name,
+      mirror: crawler.baseUrl ?? null,
       discovered: 0,
       filteredSpanish: 0,
       discardedNonSpanish: 0,
@@ -124,6 +127,9 @@ async function main() {
       console.error(`[FATAL] Unhandled failure in crawler [${crawler.name}]:`, errorMsg);
     } finally {
       stats.executionTimeMs = Date.now() - crawlStart;
+      // El adaptador actualiza `baseUrl` al elegir espejo: así el resumen muestra
+      // el dominio que respondió, no el que estaba configurado por defecto.
+      stats.mirror = crawler.baseUrl ?? stats.mirror ?? null;
       
       // Al ser un entorno asíncrono concurrente, bloqueamos los push al summary 
       // mutando directamente los acumuladores (es seguro en Node.js al ser single-threaded)
@@ -150,6 +156,7 @@ async function main() {
   
   console.table(sortedStats.map(c => ({
     Source: c.name,
+    Mirror: c.mirror ? c.mirror.replace(/^https?:\/\//, '') : '-',
     Discovered: c.discovered,
     'Accepted OK': c.filteredSpanish,
     Discarded: c.discardedNonSpanish,

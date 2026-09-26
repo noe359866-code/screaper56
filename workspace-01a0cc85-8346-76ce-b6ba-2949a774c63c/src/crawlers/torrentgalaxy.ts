@@ -1,209 +1,197 @@
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
-import { TorrentRecord, ContentType } from '../types/torrent.js';
-import { parseMagnetUri, buildMagnetUri } from '../utils/magnet.js';
+import { ContentType, TorrentRecord } from '../types/torrent.js';
+import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
-import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
+import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  isBlockedTitle,
+  parseCount,
+  qualityOf
+} from './support.js';
 
+/**
+ * TorrentGalaxy: `.tgxtablerow` grids. The title comes from the release anchor
+ * (never concatenated with the comments link) and the size is located by cell
+ * content, because mirrors reorder columns.
+ */
 export class TorrentGalaxyCrawler extends BaseCrawler {
   public readonly name = 'torrentgalaxy';
-  
-  // Lista de espejos de alta disponibilidad
-  private readonly mirrors = [
-    'https://torrentgalaxy.to', // Dominio principal actual
+
+  /** Known TGX front-ends; extend with TORRENTGALAXY_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://torrentgalaxy.to',
     'https://torrentgalaxy.one',
     'https://en.torrentgalaxy-official.is',
     'https://torrentgalaxy.buzz',
-    'https://torrentgalaxy.su'
+    'https://torrentgalaxy.su',
+    'https://torrentgalaxy.mx',
+    'https://tgx.rs',
+    'https://tgx.sb',
+    'https://torrentgalaxy.proxyninja.org'
   ];
 
-  /**
-   * Determina cuál espejo está vivo ANTES de empezar el escaneo masivo
-   */
-  private async getWorkingMirror(): Promise<string | null> {
-    for (const mirror of this.mirrors) {
-      try {
-        console.log(`[${this.name}] Testing mirror: ${mirror}...`);
-        const resp = await this.httpClient.get<string>(mirror, { timeout: 7000 });
-        
-        // Verificamos que devuelva HTML válido de TGX
-        if (resp.status === 200 && resp.data && typeof resp.data === 'string' && /tgxtable|href=["'][^"']*torrents\.php/i.test(resp.data)) {
-          console.log(`[${this.name}] Active mirror found: ${mirror}`);
-          return mirror;
+  private async getWorkingMirror(): Promise<string> {
+    return this.resolveMirror({
+      envPrefix: 'TORRENTGALAXY',
+      defaults: TorrentGalaxyCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/',
+          label: 'portada',
+          timeoutMs: 7000,
+          validate: htmlMarkerValidator([/tgxtable/i, /href=["'][^"']*torrents\.php/i])
         }
-      } catch (err: any) {
-        console.warn(`[${this.name}] Mirror ${mirror} unreachable: ${err.message}`);
-      }
-    }
-    return null;
+      ]
+    });
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    console.log(`[${this.name}] Starting TorrentGalaxy crawl (maxPages=${maxPages})...`);
-    
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting TorrentGalaxy crawl (maxPages=${maxPages})...`);
+
     const activeMirror = await this.getWorkingMirror();
-    if (!activeMirror) {
-      throw new Error(`[${this.name}] No compatible mirror available.`);
-    }
-
     const results: TorrentRecord[] = [];
-    const uniqueHashes = new Set<string>(); // Para evitar duplicados entre categorías
+    const uniqueHashes = new Set<string>();
 
-    // Endpoints estratégicos. Agregamos sort=id&order=desc para asegurar que traemos los más recientes
     const endpoints = [
       '/movies',
       '/torrents.php?search=spanish&sort=id&order=desc',
       '/torrents.php?search=latino&sort=id&order=desc',
-      '/torrents.php?cat=41&sort=id&order=desc', // 4K Movies
-      '/torrents.php?cat=42&sort=id&order=desc'  // HD Movies
+      '/torrents.php?search=castellano&sort=id&order=desc',
+      '/torrents.php?cat=41&sort=id&order=desc', // 4K movies
+      '/torrents.php?cat=42&sort=id&order=desc', // HD movies
+      '/torrents.php?cat=41&sort=id&order=desc&lang=3' // Spanish-tagged uploads
     ];
 
     for (const endpoint of endpoints) {
-      console.log(`[${this.name}] Crawling endpoint: ${endpoint}`);
-      
+      this.log.debug(`Crawling endpoint: ${endpoint}`);
+
       for (let page = 0; page < maxPages; page++) {
-        // En TGX, el parámetro page es 0-indexed
-        const pageSeparator = endpoint.includes('?') ? '&' : '?';
-        const targetPath = `${endpoint}${pageSeparator}page=${page}`;
-        const fullUrl = `${activeMirror}${targetPath}`;
+        if (this.deadline.expired) break;
+
+        const separator = endpoint.includes('?') ? '&' : '?';
+        const fullUrl = `${activeMirror}${endpoint}${separator}page=${page}`;
 
         try {
-          console.log(`[${this.name}] Fetching page ${page}: ${fullUrl}`);
-          const resp = await this.httpClient.get<string>(fullUrl);
-          
-          if (!resp.data || typeof resp.data !== 'string') continue;
+          this.log.debug(`Fetching page ${page}: ${fullUrl}`);
+          const html = await this.fetchHtml(fullUrl);
+          this.metrics.add('listings');
 
-          const records = this.parseTorrentGalaxyHtml(resp.data, fullUrl, activeMirror);
-          
-          let addedInPage = 0;
+          const records = this.parseTorrentGalaxyHtml(html, fullUrl, activeMirror);
+          let added = 0;
           for (const record of records) {
-            if (!uniqueHashes.has(record.info_hash)) {
-              uniqueHashes.add(record.info_hash);
-              results.push(record);
-              addedInPage++;
-            }
+            if (uniqueHashes.has(record.info_hash)) continue;
+            uniqueHashes.add(record.info_hash);
+            results.push(record);
+            this.metrics.add('records');
+            added++;
           }
+          this.log.debug(`Extracted ${added} new records from page ${page}.`);
 
-          console.log(`[${this.name}] Extracted ${addedInPage} new records from page ${page}.`);
-
-          // Si la página no devolvió torrents, significa que llegamos al final de la paginación para esa categoría
-          if (records.length === 0) {
-            console.log(`[${this.name}] No more records found. Moving to next endpoint.`);
-            break; 
+          if (!records.length) {
+            this.log.debug('No more records found. Moving to next endpoint.');
+            break;
           }
-          
-        } catch (err: any) {
-          console.warn(`[${this.name}] Failed fetching ${fullUrl}: ${err.message}. Skipping page.`);
-          break; // Si da error 404/500, saltamos a la siguiente categoría
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed fetching ${fullUrl}: ${describe(error)}. Skipping endpoint.`);
+          break;
         }
       }
     }
 
-    console.log(`[${this.name}] Crawl completed. Total unique records retrieved: ${results.length}`);
-    return results;
+    const deduplicated = this.deduplicateRecords(results);
+    this.logRunSummary(deduplicated);
+    return deduplicated;
   }
 
-  private parseTorrentGalaxyHtml(html: string, sourceUrl: string, activeMirror: string): TorrentRecord[] {
+  public parseTorrentGalaxyHtml(html: string, sourceUrl: string, activeMirror: string): TorrentRecord[] {
     const $ = cheerio.load(html);
     const records: TorrentRecord[] = [];
 
-    // Selector más estricto: TGX usa '.tgxtablerow' para las filas de datos.
-    // Evitamos 'table tbody tr' genérico porque puede capturar tablas de maquetación del header.
+    // `.tgxtablerow` avoids picking up header/layout tables.
     $('.tgxtablerow').each((_, el) => {
-      
-      // 1. TÍTULO Y URL
-      const titleLink = $(el).find('a[href*="/torrent/"]:not([href*=".torrent"])').first();
-      if (titleLink.length === 0) return; // Fila inválida
+      const row = $(el);
 
-      const title = titleLink.attr('title') || titleLink.text().trim();
-      const href = titleLink.attr('href') || '';
-      const detailUrl = href.startsWith('http') ? href : `${activeMirror}${href}`;
+      // 1. Title and detail URL (comment anchors are excluded).
+      const titleLink = row.find('a[href*="/torrent/"]:not([href*=".torrent"])').first();
+      if (!titleLink.length) return;
 
-      if (!title) return;
+      const title = cleanText(titleLink.attr('title') || titleLink.text());
+      if (!title || isBlockedTitle(title)) return;
 
-      // 2. MAGNET LINK / INFO HASH
-      let magnetHref = $(el).find('a[href^="magnet:?xt="]').first().attr('href');
+      const detailUrl = absoluteHttpUrl(titleLink.attr('href') || '', activeMirror);
+
+      // 2. Magnet / infohash (falls back to the iTorrents hash in the file link).
+      let magnetHref = row.find('a[href^="magnet:?xt="]').first().attr('href');
       let infoHash: string | null = null;
 
       if (magnetHref) {
-        const parsed = parseMagnetUri(magnetHref);
-        infoHash = parsed?.infoHash || null;
+        infoHash = parseMagnetUri(magnetHref)?.infoHash ?? null;
       } else {
-        // Fallback: Si no hay icono de magnet, buscar en el enlace del archivo .torrent
-        const itorrentLink = $(el).find('a[href*="/torrent/"][href$=".torrent"]').attr('href') || '';
+        const itorrentLink = row.find('a[href*="/torrent/"][href$=".torrent"]').attr('href') || '';
         const hashMatch = itorrentLink.match(/torrent\/([0-9a-fA-F]{40})/i);
         if (hashMatch) {
           infoHash = hashMatch[1].toLowerCase();
           magnetHref = buildMagnetUri(infoHash, title);
         }
       }
+      if (!infoHash || !magnetHref) return;
 
-      if (!infoHash || !magnetHref) return; // Sin hash no nos sirve
+      // 3. Swarm counters (TGX colours them with <font> or classes).
+      const seeders = parseCount(row.find('font[color="green"], span.seeders').first().text());
+      const leechers = parseCount(row.find('font[color="#ff0000"], span.leechers').first().text());
 
-      // 3. SEEDERS / LEECHERS (Manejando colores estándar de TGX)
-      const seedersText = $(el).find('font[color="green"], span.seeders').first().text().trim();
-      const leechersText = $(el).find('font[color="#ff0000"], span.leechers').first().text().trim();
-      const seeders = parseInt(seedersText.replace(/,/g, ''), 10) || 0; // NUNCA falsear datos (0 por defecto)
-      const leechers = parseInt(leechersText.replace(/,/g, ''), 10) || 0;
+      // 4. Size: badge first, then any cell that parses as a size.
+      const badgeSize = parseSizeToBytes(cleanText(row.find('span.badge').first().text()));
+      const cellSize = row.find('.tgxtablecell').toArray()
+        .map(cell => parseSizeToBytes(cleanText($(cell).text())))
+        .find(size => size !== null) ?? null;
 
-      // 4. TAMAÑO (Separado en varias líneas para evitar conflictos de compilación)
-      let sizeText = $(el).find('span.badge').first().text().trim();
-      if (!sizeText) {
-        sizeText = $(el).find('div.tgxtablecell').eq(3).text().trim();
-      }
-      const sizeBytes = parseSizeToBytes(sizeText) ?? $(el).find('.tgxtablecell').toArray().map(cell => parseSizeToBytes($(cell).text().trim())).find(size => size !== null) ?? null;
+      // 5. IMDb
+      const imdbMatch = (row.find('a[href*="imdb.com/title/tt"]').attr('href') || '').match(/tt\d{7,8}/);
 
-      // 5. IMDB ID
-      let imdbId: string | null = null;
-      const imdbAnchor = $(el).find('a[href*="imdb.com/title/tt"]');
-      if (imdbAnchor.length) {
-        const match = (imdbAnchor.attr('href') || '').match(/tt\d{7,8}/);
-        if (match) imdbId = match[0];
-      }
-
-      // 6. METADATOS Y LIMPIEZA
       const isSeries = /\bS\d{1,2}E\d+|\b\d{1,2}x\d{1,3}\b/i.test(title);
       const defaultType: ContentType = isSeries ? 'series' : 'movie';
-      const parsedMeta = parseTorrentTitle(title, defaultType);
-      const metaAny = parsedMeta as any;
-      
-      // Idioma del lanzamiento, no del término buscado.
-      const hints = ['tgx', 'torrentgalaxy'];
+      const meta = parseTorrentTitle(title, defaultType);
       // Search terms are discovery hints, not proof of a release's audio language.
-      
-      const langs = detectLanguages(title, hints);
+      const langs = detectLanguages(title, ['tgx', 'torrentgalaxy']);
 
-
-      records.push({
-        imdb_id: imdbId,
-        tmdb_id: null,
-        kitsu_id: null,
-        anilist_id: null,
-        mal_id: null,
-        type: parsedMeta.type,
-        season: parsedMeta.season,
-        episode: parsedMeta.episode,
-        absolute_episode: parsedMeta.absoluteEpisode,
-        file_index: null,
-        info_hash: infoHash,
-        magnet_url: magnetHref,
-        torrent_file_url: null, // TGX redirige a iTorrents, mejor confiar en el magnet
-        source_url: detailUrl,
-        title: title || parsedMeta.cleanTitle,
-        release_group: parsedMeta.releaseGroup,
-        quality: metaAny.quality || metaAny.resolution || null,
-        codec: parsedMeta.codec,
-        hdr_format: parsedMeta.hdrFormat,
+      const record = buildTorrentRecord({
+        title,
+        type: meta.type,
+        infoHash,
+        magnetUrl: magnetHref,
+        // TGX redirects .torrent links to iTorrents; the magnet is the reliable source.
+        torrentFileUrl: null,
+        sourceUrl: detailUrl ?? sourceUrl,
+        trackers: parseMagnetUri(magnetHref)?.trackers ?? [],
         audio: langs.audio,
         subtitles: langs.subtitles,
-        channels: parsedMeta.channels,
-        size_bytes: sizeBytes,
+        meta,
+        quality: qualityOf(meta),
+        sizeBytes: badgeSize ?? cellSize,
         seeders,
         leechers,
-        source_tracker: 'udp://tracker.opentrackr.org:1337/announce'
+        imdbId: imdbMatch ? imdbMatch[0] : null,
+        sourceTracker: 'udp://tracker.opentrackr.org:1337/announce'
       });
+
+      if (record) records.push(record);
     });
 
     return records;
   }
 }
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
+export default TorrentGalaxyCrawler;

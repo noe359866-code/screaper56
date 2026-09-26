@@ -3,183 +3,170 @@ import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
-import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
+import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  isBlockedTitle,
+  parseCount,
+  qualityOf
+} from './support.js';
 
+/**
+ * Nyaa: anime torrent lists. A category or a search term is a discovery hint,
+ * never proof of the audio language, so `inferDefaults` stays disabled.
+ */
 export class NyaaCrawler extends BaseCrawler {
   public readonly name = 'nyaa';
-  public readonly baseUrl: string;
+  public baseUrl: string;
 
-  private readonly defaultMirrors = [
+  /** Known Nyaa front-ends; extend with NYAA_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://nyaa.si',
-    'https://nyaa.ink',
     'https://nyaa.land',
-    'https://nyaa.net'
+    'https://nyaa.ink',
+    'https://nyaa.net',
+    'https://nyaa.digital',
+    'https://nyaa.iss.ink',
+    'https://nyaa.unblockit.day'
   ];
 
   constructor() {
     super();
-    this.baseUrl = process.env.NYAA_BASE_URL || 'https://nyaa.si';
+    this.baseUrl = process.env.NYAA_BASE_URL || NyaaCrawler.DEFAULT_MIRRORS[0];
   }
 
-  /**
-   * Resuelve URLs relativas de forma segura
-   */
   private resolveUrl(target: string, base: string): string {
-    try {
-      return new URL(target, base).href;
-    } catch {
-      return target;
-    }
+    return absoluteHttpUrl(target, base) ?? target;
   }
 
-  /**
-   * Busca el primer espejo de Nyaa que responda con una tabla HTML válida
-   */
   private async getWorkingMirror(): Promise<string> {
-    const mirrorsToTry = [
-      this.baseUrl,
-      ...this.defaultMirrors.filter(m => m !== this.baseUrl)
-    ];
-
-    for (const mirror of mirrorsToTry) {
-      try {
-        console.log(`[${this.name}] Checking connectivity to ${mirror}...`);
-        const resp = await this.httpClient.get<string>(`${mirror}/?f=0&c=1_2&p=1`, {
-          timeout: 6000,
-          headers: {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-          }
-        });
-
-        // Validamos que sea HTML real de Nyaa buscando la tabla de torrents
-        if (resp.status === 200 && resp.data.includes('torrent-list')) {
-          console.log(`[${this.name}] Connected to active mirror: ${mirror}`);
-          return mirror;
+    return this.resolveMirror({
+      envPrefix: 'NYAA',
+      defaults: NyaaCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/?f=0&c=1_2&p=1',
+          label: 'lista de torrents',
+          timeoutMs: 6000,
+          validate: htmlMarkerValidator(['torrent-list'])
         }
-      } catch (err: any) {
-        console.warn(`[${this.name}] Mirror ${mirror} unreachable or blocked. Trying next...`);
-      }
-    }
-
-    throw new Error(`[${this.name}] All Nyaa mirrors are down or blocked.`);
+      ]
+    });
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    console.log(`[${this.name}] Starting Nyaa anime crawl (maxPages=${maxPages})...`);
-    
-    const workingMirror = await this.getWorkingMirror();
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting Nyaa anime crawl (maxPages=${maxPages})...`);
 
+    const mirror = await this.getWorkingMirror();
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
 
-    // Consultas a categorías de anime subtitulado en inglés y español
     const queryEndpoints: string[] = [
-      '/?f=0&c=1_2', // Anime - English-translated (SubsPlease, Erai-raws, etc.)
-      '/?f=0&c=1_3', // Anime - Non-English-translated (Fansubs en español, etc.)
+      '/?f=0&c=1_2',                 // Anime - English-translated
+      '/?f=0&c=1_3',                 // Anime - Non-English-translated (fansubs)
+      '/?f=0&c=1_4',                 // Anime - Raw
       '/?f=0&c=0_0&q=spanish',
       '/?f=0&c=0_0&q=latino',
       '/?f=0&c=0_0&q=castellano',
-      '/?f=0&c=0_0&q=multisub'
+      '/?f=0&c=0_0&q=multisub',
+      '/?f=0&c=0_0&q=dual+audio'
     ];
 
     for (const endpoint of queryEndpoints) {
       for (let page = 1; page <= maxPages; page++) {
-        // Aseguramos que la paginación funcione limpiamente
+        if (this.deadline.expired) break;
+
         const separator = endpoint.includes('?') ? '&' : '?';
-        const targetUrl = `${workingMirror}${endpoint}${separator}p=${page}`;
+        const targetUrl = `${mirror}${endpoint}${separator}p=${page}`;
 
         try {
-          console.log(`[${this.name}] Fetching anime catalog: ${targetUrl}`);
-          const resp = await this.httpClient.get<string>(targetUrl);
-          const html = resp.data;
-          
-          if (!html || typeof html !== 'string') continue;
+          this.log.debug(`Fetching anime catalog: ${targetUrl}`);
+          const html = await this.fetchHtml(targetUrl);
+          this.metrics.add('listings');
 
-          const $ = cheerio.load(html);
-          const rows = $('table.torrent-list tbody tr');
-          
-          if (rows.length === 0) {
-            console.log(`[${this.name}] No rows found on ${targetUrl}, stopping pagination for this endpoint.`);
-            break; // Si no hay filas, terminamos la paginación para esta categoría
+          const rows = this.parseRows(html, targetUrl, mirror, endpoint);
+          if (!rows.length) {
+            this.log.debug(`No rows on ${targetUrl}; stopping pagination for this endpoint.`);
+            break;
           }
 
-          rows.each((_, tr) => {
-            const tds = $(tr).find('td');
-            if (tds.length < 7) return;
-
-            // Nyaa usa class="comments" para el link de los comentarios, excluyendo eso nos da el título real
-            const titleAnchor = tds.eq(1).find('a:not(.comments)').last();
-            const title = titleAnchor.text().trim();
-            const viewHref = titleAnchor.attr('href') || '';
-            const magnetHref = tds.eq(2).find('a[href^="magnet:"]').attr('href');
-            
-            if (!title || !magnetHref) return;
-
-            const parsedMag = parseMagnetUri(magnetHref);
-            if (!parsedMag?.infoHash) return;
-
-            const infoHash = parsedMag.infoHash.toLowerCase();
-            if (uniqueHashes.has(infoHash)) return; // Evita duplicados inter-categorías
-            uniqueHashes.add(infoHash);
-
-            const sizeText = tds.eq(3).text().trim();
-            const sizeBytes = parseSizeToBytes(sizeText);
-            const seeders = parseInt(tds.eq(5).text().trim(), 10) || 0;
-            const leechers = parseInt(tds.eq(6).text().trim(), 10) || 0;
-
-            const parsedMeta = parseTorrentTitle(title, 'anime');
-            const metaAny = parsedMeta as any;
-
-            // Como Nyaa a veces mezcla idiomas en 1_3, enviamos el endpoint a detectLanguages como contexto
-            // 1_2 means English subtitles, NOT English audio; a search is not language evidence.
-            const langs = detectLanguages(title, endpoint.includes('1_2') ? ['nyaa', 'sub_en'] : ['nyaa'], false);
-
-            // Descarga directa del .torrent (si existe)
-            const torrentHref = tds.eq(2).find('a[href^="/download/"]').attr('href');
-            const torrentFileUrl = torrentHref ? this.resolveUrl(torrentHref, workingMirror) : null;
-            const sourceUrl = viewHref ? this.resolveUrl(viewHref, workingMirror) : targetUrl;
-
-            results.push({
-              imdb_id: null,
-              tmdb_id: null,
-              kitsu_id: null,
-              anilist_id: null,
-              mal_id: null,
-              type: 'anime',
-              season: parsedMeta.season,
-              episode: parsedMeta.episode,
-              absolute_episode: parsedMeta.absoluteEpisode,
-              file_index: null,
-              info_hash: infoHash,
-              magnet_url: magnetHref,
-              torrent_file_url: torrentFileUrl,
-              source_url: sourceUrl,
-              title,
-              release_group: parsedMeta.releaseGroup,
-              quality: metaAny.quality || metaAny.resolution || null,
-              codec: parsedMeta.codec,
-              hdr_format: parsedMeta.hdrFormat,
-              audio: langs.audio,
-              subtitles: langs.subtitles,
-              channels: parsedMeta.channels,
-              size_bytes: sizeBytes,
-              seeders,
-              leechers,
-              source_tracker: parsedMag.trackers[0] || 'http://nyaa.tracker.wf:7777/announce'
-            });
-          });
-        } catch (err: any) {
-          console.warn(`[${this.name}] Failed fetching ${targetUrl}: ${err.message}`);
-          break; // Rompe la paginación si Nyaa banea la IP o da timeout
+          for (const record of rows) {
+            if (uniqueHashes.has(record.info_hash)) continue;
+            uniqueHashes.add(record.info_hash);
+            results.push(record);
+            this.metrics.add('records');
+          }
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed fetching ${targetUrl}: ${describe(error)}`);
+          break;
         }
       }
     }
 
-    console.log(`[${this.name}] Crawl completed. Total unique records discovered: ${results.length}`);
-    return results;
+    const deduplicated = this.deduplicateRecords(results);
+    this.logRunSummary(deduplicated);
+    return deduplicated;
   }
+
+  /** Extracted for testability: one HTML page -> records. */
+  public parseRows(html: string, sourceUrl: string, mirror: string, endpoint = ''): TorrentRecord[] {
+    const $ = cheerio.load(html);
+    const records: TorrentRecord[] = [];
+
+    $('table.torrent-list tbody tr').each((_, tr) => {
+      const tds = $(tr).find('td');
+      if (tds.length < 7) return;
+
+      // `a.comments` is the comment counter; the real title link is the other one.
+      const titleAnchor = tds.eq(1).find('a:not(.comments)').last();
+      const title = cleanText(titleAnchor.text());
+      const viewHref = titleAnchor.attr('href') || '';
+      const magnetHref = tds.eq(2).find('a[href^="magnet:"]').attr('href');
+      if (!title || !magnetHref || isBlockedTitle(title)) return;
+
+      const parsedMagnet = parseMagnetUri(magnetHref);
+      if (!parsedMagnet?.infoHash) return;
+
+      const meta = parseTorrentTitle(title, 'anime');
+      // Category 1_2 means English *subtitles*, not English audio.
+      const hints = endpoint.includes('1_2') ? ['nyaa', 'sub_en'] : ['nyaa'];
+      const langs = detectLanguages(title, hints, false);
+
+      const torrentHref = tds.eq(2).find('a[href^="/download/"]').attr('href');
+
+      const record = buildTorrentRecord({
+        title,
+        type: 'anime',
+        infoHash: parsedMagnet.infoHash,
+        magnetUrl: magnetHref,
+        torrentFileUrl: torrentHref ? this.resolveUrl(torrentHref, mirror) : null,
+        sourceUrl: viewHref ? this.resolveUrl(viewHref, mirror) : sourceUrl,
+        trackers: parsedMagnet.trackers,
+        audio: langs.audio,
+        subtitles: langs.subtitles,
+        meta,
+        quality: qualityOf(meta),
+        sizeBytes: parseSizeToBytes(cleanText(tds.eq(3).text())),
+        seeders: parseCount(tds.eq(5).text()),
+        leechers: parseCount(tds.eq(6).text()),
+        sourceTracker: parsedMagnet.trackers[0] || 'http://nyaa.tracker.wf:7777/announce'
+      });
+
+      if (record) records.push(record);
+    });
+
+    return records;
+  }
+}
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 export default NyaaCrawler;

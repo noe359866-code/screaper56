@@ -1,166 +1,185 @@
-import { parseTorrentBuffer } from '../utils/bencode2.js';
 import * as cheerio from 'cheerio';
-import pLimit from 'p-limit';
 import { BaseCrawler } from './base.js';
-import { TorrentRecord, ContentType } from '../types/torrent.js';
-import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
+import { ContentType, TorrentRecord } from '../types/torrent.js';
+import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
-import { parseTorrentTitle, parseSizeToBytes } from '../utils/regex.js';
+import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
+import { htmlMarkerValidator } from './mirrors.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  dedupeStrings,
+  isBlockedTitle,
+  mapWithConcurrency,
+  qualityOf
+} from './support.js';
 
+interface EliteRoute {
+  path: string;
+  hasPagination: boolean;
+  type: ContentType;
+}
+
+/**
+ * EliteTorrent: detail pages, Base64/ROT13 shortener, hex/Base32 magnets and
+ * relative `.torrent` URLs with a query string. Swarm counters are not published
+ * by the site, so they stay `null` instead of being faked as zero.
+ */
 export class EliteTorrentCrawler extends BaseCrawler {
   public readonly name = 'elitetorrent';
-  public readonly baseUrl: string;
+  public baseUrl: string;
 
-  private readonly defaultMirrors = [
+  /** Known EliteTorrent domains; extend with ELITETORRENT_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://www.elitetorrent.com',
     'https://elitetorrent.li',
-    'https://elitetorrent.app'
+    'https://elitetorrent.app',
+    'https://elitetorrent.wtf',
+    'https://www.elitetorrent.ec',
+    'https://elitetorrent.biz',
+    'https://elitetorrent.ms',
+    'https://elitetorrents.pro',
+    'https://www.elitetorrent.nu'
   ];
+
+  private readonly detailConcurrency = Math.max(1, Number.parseInt(process.env.ELITETORRENT_CONCURRENCY || '5', 10) || 5);
 
   constructor() {
     super();
-    this.baseUrl = process.env.ELITETORRENT_BASE_URL || 'https://www.elitetorrent.com';
+    this.baseUrl = process.env.ELITETORRENT_BASE_URL || EliteTorrentCrawler.DEFAULT_MIRRORS[0];
   }
 
-  private async getWorkingMirror(): Promise<string | null> {
-    const mirrorsToTry = [this.baseUrl, ...this.defaultMirrors.filter(m => m !== this.baseUrl)];
-
-    for (const mirror of mirrorsToTry) {
-      try {
-        console.log(`[${this.name}] Checking mirror: ${mirror}...`);
-        const resp = await this.httpClient.get<string>(mirror, {
-          timeout: 6000,
-          headers: {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
-          }
-        });
-
-        if (resp.status === 200 && resp.data && typeof resp.data === 'string' && /href=["'][^"']*\/(peliculas|series)\/[^"']+/i.test(resp.data)) {
-          console.log(`[${this.name}] Connected to active mirror: ${mirror}`);
-          return mirror;
+  private async getWorkingMirror(): Promise<string> {
+    return this.resolveMirror({
+      envPrefix: 'ELITETORRENT',
+      defaults: EliteTorrentCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/',
+          label: 'portada',
+          timeoutMs: 7000,
+          validate: htmlMarkerValidator([/href=["'][^"']*\/(peliculas|series)\/[^"']+/i])
+        },
+        {
+          path: '/series/',
+          label: 'catálogo de series',
+          timeoutMs: 7000,
+          validate: htmlMarkerValidator([/href=["'][^"']*\/(peliculas|series)\/[^"']+/i])
         }
-      } catch (err: any) {
-        console.warn(`[${this.name}] Mirror ${mirror} failed: ${err.message}`);
-      }
-    }
-    return null;
+      ]
+    });
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    console.log(`[${this.name}] Starting EliteTorrent crawl (maxPages=${maxPages})...`);
-    
-    const workingMirror = await this.getWorkingMirror();
-    if (!workingMirror) {
-      throw new Error(`[${this.name}] No compatible mirror available.`);
-    }
+    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
+    this.resetRunState();
+    this.log.info(`Starting EliteTorrent crawl (maxPages=${maxPages})...`);
 
+    const mirror = await this.getWorkingMirror();
     const results: TorrentRecord[] = [];
     const visitedUrls = new Set<string>();
-    const limit = pLimit(5);
 
-    const sectionRoutes: Array<{ path: string; hasPagination: boolean; type: ContentType }> = [
+    const sectionRoutes: EliteRoute[] = [
       { path: '/', hasPagination: false, type: 'movie' },
       { path: '/series/', hasPagination: true, type: 'series' },
       { path: '/idioma/castellano-17-1/', hasPagination: true, type: 'movie' },
       { path: '/idioma/espanol-latino-11-1/', hasPagination: true, type: 'movie' },
-      { path: '/calidad/1080p-10-1/', hasPagination: true, type: 'movie' }
+      { path: '/calidad/1080p-10-1/', hasPagination: true, type: 'movie' },
+      { path: '/calidad/4k-uhd-23-1/', hasPagination: true, type: 'movie' }
     ];
 
     for (const route of sectionRoutes) {
       const pagesToCrawl = route.hasPagination ? maxPages : 1;
 
       for (let page = 1; page <= pagesToCrawl; page++) {
-        let listUrl = `${workingMirror}${route.path}`;
-        if (page > 1) {
-          listUrl = `${workingMirror}${route.path.replace(/\/$/, '')}/page/${page}/`;
-        }
+        if (this.deadline.expired) break;
+
+        const listUrl = page > 1
+          ? `${mirror}${route.path.replace(/\/$/, '')}/page/${page}/`
+          : `${mirror}${route.path}`;
 
         try {
-          console.log(`[${this.name}] Fetching listing: ${listUrl}`);
-          const resp = await this.httpClient.get<string>(listUrl);
-          
-          if (!resp.data) continue;
-          const $ = cheerio.load(resp.data);
+          this.log.debug(`Fetching listing: ${listUrl}`);
+          const html = await this.fetchHtml(listUrl);
+          this.metrics.add('listings');
+
           const pageDetailUrls: string[] = [];
+          const $ = cheerio.load(html);
 
           $('a[href*="/peliculas/"], a[href*="/series/"]').each((_, el) => {
             const href = $(el).attr('href');
-            if (
-              href &&
-              (href.includes('/peliculas/') || href.includes('/series/')) &&
-              !href.endsWith('/peliculas-1/') &&
-              !href.endsWith('/series/') &&
-              !href.includes('/feed/') &&
-              !href.includes('/page/')
-            ) {
-              const fullUrl = href.startsWith('http') ? href : `${workingMirror}${href.startsWith('/') ? '' : '/'}${href}`;
-              
-              if (!visitedUrls.has(fullUrl)) {
-                visitedUrls.add(fullUrl);
-                pageDetailUrls.push(fullUrl);
-              }
-            }
+            if (!href) return;
+            if (/\/feed\/|\/page\//.test(href)) return;
+            if (/\/peliculas-1\/$|\/series\/$/.test(href)) return;
+
+            const fullUrl = absoluteHttpUrl(href, listUrl);
+            if (!fullUrl || new URL(fullUrl).origin !== new URL(mirror).origin) return;
+            if (visitedUrls.has(fullUrl)) return;
+            visitedUrls.add(fullUrl);
+            pageDetailUrls.push(fullUrl);
           });
 
-          if (pageDetailUrls.length === 0) {
-            console.log(`[${this.name}] No new records found on page ${page} for ${route.path}. Stopping route.`);
+          if (!pageDetailUrls.length) {
+            this.log.debug(`No new records on page ${page} for ${route.path}. Stopping route.`);
             break;
           }
 
-          console.log(`[${this.name}] Found ${pageDetailUrls.length} new items on page ${page}. Parsing details...`);
+          const records = await mapWithConcurrency(pageDetailUrls, this.detailConcurrency, async url => {
+            if (this.deadline.expired) return null;
+            try {
+              const record = await this.parseEliteTorrentDetail(url, mirror);
+              if (record) this.metrics.add('records');
+              return record;
+            } catch (error) {
+              this.metrics.add('detailErrors');
+              this.log.warn(`Error parsing detail [${url}]: ${describe(error)}`);
+              return null;
+            }
+          });
 
-          const pageTasks = pageDetailUrls.map(url =>
-            limit(async () => {
-              try {
-                const record = await this.parseEliteTorrentDetail(url, workingMirror);
-                if (record) results.push(record);
-              } catch (err: any) {
-                console.warn(`[${this.name}] Error parsing detail [${url}]: ${err.message}`);
-              }
-            })
-          );
-
-          await Promise.all(pageTasks);
-
-        } catch (err: any) {
-          console.warn(`[${this.name}] Failed fetching ${listUrl}: ${err.message}. Skipping to next route.`);
+          for (const record of records) if (record) results.push(record);
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Failed fetching ${listUrl}: ${describe(error)}. Skipping to next route.`);
           break;
         }
       }
     }
 
-    console.log(`[${this.name}] Crawl finished. Successfully extracted ${results.length} torrent records.`);
-    return results;
+    const deduplicated = this.deduplicateRecords(results);
+    this.logRunSummary(deduplicated);
+    return deduplicated;
   }
 
-  private async parseEliteTorrentDetail(url: string, mirror: string): Promise<TorrentRecord | null> {
-    const resp = await this.httpClient.get<string>(url);
-    if (!resp.data) return null;
+  public async parseEliteTorrentDetail(url: string, mirror: string): Promise<TorrentRecord | null> {
+    const response = await this.httpClient.get<string>(url);
+    if (!response.data || typeof response.data !== 'string') return null;
+    this.metrics.add('details');
 
-    const $ = cheerio.load(resp.data);
-    const rawH1 = $('h1').first().text().trim();
+    const $ = cheerio.load(response.data);
+    const rawH1 = cleanText($('h1').first().text());
     if (!rawH1) return null;
 
-    let cleanTitle = rawH1
+    const cleanTitle = rawH1
       .replace(/^Descargar\s+/i, '')
       .replace(/\s+por torrent.*$/i, '')
       .replace(/^["\u201C\u201D\x27]+|["\u201C\u201D\x27]+$/g, '')
       .trim();
 
-    if (!cleanTitle) return null;
+    if (!cleanTitle || isBlockedTitle(cleanTitle)) return null;
 
     let sizeStr = '';
     let idiomaStr = '';
     let calidadStr = '';
     let formatoStr = '';
 
-    $('p.descrip span').each((_, el) => {
-      const txt = $(el).text();
-      if (txt.includes('Tamaño:')) sizeStr = txt.replace('Tamaño:', '').trim();
-      if (txt.includes('Idioma:')) idiomaStr = txt.replace('Idioma:', '').trim();
-      if (txt.includes('Calidad:')) calidadStr = txt.replace('Calidad:', '').trim();
-      if (txt.includes('Formato:')) formatoStr = txt.replace('Formato:', '').trim();
+    $('p.descrip span, .ficha span, li').each((_, el) => {
+      const txt = cleanText($(el).text());
+      if (/^Tamaño:/i.test(txt)) sizeStr = txt.replace(/^Tamaño:/i, '').trim();
+      else if (/^Idioma:/i.test(txt)) idiomaStr = txt.replace(/^Idioma:/i, '').trim();
+      else if (/^Calidad:/i.test(txt)) calidadStr = txt.replace(/^Calidad:/i, '').trim();
+      else if (/^Formato:/i.test(txt)) formatoStr = txt.replace(/^Formato:/i, '').trim();
     });
 
     let magnetLink: string | null = null;
@@ -168,37 +187,33 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     $('a').each((_, el) => {
       const href = $(el).attr('href') || '';
-      if (href.includes('acortame-esto.com/s.php?i=')) {
-        const param = new URL(href, url).searchParams.get('i');
+      if (/acortame-esto\.com\/s\.php\?i=/i.test(href)) {
+        const param = safeQueryParam(href, url, 'i');
         if (param) {
           const decoded = decodeAcortameString(param);
           if (decoded.startsWith('magnet:') && !magnetLink) magnetLink = decoded;
-          else if (decoded.includes('.torrent') && !torrentDownloadUrl) torrentDownloadUrl = decoded;
+          else if (decoded.includes('.torrent') && !torrentDownloadUrl) torrentDownloadUrl = absoluteHttpUrl(decoded, url);
         }
       } else if (href.startsWith('magnet:') && !magnetLink) {
         magnetLink = href;
       } else if (/\.torrent(?:[?#]|$)/i.test(href) && !torrentDownloadUrl) {
-        torrentDownloadUrl = new URL(href, url).href;
+        torrentDownloadUrl = absoluteHttpUrl(href, url);
       }
     });
 
-    let infoHash: string | null = null;
-    if (magnetLink) {
-      infoHash = parseMagnetUri(magnetLink)?.infoHash ?? null;
-    }
-
+    let infoHash: string | null = magnetLink ? parseMagnetUri(magnetLink)?.infoHash ?? null : null;
     let sizeBytes = parseSizeToBytes(sizeStr);
+    let trackers: string[] = magnetLink ? parseMagnetUri(magnetLink)?.trackers ?? [] : [];
 
     if ((!infoHash || !sizeBytes) && torrentDownloadUrl) {
       try {
-        const tResp = await this.httpClient.get<Buffer>(torrentDownloadUrl, { responseType: 'arraybuffer', maxContentLength: 10 * 1024 * 1024, headers: { Referer: url } });
-        const parsed = parseTorrentBuffer(Buffer.from(tResp.data));
-        if (parsed) {
-          if (!infoHash) infoHash = parsed.infoHash;
-          if (!sizeBytes && parsed.sizeBytes > 0) sizeBytes = parsed.sizeBytes;
-        }
-      } catch {
-        // Ignorar error
+        const parsed = await this.fetchTorrentMetainfoViaGet(torrentDownloadUrl, url);
+        if (!infoHash) infoHash = parsed.infoHash;
+        if (!sizeBytes && parsed.sizeBytes > 0) sizeBytes = parsed.sizeBytes;
+        if (!trackers.length) trackers = parsed.trackers;
+      } catch (error) {
+        this.metrics.add('downloadErrors');
+        this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${describe(error)}`);
       }
     }
 
@@ -207,15 +222,18 @@ export class EliteTorrentCrawler extends BaseCrawler {
     const isSeries = url.includes('/series/') || /S\d{1,2}|Temporada|\b\d{1,2}[xX×]\d{1,3}\b/i.test(cleanTitle);
     const defaultType: ContentType = isSeries ? 'series' : 'movie';
 
-    const normalizedTitleForParsing = cleanTitle.replace(/(\d{1,2})[xX×](\d{1,3})/g, (_, s, e) => {
-      return `S${s.padStart(2, '0')}E${e.padStart(2, '0')}`;
-    });
+    const normalizedTitleForParsing = cleanTitle.replace(
+      /(\d{1,2})[xX×](\d{1,3})/g,
+      (_, season: string, episode: string) => `S${season.padStart(2, '0')}E${episode.padStart(2, '0')}`
+    );
 
-    const parsedMeta = parseTorrentTitle(`${normalizedTitleForParsing} ${calidadStr} ${formatoStr}`, defaultType);
-    const hints = ['elitetorrent', idiomaStr, calidadStr, formatoStr];
+    const context = dedupeStrings([normalizedTitleForParsing, calidadStr, formatoStr]).join(' ');
+    const meta = parseTorrentTitle(context, defaultType);
+    const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr]);
     const langs = detectLanguages(cleanTitle, hints);
 
-    if (langs.audio.length === 0 && !langs.subtitles.includes('Sub_ES')) {
+    // The site publishes an explicit language field; use it when the title is silent.
+    if (!langs.audio.length && !langs.subtitles.includes('Sub_ES')) {
       if (/latino/i.test(idiomaStr)) langs.audio.push('Spanish (Latino)');
       else if (/vose/i.test(idiomaStr)) {
         langs.audio.push('English');
@@ -223,42 +241,32 @@ export class EliteTorrentCrawler extends BaseCrawler {
       } else langs.audio.push('Spanish');
     }
 
-    const defaultTrackers = [
-      'udp://tracker.opentrackr.org:1337/announce',
-      'udp://open.demonii.si:1337/announce',
-      'udp://tracker.openbittorrent.com:80/announce'
-    ];
-
-    const metaAny = parsedMeta as any;
-
-    return {
-      imdb_id: null,
-      tmdb_id: null,
-      kitsu_id: null,
-      anilist_id: null,
-      mal_id: null,
-      type: parsedMeta.type,
-      season: parsedMeta.season,
-      episode: parsedMeta.episode,
-      absolute_episode: parsedMeta.absoluteEpisode,
-      file_index: null,
-      info_hash: infoHash,
-      magnet_url: magnetLink || buildMagnetUri(infoHash, cleanTitle, defaultTrackers),
-      torrent_file_url: torrentDownloadUrl,
-      source_url: url,
+    return buildTorrentRecord({
       title: cleanTitle,
-      release_group: parsedMeta.releaseGroup,
-      quality: calidadStr || metaAny.quality || metaAny.resolution || null,
-      codec: parsedMeta.codec,
-      hdr_format: parsedMeta.hdrFormat,
+      type: meta.type,
+      infoHash,
+      magnetUrl: magnetLink,
+      torrentFileUrl: torrentDownloadUrl,
+      sourceUrl: url,
+      trackers,
       audio: langs.audio,
       subtitles: langs.subtitles,
-      channels: parsedMeta.channels,
-      size_bytes: sizeBytes,
-      seeders: 0,
-      leechers: 0,
-      source_tracker: 'udp://tracker.opentrackr.org:1337/announce'
-    };
+      meta,
+      quality: calidadStr || qualityOf(meta),
+      sizeBytes,
+      // EliteTorrent listings do not expose seeders/leechers: keep them unknown.
+      seeders: null,
+      leechers: null,
+      sourceTracker: trackers[0] ?? null
+    });
+  }
+}
+
+function safeQueryParam(href: string, base: string, key: string): string | null {
+  try {
+    return new URL(href, base).searchParams.get(key);
+  } catch {
+    return null;
   }
 }
 
@@ -270,7 +278,8 @@ function rot13(str: string): string {
   });
 }
 
-function decodeAcortameString(raw: string): string {
+/** Decodes the site's own Base64/ROT13 shortener parameter (no remote calls). */
+export function decodeAcortameString(raw: string): string {
   let s = raw;
   for (let i = 0; i < 8; i++) {
     try {
@@ -283,6 +292,10 @@ function decodeAcortameString(raw: string): string {
     }
   }
   return rot13(s);
+}
+
+function describe(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 export default EliteTorrentCrawler;

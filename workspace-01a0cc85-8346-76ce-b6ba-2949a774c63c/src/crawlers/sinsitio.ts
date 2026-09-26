@@ -1,11 +1,36 @@
 import * as cheerio from 'cheerio';
+import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
+import { htmlMarkerValidator } from './mirrors.js';
 
 /** DataLife Engine: numbered .html posts and public do=download attachments. */
 export class SinsitioCrawler extends HtmlCatalogCrawler {
   public readonly name = 'sinsitio';
-  public readonly baseUrl = process.env.SINSITIO_BASE_URL || 'https://www.sinsitio.site/';
+  public baseUrl = process.env.SINSITIO_BASE_URL || 'https://www.sinsitio.site/';
   protected readonly sections = ['/', '/dvdrip-bdrip/', '/series/'];
+
+  /** Known Sinsitio domains; add your own with SINSITIO_MIRRORS. */
+  public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://www.sinsitio.site',
+    'https://sinsitio.site',
+    'https://www.sinsitio.info',
+    'https://sinsitio.online'
+  ];
+
+  protected override get mirrorSetup(): MirrorSetup {
+    return {
+      envPrefix: 'SINSITIO',
+      defaults: SinsitioCrawler.DEFAULT_MIRRORS,
+      probes: [
+        {
+          path: '/',
+          label: 'portada DLE',
+          timeoutMs: 8000,
+          validate: htmlMarkerValidator([/href=["'][^"']*\/\d+-[^"']+\.html/i])
+        }
+      ]
+    };
+  }
 
   public parseListing(html: string, url: string): string[] {
     const $ = cheerio.load(html);

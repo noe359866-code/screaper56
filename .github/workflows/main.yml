@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Crawler a ejecutar (all incluye las 12 fuentes)"
+        description: "Crawler a ejecutar (all incluye las 13 fuentes)"
         required: false
         default: "all"
         type: choice
@@ -24,6 +24,7 @@ on:
           - nyaa
           - wolftorrent
           - sinsitio
+          - dontorrent
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
