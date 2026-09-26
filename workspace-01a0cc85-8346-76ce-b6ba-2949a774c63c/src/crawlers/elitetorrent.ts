@@ -185,7 +185,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     let infoHash: string | null = null;
     if (magnetLink) {
-      const match = magnetLink.match(/urn:btih:([0-9a-fA-F]{40})/i);
+      const match = (magnetLink as string).match(/urn:btih:([0-9a-fA-F]{40})/i);
       if (match) infoHash = match[1].toLowerCase();
     }
 
