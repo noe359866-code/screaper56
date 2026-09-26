@@ -34,15 +34,10 @@ interface EztvApiResponse {
   torrents?: EztvApiTorrent[];
 }
 
-/**
- * EZTV: JSON API primer intento, catálogo HTML como fallback (algunos espejos
- * desactivan la API manteniendo el catálogo público).
- */
 export class EztvCrawler extends BaseCrawler {
   public readonly name = 'eztv';
   public baseUrl = process.env.EZTV_BASE_URL || 'https://eztv1.xyz';
 
-  /** Known EZTV front-ends; extend with EZTV_MIRRORS. */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://eztv1.xyz',
     'https://eztvx.to',
@@ -95,7 +90,6 @@ export class EztvCrawler extends BaseCrawler {
 
     let apiSuccess = false;
 
-    // -------- Fase 1: API JSON --------
     try {
       for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
@@ -134,7 +128,6 @@ export class EztvCrawler extends BaseCrawler {
       return deduplicated;
     }
 
-    // -------- Fase 2: Fallback HTML --------
     try {
       for (let page = 0; page < maxPages; page++) {
         if (this.deadline.expired) break;
@@ -247,7 +240,6 @@ export class EztvCrawler extends BaseCrawler {
       ? parsedEpisode
       : (meta.episode ?? (parsedEpisode === 0 ? 0 : null));
 
-    // Si el magnet_url no viene en la API o es incompleto, construimos uno válido
     let magnetUrl = torrent.magnet_url || null;
     if (!magnetUrl) {
       const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
