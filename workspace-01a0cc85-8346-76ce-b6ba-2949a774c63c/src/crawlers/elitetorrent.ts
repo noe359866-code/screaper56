@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
-import { parseMagnetUri } from '../utils/magnet.js';
+import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
@@ -77,6 +77,15 @@ export class EliteTorrentCrawler extends BaseCrawler {
     this.log.info(`Starting EliteTorrent crawl (maxPages=${maxPages})...`);
 
     const mirror = await this.getWorkingMirror();
+    this.baseUrl = mirror;
+
+    let mirrorOrigin = mirror;
+    try {
+      mirrorOrigin = new URL(mirror).origin;
+    } catch {
+      // Retain full mirror string on URL parse fallback
+    }
+
     const results: TorrentRecord[] = [];
     const visitedUrls = new Set<string>();
 
@@ -111,10 +120,17 @@ export class EliteTorrentCrawler extends BaseCrawler {
             const href = $(el).attr('href');
             if (!href) return;
             if (/\/feed\/|\/page\//.test(href)) return;
-            if (/\/peliculas-1\/$|\/series\/$/.test(href)) return;
+            if (/\/peliculas-1\/$\vert{}\/series\/$/.test(href)) return;
 
             const fullUrl = absoluteHttpUrl(href, listUrl);
-            if (!fullUrl || new URL(fullUrl).origin !== new URL(mirror).origin) return;
+            if (!fullUrl) return;
+
+            try {
+              if (new URL(fullUrl).origin !== mirrorOrigin) return;
+            } catch {
+              return;
+            }
+
             if (visitedUrls.has(fullUrl)) return;
             visitedUrls.add(fullUrl);
             pageDetailUrls.push(fullUrl);
@@ -133,15 +149,17 @@ export class EliteTorrentCrawler extends BaseCrawler {
               return record;
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Error parsing detail [${url}]: ${describe(error)}`);
+              this.log.warn(`Error parsing detail [${url}]: ${formatError(error)}`);
               return null;
             }
           });
 
-          for (const record of records) if (record) results.push(record);
+          for (const record of records) {
+            if (record) results.push(record);
+          }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${listUrl}: ${describe(error)}. Skipping to next route.`);
+          this.log.warn(`Failed fetching ${listUrl}: ${formatError(error)}. Skipping to next route.`);
           break;
         }
       }
@@ -186,13 +204,21 @@ export class EliteTorrentCrawler extends BaseCrawler {
     let torrentDownloadUrl: string | null = null;
 
     $('a').each((_, el) => {
+      // Early break if both magnet and torrent download URLs are found
+      if (magnetLink && torrentDownloadUrl) return false;
+
       const href = $(el).attr('href') || '';
+      if (!href) return;
+
       if (/acortame-esto\.com\/s\.php\?i=/i.test(href)) {
         const param = safeQueryParam(href, url, 'i');
         if (param) {
           const decoded = decodeAcortameString(param);
-          if (decoded.startsWith('magnet:') && !magnetLink) magnetLink = decoded;
-          else if (decoded.includes('.torrent') && !torrentDownloadUrl) torrentDownloadUrl = absoluteHttpUrl(decoded, url);
+          if (decoded.startsWith('magnet:') && !magnetLink) {
+            magnetLink = decoded;
+          } else if (decoded.includes('.torrent') && !torrentDownloadUrl) {
+            torrentDownloadUrl = absoluteHttpUrl(decoded, url);
+          }
         }
       } else if (href.startsWith('magnet:') && !magnetLink) {
         magnetLink = href;
@@ -201,9 +227,10 @@ export class EliteTorrentCrawler extends BaseCrawler {
       }
     });
 
-    let infoHash: string | null = magnetLink ? parseMagnetUri(magnetLink)?.infoHash ?? null : null;
+    const parsedMagnet = magnetLink ? parseMagnetUri(magnetLink) : null;
+    let infoHash: string | null = parsedMagnet?.infoHash ?? null;
+    let trackers: string[] = parsedMagnet?.trackers ?? [];
     let sizeBytes = parseSizeToBytes(sizeStr);
-    let trackers: string[] = magnetLink ? parseMagnetUri(magnetLink)?.trackers ?? [] : [];
 
     if ((!infoHash || !sizeBytes) && torrentDownloadUrl) {
       try {
@@ -213,11 +240,16 @@ export class EliteTorrentCrawler extends BaseCrawler {
         if (!trackers.length) trackers = parsed.trackers;
       } catch (error) {
         this.metrics.add('downloadErrors');
-        this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${describe(error)}`);
+        this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${formatError(error)}`);
       }
     }
 
     if (!infoHash) return null;
+
+    // Fallback: build a valid magnet URI if infoHash exists but no original magnet was found
+    if (!magnetLink && infoHash) {
+      magnetLink = buildMagnetUri(infoHash, cleanTitle);
+    }
 
     const isSeries = url.includes('/series/') || /S\d{1,2}|Temporada|\b\d{1,2}[xX×]\d{1,3}\b/i.test(cleanTitle);
     const defaultType: ContentType = isSeries ? 'series' : 'movie';
@@ -234,11 +266,14 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     // The site publishes an explicit language field; use it when the title is silent.
     if (!langs.audio.length && !langs.subtitles.includes('Sub_ES')) {
-      if (/latino/i.test(idiomaStr)) langs.audio.push('Spanish (Latino)');
-      else if (/vose/i.test(idiomaStr)) {
+      if (/latino/i.test(idiomaStr)) {
+        langs.audio.push('Spanish (Latino)');
+      } else if (/vose/i.test(idiomaStr)) {
         langs.audio.push('English');
         langs.subtitles.push('Sub_ES');
-      } else langs.audio.push('Spanish');
+      } else {
+        langs.audio.push('Spanish');
+      }
     }
 
     return buildTorrentRecord({
@@ -280,21 +315,31 @@ function rot13(str: string): string {
 
 /** Decodes the site's own Base64/ROT13 shortener parameter (no remote calls). */
 export function decodeAcortameString(raw: string): string {
-  let s = raw;
+  if (!raw) return '';
+  const s = raw.trim();
+
+  if (/^(magnet:|http:\/\/|https:\/\/)/i.test(s)) return s;
+
+  const initialRot = rot13(s);
+  if (/^(magnet:|http:\/\/|https:\/\/)/i.test(initialRot)) return initialRot;
+
+  let current = s;
   for (let i = 0; i < 8; i++) {
     try {
-      s = Buffer.from(s, 'base64').toString('utf-8');
-      const rot = rot13(s);
-      if (/^(magnet:|http:\/\/|https:\/\/)/.test(rot)) return rot;
-      if (/^(magnet:|http:\/\/|https:\/\/)/.test(s)) return s;
+      current = Buffer.from(current, 'base64').toString('utf-8');
+      if (/^(magnet:|http:\/\/|https:\/\/)/i.test(current)) return current;
+
+      const rotDecoded = rot13(current);
+      if (/^(magnet:|http:\/\/|https:\/\/)/i.test(rotDecoded)) return rotDecoded;
     } catch {
       break;
     }
   }
-  return rot13(s);
+
+  return initialRot;
 }
 
-function describe(error: unknown): string {
+function formatError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
