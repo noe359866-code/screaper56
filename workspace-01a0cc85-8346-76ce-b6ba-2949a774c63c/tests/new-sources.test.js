@@ -4,6 +4,7 @@ import { RarbgCrawler } from '../src/crawlers/rarbg.ts';
 import { MagnetDlCrawler } from '../src/crawlers/magnetdl.ts';
 import { TokyoToshoCrawler } from '../src/crawlers/tokyotosho.ts';
 import { CRAWLER_REGISTRY } from '../src/crawlers/registry.ts';
+import { mockHttp, HASH2 } from './helpers.js';
 
 const HASH = '5ac30f52edc636a18b3e28140dc90f7880fa9a1d';
 const MAGNET = `magnet:?xt=urn:btih:${HASH.toUpperCase()}&amp;dn=Carmen.and.Lola.2018.SPANISH.1080p&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce`;
@@ -60,7 +61,8 @@ test('Tokyo Toshokan: two-row entries with magnet, size, stats and English subs'
   const html = `<table class="listing">
    <tr class="category_0 shade"><td rowspan="2"><a href="/?cat=1"><span></span></a></td>
     <td class="desc-top"><a href="${MAGNET.replace('Carmen', 'Mushoku')}"><span class="sprite_magnet"></span></a>
-     <a href="https://nyaa.si/view/2166905/torrent" type="application/x-bittorrent">[SubsPlease] Mushoku Tensei S3 - 14 (720p) [F1D816E0].mkv</a></td>
+     <a href="https://nyaa.si/view/2166905/torrent" type="application/x-bittorrent">[SubsPlease] Mushoku Tensei S3 - 14 (720p) [F1D816E0].mkv</a>
+     <a href="https://www.tokyotosho.info/torrents/2117284.torrent">DL</a></td>
     <td class="web"><a href="https://subsplease.org/">Website</a> | <a href="details.php?id=2117284">Details</a></td></tr>
    <tr class="category_0 shade"><td class="desc-bot">Authorized: Yes Submitter: subsplease | Size: 703.73MB | Date: 2026-09-27 15:01 UTC | Comment: Released by SubsPlease.</td>
     <td class="stats">S: <span>692</span> L: <span>539</span> C: 1092 ID: 2117284</td></tr></table>`;
@@ -72,8 +74,37 @@ test('Tokyo Toshokan: two-row entries with magnet, size, stats and English subs'
   assert.equal(r.seeders, 692);
   assert.equal(r.leechers, 539);
   assert.equal(r.source_url, `${base}/details.php?id=2117284`);
-  assert.equal(r.torrent_file_url, 'https://nyaa.si/view/2166905/torrent');
+  // The HTML details page is NOT metainfo: only a real .torrent link is stored.
+  assert.equal(r.torrent_file_url, 'https://www.tokyotosho.info/torrents/2117284.torrent');
   assert.ok(r.subtitles.includes('Sub_EN'));
   assert.deepEqual(r.audio, []);
   assert.ok(r.size_bytes > 7e8);
+  // A trailing "[Website]" link must never replace the release title.
+  assert.match(r.title, /Mushoku Tensei/);
+});
+
+test('Tokyo Toshokan: pagination is 1-based and page 1 is never requested twice', async () => {
+  const base = 'https://www.tokyotosho.info';
+  const previous = process.env.TOKYOTOSHO_SEARCH;
+  process.env.TOKYOTOSHO_SEARCH = ''; // only the category routes
+  try {
+    const row = (id, hash) => `<tr class="category_1"><td class="desc-top"><a href="magnet:?xt=urn:btih:${hash}">M</a>
+      <a href="details.php?id=${id}">Sample Castellano ${id}</a></td><td class="stats">S: 4 L: 2</td></tr>
+      <tr><td class="desc-bot">Size: 1.2GB | Comment: SubsPlease</td></tr>`;
+
+    const crawler = new TokyoToshoCrawler();
+    const calls = mockHttp(crawler, url => `<table class="listing">${/\?cat=1&page=2/.test(url) ? row(2222222, HASH2) : row(1111111, HASH)}</table>`);
+    const records = await crawler.crawl(2);
+
+    assert.equal(records.length, 2, 'both pages must contribute records');
+    // The first `/?cat=1` is the mirror probe, so duplicates are collapsed.
+    assert.deepEqual(
+      [...new Set(calls.filter(url => /\?cat=1(?:&|$)/.test(url)))],
+      [`${base}/?cat=1`, `${base}/?cat=1&page=2`]
+    );
+    assert.ok(!calls.some(url => /page=1(?:&|$)/.test(url)), 'page 1 must not be requested as &page=1');
+  } finally {
+    if (previous === undefined) delete process.env.TOKYOTOSHO_SEARCH;
+    else process.env.TOKYOTOSHO_SEARCH = previous;
+  }
 });

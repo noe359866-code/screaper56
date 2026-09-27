@@ -24,6 +24,7 @@ export const CRAWLER_REGISTRY: Record<string, CrawlerFactory> = {
   rarbg: async () => new (await import('./rarbg.js')).RarbgCrawler(),
   magnetdl: async () => new (await import('./magnetdl.js')).MagnetDlCrawler(),
   grantorrent: async () => new (await import('./grantorrent.js')).GranTorrentCrawler(),
-  tokyotosho: async () => new (await import('./tokyotosho.js')).TokyoToshoCrawler()
+  tokyotosho: async () => new (await import('./tokyotosho.js')).TokyoToshoCrawler(),
+  rutracker: async () => new (await import('./rutracker.js')).RutrackerCrawler()
 };
 

@@ -91,16 +91,21 @@ export class TokyoToshoCrawler extends BaseCrawler {
     const nested = await mapWithConcurrency(routes, this.concurrency, async route => {
       const collected: TorrentRecord[] = [];
       const seen = new Set<string>();
-      for (let page = 0; page < maxPages; page++) {
+      // Tokyo Toshokan numbering is 1-based: starting at 0 requested page 1
+      // twice (`/?cat=1` then `/?cat=1&page=1`), the second page added nothing
+      // and the `added === 0` guard ended every route after page one.
+      for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
-        const url = page === 0 ? `${mirror}${route.path}` : `${mirror}${route.path}&page=${page}`;
+        const url = page === 1 ? `${mirror}${route.path}` : `${mirror}${route.path}&page=${page}`;
         try {
           const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
           this.metrics.add('listings');
           const rows = this.parseListing(html, url, route.type, route.hints);
           let added = 0;
           for (const row of rows) {
-            if (seen.has(row.info_hash)) continue;
+            // Guard against a record without a hash: `seen.add(undefined)`
+            // would make every following release look like a duplicate.
+            if (!row.info_hash || seen.has(row.info_hash)) continue;
             seen.add(row.info_hash);
             collected.push(row);
             added++;
@@ -135,25 +140,42 @@ export class TokyoToshoCrawler extends BaseCrawler {
       const parsed = magnet ? parseMagnetUri(magnet) : null;
       if (!magnet || !parsed?.infoHash) return;
 
-      const titleAnchor = top.find('a').filter((__, a) => {
-        const href = $(a).attr('href') || '';
-        return !href.startsWith('magnet:') && cleanText($(a).text()).length > 0;
-      }).last();
+      // The details link always carries the release title; `.last()` picked up
+      // trailing uploader links ("[Website]") and stored them as the title.
+      const titleAnchor = top.find('a[href*="details.php"]').first().length > 0
+        ? top.find('a[href*="details.php"]').first()
+        : top.find('a').filter((__, a) => {
+            const href = $(a).attr('href') || '';
+            return !href.startsWith('magnet:') && !/\.torrent(?:[?#]|$)/i.test(href) && cleanText($(a).text()).length > 0;
+          }).first();
       const title = cleanText(titleAnchor.text()) || cleanText(parsed.displayName || '');
       if (!title || isBlockedTitle(title)) return;
 
-      // Category icon (row class / link) — hentai/JAV/music/manga never indexed.
-      const categoryText = `${row.attr('class') || ''} ${row.find('a[href*="cat="]').first().attr('href') || ''}`;
-      if (/cat=(?:2|3|4|9|12|13|14|15)\b/.test(categoryText)) return;
+      // Category filter (row class / cat link / category icon): hentai, JAV,
+      // music, manga and raws are never indexed.
+      const categoryText = [
+        row.attr('class') || '',
+        bottom.attr('class') || '',
+        row.find('a[href*="cat="]').first().attr('href') || '',
+        row.find('td.cat img, img[src*="cat"]').first().attr('src') || ''
+      ].join(' ');
+      if (/(?:cat[=_]|cat=)(?:2|3|4|9|12|13|14|15)\b/i.test(categoryText)) return;
 
       const bottomText = cleanText(bottom.find('td.desc-bot').text() || bottom.text());
-      const statsText = cleanText(bottom.find('td.stats').text() || bottomText);
+      // `td.stats` lives in the TOP row next to `td.desc-top`, not in the
+      // second row: reading it from `bottom` left seeders/leechers always null.
+      const statsText = cleanText(
+        row.find('td.stats').text() || bottom.find('td.stats').text() || bottomText
+      );
       const size = bottomText.match(/Size:\s*([\d.,]+\s*[KMGT]?i?B)/i)?.[1] ?? '';
       const comment = bottomText.match(/Comment:\s*(.{0,200})/i)?.[1] ?? '';
 
       const detailHref = row.find('a[href*="details.php?id="]').first().attr('href')
         ?? bottom.find('a[href*="details.php?id="]').first().attr('href');
-      const torrentHref = titleAnchor.attr('href') || null;
+      // Only a real metainfo link belongs in `torrent_file_url`; pointing it at
+      // the HTML details page stored a web page as if it were a .torrent.
+      const torrentHref = row.find('a[href$=".torrent"], a[href*=".torrent?"], a[href*="download.php"], a[href*="/torrents/"]')
+        .first().attr('href') || null;
 
       const type: ContentType = /\bdrama\b/i.test(title) ? 'series' : defaultType;
       const meta = parseTorrentTitle(title, type);

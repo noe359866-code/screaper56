@@ -1,6 +1,6 @@
 # Crawler asíncrono de metadatos torrent
 
-Node.js 20+ / TypeScript. Adaptadores independientes para **17 fuentes**, normalización de
+Node.js 20+ / TypeScript. Adaptadores independientes para **18 fuentes**, normalización de
 infohash BTIH, filtrado de idiomas y UPSERT en Supabase. Solo descarga el metainfo
 `.torrent` para calcular el hash; no descarga el contenido compartido por BitTorrent.
 Usa únicamente fuentes y contenidos que tengas autorización para consultar.
@@ -64,6 +64,7 @@ dominio con `<FUENTE>_BASE_URL`.
 | `tokyotosho` | `tokyotosho.ts` | **Nueva fuente.** Tokyo Toshokan: filas `desc-top`/`desc-bot`, categorías Anime, Batch, Non-English y Drama más búsquedas; hentai/JAV/música/manga excluidos. Variables `TOKYOTOSHO_MIRRORS`, `TOKYOTOSHO_SEARCH`, `TOKYOTOSHO_CONCURRENCY`. |
 | `grantorrent` | `grantorrent.ts` | WordPress de películas en `grantorrent.foo`: tarjetas con póster, detalle e idioma por fila. Solo infohash de magnet directo o `.torrent` del mismo origen; enlaces de `super-enlace.com` se cuentan como protegidos y no se siguen. `GRANTORRENT_BASE_URL`, `GRANTORRENT_MIRRORS`. |
 | `dontorrent` | `dontorrent.ts` | **Nueva fuente.** Catálogos `/peliculas`, `/series`, `/documentales` con paginación `?p=N`; fichas `/pelicula/:id/:slug` y `/serie/:id/:id/:slug`; tabla de episodios `1x02`; búsqueda POST opcional a `/buscar`; lista de dominios oficiales `/dominios` como reserva de espejos. |
+| `rutracker` | `rutracker.ts` | **Nueva fuente (con sesión).** RuTracker.org: HTML en **Windows-1251**, sesión obligatoria (cookies exportadas o login con usuario/contraseña), búsquedas `tracker.php?nm=` y secciones `viewforum.php?f=`; el magnet se lee de `viewtopic.php?t=` y, si falta, del `dl.php?t=` autenticado. Variables en `.env.example`. |
 
 ### DonTorrent: qué se extrae y qué no
 
@@ -98,6 +99,51 @@ El parámetro `url` se decodifica sin ejecutar scripts. Solo se aceptan adjuntos
 HTTP(S) del mismo origen, IDs numéricos y `.torrent` públicos (además de magnets).
 El nombre de cada adjunto se usa para no mezclar un BDrip con una versión 1080p.
 Los enlaces de comentarios y bloques `.related` se excluyen de las descargas.
+
+### RuTracker: sesión, Windows-1251 y paginación real
+
+RuTracker es un tracker privado: **todo lo que lee este adaptador es lo que ve
+la cuenta configurada**. El crawler entra con las cookies de la sesión o con el
+usuario y la contraseña del `.env`, recorre los listados a los que esa cuenta
+tiene acceso y guarda el magnet que publica la propia ficha. No resuelve
+CAPTCHAs, no salta retos ni evade límites de descarga: si el sitio responde con
+una CAPTCHA, la ejecución se detiene y lo dice (`RutrackerCaptchaError`).
+
+Cómo funciona cada pieza:
+
+- **Credenciales.** `RUTRACKER_COOKIE_JSON` acepta el JSON que exportan las
+  extensiones de navegador (el formato `{name, value, domain, ...}`), o bien un
+  `Cookie:` en crudo en `RUTRACKER_COOKIES`; ambos admiten `@ruta/archivo.json`
+  para no tener el secreto en la línea de comandos. Si las cookies caducan (o no
+  hay ninguna), se usa `RUTRACKER_USERNAME`/`RUTRACKER_PASSWORD` con un POST al
+  formulario real de `login.php`, codificado en cp1251 igual que lo envía el
+  navegador. Sin sesión ni credenciales, el adaptador **falla con un mensaje
+  accionable** en lugar de rastrear como anónimo (un rastreo anónimo no vería
+  ningún magnet y parecería un parser roto).
+- **Windows-1251.** El cuerpo se descarga como bytes y se decodifica con la
+  codificación que declara la página: con UTF-8, los títulos en cirílico llegan
+  como *mojibake* y los metadatos se pierden. Las búsquedas se codifican en
+  cp1251 (`RUTRACKER_SEARCH_CHARSET=utf-8` para términos acentuados).
+- **Paginación.** Solo se siguen los offsets `start=` que publica el paginador:
+  una búsqueda de una sola página cuesta **una** petición, y una página repetida
+  termina la ruta en vez de repetir la consulta.
+- **Filtro previo de idioma.** Antes de gastar una petición por ficha se
+  descartan los temas cuyo título no muestra español/inglés
+  (`RUTRACKER_LANG_PREFILTER=false` para visitarlos todos; el filtro completo de
+  idioma del orquestador se sigue aplicando a los registros resultantes).
+- **Swarm y tamaño.** Se leen de la fila del listado (`td.tor-size`, `seedmed`,
+  `leechmed`) y se completan con la ficha; nunca se inventan.
+
+Variables: `RUTRACKER_BASE_URL`, `RUTRACKER_MIRRORS`, `RUTRACKER_USERNAME`,
+`RUTRACKER_PASSWORD`, `RUTRACKER_COOKIE_JSON`, `RUTRACKER_COOKIES`,
+`RUTRACKER_SEARCH`, `RUTRACKER_SEARCH_CHARSET`, `RUTRACKER_FORUMS`,
+`RUTRACKER_ROUTES`, `RUTRACKER_SORT`, `RUTRACKER_CONCURRENCY`,
+`RUTRACKER_LANG_PREFILTER`, `RUTRACKER_MIN_SEEDERS`.
+
+```bash
+# Comprobar la sesión y la extracción sin escribir en la base de datos:
+DRY_RUN=true TARGET_CRAWLERS=rutracker MAX_PAGES=1 LOG_LEVEL=debug npm start
+```
 
 ## Configuración
 
@@ -138,8 +184,9 @@ Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
 `ELITETORRENT_CONCURRENCY`, `MEJORTORRENT_CONCURRENCY`, `LIMETORRENTS_CONCURRENCY`,
 `LEECH1337X_CONCURRENCY`, `PELISPANDA_CONCURRENCY`, `DONTORRENT_SECTIONS`,
 `DONTORRENT_SEARCH`, `DONTORRENT_CDN_HOSTS`, `DONTORRENT_DISCOVER_MIRRORS`,
-`LIMETORRENTS_SEARCH` y `THEPIRATEBAY_SEARCH`. Todas están documentadas en
-`.env.example`.
+`LIMETORRENTS_SEARCH`, `THEPIRATEBAY_SEARCH` y las variables `RUTRACKER_*`
+de la sección anterior (sesión, búsquedas, foros y concurrencia). Todas están
+documentadas en `.env.example`.
 
 ## Validación y límites
 
@@ -220,9 +267,12 @@ Instala las dependencias de sistema de Playwright **siempre** (`install-deps`), 
 el binario de Chromium venga de caché: el caché solo guarda `~/.cache/ms-playwright`,
 no los paquetes apt, y saltarse ese paso dejaba el navegador restaurado sin
 `libnss3`/`libatk` y todos los bypass fallaban.
-Permite elegir las 17 fuentes, incluida DonTorrent; `all` las incluye todas.
+Permite elegir las 18 fuentes, incluidas DonTorrent y RuTracker; `all` las incluye todas.
 Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
-Configura las claves de Supabase como secretos del repositorio para escritura real.
+Configura las claves de Supabase como secretos del repositorio para escritura real,
+y `RUTRACKER_USERNAME` + `RUTRACKER_PASSWORD` (o `RUTRACKER_COOKIE_JSON`) para la
+fuente autenticada; sin esos secretos, RuTracker falla con un error de sesión
+accionable y el job lo reporta como fuente fallida.
 
 ## Diagnóstico de extracción (sin Supabase)
 
@@ -230,7 +280,7 @@ Desde la carpeta que contiene `package.json`:
 
 ```bash
 npm ci
-npm run diagnose                    # los 17 adaptadores, una página por ruta
+npm run diagnose                    # los 18 adaptadores, una página por ruta
 npm run diagnose -- --spanish        # DonTorrent, MejorTorrent, EliteTorrent, Pelispanda, Wolf y Sinsitio
 npm run diagnose -- dontorrent nyaa  # selección explícita
 DIAGNOSE_TIMEOUT_MS=180000 npm run diagnose -- --spanish
