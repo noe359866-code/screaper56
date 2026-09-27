@@ -159,12 +159,16 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const records: TorrentRecord[] = [];
         // Hoisted out of the per-link loop.
         const releaseHints = spanishReleaseHints($);
+        // The same file is usually linked by the button AND the icon: download once.
+        const seenDownloads = new Set<string>();
 
         for (const el of anchors) {
           const anchor = $(el);
           for (const href of literalDownloadCandidates(anchor)) {
-            const torrentUrl = this.resolveUrl(href, url);
+            const torrentUrl = parseMagnetUri(href) ? href : this.resolveUrl(href, url);
             if (!isMejortorrentDownload(href, torrentUrl, url)) continue;
+            if (seenDownloads.has(torrentUrl)) continue;
+            seenDownloads.add(torrentUrl);
 
             let itemTitle = title;
             if (defaultType === 'series') {
@@ -231,7 +235,9 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const torrentUrls = new Set<string>();
         $(DOWNLOAD_NODES).each((_, el) => {
           for (const href of literalDownloadCandidates($(el))) {
-            if (parseMagnetUri(href) || /\.torrent(?:[?#]|$)/i.test(href)) {
+            if (parseMagnetUri(href)) {
+              torrentUrls.add(href);
+            } else if (/\.torrent(?:[?#]|$)/i.test(href)) {
               torrentUrls.add(this.resolveUrl(href, url));
             }
           }
@@ -248,7 +254,10 @@ export class MejorTorrentCrawler extends BaseCrawler {
 
         const pageTitle = cleanText($('h1').first().text()) ||
           cleanText(decodeURIComponent(url.split('/').filter(Boolean).pop() || '').replace(/-/g, ' '));
-        const defaultType: ContentType = /(temporada|episodios|\bs\d{1,2}\b)/i.test(html.toLowerCase())
+        // Only the release itself decides: every page's menu says "Series" /
+        // "Temporadas", so scanning the whole HTML labelled all movies as series.
+        const defaultType: ContentType = /\/series?\//i.test(url) ||
+          /temporada|episodios?|cap[ií]tulos?|\bs\d{1,2}(?:e\d{1,3})?\b|\b\d{1,2}x\d{1,3}\b/i.test(pageTitle)
           ? 'series'
           : 'movie';
 

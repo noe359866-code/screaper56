@@ -145,7 +145,7 @@ const REGEX_CAST_RAW = /-(cast|esp|spa)\b/i;
 const REGEX_CAST_BRACKET = /\[(castellano|espa[ñn]ol)\]/i;
 const REGEX_CAST_EXACT = /\b(castellano|espa[ñn]ol)\b/i;
 
-const REGEX_ENG = /\b(english|eng|ingl[eé]s|audio[\s._-]*en|audio[\s._-]*english)\b/i;
+const REGEX_ENG = /\b(english|eng|ingl[eé]s|audio[\s._-]*en(?![\s._-]*(?:espa|castellano|latino))|audio[\s._-]*english)\b/i;
 const REGEX_ENG_RAW = /-(eng)\b/i;
 const REGEX_ENG_BRACKET = /\[english\]/i;
 
@@ -157,7 +157,7 @@ const REGEX_SUB_ES_BRACKET = /\[sub[._\-]?es\]/i;
 const REGEX_SUB_LAT = /\b(sub_?lat|subs?[\s._-]*lat(?:ino)?|subtitulado[\s._-]*latino)\b/i;
 const REGEX_SUB_LAT_BRACKET = /\[sub[._\-]?lat\]/i;
 
-const REGEX_SUB_EN = /\b(sub_?en|subs?[\s._-]*en(?:g(?:lish)?)?|english[\s._-]*subtitles)\b/i;
+const REGEX_SUB_EN = /\b(sub_?en|subs?[\s._-]*en(?:g(?:lish)?)?(?![\s._-]*(?:espa|castellano|latino))|english[\s._-]*subtitles)\b/i;
 const REGEX_SUB_EN_BRACKET = /\[sub[._\-]?en\]/i;
 
 const REGEX_MULTI_SUB = /\b(multi[\s._-]*subs?|multisubs?|multiple[\s._-]*subtitles)\b/i;
@@ -166,36 +166,52 @@ const REGEX_GENERIC_SUB = /\b(subbed|subtitulado)\b/i;
 const REGEX_ES_TRACKERS = /\b(pelispanda|mejortorrent|elitetorrent|dontorrent|wolftorrent|sinsitio)\b/i;
 const REGEX_OTHER_FOREIGN = /\b(french|truefrench|vostfr|german|deutsch|hindi|tamil|telugu|malayalam|korean|japanese|russian|polish|turkish|mandarin)\b/i;
 
+// Subtitle phrases ("Sub ESP", "Subs English", "Subtitulado en español") must
+// not be read as AUDIO evidence: `esp`/`eng`/`spanish` inside them used to add
+// a phantom Spanish/English audio track.
+const REGEX_SUBTITLE_PHRASES = new RegExp(
+  [
+    '\\bsubt[ií]tulos?\\s*:?[\\s._-]*(?:en[\\s._-]+)?(?:espa[ñn]ol|castellano|spanish|latino|ingl[eé]s|english|es|en|esp|eng|lat)\\b',
+    '\\bsubtitulad[oa]s?[\\s._-]*(?:al?|en)?[\\s._-]*(?:espa[ñn]ol|castellano|latino|ingl[eé]s)?\\b',
+    '\\bsubs?[\\s._-]*(?:en[\\s._-]+)?(?:espa[ñn]ol|castellano|spanish|latino|ingl[eé]s|english|esp|eng|es|en|lat)\\b',
+    '\\b(?:english|spanish)[\\s._-]*subs?(?:titles)?\\b'
+  ].join('|'),
+  'gi'
+);
+
 /**
  * Detects audio and subtitle languages from title text, tags, and page metadata.
  */
 export function detectLanguages(rawText: string, metadataHints: string[] = [], inferDefaults = true): DetectedLanguages {
   const combinedText = [rawText, ...metadataHints].join(' ');
+  // Audio detection runs on the text WITHOUT subtitle phrases.
+  const audioText = combinedText.replace(REGEX_SUBTITLE_PHRASES, ' ');
+  const audioRaw = String(rawText ?? '').replace(REGEX_SUBTITLE_PHRASES, ' ');
 
   const audioSet = new Set<string>();
   const subtitlesSet = new Set<string>();
 
   // 1. Detect Spanish Latino Audio
-  if (REGEX_LATINO.test(combinedText) || REGEX_LATINO_RAW.test(rawText) || REGEX_LATINO_BRACKET.test(combinedText)) {
+  if (REGEX_LATINO.test(audioText) || REGEX_LATINO_RAW.test(audioRaw) || REGEX_LATINO_BRACKET.test(audioText)) {
     audioSet.add(LATINO_AUDIO_CANONICAL);
   }
 
   // 2. Detect Castellano / Spanish Audio
-  if (REGEX_CAST.test(combinedText) || REGEX_CAST_RAW.test(rawText) || REGEX_CAST_BRACKET.test(combinedText)) {
+  if (REGEX_CAST.test(audioText) || REGEX_CAST_RAW.test(audioRaw) || REGEX_CAST_BRACKET.test(audioText)) {
     // Si ya es Latino, NO lo añadimos como Castellano a menos que el texto diga explícitamente "Castellano" o "Español".
     // Esto previene que un título que solo dice "Spanish (Latino)" active ambos audios.
-    if (!audioSet.has(LATINO_AUDIO_CANONICAL) || REGEX_CAST_EXACT.test(combinedText)) {
+    if (!audioSet.has(LATINO_AUDIO_CANONICAL) || REGEX_CAST_EXACT.test(audioText)) {
       audioSet.add(SPANISH_AUDIO_CANONICAL);
     }
   }
 
   // 3. Detect English Audio
-  if (REGEX_ENG.test(combinedText) || REGEX_ENG_RAW.test(rawText) || REGEX_ENG_BRACKET.test(combinedText)) {
+  if (REGEX_ENG.test(audioText) || REGEX_ENG_RAW.test(audioRaw) || REGEX_ENG_BRACKET.test(audioText)) {
     audioSet.add(ENGLISH_AUDIO_CANONICAL);
   }
 
   // 4. Handle Dual / Multi-Audio indicators
-  if (inferDefaults && REGEX_DUAL.test(combinedText)) {
+  if (inferDefaults && REGEX_DUAL.test(audioText)) {
     if (audioSet.has(SPANISH_AUDIO_CANONICAL) || audioSet.has(LATINO_AUDIO_CANONICAL)) {
       audioSet.add(ENGLISH_AUDIO_CANONICAL);
     } else if (audioSet.has(ENGLISH_AUDIO_CANONICAL)) {

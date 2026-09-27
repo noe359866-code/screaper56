@@ -14,7 +14,6 @@ import {
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
-  politePause,
   qualityOf,
 } from './support.js';
 
@@ -77,7 +76,23 @@ export class LimeTorrentsCrawler extends BaseCrawler {
 
     const candidateMap = new Map<string, LimeCandidate>();
 
-    // 1. Catalogues
+    // 1. Spanish-oriented searches first: candidates are capped below, and
+    //    running them last meant the Spanish results were the ones cut off.
+    //    (discovery only, never language evidence)
+    const spanishQueries = (process.env.LIMETORRENTS_SEARCH || 'spanish,castellano,latino')
+      .split(/[,\s]+/)
+      .map(q => q.trim())
+      .filter(Boolean);
+
+    for (const query of spanishQueries) {
+      if (this.deadline.expired) break;
+      const html = await this.searchHtml(mirror, query);
+      if (!html) continue;
+      this.metrics.add('listings');
+      this.collectRows(html, `${mirror}/search`, mirror, null, candidateMap);
+    }
+
+    // 2. Catalogues
     const categories: Array<{ path: string; type: ContentType | null; paginated: boolean }> = [
       // `/latest100` and `/top100` are mixed-category feeds: forcing 'movie'
       // mislabelled every TV show and anime release they contained.
@@ -107,20 +122,6 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       }
     }
 
-    // 2. Spanish-oriented searches (discovery only, never language evidence)
-    const spanishQueries = (process.env.LIMETORRENTS_SEARCH || 'spanish,castellano,latino')
-      .split(/[,\s]+/)
-      .map(q => q.trim())
-      .filter(Boolean);
-
-    for (const query of spanishQueries) {
-      if (this.deadline.expired) break;
-      const html = await this.searchHtml(mirror, query);
-      if (!html) continue;
-      this.metrics.add('listings');
-      this.collectRows(html, `${mirror}/search`, mirror, null, candidateMap);
-    }
-
     this.log.info(`Discovered ${candidateMap.size} candidates. Extracting release details...`);
 
     const maxCandidates = Math.max(30, maxPages * 25);
@@ -129,7 +130,6 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     const records = await mapWithConcurrency(candidates, this.detailConcurrency, async item => {
       if (this.deadline.expired) return null;
       try {
-        await politePause();
         const record = await this.parseLimeDetail(item, mirror);
         if (record) this.metrics.add('records');
         return record;
@@ -230,7 +230,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
   }
 
   private async parseLimeDetail(item: LimeCandidate, mirror: string): Promise<TorrentRecord | null> {
-    const html = await this.fetchHtml(item.detailUrl);
+    const html = await this.fetchHtml(item.detailUrl, { headers: { Referer: `${mirror}/` } });
     this.metrics.add('details');
     const $ = cheerio.load(html);
 

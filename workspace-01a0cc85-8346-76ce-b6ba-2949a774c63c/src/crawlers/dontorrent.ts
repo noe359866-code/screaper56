@@ -429,6 +429,8 @@ export class DonTorrentCrawler extends BaseCrawler {
             added++;
           }
           this.log.debug(`${section.label} page ${page + 1}: ${items.length} links (${added} new).`);
+          // A page with nothing new means `?p=N` was ignored and page 1 repeats.
+          if (page > 0 && added === 0) break;
 
           // Prefer the real `?p=N` link. DonTorrent's template sometimes omits
           // it, so fall back to the documented `?p=N` scheme — but only after a
@@ -596,7 +598,13 @@ export class DonTorrentCrawler extends BaseCrawler {
 
 function slugTitle(pathname: string): string {
   const slug = pathname.split('/').filter(Boolean).pop() || '';
-  return cleanText(decodeURIComponent(slug).replace(/[-_]+/g, ' '));
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {
+    /* malformed %-escape: keep the raw slug */
+  }
+  return cleanText(decoded.replace(/[-_]+/g, ' '));
 }
 
 export default DonTorrentCrawler;
