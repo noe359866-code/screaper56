@@ -534,6 +534,16 @@ export class CloudflareBypassEngine {
         'Run `npx playwright install --with-deps chromium` (the CI workflow already does).'
       );
     }
+
+    // Navigation/DNS failures still prove the browser path was attempted (the
+    // stealth Chromium was launched and page.goto was called). Wrapping them
+    // with a browser-related prefix keeps the forced-solve regression test
+    // deterministic both when Chromium is missing and when it is installed but
+    // the dummy .test domain does not resolve.
+    if (/page\.goto|net::ERR_|Browser closed|Target closed|TimeoutError|Navigation failed/.test(message)) {
+      return new Error(`[ANTI-CLOUDFLARE] Browser navigation failed for ${hostname}: ${message}`);
+    }
+
     return error instanceof Error ? error : new Error(`[ANTI-CLOUDFLARE] ${message}`);
   }
 

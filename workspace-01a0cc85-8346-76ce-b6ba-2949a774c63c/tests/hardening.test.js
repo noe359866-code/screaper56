@@ -125,10 +125,18 @@ test('Anti-Cloudflare: solve(force:true) never reuses a cached clearance', async
   });
   const cached = await engine.solve('https://forced.test/');
   assert.equal(cached.elapsedMs, 0);
-  // Forced solves must reach the browser stage; here that only fails because
-  // Chromium is not installed in the sandbox, which is enough to prove the
-  // cached session was not reused.
-  await assert.rejects(engine.solve('https://forced.test/', { force: true }), /Chromium|browser|launch/i);
+  // Forced solves must reach the browser stage; in sandboxes without Chromium
+  // this fails at launch, in CI with Chromium installed it fails at DNS
+  // navigation (ERR_NAME_NOT_RESOLVED). Both prove the cached session was not
+  // reused.
+  try {
+    await engine.solve('https://forced.test/', { force: true });
+    assert.fail('Expected forced solve to throw because it must bypass the cache');
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    assert.ok(!message.includes('cf_clearance=forced'), 'cached session was reused despite force:true');
+    assert.match(message, /Chromium|browser|launch|ERR_NAME_NOT_RESOLVED|net::|forced\.test|navigation/i);
+  }
 });
 
 // ---------------------------------------------------------------------------
