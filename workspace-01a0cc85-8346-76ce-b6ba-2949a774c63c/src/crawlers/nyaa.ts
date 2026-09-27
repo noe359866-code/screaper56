@@ -9,10 +9,11 @@ import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface ListingTarget {
@@ -115,7 +116,7 @@ export class NyaaCrawler extends BaseCrawler {
           return rows;
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${url}: ${describe(error)}`);
+          this.log.warn(`Failed fetching ${url}: ${describeError(error)}`);
           return [];
         }
       }
@@ -142,15 +143,19 @@ export class NyaaCrawler extends BaseCrawler {
     if (endpoint.includes('1_2')) hints.push('sub_en');
     if (/spanish|castellano/i.test(endpoint)) hints.push('castellano');
     if (/latino/i.test(endpoint)) hints.push('latino');
-    if (/multisub/i.test(endpoint)) hints.push('multi');
+    // 'multi' alone matched no subtitle pattern, so MultiSubs searches were
+    // silently losing their only language evidence.
+    if (/multisub|multi[+\s_-]*sub/i.test(endpoint)) hints.push('multisubs');
 
     $('table.torrent-list tbody tr').each((_, tr) => {
       const tds = $(tr).find('td');
       if (tds.length < 7) return;
 
-      // Seleccionar específicamente el enlace que lleva a la vista del torrent (/view/)
-      const titleAnchor = tds.eq(1).find('a[href*="/view/"]').last();
-      const title = cleanText(titleAnchor.text());
+      // The title cell holds both the release anchor and a `#comments` anchor
+      // pointing at the same /view/ route. `.last()` picked the comment counter
+      // on templates that render it second, so fragments are excluded first.
+      const titleAnchor = tds.eq(1).find('a[href*="/view/"]:not([href*="#"])').first();
+      const title = cleanText(titleAnchor.attr('title') || titleAnchor.text());
       const viewHref = titleAnchor.attr('href') || '';
       const magnetHref = tds.eq(2).find('a[href^="magnet:"]').attr('href');
 
@@ -159,13 +164,19 @@ export class NyaaCrawler extends BaseCrawler {
       const parsedMagnet = parseMagnetUri(magnetHref);
       if (!parsedMagnet?.infoHash) return;
 
-      const meta = parseTorrentTitle(title, 'anime');
+      // Nyaa publishes its category in the icon title of the first cell
+      // ("Anime - English-translated", "Live Action - ..."). A `c=0_0` search
+      // spans every category, so a live-action movie is no longer filed as anime.
+      const categoryLabel = cleanText(tds.eq(0).find('img').attr('title') || tds.eq(0).text());
+      const contentType: 'anime' | 'movie' = /^live\s*action/i.test(categoryLabel) ? 'movie' : 'anime';
+
+      const meta = parseTorrentTitle(title, contentType);
       const langs = detectLanguages(title, hints, false);
       const torrentHref = tds.eq(2).find('a[href*="/download/"]').attr('href');
 
       const record = buildTorrentRecord({
         title,
-        type: 'anime',
+        type: contentType,
         infoHash: parsedMagnet.infoHash,
         magnetUrl: magnetHref,
         torrentFileUrl: torrentHref ? this.resolveUrl(torrentHref, sourceUrl) : null,
@@ -186,10 +197,6 @@ export class NyaaCrawler extends BaseCrawler {
 
     return records;
   }
-}
-
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default NyaaCrawler;

@@ -11,11 +11,12 @@ import {
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   politePause,
   qualityOf,
-  sameOrigin
+  sameOrigin,
 } from './support.js';
 
 export interface DonTorrentSection {
@@ -142,7 +143,11 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
   return null;
 }
 
-function labelledValue($: cheerio.CheerioAPI, labels: string[]): string | null {
+/**
+ * `$.root().text()` materialises the whole document text, so it is computed once
+ * per detail page and threaded through instead of once per labelled field.
+ */
+function labelledValue($: cheerio.CheerioAPI, labels: string[], rootText?: string): string | null {
   for (const label of labels) {
     const holder = $('b, strong, span, dt, td, th').filter((_, el) => {
       const text = cleanText($(el).text()).toLowerCase();
@@ -166,7 +171,7 @@ function labelledValue($: cheerio.CheerioAPI, labels: string[]): string | null {
 
   // Fallback: plain "Formato: BluRay-1080p" inside any block of text.
   const pattern = new RegExp(`(?:${labels.join('|')})\\s*:\\s*([^\\n<|]{2,60})`, 'i');
-  const match = cleanText($.root().text()).match(pattern);
+  const match = (rootText ?? cleanText($.root().text())).match(pattern);
   return match ? cleanText(match[1]) : null;
 }
 
@@ -291,13 +296,18 @@ export class DonTorrentCrawler extends BaseCrawler {
       .replace(/\s+(?:por\s+)?torrent\b.*$/i, '')
       .trim() || slugTitle(path);
 
-    const format = labelledValue($, ['formato', 'calidad']);
-    const yearRaw = labelledValue($, ['año', 'ano']);
+    const rootText = cleanText($.root().text());
+    const format = labelledValue($, ['formato', 'calidad'], rootText);
+    const yearRaw = labelledValue($, ['año', 'ano'], rootText);
     const year = yearRaw ? Number.parseInt(yearRaw.slice(0, 4), 10) || null : null;
-    const episodesRaw = labelledValue($, ['episodios', 'capítulos', 'capitulos']);
+    const episodesRaw = labelledValue($, ['episodios', 'capítulos', 'capitulos'], rootText);
     const episodes = episodesRaw ? Number.parseInt(episodesRaw, 10) || null : null;
-    const sizeRaw = labelledValue($, ['tamaño', 'tamano', 'peso']);
+    const sizeRaw = labelledValue($, ['tamaño', 'tamano', 'peso'], rootText);
     const sizeBytes = sizeRaw ? parseSizeToBytes(sizeRaw) : null;
+
+    // Document-wide scan hoisted out of the per-download loop: a 50-episode
+    // table used to re-walk the entire DOM once per row.
+    const releaseHints = spanishReleaseHints($);
 
     const downloads: DonTorrentDownload[] = [];
     const seen = new Set<string>();
@@ -316,7 +326,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         downloads.push({
           url: target,
           title: episodeMatch ? `${title} ${episodeMatch[0]}` : title,
-          hints: dedupeStrings([...spanishReleaseHints($), format, rowText && !episodeMatch ? rowText : null]),
+          hints: dedupeStrings([...releaseHints, format, rowText && !episodeMatch ? rowText : null]),
           season: episodeMatch ? Number.parseInt(episodeMatch[1], 10) : null,
           episode: episodeMatch ? Number.parseInt(episodeMatch[2], 10) : null
         });
@@ -371,7 +381,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         return await this.crawlDetail(item);
       } catch (error) {
         this.metrics.add('detailErrors');
-        this.log.warn(`Detail failed ${item.url}: ${describe(error)}`);
+        this.log.warn(`Detail failed ${item.url}: ${describeError(error)}`);
         return [];
       }
     });
@@ -420,11 +430,14 @@ export class DonTorrentCrawler extends BaseCrawler {
           }
           this.log.debug(`${section.label} page ${page + 1}: ${items.length} links (${added} new).`);
 
+          // Prefer the real `?p=N` link. DonTorrent's template sometimes omits
+          // it, so fall back to the documented `?p=N` scheme — but only after a
+          // page that actually produced links, and `visited` stops any loop.
           const next = this.nextPage(html, listUrl);
           listUrl = next ?? (page + 1 < maxPages ? `${mirror}${section.path}?p=${page + 2}` : null);
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Catalogue failed ${listUrl}: ${describe(error)}`);
+          this.log.warn(`Catalogue failed ${listUrl}: ${describeError(error)}`);
           break;
         }
       }
@@ -472,7 +485,7 @@ export class DonTorrentCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Search "${term}" page ${page} failed: ${describe(error)}`);
+          this.log.warn(`Search "${term}" page ${page} failed: ${describeError(error)}`);
           break;
         }
       }
@@ -508,7 +521,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         }
       } catch (error) {
         this.metrics.add('downloadErrors');
-        this.log.warn(`Invalid download ${download.url}: ${describe(error)}`);
+        this.log.warn(`Invalid download ${download.url}: ${describeError(error)}`);
       }
     }
     return records;
@@ -576,7 +589,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         this.log.info(`Official domain list refreshed: ${mirrors.length} mirrors available as fallback.`);
       }
     } catch (error) {
-      this.log.debug(`Official domain list unavailable: ${describe(error)}`);
+      this.log.debug(`Official domain list unavailable: ${describeError(error)}`);
     }
   }
 }
@@ -584,10 +597,6 @@ export class DonTorrentCrawler extends BaseCrawler {
 function slugTitle(pathname: string): string {
   const slug = pathname.split('/').filter(Boolean).pop() || '';
   return cleanText(decodeURIComponent(slug).replace(/[-_]+/g, ' '));
-}
-
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default DonTorrentCrawler;

@@ -1,10 +1,12 @@
 import { TorrentRecord } from '../types/torrent.js';
-import { ResilientHttpClient } from '../utils/http.js';
+import { ResilientHttpClient, RequestOptions } from '../utils/http.js';
 import { normalizeInfoHash } from '../utils/magnet.js';
 import { hasValidSpanishRelease } from '../utils/language.js';
 import { parseTorrentBuffer, ParsedTorrentFile } from '../utils/bencode2.js';
+import { CloudflareBypassEngine } from '../utils/anti-cloudflare.js';
 import {
   buildMirrorPool,
+  looksLikeBlockedPage,
   MirrorProbe,
   resolveWorkingMirror
 } from './mirrors.js';
@@ -19,6 +21,14 @@ import {
 
 /** Maximum metainfo size accepted from any source (hash calculation only). */
 export const MAX_TORRENT_BYTES = 10 * 1024 * 1024;
+
+/** Raised when a server answered 200 with a WAF/parked/interstitial page. */
+export class BlockedPageError extends Error {
+  constructor(public readonly url: string) {
+    super(`Blocked or interstitial page served instead of content: ${url}`);
+    this.name = 'BlockedPageError';
+  }
+}
 
 export interface MirrorSetup {
   /** Curated fallbacks shipped with the adapter; env overrides always win. */
@@ -68,14 +78,25 @@ export abstract class BaseCrawler {
     return this.cachedDeadline;
   }
 
+  /** Shared stealth-browser engine (one Chromium per process, never per page). */
+  protected get bypassEngine(): CloudflareBypassEngine {
+    return CloudflareBypassEngine.getInstance();
+  }
+
   /**
    * Resets the runtime state for a new crawl execution run.
    */
   protected resetRunState(): void {
     this.cachedDeadline = new Deadline();
-    if (typeof (this.metrics as unknown as { reset?: () => void }).reset === 'function') {
-      (this.metrics as unknown as { reset: () => void }).reset();
-    }
+    this.metrics.reset();
+  }
+
+  /**
+   * Releases anything this adapter keeps open. Called by the orchestrator after
+   * every run so a browser-based adapter never leaks a Chromium process.
+   */
+  public async close(): Promise<void> {
+    /* Overridden by adapters that own resources (see WolftorrentCrawler). */
   }
 
   /**
@@ -113,21 +134,45 @@ export abstract class BaseCrawler {
     return mirror;
   }
 
-  /** GET returning HTML, with an explicit error when the payload is not HTML. */
-  protected async fetchHtml(url: string, config: Record<string, unknown> = {}): Promise<string> {
+  /**
+   * GET returning HTML, with an explicit error when the payload is not HTML.
+   * Pass `{ rejectBlocked: true }` to turn a WAF/parked interstitial served with
+   * a 200 into a `BlockedPageError` instead of handing garbage to cheerio.
+   */
+  protected async fetchHtml(
+    url: string,
+    config: RequestOptions = {},
+    options: { rejectBlocked?: boolean } = {}
+  ): Promise<string> {
     await politePause();
     const response = await this.httpClient.get<string>(url, config);
     if (typeof response.data !== 'string') {
       throw new Error(`Expected HTML from ${url} but received ${typeof response.data}`);
     }
+    if (options.rejectBlocked && looksLikeBlockedPage(response.data)) {
+      this.metrics.add('blockedPages');
+      throw new BlockedPageError(url);
+    }
     return response.data;
   }
 
   /** GET returning parsed JSON. */
-  protected async fetchJson<T>(url: string, config: Record<string, unknown> = {}): Promise<T> {
+  protected async fetchJson<T>(url: string, config: RequestOptions = {}): Promise<T> {
     await politePause();
     const response = await this.httpClient.get<T>(url, config);
     return response.data;
+  }
+
+  /**
+   * Runs `task` with a page from the ONE shared stealth browser.
+   * Adapters that need a real DOM must use this instead of launching their own
+   * Chromium: launching per detail page spawned hundreds of browsers per run.
+   */
+  protected async withBrowserPage<T>(
+    task: (page: import('playwright').Page) => Promise<T>,
+    timeoutMs?: number
+  ): Promise<T> {
+    return this.bypassEngine.withPage(page => task(page), timeoutMs);
   }
 
   /**

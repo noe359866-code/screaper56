@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import type { Element } from 'domhandler';
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { normalizeInfoHash, parseMagnetUri } from '../utils/magnet.js';
@@ -9,9 +10,10 @@ import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface EztvApiTorrent {
@@ -33,6 +35,12 @@ interface EztvApiTorrent {
 interface EztvApiResponse {
   torrents?: EztvApiTorrent[];
 }
+
+/** Hard limit of the public EZTV API; larger values are ignored server-side. */
+const EZTV_API_PAGE_SIZE = 50;
+
+/** A cell that is nothing but a size, e.g. `650 MiB` / `1.4 GB` / `700 MB`. */
+const SIZE_CELL_PATTERN = /^\d+(?:[.,]\d+)?\s*(?:[KMGT]i?B|bytes?)$/i;
 
 export class EztvCrawler extends BaseCrawler {
   public readonly name = 'eztv';
@@ -94,7 +102,9 @@ export class EztvCrawler extends BaseCrawler {
     try {
       for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
-        const apiUrl = `${activeDomain}/api/get-torrents?limit=80&page=${page}`;
+        // The public EZTV API caps `limit` at 50; asking for more returns the
+        // default page and made every crawl re-read the same 50 rows.
+        const apiUrl = `${activeDomain}/api/get-torrents?limit=${EZTV_API_PAGE_SIZE}&page=${page}`;
         this.log.debug(`Querying EZTV API: ${apiUrl}`);
 
         // Headers específicos para API JSON — reduce 403 por fingerprint
@@ -127,7 +137,7 @@ export class EztvCrawler extends BaseCrawler {
       apiSuccess = true;
     } catch (error) {
       this.metrics.add('listingErrors');
-      const msg = formatError(error);
+      const msg = describeError(error);
       const is403 = msg.includes('403') || msg.toLowerCase().includes('forbidden');
       const isCloudflare = msg.toLowerCase().includes('cloudflare') || msg.toLowerCase().includes('just a moment');
       if (is403) {
@@ -150,7 +160,9 @@ export class EztvCrawler extends BaseCrawler {
     try {
       for (let page = 0; page < maxPages; page++) {
         if (this.deadline.expired) break;
-        const pageUrl = page === 0 ? `${activeDomain}/home` : `${activeDomain}/page_${page}`;
+        // `/home` and `/page_1` are the same listing, so page N maps to
+        // `/page_${N + 1}`. The old `page_${page}` re-fetched `/home` twice.
+        const pageUrl = page === 0 ? `${activeDomain}/home` : `${activeDomain}/page_${page + 1}`;
         this.log.debug(`Scraping HTML: ${pageUrl}`);
 
         const html = await this.fetchHtml(pageUrl, {
@@ -159,12 +171,15 @@ export class EztvCrawler extends BaseCrawler {
         });
         this.metrics.add('listings');
 
-        const rowCount = this.collectHtmlRows(html, activeDomain, uniqueHashes, results);
-        if (rowCount === 0) break;
+        // `added` (not the row count) decides when to stop: a page full of rows
+        // we have already seen must not keep the pagination loop alive.
+        const { rows, added } = this.collectHtmlRows(html, activeDomain, uniqueHashes, results);
+        this.log.debug(`HTML page ${page + 1}: ${rows} rows, ${added} new records.`);
+        if (rows === 0 || added === 0) break;
       }
     } catch (error) {
       this.metrics.add('listingErrors');
-      const msg = formatError(error);
+      const msg = describeError(error);
       if (msg.includes('403')) {
         this.log.warn(`EZTV HTML también bloqueado (403) en ${activeDomain}. Prueba EZTV_BASE_URL con otro mirror o espera unos minutos.`);
       } else {
@@ -182,10 +197,12 @@ export class EztvCrawler extends BaseCrawler {
     activeDomain: string,
     uniqueHashes: Set<string>,
     sink: TorrentRecord[]
-  ): number {
+  ): { rows: number; added: number } {
     const $ = cheerio.load(html);
     const rows = $('tr.forum_header_border');
-    if (rows.length === 0) return 0;
+    if (rows.length === 0) return { rows: 0, added: 0 };
+
+    let added = 0;
 
     rows.each((_, el) => {
       const row = $(el);
@@ -198,16 +215,16 @@ export class EztvCrawler extends BaseCrawler {
       const parsedMagnet = parseMagnetUri(magnetLink);
       if (!parsedMagnet?.infoHash || uniqueHashes.has(parsedMagnet.infoHash)) return;
 
-      const title = cleanText(titleAnchor.text());
+      const title = cleanText(titleAnchor.attr('title') || titleAnchor.text());
       if (!title || isBlockedTitle(title)) return;
 
       const torrentLink = row.find('a.download_1').attr('href') || null;
       const meta = parseTorrentTitle(title, 'series');
       const langs = detectLanguages(title, ['eztv', 'tv']);
 
-      const tds = row.find('td');
-      const sizeText = tds.length >= 4 ? cleanText($(tds[3]).text()) : '';
-      const seedersText = tds.length >= 6 ? cleanText($(tds[5]).find('font').text() || $(tds[5]).text()) : '';
+      // Mirrors reorder/shrink these columns, so they are located by content
+      // instead of by a hard-coded index.
+      const { sizeText, seedersText } = EztvCrawler.readRowCounters($, row);
 
       const record = buildTorrentRecord({
         title,
@@ -230,10 +247,45 @@ export class EztvCrawler extends BaseCrawler {
       if (!record) return;
       uniqueHashes.add(record.info_hash);
       sink.push(record);
+      added++;
       this.metrics.add('records');
     });
 
-    return rows.length;
+    return { rows: rows.length, added };
+  }
+
+  /** Size comes from the only pure-size cell; seeds from the last numeric cell. */
+  private static readRowCounters(
+    $: cheerio.CheerioAPI,
+    row: cheerio.Cheerio<Element>
+  ): { sizeText: string; seedersText: string } {
+    const cells = row.find('td');
+    let sizeText = '';
+    let sizeIndex = -1;
+    let seedersText = '';
+
+    cells.each((index, cell) => {
+      const text = cleanText($(cell).text());
+      if (sizeIndex === -1 && SIZE_CELL_PATTERN.test(text)) {
+        sizeText = text;
+        sizeIndex = index;
+      }
+    });
+
+    // Legacy templates keep the size at a fixed offset.
+    if (sizeIndex === -1 && cells.length >= 4) {
+      sizeText = cleanText(cells.eq(3).text());
+      sizeIndex = 3;
+    }
+
+    cells.each((index, cell) => {
+      if (index === sizeIndex) return;
+      const node = $(cell);
+      const text = cleanText(node.find('font').first().text() || node.text());
+      if (parseCount(text) !== null) seedersText = text;
+    });
+
+    return { sizeText, seedersText };
   }
 
   public mapApiTorrentToRecord(torrent: EztvApiTorrent, activeDomain: string): TorrentRecord | null {
@@ -256,16 +308,14 @@ export class EztvCrawler extends BaseCrawler {
       }
     }
 
+    // The API publishes structured season/episode numbers: they are
+    // authoritative. Title heuristics only fill the gaps (a `0` season is a real
+    // "specials" value, so it must not be overwritten by an S01 guess).
     const parsedSeason = parseCount(torrent.season);
     const parsedEpisode = parseCount(torrent.episode);
 
-    const season = (parsedSeason !== null && parsedSeason > 0)
-      ? parsedSeason
-      : (meta.season ?? (parsedSeason === 0 ? 0 : null));
-
-    const episode = (parsedEpisode !== null && parsedEpisode > 0)
-      ? parsedEpisode
-      : (meta.episode ?? (parsedEpisode === 0 ? 0 : null));
+    const season = parsedSeason ?? meta.season ?? null;
+    const episode = parsedEpisode ?? meta.episode ?? null;
 
     let magnetUrl = torrent.magnet_url || null;
     if (!magnetUrl) {
@@ -274,9 +324,12 @@ export class EztvCrawler extends BaseCrawler {
     }
 
     const torrentFileUrl = torrent.torrent_url ? this.resolveUrl(torrent.torrent_url, activeDomain) : null;
+    // Never emit a dangling `/ep/` when the API omits the id.
     const sourceUrl = torrent.episode_url
       ? this.resolveUrl(torrent.episode_url, activeDomain)
-      : `${activeDomain}/ep/${torrent.id ?? ''}`;
+      : (torrent.id !== undefined && torrent.id !== null
+        ? `${activeDomain}/ep/${torrent.id}`
+        : null);
 
     return buildTorrentRecord({
       title: fullTitle,
@@ -299,10 +352,6 @@ export class EztvCrawler extends BaseCrawler {
       sourceTracker: this.defaultTrackers[0]
     });
   }
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default EztvCrawler;

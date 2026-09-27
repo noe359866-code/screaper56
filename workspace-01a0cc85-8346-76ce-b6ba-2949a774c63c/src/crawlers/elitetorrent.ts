@@ -11,9 +11,10 @@ import {
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface EliteRoute {
@@ -121,7 +122,9 @@ export class EliteTorrentCrawler extends BaseCrawler {
             const href = $(el).attr('href');
             if (!href) return;
             if (/\/feed\/|\/page\//.test(href)) return;
-            if (/\/peliculas-1\/$|\/series\/$/.test(href)) return;
+            // Category roots are listings, not releases: fetching them as detail
+            // pages wasted a request and produced an empty record every time.
+            if (/\/(?:peliculas|peliculas-1|series|documentales)(?:\/)?$/.test(href)) return;
 
             const fullUrl = absoluteHttpUrl(href, listUrl);
             if (!fullUrl) return;
@@ -150,7 +153,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
               return record;
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Error parsing detail [${url}]: ${formatError(error)}`);
+              this.log.warn(`Error parsing detail [${url}]: ${describeError(error)}`);
               return null;
             }
           });
@@ -160,7 +163,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${listUrl}: ${formatError(error)}. Skipping to next route.`);
+          this.log.warn(`Failed fetching ${listUrl}: ${describeError(error)}. Skipping to next route.`);
           break;
         }
       }
@@ -172,11 +175,13 @@ export class EliteTorrentCrawler extends BaseCrawler {
   }
 
   public async parseEliteTorrentDetail(url: string, mirror: string): Promise<TorrentRecord | null> {
-    const response = await this.httpClient.get<string>(url);
-    if (!response.data || typeof response.data !== 'string') return null;
+    // fetchHtml (not a raw httpClient.get) so the courtesy pause, the HTML type
+    // check and the shared Referer policy all apply to detail pages too.
+    const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
+    if (!html) return null;
     this.metrics.add('details');
 
-    const $ = cheerio.load(response.data);
+    const $ = cheerio.load(html);
     $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
     const rawH1 = cleanText($('h1').first().text());
     if (!rawH1) return null;
@@ -242,7 +247,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
         if (!trackers.length) trackers = parsed.trackers;
       } catch (error) {
         this.metrics.add('downloadErrors');
-        this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${formatError(error)}`);
+        this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${describeError(error)}`);
       }
     }
 
@@ -266,15 +271,20 @@ export class EliteTorrentCrawler extends BaseCrawler {
     const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr, ...spanishReleaseHints($)]);
     const langs = detectLanguages(cleanTitle, hints);
 
-    // The site publishes an explicit language field; use it when the title is silent.
-    if (!langs.audio.length && !langs.subtitles.includes('Sub_ES')) {
-      if (/latino/i.test(idiomaStr)) {
-        langs.audio.push('Spanish (Latino)');
-      } else if (/vose/i.test(idiomaStr)) {
-        langs.audio.push('English');
-        langs.subtitles.push('Sub_ES');
-      } else {
-        langs.audio.push('Spanish');
+    // The ficha publishes an explicit language field. `detectLanguages` always
+    // falls back to 'Spanish' for this site, so the previous "only when empty"
+    // guard was dead code and a VOSE release was stored as Spanish audio.
+    // The explicit field now wins over that generic default.
+    if (idiomaStr) {
+      if (/vose|v\.o\.s\.e|subtitulad/i.test(idiomaStr)) {
+        langs.audio = ['English'];
+        if (!langs.subtitles.includes('Sub_ES')) langs.subtitles.push('Sub_ES');
+      } else if (/latino/i.test(idiomaStr)) {
+        if (!langs.audio.includes('Spanish (Latino)')) langs.audio.push('Spanish (Latino)');
+      } else if (/castellano|espa[ñn]ol/i.test(idiomaStr)) {
+        if (!langs.audio.includes('Spanish')) langs.audio.push('Spanish');
+      } else if (/ingl[eé]s|english|v\.o\./i.test(idiomaStr)) {
+        if (!langs.audio.includes('English')) langs.audio.push('English');
       }
     }
 
@@ -327,6 +337,9 @@ export function decodeAcortameString(raw: string): string {
 
   let current = s;
   for (let i = 0; i < 8; i++) {
+    // Buffer.from(..., 'base64') never throws: without this guard the loop
+    // happily decoded garbage eight times before giving up.
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(current)) break;
     try {
       current = Buffer.from(current, 'base64').toString('utf-8');
       if (/^(magnet:|http:\/\/|https:\/\/)/i.test(current)) return current;
@@ -339,10 +352,6 @@ export function decodeAcortameString(raw: string): string {
   }
 
   return initialRot;
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default EliteTorrentCrawler;

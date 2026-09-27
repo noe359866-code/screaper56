@@ -67,6 +67,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: "Install Node Dependencies"
         run: npm ci
@@ -76,13 +77,21 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package.json') }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-playwright-
+            ${{ runner-os }}-playwright-
 
-      - name: "Install Playwright Chromium & System Dependencies"
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium
+      # The apt packages are NOT part of the cache above: skipping this step on a
+      # cache hit left the restored Chromium without libnss3/libatk and every
+      # Cloudflare solve failed with "Host system is missing dependencies".
+      - name: "Install Playwright System Dependencies"
+        run: npx playwright install-deps chromium
+
+      - name: "Download Playwright Chromium"
+        run: npx playwright install chromium
+
+      - name: "Type check"
+        run: npm run lint
 
       - name: "Build TypeScript to JavaScript"
         run: npm run build
@@ -100,4 +109,12 @@ jobs:
           NODE_ENV: "production"
           REQUEST_TIMEOUT_MS: "25000"
           CRAWLER_CONCURRENCY: "3"
+          LOG_LEVEL: "info"
+          # Mirror probing is hedged: a pool of dead domains costs ~one timeout
+          # instead of candidates x timeout.
+          MIRROR_PROBE_STAGGER_MS: "700"
+          # Courtesy delay between requests of a single crawler.
+          CRAWLER_REQUEST_DELAY_MS: "150"
+          # Hard budget per source so one slow mirror cannot eat the 60 min job.
+          CRAWLER_TIME_BUDGET_MS: "420000"
         run: npm start

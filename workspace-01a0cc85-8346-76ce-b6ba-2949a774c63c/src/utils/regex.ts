@@ -29,7 +29,9 @@ export interface ParsedMetadata {
 const REGEX_SXX_EXX = /\b[sS](\d{1,2})[\s._-]*[eE](\d{1,3})\b/;
 const REGEX_SEASON_WORD = /\b(?:Season|Temporada|Temp)[\s._-]*(\d{1,2})\b/i;
 const REGEX_EPISODE_WORD = /\b(?:Episode|Cap[ií]tulo|Cap|Ep|Episodio)[\s._-]*(\d{1,4})\b/i;
-const REGEX_ABS_EP = /(?:[\s._\-]|\b)(?:#|-)\s*(\d{2,4})(?:[\s._\-\[v]|$)/;
+const REGEX_ABS_EP = /(?:[\s._\-]|^)(?:#|-)\s*(\d{1,4})(?:[\s._\-\[v]|\s|$)/;
+/** Strict `SxxExx` / `NxNN` episode marker (`1920x1080` cannot match: no boundary). */
+const REGEX_STRICT_EPISODE = /\b[sS]\d{1,2}[\s._-]*[eE]\d{1,3}\b|\b\d{1,2}[x×]\d{1,3}(?!\d)/;
 
 // Year (Fixed to support 1900 - 2099)
 const REGEX_YEAR = /(?:[\s._\-\(\[]|^)(19\d{2}|20\d{2})(?:[\s._\-\)\]]|$)/;
@@ -77,6 +79,22 @@ const REGEX_CLEAN_PUNCTUATION = /[._]/g;
 const REGEX_MULTIPLE_SPACES = /\s+/g;
 const REGEX_FILE_SIZE = /^(\d+(?:[.,]\d+)?)\s*([KMGT]?(?:i?B)?)$/i;
 
+/** Canonical spelling for the media source, so `webdl`/`web-dl` do not split. */
+export function normalizeSource(raw: string): string {
+  const value = raw.toLowerCase().replace(/[^a-z0-9]/g, '');
+  switch (value) {
+    case 'webdl': case 'webhdl': return 'WEB-DL';
+    case 'webrip': return 'WEBRip';
+    case 'bluray': case 'bdrip': case 'brrip': return 'BluRay';
+    case 'dvdrip': return 'DVDRip';
+    case 'hdtv': return 'HDTV';
+    case 'cam': return 'CAM';
+    case 'ts': return 'TS';
+    case 'tc': return 'TC';
+    default: return raw.toUpperCase();
+  }
+}
+
 /**
  * Parses release title string and extracts structured metadata.
  */
@@ -106,8 +124,13 @@ export function parseTorrentTitle(rawTitle: string, defaultType?: ContentType): 
   }
 
   const absEpMatch = rawTitle.match(REGEX_ABS_EP);
-  if (absEpMatch && !episode) {
-    absoluteEpisode = parseInt(absEpMatch[1], 10);
+  if (absEpMatch && episode === null) {
+    const candidate = parseInt(absEpMatch[1], 10);
+    // `- 2020` is a year, not episode 2020. Treating it as an absolute episode
+    // also flipped the content type to 'anime' for ordinary movies.
+    if (Number.isFinite(candidate) && (candidate < 1900 || candidate > 2099)) {
+      absoluteEpisode = candidate;
+    }
   }
 
   // 2. Detect Year (1900 - 2099)
@@ -127,7 +150,7 @@ export function parseTorrentTitle(rawTitle: string, defaultType?: ContentType): 
   // 3B. Detect Source Independent of Resolution
   let source: string | null = null;
   const srcMatch = rawTitle.match(REGEX_SOURCE);
-  if (srcMatch) source = srcMatch[1].toUpperCase();
+  if (srcMatch) source = normalizeSource(srcMatch[1]);
 
   // 4. Detect Codec
   let codec: string | null = null;
@@ -177,6 +200,11 @@ export function parseTorrentTitle(rawTitle: string, defaultType?: ContentType): 
 
   if (defaultType) {
     type = defaultType;
+    // A caller-supplied 'movie' is a category hint, not a licence to store an
+    // episodic release as a film: explicit SxxExx / NxNN markers win.
+    if (type === 'movie' && (episode !== null || REGEX_STRICT_EPISODE.test(rawTitle))) {
+      type = 'series';
+    }
   } else if (isAnimeTitle) {
     type = 'anime';
   } else if (isSeriesTitle) {
@@ -222,6 +250,7 @@ export function parseSizeToBytes(sizeStr: string): number | null {
   const value = Number(match[1].replace(',', '.'));
   if (isNaN(value)) return null;
 
+  // 'GiB'/'MiB' are binary units; 'GB'/'MB' are the same magnitudes here.
   const unit = match[2].toUpperCase().replace('IB', 'B');
   switch (unit) {
     case 'TB':

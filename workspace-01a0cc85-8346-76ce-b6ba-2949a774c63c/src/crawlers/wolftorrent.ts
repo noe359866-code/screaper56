@@ -1,8 +1,9 @@
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
-import { MirrorSetup } from './base.js';
+import { MAX_TORRENT_BYTES, MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
+import { cleanText, describeError } from './support.js';
 
 /**
  * WolfMax4K catalog: /pelicula/:id/:slug and /serie/:id/:slug.
@@ -12,6 +13,20 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
   public readonly name = 'wolftorrent';
   public baseUrl = process.env.WOLFTORRENT_BASE_URL || 'https://wolftorrent.com/';
   protected readonly sections = ['/peliculas', '/series'];
+
+  /** Browser fallbacks used in this run; capped so a template change cannot
+   *  turn into hundreds of headless navigations. */
+  private browserSolves = 0;
+
+  private get browserFallbackEnabled(): boolean {
+    const raw = (process.env.WOLFTORRENT_BROWSER ?? 'true').trim().toLowerCase();
+    return !(raw === 'false' || raw === '0' || raw === 'no');
+  }
+
+  private get browserSolveCap(): number {
+    const parsed = Number.parseInt(process.env.WOLFTORRENT_BROWSER_MAX ?? '25', 10);
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : 25;
+  }
 
   /** Known Wolf/WolfMax4K domains; add your own with WOLFTORRENT_MIRRORS. */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
@@ -68,9 +83,12 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
   public parseDetail(html: string, url: string): CatalogDetail {
     const $ = cheerio.load(html);
     $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
-    const title = $('h1').first().text().trim();
+    // cleanText (not .trim()) so a multi-line <h1> never becomes "Sample\n  1080p".
+    const title = cleanText($('h1').first().text()) || cleanText($('title').first().text());
     const downloads: CatalogDetail['downloads'] = [];
     const seenUrls = new Set<string>();
+    // Hoisted: the ficha is document-wide, not per-download.
+    const releaseHints = spanishReleaseHints($);
 
     $(DOWNLOAD_NODES).each((_, el) => {
       const node = $(el);
@@ -81,11 +99,11 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
         if (!target || seenUrls.has(target)) continue;
 
         seenUrls.add(target);
-        const rowText = node.closest('tr, .episode, .episodio').text().replace(/\s+/g, ' ').trim();
+        const rowText = cleanText(node.closest('tr, .episode, .episodio').text());
         downloads.push({
           url: target,
-          title: `${title} ${rowText}`.trim(),
-          hints: spanishReleaseHints($)
+          title: cleanText(`${title} ${rowText}`),
+          hints: releaseHints
         });
       }
     });
@@ -104,71 +122,96 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
 
   protected override async discoverDownloads(html: string, url: string): Promise<CatalogDetail> {
     const detail = this.parseDetail(html, url);
-    if (detail.downloads.length || process.env.WOLFTORRENT_BROWSER === 'false') {
+    if (detail.downloads.length || !this.browserFallbackEnabled) return detail;
+
+    if (this.browserSolves >= this.browserSolveCap) {
+      this.metrics.add('browserSkipped');
+      this.log.debug(
+        `${url}: browser fallback cap reached (${this.browserSolveCap}); skipping. ` +
+        'Raise WOLFTORRENT_BROWSER_MAX if the site really needs it.'
+      );
       return detail;
     }
 
-    // Some Wolf templates only expose a JS button. A normal browser click allows
-    // the site's own code to resolve the URL; no CAPTCHA/login automation.
-    const { chromium } = await import('playwright');
-    const browser = await chromium.launch({ headless: true });
+    // Some Wolf templates only expose a JS button. A normal browser click lets
+    // the site's own code resolve the URL; no CAPTCHA/login automation.
+    // The page comes from the ONE shared stealth browser (see BaseCrawler),
+    // not from a Chromium launched per detail page.
+    this.browserSolves++;
 
-    try {
-      const page = await browser.newPage({ acceptDownloads: true });
-      try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-        
-        const rendered = this.parseDetail(await page.content(), url);
-        if (rendered.downloads.length) return rendered;
+    return this.withBrowserPage(async page => {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
 
-        const buttons = page.getByRole('button', { name: /^descargar(?: torrent)?$/i })
-          .or(page.getByRole('link', { name: /^descargar(?: torrent)?$/i }));
+      const rendered = this.parseDetail(await page.content(), url);
+      if (rendered.downloads.length) return rendered;
 
-        const count = Math.min(await buttons.count(), 12);
-        for (let i = 0; i < count; i++) {
-          try {
-            const [download] = await Promise.all([
-              page.waitForEvent('download', { timeout: 4000 }),
-              buttons.nth(i).click({ timeout: 3000 })
-            ]);
+      const buttons = page.getByRole('button', { name: /^descargar(?: torrent)?$/i })
+        .or(page.getByRole('link', { name: /^descargar(?: torrent)?$/i }));
 
-            const stream = await download.createReadStream();
-            if (!stream) continue;
+      const count = Math.min(await buttons.count(), 12);
+      for (let index = 0; index < count; index++) {
+        try {
+          const [download] = await Promise.all([
+            page.waitForEvent('download', { timeout: 4000 }),
+            buttons.nth(index).click({ timeout: 3000 })
+          ]);
 
-            const chunks: Buffer[] = [];
-            let size = 0;
+          const buffer = await readDownloadCapped(download);
+          if (!buffer) continue;
 
-            for await (const chunk of stream) {
-              size += chunk.length;
-              if (size > 10 * 1024 * 1024) {
-                stream.destroy();
-                throw new Error('Torrent exceeds 10 MiB');
-              }
-              chunks.push(Buffer.from(chunk));
-            }
+          // JS may create a blob URL. Keep the metainfo for hashing, but never
+          // persist a browser-local URL as a public download link.
+          detail.downloads.push({
+            url: download.url(),
+            title: cleanText(`${detail.title} ${download.suggestedFilename() || ''}`) || detail.title,
+            buffer
+          });
 
-            // JS may create a blob URL. Keep metainfo for hashing, but never persist
-            // that browser-local URL as a publicly downloadable torrent link.
-            detail.downloads.push({
-              url: download.url(),
-              title: detail.title,
-              buffer: Buffer.concat(chunks)
-            });
-
-            await download.delete();
-          } catch (error) {
-            this.log.warn(`Download button failed in ${url}: ${formatError(error)}`);
-          }
+          await download.delete().catch(() => {});
+        } catch (error) {
+          this.metrics.add('browserErrors');
+          this.log.warn(`Download button failed in ${url}: ${describeError(error)}`);
         }
-      } finally {
-        await page.close().catch(() => {});
       }
 
       return detail;
-    } finally {
-      await browser.close();
-    }
+    }, 30000);
   }
+
+  protected override resetRunState(): void {
+    super.resetRunState();
+    // The cap is per run, not per process.
+    this.browserSolves = 0;
+  }
+
+  public override async close(): Promise<void> {
+    this.browserSolves = 0;
+  }
+}
+
+/** Streams a Playwright download into memory, refusing anything over the cap. */
+async function readDownloadCapped(download: { createReadStream(): Promise<import('node:stream').Readable | null> }): Promise<Buffer | null> {
+  const stream = await download.createReadStream();
+  if (!stream) return null;
+
+  const chunks: Buffer[] = [];
+  let size = 0;
+
+  try {
+    for await (const chunk of stream) {
+      size += chunk.length;
+      if (size > MAX_TORRENT_BYTES) {
+        stream.destroy();
+        return null;
+      }
+      chunks.push(Buffer.from(chunk));
+    }
+  } catch {
+    stream.destroy();
+    return null;
+  }
+
+  return Buffer.concat(chunks);
 }
 
 export function wolfDownloadUrl(value: string, base: string): string | null {
@@ -195,10 +238,6 @@ export function wolfDownloadUrl(value: string, base: string): string | null {
   }
 
   return null;
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default WolftorrentCrawler;

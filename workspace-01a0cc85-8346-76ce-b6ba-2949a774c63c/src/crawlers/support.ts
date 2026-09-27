@@ -25,6 +25,7 @@ import {
   DEFAULT_TRACKERS as MAGNET_DEFAULT_TRACKERS,
   normalizeInfoHash
 } from '../utils/magnet.js';
+import { canonicalAudioTag, canonicalSubtitleTag } from '../utils/language.js';
 import { ParsedMetadata } from '../utils/regex.js';
 
 /** Public trackers used as a fallback when a release lists none. */
@@ -48,6 +49,39 @@ export function cleanText(value: unknown): string {
  * Anything else (`N/A`, empty, negative, non-numeric) yields `null` so
  * callers can keep the field unknown instead of storing garbage.
  */
+/**
+ * Single-line, log-safe description of any thrown value.
+ *
+ * Fourteen copies of this existed across the crawlers and the mirror layer,
+ * each drifting slightly. Libraries throw plenty of non-`Error` values
+ * (`{ message }` objects, strings, `undefined`), and `String(thrown)` turns
+ * those into `[object Object]` in the logs, which hides the real reason a
+ * source failed.
+ */
+export function describeError(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'string') return error;
+  if (error && typeof error === 'object') {
+    const candidate = (error as { message?: unknown }).message;
+    if (typeof candidate === 'string' && candidate.trim()) return candidate;
+    const nested = (error as { error?: unknown }).error;
+    if (nested && nested !== error) return describeError(nested);
+    // Last resort for plain throwables: a JSON dump beats the information-free
+    // `[object Object]`. Circular structures throw here and fall through.
+    try {
+      const json = JSON.stringify(error);
+      if (json !== undefined && json.length <= 500) return json;
+    } catch {
+      /* circular or exotic */
+    }
+  }
+  try {
+    return String(error);
+  } catch {
+    return '[undescribable error]';
+  }
+}
+
 export function parseCount(value: unknown): number | null {
   if (typeof value === 'number') {
     if (!Number.isFinite(value) || value < 0) return null;
@@ -152,10 +186,26 @@ export function sleep(ms: number): Promise<void> {
  * Courtesy pause between requests of a single crawler.
  * Reads `CRAWLER_REQUEST_DELAY_MS` (default `0` = disabled) and adds up to
  * 1s of random jitter so parallel workers do not march in lockstep.
+ * The env value is parsed once: this runs before every single request.
  */
+let cachedRequestDelayMs: number | null = null;
+
+export function configuredRequestDelayMs(): number {
+  if (cachedRequestDelayMs === null) {
+    const parsed = Number.parseInt(process.env.CRAWLER_REQUEST_DELAY_MS || '0', 10);
+    cachedRequestDelayMs = Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+  }
+  return cachedRequestDelayMs;
+}
+
+/** Test/CLI hook: forget the cached `CRAWLER_REQUEST_DELAY_MS` value. */
+export function resetRequestDelayCache(): void {
+  cachedRequestDelayMs = null;
+}
+
 export async function politePause(): Promise<void> {
-  const configured = Number.parseInt(process.env.CRAWLER_REQUEST_DELAY_MS || '0', 10);
-  if (!Number.isFinite(configured) || configured <= 0) return;
+  const configured = configuredRequestDelayMs();
+  if (configured <= 0) return;
   const jitter = Math.floor(Math.random() * Math.min(configured, 1000));
   await sleep(configured + jitter);
 }
@@ -163,6 +213,11 @@ export async function politePause(): Promise<void> {
 /**
  * Maps `items` through `fn` with at most `limit` promises in flight.
  * Results keep the input order; an empty input resolves immediately.
+ *
+ * If one worker throws, the remaining in-flight workers are still awaited
+ * before the rejection surfaces. Rejecting early used to orphan live HTTP
+ * requests and browser downloads that kept mutating shared state after the
+ * caller had already moved on.
  */
 export async function mapWithConcurrency<T, R>(
   items: readonly T[],
@@ -174,17 +229,33 @@ export async function mapWithConcurrency<T, R>(
   const workers = Math.max(1, Math.floor(limit) || 1);
   const results: R[] = new Array(list.length);
   let cursor = 0;
+  let aborted = false;
 
   const run = async (): Promise<void> => {
-    while (cursor < list.length) {
+    while (cursor < list.length && !aborted) {
       const index = cursor++;
-      results[index] = await fn(list[index], index);
+      try {
+        results[index] = await fn(list[index], index);
+      } catch (error) {
+        // Stop handing out new work immediately, but let the already in-flight
+        // workers settle (Promise.allSettled below) so nothing is orphaned.
+        aborted = true;
+        throw error;
+      }
     }
   };
 
-  await Promise.all(
+  const settled = await Promise.allSettled(
     Array.from({ length: Math.min(workers, list.length) }, () => run())
   );
+
+  const failure = settled.find(
+    (outcome): outcome is PromiseRejectedResult => outcome.status === 'rejected'
+  );
+  if (failure) {
+    aborted = true;
+    throw failure.reason;
+  }
   return results;
 }
 
@@ -353,6 +424,13 @@ function cleanNonNegativeInt(value: unknown): number | null {
   return null;
 }
 
+/** Sizes must be real byte counts: rejects NaN, negatives and > 2^53. */
+function cleanSafePositiveInt(value: unknown): number | null {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return null;
+  const floored = Math.floor(value);
+  return Number.isSafeInteger(floored) ? floored : null;
+}
+
 function normalizeImdbId(value: unknown): string | null {
   if (typeof value !== 'string') return null;
   const trimmed = value.trim();
@@ -398,8 +476,10 @@ export function buildTorrentRecord(
   const meta = input.meta ?? null;
 
   const trackers = dedupeStrings([...(input.trackers ?? [])]);
-  const audio = dedupeStrings([...(input.audio ?? [])]);
-  const subtitles = dedupeStrings([...(input.subtitles ?? [])]);
+  // Canonicalising here (instead of in every adapter) is what stops the same
+  // language from being stored as both 'Castellano' and 'Spanish'.
+  const audio = dedupeStrings((input.audio ?? []).map(canonicalAudioTag));
+  const subtitles = dedupeStrings((input.subtitles ?? []).map(canonicalSubtitleTag));
 
   const magnetTrackers = trackers.length
     ? trackers
@@ -420,9 +500,9 @@ export function buildTorrentRecord(
     magnet_url: magnetUrl,
     torrent_file_url: cleanOptionalText(input.torrentFileUrl),
     source_url: cleanOptionalText(input.sourceUrl),
-    season: input.season ?? meta?.season ?? null,
-    episode: input.episode ?? meta?.episode ?? null,
-    absolute_episode: input.absoluteEpisode ?? meta?.absoluteEpisode ?? null,
+    season: cleanNonNegativeInt(input.season ?? meta?.season),
+    episode: cleanNonNegativeInt(input.episode ?? meta?.episode),
+    absolute_episode: cleanNonNegativeInt(input.absoluteEpisode ?? meta?.absoluteEpisode),
     release_group:
       cleanOptionalText(input.releaseGroup) ?? cleanOptionalText(meta?.releaseGroup),
     quality:
@@ -432,7 +512,7 @@ export function buildTorrentRecord(
       cleanOptionalText(input.hdrFormat) ?? cleanOptionalText(meta?.hdrFormat),
     channels:
       cleanOptionalText(input.channels) ?? cleanOptionalText(meta?.channels),
-    size_bytes: cleanNonNegativeInt(input.sizeBytes),
+    size_bytes: cleanSafePositiveInt(input.sizeBytes),
     seeders: cleanNonNegativeInt(input.seeders),
     leechers: cleanNonNegativeInt(input.leechers),
     imdb_id: normalizeImdbId(input.imdbId),
@@ -514,11 +594,10 @@ export function mergeRecords(
   fill('leechers');
   fill('source_tracker');
 
-  merged.audio = dedupeStrings([...(primary.audio ?? []), ...(secondary.audio ?? [])]);
-  merged.subtitles = dedupeStrings([
-    ...(primary.subtitles ?? []),
-    ...(secondary.subtitles ?? [])
-  ]);
+  merged.audio = dedupeStrings([...(primary.audio ?? []), ...(secondary.audio ?? [])].map(canonicalAudioTag));
+  merged.subtitles = dedupeStrings(
+    [...(primary.subtitles ?? []), ...(secondary.subtitles ?? [])].map(canonicalSubtitleTag)
+  );
 
   return merged;
 }

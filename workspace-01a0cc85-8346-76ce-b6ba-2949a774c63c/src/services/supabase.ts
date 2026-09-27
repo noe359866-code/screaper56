@@ -23,9 +23,15 @@ export interface SanitizedTorrentRecord {
   audio: string[];
   subtitles: string[];
   channels: string | null;
-  size_bytes: number;
-  seeders: number;
-  leechers: number;
+  /**
+   * Unknown counters are OMITTED (left `undefined`) instead of being written as
+   * `0`. PostgREST drops undefined keys, so PostgreSQL applies the column
+   * default on INSERT and — crucially — keeps the real value already stored on
+   * UPDATE. Zero-filling used to overwrite live seeder counts with 0.
+   */
+  size_bytes?: number;
+  seeders?: number;
+  leechers?: number;
   source_tracker: string | null;
 }
 
@@ -76,10 +82,24 @@ export class SupabaseTorrentRepository {
 
   private static isNonRetriableError(code?: string): boolean {
     if (!code) return false;
-    // Códigos de PostgreSQL: 22*** (Data Exception), 23*** (Integrity Violation), 42*** (Syntax/Schema Error)
-    // Nota: 42P10 (no unique constraint matching ON CONFLICT) se maneja aparte con fallback, no como fallo crítico
+    // 42P10 (no unique constraint matching ON CONFLICT) has its own fallback.
     if (code === '42P10') return false;
+    // 23505 (unique violation on another constraint) is rescued row by row:
+    // dropping the whole batch because ONE row collided lost hundreds of records.
+    if (code === '23505') return false;
+    // 57014 (statement timeout) / 40001 (serialisation failure) are retryable.
+    if (code === '57014' || code === '40001' || code === '40P01') return false;
+    // PostgreSQL: 22*** data exception, 23*** integrity violation, 42*** syntax/schema.
     return code.startsWith('22') || code.startsWith('23') || code.startsWith('42');
+  }
+
+  /** Payload-too-large / too many parameters: the chunk must be split. */
+  private static isPayloadTooLargeError(error: { message?: string; code?: string } | null | undefined): boolean {
+    if (!error) return false;
+    if (error.code === '413' || error.code === '54000') return true;
+    const message = (error.message ?? '').toLowerCase();
+    return message.includes('payload too large') || message.includes('too many parameters') ||
+      message.includes('request entity too large');
   }
 
   private static isMissingOnConflictConstraintError(error: { message?: string; code?: string; details?: string; hint?: string } | null | undefined): boolean {
@@ -157,11 +177,18 @@ export class SupabaseTorrentRepository {
       subtitles: cleanSubs,
       channels: SupabaseTorrentRepository.safeString(raw.channels, 10),
 
-      size_bytes: SupabaseTorrentRepository.parseNonNegativeInt(raw.size_bytes, 0) ?? 0,
-      seeders: SupabaseTorrentRepository.parseNonNegativeInt(raw.seeders, 0) ?? 0,
-      leechers: SupabaseTorrentRepository.parseNonNegativeInt(raw.leechers, 0) ?? 0,
+      size_bytes: SupabaseTorrentRepository.parseNonNegativeInt(raw.size_bytes) ?? undefined,
+      seeders: SupabaseTorrentRepository.parseNonNegativeInt(raw.seeders) ?? undefined,
+      leechers: SupabaseTorrentRepository.parseNonNegativeInt(raw.leechers) ?? undefined,
       source_tracker: SupabaseTorrentRepository.safeString(raw.source_tracker, 100)
     };
+  }
+
+  /** `undefined` keys must never reach the wire: they defeat the column default. */
+  private static pruneUndefined(record: SanitizedTorrentRecord): SanitizedTorrentRecord {
+    return Object.fromEntries(
+      Object.entries(record).filter(([, value]) => value !== undefined)
+    ) as SanitizedTorrentRecord;
   }
 
   /**
@@ -177,36 +204,47 @@ export class SupabaseTorrentRepository {
       return { inserted: chunk.length };
     }
 
-    // Si el error NO es de duplicado, lo reportamos
-    const isDuplicate = insertError.code === '23505' || insertError.message?.toLowerCase().includes('duplicate');
-    if (!isDuplicate) {
-      // No es duplicado, puede ser otro error de esquema; intentamos registro a registro para rescatar los que sí entran
-    }
-
-    // Intento 2: fila por fila con manejo de duplicado -> update
+    // Intento 2: fila por fila (duplicado -> update). Con concurrencia acotada:
+    // 2 500 inserts secuenciales tardaban minutos y agotaban el job de CI.
     let inserted = 0;
     let lastError = insertError.message;
-    for (const rec of chunk) {
-      const { error: rowInsertError } = await this.client.from('torrents').insert(rec);
-      if (!rowInsertError) {
-        inserted++;
-        continue;
-      }
-      // Si es duplicado y tenemos constraint, intentamos update
-      if (rowInsertError.code === '23505' || rowInsertError.message?.toLowerCase().includes('duplicate')) {
-        const { error: updateError } = await this.client
-          .from('torrents')
-          .update(rec)
-          .eq('info_hash', rec.info_hash);
-        if (!updateError) {
+    const concurrency = 8;
+    let cursor = 0;
+
+    const worker = async (): Promise<void> => {
+      while (cursor < chunk.length) {
+        const record = chunk[cursor++];
+        const { error: rowInsertError } = await this.client!.from('torrents').insert(record);
+        if (!rowInsertError) {
           inserted++;
-        } else {
-          lastError = updateError.message;
+          continue;
         }
-      } else {
-        lastError = rowInsertError.message;
+
+        const isDuplicate = rowInsertError.code === '23505' ||
+          (rowInsertError.message ?? '').toLowerCase().includes('duplicate');
+
+        if (!isDuplicate) {
+          lastError = rowInsertError.message;
+          continue;
+        }
+
+        // Never write the conflict key back: updating `info_hash` to itself can
+        // trip the very unique index we collided with.
+        const { info_hash: _hash, ...patch } = record;
+        const { error: updateError } = await this.client!
+          .from('torrents')
+          .update(patch)
+          .eq('info_hash', record.info_hash);
+
+        if (!updateError) inserted++;
+        else lastError = updateError.message;
       }
-    }
+    };
+
+    await Promise.all(
+      Array.from({ length: Math.min(concurrency, chunk.length) }, () => worker())
+    );
+
     if (inserted > 0) return { inserted };
     return { inserted: 0, error: lastError };
   }
@@ -228,7 +266,8 @@ export class SupabaseTorrentRepository {
       if (sanitized) uniqueMap.set(sanitized.info_hash, sanitized);
     }
 
-    const validRecords = Array.from(uniqueMap.values());
+    const validRecords = Array.from(uniqueMap.values())
+      .map(record => SupabaseTorrentRepository.pruneUndefined(record));
     if (validRecords.length === 0) return 0;
 
     if (this.isDryRun) {
@@ -301,6 +340,32 @@ export class SupabaseTorrentRepository {
             }
 
             console.error(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} (Attempt ${attempt}/${maxRetries}) failed:`, error.message);
+
+            // Un batch demasiado grande se parte por la mitad y se reintenta:
+            // antes se perdía entero por un 413/54000.
+            if (SupabaseTorrentRepository.isPayloadTooLargeError(error) && chunk.length > 1) {
+              const half = Math.ceil(chunk.length / 2);
+              console.warn(`[SUPABASE] Batch ${currentBatchNumber} too large; splitting into ${half}/${chunk.length - half}.`);
+              const first = await this.fallbackInsertChunk(chunk.slice(0, half));
+              const second = await this.fallbackInsertChunk(chunk.slice(half));
+              totalUpserted += first.inserted + second.inserted;
+              if (first.inserted + second.inserted > 0) success = true;
+              else console.error(`[SUPABASE] Split batch failed: ${first.error ?? second.error ?? 'unknown'}`);
+              break;
+            }
+
+            // Rescate fila a fila cuando un único registro rompe el batch.
+            if (error.code === '23505') {
+              const rescued = await this.fallbackInsertChunk(chunk);
+              if (rescued.inserted > 0) {
+                totalUpserted += rescued.inserted;
+                success = true;
+                console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} rescued row-by-row: ${rescued.inserted}/${chunk.length}.`);
+              } else {
+                console.error(`[SUPABASE] Batch ${currentBatchNumber} row-by-row rescue failed: ${rescued.error ?? error.message}`);
+              }
+              break;
+            }
 
             // Cancelar reintentos si el error no es solucionable reintentando (ej. error de sintaxis o constraint)
             if (SupabaseTorrentRepository.isNonRetriableError(error.code)) {

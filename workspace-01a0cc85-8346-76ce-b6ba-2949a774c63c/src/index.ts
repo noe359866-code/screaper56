@@ -1,11 +1,17 @@
 import { config } from './config/env.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
+import { CloudflareBypassEngine, installCloudflareTeardownHooks } from './utils/anti-cloudflare.js';
 
 import { CRAWLER_REGISTRY } from './crawlers/registry.js';
 
 async function main() {
   const startedAt = new Date().toISOString();
+  const startedAtMs = Date.now();
+
+  // A solved Cloudflare challenge keeps a Chromium driver connection open, and
+  // an open handle stops Node from ever exiting. Register teardown first.
+  installCloudflareTeardownHooks();
   console.log('===============================================================');
   console.log('   ASYNC TORRENT CRAWLER & SUPABASE INDEXER (PRODUCTION ENGINE) ');
   console.log('===============================================================');
@@ -76,10 +82,11 @@ async function main() {
     };
 
     const crawlStart = Date.now();
+    let crawler: Awaited<ReturnType<typeof crawlerFactory>> | null = null;
 
     try {
       // Carga perezosa de la instancia del crawler
-      const crawler = await crawlerFactory();
+      crawler = await crawlerFactory();
       stats.name = crawler.name;
       stats.mirror = crawler.baseUrl ?? null;
 
@@ -117,6 +124,16 @@ async function main() {
       const errorMsg = err instanceof Error ? err.message : String(err);
       console.error(`[FATAL] Unhandled failure in crawler [${stats.name}]:`, errorMsg);
     } finally {
+      // Adapters may own a browser page or a socket pool; release it before the
+      // next run so a full crawl never accumulates Chromium instances.
+      if (crawler) {
+        await crawler.close().catch((closeError: unknown) => {
+          console.warn(
+            `[${stats.name}] close() failed: ${closeError instanceof Error ? closeError.message : String(closeError)}`
+          );
+        });
+      }
+
       stats.executionTimeMs = Date.now() - crawlStart;
 
       // Actualizar métricas globales
@@ -157,18 +174,30 @@ async function main() {
   console.log(`Total Accepted:          ${summary.totalSpanishAccepted}`);
   console.log(`Total Dropped (Foreign): ${summary.totalDiscarded}`);
   console.log(`Total Database Upserts:  ${summary.totalUpserted}`);
+  console.log(`Total wall time:         ${((Date.now() - startedAtMs) / 1000).toFixed(1)}s`);
   console.log(`Finished at:             ${summary.finishedAt}`);
+
+  const failed = summary.crawlers.filter(crawler => crawler.errors > 0);
+  if (failed.length) {
+    console.log(`Failed sources (${failed.length}): ${failed.map(crawler => crawler.name).join(', ')}`);
+  }
   console.log('===============================================================\n');
 
   // Si hubo errores en algún crawler, marcar el exit code para CI/CD
-  const totalErrors = summary.crawlers.reduce((acc, curr) => acc + curr.errors, 0);
+  const totalErrors = failed.length;
   if (totalErrors > 0) {
     process.exitCode = 1;
   }
 }
 
 // Manejo de excepciones globales
-main().catch(err => {
-  console.error('[CRITICAL] Uncaught exception during scraper execution:', err);
-  process.exit(1);
-});
+main()
+  .catch(err => {
+    console.error('[CRITICAL] Uncaught exception during scraper execution:', err);
+    process.exitCode = 1;
+  })
+  .finally(async () => {
+    // Always release the shared stealth browser, otherwise a successful run can
+    // still hang with a live Chromium until the CI timeout kills it.
+    await CloudflareBypassEngine.getInstance().shutdown().catch(() => {});
+  });

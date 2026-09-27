@@ -15,6 +15,8 @@
  * operator decides which domains they are allowed to query.
  */
 
+import { describeError } from './support.js';
+
 export interface MirrorHttpResponse<T = unknown> {
   status: number;
   data: T;
@@ -40,6 +42,17 @@ export interface MirrorProbe {
   headers?: Record<string, string>;
   /** Human readable label used in logs. */
   label?: string;
+  /**
+   * Retries per probe. Probing must fail fast, so this defaults to `0`; a dead
+   * domain should cost one short request, not three backoff rounds.
+   */
+  maxRetries?: number;
+  /**
+   * Whether a probe may escalate to the headless-browser Cloudflare solver.
+   * Defaults to `false`: solving a challenge for a mirror we are merely
+   * *testing* can burn 30 s per candidate. The real crawl requests still solve.
+   */
+  autoSolveCloudflare?: boolean;
 }
 
 export interface MirrorPoolInput {
@@ -70,6 +83,14 @@ export interface ResolveMirrorOptions {
   fallback?: string | null;
   /** Skip the in-process cache (used by tests). */
   useCache?: boolean;
+  /**
+   * Hedged probing: a candidate is launched, and if it has not produced a
+   * verdict after this many milliseconds the next one is launched too. Fast
+   * mirrors therefore cost exactly one request (polite), while a pool of dead
+   * domains no longer serialises `candidates x timeout` seconds of waiting.
+   * `0` disables hedging and probes strictly one at a time.
+   */
+  probeStaggerMs?: number;
 }
 
 export interface MirrorAttempt {
@@ -186,7 +207,17 @@ export function looksLikeBlockedPage(html: string): boolean {
     lower.includes('buy this domain') ||
     lower.includes('this site can’t be reached') ||
     lower.includes('sitio bloqueado') ||
-    lower.includes('acceso bloqueado')
+    lower.includes('acceso bloqueado') ||
+    lower.includes('403 forbidden') ||
+    lower.includes('access denied') ||
+    lower.includes('request blocked') ||
+    lower.includes('cf-browser-verification') ||
+    lower.includes('/cdn-cgi/challenge-platform') ||
+    lower.includes('ddos-guard') ||
+    lower.includes('verify you are human') ||
+    lower.includes('website is under maintenance') ||
+    lower.includes('pagina no encontrada') ||
+    lower.includes('website not available')
   );
 }
 
@@ -203,19 +234,53 @@ export function htmlMarkerValidator(markers: readonly (string | RegExp)[]): Mirr
   };
 }
 
-function describeError(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  return String(error);
-}
-
 function joinMirrorPath(mirror: string, path: string | undefined): string {
   if (!path || path === '/') return `${mirror}/`;
   return `${mirror}${path.startsWith('/') ? '' : '/'}${path}`;
 }
 
+const DEFAULT_PROBE_STAGGER_MS = 700;
+
+/** Delay that can be cancelled so a resolved probe never leaves a live timer. */
+function cancellableDelay(ms: number): { promise: Promise<void>; cancel: () => void } {
+  let timer: NodeJS.Timeout | undefined;
+  let resolveFn: (() => void) | undefined;
+  const promise = new Promise<void>(resolve => {
+    resolveFn = resolve;
+    timer = setTimeout(resolve, ms);
+  });
+  return {
+    promise,
+    cancel: () => {
+      if (timer) clearTimeout(timer);
+      resolveFn?.();
+    }
+  };
+}
+
+function envProbeStagger(): number {
+  const raw = Number.parseInt(process.env.MIRROR_PROBE_STAGGER_MS ?? '', 10);
+  return Number.isFinite(raw) && raw >= 0 ? raw : DEFAULT_PROBE_STAGGER_MS;
+}
+
+interface CandidateOutcome {
+  index: number;
+  mirror: string;
+  accepted: boolean;
+  elapsedMs: number;
+  label?: string;
+  attempts: MirrorAttempt[];
+}
+
 /**
- * Probes candidates in order and returns the first mirror that answers with
+ * Probes candidates and returns the highest-priority mirror that answers with
  * content the adapter recognises. Never throws for a single bad mirror.
+ *
+ * Candidates are launched in priority order with hedging (see
+ * `probeStaggerMs`): a healthy first mirror is probed exactly once, but a pool
+ * of dead domains resolves in ~`timeout` instead of `candidates x timeout`.
+ * A lower-index candidate always wins over a higher-index one, even when it
+ * answers later.
  */
 export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promise<string> {
   const {
@@ -226,7 +291,8 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
     cacheTtlMs = DEFAULT_CACHE_TTL_MS,
     maxCandidates = DEFAULT_MAX_CANDIDATES,
     fallback,
-    useCache = true
+    useCache = true,
+    probeStaggerMs = envProbeStagger()
   } = options;
 
   const pool = dedupeMirrors(options.mirrors);
@@ -238,9 +304,10 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
   const cached = useCache ? getCachedMirror(name) : null;
   const ordered = cached ? dedupeMirrors([cached, ...pool]) : pool;
   const candidates = ordered.slice(0, Math.max(1, maxCandidates));
-  const attempts: MirrorAttempt[] = [];
 
-  for (const mirror of candidates) {
+  const probeCandidate = async (mirror: string, index: number): Promise<CandidateOutcome> => {
+    const attempts: MirrorAttempt[] = [];
+
     for (const probe of probes) {
       const target = joinMirrorPath(mirror, probe.path);
       const startedAt = Date.now();
@@ -248,25 +315,73 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
         logger?.debug?.(`Probing ${target}${probe.label ? ` (${probe.label})` : ''}...`);
         const response = await http.get(target, {
           timeout: probe.timeoutMs ?? DEFAULT_PROBE_TIMEOUT_MS,
-          headers: probe.headers
+          headers: probe.headers,
+          // Probing must never escalate to the headless browser nor grind
+          // through backoff rounds; the real crawl requests still do.
+          maxRetries: probe.maxRetries ?? 0,
+          autoSolveCloudflare: probe.autoSolveCloudflare ?? false
         });
         const accepted = probe.validate
           ? probe.validate(response.data, { mirror, status: response.status })
           : response.status >= 200 && response.status < 400;
 
         if (accepted) {
-          const elapsed = Date.now() - startedAt;
-          logger?.info(`Active mirror: ${mirror} (${elapsed}ms${probe.label ? `, ${probe.label}` : ''})`);
-          if (useCache) rememberMirror(name, mirror, cacheTtlMs);
-          return mirror;
+          return { index, mirror, accepted: true, elapsedMs: Date.now() - startedAt, label: probe.label, attempts };
         }
         attempts.push({ mirror: target, reason: `Unexpected payload (status ${response.status})` });
       } catch (error) {
         attempts.push({ mirror: target, reason: describeError(error) });
       }
     }
-    logger?.warn(`Mirror unavailable: ${mirror}. Trying next candidate...`);
+
+    return { index, mirror, accepted: false, elapsedMs: 0, attempts };
+  };
+
+  const inflight: Array<Promise<CandidateOutcome>> = [];
+  const outcomes = new Map<number, CandidateOutcome>();
+  let winner: CandidateOutcome | null = null;
+
+  const record = (outcome: CandidateOutcome): void => {
+    outcomes.set(outcome.index, outcome);
+    if (!outcome.accepted) {
+      logger?.warn(
+        `Mirror unavailable: ${outcome.mirror} (${outcome.attempts.at(-1)?.reason ?? 'unexpected payload'}). Trying next candidate...`
+      );
+      return;
+    }
+    if (!winner || outcome.index < winner.index) winner = outcome;
+  };
+
+  for (let index = 0; index < candidates.length; index++) {
+    if (winner) break;
+
+    const task = probeCandidate(candidates[index], index);
+    inflight.push(task);
+    task.then(record, () => { /* probeCandidate never rejects */ });
+
+    const delay = cancellableDelay(Math.max(0, probeStaggerMs));
+    await Promise.race([task, delay.promise]);
+    delay.cancel();
+
+    if (!winner) logger?.debug?.(`No verdict yet from ${candidates[index]}; hedging the next candidate.`);
   }
+
+  // Only candidates that can still beat the current winner are worth waiting for.
+  const pending = inflight.filter((_task, index) => !winner || index < winner.index);
+  await Promise.allSettled(pending);
+
+  if (winner) {
+    const outcome = winner as CandidateOutcome;
+    logger?.info(
+      `Active mirror: ${outcome.mirror} (${outcome.elapsedMs}ms${outcome.label ? `, ${outcome.label}` : ''})`
+    );
+    if (useCache) rememberMirror(name, outcome.mirror, cacheTtlMs);
+    return outcome.mirror;
+  }
+
+  const attempts: MirrorAttempt[] = candidates
+    .map((_mirror, index) => outcomes.get(index)?.attempts ?? [{ mirror: _mirror, reason: 'Probe did not complete' }])
+    .flat();
 
   if (fallback !== undefined && fallback !== null) {
     const resolved = normalizeMirror(fallback) ?? fallback;

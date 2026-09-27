@@ -9,9 +9,10 @@ import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface ApibayItem {
@@ -32,9 +33,6 @@ interface ApibayItem {
  */
 export class ThePirateBayCrawler extends BaseCrawler {
   public readonly name = 'thepiratebay';
-  public baseUrl = 'https://thepiratebay.org';
-
-  private readonly apibayBase = process.env.APIBAY_BASE_URL || 'https://apibay.org';
 
   /** Known TPB front-ends; extend with THEPIRATEBAY_MIRRORS. */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
@@ -48,6 +46,15 @@ export class ThePirateBayCrawler extends BaseCrawler {
     'https://thepiratebay.zone',
     'https://tpb.skynetcloud.site'
   ];
+
+  /**
+   * `thepiratebay.org` has been a parked domain for years: it was silently used
+   * as `source_url` for every APiBay record. The pool's first live front-end is
+   * the honest default, replaced as soon as a mirror answers a probe.
+   */
+  public baseUrl = process.env.THEPIRATEBAY_BASE_URL || ThePirateBayCrawler.DEFAULT_MIRRORS[0];
+
+  private readonly apibayBase = process.env.APIBAY_BASE_URL || 'https://apibay.org';
 
   private readonly defaultTrackers = [
     'udp://tracker.opentrackr.org:1337/announce',
@@ -74,7 +81,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         fallback: null
       });
     } catch (error) {
-      this.log.warn(`No working web mirror: ${formatError(error)}`);
+      this.log.warn(`No working web mirror: ${describeError(error)}`);
       return null;
     }
   }
@@ -86,6 +93,17 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
+
+    // ========================================================================
+    // PHASE 0: resolve a live web front-end first. `source_url` is built from it
+    // for every APiBay record, so it has to be a domain that actually answers.
+    // ========================================================================
+    const workingMirror = await this.getWorkingWebMirror();
+    if (workingMirror) {
+      this.baseUrl = workingMirror;
+    } else {
+      this.log.warn('No reachable web mirror; APiBay records keep the default front-end URL.');
+    }
 
     // ========================================================================
     // PHASE 1: APiBay JSON (top 100 per video category)
@@ -117,7 +135,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         }
       } catch (error) {
         this.metrics.add('listingErrors');
-        this.log.warn(`Apibay ${endpoint} failed: ${formatError(error)}`);
+        this.log.warn(`Apibay ${endpoint} failed: ${describeError(error)}`);
       }
     }
 
@@ -136,6 +154,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
           `${this.apibayBase}/q.php?q=${encodeURIComponent(term)}&cat=200`
         );
         if (!Array.isArray(items)) continue;
+        this.metrics.add('listings');
         for (const item of items) {
           const record = this.mapApibayItem(item);
           if (record && !uniqueHashes.has(record.info_hash)) {
@@ -145,18 +164,16 @@ export class ThePirateBayCrawler extends BaseCrawler {
           }
         }
       } catch (error) {
-        this.log.debug(`Apibay search "${term}" failed: ${formatError(error)}`);
+        this.log.debug(`Apibay search "${term}" failed: ${describeError(error)}`);
       }
     }
 
     // ========================================================================
-    // PHASE 3: HTML mirrors (only if the JSON API did not cover the searches)
+    // PHASE 3: HTML mirrors (Spanish-oriented searches the JSON API cannot do)
     // ========================================================================
-    const workingMirror = await this.getWorkingWebMirror();
     if (!workingMirror) {
       this.log.warn('Skipping HTML phase: no reachable web mirror.');
     } else {
-      this.baseUrl = workingMirror;
       for (const term of searchTerms) {
         for (let page = 0; page < maxPages; page++) {
           if (this.deadline.expired) break;
@@ -174,7 +191,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
             }
           } catch (error) {
             this.metrics.add('listingErrors');
-            this.log.warn(`Failed scraping ${searchUrl}: ${formatError(error)}`);
+            this.log.warn(`Failed scraping ${searchUrl}: ${describeError(error)}`);
             break;
           }
         }
@@ -246,7 +263,8 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
   public mapApibayItem(item: ApibayItem): TorrentRecord | null {
     if (!item?.info_hash || !/^[0-9a-fA-F]{40}$/.test(item.info_hash)) return null;
-    if (item.name === 'No results returned') return null;
+    // APiBay answers "no hits" with a sentinel row, not an empty array.
+    if (!item.name || /^no results returned$/i.test(item.name.trim())) return null;
 
     const cleanTitle = cleanText(item.name);
     if (!cleanTitle || isBlockedTitle(cleanTitle)) return null;
@@ -292,12 +310,5 @@ export class ThePirateBayCrawler extends BaseCrawler {
     });
   }
 }
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
-}
-
-// Alias de retrocompatibilidad
-export class DivxTotalCrawler extends ThePirateBayCrawler {}
 
 export default ThePirateBayCrawler;

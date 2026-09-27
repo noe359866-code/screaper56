@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
-import { parseMagnetUri } from '../utils/magnet.js';
+import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
@@ -9,10 +9,11 @@ import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface ScrapedRow {
@@ -122,7 +123,7 @@ export class Leech1337xCrawler extends BaseCrawler {
             visitedDetails.add(detailUrl);
 
             const sizeTdText = $row.find('td.size, td.coll-4').text();
-            const sizeMatch = sizeTdText.match(/[\d.]+\s*(?:[KMGT]?B|Bytes)/i);
+            const sizeMatch = sizeTdText.match(/\d+(?:[.,]\d+)?\s*(?:[KMGT]i?B|bytes)/i);
 
             rows.push({
               detailUrl,
@@ -133,18 +134,19 @@ export class Leech1337xCrawler extends BaseCrawler {
             });
           });
 
-          if (!rows.length) continue;
+          // Every row was already visited: the next page would repeat them too.
+          if (!rows.length) break;
 
           this.log.debug(`Processing ${rows.length} torrent rows from ${url}...`);
           const records = await mapWithConcurrency(rows, this.concurrency, async row => {
             if (this.deadline.expired) return null;
             try {
-              const record = await this.crawlDetail(row);
+              const record = await this.crawlDetail(row, mirror);
               if (record) this.metrics.add('records');
               return record;
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Failed to scrape detail for "${row.title}": ${formatError(error)}`);
+              this.log.warn(`Failed to scrape detail for "${row.title}": ${describeError(error)}`);
               return null;
             }
           });
@@ -154,7 +156,7 @@ export class Leech1337xCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed loading listing ${url}: ${formatError(error)}`);
+          this.log.warn(`Failed loading listing ${url}: ${describeError(error)}`);
           break;
         }
       }
@@ -165,16 +167,16 @@ export class Leech1337xCrawler extends BaseCrawler {
     return deduplicated;
   }
 
-  private async crawlDetail(row: ScrapedRow): Promise<TorrentRecord | null> {
-    const html = await this.fetchHtml(row.detailUrl);
+  private async crawlDetail(row: ScrapedRow, mirror?: string): Promise<TorrentRecord | null> {
+    // Mirrors 403 detail pages that arrive without a same-site Referer.
+    const html = await this.fetchHtml(row.detailUrl, {
+      headers: mirror ? { Referer: `${mirror}/` } : {}
+    });
     this.metrics.add('details');
     const $ = cheerio.load(html);
 
-    const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
-    if (!magnetHref) return null;
-
-    const parsedMagnet = parseMagnetUri(magnetHref);
-    if (!parsedMagnet?.infoHash) return null;
+    let magnetHref = $('a[href^="magnet:?xt="]').first().attr('href') ?? null;
+    let parsedMagnet = magnetHref ? parseMagnetUri(magnetHref) : null;
 
     const detailsMap = new Map<string, string>();
     $('.torrent-category-detail li, .torrent-detail-page li').each((_, el) => {
@@ -197,7 +199,26 @@ export class Leech1337xCrawler extends BaseCrawler {
     else if (pageCategory.includes('anime')) defaultType = 'anime';
     else if (pageCategory.includes('documentar')) defaultType = 'documentary';
 
-    const title = row.title || parsedMagnet.displayName || cleanText($('div.box-info-heading h1').text());
+    const title = row.title || parsedMagnet?.displayName || cleanText($('div.box-info-heading h1').text());
+    if (!title || isBlockedTitle(title)) return null;
+
+    // Several front-ends hide the magnet behind a third-party download button
+    // but still print the hash in the detail list; that is a real infohash, not
+    // a guess, so it is worth recovering before giving up on the page.
+    if (!parsedMagnet?.infoHash) {
+      const publishedHash = (detailsMap.get('infohash') || detailsMap.get('info hash') || '')
+        .match(/\b[0-9a-f]{40}\b/i)
+        || html.match(/infohash[^0-9a-fA-F]{0,40}([0-9a-f]{40})/i);
+
+      if (!publishedHash) return null;
+
+      const recovered = publishedHash[1].toLowerCase();
+      magnetHref = buildMagnetUri(recovered, title);
+      parsedMagnet = parseMagnetUri(magnetHref);
+      if (!parsedMagnet?.infoHash) return null;
+      this.metrics.add('hashRecovered');
+    }
+
     const meta = parseTorrentTitle(title, defaultType);
     const langs = detectLanguages(title, [pageLanguage, pageCategory]);
 
@@ -225,10 +246,6 @@ export class Leech1337xCrawler extends BaseCrawler {
       sourceTracker: parsedMagnet.trackers[0] ?? null
     });
   }
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default Leech1337xCrawler;
