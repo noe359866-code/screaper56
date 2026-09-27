@@ -10,9 +10,10 @@ import {
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 export interface DownloadLink {
@@ -55,6 +56,15 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
     return this.parseDetail(html, url);
   }
 
+  /**
+   * Follows only pagination the page actually publishes:
+   *   1. `rel="next"` / "siguiente" / arrow links, then
+   *   2. a numbered link inside a pagination block for exactly `current + 1`.
+   *
+   * Rule 2 is what makes `MAX_PAGES > 1` work at all on DLE and WordPress
+   * templates that render `1 2 3 »` without a `rel` attribute; before it every
+   * catalogue stopped after the first page.
+   */
   public nextPage(html: string, current: string): string | null {
     try {
       const $ = cheerio.load(html);
@@ -62,8 +72,10 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       currentUrl.hash = '';
       const normalizedCurrent = currentUrl.href;
 
-      const selectors = 'a[rel="next"], .pagination a, .navigation a, .pages a, .pagi a, .paginacion a';
-      for (const el of $(selectors).toArray()) {
+      const selectors = 'a[rel="next"], .pagination a, .navigation a, .pages a, .pagi a, .paginacion a, ul.page-numbers a, .wp-pagenavi a';
+      const links = $(selectors).toArray();
+
+      for (const el of links) {
         const a = $(el);
         const isRelNext = (a.attr('rel') || '').split(/\s+/).includes('next');
         const text = cleanText(a.text());
@@ -85,6 +97,28 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           }
         } catch {
           continue;
+        }
+      }
+
+      // A URL with no page marker is page 1.
+      const currentPage = pageNumberIn(currentUrl) ?? 1;
+      if (currentPage >= 1) {
+        for (const el of links) {
+          const rawHref = $(el).attr('href');
+          if (!rawHref) continue;
+
+          const next = httpUrl(rawHref, current);
+          if (!next) continue;
+
+          try {
+            const nextUrl = new URL(next);
+            nextUrl.hash = '';
+            if (nextUrl.origin !== currentUrl.origin) continue;
+            if (nextUrl.href === normalizedCurrent) continue;
+            if (pageNumberIn(nextUrl) === currentPage + 1) return nextUrl.href;
+          } catch {
+            continue;
+          }
         }
       }
     } catch {
@@ -116,7 +150,9 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
         seenListings.add(listUrl);
 
         try {
-          const html = await this.fetchHtml(listUrl);
+          // Same-site Referer: DLE/WordPress mirrors 403 direct hits on a
+          // paginated catalogue URL that they happily serve from the index.
+          const html = await this.fetchHtml(listUrl, { headers: { Referer: `${base}/` } });
           listingsRead++;
           this.metrics.add('listings');
 
@@ -145,7 +181,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           listUrl = this.nextPage(html, listUrl);
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Catalog failed ${listUrl}: ${describe(error)}`);
+          this.log.warn(`Catalog failed ${listUrl}: ${describeError(error)}`);
           break;
         }
       }
@@ -183,7 +219,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('downloadErrors');
-          this.log.warn(`Invalid/unavailable download ${download.url}: ${describe(error)}`);
+          this.log.warn(`Invalid/unavailable download ${download.url}: ${describeError(error)}`);
         }
       }
 
@@ -194,7 +230,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       return records;
     } catch (error) {
       this.metrics.add('detailErrors');
-      this.log.warn(`Detail failed ${url}: ${describe(error)}`);
+      this.log.warn(`Detail failed ${url}: ${describeError(error)}`);
       return [];
     }
   }
@@ -258,6 +294,24 @@ export function httpUrl(value: string | undefined, base: string): string | null 
   return absoluteHttpUrl(value, base);
 }
 
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
+const PAGE_QUERY_KEYS = ['p', 'page', 'pagina', 'paged', 'pagenum', 'pageNum', 'start'] as const;
+
+/**
+ * Page number published by a URL (`?p=3`, `/page/3/`, trailing `/3/`), or null
+ * when the URL carries no pagination marker at all (callers treat that as 1).
+ */
+export function pageNumberIn(url: URL): number | null {
+  for (const key of PAGE_QUERY_KEYS) {
+    const value = url.searchParams.get(key);
+    if (value && /^\d{1,5}$/.test(value)) return Number.parseInt(value, 10);
+  }
+
+  const explicit = url.pathname.match(/\/(?:page|pagina|p)\/(\d{1,5})\/?$/i);
+  if (explicit) return Number.parseInt(explicit[1], 10);
+
+  const trailing = url.pathname.match(/\/(\d{1,5})\/?$/);
+  if (trailing) return Number.parseInt(trailing[1], 10);
+
+  return null;
 }
+

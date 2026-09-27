@@ -3,7 +3,15 @@ import { TorrentRecord } from '../types/torrent.js';
 import { normalizeInfoHash } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
-import { buildTorrentRecord, cleanText, isBlockedTitle, parseCount, qualityOf } from './support.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  describeError,
+  isBlockedTitle,
+  parseCount,
+  qualityOf,
+} from './support.js';
 
 interface YtsApiTorrent {
   url?: string;
@@ -138,7 +146,7 @@ export class YtsCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Error reading YTS page ${page} (${query}): ${formatError(error)}`);
+          this.log.warn(`Error reading YTS page ${page} (${query}): ${describeError(error)}`);
           break;
         }
       }
@@ -169,7 +177,7 @@ export class YtsCrawler extends BaseCrawler {
       }
     }
 
-    const sourceUrl = movie.url
+    const sourceUrl = (movie.url ? absoluteHttpUrl(movie.url, activeDomain) : null)
       || (movie.slug ? `${activeDomain}/movies/${movie.slug}` : `${activeDomain}/movie/${movie.id}`);
 
     const baseTitle = cleanText(movie.title_english || movie.title);
@@ -196,6 +204,10 @@ export class YtsCrawler extends BaseCrawler {
         audioLangs.length = 0;
       }
 
+      // YTS publishes `url` as a root-relative path; storing it verbatim made
+      // every `torrent_file_url` in the database unfetchable.
+      const torrentFileUrl = torrent.url ? absoluteHttpUrl(torrent.url, activeDomain) : null;
+
       const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
       const magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(torrentTitle)}&${trackersQuery}`;
 
@@ -204,7 +216,7 @@ export class YtsCrawler extends BaseCrawler {
         type: 'movie', // YTS is movies only.
         infoHash,
         magnetUrl,
-        torrentFileUrl: torrent.url || null,
+        torrentFileUrl,
         sourceUrl,
         trackers: this.defaultTrackers,
         audio: audioLangs,
@@ -214,7 +226,8 @@ export class YtsCrawler extends BaseCrawler {
         episode: null,
         releaseGroup: 'YTS',
         quality: torrent.quality || qualityOf(meta),
-        codec: torrent.video_codec || meta.codec,
+        codec: [torrent.video_codec, torrent.bit_depth === '10' ? '10-bit' : null]
+          .filter(Boolean).join(' ') || meta.codec,
         channels: torrent.audio_channels || meta.channels,
         sizeBytes: parseCount(torrent.size_bytes),
         seeders: parseCount(torrent.seeds),
@@ -228,10 +241,6 @@ export class YtsCrawler extends BaseCrawler {
 
     return records;
   }
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default YtsCrawler;

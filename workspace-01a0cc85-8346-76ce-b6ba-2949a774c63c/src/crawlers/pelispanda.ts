@@ -7,10 +7,11 @@ import {
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 interface PelispandaItemSummary {
@@ -141,7 +142,7 @@ export class PelispandaCrawler extends BaseCrawler {
               return await this.crawlDetail(category.type, item.slug, mirror);
             } catch (error) {
               this.metrics.add('detailErrors');
-              this.log.warn(`Failed to fetch detail for "${item.slug}": ${formatError(error)}`);
+              this.log.warn(`Failed to fetch detail for "${item.slug}": ${describeError(error)}`);
               return [];
             }
           });
@@ -154,7 +155,7 @@ export class PelispandaCrawler extends BaseCrawler {
         } catch (error) {
           const status = (error as { response?: { status?: number } })?.response?.status;
           this.metrics.add('listingErrors');
-          this.log.warn(`Error reading ${category.path} page ${page}: ${formatError(error)}`);
+          this.log.warn(`Error reading ${category.path} page ${page}: ${describeError(error)}`);
           if (status === 404) break;
         }
       }
@@ -240,20 +241,27 @@ export class PelispandaCrawler extends BaseCrawler {
     if (!releaseTitle || isBlockedTitle(releaseTitle)) return null;
 
     const meta = parseTorrentTitle(releaseTitle, categoryType);
-    const hints = dedupeStrings([download.language ?? '', download.subs ? 'sub_es' : '', 'pelispanda']);
+    const hasSubs = pelispandaHasSubtitles(download.subs);
+    const hints = dedupeStrings([download.language ?? '', hasSubs ? 'sub_es' : '', 'pelispanda']);
     const langs = detectLanguages(releaseTitle, hints);
 
+    // The API's own `language` field is authoritative: a Latino download used to
+    // end up tagged ['Spanish', 'Spanish (Latino)'] because the site hint added
+    // the generic Spanish tag first.
     const audioLangs = [...langs.audio];
-    if (download.language) {
-      if (/latino/i.test(download.language) && !audioLangs.includes('Spanish (Latino)')) {
-        audioLangs.push('Spanish (Latino)');
-      } else if (/castellano|español/i.test(download.language) && !audioLangs.includes('Spanish')) {
-        audioLangs.push('Spanish');
-      }
+    const language = (download.language ?? '').trim();
+    if (/latino/i.test(language)) {
+      const index = audioLangs.indexOf('Spanish');
+      if (index !== -1 && !/castellano|espa[ñn]ol/i.test(language)) audioLangs.splice(index, 1);
+      if (!audioLangs.includes('Spanish (Latino)')) audioLangs.push('Spanish (Latino)');
+    } else if (/castellano|espa[ñn]ol|spanish/i.test(language) && !audioLangs.includes('Spanish')) {
+      audioLangs.push('Spanish');
+    } else if (/ingl[eé]s|english/i.test(language) && !audioLangs.includes('English')) {
+      audioLangs.push('English');
     }
 
     const subLangs = [...langs.subtitles];
-    if (download.subs && !subLangs.includes('Sub_ES')) {
+    if (hasSubs && !subLangs.includes('Sub_ES')) {
       subLangs.push('Sub_ES');
     }
 
@@ -280,8 +288,21 @@ export class PelispandaCrawler extends BaseCrawler {
   }
 }
 
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
+/**
+ * `subs` arrives as a boolean, a count or a string depending on the endpoint
+ * version; `'0'`, `'no'` and `'false'` must not be read as "has subtitles".
+ */
+export function pelispandaHasSubtitles(subs: PelispandaDownload['subs']): boolean {
+  if (typeof subs === 'boolean') return subs;
+  if (typeof subs === 'number') return Number.isFinite(subs) && subs > 0;
+  if (typeof subs === 'string') {
+    const value = subs.trim().toLowerCase();
+    if (!value) return false;
+    if (/^(no|false|0)$/.test(value)) return false;
+    const parsed = Number.parseInt(value, 10);
+    return Number.isNaN(parsed) ? true : parsed > 0;
+  }
+  return false;
 }
 
 export default PelispandaCrawler;

@@ -9,9 +9,10 @@ import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   parseCount,
-  qualityOf
+  qualityOf,
 } from './support.js';
 
 /**
@@ -77,12 +78,17 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       for (let page = 0; page < maxPages; page++) {
         if (this.deadline.expired) break;
 
+        // The bare endpoint IS the first page. TGX mirrors disagree on whether
+        // `page=` is 0- or 1-based, and asking for `page=0` on a 1-based mirror
+        // returned an empty grid that aborted the whole endpoint.
         const separator = endpoint.includes('?') ? '&' : '?';
-        const fullUrl = `${activeMirror}${endpoint}${separator}page=${page}`;
+        const fullUrl = page === 0
+          ? `${activeMirror}${endpoint}`
+          : `${activeMirror}${endpoint}${separator}page=${page}`;
 
         try {
-          this.log.debug(`Fetching page ${page}: ${fullUrl}`);
-          const html = await this.fetchHtml(fullUrl);
+          this.log.debug(`Fetching page ${page + 1}: ${fullUrl}`);
+          const html = await this.fetchHtml(fullUrl, { headers: { Referer: `${activeMirror}/` } });
           this.metrics.add('listings');
 
           const records = this.parseTorrentGalaxyHtml(html, fullUrl, activeMirror);
@@ -95,7 +101,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
             this.metrics.add('records');
             added++;
           }
-          this.log.debug(`Extracted ${added} new records from page ${page}.`);
+          this.log.debug(`Extracted ${added} new records from page ${page + 1}.`);
 
           if (!records.length) {
             this.log.debug('No more records found. Moving to next endpoint.');
@@ -103,7 +109,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
           }
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${fullUrl}: ${formatError(error)}. Skipping endpoint.`);
+          this.log.warn(`Failed fetching ${fullUrl}: ${describeError(error)}. Skipping endpoint.`);
           break;
         }
       }
@@ -195,7 +201,9 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
         seeders,
         leechers,
         imdbId: imdbMatch ? imdbMatch[0] : null,
-        sourceTracker: 'udp://tracker.opentrackr.org:1337/announce'
+        // The tracker has to be one the release really announces: the previous
+        // hard-coded value was written even for magnets that listed none.
+        sourceTracker: parsedMagnet?.trackers[0] ?? null
       });
 
       if (record) records.push(record);
@@ -203,10 +211,6 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
 
     return records;
   }
-}
-
-function formatError(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default TorrentGalaxyCrawler;

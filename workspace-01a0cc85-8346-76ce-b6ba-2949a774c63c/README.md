@@ -110,7 +110,11 @@ Los enlaces de comentarios y bloques `.related` se excluyen de las descargas.
 | `CATALOG_DETAIL_CONCURRENCY` | `2` | Fichas en paralelo en los catálogos HTML compartidos. |
 | `SUPABASE_URL` | — | Necesario si `DRY_RUN=false`. |
 | `SUPABASE_SERVICE_ROLE_KEY` | — | Necesario si `DRY_RUN=false`; guardar en `.env` local o secretos de Actions. |
-| `WOLFTORRENT_BROWSER` | `true` | Fallback de navegador; `false` para extracción estática únicamente. |
+| `WOLFTORRENT_BROWSER` | `true` | Fallback de navegador; `false` para extracción estática únicamente. Usa el Chromium compartido del anti-Cloudflare. |
+| `WOLFTORRENT_BROWSER_MAX` | `25` | Tope de fichas resueltas con navegador por ejecución. |
+| `MIRROR_PROBE_STAGGER_MS` | `700` | Retardo *hedged* entre candidatos de espejo (0 = secuencial estricto). |
+| `CF_CLEARANCE_TTL_MS` | `1800000` | Vida útil local de una sesión `cf_clearance` cosechada. |
+| `CF_BROWSER_IDLE_CLOSE_MS` | `90000` | Inactividad tras la que se cierra el Chromium compartido. |
 
 ### Dominios y espejos
 
@@ -163,7 +167,7 @@ Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
 
 ## Pruebas y verificación
 
-`npm test` ejecuta **50 pruebas sin conexión y sin Supabase**, con HTML sintético y
+`npm test` ejecuta **106 pruebas sin conexión y sin Supabase**, con HTML sintético y
 respuestas HTTP simuladas específicas de las 13 fuentes, más pruebas unitarias de
 los módulos compartidos (`mirrors.ts`, `support.ts`): precedencia del pool de
 dominios, rechazo de páginas aparcadas o con reto, caché del espejo activo,
@@ -183,9 +187,35 @@ comprobar qué proporción de fichas expone un enlace estático frente al botón
 proof-of-work. Ejecuta primero el dry-run de una página desde tu runner y revisa
 `Discovered`, `Accepted OK` y `Errors`.
 
+## Anti-Cloudflare
+
+`src/utils/anti-cloudflare.ts` expone un único `CloudflareBypassEngine` por proceso.
+Resuelve retos gestionados y Turnstile en un Chromium sigiloso y devuelve el HTML
+renderizado junto con las cookies y el User-Agent cosechados, para que el resto de
+peticiones al mismo host se repliquen por HTTP normal sin volver a abrir el navegador.
+
+- **Arranque perezoso**: ningún navegador se lanza hasta que hace falta; si Chromium no
+  está instalado el error indica el comando exacto (`npx playwright install --with-deps chromium`).
+- **Single-flight**: N peticiones bloqueadas por el mismo host comparten UNA resolución;
+  el resto espera su resultado en lugar de abrir N contextos.
+- **Caché de sesiones con TTL y LRU** (48 hosts): una `cf_clearance` válida corta
+  cualquier intento posterior de abrir el navegador. Si el servidor la rechaza,
+  `invalidateSession` la olvida y la siguiente escalada fuerza una resolución nueva.
+- **Semaforo de contextos** y cierre del navegador tras `CF_BROWSER_IDLE_CLOSE_MS` de
+  inactividad; `installCloudflareTeardownHooks()` lo cierra en SIGINT/SIGTERM/`beforeExit`
+  para que la ejecución no quede colgada con un Chromium huérfano.
+- El stealth plugin se registra **invocando su fábrica**; pasar la función sin invocar
+  hace que `playwright-extra` lo ignore en silencio y desactiva todas las evasiones.
+- Nunca se automatizan CAPTCHAs interactivos ni logins: solo se espera a que el propio
+  navegador del usuario supere el reto gestionado.
+
 ## GitHub Actions
 
 El workflow `.github/workflows/main.yml` se ejecuta cada seis horas o manualmente.
+Instala las dependencias de sistema de Playwright **siempre** (`install-deps`), aunque
+el binario de Chromium venga de caché: el caché solo guarda `~/.cache/ms-playwright`,
+no los paquetes apt, y saltarse ese paso dejaba el navegador restaurado sin
+`libnss3`/`libatk` y todos los bypass fallaban.
 Permite elegir las 13 fuentes, incluida DonTorrent; `all` las incluye todas.
 Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
 Configura las claves de Supabase como secretos del repositorio para escritura real.

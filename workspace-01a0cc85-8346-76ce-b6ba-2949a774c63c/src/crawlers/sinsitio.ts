@@ -3,6 +3,7 @@ import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
+import { cleanText } from './support.js';
 
 /** DataLife Engine: numbered .html posts and public do=download attachments. */
 export class SinsitioCrawler extends HtmlCatalogCrawler {
@@ -79,6 +80,9 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
     // Exclude comments/recommendations: they may contain somebody else's magnets.
     $('.comments, #dle-comments-list, .related').remove();
 
+    // Hoisted: the hints are document-wide, not per-download.
+    const releaseHints = spanishReleaseHints($);
+
     $(DOWNLOAD_NODES).each((_, el) => {
       for (const href of literalDownloadCandidates($(el))) {
         const target = decodeSinsitioDownload(href, url);
@@ -97,8 +101,8 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
 
         downloads.push({
           url: target,
-          title: (releaseTitle.trim() || title).replace(/\s+/g, ' ').trim(),
-          hints: spanishReleaseHints($)
+          title: cleanText(releaseTitle) || cleanText(title),
+          hints: releaseHints
         });
       }
     });

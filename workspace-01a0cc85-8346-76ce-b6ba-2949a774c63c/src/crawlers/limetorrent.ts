@@ -6,15 +6,16 @@ import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import {
+  DEFAULT_TRACKERS,
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
-  DEFAULT_TRACKERS,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
+  politePause,
   qualityOf,
-  sleep
 } from './support.js';
 
 interface LimeCandidate {
@@ -77,9 +78,11 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     const candidateMap = new Map<string, LimeCandidate>();
 
     // 1. Catalogues
-    const categories: Array<{ path: string; type: ContentType; paginated: boolean }> = [
-      { path: '/latest100', type: 'movie', paginated: false },
-      { path: '/top100', type: 'movie', paginated: false },
+    const categories: Array<{ path: string; type: ContentType | null; paginated: boolean }> = [
+      // `/latest100` and `/top100` are mixed-category feeds: forcing 'movie'
+      // mislabelled every TV show and anime release they contained.
+      { path: '/latest100', type: null, paginated: false },
+      { path: '/top100', type: null, paginated: false },
       { path: '/browse-torrents/Movies/', type: 'movie', paginated: true },
       { path: '/browse-torrents/TV-shows/', type: 'series', paginated: true },
       { path: '/browse-torrents/Anime/', type: 'anime', paginated: true }
@@ -98,7 +101,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
           this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
         } catch (error) {
           this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching listing ${listUrl}: ${describe(error)}`);
+          this.log.warn(`Failed fetching listing ${listUrl}: ${describeError(error)}`);
           break;
         }
       }
@@ -126,13 +129,13 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     const records = await mapWithConcurrency(candidates, this.detailConcurrency, async item => {
       if (this.deadline.expired) return null;
       try {
-        await sleep(50);
+        await politePause();
         const record = await this.parseLimeDetail(item, mirror);
         if (record) this.metrics.add('records');
         return record;
       } catch (error) {
         this.metrics.add('detailErrors');
-        this.log.warn(`Error parsing ${item.detailUrl}: ${describe(error)}`);
+        this.log.warn(`Error parsing ${item.detailUrl}: ${describeError(error)}`);
         return null;
       }
     });
@@ -156,14 +159,14 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         return response.data;
       }
     } catch (error) {
-      this.log.debug(`POST search failed for "${query}": ${describe(error)}`);
+      this.log.debug(`POST search failed for "${query}": ${describeError(error)}`);
     }
 
     try {
       return await this.fetchHtml(`${mirror}/search/all/${encodeURIComponent(query)}/seeds/1/`);
     } catch (error) {
       this.metrics.add('listingErrors');
-      this.log.warn(`Search error for "${query}": ${describe(error)}`);
+      this.log.warn(`Search error for "${query}": ${describeError(error)}`);
       return null;
     }
   }
@@ -221,7 +224,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         sizeBytes,
         seeders,
         leeches,
-        type: forcedType ?? (/s\d{1,2}|season|temporada|capitulo|capít/i.test(title) ? 'series' : 'movie')
+        type: forcedType ?? (/\bs\d{1,2}\b|\bseason\b|temporada|cap[ií]tulo|\b\d{1,2}x\d{1,3}\b/i.test(title) ? 'series' : 'movie')
       });
     });
   }
@@ -274,10 +277,12 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       }
     });
 
-    // 3. Extracción de Trackers adicionales listados en la página
+    // 3. Trackers explicitly listed on the page. The old `:1337`/`:6969`
+    // substring test also matched unrelated links, so only real announce URLs
+    // are accepted now.
     $('a[href^="udp://"], a[href^="http://"], a[href^="https://"]').each((_, a) => {
       const href = $(a).attr('href');
-      if (href && (href.includes('/announce') || href.includes(':6969') || href.includes(':1337'))) {
+      if (href && (/^udp:\/\//i.test(href) || /\/announce\/?$/i.test(href))) {
         if (!trackers.includes(href)) trackers.push(href);
       }
     });
@@ -327,10 +332,6 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       sourceTracker: trackers[0] ?? null
     });
   }
-}
-
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
 }
 
 export default LimeTorrentsCrawler;

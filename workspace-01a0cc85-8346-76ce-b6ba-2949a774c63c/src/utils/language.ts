@@ -14,10 +14,124 @@ export interface DetectedLanguages {
   subtitles: string[];
 }
 
+
 // Canonical Audio tags
 export const SPANISH_AUDIO_CANONICAL = 'Spanish';
 export const LATINO_AUDIO_CANONICAL = 'Spanish (Latino)';
 export const ENGLISH_AUDIO_CANONICAL = 'English';
+
+// ============================================================================
+// TAG CANONICALISATION
+// ============================================================================
+//
+// Adapters, page fichas and title heuristics all emit language labels, and they
+// never agreed on a spelling ('Castellano', 'español', 'SPA', 'Spanish'). Two
+// spellings of the same language survived deduplication, split Supabase rows and
+// made `audio` arrays useless for filtering. Everything is funnelled through the
+// maps below, so one language always produces exactly one tag.
+
+const AUDIO_ALIASES: ReadonlyMap<string, string> = new Map(Object.entries({
+  // Peninsular Spanish
+  spanish: SPANISH_AUDIO_CANONICAL,
+  castellano: SPANISH_AUDIO_CANONICAL,
+  'español': SPANISH_AUDIO_CANONICAL,
+  espanol: SPANISH_AUDIO_CANONICAL,
+  spa: SPANISH_AUDIO_CANONICAL,
+  esp: SPANISH_AUDIO_CANONICAL,
+  es: SPANISH_AUDIO_CANONICAL,
+  'audio castellano': SPANISH_AUDIO_CANONICAL,
+  'audio español': SPANISH_AUDIO_CANONICAL,
+  'audio espanol': SPANISH_AUDIO_CANONICAL,
+  // Latin American Spanish
+  latino: LATINO_AUDIO_CANONICAL,
+  lat: LATINO_AUDIO_CANONICAL,
+  'spanish (latino)': LATINO_AUDIO_CANONICAL,
+  'español latino': LATINO_AUDIO_CANONICAL,
+  'espanol latino': LATINO_AUDIO_CANONICAL,
+  'audio latino': LATINO_AUDIO_CANONICAL,
+  'latino audio': LATINO_AUDIO_CANONICAL,
+  'es-419': LATINO_AUDIO_CANONICAL,
+  'es-mx': LATINO_AUDIO_CANONICAL,
+  'es-lat': LATINO_AUDIO_CANONICAL,
+  // English
+  english: ENGLISH_AUDIO_CANONICAL,
+  eng: ENGLISH_AUDIO_CANONICAL,
+  en: ENGLISH_AUDIO_CANONICAL,
+  'inglés': ENGLISH_AUDIO_CANONICAL,
+  ingles: ENGLISH_AUDIO_CANONICAL,
+  'audio english': ENGLISH_AUDIO_CANONICAL,
+  'english audio': ENGLISH_AUDIO_CANONICAL
+}));
+
+const SUBTITLE_ALIASES: ReadonlyMap<string, string> = new Map(Object.entries({
+  sub_es: 'Sub_ES',
+  subes: 'Sub_ES',
+  'sub-es': 'Sub_ES',
+  'subs es': 'Sub_ES',
+  'sub esp': 'Sub_ES',
+  'sub espanol': 'Sub_ES',
+  'sub español': 'Sub_ES',
+  spanish: 'Sub_ES',
+  castellano: 'Sub_ES',
+  'español': 'Sub_ES',
+  espanol: 'Sub_ES',
+  vose: 'Sub_ES',
+  sub_lat: 'Sub_LAT',
+  sublat: 'Sub_LAT',
+  'sub-lat': 'Sub_LAT',
+  latino: 'Sub_LAT',
+  sub_en: 'Sub_EN',
+  suben: 'Sub_EN',
+  'sub-en': 'Sub_EN',
+  'subs en': 'Sub_EN',
+  'sub eng': 'Sub_EN',
+  english: 'Sub_EN',
+  'inglés': 'Sub_EN',
+  ingles: 'Sub_EN',
+  'multi-subs': 'Multi-Subs',
+  multisubs: 'Multi-Subs',
+  'multi subs': 'Multi-Subs',
+  multi: 'Multi-Subs',
+  subtitulado: 'Subtitulado'
+}));
+
+function normalizeTagKey(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  return value.trim().toLowerCase().replace(/[\s_]+/g, m => (m.includes('_') ? '_' : ' '));
+}
+
+/**
+ * Maps any Spanish/English audio spelling onto the canonical tag set.
+ * Unknown languages are preserved verbatim (trimmed) so a French or Japanese
+ * release is still stored honestly instead of being silently dropped.
+ */
+export function canonicalAudioTag(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const key = normalizeTagKey(trimmed);
+  const mapped = AUDIO_ALIASES.get(key);
+  if (mapped) return mapped;
+  // "Spanish (Latino)" survives different bracket/spacing spellings.
+  if (/^spanish\s*\(?\s*latino\s*\)?$/i.test(trimmed)) return LATINO_AUDIO_CANONICAL;
+  if (/^audio[\s._-]*(castellano|espa[ñn]ol)$/i.test(trimmed)) return SPANISH_AUDIO_CANONICAL;
+  if (/^audio[\s._-]*(latino|lat)$/i.test(trimmed)) return LATINO_AUDIO_CANONICAL;
+  return trimmed;
+}
+
+/** Maps any subtitle spelling onto `Sub_ES` / `Sub_LAT` / `Sub_EN` / `Multi-Subs`. */
+export function canonicalSubtitleTag(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const key = normalizeTagKey(trimmed);
+  const mapped = SUBTITLE_ALIASES.get(key);
+  if (mapped) return mapped;
+  if (/^subt[ií]tulos?\s*:\s*(espa[ñn]ol|castellano|spanish)\b/i.test(trimmed)) return 'Sub_ES';
+  if (/^subt[ií]tulos?\s*:\s*(ingl[eé]s|english)\b/i.test(trimmed)) return 'Sub_EN';
+  if (/^subt[ií]tulos?\s*:\s*latino\b/i.test(trimmed)) return 'Sub_LAT';
+  return trimmed;
+}
 
 // ============================================================================
 // PRE-COMPILED REGULAR EXPRESSIONS (For extreme performance in loops)
@@ -37,7 +151,7 @@ const REGEX_ENG_BRACKET = /\[english\]/i;
 
 const REGEX_DUAL = /\b(dual|dual[\s._-]*audio|multi[\s._-]*audio|tri[\s._-]*audio)\b/i;
 
-const REGEX_SUB_ES = /\b(sub_?es|subs?[\s._-]*es(?:p(?:a[ñn]ol)?)?|subtitulado[\s._-]*al?[\s._-]*espa[ñn]ol|vose|vos)\b/i;
+const REGEX_SUB_ES = /\b(sub_?es|subs?[\s._-]*es(?:p(?:a[ñn]ol)?)?|subtitulado[\s._-]*al?[\s._-]*espa[ñn]ol|vose)\b/i;
 const REGEX_SUB_ES_BRACKET = /\[sub[._\-]?es\]/i;
 
 const REGEX_SUB_LAT = /\b(sub_?lat|subs?[\s._-]*lat(?:ino)?|subtitulado[\s._-]*latino)\b/i;
@@ -144,11 +258,18 @@ const VALID_SUB_TAGS = new Set([
 ]);
 
 export function hasValidLanguageRelease(audio: string[], subtitles: string[]): boolean {
-  for (const a of audio) {
-    if (VALID_AUDIO_TAGS.has(a.toLowerCase())) return true;
+  const audioList = Array.isArray(audio) ? audio : [];
+  const subtitleList = Array.isArray(subtitles) ? subtitles : [];
+
+  for (const value of audioList) {
+    if (typeof value !== 'string') continue;
+    const canonical = canonicalAudioTag(value);
+    if (canonical && VALID_AUDIO_TAGS.has(canonical.toLowerCase())) return true;
   }
-  for (const s of subtitles) {
-    if (VALID_SUB_TAGS.has(s.toLowerCase())) return true;
+  for (const value of subtitleList) {
+    if (typeof value !== 'string') continue;
+    const canonical = canonicalSubtitleTag(value);
+    if (canonical && VALID_SUB_TAGS.has(canonical.toLowerCase())) return true;
   }
   return false;
 }

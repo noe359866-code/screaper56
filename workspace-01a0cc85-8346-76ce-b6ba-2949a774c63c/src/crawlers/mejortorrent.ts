@@ -3,17 +3,18 @@ import { parseMagnetUri } from '../utils/magnet.js';
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
-import { detectLanguages } from '../utils/language.js';
+import { detectLanguages, SPANISH_AUDIO_CANONICAL } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
+  describeError,
   isBlockedTitle,
   mapWithConcurrency,
   qualityOf,
-  sameOrigin
+  sameOrigin,
 } from './support.js';
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
@@ -136,7 +137,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         });
       } catch (error) {
         this.metrics.add('listingErrors');
-        this.log.debug(`Listing failed ${url}: ${describe(error)}`);
+        this.log.debug(`Listing failed ${url}: ${describeError(error)}`);
       }
     });
 
@@ -156,20 +157,22 @@ export class MejorTorrentCrawler extends BaseCrawler {
 
         const anchors = $(DOWNLOAD_NODES).toArray();
         const records: TorrentRecord[] = [];
+        // Hoisted out of the per-link loop.
+        const releaseHints = spanishReleaseHints($);
 
         for (const el of anchors) {
           const anchor = $(el);
           for (const href of literalDownloadCandidates(anchor)) {
-            if (!parseMagnetUri(href) && !/\.torrent(?:[?#]|$)/i.test(href) && !(sameOrigin(this.resolveUrl(href, url), url) && /^\/torrents\//i.test(new URL(this.resolveUrl(href, url)).pathname))) continue;
-
             const torrentUrl = this.resolveUrl(href, url);
+            if (!isMejortorrentDownload(href, torrentUrl, url)) continue;
+
             let itemTitle = title;
             if (defaultType === 'series') {
               const epText = cleanText(anchor.closest('tr').find('td').eq(1).text());
               if (epText) itemTitle = `${title} ${epText}`;
             }
 
-            const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType, spanishReleaseHints($));
+            const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType, releaseHints);
             if (record) {
               records.push(record);
               this.metrics.add('records');
@@ -179,7 +182,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         return records;
       } catch (error) {
         this.metrics.add('detailErrors');
-        this.log.warn(`Error parsing EU detail ${url}: ${describe(error)}`);
+        this.log.warn(`Error parsing EU detail ${url}: ${describeError(error)}`);
         return [];
       }
     });
@@ -206,7 +209,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         }
       } catch (error) {
         this.metrics.add('listingErrors');
-        this.log.debug(`WP API page ${page} finished or failed: ${describe(error)}`);
+        this.log.debug(`WP API page ${page} finished or failed: ${describeError(error)}`);
         break;
       }
     }
@@ -235,8 +238,12 @@ export class MejorTorrentCrawler extends BaseCrawler {
         });
 
         if (!torrentUrls.size) {
+          // Last resort: raw-HTML scan. Restricted to the mirror's own origin so
+          // an advertising network's `.torrent` beacon can never be indexed.
           const matches = html.match(/https?:\/\/[^\s"'<>]+\.torrent(\?[^\s"'<>]*)?/gi) ?? [];
-          for (const match of matches) torrentUrls.add(match);
+          for (const match of matches) {
+            if (sameOrigin(match, url)) torrentUrls.add(match);
+          }
         }
 
         const pageTitle = cleanText($('h1').first().text()) ||
@@ -246,8 +253,9 @@ export class MejorTorrentCrawler extends BaseCrawler {
           : 'movie';
 
         const records: TorrentRecord[] = [];
+        const releaseHints = spanishReleaseHints($);
         for (const torrentUrl of torrentUrls) {
-          const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType, spanishReleaseHints($));
+          const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType, releaseHints);
           if (record) {
             records.push(record);
             this.metrics.add('records');
@@ -256,7 +264,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         return records;
       } catch (error) {
         this.metrics.add('detailErrors');
-        this.log.warn(`Error parsing ME detail ${url}: ${describe(error)}`);
+        this.log.warn(`Error parsing ME detail ${url}: ${describeError(error)}`);
         return [];
       }
     });
@@ -285,14 +293,18 @@ export class MejorTorrentCrawler extends BaseCrawler {
       if (!effectiveTitle || isBlockedTitle(effectiveTitle)) return null;
 
       const meta = parseTorrentTitle([effectiveTitle, fallbackTitle, ...hints].join(' '), defaultType);
-      // Domain rule: MejorTorrent publishes Spanish releases.
+      // Domain rule: MejorTorrent publishes Spanish releases. The canonical tag
+      // is used so 'Castellano' and 'Spanish' cannot split the same language.
       const langs = detectLanguages(effectiveTitle, ['mejortorrent', fallbackTitle, ...hints]);
-      if (!langs.audio.length) langs.audio.push('Castellano');
+      if (!langs.audio.length) langs.audio.push(SPANISH_AUDIO_CANONICAL);
+
+      const infoHash = magnet?.infoHash || parsedTorrent?.infoHash;
+      if (!infoHash) return null;
 
       return buildTorrentRecord({
         title: effectiveTitle,
         type: meta.type,
-        infoHash: magnet?.infoHash || parsedTorrent!.infoHash,
+        infoHash,
         magnetUrl: magnet ? torrentUrl : null,
         torrentFileUrl: magnet ? null : torrentUrl,
         sourceUrl,
@@ -308,14 +320,26 @@ export class MejorTorrentCrawler extends BaseCrawler {
       });
     } catch (error) {
       this.metrics.add('downloadErrors');
-      this.log.warn(`Failed to process torrent ${torrentUrl}: ${describe(error)}`);
+      this.log.warn(`Failed to process torrent ${torrentUrl}: ${describeError(error)}`);
       return null;
     }
   }
 }
 
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
+/**
+ * Accepts magnets, `.torrent` files and the site's own `/torrents/` handler.
+ * Everything else (shorteners, ad networks, category links) is rejected before
+ * a single byte is downloaded.
+ */
+export function isMejortorrentDownload(href: string, resolved: string, pageUrl: string): boolean {
+  if (parseMagnetUri(href)) return true;
+  if (/\.torrent(?:[?#]|$)/i.test(href)) return true;
+  if (!sameOrigin(resolved, pageUrl)) return false;
+  try {
+    return /^\/torrents\//i.test(new URL(resolved).pathname);
+  } catch {
+    return false;
+  }
 }
 
 export default MejorTorrentCrawler;
