@@ -21,13 +21,18 @@ export function diagnoseFailure(source: string, error: unknown): { kind: Failure
   const message = describeError(error);
   const attempts = error instanceof MirrorResolutionError ? error.attempts.map(a => a.reason) : [];
   const reasons = attempts.length ? attempts : [message];
-  // Mixed mirror errors must not be misrepresented as *only* DNS failures.
   const all = (pattern: RegExp) => reasons.every(reason => pattern.test(reason));
+  const any = (pattern: RegExp) => reasons.some(reason => pattern.test(reason));
+  // Classify mirror attempts individually: a single timed-out probe must not
+  // turn an otherwise DNS/TLS failure into an overall timeout.
   let kind: FailureKind = 'unknown';
-  if (/time(?:d)?\s*out|deadline|ETIMEDOUT/i.test(message)) kind = 'timeout';
+  if (all(/ENOTFOUND|EAI_AGAIN|DNS/i)) kind = 'dns';
+  else if (all(/time(?:d)?\s*out|deadline|ETIMEDOUT/i)) kind = 'timeout';
+  else if (all(/403|429|captcha|cloudflare|blocked|challenge/i)) kind = 'blocked';
+  else if (all(/unexpected payload|layout|invalid json|parse/i)) kind = 'layout';
+  else if (attempts.length && any(/ENOTFOUND|EAI_AGAIN|socket|TLS|ECONN|network|ETIMEDOUT/i)) kind = 'network';
   else if (/proof.of.work|gated|hourly limit|No verified infohash/i.test(message)) kind = 'download';
-  else if (all(/ENOTFOUND|EAI_AGAIN|DNS/i)) kind = 'dns';
-  else if (all(/socket|TLS|ECONN|ENETUNREACH|EHOSTUNREACH|network/i)) kind = 'network';
+  else if (/time(?:d)?\s*out|deadline|ETIMEDOUT/i.test(message)) kind = 'timeout';
   else if (/403|429|captcha|cloudflare|blocked|challenge/i.test(message)) kind = 'blocked';
   else if (/unexpected payload|layout|invalid json|parse/i.test(message)) kind = 'layout';
   else if (/zero extracted|no usable releases|no records/i.test(message)) kind = 'empty';
@@ -44,4 +49,11 @@ export function diagnoseFailure(source: string, error: unknown): { kind: Failure
     unknown: 'Inspect the fatal error and per-crawler metrics.'
   };
   return { kind, advice: `${action[kind]} ${sourceHints[source] ?? ''}`.trim() };
+}
+
+/** Bound multi-mirror errors in summary logs while keeping the full error in debug logs. */
+export function summarizeFailure(error: unknown, maxLength = 600): string {
+  const text = describeError(error).replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength - 3)}...`;
 }

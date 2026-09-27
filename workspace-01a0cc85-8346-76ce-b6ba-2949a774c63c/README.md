@@ -295,3 +295,13 @@ mediante un acortador externo opaco, no un magnet ni un hash verificable. Por
 ello, si todas las fichas del runner son así, `grantorrent` falla con
 `No verified infohash` y el contador `gated`; **no inserta registros inventados**.
 Prueba local sin escrituras: `npm run diagnose -- grantorrent`.
+
+### Control de errores e identificación de torrents
+
+El resumen clasifica el error original antes de acortar el texto de salida; en
+particular, un espejo con DNS fallido y otro que agotó el tiempo se informa como
+fallo mixto de red. También se registra un fallo de `close()` si ocurre durante
+la limpieza, sin confundirlo con una ejecución exitosa. La identificación v1
+solo admite `urn:btih:` válido (hex o Base32): rechaza `urn:btmh:` de v2,
+infohash todo ceros y magnets con `xt` BTIH contradictorios. Los metainfo
+`.torrent` con campos de piezas malformados tampoco se aceptan.

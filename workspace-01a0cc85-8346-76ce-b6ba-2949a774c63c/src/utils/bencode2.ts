@@ -73,6 +73,12 @@ export function parseTorrentBuffer(buffer: Buffer): ParsedTorrentFile | null {
     const info = root.info;
     // v2-only metainfo cannot be represented by our v1 BTIH schema.
     if (info['meta version'] === 2 && !Buffer.isBuffer(info.pieces)) return null;
+    // If piece fields are present they must describe valid v1 pieces. Older
+    // fixtures omit them, but malformed values must not yield a trusted hash.
+    if (info.pieces !== undefined &&
+        (!Buffer.isBuffer(info.pieces) || info.pieces.length % 20 !== 0)) return null;
+    if (info['piece length'] !== undefined &&
+        (typeof info['piece length'] !== 'number' || info['piece length'] <= 0)) return null;
     const length = (v: Value | undefined): number => {
       if (typeof v !== 'number' || v < 0) throw new Error('Invalid file length');
       return v;

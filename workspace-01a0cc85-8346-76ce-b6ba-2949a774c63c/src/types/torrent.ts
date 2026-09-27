@@ -78,6 +78,7 @@ export interface CrawlerStats {
   errors: number;
   /** Last fatal error, for the end-of-run summary. */
   failureReason?: string;
+  failureAdvice?: string;
   failureKind?: import('../crawlers/failure-diagnosis.js').FailureKind;
   executionTimeMs: number;
 }
