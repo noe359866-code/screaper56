@@ -54,7 +54,6 @@ export class MagnetDlCrawler extends BaseCrawler {
     return this.resolveMirror({
       envPrefix: 'MAGNETDL',
       defaults: MagnetDlCrawler.DEFAULT_MIRRORS,
-      fallback: this.baseUrl,
       probes: [
         {
           path: '/download/movies/',

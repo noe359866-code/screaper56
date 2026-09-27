@@ -23,6 +23,7 @@ export const CRAWLER_REGISTRY: Record<string, CrawlerFactory> = {
   dontorrent: async () => new (await import('./dontorrent.js')).DonTorrentCrawler(),
   rarbg: async () => new (await import('./rarbg.js')).RarbgCrawler(),
   magnetdl: async () => new (await import('./magnetdl.js')).MagnetDlCrawler(),
+  grantorrent: async () => new (await import('./grantorrent.js')).GranTorrentCrawler(),
   tokyotosho: async () => new (await import('./tokyotosho.js')).TokyoToshoCrawler()
 };
 

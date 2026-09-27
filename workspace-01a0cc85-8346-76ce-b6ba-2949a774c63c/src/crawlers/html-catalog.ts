@@ -133,7 +133,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
 
     const setup = this.mirrorSetup;
     const resolved = setup
-      ? await this.resolveMirror({ ...setup, fallback: setup.fallback ?? this.baseUrl })
+      ? await this.resolveMirror({ ...setup, fallback: setup.fallback === undefined ? this.baseUrl : setup.fallback })
       : this.baseUrl;
     // Defaults such as 'https://site/' produced 'https://site//' Referers.
     const base = resolved.replace(/\/+$/, '');

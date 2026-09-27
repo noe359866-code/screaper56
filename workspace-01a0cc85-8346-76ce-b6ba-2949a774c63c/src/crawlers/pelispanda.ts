@@ -82,7 +82,6 @@ export class PelispandaCrawler extends BaseCrawler {
     const mirror = await this.resolveMirror({
       envPrefix: 'PELISPANDA',
       defaults: PelispandaCrawler.DEFAULT_MIRRORS,
-      fallback: this.baseUrl,
       probes: [
         {
           path: '/wp-json/wpreact/v1/movies?page=1',

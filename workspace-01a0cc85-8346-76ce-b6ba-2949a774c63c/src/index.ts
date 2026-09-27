@@ -4,6 +4,7 @@ import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 import { CloudflareBypassEngine, installCloudflareTeardownHooks } from './utils/anti-cloudflare.js';
 
 import { CRAWLER_REGISTRY } from './crawlers/registry.js';
+import { diagnoseFailure } from './crawlers/failure-diagnosis.js';
 
 async function main() {
   const startedAt = new Date().toISOString();
@@ -122,6 +123,8 @@ async function main() {
     } catch (err: unknown) {
       stats.errors++;
       const errorMsg = err instanceof Error ? err.message : String(err);
+      stats.failureReason = errorMsg;
+      stats.failureKind = diagnoseFailure(stats.name, err).kind;
       console.error(`[FATAL] Unhandled failure in crawler [${stats.name}]:`, errorMsg);
     } finally {
       // Adapters may own a browser page or a socket pool; release it before the
@@ -180,6 +183,11 @@ async function main() {
   const failed = summary.crawlers.filter(crawler => crawler.errors > 0);
   if (failed.length) {
     console.log(`Failed sources (${failed.length}): ${failed.map(crawler => crawler.name).join(', ')}`);
+    for (const crawler of failed) {
+      const diagnosis = diagnoseFailure(crawler.name, crawler.failureReason);
+      console.log(`  [${crawler.name}] ${crawler.failureKind ?? diagnosis.kind}: ${crawler.failureReason ?? 'Unknown error'}`);
+      console.log(`    Next step: ${diagnosis.advice}`);
+    }
   }
   console.log('===============================================================\n');
 

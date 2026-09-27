@@ -31,7 +31,8 @@ const DEFAULT_CRAWLERS = Object.freeze([
   'dontorrent',
   'rarbg',
   'magnetdl',
-  'tokyotosho'
+  'tokyotosho',
+  'grantorrent'
 ]) as readonly string[];
 
 const DEFAULT_CRAWLERS_SET = new Set(DEFAULT_CRAWLERS);
