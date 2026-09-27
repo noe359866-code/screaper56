@@ -1,30 +1,8 @@
 import { config } from './config/env.js';
-import { BaseCrawler } from './crawlers/base.js';
 import { SupabaseTorrentRepository } from './services/supabase.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
-// Type mapping para la carga perezosa (Lazy Dynamic Import)
-type CrawlerFactory = () => Promise<BaseCrawler>;
-
-/**
- * Mapeo de crawlers con Dynamic Imports.
- * Solo carga en memoria el código JS de los crawlers activos en la ejecución.
- */
-const CRAWLER_REGISTRY: Record<string, CrawlerFactory> = {
-  pelispanda: async () => new (await import('./crawlers/pelispanda.js')).PelispandaCrawler(),
-  leech1337x: async () => new (await import('./crawlers/leech1337x.js')).Leech1337xCrawler(),
-  torrentgalaxy: async () => new (await import('./crawlers/torrentgalaxy.js')).TorrentGalaxyCrawler(),
-  yts: async () => new (await import('./crawlers/yts.js')).YtsCrawler(),
-  eztv: async () => new (await import('./crawlers/eztv.js')).EztvCrawler(),
-  thepiratebay: async () => new (await import('./crawlers/thepiratebay.js')).ThePirateBayCrawler(),
-  mejortorrent: async () => new (await import('./crawlers/mejortorrent.js')).MejorTorrentCrawler(),
-  elitetorrent: async () => new (await import('./crawlers/elitetorrent.js')).EliteTorrentCrawler(),
-  limetorrents: async () => new (await import('./crawlers/limetorrent.js')).LimeTorrentsCrawler(),
-  nyaa: async () => new (await import('./crawlers/nyaa.js')).NyaaCrawler(),
-  wolftorrent: async () => new (await import('./crawlers/wolftorrent.js')).WolftorrentCrawler(),
-  sinsitio: async () => new (await import('./crawlers/sinsitio.js')).SinsitioCrawler(),
-  dontorrent: async () => new (await import('./crawlers/dontorrent.js')).DonTorrentCrawler()
-};
+import { CRAWLER_REGISTRY } from './crawlers/registry.js';
 
 async function main() {
   const startedAt = new Date().toISOString();
@@ -110,6 +88,11 @@ async function main() {
 
       // A. Obtener candidatos
       const rawRecords = await crawler.crawl(config.maxPagesPerSource);
+
+      stats.mirror = crawler.baseUrl ?? stats.mirror;
+      if (!rawRecords.length) {
+        throw new Error('Zero extracted records. Check mirror, layout, API and download errors; not a successful empty run.');
+      }
 
       // B. Deduplicar
       const uniqueRecords = crawler.deduplicateRecords(rawRecords);

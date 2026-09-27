@@ -1,3 +1,5 @@
+import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
+import { parseMagnetUri } from '../utils/magnet.js';
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
@@ -10,7 +12,8 @@ import {
   cleanText,
   isBlockedTitle,
   mapWithConcurrency,
-  qualityOf
+  qualityOf,
+  sameOrigin
 } from './support.js';
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
@@ -87,7 +90,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
   private async detectTemplate(mirror: string): Promise<MirrorMode> {
     try {
       const html = await this.fetchHtml(mirror, { timeout: 6000 });
-      return html.includes('wp-json/wp/v2') ? 'modern_me' : 'legacy_eu';
+      return /wp-json|wp-content|api\.w\.org/i.test(html) ? 'modern_me' : 'legacy_eu';
     } catch {
       return 'legacy_eu';
     }
@@ -123,6 +126,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const html = await this.fetchHtml(url);
         this.metrics.add('listings');
         const $ = cheerio.load(html);
+        $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
 
         $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
           const href = $(el).attr('href');
@@ -143,31 +147,33 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const html = await this.fetchHtml(url);
         this.metrics.add('details');
         const $ = cheerio.load(html);
+        $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
 
         const title = cleanText($('h1').first().text()) || cleanText($('title').text().split(/[|\-–]/)[0]);
         const defaultType: ContentType = url.includes('/serie/')
           ? 'series'
           : url.includes('/documental/') ? 'documentary' : 'movie';
 
-        const anchors = $('a[href]').toArray();
+        const anchors = $(DOWNLOAD_NODES).toArray();
         const records: TorrentRecord[] = [];
 
         for (const el of anchors) {
           const anchor = $(el);
-          const href = anchor.attr('href');
-          if (!href || !/\.torrent(\?.*)?$/i.test(href) && !/\/torrents\//i.test(href)) continue;
+          for (const href of literalDownloadCandidates(anchor)) {
+            if (!parseMagnetUri(href) && !/\.torrent(?:[?#]|$)/i.test(href) && !(sameOrigin(this.resolveUrl(href, url), url) && /^\/torrents\//i.test(new URL(this.resolveUrl(href, url)).pathname))) continue;
 
-          const torrentUrl = this.resolveUrl(href, url);
-          let itemTitle = title;
-          if (defaultType === 'series') {
-            const epText = cleanText(anchor.closest('tr').find('td').eq(1).text());
-            if (epText) itemTitle = `${title} ${epText}`;
-          }
+            const torrentUrl = this.resolveUrl(href, url);
+            let itemTitle = title;
+            if (defaultType === 'series') {
+              const epText = cleanText(anchor.closest('tr').find('td').eq(1).text());
+              if (epText) itemTitle = `${title} ${epText}`;
+            }
 
-          const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType);
-          if (record) {
-            records.push(record);
-            this.metrics.add('records');
+            const record = await this.downloadAndBuildRecord(torrentUrl, url, itemTitle, defaultType, spanishReleaseHints($));
+            if (record) {
+              records.push(record);
+              this.metrics.add('records');
+            }
           }
         }
         return records;
@@ -205,6 +211,11 @@ export class MejorTorrentCrawler extends BaseCrawler {
       }
     }
 
+    if (!detailUrls.size) {
+      this.log.warn('WordPress API yielded no posts; trying HTML catalogues.');
+      return this.crawlLegacyEuMode(mirror, maxPages);
+    }
+
     const targets = [...detailUrls].slice(0, maxPages * 40);
     const nested = await mapWithConcurrency(targets, this.concurrency, async url => {
       if (this.deadline.expired) return [];
@@ -212,12 +223,14 @@ export class MejorTorrentCrawler extends BaseCrawler {
         const html = await this.fetchHtml(url);
         this.metrics.add('details');
         const $ = cheerio.load(html);
+        $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
 
         const torrentUrls = new Set<string>();
-        $('a[href]').each((_, el) => {
-          const href = $(el).attr('href');
-          if (href && /\.torrent(\?.*)?$/i.test(href)) {
-            torrentUrls.add(this.resolveUrl(href, url));
+        $(DOWNLOAD_NODES).each((_, el) => {
+          for (const href of literalDownloadCandidates($(el))) {
+            if (parseMagnetUri(href) || /\.torrent(?:[?#]|$)/i.test(href)) {
+              torrentUrls.add(this.resolveUrl(href, url));
+            }
           }
         });
 
@@ -234,7 +247,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
 
         const records: TorrentRecord[] = [];
         for (const torrentUrl of torrentUrls) {
-          const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType);
+          const record = await this.downloadAndBuildRecord(torrentUrl, url, pageTitle, defaultType, spanishReleaseHints($));
           if (record) {
             records.push(record);
             this.metrics.add('records');
@@ -258,37 +271,40 @@ export class MejorTorrentCrawler extends BaseCrawler {
     torrentUrl: string,
     sourceUrl: string,
     fallbackTitle: string,
-    defaultType: ContentType
+    defaultType: ContentType,
+    hints: string[] = []
   ): Promise<TorrentRecord | null> {
     try {
-      const parsedTorrent = await this.fetchTorrentMetainfoViaGet(torrentUrl, sourceUrl);
+      const magnet = parseMagnetUri(torrentUrl);
+      const parsedTorrent = magnet ? null : await this.fetchTorrentMetainfoViaGet(torrentUrl, sourceUrl);
       this.metrics.add('downloads');
 
       const effectiveTitle = cleanText(
-        parsedTorrent.name && parsedTorrent.name.length > 3 ? parsedTorrent.name : fallbackTitle
+        parsedTorrent?.name || magnet?.displayName || fallbackTitle
       );
       if (!effectiveTitle || isBlockedTitle(effectiveTitle)) return null;
 
-      const meta = parseTorrentTitle(effectiveTitle, defaultType);
+      const meta = parseTorrentTitle([effectiveTitle, fallbackTitle, ...hints].join(' '), defaultType);
       // Domain rule: MejorTorrent publishes Spanish releases.
-      const langs = detectLanguages(effectiveTitle, ['mejortorrent', 'castellano']);
+      const langs = detectLanguages(effectiveTitle, ['mejortorrent', fallbackTitle, ...hints]);
       if (!langs.audio.length) langs.audio.push('Castellano');
 
       return buildTorrentRecord({
         title: effectiveTitle,
         type: meta.type,
-        infoHash: parsedTorrent.infoHash,
-        torrentFileUrl: torrentUrl,
+        infoHash: magnet?.infoHash || parsedTorrent!.infoHash,
+        magnetUrl: magnet ? torrentUrl : null,
+        torrentFileUrl: magnet ? null : torrentUrl,
         sourceUrl,
-        trackers: parsedTorrent.trackers,
+        trackers: magnet?.trackers || parsedTorrent?.trackers || [],
         audio: langs.audio,
         subtitles: langs.subtitles,
         meta,
         quality: qualityOf(meta),
-        sizeBytes: parsedTorrent.sizeBytes || null,
+        sizeBytes: parsedTorrent?.sizeBytes ?? null,
         seeders: null,
         leechers: null,
-        sourceTracker: parsedTorrent.primaryTracker || null
+        sourceTracker: parsedTorrent?.primaryTracker || magnet?.trackers[0] || null
       });
     } catch (error) {
       this.metrics.add('downloadErrors');

@@ -189,3 +189,55 @@ El workflow `.github/workflows/main.yml` se ejecuta cada seis horas o manualment
 Permite elegir las 13 fuentes, incluida DonTorrent; `all` las incluye todas.
 Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
 Configura las claves de Supabase como secretos del repositorio para escritura real.
+
+## Diagnóstico de extracción (sin Supabase)
+
+Desde la carpeta que contiene `package.json`:
+
+```bash
+npm ci
+npm run diagnose                    # los 13 adaptadores, una página por ruta
+npm run diagnose -- --spanish        # DonTorrent, MejorTorrent, EliteTorrent, Pelispanda, Wolf y Sinsitio
+npm run diagnose -- dontorrent nyaa  # selección explícita
+DIAGNOSE_TIMEOUT_MS=180000 npm run diagnose -- --spanish
+```
+
+No importa el repositorio de Supabase ni escribe registros. Usa las variables
+`*_BASE_URL` y `*_MIRRORS` existentes. Cada crawler se ejecuta secuencialmente en
+un proceso aislado, con un límite duro de 60 segundos por defecto (incluidos
+reintentos y navegador). En Linux se termina el grupo de procesos al agotarlo.
+Devuelve métricas, mirror, extraídos, aceptados y descartados cuando finaliza.
+
+- `OK`: hay registros que pasan el filtro de idioma existente (español **o inglés**).
+- `EMPTY`: no se extrajo nada; no equivale a que no haya novedades.
+- `FILTERED`: se extrajeron registros, pero todos fueron descartados por idioma.
+- `ERROR`: fallo de mirror, API, catálogo o descarga; ver mensaje y métricas.
+- `TIMEOUT`: no terminó dentro del presupuesto; no demuestra que el sitio esté caído.
+
+Cualquier resultado distinto de `OK` devuelve código 1 para facilitar alertas.
+El indexador principal también marca como error una extracción totalmente vacía.
+
+### Tratamiento específico de catálogos españoles
+
+DonTorrent, MejorTorrent, EliteTorrent, WolfTorrent y Sinsitio comparten lectura de
+URLs literales en botones `data-*` y `onclick`/`atob`, además de los enlaces normales.
+Cada adaptador conserva su validación de destinos. Se leen campos etiquetados de
+idioma, subtítulos, calidad y formato, evitando navegación y recomendaciones;
+Wolf y Sinsitio ya no dependen únicamente del título para ese contexto.
+No se ejecuta JavaScript extraído ni se inventan infohashes.
+
+MejorTorrent admite magnets sin descargar `.torrent`, detecta más marcas de
+WordPress y prueba catálogos HTML si la API no ofrece posts. EliteTorrent continúa
+paginando aunque la primera página repita enlaces de la portada. DonTorrent no
+incluye música/juegos de la portada como películas.
+
+**Límites:** no se añaden automatizaciones de CAPTCHA, login ni del botón PoW de
+DonTorrent. Los enlaces que solo se obtienen así siguen sin extraerse. El fallback
+HTML de MejorTorrent requiere rutas reconocidas; no garantiza compatibilidad con
+cualquier clon de WordPress. Los mirrors cambian y deben verificarse en el entorno
+de despliegue.
+
+Validación de esta revisión: pruebas locales con respuestas simuladas y compilación
+TypeScript. El sondeo de red de los 13 adaptadores con 8 segundos por fuente terminó
+en `TIMEOUT` entre errores de red y reintentos; **no se ha confirmado extracción en
+vivo ni disponibilidad de los dominios** con ese sondeo.
