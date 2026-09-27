@@ -275,6 +275,18 @@ export class ResilientHttpClient {
           throw err;
         }
 
+        // FIX: 403/429 spam reduction — tras intentar el bypass de Cloudflare, un segundo 403
+        // significa que el mirror realmente bloquea y no tiene sentido reintentar 3 veces con backoff.
+        // Falla rápido para que el crawler pruebe el siguiente mirror / fallback HTML.
+        if ((status === 403 || status === 429) && cfBypassAttempted) {
+          throw err;
+        }
+        // Incluso sin Cloudflare, 403/429 no se beneficia de 3 reintentos con el mismo UA:
+        // permitimos solo 1 reintento con UA distinto, luego fallamos rápido.
+        if ((status === 403 || status === 429) && attempt >= 2) {
+          throw err;
+        }
+
         const delay = this.baseDelayMs * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 500);
         console.warn(`[HTTP] Retry ${attempt}/${this.maxRetries} for ${fullUrl || config.url || 'endpoint'} (Status: ${status || 'Network/Timeout'}). Waiting ${delay}ms...`);
         await this.sleep(delay);

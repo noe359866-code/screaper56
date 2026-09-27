@@ -67,13 +67,14 @@ export class EztvCrawler extends BaseCrawler {
           path: '/api/get-torrents?limit=1',
           label: 'API',
           timeoutMs: 6000,
+          headers: { Accept: 'application/json, text/plain, */*' },
           validate: (data: unknown) => Array.isArray((data as EztvApiResponse | undefined)?.torrents)
         },
         {
           path: '/home',
           label: 'catálogo HTML',
           timeoutMs: 6000,
-          validate: htmlMarkerValidator([/class=["'][^"']*epinfo/])
+          validate: htmlMarkerValidator([/class=[\"'][^\"']*epinfo/])
         }
       ]
     });
@@ -96,7 +97,14 @@ export class EztvCrawler extends BaseCrawler {
         const apiUrl = `${activeDomain}/api/get-torrents?limit=80&page=${page}`;
         this.log.debug(`Querying EZTV API: ${apiUrl}`);
 
-        const payload = await this.fetchJson<EztvApiResponse>(apiUrl);
+        // Headers específicos para API JSON — reduce 403 por fingerprint
+        const payload = await this.fetchJson<EztvApiResponse>(apiUrl, {
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            Referer: `${activeDomain}/`
+          },
+          timeout: 8000
+        });
         if (!Array.isArray(payload?.torrents)) {
           throw new Error('Invalid EZTV API payload structure');
         }
@@ -119,7 +127,17 @@ export class EztvCrawler extends BaseCrawler {
       apiSuccess = true;
     } catch (error) {
       this.metrics.add('listingErrors');
-      this.log.warn(`EZTV API failed (${formatError(error)}). Falling back to HTML catalogue...`);
+      const msg = formatError(error);
+      const is403 = msg.includes('403') || msg.toLowerCase().includes('forbidden');
+      const isCloudflare = msg.toLowerCase().includes('cloudflare') || msg.toLowerCase().includes('just a moment');
+      if (is403) {
+        this.log.warn(`EZTV API bloqueada (403) en ${activeDomain} — probablemente WAF/bot protection. Fallback inmediato a HTML sin reintentos adicionales.`);
+      } else if (isCloudflare) {
+        this.log.warn(`EZTV API con Cloudflare challenge (${msg}). Fallback a HTML...`);
+      } else {
+        this.log.warn(`EZTV API failed (${msg}). Falling back to HTML catalogue...`);
+      }
+      // No rethrow — el fallback HTML se encarga
     }
 
     if (apiSuccess && results.length > 0) {
@@ -128,13 +146,17 @@ export class EztvCrawler extends BaseCrawler {
       return deduplicated;
     }
 
+    // HTML fallback — funciona incluso cuando la API está bloqueada por 403
     try {
       for (let page = 0; page < maxPages; page++) {
         if (this.deadline.expired) break;
         const pageUrl = page === 0 ? `${activeDomain}/home` : `${activeDomain}/page_${page}`;
         this.log.debug(`Scraping HTML: ${pageUrl}`);
 
-        const html = await this.fetchHtml(pageUrl);
+        const html = await this.fetchHtml(pageUrl, {
+          headers: { Referer: `${activeDomain}/` },
+          timeout: 8000
+        });
         this.metrics.add('listings');
 
         const rowCount = this.collectHtmlRows(html, activeDomain, uniqueHashes, results);
@@ -142,7 +164,12 @@ export class EztvCrawler extends BaseCrawler {
       }
     } catch (error) {
       this.metrics.add('listingErrors');
-      this.log.error(`HTML fallback error: ${formatError(error)}`);
+      const msg = formatError(error);
+      if (msg.includes('403')) {
+        this.log.warn(`EZTV HTML también bloqueado (403) en ${activeDomain}. Prueba EZTV_BASE_URL con otro mirror o espera unos minutos.`);
+      } else {
+        this.log.error(`HTML fallback error: ${msg}`);
+      }
     }
 
     const deduplicated = this.deduplicateRecords(results);
