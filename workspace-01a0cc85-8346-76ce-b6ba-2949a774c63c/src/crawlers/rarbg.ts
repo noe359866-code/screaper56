@@ -54,7 +54,6 @@ export class RarbgCrawler extends BaseCrawler {
     return this.resolveMirror({
       envPrefix: 'RARBG',
       defaults: RarbgCrawler.DEFAULT_MIRRORS,
-      fallback: this.baseUrl,
       probes: [
         {
           path: '/movies/',

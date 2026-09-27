@@ -18,7 +18,7 @@ export const DEFAULT_TRACKERS: readonly string[] = Object.freeze([
 
 const REGEX_HEX_40 = /^[0-9a-fA-F]{40}$/;
 const REGEX_BASE32_32 = /^[2-7a-zA-Z]{32}$/;
-const REGEX_CLEAN_PREFIXES = /^(?:magnet:\?xt=)?(?:urn:btih:|urn:btmh:)?/i;
+const REGEX_BTIH_PREFIX = /^urn:btih:/i;
 const REGEX_ENCODED_MAGNET = /^magnet%3a%3f/i;
 
 // Precalculado para decodificación ultra rápida de Base32 a Bits (RFC 4648)
@@ -84,7 +84,7 @@ export function normalizeInfoHash(rawHash: string): string | null {
   let clean = rawHash.trim();
 
   // Si se pasa un URI Magnet completo, delegar la extracción al parser
-  if (clean.toLowerCase().includes('magnet:?')) {
+  if (/^(?:magnet:\?|magnet%3a%3f)/i.test(clean)) {
     const parsed = parseMagnetUri(clean);
     return parsed ? parsed.infoHash : null;
   }
@@ -92,7 +92,7 @@ export function normalizeInfoHash(rawHash: string): string | null {
   // Limpiar prefijos comunes y caracteres envolventes (<>, {}, quotes)
   clean = clean
     .replace(/^[\{<"']|[\}>"']$/g, '')
-    .replace(REGEX_CLEAN_PREFIXES, '')
+    .replace(REGEX_BTIH_PREFIX, '')
     .trim();
 
   // Caso 1: 40-character Hex
@@ -137,7 +137,7 @@ export function parseMagnetUri(magnetUri: string): ParsedMagnet | null {
   }
 
   const queryIdx = uri.indexOf('?');
-  if (queryIdx === -1 || !uri.substring(0, queryIdx).toLowerCase().startsWith('magnet:')) {
+  if (queryIdx === -1 || uri.substring(0, queryIdx).toLowerCase() !== 'magnet:') {
     return null;
   }
 
@@ -165,12 +165,14 @@ export function parseMagnetUri(magnetUri: string): ParsedMagnet | null {
 
     if (key === 'xt') {
       const decodedXt = safeDecodeURIComponent(val);
-      if (REGEX_CLEAN_PREFIXES.test(decodedXt)) {
-        const hashCandidate = normalizeInfoHash(decodedXt);
-        if (hashCandidate) {
-          rawBtihHash = hashCandidate;
-          exactTopic = decodedXt;
-        }
+      // A v2 BTMH is not a v1 BTIH even if it ends in 40 hex digits.
+      if (!REGEX_BTIH_PREFIX.test(decodedXt)) continue;
+      const hashCandidate = normalizeInfoHash(decodedXt);
+      if (hashCandidate) {
+        // Conflicting exact topics are ambiguous: never silently take the last.
+        if (rawBtihHash && rawBtihHash !== hashCandidate) return null;
+        rawBtihHash = hashCandidate;
+        exactTopic ??= decodedXt;
       }
     } else if (key === 'dn') {
       try {
@@ -186,7 +188,7 @@ export function parseMagnetUri(magnetUri: string): ParsedMagnet | null {
     }
   }
 
-  if (!rawBtihHash) return null;
+  if (!rawBtihHash || /^0{40}$/.test(rawBtihHash)) return null;
 
   return {
     infoHash: rawBtihHash,

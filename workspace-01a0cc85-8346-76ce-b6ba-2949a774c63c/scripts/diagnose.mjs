@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { CRAWLER_REGISTRY } from '../src/crawlers/registry.ts';
+import { diagnoseFailure } from '../src/crawlers/failure-diagnosis.ts';
 
 const spanish = ['dontorrent', 'mejortorrent', 'elitetorrent', 'pelispanda', 'wolftorrent', 'sinsitio'];
 if (process.argv[2] === '--worker') {
@@ -15,7 +16,7 @@ if (process.argv[2] === '--worker') {
     result = { status: !records.length ? 'EMPTY' : !accepted.length ? 'FILTERED' : 'OK',
       extracted: records.length, accepted: accepted.length, discarded: discarded.length };
   } catch (error) {
-    result = { status: 'ERROR', error: error.message };
+    result = { status: 'ERROR', error: error instanceof Error ? error.message : String(error), diagnosis: diagnoseFailure(process.argv[3], error) };
   }
   process.send({ ...result, mirror: crawler?.baseUrl, metrics: crawler?.diagnostics() }, () => process.exit(0));
 } else {
@@ -50,6 +51,7 @@ if (process.argv[2] === '--worker') {
         resolve(report || { status: timedOut ? 'TIMEOUT' : 'ERROR', error: 'Worker ended without results' });
       });
     });
+    if (result.status === 'TIMEOUT') result.diagnosis = diagnoseFailure(name, 'Worker timed out');
     results.push({ crawler: name, ...result });
     console.log(JSON.stringify(results.at(-1)));
   }

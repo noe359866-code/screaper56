@@ -1,6 +1,6 @@
 # Crawler asíncrono de metadatos torrent
 
-Node.js 20+ / TypeScript. Adaptadores independientes para **16 fuentes**, normalización de
+Node.js 20+ / TypeScript. Adaptadores independientes para **17 fuentes**, normalización de
 infohash BTIH, filtrado de idiomas y UPSERT en Supabase. Solo descarga el metainfo
 `.torrent` para calcular el hash; no descarga el contenido compartido por BitTorrent.
 Usa únicamente fuentes y contenidos que tengas autorización para consultar.
@@ -62,6 +62,7 @@ dominio con `<FUENTE>_BASE_URL`.
 | `rarbg` | `rarbg.ts` | **Nueva fuente.** Clones de RARBG (`rarbgproxy.to`): búsquedas `spanish/castellano/latino` y catálogos `/movies/`, `/tv/`, `/anime/`, `/documentaries/`; magnet, campo `Language:` y peers desde la ficha. XXX y categorías no-vídeo descartadas. Variables `RARBG_MIRRORS`, `RARBG_SEARCH`, `RARBG_CONCURRENCY`. |
 | `magnetdl` | `magnetdl.ts` | **Nueva fuente.** `magnetdl.co`: búsquedas `/<letra>/<slug>/` y `/download/movies/`, `/download/tv/`; el magnet se lee de la fila o de `/single/:id`. Variables `MAGNETDL_MIRRORS`, `MAGNETDL_SEARCH`, `MAGNETDL_CONCURRENCY`. |
 | `tokyotosho` | `tokyotosho.ts` | **Nueva fuente.** Tokyo Toshokan: filas `desc-top`/`desc-bot`, categorías Anime, Batch, Non-English y Drama más búsquedas; hentai/JAV/música/manga excluidos. Variables `TOKYOTOSHO_MIRRORS`, `TOKYOTOSHO_SEARCH`, `TOKYOTOSHO_CONCURRENCY`. |
+| `grantorrent` | `grantorrent.ts` | WordPress de películas en `grantorrent.foo`: tarjetas con póster, detalle e idioma por fila. Solo infohash de magnet directo o `.torrent` del mismo origen; enlaces de `super-enlace.com` se cuentan como protegidos y no se siguen. `GRANTORRENT_BASE_URL`, `GRANTORRENT_MIRRORS`. |
 | `dontorrent` | `dontorrent.ts` | **Nueva fuente.** Catálogos `/peliculas`, `/series`, `/documentales` con paginación `?p=N`; fichas `/pelicula/:id/:slug` y `/serie/:id/:id/:slug`; tabla de episodios `1x02`; búsqueda POST opcional a `/buscar`; lista de dominios oficiales `/dominios` como reserva de espejos. |
 
 ### DonTorrent: qué se extrae y qué no
@@ -171,7 +172,7 @@ Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
 ## Pruebas y verificación
 
 `npm test` ejecuta **106 pruebas sin conexión y sin Supabase**, con HTML sintético y
-respuestas HTTP simuladas específicas de las 16 fuentes, más pruebas unitarias de
+respuestas HTTP simuladas específicas de las 17 fuentes, más pruebas unitarias de
 los módulos compartidos (`mirrors.ts`, `support.ts`): precedencia del pool de
 dominios, rechazo de páginas aparcadas o con reto, caché del espejo activo,
 concurrencia acotada, fusión de duplicados y construcción de registros. Incluye
@@ -219,7 +220,7 @@ Instala las dependencias de sistema de Playwright **siempre** (`install-deps`), 
 el binario de Chromium venga de caché: el caché solo guarda `~/.cache/ms-playwright`,
 no los paquetes apt, y saltarse ese paso dejaba el navegador restaurado sin
 `libnss3`/`libatk` y todos los bypass fallaban.
-Permite elegir las 16 fuentes, incluida DonTorrent; `all` las incluye todas.
+Permite elegir las 17 fuentes, incluida DonTorrent; `all` las incluye todas.
 Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
 Configura las claves de Supabase como secretos del repositorio para escritura real.
 
@@ -229,7 +230,7 @@ Desde la carpeta que contiene `package.json`:
 
 ```bash
 npm ci
-npm run diagnose                    # los 16 adaptadores, una página por ruta
+npm run diagnose                    # los 17 adaptadores, una página por ruta
 npm run diagnose -- --spanish        # DonTorrent, MejorTorrent, EliteTorrent, Pelispanda, Wolf y Sinsitio
 npm run diagnose -- dontorrent nyaa  # selección explícita
 DIAGNOSE_TIMEOUT_MS=180000 npm run diagnose -- --spanish
@@ -271,6 +272,36 @@ cualquier clon de WordPress. Los mirrors cambian y deben verificarse en el entor
 de despliegue.
 
 Validación de esta revisión: pruebas locales con respuestas simuladas y compilación
-TypeScript. El sondeo de red de los 16 adaptadores con 8 segundos por fuente terminó
+TypeScript. El sondeo de red de los 17 adaptadores con 8 segundos por fuente terminó
 en `TIMEOUT` entre errores de red y reintentos; **no se ha confirmado extracción en
 vivo ni disponibilidad de los dominios** con ese sondeo.
+
+### Fallos de fuentes y espejos (diagnóstico)
+
+`Failed sources` ahora imprime la causa fatal y una recomendación específica para
+cada fuente. `npm run diagnose -- leech1337x pelispanda torrentgalaxy
+elitetorrent limetorrents wolftorrent dontorrent magnetdl rarbg` ejecuta cada
+adaptador sin Supabase y devuelve `diagnosis.kind` (`dns`, `network`, `blocked`,
+`layout`, `empty`, `timeout`, `download` o `unknown`) y `diagnosis.advice`.
+Un `TIMEOUT` no prueba que los selectores estén rotos; primero comprobar DNS/TLS
+**desde el runner**. Los mirrors configurables son `NOMBRE_MIRRORS` y
+`NOMBRE_BASE_URL`; un dominio sugerido no garantiza accesibilidad ni autorización.
+Pelispanda, MagnetDL, RARBG y WolfTorrent no continúan con un espejo que no haya
+pasado la sonda de contenido; no intentan resolver CAPTCHAs interactivos ni saltar
+las restricciones de descarga.
+
+**GranTorrent:** la ficha examinada (`/icefall/`) ofrece actualmente `Descargar`
+mediante un acortador externo opaco, no un magnet ni un hash verificable. Por
+ello, si todas las fichas del runner son así, `grantorrent` falla con
+`No verified infohash` y el contador `gated`; **no inserta registros inventados**.
+Prueba local sin escrituras: `npm run diagnose -- grantorrent`.
+
+### Control de errores e identificación de torrents
+
+El resumen clasifica el error original antes de acortar el texto de salida; en
+particular, un espejo con DNS fallido y otro que agotó el tiempo se informa como
+fallo mixto de red. También se registra un fallo de `close()` si ocurre durante
+la limpieza, sin confundirlo con una ejecución exitosa. La identificación v1
+solo admite `urn:btih:` válido (hex o Base32): rechaza `urn:btmh:` de v2,
+infohash todo ceros y magnets con `xt` BTIH contradictorios. Los metainfo
+`.torrent` con campos de piezas malformados tampoco se aceptan.

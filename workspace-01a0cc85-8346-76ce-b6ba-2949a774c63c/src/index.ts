@@ -4,6 +4,7 @@ import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 import { CloudflareBypassEngine, installCloudflareTeardownHooks } from './utils/anti-cloudflare.js';
 
 import { CRAWLER_REGISTRY } from './crawlers/registry.js';
+import { diagnoseFailure, summarizeFailure } from './crawlers/failure-diagnosis.js';
 
 async function main() {
   const startedAt = new Date().toISOString();
@@ -121,16 +122,25 @@ async function main() {
       stats.mirror = crawler.baseUrl ?? stats.mirror ?? null;
     } catch (err: unknown) {
       stats.errors++;
-      const errorMsg = err instanceof Error ? err.message : String(err);
+      const errorMsg = summarizeFailure(err);
+      stats.failureReason = errorMsg;
+      const diagnosis = diagnoseFailure(stats.name, err);
+      stats.failureKind = diagnosis.kind;
+      stats.failureAdvice = diagnosis.advice;
       console.error(`[FATAL] Unhandled failure in crawler [${stats.name}]:`, errorMsg);
     } finally {
       // Adapters may own a browser page or a socket pool; release it before the
       // next run so a full crawl never accumulates Chromium instances.
       if (crawler) {
         await crawler.close().catch((closeError: unknown) => {
-          console.warn(
-            `[${stats.name}] close() failed: ${closeError instanceof Error ? closeError.message : String(closeError)}`
-          );
+          stats.errors++;
+          if (!stats.failureReason) {
+            stats.failureReason = `Cleanup failed: ${summarizeFailure(closeError)}`;
+            const diagnosis = diagnoseFailure(stats.name, closeError);
+            stats.failureKind = diagnosis.kind;
+            stats.failureAdvice = diagnosis.advice;
+          }
+          console.warn(`[${stats.name}] close() failed: ${summarizeFailure(closeError)}`);
         });
       }
 
@@ -180,6 +190,10 @@ async function main() {
   const failed = summary.crawlers.filter(crawler => crawler.errors > 0);
   if (failed.length) {
     console.log(`Failed sources (${failed.length}): ${failed.map(crawler => crawler.name).join(', ')}`);
+    for (const crawler of failed) {
+      console.log(`  [${crawler.name}] ${crawler.failureKind ?? 'unknown'}: ${crawler.failureReason ?? 'Unknown error'}`);
+      console.log(`    Next step: ${crawler.failureAdvice ?? 'Inspect the fatal error and crawler metrics.'}`);
+    }
   }
   console.log('===============================================================\n');
 

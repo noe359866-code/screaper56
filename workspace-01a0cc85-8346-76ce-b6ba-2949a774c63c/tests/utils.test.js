@@ -50,8 +50,8 @@ test('Episodic labels: 1x02, 2ª Temporada, T3, S04 and Capítulo', () => {
   assert.equal(parseTorrentTitle('Serie S04').season, 4);
 });
 test('Hybrid/Base32 magnets and normalized deduplication', () => {
-  const parsed = parseMagnetUri(`magnet:?xt=urn:btmh:1220dead&xt=urn:btih:${'A'.repeat(32)}`);
-  assert.equal(parsed.infoHash, '0'.repeat(40));
+  const parsed = parseMagnetUri(`magnet:?xt=urn:btmh:1220dead&xt=urn:btih:${'B'.repeat(32)}`);
+  assert.equal(parsed.infoHash, '0842108421084210842108421084210842108421');
   const crawler = new PelispandaCrawler();
   const rec = { type:'movie', title:'Sample', audio:[], subtitles:[] };
   const out = crawler.deduplicateRecords([

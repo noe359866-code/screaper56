@@ -41,6 +41,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
     return {
       envPrefix: 'WOLFTORRENT',
       defaults: WolftorrentCrawler.DEFAULT_MIRRORS,
+      fallback: null, // No catalog request against a mirror that failed validation.
       probes: [
         {
           path: '/peliculas',
