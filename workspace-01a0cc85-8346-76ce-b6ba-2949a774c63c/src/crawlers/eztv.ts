@@ -180,7 +180,7 @@ export class EztvCrawler extends BaseCrawler {
 
       const tds = row.find('td');
       const sizeText = tds.length >= 4 ? cleanText($(tds[3]).text()) : '';
-      const seedersText = tds.length >= 6 ? cleanText($(tds[5]).find('font').text() \vert{}\vert{}$(tds[5]).text()) : '';
+      const seedersText = tds.length >= 6 ? cleanText($(tds[5]).find('font').text() || $(tds[5]).text()) : '';
 
       const record = buildTorrentRecord({
         title,

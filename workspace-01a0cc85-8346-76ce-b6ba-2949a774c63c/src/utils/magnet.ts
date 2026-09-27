@@ -239,6 +239,18 @@ export function buildMagnetUri(
 }
 
 /**
+ * Decodifica de forma segura un componente de URI sin convertir '+' en espacio
+ * (los trackers pueden contener '+' literales; por eso el parser es manual).
+ */
+function safeDecodeURIComponent(str: string): string {
+  try {
+    return decodeURIComponent(str);
+  } catch {
+    return str;
+  }
+}
+
+/**
  * Decodifica de forma segura un componente de URI evitando fallos si ya está codificado o malformado.
  */
 function safeEncodeURIComponent(str: string): string {

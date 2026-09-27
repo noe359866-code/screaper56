@@ -120,7 +120,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
             const href = $(el).attr('href');
             if (!href) return;
             if (/\/feed\/|\/page\//.test(href)) return;
-            if (/\/peliculas-1\/$\vert{}\/series\/$/.test(href)) return;
+            if (/\/peliculas-1\/$|\/series\/$/.test(href)) return;
 
             const fullUrl = absoluteHttpUrl(href, listUrl);
             if (!fullUrl) return;

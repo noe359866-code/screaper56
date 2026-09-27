@@ -185,7 +185,7 @@ export class Leech1337xCrawler extends BaseCrawler {
       const key = cleanText(strong.text()).replace(':', '').toLowerCase();
       if (!key) return;
 
-      const val = cleanText($li.children('span').text() \vert{}\vert{}$li.contents().not(strong).text());
+      const val = cleanText($li.children('span').text() || $li.contents().not(strong).text());
       detailsMap.set(key, val);
     });
 
