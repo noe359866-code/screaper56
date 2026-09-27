@@ -65,7 +65,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       const selectors = 'a[rel="next"], .pagination a, .navigation a, .pages a, .pagi a, .paginacion a';
       for (const el of $(selectors).toArray()) {
         const a = $(el);
-        const isRelNext = a.attr('rel') === 'next';
+        const isRelNext = (a.attr('rel') || '').split(/\s+/).includes('next');
         const text = cleanText(a.text());
 
         if (!isRelNext && !/siguiente|next|[»›→]/i.test(text)) continue;
@@ -228,7 +228,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
     const title = cleanText(magnet?.displayName || download.title || torrent?.name || detail.title);
     if (isBlockedTitle(title)) return null;
 
-    const context = dedupeStrings([title, torrent?.name ?? null, ...(download.hints || [])]).join(' ');
+    const context = dedupeStrings([title, detail.title, download.title, torrent?.name ?? null, ...(download.hints || [])]).join(' ');
     const meta = parseTorrentTitle(context, detail.type);
     const languages = detectLanguages(context, [], false);
     const trackers = magnet?.trackers || torrent?.trackers || [];

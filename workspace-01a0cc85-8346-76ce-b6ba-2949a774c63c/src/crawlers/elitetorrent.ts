@@ -1,3 +1,4 @@
+import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
@@ -137,8 +138,8 @@ export class EliteTorrentCrawler extends BaseCrawler {
           });
 
           if (!pageDetailUrls.length) {
-            this.log.debug(`No new records on page ${page} for ${route.path}. Stopping route.`);
-            break;
+            this.log.debug(`No new records on page ${page} for ${route.path}. Continuing route.`);
+            continue;
           }
 
           const records = await mapWithConcurrency(pageDetailUrls, this.detailConcurrency, async url => {
@@ -176,6 +177,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
     this.metrics.add('details');
 
     const $ = cheerio.load(response.data);
+    $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
     const rawH1 = cleanText($('h1').first().text());
     if (!rawH1) return null;
 
@@ -203,27 +205,27 @@ export class EliteTorrentCrawler extends BaseCrawler {
     let magnetLink: string | null = null;
     let torrentDownloadUrl: string | null = null;
 
-    $('a').each((_, el) => {
+    $(DOWNLOAD_NODES).each((_, el) => {
       // Early break if both magnet and torrent download URLs are found
       if (magnetLink && torrentDownloadUrl) return false;
 
-      const href = $(el).attr('href') || '';
-      if (!href) return;
+      for (const href of literalDownloadCandidates($(el))) {
 
-      if (/acortame-esto\.com\/s\.php\?i=/i.test(href)) {
-        const param = safeQueryParam(href, url, 'i');
-        if (param) {
-          const decoded = decodeAcortameString(param);
-          if (decoded.startsWith('magnet:') && !magnetLink) {
-            magnetLink = decoded;
-          } else if (decoded.includes('.torrent') && !torrentDownloadUrl) {
-            torrentDownloadUrl = absoluteHttpUrl(decoded, url);
+        if (/acortame-esto\.com\/s\.php\?i=/i.test(href)) {
+          const param = safeQueryParam(href, url, 'i');
+          if (param) {
+            const decoded = decodeAcortameString(param);
+            if (decoded.startsWith('magnet:') && !magnetLink) {
+              magnetLink = decoded;
+            } else if (decoded.includes('.torrent') && !torrentDownloadUrl) {
+              torrentDownloadUrl = absoluteHttpUrl(decoded, url);
+            }
           }
+        } else if (href.startsWith('magnet:') && !magnetLink) {
+          magnetLink = href;
+        } else if (/\.torrent(?:[?#]|$)/i.test(href) && !torrentDownloadUrl) {
+          torrentDownloadUrl = absoluteHttpUrl(href, url);
         }
-      } else if (href.startsWith('magnet:') && !magnetLink) {
-        magnetLink = href;
-      } else if (/\.torrent(?:[?#]|$)/i.test(href) && !torrentDownloadUrl) {
-        torrentDownloadUrl = absoluteHttpUrl(href, url);
       }
     });
 
@@ -259,9 +261,9 @@ export class EliteTorrentCrawler extends BaseCrawler {
       (_, season: string, episode: string) => `S${season.padStart(2, '0')}E${episode.padStart(2, '0')}`
     );
 
-    const context = dedupeStrings([normalizedTitleForParsing, calidadStr, formatoStr]).join(' ');
+    const context = dedupeStrings([normalizedTitleForParsing, calidadStr, formatoStr, ...spanishReleaseHints($)]).join(' ');
     const meta = parseTorrentTitle(context, defaultType);
-    const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr]);
+    const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr, ...spanishReleaseHints($)]);
     const langs = detectLanguages(cleanTitle, hints);
 
     // The site publishes an explicit language field; use it when the title is silent.

@@ -1,3 +1,4 @@
+import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
@@ -78,26 +79,28 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
     // Exclude comments/recommendations: they may contain somebody else's magnets.
     $('.comments, #dle-comments-list, .related').remove();
 
-    $('a[href]').each((_, el) => {
-      const href = $(el).attr('href') || '';
-      const target = decodeSinsitioDownload(href, url);
-      if (!target || seenUrls.has(target)) return;
+    $(DOWNLOAD_NODES).each((_, el) => {
+      for (const href of literalDownloadCandidates($(el))) {
+        const target = decodeSinsitioDownload(href, url);
+        if (!target || seenUrls.has(target)) continue;
 
-      seenUrls.add(target);
+        seenUrls.add(target);
 
-      let releaseTitle = '';
-      try {
-        if (!target.startsWith('magnet:?')) {
-          releaseTitle = new URL(href, url).searchParams.get('name') || '';
+        let releaseTitle = '';
+        try {
+          if (!target.startsWith('magnet:?')) {
+            releaseTitle = new URL(href, url).searchParams.get('name') || '';
+          }
+        } catch {
+          /* Magnet o URL relativa malformada */
         }
-      } catch {
-        /* Magnet o URL relativa malformada */
-      }
 
-      downloads.push({
-        url: target,
-        title: (releaseTitle.trim() || title).replace(/\s+/g, ' ').trim()
-      });
+        downloads.push({
+          url: target,
+          title: (releaseTitle.trim() || title).replace(/\s+/g, ' ').trim(),
+          hints: spanishReleaseHints($)
+        });
+      }
     });
 
     return { title, type, downloads };

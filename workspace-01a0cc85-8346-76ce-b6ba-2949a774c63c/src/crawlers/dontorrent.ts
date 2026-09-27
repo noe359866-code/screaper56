@@ -1,5 +1,5 @@
+import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
-import type { Element as DomElement } from 'domhandler';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
@@ -142,30 +142,6 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
   return null;
 }
 
-/** Literal URL candidates embedded in attributes or inline handlers (never evaluated). */
-function literalUrlCandidates(node: cheerio.Cheerio<DomElement>): string[] {
-  const values: string[] = [];
-  for (const attr of ['href', 'data-url', 'data-href', 'data-torrent', 'data-magnet', 'data-download', 'data-file']) {
-    const value = node.attr(attr);
-    if (value) values.push(value);
-  }
-
-  const onclick = node.attr('onclick') || '';
-  if (onclick) {
-    for (const match of onclick.matchAll(/['"]([^'"\n]+)['"]/g)) {
-      values.push(match[1]);
-    }
-    for (const match of onclick.matchAll(/atob\(['"]([A-Za-z0-9+/=]+)['"]\)/g)) {
-      try {
-        values.push(Buffer.from(match[1], 'base64').toString('utf8'));
-      } catch {
-        /* ignore malformed base64 */
-      }
-    }
-  }
-  return values;
-}
-
 function labelledValue($: cheerio.CheerioAPI, labels: string[]): string | null {
   for (const label of labels) {
     const holder = $('b, strong, span, dt, td, th').filter((_, el) => {
@@ -247,7 +223,8 @@ export class DonTorrentCrawler extends BaseCrawler {
       if (!DETAIL_PATH.test(path)) return;
 
       const segment = path.split('/').filter(Boolean)[0]?.toLowerCase() ?? '';
-      const type = SECTION_TYPES[segment] ?? 'movie';
+      if (!SECTION_TYPES[segment]) return;
+      const type = SECTION_TYPES[segment];
 
       const row = anchor.closest('p, li, div.card-body, td');
       const title = cleanText(anchor.attr('title') || anchor.text() || anchor.find('img').attr('alt') || '');
@@ -325,9 +302,9 @@ export class DonTorrentCrawler extends BaseCrawler {
     const downloads: DonTorrentDownload[] = [];
     const seen = new Set<string>();
 
-    $('a[href], button, [data-url], [data-href], [data-torrent], [data-magnet], [onclick]').each((_, el) => {
+    $(DOWNLOAD_NODES).each((_, el) => {
       const node = $(el);
-      for (const value of literalUrlCandidates(node)) {
+      for (const value of literalDownloadCandidates(node)) {
         const target = dontorrentDownloadUrl(value, url);
         if (!target || seen.has(target)) continue;
         seen.add(target);
@@ -339,7 +316,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         downloads.push({
           url: target,
           title: episodeMatch ? `${title} ${episodeMatch[0]}` : title,
-          hints: dedupeStrings([format, rowText && !episodeMatch ? rowText : null]),
+          hints: dedupeStrings([...spanishReleaseHints($), format, rowText && !episodeMatch ? rowText : null]),
           season: episodeMatch ? Number.parseInt(episodeMatch[1], 10) : null,
           episode: episodeMatch ? Number.parseInt(episodeMatch[2], 10) : null
         });

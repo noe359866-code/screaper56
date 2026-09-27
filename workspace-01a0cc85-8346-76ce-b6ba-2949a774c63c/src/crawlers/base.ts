@@ -257,6 +257,10 @@ export abstract class BaseCrawler {
     return { accepted, discarded };
   }
 
+  public diagnostics(): string {
+    return this.metrics.toString();
+  }
+
   /** One-line diagnostic printed at the end of every adapter run. */
   protected logRunSummary(records: TorrentRecord[]): void {
     this.log.info(`Run summary: records=${records.length} ${this.metrics.toString()}`);

@@ -1,3 +1,4 @@
+import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
@@ -66,31 +67,14 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
 
   public parseDetail(html: string, url: string): CatalogDetail {
     const $ = cheerio.load(html);
+    $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
     const title = $('h1').first().text().trim();
     const downloads: CatalogDetail['downloads'] = [];
     const seenUrls = new Set<string>();
 
-    $('a[href], [data-url], [data-href], [data-magnet], [data-torrent], [onclick]').each((_, el) => {
+    $(DOWNLOAD_NODES).each((_, el) => {
       const node = $(el);
-      const values: string[] = ['href', 'data-url', 'data-href', 'data-magnet', 'data-torrent']
-        .map(attr => node.attr(attr) || '')
-        .filter(Boolean);
-
-      // Read literal URLs / literal atob only. Never eval arbitrary remote JavaScript.
-      const onclick = node.attr('onclick') || '';
-      if (onclick) {
-        for (const match of onclick.matchAll(/['"]([^'"\n]+)['"]/g)) {
-          values.push(match[1]);
-        }
-        for (const match of onclick.matchAll(/atob\(['"]([A-Za-z0-9+/=]+)['"]\)/g)) {
-          try {
-            const decoded = Buffer.from(match[1], 'base64').toString('utf8');
-            values.push(decoded);
-          } catch {
-            // Ignorar decodificación base64 fallida
-          }
-        }
-      }
+      const values = literalDownloadCandidates(node);
 
       for (const value of values) {
         const target = wolfDownloadUrl(value, url);
@@ -100,7 +84,8 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
         const rowText = node.closest('tr, .episode, .episodio').text().replace(/\s+/g, ' ').trim();
         downloads.push({
           url: target,
-          title: `${title} ${rowText}`.trim()
+          title: `${title} ${rowText}`.trim(),
+          hints: spanishReleaseHints($)
         });
       }
     });
