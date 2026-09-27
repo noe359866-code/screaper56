@@ -168,7 +168,8 @@ export function isBlockedTitle(title: unknown): boolean {
   if (typeof title !== 'string') return true;
   const text = title.trim();
   if (!text) return true;
-  return BLOCKED_TITLE_PATTERN.test(text);
+  // "Adult Swim" / "Young Adult" are mainstream titles, not adult content.
+  return BLOCKED_TITLE_PATTERN.test(text.replace(/\b(?:adult\s+swim|young\s+adult|adult\s+education)\b/gi, ' '));
 }
 
 /** Release quality shorthand derived from parsed title metadata. */

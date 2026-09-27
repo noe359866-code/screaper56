@@ -16,11 +16,6 @@ import {
   qualityOf,
 } from './support.js';
 
-interface ListingTarget {
-  url: string;
-  endpoint: string;
-}
-
 /**
  * Nyaa: anime torrent lists. A category or a search term is a discovery hint,
  * never proof of the audio language, so `inferDefaults` stays disabled.
@@ -87,38 +82,41 @@ export class NyaaCrawler extends BaseCrawler {
       '/?f=0&c=0_0&q=dual+audio'
     ];
 
-    const listingTargets: ListingTarget[] = [];
-    for (const endpoint of queryEndpoints) {
-      const separator = endpoint.includes('?') ? '&' : '?';
-      for (let page = 1; page <= maxPages; page++) {
-        listingTargets.push({
-          url: `${mirror}${endpoint}${separator}p=${page}`,
-          endpoint
-        });
-      }
-    }
-
+    // Endpoints run in parallel, pages of one endpoint run in order: niche
+    // searches ("castellano") often have a single page, and fetching pages
+    // 2..N blindly in parallel wasted most of the listing requests.
     const nestedRecords = await mapWithConcurrency(
-      listingTargets,
+      queryEndpoints,
       this.concurrency,
-      async ({ url, endpoint }) => {
-        if (this.deadline.expired) return [];
-
-        try {
-          this.log.debug(`Fetching anime catalog: ${url}`);
-          const html = await this.fetchHtml(url);
-          this.metrics.add('listings');
-
-          const rows = this.parseRows(html, url, mirror, endpoint);
-          if (rows.length > 0) {
-            this.metrics.add('records', rows.length);
+      async endpoint => {
+        const collected: TorrentRecord[] = [];
+        const seen = new Set<string>();
+        const separator = endpoint.includes('?') ? '&' : '?';
+        for (let page = 1; page <= maxPages; page++) {
+          if (this.deadline.expired) break;
+          const url = `${mirror}${endpoint}${separator}p=${page}`;
+          try {
+            this.log.debug(`Fetching anime catalog: ${url}`);
+            const html = await this.fetchHtml(url);
+            this.metrics.add('listings');
+            const rows = this.parseRows(html, url, mirror, endpoint);
+            let added = 0;
+            for (const row of rows) {
+              if (seen.has(row.info_hash)) continue;
+              seen.add(row.info_hash);
+              collected.push(row);
+              added++;
+            }
+            this.metrics.add('records', added);
+            // Nyaa pages hold 75 rows; a short page is the last one.
+            if (added === 0 || rows.length < 75) break;
+          } catch (error) {
+            this.metrics.add('listingErrors');
+            this.log.warn(`Failed fetching ${url}: ${describeError(error)}`);
+            break;
           }
-          return rows;
-        } catch (error) {
-          this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching ${url}: ${describeError(error)}`);
-          return [];
         }
+        return collected;
       }
     );
 

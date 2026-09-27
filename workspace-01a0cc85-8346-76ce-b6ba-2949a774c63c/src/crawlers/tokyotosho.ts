@@ -86,26 +86,34 @@ export class TokyoToshoCrawler extends BaseCrawler {
       }))
     ];
 
-    const targets: Array<{ url: string; route: TokyoRoute }> = [];
-    for (const route of routes) {
+    // Routes in parallel, pages of a route in order (stop at the first page
+    // that adds nothing new instead of fetching every page blindly).
+    const nested = await mapWithConcurrency(routes, this.concurrency, async route => {
+      const collected: TorrentRecord[] = [];
+      const seen = new Set<string>();
       for (let page = 0; page < maxPages; page++) {
-        targets.push({ url: page === 0 ? `${mirror}${route.path}` : `${mirror}${route.path}&page=${page}`, route });
+        if (this.deadline.expired) break;
+        const url = page === 0 ? `${mirror}${route.path}` : `${mirror}${route.path}&page=${page}`;
+        try {
+          const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
+          this.metrics.add('listings');
+          const rows = this.parseListing(html, url, route.type, route.hints);
+          let added = 0;
+          for (const row of rows) {
+            if (seen.has(row.info_hash)) continue;
+            seen.add(row.info_hash);
+            collected.push(row);
+            added++;
+          }
+          this.metrics.add('records', added);
+          if (added === 0) break;
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
+          break;
+        }
       }
-    }
-
-    const nested = await mapWithConcurrency(targets, this.concurrency, async ({ url, route }) => {
-      if (this.deadline.expired) return [];
-      try {
-        const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
-        this.metrics.add('listings');
-        const rows = this.parseListing(html, url, route.type, route.hints);
-        this.metrics.add('records', rows.length);
-        return rows;
-      } catch (error) {
-        this.metrics.add('listingErrors');
-        this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
-        return [];
-      }
+      return collected;
     });
 
     const deduplicated = this.deduplicateRecords(nested.flat());
