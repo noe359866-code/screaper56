@@ -79,7 +79,7 @@ jobs:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner-os }}-playwright-
+            ${{ runner.os }}-playwright-
 
       # The apt packages are NOT part of the cache above: skipping this step on a
       # cache hit left the restored Chromium without libnss3/libatk and every
