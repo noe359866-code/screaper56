@@ -144,7 +144,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         this.metrics.add('details');
         const $ = cheerio.load(html);
 
-        const title = cleanText($('h1').first().text()) \vert{}\vert{} cleanText($('title').text().split(/[|\-–]/)[0]);
+        const title = cleanText($('h1').first().text()) || cleanText($('title').text().split(/[|\-–]/)[0]);
         const defaultType: ContentType = url.includes('/serie/')
           ? 'series'
           : url.includes('/documental/') ? 'documentary' : 'movie';

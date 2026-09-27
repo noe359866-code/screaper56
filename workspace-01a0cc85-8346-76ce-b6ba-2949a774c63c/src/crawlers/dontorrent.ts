@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import type { Element as DomElement } from 'domhandler';
 import { BaseCrawler } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
@@ -52,7 +53,10 @@ export interface DonTorrentDetail {
 }
 
 const DETAIL_PATH = /^\/(pelicula|serie|documental|variado|musica|juego)\/\d+(?:\/\d+)*(?:\/[^/]+)?\/?$/i;
-const EPISODE_REGEX = /\b(\d{1,2})\s*[x×]\s*(\d{1,3})\b/i;
+// (?!\d) instead of a trailing \b: table cells without whitespace between them
+// concatenate into e.g. `1x02Descargar`, where no word boundary exists after
+// the episode number, while `1x0234` still cannot match as episode 023.
+const EPISODE_REGEX = /\b(\d{1,2})\s*[x×]\s*(\d{1,3})(?!\d)/i;
 
 const SECTION_TYPES: Record<string, ContentType> = {
   pelicula: 'movie',
@@ -61,11 +65,12 @@ const SECTION_TYPES: Record<string, ContentType> = {
   series: 'series',
   documental: 'documentary',
   documentales: 'documentary',
+  // Non-video sections are not selectable: the TorrentRecord/Supabase schema
+  // only stores video types, so crawling them would silently mislabel music
+  // or games as movies. Direct links to those paths still resolve through
+  // DETAIL_PATH with the 'movie' fallback below.
   variado: 'movie',
-  variados: 'movie',
-  musica: 'music',
-  juego: 'game',
-  juegos: 'game'
+  variados: 'movie'
 };
 
 /** Curated official domains (see `/dominios` on the live site for the full list). */
@@ -138,7 +143,7 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
 }
 
 /** Literal URL candidates embedded in attributes or inline handlers (never evaluated). */
-function literalUrlCandidates(node: cheerio.Cheerio<cheerio.Element>): string[] {
+function literalUrlCandidates(node: cheerio.Cheerio<DomElement>): string[] {
   const values: string[] = [];
   for (const attr of ['href', 'data-url', 'data-href', 'data-torrent', 'data-magnet', 'data-download', 'data-file']) {
     const value = node.attr(attr);
@@ -247,7 +252,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       const row = anchor.closest('p, li, div.card-body, td');
       const title = cleanText(anchor.attr('title') || anchor.text() || anchor.find('img').attr('alt') || '');
       // `<span>(BluRay-1080p)</span>` sits next to the title inside the same row.
-      const quality = cleanText(row.find('span > span, span.badge-secondary').first().text()).replace(/^\(\vert{}\)$/g, '');
+      const quality = cleanText(row.find('span > span, span.badge-secondary').first().text()).replace(/^\(|\)$/g, '');
       const category = cleanText(row.find('span.badge, .badge-primary').first().text());
 
       const existing = items.get(link);
@@ -301,7 +306,7 @@ export class DonTorrentCrawler extends BaseCrawler {
 
     const heading = cleanText(
       $('h1').first().text() ||
-      $('h2').first().text() \vert{}\vert{}$('meta[property="og:title"]').attr('content') ||
+      $('h2').first().text() || $('meta[property="og:title"]').attr('content') ||
       ''
     );
     const title = heading

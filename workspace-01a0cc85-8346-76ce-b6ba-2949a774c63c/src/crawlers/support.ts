@@ -1,336 +1,524 @@
-import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
-import { ContentType, TorrentRecord } from '../types/torrent.js';
-import { parseMagnetUri } from '../utils/magnet.js';
-import { detectLanguages } from '../utils/language.js';
-import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { htmlMarkerValidator } from './mirrors.js';
-import {
-  absoluteHttpUrl,
-  buildTorrentRecord,
-  cleanText,
-  DEFAULT_TRACKERS,
-  isBlockedTitle,
-  mapWithConcurrency,
-  parseCount,
-  qualityOf,
-  sleep
-} from './support.js';
+/**
+ * Shared crawler kit used by every adapter.
+ *
+ * Centralises the boring-but-critical plumbing so the 13 site crawlers stay
+ * small and consistent:
+ *
+ *   - `CrawlerLogger` / `CrawlerMetrics` / `Deadline`: per-run observability
+ *     and an optional wall-clock budget (`LOG_LEVEL`, `CRAWLER_TIME_BUDGET_MS`).
+ *   - `politePause` / `sleep` / `mapWithConcurrency`: courtesy delays with
+ *     jitter and order-preserving bounded parallelism.
+ *   - `cleanText` / `parseCount` / `absoluteHttpUrl` / `sameOrigin` /
+ *     `dedupeStrings` / `isBlockedTitle` / `qualityOf`: small pure helpers
+ *     for titles, counters, links and release metadata.
+ *   - `buildTorrentRecord`: the ONLY `TorrentRecord` constructor. It validates
+ *     the infohash (hex or Base32, never all-zeros), trims the title, dedupes
+ *     audio/subtitle tags, keeps unknown swarm counters as `null` (never
+ *     fabricated) and always produces a valid magnet URI.
+ *   - `recordScore` / `mergeRecords`: completeness scoring and gap-filling
+ *     used by `BaseCrawler.deduplicateRecords` when two candidates share an
+ *     infohash.
+ */
 
-interface LimeCandidate {
-  title: string;
-  detailUrl: string;
-  sizeBytes?: number | null;
-  seeders?: number | null;
-  leeches?: number | null;
-  type: ContentType;
+import { ContentType, TorrentRecord } from '../types/torrent.js';
+import {
+  DEFAULT_TRACKERS as MAGNET_DEFAULT_TRACKERS,
+  normalizeInfoHash
+} from '../utils/magnet.js';
+import { ParsedMetadata } from '../utils/regex.js';
+
+/** Public trackers used as a fallback when a release lists none. */
+export const DEFAULT_TRACKERS: readonly string[] = MAGNET_DEFAULT_TRACKERS;
+
+// ============================================================================
+// Text, counters and URLs
+// ============================================================================
+
+/**
+ * Collapses every whitespace run to a single space and trims.
+ * Non-string input (missing attributes, nulls) yields an empty string.
+ */
+export function cleanText(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  return value.replace(/\s+/g, ' ').trim();
 }
 
 /**
- * LimeTorrents: `table2` listings plus search. The age column is detected
- * dynamically so size/seeders/leechers never shift by one cell.
+ * Parses human-readable counters (`1,234`, `1 234`, `42`) into integers.
+ * Anything else (`N/A`, empty, negative, non-numeric) yields `null` so
+ * callers can keep the field unknown instead of storing garbage.
  */
-export class LimeTorrentsCrawler extends BaseCrawler {
-  public readonly name = 'limetorrents';
-  public baseUrl: string;
+export function parseCount(value: unknown): number | null {
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value) || value < 0) return null;
+    return Math.floor(value);
+  }
+  if (typeof value === 'string') {
+    const normalized = value.replace(/[,\s]+/g, '');
+    if (!/^\d+$/.test(normalized)) return null;
+    const parsed = Number.parseInt(normalized, 10);
+    return Number.isSafeInteger(parsed) ? parsed : null;
+  }
+  return null;
+}
 
-  /** Known LimeTorrents domains; extend with LIMETORRENTS_MIRRORS. */
-  public static readonly DEFAULT_MIRRORS: readonly string[] = [
-    'https://limetorrent.store',
-    'https://www.limetorrents.fun',
-    'https://limetorrents.lol',
-    'https://limetorrents.asia',
-    'https://limetorrents.pro',
-    'https://limetorrent.net',
-    'https://limetorrents.cc',
-    'https://www.limetorrents.to'
-  ];
+const SCHEME_PATTERN = /^[a-z][a-z0-9+.-]*:/i;
 
-  private readonly detailConcurrency = Math.max(
-    1,
-    Number.parseInt(process.env.LIMETORRENTS_CONCURRENCY || '3', 10) || 3
+/**
+ * Resolves `value` against `base` and returns a plain http(s) URL, or `null`.
+ * Fragments are stripped (they only create false duplicates), and anything
+ * that is not fetchable over HTTP (`javascript:`, `data:`, `magnet:`,
+ * `blob:`, bare `#fragment`, ...) is rejected.
+ */
+export function absoluteHttpUrl(
+  value: string | undefined | null,
+  base: string
+): string | null {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed || trimmed.startsWith('#')) return null;
+  if (SCHEME_PATTERN.test(trimmed) && !/^https?:/i.test(trimmed)) return null;
+  try {
+    const url = new URL(trimmed, base);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    url.hash = '';
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
+/** True when both URLs share the same scheme + host + port. */
+export function sameOrigin(a: string, b: string): boolean {
+  try {
+    return new URL(a).origin === new URL(b).origin;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Trims, drops empties and dedupes case-insensitively while preserving the
+ * first-seen spelling (`[' a ', 'A', 'b']` -> `['a', 'b']`).
+ */
+export function dedupeStrings(
+  values: readonly (string | null | undefined)[] | null | undefined
+): string[] {
+  if (!Array.isArray(values)) return [];
+  const seen = new Set<string>();
+  const output: string[] = [];
+  for (const raw of values) {
+    if (typeof raw !== 'string') continue;
+    const text = raw.replace(/\s+/g, ' ').trim();
+    if (!text) continue;
+    const key = text.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    output.push(text);
+  }
+  return output;
+}
+
+const BLOCKED_TITLE_PATTERN =
+  /\b(xxx|porn|porno|hentai|erotic|erotica|adult|onlyfans|escort|webcam)\b/i;
+
+/**
+ * Rejects adult/spam titles (and empty ones) before a record is built.
+ * Ordinary releases such as `Poli malo 2025` always pass.
+ */
+export function isBlockedTitle(title: unknown): boolean {
+  if (typeof title !== 'string') return true;
+  const text = title.trim();
+  if (!text) return true;
+  return BLOCKED_TITLE_PATTERN.test(text);
+}
+
+/** Release quality shorthand derived from parsed title metadata. */
+export function qualityOf(meta: ParsedMetadata | null | undefined): string | null {
+  return meta?.resolution ?? null;
+}
+
+// ============================================================================
+// Timing and bounded concurrency
+// ============================================================================
+
+/** Plain promise-based delay. */
+export function sleep(ms: number): Promise<void> {
+  const delay = Number.isFinite(ms) ? Math.max(0, Math.floor(ms)) : 0;
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
+
+/**
+ * Courtesy pause between requests of a single crawler.
+ * Reads `CRAWLER_REQUEST_DELAY_MS` (default `0` = disabled) and adds up to
+ * 1s of random jitter so parallel workers do not march in lockstep.
+ */
+export async function politePause(): Promise<void> {
+  const configured = Number.parseInt(process.env.CRAWLER_REQUEST_DELAY_MS || '0', 10);
+  if (!Number.isFinite(configured) || configured <= 0) return;
+  const jitter = Math.floor(Math.random() * Math.min(configured, 1000));
+  await sleep(configured + jitter);
+}
+
+/**
+ * Maps `items` through `fn` with at most `limit` promises in flight.
+ * Results keep the input order; an empty input resolves immediately.
+ */
+export async function mapWithConcurrency<T, R>(
+  items: readonly T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>
+): Promise<R[]> {
+  const list = Array.isArray(items) ? items : [];
+  if (!list.length) return [];
+  const workers = Math.max(1, Math.floor(limit) || 1);
+  const results: R[] = new Array(list.length);
+  let cursor = 0;
+
+  const run = async (): Promise<void> => {
+    while (cursor < list.length) {
+      const index = cursor++;
+      results[index] = await fn(list[index], index);
+    }
+  };
+
+  await Promise.all(
+    Array.from({ length: Math.min(workers, list.length) }, () => run())
   );
+  return results;
+}
 
-  constructor() {
-    super();
-    this.baseUrl = process.env.LIMETORRENTS_BASE_URL || LimeTorrentsCrawler.DEFAULT_MIRRORS[0];
+// ============================================================================
+// Logging, metrics and deadlines
+// ============================================================================
+
+type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'silent';
+
+const LOG_LEVEL_ORDER: Record<LogLevel, number> = {
+  debug: 0,
+  info: 1,
+  warn: 2,
+  error: 3,
+  silent: 4
+};
+
+function currentLogLevel(): LogLevel {
+  const raw = (process.env.LOG_LEVEL || 'info').trim().toLowerCase();
+  if (
+    raw === 'debug' ||
+    raw === 'info' ||
+    raw === 'warn' ||
+    raw === 'error' ||
+    raw === 'silent'
+  ) {
+    return raw;
+  }
+  return 'info';
+}
+
+/**
+ * Level-filtered logger that prefixes every line with the crawler name.
+ * Controlled by `LOG_LEVEL=debug|info|warn|error|silent` (default `info`).
+ */
+export class CrawlerLogger {
+  constructor(private readonly name: string) {}
+
+  private enabled(level: LogLevel): boolean {
+    return LOG_LEVEL_ORDER[level] >= LOG_LEVEL_ORDER[currentLogLevel()];
   }
 
-  public async crawl(maxPages: number): Promise<TorrentRecord[]> {
-    if (!Number.isInteger(maxPages) || maxPages < 1) return [];
-    this.resetRunState();
-    this.log.info(`Starting crawl across catalogs and searches (maxPages=${maxPages})...`);
-
-    const validate = htmlMarkerValidator([/class=["'][^"']*table2/]);
-    const mirror = await this.resolveMirror({
-      envPrefix: 'LIMETORRENTS',
-      defaults: LimeTorrentsCrawler.DEFAULT_MIRRORS,
-      probes: [
-        { path: '/latest100', label: 'latest100', timeoutMs: 6000, validate },
-        { path: '/top100', label: 'top100', timeoutMs: 6000, validate }
-      ]
-    });
-
-    // Actualizamos la propiedad baseUrl para sincronizarla con el mirror activo
-    this.baseUrl = mirror;
-
-    const candidateMap = new Map<string, LimeCandidate>();
-
-    // 1. Catalogues
-    const categories: Array<{ path: string; type: ContentType; paginated: boolean }> = [
-      { path: '/latest100', type: 'movie', paginated: false },
-      { path: '/top100', type: 'movie', paginated: false },
-      { path: '/browse-torrents/Movies/', type: 'movie', paginated: true },
-      { path: '/browse-torrents/TV-shows/', type: 'series', paginated: true },
-      { path: '/browse-torrents/Anime/', type: 'anime', paginated: true }
-    ];
-
-    for (const cat of categories) {
-      for (let page = 1; page <= maxPages; page++) {
-        if (this.deadline.expired) break;
-        if (page > 1 && !cat.paginated) break;
-
-        const listUrl = page > 1 ? `${mirror}${cat.path}${page}/` : `${mirror}${cat.path}`;
-        try {
-          this.log.debug(`Fetching catalog listing: ${listUrl}`);
-          const html = await this.fetchHtml(listUrl);
-          this.metrics.add('listings');
-          this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
-        } catch (error) {
-          this.metrics.add('listingErrors');
-          this.log.warn(`Failed fetching listing ${listUrl}: ${describe(error)}`);
-          break;
-        }
-      }
-    }
-
-    // 2. Spanish-oriented searches (discovery only, never language evidence)
-    const spanishQueries = (process.env.LIMETORRENTS_SEARCH || 'spanish,castellano,latino')
-      .split(/[,\s]+/)
-      .map(q => q.trim())
-      .filter(Boolean);
-
-    for (const query of spanishQueries) {
-      if (this.deadline.expired) break;
-      const html = await this.searchHtml(mirror, query);
-      if (!html) continue;
-      this.metrics.add('listings');
-      this.collectRows(html, `${mirror}/search`, mirror, null, candidateMap);
-    }
-
-    this.log.info(`Discovered ${candidateMap.size} candidates. Extracting release details...`);
-
-    const maxCandidates = Math.max(30, maxPages * 25);
-    const candidates = [...candidateMap.values()].slice(0, maxCandidates);
-
-    const records = await mapWithConcurrency(candidates, this.detailConcurrency, async item => {
-      if (this.deadline.expired) return null;
-      try {
-        await sleep(50);
-        const record = await this.parseLimeDetail(item, mirror);
-        if (record) this.metrics.add('records');
-        return record;
-      } catch (error) {
-        this.metrics.add('detailErrors');
-        this.log.warn(`Error parsing ${item.detailUrl}: ${describe(error)}`);
-        return null;
-      }
-    });
-
-    const deduplicated = this.deduplicateRecords(records.filter((r): r is TorrentRecord => Boolean(r)));
-    this.logRunSummary(deduplicated);
-    return deduplicated;
+  public debug(message: string): void {
+    if (this.enabled('debug')) console.debug(`[${this.name}] ${message}`);
   }
 
-  /** POST search with a GET fallback: mirrors disagree on which one they expose. */
-  private async searchHtml(mirror: string, query: string): Promise<string | null> {
-    this.log.debug(`Querying search for "${query}"...`);
-    try {
-      const response = await this.httpClient.request<string>({
-        method: 'POST',
-        url: `${mirror}/search`,
-        data: new URLSearchParams({ q: query }).toString(),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      });
-      if (typeof response.data === 'string' && response.data.includes('table2')) {
-        return response.data;
-      }
-    } catch (error) {
-      this.log.debug(`POST search failed for "${query}": ${describe(error)}`);
-    }
-
-    try {
-      return await this.fetchHtml(`${mirror}/search/all/${encodeURIComponent(query)}/seeds/1/`);
-    } catch (error) {
-      this.metrics.add('listingErrors');
-      this.log.warn(`Search error for "${query}": ${describe(error)}`);
-      return null;
-    }
+  public info(message: string): void {
+    if (this.enabled('info')) console.log(`[${this.name}] ${message}`);
   }
 
-  /** Parses a `table2` grid; the age column is located by content, not by index. */
-  private collectRows(
-    html: string,
-    sourceUrl: string,
-    mirror: string,
-    forcedType: ContentType | null,
-    sink: Map<string, LimeCandidate>
-  ): void {
-    const $ = cheerio.load(html);
-
-    $('table.table2 tr').each((index, tr) => {
-      if (index === 0) return;
-      const tds = $(tr).find('td');
-      if (tds.length < 2) return;
-
-      // Se utiliza una selección precisa del enlace del título para evitar enlaces secundarios o íconos de descarga
-      const nameAnchor = tds.find('div.tt-name a[href*=".html"], a[href*=".html"]').first();
-      const href = nameAnchor.attr('href');
-      const title = cleanText(nameAnchor.text());
-
-      if (!href || !title || isBlockedTitle(title)) return;
-
-      const fullUrl = absoluteHttpUrl(href, sourceUrl) ?? absoluteHttpUrl(href, mirror);
-      if (!fullUrl || sink.has(fullUrl)) return;
-
-      const tdsArray = tds.toArray();
-      const sizeIndex = tdsArray.findIndex((td, position) => {
-        if (position === 0) return false;
-        const text = cleanText($(td).text());
-        return /[KMGT]i?B/i.test(text) && parseSizeToBytes(text) !== null;
-      });
-
-      let sizeBytes: number | null = null;
-      let seeders: number | null = null;
-      let leeches: number | null = null;
-
-      // Solución a desbordamiento / wrap-around cuando sizeIndex === -1
-      if (sizeIndex !== -1) {
-        sizeBytes = parseSizeToBytes(cleanText(tds.eq(sizeIndex).text()));
-        if (sizeIndex + 1 < tds.length) {
-          seeders = parseCount(cleanText(tds.eq(sizeIndex + 1).text()));
-        }
-        if (sizeIndex + 2 < tds.length) {
-          leeches = parseCount(cleanText(tds.eq(sizeIndex + 2).text()));
-        }
-      }
-
-      sink.set(fullUrl, {
-        title,
-        detailUrl: fullUrl,
-        sizeBytes,
-        seeders,
-        leeches,
-        type: forcedType ?? (/s\d{1,2}|season|temporada|capitulo|capít/i.test(title) ? 'series' : 'movie')
-      });
-    });
+  public warn(message: string): void {
+    if (this.enabled('warn')) console.warn(`[${this.name}] ${message}`);
   }
 
-  private async parseLimeDetail(item: LimeCandidate, mirror: string): Promise<TorrentRecord | null> {
-    const html = await this.fetchHtml(item.detailUrl);
-    this.metrics.add('details');
-    const $ = cheerio.load(html);
-
-    const effectiveTitle = cleanText($('h1').first().text()) || item.title;
-    if (!effectiveTitle || isBlockedTitle(effectiveTitle)) return null;
-
-    let infoHash: string | null = null;
-    let magnetUri: string | null = null;
-    let sizeBytes = item.sizeBytes ?? null;
-    let seeders = item.seeders ?? null;
-    let leechers = item.leeches ?? null;
-    const trackers: string[] = [];
-
-    // 1. Extracción de URI Magnet
-    const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
-    if (magnetHref) {
-      magnetUri = magnetHref;
-      const parsed = parseMagnetUri(magnetHref);
-      if (parsed?.infoHash) {
-        infoHash = parsed.infoHash;
-        trackers.push(...parsed.trackers);
-      }
-    }
-
-    // 2. Búsqueda de Hash, Size, Seeders/Leechers en las tablas de detalles
-    $('table tr').each((_, tr) => {
-      const tds = $(tr).find('td');
-      if (tds.length < 2) return;
-      const key = cleanText(tds.eq(0).text()).toLowerCase();
-      const value = cleanText(tds.eq(1).text());
-
-      if (key.includes('hash') && !infoHash) {
-        const hashMatch = value.match(/([0-9a-fA-F]{40})/);
-        if (hashMatch) infoHash = hashMatch[1].toLowerCase();
-      }
-      if (key.includes('size') && !sizeBytes) {
-        sizeBytes = parseSizeToBytes(value);
-      }
-      if (key.includes('seeder') && seeders === null) {
-        seeders = parseCount(value);
-      }
-      if (key.includes('leecher') && leechers === null) {
-        leechers = parseCount(value);
-      }
-    });
-
-    // 3. Extracción de Trackers adicionales listados en la página
-    $('a[href^="udp://"], a[href^="http://"], a[href^="https://"]').each((_, a) => {
-      const href = $(a).attr('href');
-      if (href && (href.includes('/announce') || href.includes(':6969') || href.includes(':1337'))) {
-        if (!trackers.includes(href)) trackers.push(href);
-      }
-    });
-
-    // Fallback focalizado para seeders/leechers en lugar de escanear todo $.root().text()
-    if (seeders === null || leechers === null) {
-      $('.table2, .torrentinfo').find('tr, div, span').each((_, el) => {
-        const txt = $(el).text();
-        if (seeders === null) {
-          const m = txt.match(/Seeders?\s*:\s*([\d,.]+)/i);
-          if (m) seeders = parseCount(m[1]);
-        }
-        if (leechers === null) {
-          const m = txt.match(/Leechers?\s*:\s*([\d,.]+)/i);
-          if (m) leechers = parseCount(m[1]);
-        }
-      });
-    }
-
-    if (!infoHash) return null;
-
-    if (!trackers.length) trackers.push(...DEFAULT_TRACKERS.slice(0, 3));
-
-    // Si no existía el enlace magnet directo en el HTML pero sí obtuvimos el infoHash, se construye sintéticamente
-    if (!magnetUri) {
-      const trParams = trackers.map(t => `&tr=${encodeURIComponent(t)}`).join('');
-      magnetUri = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(effectiveTitle)}${trParams}`;
-    }
-
-    const meta = parseTorrentTitle(effectiveTitle, item.type);
-    const langs = detectLanguages(effectiveTitle, ['limetorrents']);
-
-    return buildTorrentRecord({
-      title: effectiveTitle,
-      type: meta.type,
-      infoHash,
-      magnetUrl: magnetUri,
-      sourceUrl: item.detailUrl,
-      trackers,
-      audio: langs.audio,
-      subtitles: langs.subtitles,
-      meta,
-      quality: qualityOf(meta),
-      sizeBytes,
-      seeders,
-      leechers,
-      sourceTracker: trackers[0] ?? null
-    });
+  public error(message: string): void {
+    if (this.enabled('error')) console.error(`[${this.name}] ${message}`);
   }
 }
 
-function describe(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
+/** Simple string-keyed counters printed at the end of each adapter run. */
+export class CrawlerMetrics {
+  private readonly counters = new Map<string, number>();
+
+  public add(key: string, count = 1): void {
+    if (!key) return;
+    const delta = Number.isFinite(count) ? Math.floor(count) : 1;
+    this.counters.set(key, (this.counters.get(key) ?? 0) + delta);
+  }
+
+  public get(key: string): number {
+    return this.counters.get(key) ?? 0;
+  }
+
+  public reset(): void {
+    this.counters.clear();
+  }
+
+  public toString(): string {
+    if (!this.counters.size) return '(no metrics)';
+    return [...this.counters.entries()]
+      .map(([key, value]) => `${key}=${value}`)
+      .join(' ');
+  }
 }
 
-export default LimeTorrentsCrawler;
+/**
+ * Optional wall-clock budget for a whole adapter run.
+ * `new Deadline()` reads `CRAWLER_TIME_BUDGET_MS` (`0` = disabled);
+ * an explicit millisecond budget overrides the environment.
+ */
+export class Deadline {
+  private readonly startedAt = Date.now();
+  private readonly budgetMs: number;
+
+  constructor(budgetMs?: number) {
+    if (typeof budgetMs === 'number' && Number.isFinite(budgetMs)) {
+      this.budgetMs = Math.max(0, Math.floor(budgetMs));
+    } else {
+      const fromEnv = Number.parseInt(
+        process.env.CRAWLER_TIME_BUDGET_MS || '0',
+        10
+      );
+      this.budgetMs = Number.isFinite(fromEnv) && fromEnv > 0 ? Math.floor(fromEnv) : 0;
+    }
+  }
+
+  public get enabled(): boolean {
+    return this.budgetMs > 0;
+  }
+
+  public get expired(): boolean {
+    if (!this.enabled) return false;
+    return Date.now() - this.startedAt >= this.budgetMs;
+  }
+
+  public get remainingMs(): number {
+    if (!this.enabled) return Number.POSITIVE_INFINITY;
+    return Math.max(0, this.budgetMs - (Date.now() - this.startedAt));
+  }
+}
+
+// ============================================================================
+// Record construction, scoring and merging
+// ============================================================================
+
+export interface BuildTorrentRecordInput {
+  title: string;
+  type: ContentType;
+  /** Hex (40 chars) or Base32 (32 chars); normalised to lowercase hex. */
+  infoHash: string;
+  magnetUrl?: string | null;
+  torrentFileUrl?: string | null;
+  sourceUrl?: string | null;
+  trackers?: readonly string[] | null;
+  audio?: readonly string[] | null;
+  subtitles?: readonly string[] | null;
+  /** Parsed title metadata used as a fallback for season/episode/codec/... */
+  meta?: ParsedMetadata | null;
+  season?: number | null;
+  episode?: number | null;
+  absoluteEpisode?: number | null;
+  releaseGroup?: string | null;
+  quality?: string | null;
+  codec?: string | null;
+  channels?: string | null;
+  hdrFormat?: string | null;
+  sizeBytes?: number | null;
+  /** Unknown swarm counters stay `null`: they are never fabricated here. */
+  seeders?: number | null;
+  leechers?: number | null;
+  imdbId?: string | null;
+  tmdbId?: number | null;
+  sourceTracker?: string | null;
+}
+
+function cleanOptionalText(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const text = value.trim();
+  return text ? text : null;
+}
+
+function cleanNonNegativeInt(value: unknown): number | null {
+  if (typeof value === 'number' && Number.isFinite(value) && value >= 0) {
+    return Math.floor(value);
+  }
+  return null;
+}
+
+function normalizeImdbId(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const digits = trimmed.replace(/^tt/i, '');
+  if (/^\d{1,10}$/.test(digits) && Number.parseInt(digits, 10) > 0) {
+    return `tt${digits.padStart(7, '0')}`;
+  }
+  return null;
+}
+
+function isContentType(value: unknown): value is ContentType {
+  return (
+    value === 'movie' || value === 'series' || value === 'anime' || value === 'documentary'
+  );
+}
+
+/**
+ * Builds a validated `TorrentRecord`, or `null` when the hash/title are bad.
+ *
+ *   - The infohash is normalised (hex/Base32 accepted, all-zeros rejected).
+ *   - The title is whitespace-normalised and must be non-empty.
+ *   - Trackers/audio/subtitles are deduped; `source_tracker` falls back to
+ *     the first tracker.
+ *   - When no magnet is supplied, a valid one is generated from the hash,
+ *     title and trackers (public fallback trackers when the release lists
+ *     none).
+ *   - `meta` fills season/episode/codec/channels/quality gaps; explicit
+ *     parameters always win.
+ */
+export function buildTorrentRecord(
+  input: BuildTorrentRecordInput
+): TorrentRecord | null {
+  if (!input || typeof input !== 'object') return null;
+
+  const hash = normalizeInfoHash(input.infoHash);
+  if (!hash || /^0{40}$/.test(hash)) return null;
+
+  const title = cleanText(input.title);
+  if (!title) return null;
+
+  const type: ContentType = isContentType(input.type) ? input.type : 'movie';
+  const meta = input.meta ?? null;
+
+  const trackers = dedupeStrings([...(input.trackers ?? [])]);
+  const audio = dedupeStrings([...(input.audio ?? [])]);
+  const subtitles = dedupeStrings([...(input.subtitles ?? [])]);
+
+  const magnetTrackers = trackers.length
+    ? trackers
+    : [...MAGNET_DEFAULT_TRACKERS.slice(0, 3)];
+  const trackerQuery = magnetTrackers
+    .map(tracker => `&tr=${encodeURIComponent(tracker)}`)
+    .join('');
+  const magnetUrl =
+    cleanOptionalText(input.magnetUrl) ??
+    `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}${trackerQuery}`;
+
+  return {
+    type,
+    info_hash: hash,
+    title,
+    audio,
+    subtitles,
+    magnet_url: magnetUrl,
+    torrent_file_url: cleanOptionalText(input.torrentFileUrl),
+    source_url: cleanOptionalText(input.sourceUrl),
+    season: input.season ?? meta?.season ?? null,
+    episode: input.episode ?? meta?.episode ?? null,
+    absolute_episode: input.absoluteEpisode ?? meta?.absoluteEpisode ?? null,
+    release_group:
+      cleanOptionalText(input.releaseGroup) ?? cleanOptionalText(meta?.releaseGroup),
+    quality:
+      cleanOptionalText(input.quality) ?? cleanOptionalText(meta?.resolution),
+    codec: cleanOptionalText(input.codec) ?? cleanOptionalText(meta?.codec),
+    hdr_format:
+      cleanOptionalText(input.hdrFormat) ?? cleanOptionalText(meta?.hdrFormat),
+    channels:
+      cleanOptionalText(input.channels) ?? cleanOptionalText(meta?.channels),
+    size_bytes: cleanNonNegativeInt(input.sizeBytes),
+    seeders: cleanNonNegativeInt(input.seeders),
+    leechers: cleanNonNegativeInt(input.leechers),
+    imdb_id: normalizeImdbId(input.imdbId),
+    tmdb_id: cleanNonNegativeInt(input.tmdbId),
+    source_tracker: cleanOptionalText(input.sourceTracker) ?? trackers[0] ?? null
+  };
+}
+
+/**
+ * Completeness score: the richer of two same-hash candidates becomes the
+ * merge base in `BaseCrawler.deduplicateRecords`.
+ */
+export function recordScore(record: TorrentRecord): number {
+  if (!record || typeof record !== 'object') return 0;
+  let score = 0;
+  if (record.title) score += Math.min(record.title.length, 80) / 10;
+  if (record.imdb_id) score += 6;
+  if (record.tmdb_id) score += 4;
+  if (record.size_bytes) score += 3;
+  if (record.seeders !== null && record.seeders !== undefined) score += 2;
+  if (record.leechers !== null && record.leechers !== undefined) score += 1;
+  if (record.quality) score += 2;
+  if (record.season !== null && record.season !== undefined) score += 1;
+  if (record.episode !== null && record.episode !== undefined) score += 1;
+  if (record.codec) score += 1;
+  if (record.channels) score += 1;
+  if (record.release_group) score += 1;
+  if (record.hdr_format) score += 1;
+  if (record.magnet_url) score += 1;
+  if (record.torrent_file_url) score += 1;
+  if (record.source_url) score += 1;
+  if (Array.isArray(record.audio)) score += record.audio.length;
+  if (Array.isArray(record.subtitles)) score += record.subtitles.length;
+  return score;
+}
+
+/**
+ * Fills the gaps of `primary` with values from `secondary` (same infohash).
+ * Scalars keep the primary value whenever set; audio/subtitle tags are
+ * unioned. Nothing is ever invented.
+ */
+export function mergeRecords(
+  primary: TorrentRecord,
+  secondary: TorrentRecord
+): TorrentRecord {
+  if (!primary) return secondary;
+  if (!secondary) return primary;
+
+  const merged: TorrentRecord = { ...primary };
+  const target = merged as unknown as Record<string, unknown>;
+
+  const fill = (key: keyof TorrentRecord): void => {
+    const current = target[key as string];
+    if (current === null || current === undefined || current === '') {
+      const fallback = (secondary as unknown as Record<string, unknown>)[key as string];
+      target[key as string] = fallback ?? null;
+    }
+  };
+
+  fill('imdb_id');
+  fill('tmdb_id');
+  fill('kitsu_id');
+  fill('anilist_id');
+  fill('mal_id');
+  fill('season');
+  fill('episode');
+  fill('absolute_episode');
+  fill('file_index');
+  fill('magnet_url');
+  fill('torrent_file_url');
+  fill('source_url');
+  fill('release_group');
+  fill('quality');
+  fill('codec');
+  fill('hdr_format');
+  fill('channels');
+  fill('size_bytes');
+  fill('seeders');
+  fill('leechers');
+  fill('source_tracker');
+
+  merged.audio = dedupeStrings([...(primary.audio ?? []), ...(secondary.audio ?? [])]);
+  merged.subtitles = dedupeStrings([
+    ...(primary.subtitles ?? []),
+    ...(secondary.subtitles ?? [])
+  ]);
+
+  return merged;
+}

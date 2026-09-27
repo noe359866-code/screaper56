@@ -209,7 +209,9 @@ export class ResilientHttpClient {
           : getRandomUserAgentProfile();
 
         const baseHeaders = getHeadersForUserAgent(profile);
-        const requestHeaders = AxiosHeaders.from(config.headers || {});
+        const requestHeaders = AxiosHeaders.from(
+          (config.headers || {}) as Record<string, string>
+        );
 
         // Merge generated base headers without overwriting explicitly passed request headers
         Object.entries(baseHeaders).forEach(([key, value]) => {

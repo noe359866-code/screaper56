@@ -2,6 +2,15 @@ import { chromium } from 'playwright-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 import type { Browser, BrowserContext, Page } from 'playwright';
 
+// Browser globals below are only referenced inside page.addInitScript /
+// page.evaluate callbacks (executed in Chromium, type-checked here against
+// the Node lib, which intentionally excludes the DOM).
+declare const window: unknown;
+declare const document: {
+  getElementById(id: string): unknown;
+  querySelector(selectors: string): unknown;
+};
+
 // Activar plugin de evasión stealth
 chromium.use(stealthPlugin());
 
