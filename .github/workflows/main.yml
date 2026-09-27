@@ -1,4 +1,4 @@
-name: "Torrent Crawler & Supabase Indexer"
+name: "Torrent Crawler & Database Indexer"
 
 on:
   schedule:
@@ -26,7 +26,7 @@ on:
           - sinsitio
           - dontorrent
       dry_run:
-        description: "Dry run mode (crawl and validate without writing to Supabase)"
+        description: "Dry run mode (crawl and validate without writing to the database)"
         required: false
         default: false
         type: boolean
@@ -42,7 +42,7 @@ concurrency:
 
 jobs:
   crawl-and-sync:
-    name: "Crawl, Filter Spanish/English & Supabase Upsert"
+    name: "Crawl, Filter Spanish/English & Database Upsert"
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -92,6 +92,12 @@ jobs:
 
       - name: "Run Asynchronous Crawler and Database Upsert"
         env:
+          # Backend recomendado: cualquier PostgreSQL (Supabase pooler, CockroachDB, servidor propio).
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_SSL_CA: ${{ secrets.DATABASE_SSL_CA }}
+          DB_WRITE_POLICY: ${{ vars.DB_WRITE_POLICY || 'preserve' }}
+          DB_TABLE: ${{ vars.DB_TABLE || 'torrents' }}
+          # Backend legado (API REST). Solo se usa si DATABASE_URL está vacío.
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           TARGET_CRAWLERS: ${{ github.event.inputs.crawlers || 'all' }}

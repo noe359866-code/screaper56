@@ -1,42 +1,28 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { TorrentRecord } from '../types/torrent.js';
-import { config } from '../config/env.js';
+import { config, DbBackend } from '../config/env.js';
+import {
+  LegacyTorrentRow,
+  SanitizedTorrentRecord,
+  sanitizeAndDeduplicate,
+  sanitizeTorrentRecord,
+  toLegacyRow
+} from './sanitize.js';
+import { emptyStats, RepositoryWriteStats, TorrentRepository } from './torrent-repository.js';
 
-// Estructura sanitizada garantizada lista para persistir en la BD
-export interface SanitizedTorrentRecord {
-  info_hash: string;
-  title: string;
-  type: 'movie' | 'series' | 'anime';
-  imdb_id: string | null;
-  tmdb_id: number | null;
-  kitsu_id: number | null;
-  anilist_id: number | null;
-  mal_id: number | null;
-  season: number | null;
-  episode: number | null;
-  absolute_episode: number | null;
-  file_index: number | null;
-  release_group: string | null;
-  quality: string;
-  codec: string | null;
-  hdr_format: string | null;
-  audio: string[];
-  subtitles: string[];
-  channels: string | null;
-  size_bytes: number;
-  seeders: number;
-  leechers: number;
-  source_tracker: string | null;
-}
+export type { SanitizedTorrentRecord } from './sanitize.js';
 
-// Regex pre-compilados fuera del flujo de ejecución (Ahorro importante de CPU)
-const HEX_40_REGEX = /^[0-9a-f]{40}$/;
-const IMDB_REGEX = /^tt\d+$/;
-const DIGITS_ONLY_REGEX = /^\d+$/;
-
-export class SupabaseTorrentRepository {
+/**
+ * Backend LEGADO sobre la API REST de Supabase (PostgREST).
+ * Se mantiene para no romper despliegues existentes; el backend recomendado es
+ * `PostgresTorrentRepository` (DATABASE_URL), que funciona con Supabase,
+ * CockroachDB o cualquier PostgreSQL y respeta los metadatos de otros procesos.
+ */
+export class SupabaseTorrentRepository implements TorrentRepository {
+  public readonly backend: DbBackend = 'supabase';
   private client: SupabaseClient | null = null;
   private readonly isDryRun: boolean;
+  private readonly stats: RepositoryWriteStats = emptyStats();
 
   constructor() {
     this.isDryRun = config.dryRun;
@@ -53,27 +39,6 @@ export class SupabaseTorrentRepository {
 
   // --- MÉTODOS ESTÁTICOS DE UTILIDAD ---
 
-  private static parseNonNegativeInt(val: unknown, defaultValue: number | null = null): number | null {
-    if (typeof val === 'number' && Number.isFinite(val) && val >= 0) {
-      return Math.floor(val);
-    }
-    if (typeof val === 'string') {
-      const trimmed = val.trim();
-      if (DIGITS_ONLY_REGEX.test(trimmed)) {
-        const parsed = Number.parseInt(trimmed, 10);
-        if (Number.isSafeInteger(parsed)) return parsed;
-      }
-    }
-    return defaultValue;
-  }
-
-  private static safeString(val: unknown, maxLength: number, defaultValue: string | null = null): string | null {
-    if (typeof val !== 'string') return defaultValue;
-    const trimmed = val.trim();
-    if (trimmed.length === 0) return defaultValue;
-    return trimmed.substring(0, maxLength);
-  }
-
   private static isNonRetriableError(code?: string): boolean {
     if (!code) return false;
     // Códigos de PostgreSQL: 22*** (Data Exception), 23*** (Integrity Violation), 42*** (Syntax/Schema Error)
@@ -89,86 +54,30 @@ export class SupabaseTorrentRepository {
     return combined.includes('no unique or exclusion constraint matching the on conflict');
   }
 
+  describe(): string {
+    return `supabase-rest ${config.supabaseUrl} (legacy)`;
+  }
+
+  getStats(): RepositoryWriteStats {
+    return { ...this.stats };
+  }
+
+  async close(): Promise<void> {
+    /* el cliente REST no mantiene conexiones abiertas */
+  }
+
   /**
-   * Sanitiza y valida un registro según las restricciones del esquema
+   * Sanitiza y valida un registro (delegado al módulo compartido).
    */
   public sanitizeRecord(raw: TorrentRecord): SanitizedTorrentRecord | null {
-    if (!raw || typeof raw.info_hash !== 'string') return null;
-
-    const cleanHash = raw.info_hash.toLowerCase().trim();
-    if (!HEX_40_REGEX.test(cleanHash)) return null;
-
-    const title = typeof raw.title === 'string' ? raw.title.trim() : '';
-    if (title.length === 0) return null;
-
-    let validImdbId: string | null = null;
-    if (typeof raw.imdb_id === 'string') {
-      const trimmedId = raw.imdb_id.trim();
-      if (IMDB_REGEX.test(trimmedId)) validImdbId = trimmedId;
-    }
-
-    let validType: 'movie' | 'series' | 'anime' = 'movie';
-    if (raw.type === 'series' || raw.type === 'anime') validType = raw.type;
-
-    // Trimeado y deduplicado estricto de elementos en arrays
-    const cleanAudio = Array.isArray(raw.audio)
-      ? Array.from(
-          new Set(
-            raw.audio
-              .filter((a): a is string => typeof a === 'string')
-              .map(a => a.trim())
-              .filter(a => a.length > 0)
-          )
-        )
-      : [];
-
-    const cleanSubs = Array.isArray(raw.subtitles)
-      ? Array.from(
-          new Set(
-            raw.subtitles
-              .filter((s): s is string => typeof s === 'string')
-              .map(s => s.trim())
-              .filter(s => s.length > 0)
-          )
-        )
-      : [];
-
-    return {
-      info_hash: cleanHash,
-      title,
-      type: validType,
-      imdb_id: validImdbId,
-      tmdb_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.tmdb_id),
-      kitsu_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.kitsu_id),
-      anilist_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.anilist_id),
-      mal_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.mal_id),
-
-      season: SupabaseTorrentRepository.parseNonNegativeInt(raw.season),
-      episode: SupabaseTorrentRepository.parseNonNegativeInt(raw.episode),
-      absolute_episode: SupabaseTorrentRepository.parseNonNegativeInt(raw.absolute_episode),
-      file_index: SupabaseTorrentRepository.parseNonNegativeInt(raw.file_index),
-
-      release_group: SupabaseTorrentRepository.safeString(raw.release_group, 100),
-      quality: SupabaseTorrentRepository.safeString(raw.quality, 20, 'Unknown') ?? 'Unknown',
-      codec: SupabaseTorrentRepository.safeString(raw.codec, 20),
-      hdr_format: SupabaseTorrentRepository.safeString(raw.hdr_format, 20),
-
-      audio: cleanAudio,
-      subtitles: cleanSubs,
-      channels: SupabaseTorrentRepository.safeString(raw.channels, 10),
-
-      size_bytes: SupabaseTorrentRepository.parseNonNegativeInt(raw.size_bytes, 0) ?? 0,
-      seeders: SupabaseTorrentRepository.parseNonNegativeInt(raw.seeders, 0) ?? 0,
-      leechers: SupabaseTorrentRepository.parseNonNegativeInt(raw.leechers, 0) ?? 0,
-      source_tracker: SupabaseTorrentRepository.safeString(raw.source_tracker, 100)
-    };
+    return sanitizeTorrentRecord(raw);
   }
 
   /**
    * Intenta insertar un chunk sin ON CONFLICT (fallback cuando falta el índice único).
    * Primero prueba insert masivo; si falla por duplicados, hace upsert fila a fila.
    */
-  private async fallbackInsertChunk(chunk: SanitizedTorrentRecord[]): Promise<{ inserted: number; error?: string }> {
+  private async fallbackInsertChunk(chunk: LegacyTorrentRow[]): Promise<{ inserted: number; error?: string }> {
     if (!this.client) return { inserted: 0, error: 'Client uninitialized' };
 
     // Intento 1: insert masivo simple (funciona si no hay constraint, o si no hay duplicados)
@@ -221,14 +130,9 @@ export class SupabaseTorrentRepository {
   ): Promise<number> {
     if (!Array.isArray(records) || records.length === 0) return 0;
 
-    // Deduplicación en memoria por info_hash antes del envío a la BD
-    const uniqueMap = new Map<string, SanitizedTorrentRecord>();
-    for (const record of records) {
-      const sanitized = this.sanitizeRecord(record);
-      if (sanitized) uniqueMap.set(sanitized.info_hash, sanitized);
-    }
-
-    const validRecords = Array.from(uniqueMap.values());
+    // Deduplicación en memoria por info_hash antes del envío a la BD.
+    // PostgREST no distingue "desconocido" de "cero": se aplica el default histórico.
+    const validRecords: LegacyTorrentRow[] = sanitizeAndDeduplicate(records).map(toLegacyRow);
     if (validRecords.length === 0) return 0;
 
     if (this.isDryRun) {
@@ -256,6 +160,7 @@ export class SupabaseTorrentRepository {
         const { inserted, error } = await this.fallbackInsertChunk(chunk);
         if (inserted > 0) {
           totalUpserted += inserted;
+          this.stats.inserted += inserted;
           console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} saved via fallback INSERT: ${inserted}/${chunk.length} torrents.`);
           success = true;
         } else {
@@ -292,6 +197,7 @@ export class SupabaseTorrentRepository {
               const { inserted, error: fbError } = await this.fallbackInsertChunk(chunk);
               if (inserted > 0) {
                 totalUpserted += inserted;
+                this.stats.inserted += inserted;
                 console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} recovered via fallback INSERT: ${inserted}/${chunk.length} torrents.`);
                 success = true;
               } else {
@@ -315,6 +221,7 @@ export class SupabaseTorrentRepository {
           } else {
             success = true;
             totalUpserted += chunk.length;
+            this.stats.updated += chunk.length; // PostgREST no informa de nuevos vs. actualizados
             console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} saved: ${chunk.length} torrents.`);
             break;
           }
@@ -327,10 +234,11 @@ export class SupabaseTorrentRepository {
         }
       }
 
-      if (!success && !schemaFallbackMode) {
-        console.error(`[SUPABASE] ❌ Critical: Batch ${currentBatchNumber}/${totalBatches} permanently failed after ${maxRetries} attempts. ${chunk.length} records lost.`);
-      } else if (!success && schemaFallbackMode) {
-        // Ya logueado arriba en fallback
+      if (!success) {
+        this.stats.failed += chunk.length;
+        if (!schemaFallbackMode) {
+          console.error(`[SUPABASE] ❌ Critical: Batch ${currentBatchNumber}/${totalBatches} permanently failed after ${maxRetries} attempts. ${chunk.length} records lost.`);
+        }
       }
     }
 

@@ -1,7 +1,8 @@
 # Crawler asíncrono de metadatos torrent
 
 Node.js 20+ / TypeScript. Adaptadores independientes para **13 fuentes**, normalización de
-infohash BTIH, filtrado de idiomas y UPSERT en Supabase. Solo descarga el metainfo
+infohash BTIH, filtrado de idiomas y UPSERT en **cualquier PostgreSQL** (Supabase,
+CockroachDB o un servidor propio, p. ej. en Oracle Cloud). Solo descarga el metainfo
 `.torrent` para calcular el hash; no descarga el contenido compartido por BitTorrent.
 Usa únicamente fuentes y contenidos que tengas autorización para consultar.
 
@@ -29,6 +30,32 @@ npx playwright install chromium
 
 `npm run lint` comprueba tipos. `npm run dev` ejecuta el orquestador en modo watch;
 **no implica dry-run**, configura `DRY_RUN=true` explícitamente.
+
+## Base de datos
+
+La persistencia vive en `src/services/` y es independiente del proveedor:
+
+| Módulo | Responsabilidad |
+|---|---|
+| `sanitize.ts` | Un único saneado/deduplicado por `info_hash`. Los contadores que la fuente no publica quedan en `null` (no se fabrican ceros). |
+| `postgres.ts` | **Backend recomendado** (`DATABASE_URL`, driver `pg`). Lee las columnas reales con `information_schema` y solo escribe las que existen, con casts al tipo real (enums incluidos). Cada lote es una transacción: `UPDATE ... FROM VALUES` de las filas existentes **solo si algo cambia** e `INSERT ... ON CONFLICT DO NOTHING` de las nuevas. Reintenta errores de red y de serialización (`40001`, CockroachDB), no reintenta errores de datos/esquema, y si falta el índice único cae a `WHERE NOT EXISTS` avisando cómo crearlo. |
+| `supabase.ts` | Backend **legado** por API REST (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`). Solo se usa si `DATABASE_URL` está vacío. Sobreescribe todas las columnas en cada pasada. |
+| `torrent-repository.ts` | Contrato común, modo dry-run y factoría según el entorno. |
+
+Política de escritura (`DB_WRITE_POLICY`) sobre filas que ya existen:
+
+- `preserve` (defecto): la base de datos gana. Se refrescan `seeders`/`leechers`/`size_bytes`
+  cuando el crawler los conoce y se **rellenan** metadatos vacíos (`imdb_id`, temporada,
+  calidad, idiomas...). Nada que otro proceso haya enriquecido o reparado se pisa ni se
+  pone a `NULL`. Las filas idénticas no se reescriben (sin tuplas muertas, sin RU gastados).
+- `overwrite`: el crawler gana cuando trae un valor; un dato desconocido nunca borra uno existente.
+
+`sql/schema.sql` crea la tabla en una base de datos nueva (PostgreSQL y CockroachDB).
+`npm run db:check` conecta con `DATABASE_URL` y reporta servidor, TLS, columnas y casts que
+se usarán, índice único, filas, tamaño, tuplas muertas y duplicados; no escribe nada.
+La guía completa de migración (Supabase → Oracle Cloud / CockroachDB, copia de datos,
+crawler como `systemd timer`, copias de seguridad) está en
+[`docs/MIGRACION_BD.md`](docs/MIGRACION_BD.md).
 
 ## Arquitectura de `src/crawlers/`
 
@@ -99,7 +126,7 @@ Los enlaces de comentarios y bloques `.related` se excluyen de las descargas.
 
 | Variable | Predeterminado | Uso |
 |---|---|---|
-| `DRY_RUN` | `false` | `true`: no escribe en Supabase ni requiere sus credenciales. |
+| `DRY_RUN` | `false` | `true`: no escribe en la base de datos ni requiere credenciales. |
 | `TARGET_CRAWLERS` | `all` | Todas las fuentes o lista separada por comas; rechaza nombres desconocidos. |
 | `MAX_PAGES` | `3` | Máximo de páginas **por sección/búsqueda**, no total global. |
 | `REQUEST_TIMEOUT_MS` | `20000` | Timeout HTTP; las sondas de espejos usan límites más cortos. |
@@ -108,8 +135,14 @@ Los enlaces de comentarios y bloques `.related` se excluyen de las descargas.
 | `CRAWLER_REQUEST_DELAY_MS` | `0` | Pausa de cortesía (con jitter) entre peticiones de un mismo crawler. |
 | `CRAWLER_TIME_BUDGET_MS` | `0` | Presupuesto por crawler; al agotarse devuelve lo recolectado en vez de seguir paginando. |
 | `CATALOG_DETAIL_CONCURRENCY` | `2` | Fichas en paralelo en los catálogos HTML compartidos. |
-| `SUPABASE_URL` | — | Necesario si `DRY_RUN=false`. |
-| `SUPABASE_SERVICE_ROLE_KEY` | — | Necesario si `DRY_RUN=false`; guardar en `.env` local o secretos de Actions. |
+| `DATABASE_URL` | — | Cadena PostgreSQL (`postgresql://user:pass@host:5432/db`). Backend recomendado; necesario si `DRY_RUN=false` y no se usa el legado. Guardar en `.env` local o secretos de Actions. |
+| `DB_TABLE` | `torrents` | Tabla destino, opcionalmente `esquema.tabla`. |
+| `DB_WRITE_POLICY` | `preserve` | `preserve` respeta metadatos ajenos y solo rellena huecos; `overwrite` da prioridad al crawler. |
+| `DB_BATCH_SIZE` | `100` | Filas por sentencia (1-500). |
+| `DATABASE_SSL_CA` | — | CA del proveedor (ruta o PEM) si el certificado no es de una CA pública (Supabase). |
+| `DATABASE_SSL_NO_VERIFY` | `false` | Último recurso: TLS sin verificar el certificado del servidor. |
+| `SUPABASE_URL` | — | Legado (API REST). Solo si no hay `DATABASE_URL`. |
+| `SUPABASE_SERVICE_ROLE_KEY` | — | Legado (API REST). Solo si no hay `DATABASE_URL`. |
 | `WOLFTORRENT_BROWSER` | `true` | Fallback de navegador; `false` para extracción estática únicamente. |
 
 ### Dominios y espejos
@@ -150,8 +183,9 @@ Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
   de idioma desconocido puede descubrirse pero quedar descartado antes del UPSERT.
 - Seeders/leechers desconocidos **no se fabrican** en ninguna fuente: quedan en
   `null` (DonTorrent, Pelispanda, MejorTorrent, EliteTorrent, LimeTorrents y el
-  catálogo HTML de EZTV no los publican). La capa de persistencia existente
-  convierte valores desconocidos a sus defaults de base de datos.
+  catálogo HTML de EZTV no los publican). En filas nuevas se persiste el default
+  de la base de datos (0); en filas existentes un contador desconocido **nunca**
+  pisa el último valor conocido.
 - Las descargas de metainfo se limitan a 10 MiB. No se extraen ni se ejecutan
   ficheros descargados.
 - Ningún espejo está garantizado: un sitio puede cambiar de plantilla, cerrar,
@@ -163,11 +197,15 @@ Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
 
 ## Pruebas y verificación
 
-`npm test` ejecuta **50 pruebas sin conexión y sin Supabase**, con HTML sintético y
+`npm test` ejecuta **87 pruebas sin conexión y sin base de datos**, con HTML sintético y
 respuestas HTTP simuladas específicas de las 13 fuentes, más pruebas unitarias de
 los módulos compartidos (`mirrors.ts`, `support.ts`): precedencia del pool de
 dominios, rechazo de páginas aparcadas o con reto, caché del espejo activo,
-concurrencia acotada, fusión de duplicados y construcción de registros. Incluye
+concurrencia acotada, fusión de duplicados y construcción de registros. La capa de
+base de datos se prueba con un pool simulado (`tests/db-repository.test.js`):
+introspección y casts, políticas `preserve`/`overwrite`, fallback sin índice único,
+reintentos de `40001` y de red, errores no reintentables, TLS y selección de backend;
+además se validó en vivo contra un PostgreSQL 18 real (ver `docs/MIGRACION_BD.md`). Incluye
 descargas DLE, Base64, `atob` literal, episodios, variantes, paginación cíclica,
 fallback API→HTML, tamaños, idiomas, hashes, metainfo corrupto y normalización.
 Los fixtures documentan rutas observadas, pero **no son capturas completas de las
@@ -188,9 +226,12 @@ proof-of-work. Ejecuta primero el dry-run de una página desde tu runner y revis
 El workflow `.github/workflows/main.yml` se ejecuta cada seis horas o manualmente.
 Permite elegir las 13 fuentes, incluida DonTorrent; `all` las incluye todas.
 Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
-Configura las claves de Supabase como secretos del repositorio para escritura real.
+Configura el secreto `DATABASE_URL` (y `DATABASE_SSL_CA` si tu proveedor usa una CA
+propia) para escritura real; las variables de repositorio `DB_WRITE_POLICY` y
+`DB_TABLE` son opcionales. Los secretos `SUPABASE_*` siguen funcionando como backend
+legado cuando `DATABASE_URL` está vacío.
 
-## Diagnóstico de extracción (sin Supabase)
+## Diagnóstico de extracción (sin base de datos)
 
 Desde la carpeta que contiene `package.json`:
 
@@ -202,7 +243,7 @@ npm run diagnose -- dontorrent nyaa  # selección explícita
 DIAGNOSE_TIMEOUT_MS=180000 npm run diagnose -- --spanish
 ```
 
-No importa el repositorio de Supabase ni escribe registros. Usa las variables
+No importa el repositorio de base de datos ni escribe registros. Usa las variables
 `*_BASE_URL` y `*_MIRRORS` existentes. Cada crawler se ejecuta secuencialmente en
 un proceso aislado, con un límite duro de 60 segundos por defecto (incluidos
 reintentos y navegador). En Linux se termina el grupo de procesos al agotarlo.

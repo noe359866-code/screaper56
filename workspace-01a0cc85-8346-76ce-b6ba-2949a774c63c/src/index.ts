@@ -1,5 +1,5 @@
 import { config } from './config/env.js';
-import { SupabaseTorrentRepository } from './services/supabase.js';
+import { createTorrentRepository, TorrentRepository } from './services/torrent-repository.js';
 import { CrawlerStats, ScraperExecutionSummary } from './types/torrent.js';
 
 import { CRAWLER_REGISTRY } from './crawlers/registry.js';
@@ -7,7 +7,7 @@ import { CRAWLER_REGISTRY } from './crawlers/registry.js';
 async function main() {
   const startedAt = new Date().toISOString();
   console.log('===============================================================');
-  console.log('   ASYNC TORRENT CRAWLER & SUPABASE INDEXER (PRODUCTION ENGINE) ');
+  console.log('   ASYNC TORRENT CRAWLER & DATABASE INDEXER (PRODUCTION ENGINE) ');
   console.log('===============================================================');
   console.log(`[INIT] Started at: ${startedAt}`);
   console.log(`[INIT] Environment: ${config.nodeEnv}`);
@@ -15,9 +15,10 @@ async function main() {
   console.log(`[INIT] Active Targets: ${config.targetCrawlers.join(', ')}`);
   console.log(`[INIT] Max Pages Per Source: ${config.maxPagesPerSource}`);
   console.log(`[INIT] Concurrency Limit: ${config.concurrencyLimit} parallel workers`);
-  console.log('---------------------------------------------------------------\n');
 
-  const repository = new SupabaseTorrentRepository();
+  const repository: TorrentRepository = await createTorrentRepository();
+  console.log(`[INIT] Database: ${repository.describe()}`);
+  console.log('---------------------------------------------------------------\n');
 
   const summary: ScraperExecutionSummary = {
     startedAt,
@@ -128,8 +129,13 @@ async function main() {
     }
   }
 
-  // Ejecución concurrente
-  await runWithConcurrency(config.targetCrawlers, config.concurrencyLimit);
+  // Ejecución concurrente. El pool de conexiones se cierra siempre: de lo
+  // contrario el proceso (y el job de Actions) quedaría colgado al terminar.
+  try {
+    await runWithConcurrency(config.targetCrawlers, config.concurrencyLimit);
+  } finally {
+    await repository.close().catch(err => console.warn('[DB] Error closing connections:', err));
+  }
 
   summary.finishedAt = new Date().toISOString();
 
@@ -157,6 +163,8 @@ async function main() {
   console.log(`Total Accepted:          ${summary.totalSpanishAccepted}`);
   console.log(`Total Dropped (Foreign): ${summary.totalDiscarded}`);
   console.log(`Total Database Upserts:  ${summary.totalUpserted}`);
+  const dbStats = repository.getStats();
+  console.log(`DB writes (${repository.backend}): ${dbStats.inserted} new, ${dbStats.updated} updated, ${dbStats.unchanged} unchanged, ${dbStats.failed} failed`);
   console.log(`Finished at:             ${summary.finishedAt}`);
   console.log('===============================================================\n');
 

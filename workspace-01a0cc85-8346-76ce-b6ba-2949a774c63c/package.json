@@ -1,7 +1,7 @@
 {
   "name": "async-torrent-indexer",
   "version": "1.0.0",
-  "description": "Enterprise-grade asynchronous torrent crawler and metadata indexer with Spanish-language filtering and Supabase UPSERT synchronization",
+  "description": "Enterprise-grade asynchronous torrent crawler and metadata indexer with Spanish-language filtering and PostgreSQL UPSERT synchronization (Supabase, CockroachDB or self-hosted)",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "tsc",
     "lint": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.js",
-    "diagnose": "node --import tsx scripts/diagnose.mjs"
+    "diagnose": "node --import tsx scripts/diagnose.mjs",
+    "db:check": "node --import tsx scripts/db-check.mjs"
   },
   "keywords": [
     "torrent",
@@ -20,7 +21,9 @@
     "postgresql",
     "p2p",
     "bittorrent",
-    "github-actions"
+    "github-actions",
+    "cockroachdb",
+    "oracle-cloud"
   ],
   "author": "Backend Engineering Team",
   "license": "MIT",
@@ -30,12 +33,15 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
     "p-limit": "^6.2.0",
+    "pg": "^8.23.0",
+    "pg-connection-string": "^2.14.0",
     "playwright": "^1.50.1",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
+    "@types/pg": "^8.23.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   },

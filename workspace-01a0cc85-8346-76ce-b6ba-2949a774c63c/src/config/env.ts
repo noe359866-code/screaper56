@@ -3,7 +3,33 @@ import dotenv from 'dotenv';
 // Carga las variables de entorno de forma segura
 dotenv.config();
 
+/**
+ * Política de escritura sobre filas que YA existen en la tabla:
+ *  - preserve : refresca seeders/leechers/tamaño y solo RELLENA metadatos
+ *               vacíos (imdb_id, temporada, calidad, idiomas...). Nunca pisa
+ *               ni pone a NULL lo que otro proceso haya enriquecido o reparado.
+ *  - overwrite: comportamiento histórico del UPSERT de Supabase, todas las
+ *               columnas se sobreescriben con lo que trae el crawler.
+ */
+export type DbWritePolicy = 'preserve' | 'overwrite';
+
+/** Backend de persistencia elegido a partir del entorno. */
+export type DbBackend = 'postgres' | 'supabase' | 'dry-run';
+
 export interface EnvironmentConfig {
+  /** Backend efectivo: `postgres` (DATABASE_URL), `supabase` (legado, REST) o `dry-run`. */
+  readonly dbBackend: DbBackend;
+  /** Cadena de conexión PostgreSQL (Supabase, CockroachDB o servidor propio). */
+  readonly databaseUrl: string;
+  /** CA en formato PEM (contenido o ruta a fichero) para verificar el servidor TLS. */
+  readonly databaseSslCa: string;
+  /** Desactiva la verificación del certificado TLS (solo como último recurso). */
+  readonly databaseSslNoVerify: boolean;
+  /** Tabla destino, opcionalmente con esquema (`public.torrents`). */
+  readonly dbTable: string;
+  readonly dbWritePolicy: DbWritePolicy;
+  readonly dbBatchSize: number;
+  /** Legado: API REST de Supabase. Solo se usa si no hay DATABASE_URL. */
   readonly supabaseUrl: string;
   readonly supabaseServiceRoleKey: string;
   readonly targetCrawlers: readonly string[];
@@ -32,6 +58,8 @@ const DEFAULT_CRAWLERS = Object.freeze([
 ]) as readonly string[];
 
 const DEFAULT_CRAWLERS_SET = new Set(DEFAULT_CRAWLERS);
+
+const DB_TABLE_REGEX = /^[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)?$/;
 
 /**
  * Parsea un valor booleano de forma segura a partir de variables de entorno.
@@ -65,6 +93,24 @@ function isValidUrl(urlString: string): boolean {
   }
 }
 
+/**
+ * Valida una cadena de conexión PostgreSQL (`postgres://` o `postgresql://`).
+ */
+export function isValidPostgresUrl(urlString: string): boolean {
+  try {
+    const url = new URL(urlString);
+    return (url.protocol === 'postgres:' || url.protocol === 'postgresql:') && url.hostname.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function parseWritePolicy(value: string | undefined): DbWritePolicy {
+  const normalized = (value || 'preserve').trim().toLowerCase();
+  if (normalized === 'preserve' || normalized === 'overwrite') return normalized;
+  throw new Error(`🚨 FATAL ERROR: DB_WRITE_POLICY "${value}" is invalid. Use "preserve" (default) or "overwrite".`);
+}
+
 let cachedConfig: EnvironmentConfig | null = null;
 
 /**
@@ -76,21 +122,46 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
   }
 
   const dryRun = parseBoolean(process.env.DRY_RUN, false);
+  const databaseUrl = (process.env.DATABASE_URL || '').trim();
   const supabaseUrl = (process.env.SUPABASE_URL || '').trim();
   const supabaseServiceRoleKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || '').trim();
+  const dbTable = (process.env.DB_TABLE || 'torrents').trim();
 
-  // 1. FAIL-FAST: Validación estricta si no es un modo DRY_RUN
+  if (!DB_TABLE_REGEX.test(dbTable)) {
+    throw new Error(
+      `🚨 FATAL ERROR: DB_TABLE "${dbTable}" is not a valid identifier. Use "torrents" or "schema.torrents" (letters, digits and underscores).`
+    );
+  }
+
+  // 1. Selección del backend y FAIL-FAST si no es un modo DRY_RUN
+  let dbBackend: DbBackend = 'dry-run';
   if (!dryRun) {
-    if (!supabaseUrl || !supabaseServiceRoleKey) {
+    if (databaseUrl) {
+      if (!isValidPostgresUrl(databaseUrl)) {
+        throw new Error(
+          '🚨 FATAL ERROR: DATABASE_URL is not a valid PostgreSQL connection string. ' +
+          'Expected postgresql://user:password@host:5432/dbname (Supabase, CockroachDB or your own server).'
+        );
+      }
+      dbBackend = 'postgres';
+    } else if (supabaseUrl || supabaseServiceRoleKey) {
+      if (!supabaseUrl || !supabaseServiceRoleKey) {
+        throw new Error(
+          '🚨 FATAL ERROR: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must both be set (legacy REST backend), ' +
+          'or provide DATABASE_URL instead.'
+        );
+      }
+      if (!isValidUrl(supabaseUrl)) {
+        throw new Error(
+          `🚨 FATAL ERROR: SUPABASE_URL "${supabaseUrl}" is not a valid HTTP/HTTPS URL.`
+        );
+      }
+      dbBackend = 'supabase';
+    } else {
       throw new Error(
-        '🚨 FATAL ERROR: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required when DRY_RUN is false. ' +
-        'Check your .env file or deployment variables.'
-      );
-    }
-
-    if (!isValidUrl(supabaseUrl)) {
-      throw new Error(
-        `🚨 FATAL ERROR: SUPABASE_URL "${supabaseUrl}" is not a valid HTTP/HTTPS URL.`
+        '🚨 FATAL ERROR: No database configured while DRY_RUN is false. ' +
+        'Set DATABASE_URL (PostgreSQL connection string: Supabase, CockroachDB or your own server) ' +
+        'or the legacy SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY. Check your .env file or deployment variables.'
       );
     }
   }
@@ -121,6 +192,13 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
 
   // 2. INMUTABILIDAD PROFUNDA: Congelamos el objeto raíz
   cachedConfig = Object.freeze({
+    dbBackend,
+    databaseUrl,
+    databaseSslCa: (process.env.DATABASE_SSL_CA || '').trim(),
+    databaseSslNoVerify: parseBoolean(process.env.DATABASE_SSL_NO_VERIFY, false),
+    dbTable,
+    dbWritePolicy: parseWritePolicy(process.env.DB_WRITE_POLICY),
+    dbBatchSize: Math.min(parseInteger(process.env.DB_BATCH_SIZE, 100, 1), 500),
     supabaseUrl,
     supabaseServiceRoleKey,
     targetCrawlers,
