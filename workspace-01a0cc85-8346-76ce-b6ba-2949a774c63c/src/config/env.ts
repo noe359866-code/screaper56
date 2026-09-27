@@ -28,7 +28,10 @@ const DEFAULT_CRAWLERS = Object.freeze([
   'nyaa',
   'wolftorrent',
   'sinsitio',
-  'dontorrent'
+  'dontorrent',
+  'rarbg',
+  'magnetdl',
+  'tokyotosho'
 ]) as readonly string[];
 
 const DEFAULT_CRAWLERS_SET = new Set(DEFAULT_CRAWLERS);
