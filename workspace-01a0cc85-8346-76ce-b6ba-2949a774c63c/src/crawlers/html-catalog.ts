@@ -132,9 +132,11 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
     this.resetRunState();
 
     const setup = this.mirrorSetup;
-    const base = setup
+    const resolved = setup
       ? await this.resolveMirror({ ...setup, fallback: setup.fallback ?? this.baseUrl })
       : this.baseUrl;
+    // Defaults such as 'https://site/' produced 'https://site//' Referers.
+    const base = resolved.replace(/\/+$/, '');
     this.baseUrl = base;
 
     const results: TorrentRecord[] = [];
@@ -201,7 +203,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
 
   private async crawlDetail(url: string): Promise<TorrentRecord[]> {
     try {
-      const html = await this.fetchHtml(url, { headers: { Referer: this.baseUrl } });
+      const html = await this.fetchHtml(url, { headers: { Referer: `${this.baseUrl.replace(/\/+$/, '')}/` } });
       this.metrics.add('details');
 
       const detail = await this.discoverDownloads(html, url);

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Crawler a ejecutar (all incluye las 13 fuentes)"
+        description: "Crawler a ejecutar (all incluye las 16 fuentes)"
         required: false
         default: "all"
         type: choice
@@ -25,6 +25,9 @@ on:
           - wolftorrent
           - sinsitio
           - dontorrent
+          - rarbg
+          - magnetdl
+          - tokyotosho
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
@@ -79,7 +82,7 @@ jobs:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner-os }}-playwright-
+            ${{ runner.os }}-playwright-
 
       # The apt packages are NOT part of the cache above: skipping this step on a
       # cache hit left the restored Chromium without libnss3/libatk and every

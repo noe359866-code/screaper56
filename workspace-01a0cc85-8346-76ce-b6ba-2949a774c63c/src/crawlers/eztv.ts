@@ -125,14 +125,19 @@ export class EztvCrawler extends BaseCrawler {
           break;
         }
 
+        let added = 0;
         for (const torrent of payload.torrents) {
           const record = this.mapApiTorrentToRecord(torrent, activeDomain);
           if (record && !uniqueHashes.has(record.info_hash)) {
             uniqueHashes.add(record.info_hash);
             results.push(record);
             this.metrics.add('records');
+            added++;
           }
         }
+        // Short page = last page; a page of only known hashes means the API
+        // ignored `page=` and would repeat itself.
+        if (added === 0 || payload.torrents.length < EZTV_API_PAGE_SIZE) break;
       }
       apiSuccess = true;
     } catch (error) {
@@ -318,6 +323,10 @@ export class EztvCrawler extends BaseCrawler {
     const episode = parsedEpisode ?? meta.episode ?? null;
 
     let magnetUrl = torrent.magnet_url || null;
+    const parsedApiMagnet = magnetUrl ? parseMagnetUri(magnetUrl) : null;
+    // Reject an API magnet that describes another hash.
+    if (parsedApiMagnet && parsedApiMagnet.infoHash !== infoHash) magnetUrl = null;
+    const trackers = parsedApiMagnet?.trackers.length ? parsedApiMagnet.trackers : this.defaultTrackers;
     if (!magnetUrl) {
       const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
       magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(fullTitle)}&${trackersQuery}`;
@@ -338,7 +347,7 @@ export class EztvCrawler extends BaseCrawler {
       magnetUrl,
       torrentFileUrl,
       sourceUrl,
-      trackers: this.defaultTrackers,
+      trackers,
       audio: langs.audio,
       subtitles: langs.subtitles,
       meta,
@@ -349,7 +358,7 @@ export class EztvCrawler extends BaseCrawler {
       seeders: parseCount(torrent.seeds),
       leechers: parseCount(torrent.peers),
       imdbId,
-      sourceTracker: this.defaultTrackers[0]
+      sourceTracker: trackers[0]
     });
   }
 }

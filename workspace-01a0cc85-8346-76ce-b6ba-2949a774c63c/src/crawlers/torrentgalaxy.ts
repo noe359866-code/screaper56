@@ -103,7 +103,9 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
           }
           this.log.debug(`Extracted ${added} new records from page ${page + 1}.`);
 
-          if (!records.length) {
+          // `added === 0` also catches mirrors that ignore `page=` and keep
+          // serving page 1: without it every endpoint burned maxPages requests.
+          if (!records.length || added === 0) {
             this.log.debug('No more records found. Moving to next endpoint.');
             break;
           }

@@ -144,6 +144,8 @@ export class YtsCrawler extends BaseCrawler {
               this.metrics.add('records');
             }
           }
+          // Fewer than `limit` movies = last page; skip the empty follow-up request.
+          if (movies.length < 50) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Error reading YTS page ${page} (${query}): ${describeError(error)}`);

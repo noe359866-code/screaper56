@@ -77,7 +77,7 @@ const REGEX_PREFIX_BRACKETS = /^\[[^\]]+\]\s*/;
 const REGEX_BOUNDARY = /(?:[\s._\-])(?:19\d{2}|20\d{2}|[sS]\d{1,2}|season|temporada|2160p|1080p|720p|480p|bluray|web-?dl|hdtv|dvdrip|latino|castellano|spanish|vose)\b/i;
 const REGEX_CLEAN_PUNCTUATION = /[._]/g;
 const REGEX_MULTIPLE_SPACES = /\s+/g;
-const REGEX_FILE_SIZE = /^(\d+(?:[.,]\d+)?)\s*([KMGT]?(?:i?B)?)$/i;
+const REGEX_FILE_SIZE = /^(\d{1,3}(?:[.,\s]\d{3})+(?:[.,]\d+)?|\d+(?:[.,]\d+)?)\s*([KMGT]?(?:i?B)?|bytes?)$/i;
 
 /** Canonical spelling for the media source, so `webdl`/`web-dl` do not split. */
 export function normalizeSource(raw: string): string {
@@ -247,11 +247,11 @@ export function parseSizeToBytes(sizeStr: string): number | null {
   const match = sizeStr.trim().match(REGEX_FILE_SIZE);
   if (!match) return null;
 
-  const value = Number(match[1].replace(',', '.'));
+  const value = parseLocaleNumber(match[1]);
   if (isNaN(value)) return null;
 
   // 'GiB'/'MiB' are binary units; 'GB'/'MB' are the same magnitudes here.
-  const unit = match[2].toUpperCase().replace('IB', 'B');
+  const unit = /^bytes?$/i.test(match[2]) ? 'B' : match[2].toUpperCase().replace('IB', 'B');
   switch (unit) {
     case 'TB':
     case 'T': return Math.round(value * 1099511627776); // 1024^4 (Exact math is slightly faster)
@@ -264,4 +264,22 @@ export function parseSizeToBytes(sizeStr: string): number | null {
     case 'B':
     default: return Math.round(value);
   }
+}
+
+/**
+ * "1,234.5" / "1.234,5" / "1 234" / "3,19" -> number. The last separator is the
+ * decimal mark only when followed by 1-2 digits or it is the only separator
+ * and not followed by exactly three digits.
+ */
+function parseLocaleNumber(raw: string): number {
+  const text = raw.replace(/\s+/g, '');
+  const lastSep = Math.max(text.lastIndexOf('.'), text.lastIndexOf(','));
+  if (lastSep === -1) return Number(text);
+  const decimals = text.length - lastSep - 1;
+  const separators = text.match(/[.,]/g) ?? [];
+  const mixed = new Set(separators).size > 1;
+  const isDecimal = mixed || separators.length === 1 ? decimals !== 3 || mixed : false;
+  if (!isDecimal) return Number(text.replace(/[.,]/g, ''));
+  const intPart = text.slice(0, lastSep).replace(/[.,]/g, '');
+  return Number(`${intPart}.${text.slice(lastSep + 1)}`);
 }

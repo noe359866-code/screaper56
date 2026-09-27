@@ -88,7 +88,11 @@ export function parseCount(value: unknown): number | null {
     return Math.floor(value);
   }
   if (typeof value === 'string') {
-    const normalized = value.replace(/[,\s]+/g, '');
+    const trimmed = value.trim();
+    // "1,234" / "1.234" / "1 234" are thousands separators, never decimals.
+    const normalized = /^\d{1,3}(?:[.,\s\u00a0]\d{3})+$/.test(trimmed)
+      ? trimmed.replace(/[.,\s\u00a0]/g, '')
+      : trimmed.replace(/[,\s]+/g, '');
     if (!/^\d+$/.test(normalized)) return null;
     const parsed = Number.parseInt(normalized, 10);
     return Number.isSafeInteger(parsed) ? parsed : null;
@@ -164,7 +168,8 @@ export function isBlockedTitle(title: unknown): boolean {
   if (typeof title !== 'string') return true;
   const text = title.trim();
   if (!text) return true;
-  return BLOCKED_TITLE_PATTERN.test(text);
+  // "Adult Swim" / "Young Adult" are mainstream titles, not adult content.
+  return BLOCKED_TITLE_PATTERN.test(text.replace(/\b(?:adult\s+swim|young\s+adult|adult\s+education)\b/gi, ' '));
 }
 
 /** Release quality shorthand derived from parsed title metadata. */

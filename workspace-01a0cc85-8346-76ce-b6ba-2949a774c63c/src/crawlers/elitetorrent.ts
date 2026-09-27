@@ -258,7 +258,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
       magnetLink = buildMagnetUri(infoHash, cleanTitle);
     }
 
-    const isSeries = url.includes('/series/') || /S\d{1,2}|Temporada|\b\d{1,2}[xX×]\d{1,3}\b/i.test(cleanTitle);
+    const isSeries = url.includes('/series/') || /\bS\d{1,2}(?:E\d{1,3})?\b|Temporada|\b\d{1,2}[xX×]\d{1,3}\b/i.test(cleanTitle);
     const defaultType: ContentType = isSeries ? 'series' : 'movie';
 
     const normalizedTitleForParsing = cleanTitle.replace(
@@ -266,9 +266,10 @@ export class EliteTorrentCrawler extends BaseCrawler {
       (_, season: string, episode: string) => `S${season.padStart(2, '0')}E${episode.padStart(2, '0')}`
     );
 
-    const context = dedupeStrings([normalizedTitleForParsing, calidadStr, formatoStr, ...spanishReleaseHints($)]).join(' ');
+    const releaseHints = spanishReleaseHints($);
+    const context = dedupeStrings([normalizedTitleForParsing, calidadStr, formatoStr, ...releaseHints]).join(' ');
     const meta = parseTorrentTitle(context, defaultType);
-    const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr, ...spanishReleaseHints($)]);
+    const hints = dedupeStrings(['elitetorrent', idiomaStr, calidadStr, formatoStr, ...releaseHints]);
     const langs = detectLanguages(cleanTitle, hints);
 
     // The ficha publishes an explicit language field. `detectLanguages` always
@@ -335,7 +336,9 @@ export function decodeAcortameString(raw: string): string {
   const initialRot = rot13(s);
   if (/^(magnet:|http:\/\/|https:\/\/)/i.test(initialRot)) return initialRot;
 
-  let current = s;
+  // URL-safe Base64 ("-" / "_", missing padding) is normalised first.
+  let current = s.replace(/-/g, '+').replace(/_/g, '/');
+  if (current.length % 4) current += '='.repeat(4 - (current.length % 4));
   for (let i = 0; i < 8; i++) {
     // Buffer.from(..., 'base64') never throws: without this guard the loop
     // happily decoded garbage eight times before giving up.

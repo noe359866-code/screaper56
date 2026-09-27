@@ -63,7 +63,13 @@ export function parseTorrentBuffer(buffer: Buffer): ParsedTorrentFile | null {
   }
   try {
     const root = parse();
-    if (pos !== buffer.length || !isDict(root) || !isDict(root.info) || !infoBytes) return null;
+    // Many servers append a newline/NULs after the root dict: tolerate
+    // trailing whitespace padding only, never trailing data.
+    for (let i = pos; i < buffer.length; i++) {
+      const b = buffer[i];
+      if (b !== 0x0a && b !== 0x0d && b !== 0x20 && b !== 0x09 && b !== 0x00) return null;
+    }
+    if (!isDict(root) || !isDict(root.info) || !infoBytes) return null;
     const info = root.info;
     // v2-only metainfo cannot be represented by our v1 BTIH schema.
     if (info['meta version'] === 2 && !Buffer.isBuffer(info.pieces)) return null;

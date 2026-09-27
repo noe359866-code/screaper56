@@ -199,7 +199,11 @@ export class Leech1337xCrawler extends BaseCrawler {
     else if (pageCategory.includes('anime')) defaultType = 'anime';
     else if (pageCategory.includes('documentar')) defaultType = 'documentary';
 
-    const title = row.title || parsedMagnet?.displayName || cleanText($('div.box-info-heading h1').text());
+    // Listing titles are truncated with "..." on long names; the detail heading
+    // or the magnet display name carries the full release name.
+    const heading = cleanText($('div.box-info-heading h1').first().text());
+    const truncated = /(?:\.\.\.|…)$/.test(row.title);
+    const title = (truncated ? heading || parsedMagnet?.displayName : null) || row.title || parsedMagnet?.displayName || heading;
     if (!title || isBlockedTitle(title)) return null;
 
     // Several front-ends hide the magnet behind a third-party download button
@@ -207,7 +211,7 @@ export class Leech1337xCrawler extends BaseCrawler {
     // a guess, so it is worth recovering before giving up on the page.
     if (!parsedMagnet?.infoHash) {
       const publishedHash = (detailsMap.get('infohash') || detailsMap.get('info hash') || '')
-        .match(/\b[0-9a-f]{40}\b/i)
+        .match(/\b([0-9a-f]{40})\b/i)
         || html.match(/infohash[^0-9a-fA-F]{0,40}([0-9a-f]{40})/i);
 
       if (!publishedHash) return null;

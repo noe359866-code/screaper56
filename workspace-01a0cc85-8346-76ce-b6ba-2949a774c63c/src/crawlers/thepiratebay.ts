@@ -183,9 +183,11 @@ export class ThePirateBayCrawler extends BaseCrawler {
             this.log.debug(`Scraping search term '${term}': ${searchUrl}`);
             const html = await this.fetchHtml(searchUrl);
             this.metrics.add('listings');
-            const added = this.collectHtmlRows(html, workingMirror, uniqueHashes, results);
+            const { rows } = this.collectHtmlRows(html, workingMirror, uniqueHashes, results);
 
-            if (!added) {
+            // Stop on an empty page, not on a page whose rows were already
+            // known from APiBay: that used to end pagination after page 1.
+            if (!rows) {
               this.log.debug(`No more results for '${term}' at page ${page}.`);
               break;
             }
@@ -208,15 +210,17 @@ export class ThePirateBayCrawler extends BaseCrawler {
     mirror: string,
     uniqueHashes: Set<string>,
     sink: TorrentRecord[]
-  ): number {
+  ): { rows: number; added: number } {
     const $ = cheerio.load(html);
     let added = 0;
+    let rows = 0;
 
     $('#searchResult tr:not(.header)').each((_, el) => {
       const row = $(el);
-      const titleEl = row.find('.detName a, a.detLink');
-      const magnetEl = row.find('a[href^="magnet:?xt="]');
+      const titleEl = row.find('.detName a, a.detLink').first();
+      const magnetEl = row.find('a[href^="magnet:?xt="]').first();
       if (!titleEl.length || !magnetEl.length) return;
+      rows++;
 
       const title = cleanText(titleEl.text());
       const magnetUrl = magnetEl.attr('href') || '';
@@ -258,7 +262,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       added++;
     });
 
-    return added;
+    return { rows, added };
   }
 
   public mapApibayItem(item: ApibayItem): TorrentRecord | null {
@@ -297,7 +301,9 @@ export class ThePirateBayCrawler extends BaseCrawler {
       infoHash,
       magnetUrl,
       trackers: this.defaultTrackers,
-      sourceUrl: `${this.baseUrl}/description.php?id=${item.id}`,
+      sourceUrl: item.id !== undefined && item.id !== null && String(item.id).trim()
+        ? `${this.baseUrl}/description.php?id=${encodeURIComponent(String(item.id))}`
+        : null,
       audio: langs.audio,
       subtitles: langs.subtitles,
       meta,

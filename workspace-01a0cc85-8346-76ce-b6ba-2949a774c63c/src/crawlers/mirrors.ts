@@ -192,33 +192,57 @@ export function rememberMirror(name: string, mirror: string, ttlMs = DEFAULT_CAC
   mirrorCache.set(name, { mirror, expiresAt: Date.now() + ttlMs });
 }
 
-/** Cheap guard against block pages, parked domains and challenge interstitials. */
+/**
+ * Cheap guard against block pages, parked domains and challenge interstitials.
+ *
+ * Only machine markers are searched in the whole document. Human phrases
+ * ("Access Denied", "Just a Moment", "Un momento") are also real movie titles
+ * and used to flag perfectly good listings as blocked, so they only count
+ * when they appear in the <title> or the page is nearly empty.
+ */
+const STRONG_BLOCK_MARKERS = [
+  'id="challenge-stage"',
+  'id="challenge-form"',
+  'cf-browser-verification',
+  '/cdn-cgi/challenge-platform',
+  'cf_chl_opt',
+  'cf-mitigated',
+  'ddos-guard.net/',
+  '__ddg_',
+  'domain is for sale',
+  'buy this domain'
+];
+const WEAK_BLOCK_PHRASES = [
+  'just a moment',
+  'un momento',
+  'checking your browser',
+  'attention required',
+  'domain for sale',
+  'this site can’t be reached',
+  'sitio bloqueado',
+  'acceso bloqueado',
+  '403 forbidden',
+  'access denied',
+  'request blocked',
+  'ddos-guard',
+  'verify you are human',
+  'under maintenance',
+  'pagina no encontrada',
+  'página no encontrada',
+  'website not available'
+];
+
 export function looksLikeBlockedPage(html: string): boolean {
-  const lower = html.slice(0, 20000).toLowerCase();
-  return (
-    lower.includes('just a moment') ||
-    lower.includes('un momento') ||
-    lower.includes('checking your browser') ||
-    lower.includes('id="challenge-stage"') ||
-    lower.includes('cf-mitigated') ||
-    lower.includes('attention required!') ||
-    lower.includes('domain is for sale') ||
-    lower.includes('domain for sale') ||
-    lower.includes('buy this domain') ||
-    lower.includes('this site can’t be reached') ||
-    lower.includes('sitio bloqueado') ||
-    lower.includes('acceso bloqueado') ||
-    lower.includes('403 forbidden') ||
-    lower.includes('access denied') ||
-    lower.includes('request blocked') ||
-    lower.includes('cf-browser-verification') ||
-    lower.includes('/cdn-cgi/challenge-platform') ||
-    lower.includes('ddos-guard') ||
-    lower.includes('verify you are human') ||
-    lower.includes('website is under maintenance') ||
-    lower.includes('pagina no encontrada') ||
-    lower.includes('website not available')
-  );
+  if (typeof html !== 'string' || !html) return false;
+  const lower = html.slice(0, 30000).toLowerCase();
+  if (STRONG_BLOCK_MARKERS.some(marker => lower.includes(marker))) return true;
+
+  const title = (lower.match(/<title[^>]*>([\s\S]{0,300}?)<\/title>/)?.[1] ?? '').trim();
+  if (title && WEAK_BLOCK_PHRASES.some(phrase => title.includes(phrase))) return true;
+
+  // Tiny bodies (no real listing) are judged on their whole visible text.
+  const text = lower.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  return text.length < 1500 && WEAK_BLOCK_PHRASES.some(phrase => text.includes(phrase));
 }
 
 /** Builds a validator that requires at least one marker and rejects block pages. */
