@@ -15,7 +15,7 @@ import {
   nextPaginationLink,
   parseCount,
   qualityOf,
-  sameHost
+  sameSite
 } from './support.js';
 
 interface ScrapedRow {
@@ -30,14 +30,7 @@ const EXCLUDED_CATEGORY = /\b(games?|music|apps?|applications?|software|e-?books
 
 /** Same mirror front-end, allowing www/apex but not a scheme or port change. */
 function sameSiteUrl(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return !left.username && !left.password && !right.username && !right.password &&
-      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sameSite(a, b);
 }
 
 /** Pagination must stay on the listing route, not just on the mirror host. */

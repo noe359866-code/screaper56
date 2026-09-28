@@ -228,9 +228,11 @@ const WEAK_BLOCK_PHRASES = [
   'ddos-guard',
   'verify you are human',
   'under maintenance',
-  'pagina no encontrada',
-  'página no encontrada',
   'website not available'
+  // Soft-404 wording ("página no encontrada", "not found") is deliberately NOT
+  // here: a single dead detail link served with HTTP 200 is a missing page,
+  // not a WAF block, and flagging it raised the terminal BlockedPageError that
+  // aborted whole runs.
 ];
 
 export function looksLikeBlockedPage(html: string): boolean {

@@ -11,7 +11,7 @@ import {
   cleanText,
   describeError,
   mapWithConcurrency,
-  sameHost
+  sameSite as sharedSameSite
 } from './support.js';
 
 /**
@@ -26,14 +26,7 @@ const RESERVED_SEGMENTS = new Set([
 ]);
 
 function sameSite(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return !left.username && !left.password && !right.username && !right.password &&
-      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sharedSameSite(a, b);
 }
 
 /**

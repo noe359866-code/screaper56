@@ -14,7 +14,7 @@ import {
   mapWithConcurrency,
   nextPaginationLink,
   qualityOf,
-  sameHost
+  sameSite
 } from './support.js';
 
 export interface EstrenosTorrentItem {
@@ -36,14 +36,7 @@ export interface EstrenosTorrentDetail {
 }
 
 function sameSiteUrl(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return !left.username && !left.password && !right.username && !right.password &&
-      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sameSite(a, b);
 }
 
 function isDetailPath(path: string): boolean {

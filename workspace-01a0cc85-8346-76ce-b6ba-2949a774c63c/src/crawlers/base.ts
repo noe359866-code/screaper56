@@ -152,9 +152,30 @@ export abstract class BaseCrawler {
   protected requestWithinBudget(config: RequestOptions = {}): RequestOptions {
     const remaining = this.deadline.remainingMs;
     if (remaining <= 0) throw new CrawlerDeadlineError(this.name);
+    return this.capTimeoutToBudget(config, remaining);
+  }
+
+  /** Clamp a request timeout to the remaining budget without ever throwing. */
+  private capTimeoutToBudget(config: RequestOptions, remaining = this.deadline.remainingMs): RequestOptions {
     if (!Number.isFinite(remaining)) return config;
     const timeout = typeof config.timeout === 'number' && config.timeout > 0 ? config.timeout : 20_000;
     return { ...config, timeout: Math.max(1, Math.min(timeout, remaining)) };
+  }
+
+  /**
+   * Budget check, courtesy pause, then the final timeout cap — in that order.
+   *
+   * The check runs BEFORE the pause on purpose. Pausing first meant a worker
+   * that had just passed `deadline.expired` could expire during a multi-second
+   * `CRAWLER_REQUEST_DELAY_MS` pause and throw `CrawlerDeadlineError`, which
+   * is terminal and discarded every record the run had already collected.
+   * A request that was admitted within budget now simply runs with whatever
+   * time is left (and fails as an ordinary per-item timeout, not a run abort).
+   */
+  private async admitRequest(config: RequestOptions = {}): Promise<RequestOptions> {
+    const admitted = this.requestWithinBudget(config);
+    await politePause();
+    return this.capTimeoutToBudget(admitted);
   }
 
   /**
@@ -167,8 +188,7 @@ export abstract class BaseCrawler {
     config: RequestOptions = {},
     options: { rejectBlocked?: boolean } = {}
   ): Promise<string> {
-    await politePause();
-    const response = await this.httpClient.get<string>(url, this.requestWithinBudget(config));
+    const response = await this.httpClient.get<string>(url, await this.admitRequest(config));
     if (typeof response.data !== 'string') {
       throw new Error(`Expected HTML from ${url} but received ${typeof response.data}`);
     }
@@ -181,8 +201,7 @@ export abstract class BaseCrawler {
 
   /** GET returning parsed JSON. */
   protected async fetchJson<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    await politePause();
-    const response = await this.httpClient.get<T>(url, this.requestWithinBudget({ responseType: 'json', ...config }));
+    const response = await this.httpClient.get<T>(url, await this.admitRequest({ responseType: 'json', ...config }));
     return response.data;
   }
 
@@ -194,8 +213,7 @@ export abstract class BaseCrawler {
    * mojibake, so the adapter must decode the bytes itself.
    */
   protected async fetchBytes(url: string, config: RequestOptions = {}): Promise<Buffer> {
-    await politePause();
-    return this.httpClient.getBuffer(url, this.requestWithinBudget(config));
+    return this.httpClient.getBuffer(url, await this.admitRequest(config));
   }
 
   /**
@@ -221,8 +239,7 @@ export abstract class BaseCrawler {
     referer?: string,
     extraHeaders: Record<string, string> = {}
   ): Promise<ParsedTorrentFile> {
-    await politePause();
-    const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, this.requestWithinBudget({
+    const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, await this.admitRequest({
       responseType: 'arraybuffer',
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
@@ -252,8 +269,7 @@ export abstract class BaseCrawler {
     referer?: string,
     extraHeaders: Record<string, string> = {}
   ): Promise<ParsedTorrentFile> {
-    await politePause();
-    const buffer = await this.httpClient.getBuffer(url, this.requestWithinBudget({
+    const buffer = await this.httpClient.getBuffer(url, await this.admitRequest({
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
       headers: {

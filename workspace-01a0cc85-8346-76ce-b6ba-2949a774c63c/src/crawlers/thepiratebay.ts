@@ -14,7 +14,7 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
-  sameHost
+  sameSite
 } from './support.js';
 
 interface ApibayItem {
@@ -30,13 +30,7 @@ interface ApibayItem {
 
 /** Same verified front-end, allowing `www.` without crossing scheme or port. */
 function sameSiteUrl(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sameSite(a, b);
 }
 
 /**

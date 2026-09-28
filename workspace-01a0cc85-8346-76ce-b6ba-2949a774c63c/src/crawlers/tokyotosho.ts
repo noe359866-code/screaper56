@@ -6,7 +6,6 @@ import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import {
-  absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
   describeError,
@@ -14,7 +13,7 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
-  sameHost
+  sameSiteHttpUrl as sharedSameSiteHttpUrl
 } from './support.js';
 
 interface TokyoRoute {
@@ -27,18 +26,7 @@ interface TokyoRoute {
 
 /** Keep source and metainfo URLs on the verified mirror; allow only www/apex variation. */
 function sameSiteHttpUrl(value: string, resolveAgainst: string, siteBase: string): string | null {
-  const candidate = absoluteHttpUrl(value, resolveAgainst);
-  if (!candidate) return null;
-  try {
-    const left = new URL(candidate);
-    const right = new URL(siteBase);
-    if (left.username || left.password) return null;
-    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, siteBase)
-      ? candidate
-      : null;
-  } catch {
-    return null;
-  }
+  return sharedSameSiteHttpUrl(value, resolveAgainst, siteBase);
 }
 
 function categoryCode(categoryText: string): string | null {

@@ -6,7 +6,6 @@ import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import {
-  absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
   describeError,
@@ -14,23 +13,12 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
-  sameHost
+  sameSiteHttpUrl as sharedSameSiteHttpUrl
 } from './support.js';
 
 /** Keep source and metainfo links on the verified mirror (www/apex is OK). */
 function sameSiteHttpUrl(value: string, base: string): string | null {
-  const candidate = absoluteHttpUrl(value, base);
-  if (!candidate) return null;
-  try {
-    const left = new URL(candidate);
-    const right = new URL(base);
-    if (left.username || left.password) return null;
-    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, base)
-      ? candidate
-      : null;
-  } catch {
-    return null;
-  }
+  return sharedSameSiteHttpUrl(value, base);
 }
 
 /**
