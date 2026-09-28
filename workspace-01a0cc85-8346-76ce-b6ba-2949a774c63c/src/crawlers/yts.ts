@@ -1,6 +1,6 @@
 import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
-import { normalizeInfoHash } from '../utils/magnet.js';
+import { buildMagnetUri, normalizeInfoHash } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
 import {
@@ -11,6 +11,7 @@ import {
   isBlockedTitle,
   parseCount,
   qualityOf,
+  sameHost,
 } from './support.js';
 
 interface YtsApiTorrent {
@@ -20,7 +21,7 @@ interface YtsApiTorrent {
   type?: string;
   is_repack?: string;
   video_codec?: string;
-  bit_depth?: string;
+  bit_depth?: string | number;
   audio_channels?: string;
   seeds?: number | string;
   peers?: number | string;
@@ -48,6 +49,8 @@ interface YtsApiResponse {
   };
 }
 
+const YTS_API_PAGE_SIZE = 50;
+
 /**
  * YTS: official v2 JSON API. Language comes from the API `language` field, so a
  * French or Japanese release is never relabelled as English by the generic
@@ -70,6 +73,22 @@ export function ytsLanguageHints(language: string): string[] {
   return [];
 }
 
+/** Resolve API-provided URLs only when they remain on the verified YTS mirror. */
+function trustedYtsUrl(value: string | undefined, mirror: string): string | null {
+  const resolved = absoluteHttpUrl(value, mirror);
+  if (!resolved) return null;
+  try {
+    const candidate = new URL(resolved);
+    const site = new URL(mirror);
+    if (candidate.username || candidate.password || site.username || site.password) return null;
+    return candidate.protocol === site.protocol && candidate.port === site.port && sameHost(resolved, mirror)
+      ? resolved
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 export class YtsCrawler extends BaseCrawler {
   public readonly name = 'yts';
   public baseUrl = process.env.YTS_BASE_URL || 'https://yts.mx';
@@ -84,15 +103,6 @@ export class YtsCrawler extends BaseCrawler {
     'https://yts.am',
     'https://yts.homes',
     'https://yts.nz'
-  ];
-
-  /** Trackers YTS ships in its own magnets. */
-  private readonly defaultTrackers = [
-    'udp://open.demonii.com:1337/announce',
-    'udp://tracker.openbittorrent.com:80',
-    'udp://tracker.opentrackr.org:1337/announce',
-    'udp://tracker.torrent.eu.org:451/announce',
-    'udp://tracker.leechers-paradise.org:6969/announce'
   ];
 
   private async getWorkingDomain(): Promise<string> {
@@ -125,6 +135,7 @@ export class YtsCrawler extends BaseCrawler {
 
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
+    let successfulListings = 0;
 
     // Popular + newest, plus explicit Spanish-language queries supported by the API.
     const queries = [
@@ -135,23 +146,54 @@ export class YtsCrawler extends BaseCrawler {
     ];
 
     for (const query of queries) {
+      const pageSignatures = new Set<string>();
       for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
-        const listUrl = `${activeDomain}/api/v2/list_movies.json?${query}&limit=50&page=${page}`;
+        const listUrl = `${activeDomain}/api/v2/list_movies.json?${query}&limit=${YTS_API_PAGE_SIZE}&page=${page}`;
 
         try {
           this.log.debug(`Fetching ${listUrl}`);
           const payload = await this.fetchJson<YtsApiResponse>(listUrl);
           if (payload?.status !== 'ok' || !payload.data) throw new Error('Invalid YTS API payload');
 
-          const movies = payload.data.movies ?? [];
-          if (!Array.isArray(movies)) throw new Error('Invalid YTS movies array');
+          const movies = payload.data.movies;
+          if (!Array.isArray(movies)) {
+            if (payload.data.movie_count === 0) {
+              this.metrics.add('listings');
+              successfulListings++;
+              break;
+            }
+            throw new Error('Invalid YTS movies array');
+          }
           this.metrics.add('listings');
+          successfulListings++;
 
           if (!movies.length) {
             this.log.debug(`No more movies on page ${page}.`);
             break;
           }
+
+          // Some mirrors ignore `page=`. Stop only when the raw movie/torrent
+          // identities repeat; filtered rows or overlap must not hide later pages.
+          const signatureParts = movies.map(movie => {
+            if (!movie || typeof movie !== 'object') return String(movie);
+            const torrentHashes = Array.isArray(movie.torrents)
+              ? movie.torrents.map(torrent => normalizeInfoHash(torrent?.hash ?? '') ?? torrent?.hash ?? '').sort()
+              : [];
+            return JSON.stringify([
+              movie.id ?? null,
+              movie.slug ?? null,
+              movie.url ?? null,
+              movie.title ?? null,
+              torrentHashes
+            ]);
+          }).sort();
+          const pageSignature = signatureParts.join('|');
+          if (pageSignatures.has(pageSignature)) {
+            this.log.debug(`YTS repeated page ${page} for ${query}; ending that route.`);
+            break;
+          }
+          pageSignatures.add(pageSignature);
 
           for (const movie of movies) {
             for (const record of this.mapMovie(movie, activeDomain)) {
@@ -162,13 +204,17 @@ export class YtsCrawler extends BaseCrawler {
             }
           }
           // Fewer than `limit` movies = last page; skip the empty follow-up request.
-          if (movies.length < 50) break;
+          if (movies.length < YTS_API_PAGE_SIZE) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Error reading YTS page ${page} (${query}): ${describeError(error)}`);
           break;
         }
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error('[yts] No usable catalogue responses. Check mirror availability, blocking and API schema.');
     }
 
     const deduplicated = this.deduplicateRecords(results);
@@ -178,7 +224,7 @@ export class YtsCrawler extends BaseCrawler {
 
   /** One API movie -> one record per published quality. */
   public mapMovie(movie: YtsApiMovie, activeDomain: string): TorrentRecord[] {
-    if (!movie?.torrents?.length) return [];
+    if (!movie || !Array.isArray(movie.torrents) || movie.torrents.length === 0) return [];
 
     const records: TorrentRecord[] = [];
     const nativeLanguage = (movie.language || '').toLowerCase().trim();
@@ -192,8 +238,16 @@ export class YtsCrawler extends BaseCrawler {
       }
     }
 
-    const sourceUrl = (movie.url ? absoluteHttpUrl(movie.url, activeDomain) : null)
-      || (movie.slug ? `${activeDomain}/movies/${movie.slug}` : `${activeDomain}/movie/${movie.id}`);
+    const publishedSourceUrl = trustedYtsUrl(movie.url, activeDomain);
+    const slug = typeof movie.slug === 'string' ? movie.slug.trim() : '';
+    const slugSourceUrl = /^[a-z0-9-]+$/i.test(slug)
+      ? `${activeDomain}/movies/${slug}`
+      : null;
+    const movieId = Number(movie.id);
+    const idSourceUrl = Number.isSafeInteger(movieId) && movieId > 0
+      ? `${activeDomain}/movie/${movieId}`
+      : null;
+    const sourceUrl = publishedSourceUrl ?? slugSourceUrl ?? idSourceUrl;
 
     const baseTitle = cleanText(movie.title_english || movie.title);
 
@@ -212,19 +266,19 @@ export class YtsCrawler extends BaseCrawler {
 
       const meta = parseTorrentTitle(torrentTitle, 'movie');
       const langs = detectLanguages(torrentTitle, langHints);
-      
+
       const audioLangs = [...langs.audio];
       // Do not turn a French/Japanese API release into English by default.
       if (nativeLanguage && !langHints.length) {
         audioLangs.length = 0;
       }
 
-      // YTS publishes `url` as a root-relative path; storing it verbatim made
-      // every `torrent_file_url` in the database unfetchable.
-      const torrentFileUrl = torrent.url ? absoluteHttpUrl(torrent.url, activeDomain) : null;
-
-      const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
-      const magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(torrentTitle)}&${trackersQuery}`;
+      // YTS publishes `url` as a root-relative path; resolve it only when it
+      // remains on the verified mirror, never to an off-site download host.
+      const torrentFileUrl = trustedYtsUrl(torrent.url, activeDomain);
+      // The API provides a hash, not tracker URLs. Keep the generated magnet
+      // tracker-free instead of inventing announce endpoints.
+      const magnetUrl = buildMagnetUri(infoHash, torrentTitle, [], { includeDefaultTrackers: false });
 
       const record = buildTorrentRecord({
         title: torrentTitle,
@@ -233,7 +287,7 @@ export class YtsCrawler extends BaseCrawler {
         magnetUrl,
         torrentFileUrl,
         sourceUrl,
-        trackers: this.defaultTrackers,
+        trackers: [],
         audio: audioLangs,
         subtitles: langs.subtitles,
         meta,
@@ -241,14 +295,14 @@ export class YtsCrawler extends BaseCrawler {
         episode: null,
         releaseGroup: 'YTS',
         quality: torrent.quality || qualityOf(meta),
-        codec: [torrent.video_codec, torrent.bit_depth === '10' ? '10-bit' : null]
+        codec: [torrent.video_codec, String(torrent.bit_depth) === '10' ? '10-bit' : null]
           .filter(Boolean).join(' ') || meta.codec,
         channels: torrent.audio_channels || meta.channels,
         sizeBytes: parseCount(torrent.size_bytes),
         seeders: parseCount(torrent.seeds),
         leechers: parseCount(torrent.peers),
         imdbId,
-        sourceTracker: this.defaultTrackers[0]
+        sourceTracker: null
       });
 
       if (record) records.push(record);

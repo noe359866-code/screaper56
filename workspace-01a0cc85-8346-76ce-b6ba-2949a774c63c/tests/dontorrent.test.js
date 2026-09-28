@@ -21,6 +21,14 @@ test('DonTorrent: catalogue rows give detail URLs, quality and category; noise i
   assert.equal(items[0].category, 'Películas');
   assert.equal(items[1].quality, '4K');
   assert.ok(!items.some(item => item.url.includes('ads.example')));
+
+  // The site sometimes alternates between apex and www in absolute hrefs.
+  const wwwItems = crawler.parseListing(
+    '<a href="https://www.dontorrent.moi/pelicula/31014/Poli-malo">Poli malo</a>',
+    `${base}/peliculas`
+  );
+  assert.equal(wwwItems.length, 1);
+  assert.equal(wwwItems[0].url, 'https://www.dontorrent.moi/pelicula/31014/Poli-malo');
 });
 
 test('DonTorrent: pagination follows the real ?p=N link on the same route only', () => {
@@ -28,6 +36,10 @@ test('DonTorrent: pagination follows the real ?p=N link on the same route only',
   const list = fixture('dontorrent-list');
 
   assert.equal(crawler.nextPage(list, `${base}/peliculas`), `${base}/peliculas?p=2`);
+  assert.equal(
+    crawler.nextPage('<a rel="next" href="https://www.dontorrent.moi/peliculas?p=2">Siguiente</a>', `${base}/peliculas`),
+    'https://www.dontorrent.moi/peliculas?p=2'
+  );
   // The "/series?p=2" link belongs to another route, and page 3 is not linked.
   assert.equal(crawler.nextPage(list, `${base}/peliculas?p=2`), null);
   assert.equal(crawler.nextPage('<a rel="next" href="https://ads.example/?p=2">Siguiente</a>', `${base}/peliculas`), null);
@@ -38,6 +50,7 @@ test('DonTorrent: only magnets, site/CDN .torrent files and same-site handlers a
     [MAGNET, MAGNET],
     ['/descargar/31014', `${base}/descargar/31014`],
     ['/torrents/poli-malo.torrent', `${base}/torrents/poli-malo.torrent`],
+    ['https://www.dontorrent.moi/torrents/poli-malo.torrent', 'https://www.dontorrent.moi/torrents/poli-malo.torrent'],
     ['https://doncdn.com/torrents/poli-malo.torrent', 'https://doncdn.com/torrents/poli-malo.torrent'],
     ['https://dontorrent.wtf/files/poli-malo.torrent', 'https://dontorrent.wtf/files/poli-malo.torrent']
   ];

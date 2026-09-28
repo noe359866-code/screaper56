@@ -28,6 +28,17 @@ interface ApibayItem {
   imdb?: string;
 }
 
+/** Same verified front-end, allowing `www.` without crossing scheme or port. */
+function sameSiteUrl(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * The Pirate Bay: APiBay JSON (video categories only) plus HTML mirrors for
  * Spanish-oriented searches. Sentinel rows ("No results returned") and
@@ -50,13 +61,16 @@ export class ThePirateBayCrawler extends BaseCrawler {
   ];
 
   /**
-   * `thepiratebay.org` has been a parked domain for years: it was silently used
-   * as `source_url` for every APiBay record. The pool's first live front-end is
-   * the honest default, replaced as soon as a mirror answers a probe.
+   * `thepiratebay.org` is intentionally not used as a default. This is merely
+   * the first candidate in the pool; source links are emitted only after a
+   * front-end passes the content probe.
    */
   public baseUrl = process.env.THEPIRATEBAY_BASE_URL || ThePirateBayCrawler.DEFAULT_MIRRORS[0];
 
   private readonly apibayBase = process.env.APIBAY_BASE_URL || 'https://apibay.org';
+
+  /** Only publish constructed detail URLs after a mirror passed its content probe. */
+  private webMirrorVerified = false;
 
   /**
    * Fichas HTML que se leen como máximo por ejecución. La fase HTML solo llega
@@ -64,15 +78,6 @@ export class ThePirateBayCrawler extends BaseCrawler {
    * `maxPages` grande se convierta en cientos de peticiones de ficha.
    */
   private detailBudget = 0;
-
-  private readonly defaultTrackers = [
-    'udp://tracker.opentrackr.org:1337/announce',
-    'udp://tracker.openbittorrent.com:6969/announce'
-  ];
-
-  private resolveUrl(target: string, base: string): string {
-    return absoluteHttpUrl(target, base) ?? target;
-  }
 
   private async getWorkingWebMirror(): Promise<string | null> {
     try {
@@ -102,6 +107,8 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
+    let successfulListings = 0;
+    this.webMirrorVerified = false;
 
     // ========================================================================
     // PHASE 0: resolve a live web front-end first. `source_url` is built from it
@@ -110,8 +117,9 @@ export class ThePirateBayCrawler extends BaseCrawler {
     const workingMirror = await this.getWorkingWebMirror();
     if (workingMirror) {
       this.baseUrl = workingMirror;
+      this.webMirrorVerified = true;
     } else {
-      this.log.warn('No reachable web mirror; APiBay records keep the default front-end URL.');
+      this.log.warn('No reachable web mirror; APiBay records will not get a constructed source URL.');
     }
 
     // ========================================================================
@@ -133,6 +141,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         const items = await this.fetchJson<ApibayItem[]>(apiUrl);
         if (!Array.isArray(items)) continue;
         this.metrics.add('listings');
+        successfulListings++;
 
         for (const item of items) {
           const record = this.mapApibayItem(item);
@@ -164,6 +173,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         );
         if (!Array.isArray(items)) continue;
         this.metrics.add('listings');
+        successfulListings++;
         for (const item of items) {
           const record = this.mapApibayItem(item);
           if (record && !uniqueHashes.has(record.info_hash)) {
@@ -173,6 +183,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
           }
         }
       } catch (error) {
+        this.metrics.add('listingErrors');
         this.log.debug(`Apibay search "${term}" failed: ${describeError(error)}`);
       }
     }
@@ -191,8 +202,9 @@ export class ThePirateBayCrawler extends BaseCrawler {
 
           try {
             this.log.debug(`Scraping search term '${term}': ${searchUrl}`);
-            const html = await this.fetchHtml(searchUrl);
+            const html = await this.fetchHtml(searchUrl, {}, { rejectBlocked: true });
             this.metrics.add('listings');
+            successfulListings++;
             const before = results.length;
             const { rows } = this.collectHtmlRows(html, workingMirror, uniqueHashes, results);
 
@@ -217,6 +229,13 @@ export class ThePirateBayCrawler extends BaseCrawler {
           }
         }
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error(
+        '[thepiratebay] No usable responses from APiBay or the web mirror. Check connectivity, ' +
+        'mirror availability and API response shape.'
+      );
     }
 
     const deduplicated = this.deduplicateRecords(results);
@@ -267,6 +286,8 @@ export class ThePirateBayCrawler extends BaseCrawler {
         row.find('a[href$=".torrent"], a[href*="/download"]').first().attr('href'),
         mirror
       );
+      const rawSourceUrl = absoluteHttpUrl(titleEl.attr('href') || '', mirror);
+      const sourceUrl = rawSourceUrl && sameSiteUrl(rawSourceUrl, mirror) ? rawSourceUrl : null;
 
       const record = buildTorrentRecord({
         title,
@@ -274,8 +295,8 @@ export class ThePirateBayCrawler extends BaseCrawler {
         infoHash: parsedMagnet.infoHash,
         magnetUrl,
         torrentFileUrl,
-        sourceUrl: this.resolveUrl(titleEl.attr('href') || '', mirror),
-        trackers: parsedMagnet.trackers.length ? parsedMagnet.trackers : this.defaultTrackers,
+        sourceUrl,
+        trackers: parsedMagnet.trackers,
         audio: langs.audio,
         subtitles: langs.subtitles,
         meta,
@@ -283,7 +304,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         sizeBytes: sizeMatch ? parseSizeToBytes(cleanText(sizeMatch[1])) : null,
         seeders: parseCount(seedersText),
         leechers: parseCount(leechersText),
-        sourceTracker: parsedMagnet.trackers[0] || this.defaultTrackers[0]
+        sourceTracker: parsedMagnet.trackers[0] ?? null
       });
 
       if (!record) return;
@@ -310,7 +331,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
   private torrentLink(href: string | undefined, mirror: string): string | null {
     if (!href) return null;
     const url = absoluteHttpUrl(href, mirror);
-    if (!url || !sameHost(url, mirror)) return null;
+    if (!url || !sameSiteUrl(url, mirror)) return null;
     try {
       const { pathname } = new URL(url);
       if (/\.torrent$/i.test(pathname) || /\/download(?:\.php)?(?:$|\/|\?)/i.test(pathname)) return url;
@@ -398,18 +419,22 @@ export class ThePirateBayCrawler extends BaseCrawler {
       }
     }
 
-    const trackersQuery = this.defaultTrackers.map((t) => `tr=${encodeURIComponent(t)}`).join('&');
-    const magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(cleanTitle)}&${trackersQuery}`;
+    // The API supplies a hash, not a tracker's announce URL. Keep the magnet
+    // valid without fabricating tracker metadata or a source page on an
+    // unverified front-end.
+    const magnetUrl = `magnet:?xt=urn:btih:${infoHash}&dn=${encodeURIComponent(cleanTitle)}`;
+    const itemId = String(item.id ?? '').trim();
+    const sourceUrl = this.webMirrorVerified && /^[1-9]\d{0,19}$/.test(itemId)
+      ? `${this.baseUrl.replace(/\/+$/, '')}/description.php?id=${encodeURIComponent(itemId)}`
+      : null;
 
     return buildTorrentRecord({
       title: cleanTitle,
       type: meta.type,
       infoHash,
       magnetUrl,
-      trackers: this.defaultTrackers,
-      sourceUrl: item.id !== undefined && item.id !== null && String(item.id).trim()
-        ? `${this.baseUrl}/description.php?id=${encodeURIComponent(String(item.id))}`
-        : null,
+      trackers: [],
+      sourceUrl,
       audio: langs.audio,
       subtitles: langs.subtitles,
       meta,
@@ -418,7 +443,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
       seeders: parseCount(item.seeders),
       leechers: parseCount(item.leechers),
       imdbId,
-      sourceTracker: this.defaultTrackers[0]
+      sourceTracker: null
     });
   }
 }

@@ -3,6 +3,7 @@ import { BaseCrawler } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { parseSizeToBytes } from '../utils/regex.js';
+import { detectLanguages } from '../utils/language.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import {
   absoluteHttpUrl,
@@ -18,10 +19,22 @@ import {
  * one of them is navigation, not a movie card.
  */
 const RESERVED_SEGMENTS = new Set([
-  'categoria', 'category', 'categorias', 'genero', 'generos', 'tag', 'tags',
-  'author', 'autor', 'page', 'feed', 'wp-content', 'wp-json', 'buscar',
-  'search', 'blog', 'noticias', 'contacto', 'dmca'
+  'categoria', 'category', 'categorias', 'categories', 'genero', 'generos', 'genre',
+  'tag', 'tags', 'author', 'autor', 'authors', 'page', 'pages', 'pagina', 'paginas',
+  'paged', 'feed', 'archive', 'wp-content', 'wp-json', 'buscar', 'search', 'blog',
+  'noticias', 'contacto', 'dmca'
 ]);
+
+function sameSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return !left.username && !left.password && !right.username && !right.password &&
+      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
 
 /**
  * A movie card permalink: `/movie/` or `/section/movie/`. Category, tag and
@@ -31,14 +44,14 @@ export function isMovieCardPath(pathname: string): boolean {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length === 0 || segments.length > 2) return false;
   if (!segments.every(segment => /^[a-z0-9-]+$/i.test(segment))) return false;
-  if (RESERVED_SEGMENTS.has(segments[0].toLowerCase())) return false;
+  if (segments.some(segment => RESERVED_SEGMENTS.has(segment.toLowerCase()))) return false;
   return true;
 }
 
 /** GranTorrent WordPress movie catalogue. Never follows ad/shortener links. */
 export class GranTorrentCrawler extends BaseCrawler {
   public readonly name = 'grantorrent';
-  public baseUrl = process.env.GRANTORRENT_BASE_URL || 'https://grantorrent.foo';
+  public baseUrl = process.env.GRANTORRENT_BASE_URL || '';
 
   public parseListing(html: string, base: string): string[] {
     const $ = cheerio.load(html);
@@ -49,7 +62,7 @@ export class GranTorrentCrawler extends BaseCrawler {
       if (!url) return;
       // `www.` and the apex domain are the same site: a strict `origin`
       // comparison dropped every card on mirrors that mix both.
-      if (!sameHost(url, base)) return;
+      if (!sameSite(url, base)) return;
       try {
         if (!isMovieCardPath(new URL(url).pathname)) return;
       } catch {
@@ -76,12 +89,12 @@ export class GranTorrentCrawler extends BaseCrawler {
       const cells = $(row).find('td');
       if (cells.length < 2) return;
       const language = cleanText(cells.eq(0).find('img').attr('alt') || cells.eq(0).text());
-      const audio = /castellano|español|spanish/i.test(language) ? ['es'] : /english|inglés/i.test(language) ? ['en'] : [];
+      const audio = detectLanguages(language, [], false).audio;
       const sizeText = cleanText($(row).text());
       const size = parseSizeToBytes(sizeText.match(/\d+(?:[.,]\d+)?\s*(?:GB|MB|GiB|MiB)/i)?.[0] ?? '');
       $(row).find('a[href]').each((_, a) => {
         const raw = $(a).attr('href') || '';
-        if (raw.startsWith('magnet:')) {
+        if (/^magnet:/i.test(raw)) {
           if (parseMagnetUri(raw)) downloads.push({ link: raw, audio, size });
           return;
         }
@@ -89,7 +102,7 @@ export class GranTorrentCrawler extends BaseCrawler {
         if (!link) return;
         // No redirect following to super-enlace or other unverified third
         // parties: only the site's own metainfo files are downloaded.
-        if (sameHost(link, url) && /\.torrent(?:\?.*)?$/i.test(link)) {
+        if (sameSite(link, url) && /\.torrent(?:\?.*)?$/i.test(link)) {
           downloads.push({ link, audio, size });
         } else if (/descargar/i.test(cleanText($(a).text()))) gated++;
       });
@@ -100,21 +113,35 @@ export class GranTorrentCrawler extends BaseCrawler {
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     if (!Number.isInteger(maxPages) || maxPages < 1) return [];
     this.resetRunState();
+    const hasConfiguredMirror = Boolean(
+      process.env.GRANTORRENT_BASE_URL?.trim() || process.env.GRANTORRENT_MIRRORS?.trim()
+    );
+    if (!hasConfiguredMirror) {
+      throw new Error(
+        '[grantorrent] No verified default domain is configured. Set GRANTORRENT_BASE_URL ' +
+        'or GRANTORRENT_MIRRORS before selecting this crawler.'
+      );
+    }
+
     const base = await this.resolveMirror({
-      defaults: ['https://grantorrent.foo'],
+      envPrefix: 'GRANTORRENT',
+      defaults: [],
       probes: [{ path: '/', label: 'WordPress movie cards', timeoutMs: 7000,
         validate: htmlMarkerValidator([/wp-content\/uploads\//i, /href=["'][^"']*\/categoria\//i]) }]
     });
     const candidates = new Set<string>();
+    const listingSignatures = new Set<string>();
     for (let page = 1; page <= maxPages && !this.deadline.expired; page++) {
       try {
         const html = await this.fetchHtml(page === 1 ? `${base}/` : `${base}/page/${page}/`,
           { headers: { Referer: `${base}/` } }, { rejectBlocked: true });
         this.metrics.add('listings');
         const links = this.parseListing(html, base);
-        const before = candidates.size;
+        if (!links.length) break;
+        const signature = [...links].sort().join('|');
+        if (listingSignatures.has(signature)) break;
+        listingSignatures.add(signature);
         for (const link of links) candidates.add(link);
-        if (!links.length || candidates.size === before) break;
       } catch (error) {
         this.metrics.add('listingErrors');
         this.log.warn(`Listing failed: ${describeError(error)}`);
@@ -130,7 +157,7 @@ export class GranTorrentCrawler extends BaseCrawler {
         const records: TorrentRecord[] = [];
         for (const download of detail.downloads) {
           try {
-            const magnet = download.link.startsWith('magnet:') ? parseMagnetUri(download.link) : null;
+            const magnet = /^magnet:/i.test(download.link) ? parseMagnetUri(download.link) : null;
             const metainfo = magnet ? null : await this.fetchTorrentMetainfoViaGet(download.link, url);
             if (!magnet && !metainfo) continue;
             const record = buildTorrentRecord({

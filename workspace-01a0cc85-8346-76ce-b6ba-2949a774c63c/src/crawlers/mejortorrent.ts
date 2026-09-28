@@ -15,10 +15,21 @@ import {
   mapWithConcurrency,
   nextPaginationLink,
   qualityOf,
-  sameOrigin,
+  sameHost,
 } from './support.js';
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
+
+/** Same site, allowing `www.` variation without accepting a scheme/port change. */
+function sameSiteHost(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
 
 /**
  * MejorTorrent: legacy `.eu` templates and WordPress-based mirrors.
@@ -108,12 +119,12 @@ export class MejorTorrentCrawler extends BaseCrawler {
     const detailUrls = new Set<string>();
 
     for (const cat of categories) {
-      // The old code built `maxPages` URLs per category up front and fetched
-      // them all: mirrors that ignore `/page/2` answer with page 1 again, so
-      // the same listing was requested up to `maxPages` times. Walking the
-      // pager the page publishes stops at the last real page.
+      // Walk only published pages. Fingerprints are per category: a page made
+      // entirely of releases already seen in another category must not stop
+      // this route before its own next page is visited.
       let url: string | null = `${mirror}${cat.path}`;
       const visited = new Set<string>();
+      let previousSignature = '';
 
       for (let page = 1; url && page <= maxPages; page++) {
         if (this.deadline.expired) break;
@@ -126,19 +137,23 @@ export class MejorTorrentCrawler extends BaseCrawler {
           const $ = cheerio.load(html);
           $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
 
-          const base = url;
-          const before = detailUrls.size;
+          const pageDetails = new Set<string>();
           $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
             const href = $(el).attr('href');
-            if (href && !/genre|year|quality/i.test(href)) {
-              detailUrls.add(this.resolveUrl(href, base));
-            }
+            if (!href || /genre|year|quality/i.test(href)) return;
+            const resolved = this.resolveUrl(href, url!);
+            // Listing markup occasionally contains promoted links to another
+            // site using a matching path; never crawl those as site details.
+            if (sameSiteHost(resolved, mirror)) pageDetails.add(resolved);
           });
 
-          url = nextPaginationLink(html, url);
-          // A listing with nothing new ends the category: the mirror is
-          // repeating a page or the category is exhausted.
-          if (detailUrls.size === before) break;
+          const signature = [...pageDetails].sort().join('|');
+          if (!signature || signature === previousSignature) break;
+          previousSignature = signature;
+          for (const detailUrl of pageDetails) detailUrls.add(detailUrl);
+
+          const nextUrl = nextPaginationLink(html, url);
+          url = nextUrl && sameSiteHost(nextUrl, mirror) ? nextUrl : null;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.debug(`Listing failed ${url}: ${describeError(error)}`);
@@ -205,6 +220,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
   // ==========================================================================
   private async crawlModernMeMode(mirror: string, maxPages: number): Promise<TorrentRecord[]> {
     const detailUrls = new Set<string>();
+    let previousSignature = '';
 
     for (let page = 1; page <= maxPages; page++) {
       if (this.deadline.expired) break;
@@ -214,9 +230,13 @@ export class MejorTorrentCrawler extends BaseCrawler {
         );
         if (!Array.isArray(posts) || !posts.length) break;
         this.metrics.add('listings');
-        for (const post of posts) {
-          if (post?.link) detailUrls.add(this.resolveUrl(post.link, mirror));
-        }
+        const pageLinks = posts
+          .map(post => post?.link ? this.resolveUrl(post.link, mirror) : '')
+          .filter((link): link is string => Boolean(link) && sameSiteHost(link, mirror));
+        const signature = [...new Set(pageLinks)].sort().join('|');
+        if (!signature || signature === previousSignature) break;
+        previousSignature = signature;
+        for (const link of pageLinks) detailUrls.add(link);
       } catch (error) {
         this.metrics.add('listingErrors');
         this.log.debug(`WP API page ${page} finished or failed: ${describeError(error)}`);
@@ -244,7 +264,8 @@ export class MejorTorrentCrawler extends BaseCrawler {
             if (parseMagnetUri(href)) {
               torrentUrls.add(href);
             } else if (/\.torrent(?:[?#]|$)/i.test(href)) {
-              torrentUrls.add(this.resolveUrl(href, url));
+              const resolved = this.resolveUrl(href, url);
+              if (isMejortorrentDownload(href, resolved, url)) torrentUrls.add(resolved);
             }
           }
         });
@@ -254,12 +275,19 @@ export class MejorTorrentCrawler extends BaseCrawler {
           // an advertising network's `.torrent` beacon can never be indexed.
           const matches = html.match(/https?:\/\/[^\s"'<>]+\.torrent(\?[^\s"'<>]*)?/gi) ?? [];
           for (const match of matches) {
-            if (sameOrigin(match, url)) torrentUrls.add(match);
+            if (sameSiteHost(match, url)) torrentUrls.add(match);
           }
         }
 
+        const encodedSlug = url.split('/').filter(Boolean).pop() || '';
+        let decodedSlug = encodedSlug;
+        try {
+          decodedSlug = decodeURIComponent(encodedSlug);
+        } catch {
+          // Keep the literal slug if the mirror published malformed %-escapes.
+        }
         const pageTitle = cleanText($('h1').first().text()) ||
-          cleanText(decodeURIComponent(url.split('/').filter(Boolean).pop() || '').replace(/-/g, ' '));
+          cleanText(decodedSlug.replace(/-/g, ' '));
         // Only the release itself decides: every page's menu says "Series" /
         // "Temporadas", so scanning the whole HTML labelled all movies as series.
         const defaultType: ContentType = /\/series?\//i.test(url) ||
@@ -342,14 +370,14 @@ export class MejorTorrentCrawler extends BaseCrawler {
 }
 
 /**
- * Accepts magnets, `.torrent` files and the site's own `/torrents/` handler.
- * Everything else (shorteners, ad networks, category links) is rejected before
- * a single byte is downloaded.
+ * Accepts magnets, same-site `.torrent` files and the site's own `/torrents/`
+ * handler. Everything else (shorteners, ad networks, category links) is
+ * rejected before a single byte is downloaded.
  */
 export function isMejortorrentDownload(href: string, resolved: string, pageUrl: string): boolean {
   if (parseMagnetUri(href)) return true;
+  if (!sameSiteHost(resolved, pageUrl)) return false;
   if (/\.torrent(?:[?#]|$)/i.test(href)) return true;
-  if (!sameOrigin(resolved, pageUrl)) return false;
   try {
     return /^\/torrents\//i.test(new URL(resolved).pathname);
   } catch {

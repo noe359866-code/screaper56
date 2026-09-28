@@ -6,11 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Crawler a ejecutar (all incluye las 18 fuentes)"
+        description: "Fuentes en español + grandes globales, una fuente o las 18"
         required: false
-        default: "all"
+        default: "priority"
         type: choice
         options:
+          - priority
           - all
           - pelispanda
           - leech1337x
@@ -108,7 +109,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          TARGET_CRAWLERS: ${{ github.event.inputs.crawlers || 'all' }}
+          TARGET_CRAWLERS: ${{ github.event.inputs.crawlers || 'priority' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
           MAX_PAGES: ${{ github.event.inputs.max_pages || '3' }}
           NODE_ENV: "production"

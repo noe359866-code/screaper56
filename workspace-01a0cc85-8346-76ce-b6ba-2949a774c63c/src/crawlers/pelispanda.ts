@@ -4,6 +4,7 @@ import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import {
+  absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
@@ -12,6 +13,7 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
+  sameHost
 } from './support.js';
 
 interface PelispandaItemSummary {
@@ -21,8 +23,38 @@ interface PelispandaItemSummary {
   type?: string;
 }
 
-interface PelispandaListResponse {
-  [key: string]: PelispandaItemSummary[] | undefined;
+/** Extract the list shape served by the API, distinguishing an empty list from a changed/error response. */
+function pelispandaListItems(data: unknown, category: string): PelispandaItemSummary[] | null {
+  let rawItems: unknown;
+  if (Array.isArray(data)) {
+    rawItems = data;
+  } else if (data && typeof data === 'object' && Array.isArray((data as Record<string, unknown>)[category])) {
+    rawItems = (data as Record<string, unknown>)[category];
+  } else {
+    return null;
+  }
+
+  const items = (rawItems as unknown[]).filter((item): item is PelispandaItemSummary =>
+    Boolean(item && typeof item === 'object' && typeof (item as { slug?: unknown }).slug === 'string' &&
+      (item as { slug: string }).slug.trim())
+  );
+  return (rawItems as unknown[]).length > 0 && items.length === 0 ? null : items;
+}
+
+/** Accept a metainfo URL only when it remains on the verified mirror site. */
+function sameSiteHttpUrl(value: string, base: string): string | null {
+  const candidate = absoluteHttpUrl(value, base);
+  if (!candidate) return null;
+  try {
+    const left = new URL(candidate);
+    const right = new URL(base);
+    if (left.username || left.password) return null;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, base)
+      ? candidate
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 interface PelispandaDownload {
@@ -104,19 +136,14 @@ export class PelispandaCrawler extends BaseCrawler {
           path: '/wp-json/wpreact/v1/movies?page=1',
           label: 'API wpreact',
           timeoutMs: 7000,
-          validate: (data: unknown) => {
-            if (Array.isArray(data)) return true;
-            if (data && typeof data === 'object') {
-              return Object.values(data as Record<string, unknown>).some(value => Array.isArray(value));
-            }
-            return false;
-          }
+          validate: (data: unknown) => pelispandaListItems(data, 'movies') !== null
         }
       ]
     });
 
     const results: TorrentRecord[] = [];
     const visitedSlugs = new Set<string>();
+    let successfulListings = 0;
 
     const categories: Array<{ path: string; type: CategoryType }> = [
       { path: 'movies', type: 'movie' },
@@ -130,25 +157,28 @@ export class PelispandaCrawler extends BaseCrawler {
 
         const listUrl = `${mirror}/wp-json/wpreact/v1/${category.path}?page=${page}`;
         try {
-          const data = await this.fetchJson<PelispandaListResponse | PelispandaItemSummary[]>(listUrl);
-          const rawItems = Array.isArray(data) ? data : (data?.[category.path] ?? []);
-          const items = Array.isArray(rawItems) ? rawItems : [];
+          const data = await this.fetchJson<unknown>(listUrl);
+          const items = pelispandaListItems(data, category.path);
+          if (!items) throw new Error(`Unexpected ${category.path} catalogue response shape`);
+          successfulListings++;
+          this.metrics.add('listings');
 
           if (!items.length) {
             this.log.debug(`No more items on ${category.path} page ${page}.`);
             break;
           }
 
-          this.metrics.add('listings');
           this.log.debug(`Found ${items.length} items on ${category.path} page ${page}.`);
 
-          const unvisitedItems = items.filter(item => {
-            if (!item?.slug) return false;
-            const key = `${category.type}:${item.slug}`;
-            if (visitedSlugs.has(key)) return false;
+          const unvisitedItems: PelispandaItemSummary[] = [];
+          for (const item of items) {
+            const slug = typeof item.slug === 'string' ? item.slug.trim() : '';
+            if (!slug) continue;
+            const key = `${category.type}:${slug}`;
+            if (visitedSlugs.has(key)) continue;
             visitedSlugs.add(key);
-            return true;
-          });
+            unvisitedItems.push({ ...item, slug });
+          }
 
           // A page whose items were all already visited means the API is
           // repeating its last page: `continue` used to spin up to
@@ -172,12 +202,15 @@ export class PelispandaCrawler extends BaseCrawler {
             }
           }
         } catch (error) {
-          const status = (error as { response?: { status?: number } })?.response?.status;
           this.metrics.add('listingErrors');
           this.log.warn(`Error reading ${category.path} page ${page}: ${describeError(error)}`);
-          if (status === 404) break;
+          break;
         }
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error('[pelispanda] No usable catalogue responses. Check mirror availability, blocking and API layout.');
     }
 
     const deduplicated = this.deduplicateRecords(results);
@@ -187,11 +220,18 @@ export class PelispandaCrawler extends BaseCrawler {
 
   private async crawlDetail(categoryType: CategoryType, slug: string, mirror: string): Promise<TorrentRecord[]> {
     const routeType = categoryType === 'movie' ? 'movie' : categoryType === 'series' ? 'serie' : 'anime';
-    const detailUrl = `${mirror}/wp-json/wpreact/v1/${routeType}/${slug}`;
+    const detailUrl = `${mirror}/wp-json/wpreact/v1/${routeType}/${encodeURIComponent(slug)}`;
 
-    const detail = await this.fetchJson<PelispandaDetail>(detailUrl);
-    if (!detail) return [];
+    const rawDetail = await this.fetchJson<unknown>(detailUrl);
+    if (!rawDetail || typeof rawDetail !== 'object' || Array.isArray(rawDetail)) {
+      throw new Error(`Unexpected ${routeType} detail response shape for ${slug}`);
+    }
+    const detail = rawDetail as PelispandaDetail;
+    if (typeof detail.title !== 'string' && !Array.isArray(detail.downloads) && !Array.isArray(detail.seasons)) {
+      throw new Error(`Unexpected ${routeType} detail response shape for ${slug}`);
+    }
     this.metrics.add('details');
+    const detailTitle = cleanText(detail.title) || cleanText(detail.slug) || cleanText(slug);
 
     const records: TorrentRecord[] = [];
 
@@ -206,7 +246,7 @@ export class PelispandaCrawler extends BaseCrawler {
 
     // 1. Películas / Descargas directas
     for (const download of detail.downloads ?? []) {
-      const fallbackTitle = cleanText(`${detail.title} ${download.quality ?? ''}`);
+      const fallbackTitle = cleanText(`${detailTitle} ${download.quality ?? ''}`);
       const record = await this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
       if (record) {
         records.push(record);
@@ -219,11 +259,14 @@ export class PelispandaCrawler extends BaseCrawler {
       const seasonNum = parseCount(season.season_number);
       for (const episode of season.episodes ?? []) {
         const episodeNum = parseCount(episode.episode_number);
-        const seasonStr = seasonNum !== null ? String(seasonNum).padStart(2, '0') : '01';
-        const episodeStr = episodeNum !== null ? String(episodeNum).padStart(2, '0') : '01';
+        // Keep absent numbering absent: defaulting missing values to S01E01
+        // caused unrelated episodes to collide on the same release metadata.
+        const seasonLabel = seasonNum !== null ? `S${String(seasonNum).padStart(2, '0')}` : '';
+        const episodeLabel = episodeNum !== null ? `E${String(episodeNum).padStart(2, '0')}` : '';
+        const episodeTag = seasonLabel || episodeLabel ? `${seasonLabel}${episodeLabel}` : '';
 
         for (const download of episode.downloads ?? []) {
-          const fallbackTitle = cleanText(`${detail.title} S${seasonStr}E${episodeStr} ${download.quality ?? ''}`);
+          const fallbackTitle = cleanText(`${detailTitle} ${episodeTag} ${download.quality ?? ''}`);
 
           const record = await this.buildRecord(
             download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId,
@@ -265,12 +308,18 @@ export class PelispandaCrawler extends BaseCrawler {
       // instead. The metainfo is downloaded so the hash is the real one —
       // a guessed hash would break every cross-source dedupe.
       if (!isPelispandaTorrentLink(rawLink, download.download_type)) return null;
+      const safeTorrentUrl = sameSiteHttpUrl(rawLink, sourceUrl);
+      if (!safeTorrentUrl) {
+        this.metrics.add('rejectedDownloadLinks');
+        this.log.debug(`Skipping metainfo URL outside the verified mirror: ${rawLink}`);
+        return null;
+      }
       try {
-        const parsedTorrent = await this.fetchTorrentMetainfoViaGet(rawLink, sourceUrl);
+        const parsedTorrent = await this.fetchTorrentMetainfoViaGet(safeTorrentUrl, sourceUrl);
         this.metrics.add('downloads');
         if (!parsedTorrent?.infoHash) return null;
         infoHash = parsedTorrent.infoHash;
-        torrentFileUrl = rawLink;
+        torrentFileUrl = safeTorrentUrl;
         metainfoName = parsedTorrent.name ?? null;
         metainfoTrackers = parsedTorrent.trackers ?? [];
         metainfoSize = parsedTorrent.sizeBytes ?? null;

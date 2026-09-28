@@ -1,6 +1,6 @@
 # Crawler asíncrono de metadatos torrent
 
-Node.js 20+ / TypeScript. Adaptadores independientes para **18 fuentes**, normalización de
+Node.js 20+ / TypeScript. Adaptadores independientes para **20 fuentes**, normalización de
 infohash BTIH, filtrado de idiomas y UPSERT en Supabase. Solo descarga el metainfo
 `.torrent` para calcular el hash; no descarga el contenido compartido por BitTorrent.
 Usa únicamente fuentes y contenidos que tengas autorización para consultar.
@@ -17,6 +17,7 @@ npm test
 
 # Comprobar una fuente concreta sin escribir en la base de datos:
 DRY_RUN=true TARGET_CRAWLERS=dontorrent MAX_PAGES=1 npm start
+DRY_RUN=true TARGET_CRAWLERS=priority MAX_PAGES=1 npm start
 DRY_RUN=true TARGET_CRAWLERS=wolftorrent,sinsitio MAX_PAGES=1 npm start
 ```
 
@@ -62,7 +63,9 @@ dominio con `<FUENTE>_BASE_URL`.
 | `rarbg` | `rarbg.ts` | **Nueva fuente.** Clones de RARBG (`rarbgproxy.to`): búsquedas `spanish/castellano/latino` y catálogos `/movies/`, `/tv/`, `/anime/`, `/documentaries/`; magnet, campo `Language:` y peers desde la ficha. XXX y categorías no-vídeo descartadas. Variables `RARBG_MIRRORS`, `RARBG_SEARCH`, `RARBG_CONCURRENCY`. |
 | `magnetdl` | `magnetdl.ts` | **Nueva fuente.** `magnetdl.co`: búsquedas `/<letra>/<slug>/` y `/download/movies/`, `/download/tv/`; el magnet se lee de la fila o de `/single/:id`. Variables `MAGNETDL_MIRRORS`, `MAGNETDL_SEARCH`, `MAGNETDL_CONCURRENCY`. |
 | `tokyotosho` | `tokyotosho.ts` | **Nueva fuente.** Tokyo Toshokan: filas `desc-top`/`desc-bot`, categorías Anime, Batch, Non-English y Drama más búsquedas; hentai/JAV/música/manga excluidos. Variables `TOKYOTOSHO_MIRRORS`, `TOKYOTOSHO_SEARCH`, `TOKYOTOSHO_CONCURRENCY`. |
-| `grantorrent` | `grantorrent.ts` | WordPress de películas en `grantorrent.foo`: tarjetas con póster (`/` o `/sección/`), detalle, idioma por fila e IMDb de la ficha. Solo infohash de magnet directo o `.torrent` del mismo sitio (se acepta `www` ↔ dominio raíz); enlaces de `super-enlace.com` se cuentan como protegidos y no se siguen. `GRANTORRENT_BASE_URL`, `GRANTORRENT_MIRRORS`. |
+| `t0rrenta` | `t0rrenta.ts` | **Nueva fuente.** Catálogo de portada y sitemap, fichas `/p/:id`, metainfo `.torrent` firmado descargado y validado para obtener el infohash real; conserva TMDB ID y variantes. Variables `T0RRENTA_BASE_URL`, `T0RRENTA_MIRRORS`, `T0RRENTA_CONCURRENCY`. |
+| `estrenostorrent` | `estrenostorrent.ts` | **Nueva fuente.** Catálogos `/peliculas/` y `/series/`, fichas `/online/...` o `/serie-online/:id`, y enlaces `.torrent` del mismo sitio validados con el parser Bencode. Variables `ESTRENOSTORRENT_BASE_URL`, `ESTRENOSTORRENT_MIRRORS`, `ESTRENOSTORRENT_CONCURRENCY`. |
+| `grantorrent` | `grantorrent.ts` | WordPress de películas. Requiere configurar un dominio verificado con `GRANTORRENT_BASE_URL` o `GRANTORRENT_MIRRORS`: el repositorio no incluye un host por defecto válido. Tarjetas con póster, detalle, idioma e IMDb; solo acepta magnets directos o `.torrent` del mismo sitio; no sigue acortadores. |
 | `dontorrent` | `dontorrent.ts` | **Nueva fuente.** Catálogos `/peliculas`, `/series`, `/documentales` con paginación `?p=N`; fichas `/pelicula/:id/:slug` y `/serie/:id/:id/:slug`; tabla de episodios `1x02`; búsqueda POST opcional a `/buscar`; lista de dominios oficiales `/dominios` como reserva de espejos. |
 | `rutracker` | `rutracker.ts` | **Nueva fuente (con sesión).** RuTracker.org: HTML en **Windows-1251**, sesión obligatoria (cookies exportadas o login con usuario/contraseña), búsquedas `tracker.php?nm=` y secciones `viewforum.php?f=`; el magnet se lee de `viewtopic.php?t=` y, si falta, del `dl.php?t=` autenticado. Variables en `.env.example`. |
 
@@ -185,7 +188,7 @@ DRY_RUN=true TARGET_CRAWLERS=rutracker MAX_PAGES=1 LOG_LEVEL=debug npm start
 | Variable | Predeterminado | Uso |
 |---|---|---|
 | `DRY_RUN` | `false` | `true`: no escribe en Supabase ni requiere sus credenciales. |
-| `TARGET_CRAWLERS` | `all` | Todas las fuentes o lista separada por comas; rechaza nombres desconocidos. |
+| `TARGET_CRAWLERS` | `priority` | Fuentes en español + principales globales; `all` ejecuta las 20 o pasa una lista separada por comas. |
 | `MAX_PAGES` | `3` | Máximo de páginas **por sección/búsqueda**, no total global. |
 | `REQUEST_TIMEOUT_MS` | `20000` | Timeout HTTP; las sondas de espejos usan límites más cortos. |
 | `CRAWLER_CONCURRENCY` | `2` | Crawlers simultáneos; cada adaptador limita sus propias fichas. |
@@ -201,6 +204,13 @@ DRY_RUN=true TARGET_CRAWLERS=rutracker MAX_PAGES=1 LOG_LEVEL=debug npm start
 | `CF_CLEARANCE_TTL_MS` | `1800000` | Vida útil local de una sesión `cf_clearance` cosechada. |
 | `CF_BROWSER_IDLE_CLOSE_MS` | `90000` | Inactividad tras la que se cierra el Chromium compartido. |
 
+El preset `priority` concentra fuentes en español (`dontorrent`, `elitetorrent`,
+`estrenostorrent`, `mejortorrent`, `pelispanda`, `sinsitio`, `t0rrenta`, `wolftorrent`)
+y fuentes globales principales (`leech1337x`, `torrentgalaxy`, `yts`, `eztv`,
+`thepiratebay`, `limetorrents`, `magnetdl`, `nyaa`, `rutracker`). `grantorrent`
+requiere configurar un dominio vigente y se ejecuta de forma individual o con
+`all`; `rarbg` y `tokyotosho` también siguen disponibles fuera del preset.
+
 ### Dominios y espejos
 
 Cada fuente acepta dos variables, con el nombre del crawler en mayúsculas:
@@ -213,11 +223,12 @@ Ejemplos: `DONTORRENT_MIRRORS`, `WOLFTORRENT_BASE_URL`, `SINSITIO_MIRRORS`,
 `NYAA_BASE_URL`, `ELITETORRENT_BASE_URL`, `MEJORTORRENT_MIRRORS`,
 `LIMETORRENTS_BASE_URL`, `TORRENTGALAXY_MIRRORS`, `THEPIRATEBAY_MIRRORS`,
 `APIBAY_BASE_URL`, `YTS_MIRRORS`, `EZTV_MIRRORS`, `LEECH1337X_MIRRORS`,
-`PELISPANDA_MIRRORS`.
+`PELISPANDA_MIRRORS`, `T0RRENTA_BASE_URL`, `ESTRENOSTORRENT_BASE_URL`.
 
 Concurrencia y búsquedas por fuente: `DONTORRENT_CONCURRENCY`,
 `ELITETORRENT_CONCURRENCY`, `MEJORTORRENT_CONCURRENCY`, `LIMETORRENTS_CONCURRENCY`,
-`LEECH1337X_CONCURRENCY`, `PELISPANDA_CONCURRENCY`, `DONTORRENT_SECTIONS`,
+`LEECH1337X_CONCURRENCY`, `PELISPANDA_CONCURRENCY`, `T0RRENTA_CONCURRENCY`,
+`ESTRENOSTORRENT_CONCURRENCY`, `DONTORRENT_SECTIONS`,
 `DONTORRENT_SEARCH`, `DONTORRENT_CDN_HOSTS`, `DONTORRENT_DISCOVER_MIRRORS`,
 `LIMETORRENTS_SEARCH`, `THEPIRATEBAY_SEARCH` y las variables `RUTRACKER_*`
 de la sección anterior (sesión, búsquedas, foros y concurrencia). Todas están
@@ -302,12 +313,32 @@ Instala las dependencias de sistema de Playwright **siempre** (`install-deps`), 
 el binario de Chromium venga de caché: el caché solo guarda `~/.cache/ms-playwright`,
 no los paquetes apt, y saltarse ese paso dejaba el navegador restaurado sin
 `libnss3`/`libatk` y todos los bypass fallaban.
-Permite elegir las 18 fuentes, incluidas DonTorrent y RuTracker; `all` las incluye todas.
-Instala dependencias con `npm ci`, compila y ejecuta las pruebas antes de crawlear.
+El schedule y la opción manual predeterminada usan `priority`: fuentes en español y
+fuentes globales principales (incluye RuTracker). Puedes escoger una fuente individual
+o `all` para las 20. Instala dependencias con `npm ci`, compila y ejecuta las pruebas
+antes de crawlear.
 Configura las claves de Supabase como secretos del repositorio para escritura real,
 y `RUTRACKER_USERNAME` + `RUTRACKER_PASSWORD` (o `RUTRACKER_COOKIE_JSON`) para la
-fuente autenticada; sin esos secretos, RuTracker falla con un error de sesión
-accionable y el job lo reporta como fuente fallida.
+fuente autenticada. El workflow ya pasa `secrets.RUTRACKER_COOKIE_JSON` a la variable
+de entorno del mismo nombre; no hace falta editar el YAML ni subir el JSON al repo.
+
+Para cargar el JSON de cookies en GitHub:
+
+1. Abre **Settings → Secrets and variables → Actions → New repository secret**.
+   Usa un secreto del repositorio; el workflow actual no declara un GitHub Environment.
+2. Usa exactamente `RUTRACKER_COOKIE_JSON` como nombre.
+3. Pega como valor el JSON exportado completo, por ejemplo
+   `[{"name":"bb_session","value":"...","domain":".rutracker.org"},{"name":"bb_guid","value":"...","domain":".rutracker.org"}]`.
+   Pega el contenido JSON literal: sin comillas extra alrededor y sin `@ruta/archivo`.
+4. Guarda el secreto y ejecuta el workflow manualmente con `priority`, `all` o
+   `rutracker`.
+
+Las cookies son credenciales de sesión: no las publiques en logs, issues ni commits;
+pueden caducar y habrá que reemplazarlas por una exportación nueva. Tanto `priority`
+como `all` incluyen RuTracker: sin una cookie válida o usuario/contraseña configurados,
+ese adaptador se marca como error y el job termina con código distinto de cero.
+Para probar sin tocar Supabase, marca `dry_run` o selecciona `rutracker` y configura
+`DRY_RUN=true` localmente.
 
 ## Diagnóstico de extracción (sin Supabase)
 
@@ -315,7 +346,7 @@ Desde la carpeta que contiene `package.json`:
 
 ```bash
 npm ci
-npm run diagnose                    # los 18 adaptadores, una página por ruta
+npm run diagnose                    # los 20 adaptadores, una página por ruta
 npm run diagnose -- --spanish        # DonTorrent, MejorTorrent, EliteTorrent, Pelispanda, Wolf y Sinsitio
 npm run diagnose -- dontorrent nyaa  # selección explícita
 DIAGNOSE_TIMEOUT_MS=180000 npm run diagnose -- --spanish
@@ -375,11 +406,11 @@ Pelispanda, MagnetDL, RARBG y WolfTorrent no continúan con un espejo que no hay
 pasado la sonda de contenido; no intentan resolver CAPTCHAs interactivos ni saltar
 las restricciones de descarga.
 
-**GranTorrent:** la ficha examinada (`/icefall/`) ofrece actualmente `Descargar`
-mediante un acortador externo opaco, no un magnet ni un hash verificable. Por
-ello, si todas las fichas del runner son así, `grantorrent` falla con
-`No verified infohash` y el contador `gated`; **no inserta registros inventados**.
-Prueba local sin escrituras: `npm run diagnose -- grantorrent`.
+**GranTorrent:** no hay un dominio predeterminado verificado ni se ha confirmado
+la disponibilidad o plantilla actual del sitio. Configura `GRANTORRENT_BASE_URL`
+o `GRANTORRENT_MIRRORS` antes de ejecutarlo o diagnosticarlo. Si una ficha solo
+publica un acortador opaco, el adaptador la cuenta como `gated` y no inventa un
+magnet ni un hash.
 
 ### Control de errores e identificación de torrents
 

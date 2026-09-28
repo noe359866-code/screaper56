@@ -14,7 +14,24 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
+  sameHost
 } from './support.js';
+
+/** Keep source and metainfo links on the verified mirror (www/apex is OK). */
+function sameSiteHttpUrl(value: string, base: string): string | null {
+  const candidate = absoluteHttpUrl(value, base);
+  if (!candidate) return null;
+  try {
+    const left = new URL(candidate);
+    const right = new URL(base);
+    if (left.username || left.password) return null;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, base)
+      ? candidate
+      : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Nyaa: anime torrent lists. A category or a search term is a discovery hint,
@@ -43,10 +60,6 @@ export class NyaaCrawler extends BaseCrawler {
   constructor() {
     super();
     this.baseUrl = process.env.NYAA_BASE_URL || NyaaCrawler.DEFAULT_MIRRORS[0];
-  }
-
-  private resolveUrl(target: string, base: string): string {
-    return absoluteHttpUrl(target, base) ?? target;
   }
 
   private async getWorkingMirror(): Promise<string> {
@@ -85,6 +98,7 @@ export class NyaaCrawler extends BaseCrawler {
     // Endpoints run in parallel, pages of one endpoint run in order: niche
     // searches ("castellano") often have a single page, and fetching pages
     // 2..N blindly in parallel wasted most of the listing requests.
+    let usableListingPages = 0;
     const nestedRecords = await mapWithConcurrency(
       queryEndpoints,
       this.concurrency,
@@ -97,7 +111,13 @@ export class NyaaCrawler extends BaseCrawler {
           const url = `${mirror}${endpoint}${separator}p=${page}`;
           try {
             this.log.debug(`Fetching anime catalog: ${url}`);
-            const html = await this.fetchHtml(url);
+            const html = await this.fetchHtml(url, {}, { rejectBlocked: true });
+            const $ = cheerio.load(html);
+            if ($('table.torrent-list').length === 0) {
+              throw new Error('Expected table.torrent-list in Nyaa catalogue response');
+            }
+            const pageRowCount = $('table.torrent-list tbody tr').length;
+            usableListingPages++;
             this.metrics.add('listings');
             const rows = this.parseRows(html, url, mirror, endpoint);
             let added = 0;
@@ -108,8 +128,10 @@ export class NyaaCrawler extends BaseCrawler {
               added++;
             }
             this.metrics.add('records', added);
-            // Nyaa pages hold 75 rows; a short page is the last one.
-            if (added === 0 || rows.length < 75) break;
+            // Nyaa pages hold 75 source rows. Count before filtering invalid
+            // magnets or non-video categories; otherwise a full mixed page can
+            // look short and hide eligible releases on the next page.
+            if (pageRowCount < 75) break;
           } catch (error) {
             this.metrics.add('listingErrors');
             this.log.warn(`Failed fetching ${url}: ${describeError(error)}`);
@@ -119,6 +141,10 @@ export class NyaaCrawler extends BaseCrawler {
         return collected;
       }
     );
+
+    if (usableListingPages === 0) {
+      throw new Error('[nyaa] No usable catalogue responses. Check mirror availability, blocking and page layout.');
+    }
 
     const allRecords = nestedRecords.flat();
     const deduplicated = this.deduplicateRecords(allRecords);
@@ -139,8 +165,8 @@ export class NyaaCrawler extends BaseCrawler {
     // Hints dinámicos basados en la consulta/endpoint de búsqueda
     const hints: string[] = ['nyaa'];
     if (endpoint.includes('1_2')) hints.push('sub_en');
-    if (/spanish|castellano/i.test(endpoint)) hints.push('castellano');
-    if (/latino/i.test(endpoint)) hints.push('latino');
+    // q=spanish/latino/castellano are search hints, not proof that a release
+    // has that language as audio; title metadata remains the audio source.
     // 'multi' alone matched no subtitle pattern, so MultiSubs searches were
     // silently losing their only language evidence.
     if (/multisub|multi[+\s_-]*sub/i.test(endpoint)) hints.push('multisubs');
@@ -155,12 +181,19 @@ export class NyaaCrawler extends BaseCrawler {
       const titleAnchor = tds.eq(1).find('a[href*="/view/"]:not([href*="#"])').first();
       const title = cleanText(titleAnchor.attr('title') || titleAnchor.text());
       const viewHref = titleAnchor.attr('href') || '';
-      const magnetHref = tds.eq(2).find('a[href^="magnet:"]').attr('href');
+      let magnetHref: string | null = null;
+      let parsedMagnet: ReturnType<typeof parseMagnetUri> = null;
+      for (const element of tds.eq(2).find('a[href]').toArray()) {
+        const href = $(element).attr('href') || '';
+        if (!/^magnet:/i.test(href)) continue;
+        const candidate = parseMagnetUri(href);
+        if (!candidate?.infoHash) continue;
+        magnetHref = href;
+        parsedMagnet = candidate;
+        break;
+      }
 
-      if (!title || !magnetHref || isBlockedTitle(title)) return;
-
-      const parsedMagnet = parseMagnetUri(magnetHref);
-      if (!parsedMagnet?.infoHash) return;
+      if (!title || !parsedMagnet?.infoHash || isBlockedTitle(title)) return;
 
       // Nyaa publishes its category in the icon title of the first cell
       // ("Anime - English-translated", "Live Action - ..."). A `c=0_0` search
@@ -169,20 +202,33 @@ export class NyaaCrawler extends BaseCrawler {
       // Nyaa also indexes audio, books, software and pictures. A `c=0_0` search
       // spans every one of them, and the schema only stores video, so those
       // rows are dropped instead of being filed as anime releases.
-      if (/audio|literature|software|pictures/i.test(categoryLabel)) return;
+      if (/audio|literature|software|pictures|games?|other/i.test(categoryLabel)) return;
       const contentType: 'anime' | 'movie' = /^live\s*action/i.test(categoryLabel) ? 'movie' : 'anime';
 
       const meta = parseTorrentTitle(title, contentType);
       const langs = detectLanguages(title, hints, false);
-      const torrentHref = tds.eq(2).find('a[href*="/download/"]').attr('href');
+      let torrentFileUrl: string | null = null;
+      for (const element of tds.eq(2).find('a[href]').toArray()) {
+        const candidate = sameSiteHttpUrl($(element).attr('href') || '', mirror);
+        if (!candidate) continue;
+        try {
+          if (/^\/download\/.+\.torrent$/i.test(new URL(candidate).pathname)) {
+            torrentFileUrl = candidate;
+            break;
+          }
+        } catch {
+          /* Invalid URL: ignore this download anchor and keep checking. */
+        }
+      }
 
+      const trustedViewUrl = viewHref ? sameSiteHttpUrl(viewHref, mirror) : null;
       const record = buildTorrentRecord({
         title,
         type: contentType,
         infoHash: parsedMagnet.infoHash,
         magnetUrl: magnetHref,
-        torrentFileUrl: torrentHref ? this.resolveUrl(torrentHref, sourceUrl) : null,
-        sourceUrl: viewHref ? this.resolveUrl(viewHref, sourceUrl) : sourceUrl,
+        torrentFileUrl,
+        sourceUrl: trustedViewUrl ?? sourceUrl,
         trackers: parsedMagnet.trackers,
         audio: langs.audio,
         subtitles: langs.subtitles,
@@ -191,7 +237,8 @@ export class NyaaCrawler extends BaseCrawler {
         sizeBytes: parseSizeToBytes(cleanText(tds.eq(3).text())),
         seeders: parseCount(tds.eq(5).text()),
         leechers: parseCount(tds.eq(6).text()),
-        sourceTracker: parsedMagnet.trackers[0] || 'http://nyaa.tracker.wf:7777/announce'
+        // The row magnet is the source of truth; do not invent a tracker when it omits `tr=`.
+        sourceTracker: parsedMagnet.trackers[0] ?? null
       });
 
       if (record) records.push(record);

@@ -1,7 +1,8 @@
 import * as cheerio from 'cheerio';
 import { readFileSync } from 'node:fs';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, MAX_TORRENT_BYTES } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
+import { ParsedTorrentFile, parseTorrentBuffer } from '../utils/bencode2.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages, hasValidLanguageRelease } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
@@ -15,6 +16,7 @@ import {
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
+  politePause,
   qualityOf
 } from './support.js';
 
@@ -110,6 +112,36 @@ export class RutrackerAuthError extends Error {
     super(message);
     this.name = 'RutrackerAuthError';
   }
+}
+
+/** Raised for HTTP 429 or an explicit rate-limit page; the crawl stops immediately. */
+export class RutrackerRateLimitError extends Error {
+  constructor(public readonly url: string) {
+    super(`RuTracker rate limit reached for ${url}; stopping this run without bypassing it.`);
+    this.name = 'RutrackerRateLimitError';
+  }
+}
+
+const RATE_LIMIT_PATTERN =
+  /too many requests|rate limit|request limit exceeded|слишком много запрос|частые запросы/i;
+
+function responseStatus(error: unknown): number | null {
+  if (!error || typeof error !== 'object') return null;
+  const status = (error as { response?: { status?: unknown } }).response?.status;
+  return typeof status === 'number' ? status : null;
+}
+
+function responseBody(error: unknown): string {
+  if (!error || typeof error !== 'object') return '';
+  const body = (error as { response?: { data?: unknown } }).response?.data;
+  if (Buffer.isBuffer(body)) return decodeHtmlBody(body);
+  if (typeof body === 'string') return body;
+  if (body instanceof ArrayBuffer) return decodeHtmlBody(Buffer.from(body));
+  return '';
+}
+
+function looksLikeRateLimitPage(html: string): boolean {
+  return Boolean(html) && RATE_LIMIT_PATTERN.test(html.slice(0, 4096));
 }
 
 // ============================================================================
@@ -216,6 +248,33 @@ export interface RutrackerCookieExport {
  * a raw `Cookie:` header string, or the JSON array exported by a browser
  * extension (entries from other domains are ignored, and expired ones dropped).
  */
+const RUTRACKER_COOKIE_ROOTS = ['rutracker.org', 'rutracker.net', 'rutracker.nl', 'rutracker.me', 'rutracker.cc'] as const;
+
+function isRutrackerCookieDomain(domain: string): boolean {
+  const normalized = domain.trim().toLowerCase().replace(/^\.+/, '').replace(/\.+$/, '');
+  return RUTRACKER_COOKIE_ROOTS.some(root => normalized === root || normalized.endsWith(`.${root}`));
+}
+
+function isSafeCookiePair(name: string, value: string): boolean {
+  // Cookie names are HTTP tokens; values must not be able to inject another
+  // header or cookie pair when placed into Axios' Cookie header.
+  return /^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/.test(name) && !/[;\x00-\x1F\x7F]/.test(value);
+}
+
+/** Resolve only URLs on the page's exact origin before attaching account cookies. */
+function sameOriginHttpUrl(value: string, base: string): string | null {
+  const resolved = absoluteHttpUrl(value, base);
+  if (!resolved) return null;
+  try {
+    const target = new URL(resolved);
+    const origin = new URL(base);
+    if (target.username || target.password || origin.username || origin.password) return null;
+    return target.origin === origin.origin ? resolved : null;
+  } catch {
+    return null;
+  }
+}
+
 export function parseCookieJar(raw: string, now = Date.now()): [string, string][] {
   if (!raw || typeof raw !== 'string') return [];
   const trimmed = raw.trim();
@@ -233,23 +292,32 @@ export function parseCookieJar(raw: string, now = Date.now()): [string, string][
     const pairs: [string, string][] = [];
     for (const entry of parsed as RutrackerCookieExport[]) {
       if (!entry || typeof entry !== 'object') continue;
-      const { name, value } = entry as RutrackerCookieExport;
-      if (typeof name !== 'string' || !name.trim()) continue;
-      if (typeof value !== 'string' || !value) continue;
+      const { name, value, domain } = entry as RutrackerCookieExport;
+      if (typeof name !== 'string' || typeof value !== 'string' || !value) continue;
+      const cleanName = name.trim();
+      if (!isSafeCookiePair(cleanName, value)) continue;
+      // Browser exports can include cookies for every open site. Never forward
+      // unrelated credentials to the tracker, even if the user pasted a full jar.
+      if (typeof domain === 'string' && domain.trim() && !isRutrackerCookieDomain(domain)) continue;
       // A session cookie already expired is worse than no cookie: it triggers a
       // "please log in" page that looks like a template change.
       const expires = typeof entry.expirationDate === 'number' ? entry.expirationDate * 1000 : null;
       if (expires !== null && expires <= now) continue;
-      pairs.push([name.trim(), value]);
+      pairs.push([cleanName, value]);
     }
     return pairs;
   }
 
-  return trimmed
-    .split(/;\s*/)
-    .map(pair => pair.split('='))
-    .filter(([name, value]) => name && value)
-    .map(([name, value]) => [name.trim(), value.trim()] as [string, string]);
+  const pairs: [string, string][] = [];
+  for (const rawPair of trimmed.split(/;\s*/)) {
+    const separator = rawPair.indexOf('=');
+    if (separator <= 0) continue;
+    const name = rawPair.slice(0, separator).trim();
+    const value = rawPair.slice(separator + 1).trim();
+    if (!value || !isSafeCookiePair(name, value)) continue;
+    pairs.push([name, value]);
+  }
+  return pairs;
 }
 
 /** Serialises the jar into a `Cookie:` header value. */
@@ -270,7 +338,7 @@ export function absorbSetCookie(jar: Map<string, string>, setCookie: unknown): s
     if (eq <= 0) continue;
     const name = pair.slice(0, eq).trim();
     const value = pair.slice(eq + 1).trim();
-    if (!name) continue;
+    if (!isSafeCookiePair(name, value)) continue;
     if (/^(?:expires|path|domain|max-age|secure|httponly|samesite)$/i.test(name)) continue;
     jar.set(name, value);
     stored.push(name);
@@ -280,14 +348,15 @@ export function absorbSetCookie(jar: Map<string, string>, setCookie: unknown): s
 
 /** True when the jar holds the cookies a logged-in RuTracker session needs. */
 export function isSessionCookieJar(jar: ReadonlyMap<string, string>): boolean {
-  return jar.has('bb_session') || jar.has('bb_data');
+  return Boolean(jar.get('bb_session') || jar.get('bb_data'));
 }
 
-/** True when a rendered page shows the "log out" control of a logged-in user. */
-export function looksLoggedIn(html: string, username = ''): boolean {
+/** True when a rendered page shows an explicit authenticated account control. */
+export function looksLoggedIn(html: string, _username = ''): boolean {
   if (typeof html !== 'string' || !html) return false;
-  if (/login\.php\?logout=1/i.test(html) || /logged-in-username/i.test(html)) return true;
-  return username.length > 2 && html.includes(username);
+  // Merely seeing the configured username is not proof of authentication: it
+  // may still be echoed in a login form or an old topic post.
+  return /login\.php\?logout=1/i.test(html) || /logged-in-username/i.test(html);
 }
 
 /** Map a RuTracker section title onto the project's content types. */
@@ -398,8 +467,23 @@ export class RutrackerCrawler extends BaseCrawler {
     const raw = (process.env.RUTRACKER_ROUTES || '')
       .split(/[,\n]+/).map(value => value.trim()).filter(Boolean);
     for (const path of raw) {
-      const url = /^https?:\/\//i.test(path) ? path : `${base}${path.startsWith('/') ? '' : '/'}${path}`;
-      routes.push({ url, type: 'movie', label: `ruta ${path}` });
+      let routeUrl: URL;
+      try {
+        routeUrl = new URL(path, `${base}/`);
+      } catch {
+        throw new Error('[rutracker] Invalid RUTRACKER_ROUTES entry.');
+      }
+      // These requests carry the account's Cookie header. An absolute custom
+      // route must therefore stay on the selected mirror's exact origin.
+      const mirrorUrl = new URL(base);
+      if (
+        routeUrl.origin !== mirrorUrl.origin ||
+        routeUrl.username || routeUrl.password ||
+        mirrorUrl.username || mirrorUrl.password
+      ) {
+        throw new Error('[rutracker] Refusing cross-origin RUTRACKER_ROUTES entries and credentialed URLs.');
+      }
+      routes.push({ url: routeUrl.href, type: 'movie', label: `ruta ${path}` });
     }
 
     const forums = (process.env.RUTRACKER_FORUMS || '')
@@ -499,6 +583,7 @@ export class RutrackerCrawler extends BaseCrawler {
         this.log.warn('Configured RuTracker cookies are no longer valid; logging in again.');
         this.cookies.delete('bb_session');
       } catch (error) {
+        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
         this.log.warn(`Session check failed for ${indexUrl}: ${describeError(error)}`);
       }
     }
@@ -543,10 +628,21 @@ export class RutrackerCrawler extends BaseCrawler {
         headers: this.authHeaders(base, `${base}${RUTRACKER_FORUM_PREFIX}/index.php`),
         validateStatus: () => true,
         maxRedirects: 0,
-        maxRetries: 1
+        maxRetries: 1,
+        autoSolveCloudflare: false
       });
+      const loginPageHtml = typeof page?.data === 'string' ? page.data : '';
+      if (page?.status === 429 || looksLikeRateLimitPage(loginPageHtml)) {
+        this.metrics.add('rateLimited');
+        throw new RutrackerRateLimitError(loginUrl);
+      }
+      if (this.looksLikeCaptcha(loginPageHtml)) {
+        this.metrics.add('captcha');
+        throw new RutrackerCaptchaError(loginUrl);
+      }
       absorbSetCookie(this.cookies, page?.headers?.['set-cookie']);
     } catch (error) {
+      if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
       this.log.debug(`Login page unavailable (${describeError(error)}); posting anyway.`);
     }
 
@@ -570,7 +666,8 @@ export class RutrackerCrawler extends BaseCrawler {
         },
         validateStatus: () => true,
         maxRedirects: 0,
-        maxRetries: 1
+        maxRetries: 1,
+        autoSolveCloudflare: false
       });
     } catch (error) {
       this.metrics.add('loginErrors');
@@ -583,6 +680,10 @@ export class RutrackerCrawler extends BaseCrawler {
     this.log.debug(`Login POST -> ${response?.status}; cookies set: ${stored.join(', ') || 'none'}.`);
 
     const payload = typeof response?.data === 'string' ? response.data : '';
+    if (response?.status === 429 || looksLikeRateLimitPage(payload)) {
+      this.metrics.add('rateLimited');
+      throw new RutrackerRateLimitError(loginUrl);
+    }
     if (this.looksLikeCaptcha(payload)) {
       this.metrics.add('captcha');
       throw new RutrackerCaptchaError(loginUrl);
@@ -599,7 +700,7 @@ export class RutrackerCrawler extends BaseCrawler {
       }
       return looksLoggedIn(html, this.username);
     } catch (error) {
-      if (error instanceof RutrackerCaptchaError) throw error;
+      if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
       this.log.warn(`Login verification failed: ${describeError(error)}`);
       return false;
     }
@@ -630,13 +731,41 @@ export class RutrackerCrawler extends BaseCrawler {
 
   /** Authenticated, charset-aware HTML fetch. */
   private async fetchForumPage(url: string): Promise<string> {
-    const buffer = await this.fetchBytes(url, {
-      headers: {
-        Referer: `${this.baseUrl.replace(/\/+$/, '')}${RUTRACKER_FORUM_PREFIX}/`,
-        ...(this.cookieHeader() ? { Cookie: this.cookieHeader() } : {})
+    const safeUrl = sameOriginHttpUrl(url, this.baseUrl);
+    if (!safeUrl) throw new Error('Refusing an authenticated RuTracker request outside the selected origin.');
+
+    let buffer: Buffer;
+    try {
+      buffer = await this.fetchBytes(safeUrl, {
+        autoSolveCloudflare: false,
+        headers: {
+          Referer: `${this.baseUrl.replace(/\/+$/, '')}${RUTRACKER_FORUM_PREFIX}/`,
+          ...(this.cookieHeader() ? { Cookie: this.cookieHeader() } : {})
+        }
+      });
+    } catch (error) {
+      const body = responseBody(error);
+      if (this.looksLikeCaptcha(body)) {
+        this.metrics.add('captcha');
+        throw new RutrackerCaptchaError(safeUrl);
       }
-    });
-    return decodeHtmlBody(buffer);
+      if (responseStatus(error) === 429 || looksLikeRateLimitPage(body)) {
+        this.metrics.add('rateLimited');
+        throw new RutrackerRateLimitError(safeUrl);
+      }
+      throw error;
+    }
+
+    const html = decodeHtmlBody(buffer);
+    if (this.looksLikeCaptcha(html)) {
+      this.metrics.add('captcha');
+      throw new RutrackerCaptchaError(safeUrl);
+    }
+    if (looksLikeRateLimitPage(html)) {
+      this.metrics.add('rateLimited');
+      throw new RutrackerRateLimitError(safeUrl);
+    }
+    return html;
   }
 
   // --------------------------------------------------------------------------
@@ -665,7 +794,8 @@ export class RutrackerCrawler extends BaseCrawler {
       const title = cleanText(anchor.text());
       if (!title || isBlockedTitle(title)) return;
 
-      const url = absoluteHttpUrl(href, pageUrl);
+      // Topic pages receive the logged-in Cookie header; reject external hrefs.
+      const url = sameOriginHttpUrl(href, pageUrl);
       if (!url) return;
 
       seen.add(topicId);
@@ -709,7 +839,20 @@ export class RutrackerCrawler extends BaseCrawler {
     } catch {
       return null;
     }
-    const currentStart = Number.parseInt(current.searchParams.get('start') || '0', 10) || 0;
+
+    const currentStarts = current.searchParams.getAll('start');
+    if (currentStarts.length > 1) return null;
+    const currentStartRaw = currentStarts[0] || '0';
+    if (!/^\d+$/.test(currentStartRaw)) return null;
+    const currentStart = Number(currentStartRaw);
+    if (!Number.isSafeInteger(currentStart)) return null;
+
+    const queryWithoutStart = (url: URL): string => JSON.stringify(
+      [...url.searchParams.entries()]
+        .filter(([key]) => key !== 'start')
+        .sort(([keyA, valueA], [keyB, valueB]) => keyA.localeCompare(keyB) || valueA.localeCompare(valueB))
+    );
+    const currentQuery = queryWithoutStart(current);
 
     const candidates: { href: string; start: number; label: string }[] = [];
     $('a.pg[href], .pagination a[href], .pagination2 a[href], a[href*="start="]').each((_, el) => {
@@ -717,12 +860,18 @@ export class RutrackerCrawler extends BaseCrawler {
       const href = anchor.attr('href') || '';
       if (!/start=/i.test(href)) return;
 
-      const target = absoluteHttpUrl(href, currentUrl);
+      // Pagination is fetched with the account cookie, so it must stay on the
+      // exact origin and listing route; same-host checks could leak credentials.
+      const target = sameOriginHttpUrl(href, currentUrl);
       if (!target) return;
 
       try {
-        const start = Number.parseInt(new URL(target).searchParams.get('start') || '0', 10);
-        if (!Number.isFinite(start) || start <= currentStart) return;
+        const parsed = new URL(target);
+        if (parsed.pathname !== current.pathname || queryWithoutStart(parsed) !== currentQuery) return;
+        const targetStarts = parsed.searchParams.getAll('start');
+        if (targetStarts.length !== 1 || !/^\d+$/.test(targetStarts[0])) return;
+        const start = Number(targetStarts[0]);
+        if (!Number.isSafeInteger(start) || start <= currentStart) return;
         candidates.push({ href: target, start, label: cleanText(anchor.text()) });
       } catch {
         return;
@@ -759,11 +908,18 @@ export class RutrackerCrawler extends BaseCrawler {
       $('title').first().text()
     ).replace(/^RuTracker\.org\s*[·|:-]\s*/i, '');
 
-    const magnetHref = $('a[href^="magnet:"]').first().attr('href') || null;
-    const magnetUrl = magnetHref ? cleanText(magnetHref) : null;
+    const magnetUrl = $('a[href]').toArray()
+      .map(el => cleanText($(el).attr('href') || ''))
+      .find(href => /^magnet:/i.test(href) && Boolean(parseMagnetUri(href))) ?? null;
 
-    const torrentHref = $('a[href*="dl.php"]').first().attr('href') || null;
-    const torrentUrl = torrentHref ? absoluteHttpUrl(torrentHref, url) : null;
+    let torrentUrl: string | null = null;
+    for (const el of $('a[href]').toArray()) {
+      const href = $(el).attr('href') || '';
+      if (!/dl\.php/i.test(href)) continue;
+      // Never send the authenticated session cookie to a third-party host.
+      torrentUrl = sameOriginHttpUrl(href, url);
+      if (torrentUrl) break;
+    }
 
     const sizeText = cleanText(
       $('#tor-size-humn, .tor-size, #tor-size, td[class*="size"]').first().text()
@@ -850,6 +1006,7 @@ export class RutrackerCrawler extends BaseCrawler {
       try {
         return await this.crawlTopic(topic);
       } catch (error) {
+        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
         this.metrics.add('detailErrors');
         this.log.warn(`Topic failed ${topic.url}: ${describeError(error)}`);
         return [];
@@ -917,7 +1074,7 @@ export class RutrackerCrawler extends BaseCrawler {
 
         listUrl = this.nextPage(html, listUrl);
       } catch (error) {
-        if (error instanceof RutrackerCaptchaError) throw error;
+        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
         this.metrics.add('listingErrors');
         this.log.warn(`Route ${route.label} failed at ${listUrl}: ${describeError(error)}`);
         break;
@@ -943,6 +1100,58 @@ export class RutrackerCrawler extends BaseCrawler {
       }
     }
     return kept;
+  }
+
+  /** Authenticated torrent download without the shared client's WAF bypass path. */
+  private async fetchRutrackerMetainfo(url: string, referer: string): Promise<ParsedTorrentFile> {
+    const safeUrl = sameOriginHttpUrl(url, referer);
+    if (!safeUrl) throw new Error('Refusing an authenticated torrent request outside the topic origin.');
+
+    await politePause();
+    const cookie = this.cookieHeader();
+    let buffer: Buffer;
+    try {
+      buffer = await this.httpClient.getBuffer(safeUrl, {
+        autoSolveCloudflare: false,
+        maxContentLength: MAX_TORRENT_BYTES,
+        maxBodyLength: MAX_TORRENT_BYTES,
+        headers: {
+          Accept: 'application/x-bittorrent,application/octet-stream;q=0.9,*/*;q=0.5',
+          Referer: referer,
+          ...(cookie ? { Cookie: cookie } : {})
+        }
+      });
+    } catch (error) {
+      const body = responseBody(error);
+      if (this.looksLikeCaptcha(body)) {
+        this.metrics.add('captcha');
+        throw new RutrackerCaptchaError(safeUrl);
+      }
+      if (responseStatus(error) === 429 || looksLikeRateLimitPage(body)) {
+        this.metrics.add('rateLimited');
+        throw new RutrackerRateLimitError(safeUrl);
+      }
+      throw error;
+    }
+
+    const htmlLike = buffer.subarray(0, 256).toString('latin1').trimStart().startsWith('<');
+    if (htmlLike) {
+      const html = decodeHtmlBody(buffer);
+      if (this.looksLikeCaptcha(html)) {
+        this.metrics.add('captcha');
+        throw new RutrackerCaptchaError(safeUrl);
+      }
+      if (looksLikeRateLimitPage(html)) {
+        this.metrics.add('rateLimited');
+        throw new RutrackerRateLimitError(safeUrl);
+      }
+    }
+
+    const metainfo = parseTorrentBuffer(buffer);
+    if (!metainfo) {
+      throw new Error(`Response from ${safeUrl} is not valid v1/hybrid torrent metainfo`);
+    }
+    return metainfo;
   }
 
   private async crawlTopic(topic: RutrackerTopic): Promise<TorrentRecord[]> {
@@ -972,14 +1181,13 @@ export class RutrackerCrawler extends BaseCrawler {
 
     if (!infoHash && detail.torrentUrl) {
       try {
-        const metainfo = await this.fetchTorrentMetainfo(detail.torrentUrl, topic.url, {
-          ...(this.cookieHeader() ? { Cookie: this.cookieHeader() } : {})
-        });
+        const metainfo = await this.fetchRutrackerMetainfo(detail.torrentUrl, topic.url);
         this.metrics.add('downloads');
         infoHash = metainfo.infoHash;
         if (!sizeBytes && metainfo.sizeBytes > 0) sizeBytes = metainfo.sizeBytes;
         if (!trackers.length) trackers = metainfo.trackers;
       } catch (error) {
+        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
         this.metrics.add('downloadErrors');
         this.log.debug(`Metainfo download failed for ${detail.torrentUrl}: ${describeError(error)}`);
       }

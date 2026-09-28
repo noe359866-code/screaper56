@@ -18,6 +18,24 @@ import {
   sameHost
 } from './support.js';
 
+/** Restricts source, detail and metainfo links to the active mirror site. */
+function sameMirrorSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return !left.username && !left.password && !right.username && !right.password &&
+      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
+function routeContainsPath(routePath: string, candidatePath: string): boolean {
+  const normalizedRoute = `/${routePath}`.replace(/\/{2,}/g, '/').replace(/\/+$/, '') || '/';
+  return candidatePath === normalizedRoute ||
+    (normalizedRoute === '/' ? candidatePath.startsWith('/') : candidatePath.startsWith(`${normalizedRoute}/`));
+}
+
 export interface MagnetDlRow {
   detailUrl: string;
   title: string;
@@ -84,7 +102,7 @@ export class MagnetDlCrawler extends BaseCrawler {
     const mirror = (await this.getWorkingMirror()).replace(/\/+$/, '');
     this.baseUrl = mirror;
 
-    const searches = (process.env.MAGNETDL_SEARCH || 'spanish,castellano,latino')
+    const searches = (process.env.MAGNETDL_SEARCH ?? 'spanish,castellano,latino')
       .split(/[,\n]+/).map(term => MagnetDlCrawler.searchPath(term.trim())).filter((p): p is string => Boolean(p));
     const routes: Array<{ path: string; type: ContentType | null }> = [
       ...searches.map(path => ({ path, type: null })),
@@ -93,6 +111,7 @@ export class MagnetDlCrawler extends BaseCrawler {
     ];
 
     const rows = new Map<string, MagnetDlRow>();
+    let successfulListings = 0;
     for (const route of routes) {
       let url: string | null = `${mirror}${route.path}`;
       const visited = new Set<string>();
@@ -103,13 +122,14 @@ export class MagnetDlCrawler extends BaseCrawler {
           const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
           this.metrics.add('listings');
           const found = this.parseListing(html, url, route.type);
-          let added = 0;
+          successfulListings++;
           for (const row of found) {
-            if (rows.has(row.detailUrl)) continue;
-            rows.set(row.detailUrl, row);
-            added++;
+            if (!rows.has(row.detailUrl)) rows.set(row.detailUrl, row);
           }
-          if (!found.length || added === 0) break;
+          // A repeated/overlapping page can still publish a later page with new
+          // items. Let the pager and visited-URL guard, not global deduplication,
+          // decide when pagination ends.
+          if (!found.length) break;
           url = this.nextPage(html, url, route.path, page);
         } catch (error) {
           this.metrics.add('listingErrors');
@@ -117,6 +137,10 @@ export class MagnetDlCrawler extends BaseCrawler {
           break;
         }
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error('[magnetdl] No usable catalogue responses. Check mirror availability, blocking and page layout.');
     }
 
     const maxDetails = Math.max(40, maxPages * 60);
@@ -129,9 +153,13 @@ export class MagnetDlCrawler extends BaseCrawler {
         let magnet = row.magnet;
         let title = row.title;
         if (!magnet) {
-          const html = await this.fetchHtml(row.detailUrl, { headers: { Referer: `${mirror}/` } });
+          const html = await this.fetchHtml(
+            row.detailUrl,
+            { headers: { Referer: `${mirror}/` } },
+            { rejectBlocked: true }
+          );
           this.metrics.add('details');
-          const detail = this.parseDetail(html, row.title);
+          const detail = this.parseDetail(html, row.title, row.detailUrl);
           magnet = detail.magnet;
           title = detail.title || title;
           if (detail.torrentFileUrl) row.torrentFileUrl = detail.torrentFileUrl;
@@ -162,7 +190,9 @@ export class MagnetDlCrawler extends BaseCrawler {
     });
     if (!link) return null;
     try {
-      if (!new URL(link).pathname.startsWith(routePath)) return null;
+      const next = new URL(link);
+      const currentUrl = new URL(current);
+      if (!sameMirrorSite(next.href, currentUrl.href) || !routeContainsPath(routePath, next.pathname)) return null;
     } catch {
       return null;
     }
@@ -182,14 +212,20 @@ export class MagnetDlCrawler extends BaseCrawler {
         .filter((__, a) => cleanText($(a).text()).length > 0).first();
       if (!anchor.length) return;
 
-      const detailUrl = absoluteHttpUrl(anchor.attr('href'), pageUrl);
+      const resolvedDetail = absoluteHttpUrl(anchor.attr('href'), pageUrl);
+      const detailUrl = resolvedDetail && sameMirrorSite(resolvedDetail, pageUrl) ? resolvedDetail : null;
       const title = cleanText(anchor.attr('title') || anchor.text());
       if (!detailUrl || !title || isBlockedTitle(title)) return;
 
       const category = cleanText(tds.eq(3).text()).toLowerCase();
       if (category && !/movie|tv|anime|video|documentar/.test(category)) return;
 
-      const magnet = $(tr).find('a[href^="magnet:?"]').first().attr('href') ?? null;
+      let magnet: string | null = null;
+      $(tr).find('a[href]').each((__, element) => {
+        if (magnet) return;
+        const candidate = $(element).attr('href') ?? '';
+        if (/^magnet:\?/i.test(candidate) && parseMagnetUri(candidate)) magnet = candidate;
+      });
       const type: ContentType = forcedType ??
         (/tv/.test(category) || /\bS\d{1,2}(?:E\d{1,3})?\b/i.test(title) ? 'series' : 'movie');
 
@@ -214,30 +250,53 @@ export class MagnetDlCrawler extends BaseCrawler {
    * `/single/:id` page -> magnet (or a magnet rebuilt from the printed hash),
    * its real title and, when the page publishes it, the metainfo link.
    */
-  public parseDetail(html: string, fallbackTitle: string): {
+  public parseDetail(html: string, fallbackTitle: string, pageUrl = this.baseUrl): {
     magnet: string | null;
     title: string;
     torrentFileUrl: string | null;
   } {
     const $ = cheerio.load(html);
     const heading = cleanText($('h1').first().text());
-    const title = /(?:\.\.\.|…)$/.test(fallbackTitle) && heading ? heading : fallbackTitle || heading;
+    const title = /(?:\.\.\.|…)\s*$/.test(fallbackTitle) && heading ? heading : fallbackTitle || heading;
 
-    // Only same-host `.torrent` links: the download buttons of this template
-    // sometimes point at advertising domains. The href is resolved before
-    // comparing hosts, because it is usually relative.
-    const rawTorrent = $('a[href$=".torrent"]').first().attr('href') ?? null;
-    const resolvedTorrent = rawTorrent ? absoluteHttpUrl(rawTorrent, this.baseUrl) : null;
-    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, this.baseUrl)
-      ? resolvedTorrent
-      : null;
+    // Download buttons may be ads. Keep only a real .torrent URL on this
+    // mirror site, with no scheme downgrade, port change or URL credentials.
+    let torrentFileUrl: string | null = null;
+    for (const element of $('a[href]').toArray()) {
+      const raw = $(element).attr('href') ?? '';
+      const resolved = absoluteHttpUrl(raw, pageUrl);
+      if (!resolved || !/\.torrent\/?(?:[?#].*)?$/i.test(resolved) || !sameMirrorSite(resolved, pageUrl)) continue;
+      torrentFileUrl = resolved;
+      break;
+    }
 
-    const href = $('a[href^="magnet:?"]').first().attr('href') ??
-      html.match(/magnet:\?xt=urn:btih:[^"'<>\s]+/i)?.[0]?.replace(/&amp;/g, '&') ?? null;
-    if (href && parseMagnetUri(href)) return { magnet: href, title, torrentFileUrl };
+    // Do not let an invalid first magnet hide a valid one later in the page.
+    let magnet: string | null = null;
+    for (const element of $('a[href]').toArray()) {
+      const candidate = $(element).attr('href') ?? '';
+      if (/^magnet:\?/i.test(candidate) && parseMagnetUri(candidate)) {
+        magnet = candidate;
+        break;
+      }
+    }
+    if (!magnet) {
+      for (const match of html.matchAll(/magnet:\?[^"'<>\s]+/gi)) {
+        const candidate = match[0].replace(/&amp;/gi, '&').replace(/&#0*38;/gi, '&');
+        if (parseMagnetUri(candidate)) {
+          magnet = candidate;
+          break;
+        }
+      }
+    }
+    if (magnet) return { magnet, title, torrentFileUrl };
 
-    const hash = html.match(/(?:info\s*hash|hash)[^0-9a-f]{0,40}\b([0-9a-f]{40})\b/i);
-    return { magnet: hash ? buildMagnetUri(hash[1].toLowerCase(), title) : null, title, torrentFileUrl };
+    let hashMagnet: string | null = null;
+    for (const hash of html.matchAll(/(?:info\s*hash|hash)[^0-9a-f]{0,40}\b([0-9a-f]{40})\b/gi)) {
+      if (/^0{40}$/i.test(hash[1])) continue;
+      hashMagnet = buildMagnetUri(hash[1].toLowerCase(), title, [], { includeDefaultTrackers: false });
+      break;
+    }
+    return { magnet: hashMagnet, title, torrentFileUrl };
   }
 
   private buildRecord(row: MagnetDlRow, magnet: string, title: string): TorrentRecord | null {

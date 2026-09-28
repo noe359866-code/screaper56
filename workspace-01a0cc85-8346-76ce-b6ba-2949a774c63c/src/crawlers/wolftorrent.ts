@@ -3,10 +3,12 @@ import * as cheerio from 'cheerio';
 import { MAX_TORRENT_BYTES, MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText, describeError } from './support.js';
+import { cleanText, describeError, nextPaginationLink } from './support.js';
+import { parseMagnetUri } from '../utils/magnet.js';
 
 /** Same-site download endpoints used by the Wolf/WolfMax4K templates. */
 const WOLF_DOWNLOAD_ENDPOINTS = /^\/(?:descargar|descarga|download|downloads|get|torrent|torrents?|link|links?|enlace|bajar)(?:\/|\.php|\.asp|\?|$)/i;
+const WOLF_DOWNLOAD_QUERY = /(?:^|[?&])(?:do|action|op)=(?:download|descarga|descargar|torrent)(?:[&#]|$)/i;
 
 /** Path segments that always belong to a listing, a filter or the pager. */
 const WOLF_LISTING_SEGMENTS =
@@ -18,8 +20,12 @@ const MAGNET_ATTRIBUTES = ['href', 'data-magnet', 'data-url', 'data-href', 'data
 /** Hosts compared without their `www.` prefix and across direct subdomains. */
 export function isSameDomain(urlA: string, urlB: string): boolean {
   try {
-    const hostA = new URL(urlA).hostname.replace(/^www\./i, '').toLowerCase();
-    const hostB = new URL(urlB).hostname.replace(/^www\./i, '').toLowerCase();
+    const left = new URL(urlA);
+    const right = new URL(urlB);
+    if (left.username || left.password || right.username || right.password) return false;
+    if (left.protocol !== right.protocol || left.port !== right.port) return false;
+    const hostA = left.hostname.replace(/^www\./i, '').toLowerCase();
+    const hostB = right.hostname.replace(/^www\./i, '').toLowerCase();
     if (!hostA || !hostB) return false;
     return hostA === hostB || hostA.endsWith(`.${hostB}`) || hostB.endsWith(`.${hostA}`);
   } catch {
@@ -50,6 +56,8 @@ export function isWolfDetailPath(href: string, base: string): boolean {
 
   const segments = url.pathname.split('/').filter(Boolean).slice(1);
   if (segments.some(segment => WOLF_LISTING_SEGMENTS.test(segment))) return false;
+  // A file nested under a detail-shaped path is still a file, not a release page.
+  if (/\.(?:torrent|zip|rar|7z|mp4|mkv|avi|jpe?g|png|webp|gif|pdf|php|xml)$/i.test(segments[segments.length - 1] || '')) return false;
   // `/pelicula/page/2/` and `/serie/calidad/1080p/` are listings, not releases.
   if (/\/(?:page|pagina|paged)\/\d+/i.test(url.pathname)) return false;
 
@@ -121,9 +129,15 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
     return [...links];
   }
 
+  /** Follow a published pager across `www`/apex only, never across origin families. */
+  public override nextPage(html: string, current: string): string | null {
+    const next = nextPaginationLink(html, current);
+    return next && isSameDomain(next, current) ? next : null;
+  }
+
   public parseDetail(html: string, url: string): CatalogDetail {
     const $ = cheerio.load(html);
-    $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
+    $('.comments, #comentarios, .related, .relacionados, .related-torrents, .recommendations, .recomendados, .sidebar, footer, nav').remove();
     // cleanText (not .trim()) so a multi-line <h1> never becomes "Sample\n  1080p".
     const title = cleanText($('h1').first().text()) || cleanText($('title').first().text());
     const downloads: CatalogDetail['downloads'] = [];
@@ -182,11 +196,19 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
 
     return this.withBrowserPage(async page => {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      const renderedUrl = typeof page.url === 'function' ? page.url() : url;
+      if (!isSameDomain(renderedUrl, url)) {
+        this.metrics.add('browserErrors');
+        this.log.warn(`Browser detail redirected off-site (${renderedUrl}); ignoring it.`);
+        return detail;
+      }
 
       // Everything from here on is the RENDERED page: returning the statically
       // parsed `detail` threw away the titles and hints JavaScript had updated.
-      const rendered = this.parseDetail(await page.content(), url);
+      const renderedHtml = await page.content();
+      const rendered = this.parseDetail(renderedHtml, url);
       if (rendered.downloads.length) return rendered;
+      const renderedHints = spanishReleaseHints(cheerio.load(renderedHtml));
 
       const buttons = page.getByRole('button', { name: /^descargar(?: torrent)?$/i })
         .or(page.getByRole('link', { name: /^descargar(?: torrent)?$/i }));
@@ -198,37 +220,73 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
           // A magnet is not a browser download: clicking only opens a client or
           // a modal, so `waitForEvent('download')` used to time out and count a
           // false failure. The literal href is read first.
-          const magnetHref = await Promise.all(
+          const buttonValues = await Promise.all(
             MAGNET_ATTRIBUTES.map(attr => button.getAttribute(attr).catch(() => null))
-          ).then(values => values.find(value => value && /^magnet:\?/i.test(value.trim())) ?? null);
+          );
+          const magnetHref = buttonValues.find(value =>
+            value && /^magnet:\?/i.test(value.trim()) && parseMagnetUri(value.trim())?.infoHash
+          ) ?? null;
 
           if (magnetHref) {
             rendered.downloads.push({
               url: magnetHref.trim(),
               title: rendered.title,
-              hints: []
+              hints: renderedHints
             });
             continue;
           }
 
-          const downloadPromise = page.waitForEvent('download', { timeout: 4000 });
+          // Do not click an explicit external/unsafe target (e.g. an ad
+          // shortener) just because it is labelled "Descargar".
+          const unsafeExplicitTarget = buttonValues.some(value => {
+            if (!value) return false;
+            const trimmed = value.trim();
+            const explicitScheme = /^[a-z][a-z0-9+.-]*:/i.test(trimmed) || trimmed.startsWith('//');
+            return explicitScheme && !wolfDownloadUrl(trimmed, url);
+          });
+          if (unsafeExplicitTarget) {
+            this.metrics.add('downloadErrors');
+            continue;
+          }
+
+          // Attach both event outcomes before clicking: if the click fails,
+          // waitForEvent can still reject on timeout after this catch has run.
+          const downloadEvent = page.waitForEvent('download', { timeout: 4000 }).then(
+            download => ({ download }),
+            error => ({ error })
+          );
           await button.click({ timeout: 3000 });
-          const download = await downloadPromise;
+          const outcome = await downloadEvent;
+          if ('error' in outcome) throw outcome.error;
+          const download = outcome.download;
+
+          const rawUrl = download.url();
+          const isBlobUrl = /^blob:/i.test(rawUrl);
+          const trustedDownloadUrl = isBlobUrl ? null : wolfDownloadUrl(rawUrl, url);
+          if (!isBlobUrl && !trustedDownloadUrl) {
+            this.metrics.add('downloadErrors');
+            this.log.warn(`Ignoring off-site or untrusted browser download ${rawUrl} from ${url}.`);
+            await download.delete().catch(() => {});
+            continue;
+          }
 
           const buffer = await readDownloadCapped(download);
-          if (!buffer) continue;
+          if (!buffer) {
+            await download.delete().catch(() => {});
+            continue;
+          }
 
           // JS may create a blob URL (`blob:https://...`) that dies with the
           // browser session. The metainfo is kept for hashing, but a local blob
           // is never published as a download link.
-          const rawUrl = download.url();
-          const finalUrl = rawUrl.startsWith('blob:')
+          const finalUrl = isBlobUrl
             ? `torrent:stream:${buffer.toString('hex').slice(0, 16)}`
-            : rawUrl;
+            : trustedDownloadUrl!;
 
           rendered.downloads.push({
             url: finalUrl,
             title: cleanText(`${rendered.title} ${download.suggestedFilename() || ''}`) || rendered.title,
+            hints: renderedHints,
             buffer
           });
 
@@ -283,7 +341,7 @@ export function wolfDownloadUrl(value: string, base: string): string | null {
   if (!value || typeof value !== 'string') return null;
 
   const trimmed = value.trim();
-  if (/^magnet:\?/i.test(trimmed)) return trimmed;
+  if (/^magnet:\?/i.test(trimmed)) return parseMagnetUri(trimmed)?.infoHash ? trimmed : null;
 
   const target = httpUrl(trimmed, base);
   if (!target) return null;
@@ -291,12 +349,17 @@ export function wolfDownloadUrl(value: string, base: string): string | null {
   try {
     const url = new URL(target);
 
-    if (/\.torrent(?:[?#]|$)/i.test(url.pathname)) return target;
+    if (/\.torrent(?:[?#]|$)/i.test(url.pathname)) {
+      return isSameDomain(target, base) ? target : null;
+    }
 
     // Intermediate same-domain download handlers, not external shorteners or
     // ads. The Wolf/WolfMax4K family uses `descarga/`, `get/`, `links/`,
-    // `torrent/` and `?id=` variants, not only `descargar` / `download`.
-    if (isSameDomain(target, base) && WOLF_DOWNLOAD_ENDPOINTS.test(url.pathname)) {
+    // `torrent/` and explicit query-based download actions, not only
+    // `descargar` / `download`; generic query strings are not treated as links.
+    const isQueryDownload =
+      (url.pathname === '/' || /\/index\.php$/i.test(url.pathname)) && WOLF_DOWNLOAD_QUERY.test(url.search);
+    if (isSameDomain(target, base) && (WOLF_DOWNLOAD_ENDPOINTS.test(url.pathname) || isQueryDownload)) {
       return target;
     }
   } catch {

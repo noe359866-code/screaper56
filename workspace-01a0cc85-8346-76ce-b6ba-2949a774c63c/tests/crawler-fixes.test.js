@@ -162,7 +162,8 @@ test('EliteTorrent: category, pager and genre routes are not queued as details',
     '/idioma/castellano-17-1/',
     '/peliculas/feed/',
     '/peliculas/index.php',
-    'https://ads.example/peliculas/sample/'
+    'https://ads.example/peliculas/sample/',
+    'https://user:pass@www.elitetorrent.com/peliculas/sample/'
   ]) {
     assert.equal(isEliteDetailUrl(href, base), false, href);
   }
@@ -209,8 +210,10 @@ test('Wolftorrent: pagination and category routes are not queued as details', ()
     '/pelicula/page/2/',
     '/serie/categoria/accion/',
     '/pelicula/calidad/1080p/',
+    '/pelicula/abc123/sample.torrent',
     '/peliculas',
-    'https://ads.example/pelicula/abc123/Sample'
+    'https://ads.example/pelicula/abc123/Sample',
+    'https://user:pass@wolftorrent.com/pelicula/abc123/Sample'
   ]) {
     assert.equal(isWolfDetailPath(href, base), false, href);
   }
@@ -218,6 +221,7 @@ test('Wolftorrent: pagination and category routes are not queued as details', ()
   assert.equal(isSameDomain('https://wolftorrent.com/a', 'https://www.wolftorrent.com/b'), true);
   assert.equal(isSameDomain('https://cdn.wolftorrent.com/a', 'https://wolftorrent.com/b'), true);
   assert.equal(isSameDomain('https://wolfmax4k.com/a', 'https://wolftorrent.com/b'), false);
+  assert.equal(isSameDomain('https://user:pass@wolftorrent.com/a', 'https://wolftorrent.com/b'), false);
 });
 
 test('Wolftorrent: every same-domain download endpoint is accepted, offsite ones are not', () => {
@@ -226,7 +230,14 @@ test('Wolftorrent: every same-domain download endpoint is accepted, offsite ones
     assert.match(wolfDownloadUrl(href, base), /wolftorrent\.com/, href);
   }
   assert.equal(wolfDownloadUrl('https://ads.example/download/abc', base), null);
+  assert.equal(wolfDownloadUrl('https://ads.example/file.torrent', base), null);
+  assert.equal(wolfDownloadUrl('https://user:pass@wolftorrent.com/files/a.torrent', base), null);
+  assert.equal(wolfDownloadUrl('/index.php?do=download&id=42', base), 'https://wolftorrent.com/index.php?do=download&id=42');
+  assert.equal(wolfDownloadUrl('/?id=42', base), null, 'a generic id query is not enough to trust a download endpoint');
+  assert.equal(wolfDownloadUrl('http://wolftorrent.com/files/a.torrent', base), null);
   assert.equal(wolfDownloadUrl('javascript:alert(1)', base), null);
-  // A magnet is always accepted, whatever host published it.
+  // A valid magnet is accepted, whatever host published it, but malformed
+  // magnets are filtered before they enter the generic catalogue pipeline.
   assert.equal(wolfDownloadUrl(MAGNET, base), MAGNET);
+  assert.equal(wolfDownloadUrl('magnet:?xt=urn:btih:invalid', base), null);
 });

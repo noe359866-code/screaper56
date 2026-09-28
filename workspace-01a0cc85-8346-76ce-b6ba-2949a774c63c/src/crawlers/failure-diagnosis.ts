@@ -13,6 +13,8 @@ const sourceHints: Record<string, string> = {
   wolftorrent: 'Verify WOLFTORRENT_MIRRORS serves /peliculas; inspect detail download buttons without persisting blob URLs.',
   dontorrent: 'Verify DONTORRENT_MIRRORS; proof-of-work and time-gated downloads are intentionally skipped, not bypassed.',
   magnetdl: 'Verify MAGNETDL_MIRRORS serves /download/movies/ and /single/:id magnets.',
+  t0rrenta: 'Verify T0RRENTA_BASE_URL or T0RRENTA_MIRRORS serves the home listing, /p/:id details and signed torrent links.',
+  estrenostorrent: 'Verify ESTRENOSTORRENT_BASE_URL or ESTRENOSTORRENT_MIRRORS serves /peliculas/, /series/ and public .torrent links.',
   rarbg: 'Verify RARBG_MIRRORS is a compatible clone serving /movies/; the original RARBG cannot be assumed available.',
   grantorrent: 'Verify GRANTORRENT_MIRRORS serves movie cards; external shorteners are counted as gated, never used as torrent URLs.'
 };
@@ -35,7 +37,7 @@ export function diagnoseFailure(source: string, error: unknown): { kind: Failure
   else if (/time(?:d)?\s*out|deadline|ETIMEDOUT/i.test(message)) kind = 'timeout';
   else if (/403|429|captcha|cloudflare|blocked|challenge/i.test(message)) kind = 'blocked';
   else if (/unexpected payload|layout|invalid json|parse/i.test(message)) kind = 'layout';
-  else if (/zero extracted|no usable releases|no records/i.test(message)) kind = 'empty';
+  else if (/zero extracted|no usable (?:releases|catalogue responses)|no records/i.test(message)) kind = 'empty';
   else if (/ENOTFOUND|EAI_AGAIN|socket|TLS|ECONN|network/i.test(message)) kind = 'network';
 
   const action: Record<FailureKind, string> = {
