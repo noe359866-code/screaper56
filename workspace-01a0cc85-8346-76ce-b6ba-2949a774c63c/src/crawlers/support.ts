@@ -20,6 +20,7 @@
  *     infohash.
  */
 
+import * as cheerio from 'cheerio';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import {
   DEFAULT_TRACKERS as MAGNET_DEFAULT_TRACKERS,
@@ -136,6 +137,23 @@ export function sameOrigin(a: string, b: string): boolean {
 }
 
 /**
+ * True when both URLs are served by the same host, ignoring a `www.` prefix.
+ *
+ * Sites link the apex from the `www` host (and back) all the time; comparing
+ * full origins silently discarded every one of those links, which emptied whole
+ * crawls on mirrors that disagree with their own canonical host.
+ */
+export function sameHost(a: string, b: string): boolean {
+  try {
+    const left = new URL(a).hostname.replace(/^www\./i, '').toLowerCase();
+    const right = new URL(b).hostname.replace(/^www\./i, '').toLowerCase();
+    return left.length > 0 && left === right;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Trims, drops empties and dedupes case-insensitively while preserving the
  * first-seen spelling (`[' a ', 'A', 'b']` -> `['a', 'b']`).
  */
@@ -175,6 +193,174 @@ export function isBlockedTitle(title: unknown): boolean {
 /** Release quality shorthand derived from parsed title metadata. */
 export function qualityOf(meta: ParsedMetadata | null | undefined): string | null {
   return meta?.resolution ?? null;
+}
+
+// ============================================================================
+// Published pagination
+// ============================================================================
+
+/** Anchors that can hold a pagination pointer, in any template. */
+const PAGER_LINK_SELECTOR = [
+  'a[rel="next"]',
+  '.pagination a',
+  '.pagination2 a',
+  '.pager a',
+  '.pages a',
+  '.paginacion a',
+  '.wp-pagenavi a',
+  'ul.page-numbers a',
+  'a.pg',
+  'a[href*="page="]',
+  'a[href*="start="]'
+].join(', ');
+
+/** Default "next page" wording (`next`, `siguiente`, arrows, `more results`). */
+const DEFAULT_NEXT_TEXT = /^(?:next|siguiente|siguientes?|pr[oó]xima?|›|»|>|→|more(?:\s+torrent)?(?:\s+results?)?|\d+\s*(?:›|»))$/i;
+
+const PAGE_QUERY_KEYS = ['page', 'p', 'pagina', 'paged', 'pagenum'] as const;
+const OFFSET_QUERY_KEYS = ['start', 'offset'] as const;
+
+/** Page number carried by the query string, or `null`. */
+function queryPage(url: URL): number | null {
+  for (const key of PAGE_QUERY_KEYS) {
+    const value = url.searchParams.get(key);
+    if (value && /^\d{1,5}$/.test(value)) return Number.parseInt(value, 10);
+  }
+  return null;
+}
+
+/** Numeric page carried by the path (`/movies/2/`, `/page/3/`), or `null`. */
+function pathPage(url: URL): number | null {
+  const explicit = url.pathname.match(/\/(?:page|pagina|paged|p)\/(\d{1,5})(?:\/)?$/i);
+  if (explicit) return Number.parseInt(explicit[1], 10);
+  const trailing = url.pathname.match(/\/(\d{1,5})(?:\/)?$/);
+  return trailing ? Number.parseInt(trailing[1], 10) : null;
+}
+
+/** Offset carried by the query string (`start=50`), or `null`. */
+function queryOffset(url: URL): number | null {
+  for (const key of OFFSET_QUERY_KEYS) {
+    const value = url.searchParams.get(key);
+    if (value && /^\d{1,7}$/.test(value)) return Number.parseInt(value, 10);
+  }
+  return null;
+}
+
+/**
+ * The path without its trailing page number: `/movies/2/` -> `/movies/` and
+ * `/peliculas/page/2/` -> `/peliculas/`. The `/page/N` form is stripped first,
+ * otherwise the trailing-number rule ate the `2` and left `/peliculas/page/`.
+ */
+function pageBasePath(url: URL): string {
+  return url.pathname.replace(/\/page\/\d+(?:\/)?$/i, '/').replace(/\/(\d{1,5})(?:\/)?$/, '/');
+}
+
+export interface NextPageOptions {
+  /** Extra anchors to consider (merged with the built-in pager selectors). */
+  linkSelector?: string;
+  /** Wording that marks the "next" link. */
+  nextText?: RegExp;
+}
+
+/**
+ * Returns the next listing URL the page itself publishes, or `null`.
+ *
+ * Supporting the same helper everywhere is what stops adapters from guessing
+ * offsets: a `rel="next"` / "Next" / "»" link wins, otherwise the page number
+ * (query `page=`, path `/2/` or `/page/2/`) or the `start=` offset has to move
+ * forward on the same base path. Guessing `?p=N` in a loop is what made
+ * single-page sections cost `maxPages` requests each.
+ */
+export function nextPaginationLink(
+  html: string,
+  currentUrl: string,
+  options: NextPageOptions = {}
+): string | null {
+  const $ = cheerio.load(html);
+
+  let current: URL;
+  try {
+    current = new URL(currentUrl);
+    current.hash = '';
+  } catch {
+    return null;
+  }
+
+  const currentOffset = queryOffset(current);
+  const currentPage = queryPage(current) ?? (currentOffset === null ? pathPage(current) : null);
+  const hasMarker = currentPage !== null || currentOffset !== null;
+  const currentNumber = currentPage ?? currentOffset ?? 1;
+  const currentBase = pageBasePath(current).replace(/\/+$/, '');
+  const normalizedCurrent = current.href;
+
+  const nextText = options.nextText ?? DEFAULT_NEXT_TEXT;
+  const candidates: Array<{
+    href: string;
+    number: number;
+    offset: number | null;
+    label: string;
+    rel: boolean;
+    sameBase: boolean;
+  }> = [];
+
+  $(options.linkSelector ? `${PAGER_LINK_SELECTOR}, ${options.linkSelector}` : PAGER_LINK_SELECTOR)
+    .each((_, el) => {
+      const anchor = $(el);
+      const rawHref = anchor.attr('href');
+      if (!rawHref) return;
+
+      const href = absoluteHttpUrl(rawHref, currentUrl);
+      if (!href || !sameHost(href, currentUrl)) return;
+
+      let parsed: URL;
+      try {
+        parsed = new URL(href);
+        parsed.hash = '';
+      } catch {
+        return;
+      }
+      if (parsed.href === normalizedCurrent) return;
+
+      const offset = queryOffset(parsed);
+      const page = offset === null ? (queryPage(parsed) ?? pathPage(parsed)) : null;
+      if (page === null && offset === null) return;
+
+      candidates.push({
+        href,
+        number: page ?? offset ?? 0,
+        offset,
+        label: cleanText(anchor.text()),
+        rel: (anchor.attr('rel') || '').split(/\s+/).includes('next'),
+        sameBase: pageBasePath(parsed).replace(/\/+$/, '') === currentBase
+      });
+    });
+
+  if (!candidates.length) return null;
+
+  // 1. The pager's own pointer, whatever numbering the mirror uses.
+  const relNext = candidates.find(candidate => candidate.rel);
+  if (relNext) return relNext.href;
+
+  const textNext = candidates.find(candidate => nextText.test(candidate.label));
+  if (textNext) return textNext.href;
+
+  // 2. Forward movement on the same base path. A page without any marker is
+  //    page 1, and there the pager's first link is the next one (mirrors
+  //    disagree on whether their numbering starts at 0 or at 1).
+  const forward = candidates.filter(candidate => {
+    if (!candidate.sameBase) return false;
+    if (candidate.offset !== null && currentOffset !== null) return candidate.offset > currentOffset;
+    return candidate.number > currentNumber;
+  });
+
+  if (forward.length) {
+    const ordered = hasMarker
+      ? [...forward].sort((a, b) => a.number - b.number)
+      : forward;
+    return ordered[0].href;
+  }
+
+  return null;
 }
 
 // ============================================================================

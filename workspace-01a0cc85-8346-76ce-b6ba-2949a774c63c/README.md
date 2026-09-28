@@ -47,24 +47,59 @@ dominio con `<FUENTE>_BASE_URL`.
 
 | TARGET_CRAWLERS | Archivo en `src/crawlers/` | Tratamiento específico |
 |---|---|---|
-| `pelispanda` | `pelispanda.ts` | API WordPress wpreact; películas, temporadas y episodios; calidad/idioma por descarga. Seeders no publicados = `null`. |
+| `pelispanda` | `pelispanda.ts` | API WordPress wpreact; películas, temporadas y episodios; calidad/idioma por descarga. Acepta entradas `.torrent` (descargando el metainfo para obtener el hash real) además de magnets. Seeders no publicados = `null`. |
 | `leech1337x` | `leech1337x.ts` | Tablas `table-list`, ficha individual, etiquetas Category/Language con texto o elementos HTML; deduplicación de visitas entre búsquedas. |
-| `torrentgalaxy` | `torrentgalaxy.ts` | Filas `tgxtablerow`, título de ficha sin concatenar comentarios, magnet o hash de iTorrents, tamaño por celda. La búsqueda no prueba el idioma. |
-| `yts` | `yts.ts` | API v2 validada; torrents por calidad, idioma nativo `es`/`es-mx`/`en`, canales de audio y hashes normalizados. No etiqueta francés como inglés. |
+| `torrentgalaxy` | `torrentgalaxy.ts` | Filas `tgxtablerow`, título de ficha sin concatenar comentarios, magnet o hash de iTorrents, tamaño por celda, seeders/leechers por clase y `torrent_file_url` solo si el enlace iTorrents lleva el mismo hash. La búsqueda no prueba el idioma. |
+| `yts` | `yts.ts` | API v2 validada; torrents por calidad, idioma nativo (`es`, `es-419`, `es-ve`, `en-gb`, `pt-br`, …), canales de audio y hashes normalizados. No etiqueta francés como inglés. |
 | `eztv` | `eztv.ts` | API `get-torrents` y fallback HTML `epinfo`, incluso si la API no está disponible al detectar el dominio. Temporada/episodio ausentes = `null`. |
-| `thepiratebay` | `thepiratebay.ts` | APiBay (solo categorías de vídeo), búsquedas JSON, tablas HTML y paginación desde cero; ignora resultados centinela. |
+| `thepiratebay` | `thepiratebay.ts` | APiBay (solo categorías de vídeo), búsquedas JSON, tablas HTML y paginación desde cero; ignora resultados centinela. En la fase HTML el tipo sale de la categoría de la fila y la ficha aporta IMDb y enlace `.torrent` del propio dominio. |
 | `mejortorrent` | `mejortorrent.ts` | Detección de plantilla legacy/WordPress; descarga de metainfo con Referer y parser Bencode común. Sin contadores inventados. |
 | `elitetorrent` | `elitetorrent.ts` | Fichas, acortador Base64/ROT13, magnets hex/Base32, URLs `.torrent` relativas con query y metadatos fuera del título. |
 | `limetorrents` | `limetorrent.ts` | Tablas `table2`; localiza la columna de tamaño por contenido para que la antigüedad no desplace seeders/leechers; búsqueda POST con fallback GET. |
-| `nyaa` | `nyaa.ts` | Tablas `torrent-list`, tamaños MiB/GiB, anime y categoría de subtítulos ingleses. MultiSubs no se convierte en audio español. |
+| `nyaa` | `nyaa.ts` | Tablas `torrent-list`, tamaños MiB/GiB, anime y categoría de subtítulos ingleses. Descarta audio, literatura, software e imágenes: una búsqueda `c=0_0` ya no los archiva como anime. MultiSubs no se convierte en audio español. |
 | `wolftorrent` | `wolftorrent.ts` | Catálogos `/peliculas` y `/series`; fichas `/pelicula/:id/:slug` y `/serie/:id/:slug`; enlaces, atributos de descarga y URLs literales en botones. Fallback de clic normal con Playwright. |
 | `sinsitio` | `sinsitio.ts` | Posts DLE `/<categoría>/<id>-<slug>.html`; decodifica `ddlUrl.php?url=<Base64>&name=...` hacia adjuntos públicos `index.php?do=download&id=...` o `engine/download.php?id=...`. Conserva variantes de calidad. |
 | `rarbg` | `rarbg.ts` | **Nueva fuente.** Clones de RARBG (`rarbgproxy.to`): búsquedas `spanish/castellano/latino` y catálogos `/movies/`, `/tv/`, `/anime/`, `/documentaries/`; magnet, campo `Language:` y peers desde la ficha. XXX y categorías no-vídeo descartadas. Variables `RARBG_MIRRORS`, `RARBG_SEARCH`, `RARBG_CONCURRENCY`. |
 | `magnetdl` | `magnetdl.ts` | **Nueva fuente.** `magnetdl.co`: búsquedas `/<letra>/<slug>/` y `/download/movies/`, `/download/tv/`; el magnet se lee de la fila o de `/single/:id`. Variables `MAGNETDL_MIRRORS`, `MAGNETDL_SEARCH`, `MAGNETDL_CONCURRENCY`. |
 | `tokyotosho` | `tokyotosho.ts` | **Nueva fuente.** Tokyo Toshokan: filas `desc-top`/`desc-bot`, categorías Anime, Batch, Non-English y Drama más búsquedas; hentai/JAV/música/manga excluidos. Variables `TOKYOTOSHO_MIRRORS`, `TOKYOTOSHO_SEARCH`, `TOKYOTOSHO_CONCURRENCY`. |
-| `grantorrent` | `grantorrent.ts` | WordPress de películas en `grantorrent.foo`: tarjetas con póster, detalle e idioma por fila. Solo infohash de magnet directo o `.torrent` del mismo origen; enlaces de `super-enlace.com` se cuentan como protegidos y no se siguen. `GRANTORRENT_BASE_URL`, `GRANTORRENT_MIRRORS`. |
+| `grantorrent` | `grantorrent.ts` | WordPress de películas en `grantorrent.foo`: tarjetas con póster (`/` o `/sección/`), detalle, idioma por fila e IMDb de la ficha. Solo infohash de magnet directo o `.torrent` del mismo sitio (se acepta `www` ↔ dominio raíz); enlaces de `super-enlace.com` se cuentan como protegidos y no se siguen. `GRANTORRENT_BASE_URL`, `GRANTORRENT_MIRRORS`. |
 | `dontorrent` | `dontorrent.ts` | **Nueva fuente.** Catálogos `/peliculas`, `/series`, `/documentales` con paginación `?p=N`; fichas `/pelicula/:id/:slug` y `/serie/:id/:id/:slug`; tabla de episodios `1x02`; búsqueda POST opcional a `/buscar`; lista de dominios oficiales `/dominios` como reserva de espejos. |
 | `rutracker` | `rutracker.ts` | **Nueva fuente (con sesión).** RuTracker.org: HTML en **Windows-1251**, sesión obligatoria (cookies exportadas o login con usuario/contraseña), búsquedas `tracker.php?nm=` y secciones `viewforum.php?f=`; el magnet se lee de `viewtopic.php?t=` y, si falta, del `dl.php?t=` autenticado. Variables en `.env.example`. |
+
+### Auditoría del resto de fuentes: paginación publicada y campos recuperados
+
+Todo el proyecto comparte ahora dos ayudas en `src/crawlers/support.ts`:
+
+- **`sameHost(a, b)`**: compara hosts ignorando `www`, de modo que un espejo que
+  alterna `www.` y dominio raíz deja de perder fichas (GranTorrent, Sinsitio).
+- **`nextPaginationLink(html, url)`**: devuelve el siguiente listado **que la
+  propia página publica** (`rel="next"`, «Next»/«»»/«siguiente», el número que
+  avanza o el offset `start=`/`offset=`) y `null` en cualquier otro caso. Sustituye
+  los bucles que adivinaban `?p=N` o `/page/N/`: los espejos que ignoran esos
+  números volvían a servir la página 1, así que una sección de una sola página
+  costaba `maxPages` peticiones idénticas.
+
+Con esa base se corrigieron, fuente por fuente:
+
+| Fuente | Problema corregido |
+|---|---|
+| `rarbg` | Tamaño/seeders/leechers se localizan **por contenido** (los espejos añaden o quitan la columna de fecha) y la ficha guarda el `.torrent` que publica. |
+| `magnetdl` | El paginador solo reconocía «next»/números exactos: ahora sigue `rel=next`, flechas y la ruta numerada; la ficha `/single/:id` aporta el `.torrent` del propio sitio. |
+| `limetorrents` | Los catálogos dejaron de pedir `/browse-torrents/.../2/` a ciegas y la ficha aporta IMDb y `.torrent`. |
+| `thepiratebay` | La fase HTML deduce el tipo de la categoría de la fila (serie/anime/documental) y enriquece cada registro con la ficha. |
+| `leech1337x` | El paginador publicado sustituye al número adivinado y se guarda el `.torrent` de la ficha cuando existe. |
+| `nyaa` | Descarta audio, literatura, software e imágenes. |
+| `torrentgalaxy` | Seeders/leechers por clase (`[class*="seed"]`) y `torrent_file_url` solo con hash coincidente. |
+| `eztv` | El IMDb se lee de la fila, nunca de la página entera. |
+| `yts` | `es-419`, `es-ve`, `en-gb`, `pt-br`… conservan su etiqueta de audio en vez de caer en «desconocido». |
+| `mejortorrent` | El listado legacy recorre el paginador publicado y se detiene en la última página real. |
+| `pelispanda` | Una página repetida termina la categoría (antes seguía hasta `maxPages`) y se aceptan entradas `.torrent`. |
+| `grantorrent` | Tarjetas con o sin `www`, rutas `/pelicula/` de uno o dos segmentos, e IMDb de la ficha. |
+| `sinsitio` | Posts y adjuntos `do=download` con `www` ↔ dominio raíz. |
+
+Nada de esto relaja las reglas del proyecto: los contadores desconocidos siguen
+siendo `null`, no se inventa ningún infohash (un enlace `.torrent` se descarga y
+se parsea), y un `.torrent` de otro dominio nunca se guarda como `torrent_file_url`.
 
 ### DonTorrent: qué se extrae y qué no
 

@@ -13,8 +13,10 @@ import {
   describeError,
   isBlockedTitle,
   mapWithConcurrency,
+  nextPaginationLink,
   parseCount,
   qualityOf,
+  sameHost
 } from './support.js';
 
 interface LimeCandidate {
@@ -104,16 +106,24 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     ];
 
     for (const cat of categories) {
-      for (let page = 1; page <= maxPages; page++) {
-        if (this.deadline.expired) break;
-        if (page > 1 && !cat.paginated) break;
+      // Only the offsets the listing itself publishes. A guessed
+      // `/browse-torrents/Movies/2/` is served by most mirrors as page 1
+      // again, so the old numbering re-crawled the same rows `maxPages` times.
+      let listUrl: string | null = `${mirror}${cat.path}`;
+      const visited = new Set<string>();
 
-        const listUrl = page > 1 ? `${mirror}${cat.path}${page}/` : `${mirror}${cat.path}`;
+      for (let page = 1; listUrl && page <= maxPages; page++) {
+        if (this.deadline.expired) break;
+        if (visited.has(listUrl)) break;
+        visited.add(listUrl);
+
         try {
           this.log.debug(`Fetching catalog listing: ${listUrl}`);
           const html = await this.fetchHtml(listUrl);
           this.metrics.add('listings');
-          this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
+          const added = this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
+          listUrl = cat.paginated ? nextPaginationLink(html, listUrl) : null;
+          if (added === 0) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Failed fetching listing ${listUrl}: ${describeError(error)}`);
@@ -178,7 +188,8 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     mirror: string,
     forcedType: ContentType | null,
     sink: Map<string, LimeCandidate>
-  ): void {
+  ): number {
+    let parsed = 0;
     const $ = cheerio.load(html);
 
     $('table.table2 tr').each((index, tr) => {
@@ -226,7 +237,10 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         leeches,
         type: forcedType ?? (/\bs\d{1,2}\b|\bseason\b|temporada|cap[ií]tulo|\b\d{1,2}x\d{1,3}\b/i.test(title) ? 'series' : 'movie')
       });
+      parsed++;
     });
+
+    return parsed;
   }
 
   private async parseLimeDetail(item: LimeCandidate, mirror: string): Promise<TorrentRecord | null> {
@@ -302,6 +316,18 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       });
     }
 
+    // IMDb is only linked from some templates; it is stored when present
+    // because it is what lets the same release dedupe against other sources.
+    const imdbId = html.match(/imdb\.com\/title\/(tt\d{7,10})/i)?.[1]?.toLowerCase() ?? null;
+
+    // Metainfo link published next to the magnet, when the template has one.
+    // The href is resolved before comparing hosts: it is usually relative.
+    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
+    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, item.detailUrl) : null;
+    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, item.detailUrl)
+      ? resolvedTorrent
+      : null;
+
     if (!infoHash) return null;
 
     if (!trackers.length) trackers.push(...DEFAULT_TRACKERS.slice(0, 3));
@@ -320,6 +346,8 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       type: meta.type,
       infoHash,
       magnetUrl: magnetUri,
+      torrentFileUrl,
+      imdbId,
       sourceUrl: item.detailUrl,
       trackers,
       audio: langs.audio,

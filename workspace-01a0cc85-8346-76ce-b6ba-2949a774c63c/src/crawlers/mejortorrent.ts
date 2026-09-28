@@ -13,16 +13,12 @@ import {
   describeError,
   isBlockedTitle,
   mapWithConcurrency,
+  nextPaginationLink,
   qualityOf,
   sameOrigin,
 } from './support.js';
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
-
-interface ListingTarget {
-  url: string;
-  type: ContentType;
-}
 
 /**
  * MejorTorrent: legacy `.eu` templates and WordPress-based mirrors.
@@ -109,37 +105,47 @@ export class MejorTorrentCrawler extends BaseCrawler {
       { path: '/documentales', type: 'documentary' }
     ];
 
-    const listingTargets: ListingTarget[] = [];
-    for (const cat of categories) {
-      for (let page = 1; page <= maxPages; page++) {
-        if (page > 1 && cat.path === '/inicio') break;
-        const url = page > 1 ? `${mirror}${cat.path}/page/${page}` : `${mirror}${cat.path}`;
-        listingTargets.push({ url, type: cat.type });
-      }
-    }
-
     const detailUrls = new Set<string>();
 
-    // Extraer páginas de listado en paralelo con control de concurrencia
-    await mapWithConcurrency(listingTargets, this.concurrency, async ({ url }) => {
-      if (this.deadline.expired) return;
-      try {
-        const html = await this.fetchHtml(url);
-        this.metrics.add('listings');
-        const $ = cheerio.load(html);
-        $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
+    for (const cat of categories) {
+      // The old code built `maxPages` URLs per category up front and fetched
+      // them all: mirrors that ignore `/page/2` answer with page 1 again, so
+      // the same listing was requested up to `maxPages` times. Walking the
+      // pager the page publishes stops at the last real page.
+      let url: string | null = `${mirror}${cat.path}`;
+      const visited = new Set<string>();
 
-        $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
-          const href = $(el).attr('href');
-          if (href && !/genre|year|quality/i.test(href)) {
-            detailUrls.add(this.resolveUrl(href, url));
-          }
-        });
-      } catch (error) {
-        this.metrics.add('listingErrors');
-        this.log.debug(`Listing failed ${url}: ${describeError(error)}`);
+      for (let page = 1; url && page <= maxPages; page++) {
+        if (this.deadline.expired) break;
+        if (visited.has(url)) break;
+        visited.add(url);
+
+        try {
+          const html = await this.fetchHtml(url);
+          this.metrics.add('listings');
+          const $ = cheerio.load(html);
+          $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();
+
+          const base = url;
+          const before = detailUrls.size;
+          $('a[href*="/pelicula/"], a[href*="/serie/"], a[href*="/documental/"]').each((_, el) => {
+            const href = $(el).attr('href');
+            if (href && !/genre|year|quality/i.test(href)) {
+              detailUrls.add(this.resolveUrl(href, base));
+            }
+          });
+
+          url = nextPaginationLink(html, url);
+          // A listing with nothing new ends the category: the mirror is
+          // repeating a page or the category is exhausted.
+          if (detailUrls.size === before) break;
+        } catch (error) {
+          this.metrics.add('listingErrors');
+          this.log.debug(`Listing failed ${url}: ${describeError(error)}`);
+          break;
+        }
       }
-    });
+    }
 
     const targets = [...detailUrls].slice(0, maxPages * 35);
     const nested = await mapWithConcurrency(targets, this.concurrency, async url => {

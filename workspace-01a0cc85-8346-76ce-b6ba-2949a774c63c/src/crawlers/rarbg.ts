@@ -12,8 +12,10 @@ import {
   describeError,
   isBlockedTitle,
   mapWithConcurrency,
+  nextPaginationLink,
   parseCount,
-  qualityOf
+  qualityOf,
+  sameHost
 } from './support.js';
 
 export interface RarbgRow {
@@ -92,27 +94,47 @@ export class RarbgCrawler extends BaseCrawler {
       '/documentaries/'
     ];
 
-    const rows = new Map<string, RarbgRow>();
-    for (const route of routes) {
-      for (let page = 1; page <= maxPages; page++) {
+    // Routes are crawled with a small bounded parallelism: they are independent
+    // listings, and reading them one by one made a full run wait for the slowest
+    // route before even starting the next one.
+    const perRoute = await mapWithConcurrency(routes, 2, async route => {
+      const found = new Map<string, RarbgRow>();
+      let url: string | null = this.listingUrl(mirror, route, 1);
+      const visited = new Set<string>();
+
+      for (let page = 1; url && page <= maxPages; page++) {
         if (this.deadline.expired) break;
-        const url = this.listingUrl(mirror, route, page);
+        if (visited.has(url)) break;
+        visited.add(url);
+
         try {
           const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
           this.metrics.add('listings');
-          const found = this.parseListing(html, url);
+          const parsed = this.parseListing(html, url);
           let added = 0;
-          for (const row of found) {
-            if (rows.has(row.detailUrl)) continue;
-            rows.set(row.detailUrl, row);
+          for (const row of parsed) {
+            if (found.has(row.detailUrl)) continue;
+            found.set(row.detailUrl, row);
             added++;
           }
-          if (!found.length || added === 0) break;
+          // Only offsets the page publishes: a repeated page ends the route
+          // instead of being requested `maxPages` times.
+          url = nextPaginationLink(html, url);
+          if (!parsed.length || added === 0) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
           break;
         }
+      }
+
+      return [...found.values()];
+    });
+
+    const rows = new Map<string, RarbgRow>();
+    for (const routeRows of perRoute) {
+      for (const row of routeRows) {
+        if (!rows.has(row.detailUrl)) rows.set(row.detailUrl, row);
       }
     }
 
@@ -163,13 +185,19 @@ export class RarbgCrawler extends BaseCrawler {
       if (EXCLUDED_CATEGORY.test(category)) return;
 
       // Columns: cat | title | category | added | size | S | L | uploader.
+      // The size column is located by content (mirrors add or drop the
+      // uploader/date cells), and the fixed indices are only the fallback.
+      const cells = tds.toArray().map(td => cleanText($(td).text()));
+      let sizeIndex = cells.findIndex((text, position) => position > 2 && parseSizeToBytes(text) !== null);
+      if (sizeIndex === -1 && cells.length > 6) sizeIndex = 4;
+
       rows.push({
         detailUrl,
         title,
         category,
-        sizeStr: cleanText(tds.eq(4).text()),
-        seeders: parseCount(cleanText(tds.eq(5).text())),
-        leechers: parseCount(cleanText(tds.eq(6).text()))
+        sizeStr: sizeIndex >= 0 ? cells[sizeIndex] : '',
+        seeders: sizeIndex >= 0 ? parseCount(cells[sizeIndex + 1] ?? '') : null,
+        leechers: sizeIndex >= 0 ? parseCount(cells[sizeIndex + 2] ?? '') : null
       });
     });
 
@@ -222,11 +250,21 @@ export class RarbgCrawler extends BaseCrawler {
     const leechers = row.leechers ?? parseCount(peers.match(/leechers\s*:\s*([\d,.]+)/i)?.[1] ?? null);
     const imdb = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
 
+    // Some clones publish the metainfo next to the magnet; only same-host,
+    // `.torrent` links are stored (the href is resolved before comparing,
+    // because it is usually relative).
+    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
+    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, row.detailUrl) : null;
+    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, row.detailUrl)
+      ? resolvedTorrent
+      : null;
+
     return buildTorrentRecord({
       title,
       type: meta.type,
       infoHash: parsed.infoHash,
       magnetUrl: magnetHref,
+      torrentFileUrl,
       sourceUrl: row.detailUrl,
       trackers: parsed.trackers,
       audio: langs.audio,

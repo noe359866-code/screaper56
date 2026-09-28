@@ -4,7 +4,36 @@ import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { parseSizeToBytes } from '../utils/regex.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { absoluteHttpUrl, buildTorrentRecord, cleanText, describeError, mapWithConcurrency } from './support.js';
+import {
+  absoluteHttpUrl,
+  buildTorrentRecord,
+  cleanText,
+  describeError,
+  mapWithConcurrency,
+  sameHost
+} from './support.js';
+
+/**
+ * Path segments that are site sections, never a movie: a poster link inside
+ * one of them is navigation, not a movie card.
+ */
+const RESERVED_SEGMENTS = new Set([
+  'categoria', 'category', 'categorias', 'genero', 'generos', 'tag', 'tags',
+  'author', 'autor', 'page', 'feed', 'wp-content', 'wp-json', 'buscar',
+  'search', 'blog', 'noticias', 'contacto', 'dmca'
+]);
+
+/**
+ * A movie card permalink: `/movie/` or `/section/movie/`. Category, tag and
+ * pagination paths are rejected so the sidebar is never crawled as content.
+ */
+export function isMovieCardPath(pathname: string): boolean {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length === 0 || segments.length > 2) return false;
+  if (!segments.every(segment => /^[a-z0-9-]+$/i.test(segment))) return false;
+  if (RESERVED_SEGMENTS.has(segments[0].toLowerCase())) return false;
+  return true;
+}
 
 /** GranTorrent WordPress movie catalogue. Never follows ad/shortener links. */
 export class GranTorrentCrawler extends BaseCrawler {
@@ -13,26 +42,34 @@ export class GranTorrentCrawler extends BaseCrawler {
 
   public parseListing(html: string, base: string): string[] {
     const $ = cheerio.load(html);
-    const origin = new URL(base).origin;
     const found = new Set<string>();
     // Posters are the actual movie cards; links in the sidebar/navigation are not.
     $('a:has(img[src*="/wp-content/uploads/"])').each((_, element) => {
       const url = absoluteHttpUrl($(element).attr('href'), base);
       if (!url) return;
-      const parsed = new URL(url);
-      if (parsed.origin !== origin || !/^\/[a-z0-9-]+\/$/i.test(parsed.pathname)) return;
+      // `www.` and the apex domain are the same site: a strict `origin`
+      // comparison dropped every card on mirrors that mix both.
+      if (!sameHost(url, base)) return;
+      try {
+        if (!isMovieCardPath(new URL(url).pathname)) return;
+      } catch {
+        return;
+      }
       found.add(url);
     });
     return [...found];
   }
 
   public parseDetail(html: string, url: string): {
-    title: string; quality: string | null; downloads: Array<{ link: string; audio: string[]; size: number | null }>;
+    title: string; quality: string | null; imdbId: string | null;
+    downloads: Array<{ link: string; audio: string[]; size: number | null }>;
     gated: number;
   } {
     const $ = cheerio.load(html);
     const title = cleanText($('h1').first().text()).replace(/\s*\(\d{4}\)\s*$/, '');
     const quality = cleanText($('body').text().match(/Formato:\s*(4K|2160p|1080p|720p|DVDRip)/i)?.[1]) || null;
+    // IMDb is what lets the same movie dedupe against the other sources.
+    const imdbId = html.match(/imdb\.com\/title\/(tt\d{7,10})/i)?.[1]?.toLowerCase() ?? null;
     const downloads: Array<{ link: string; audio: string[]; size: number | null }> = [];
     let gated = 0;
     $('tr').each((_, row) => {
@@ -50,13 +87,14 @@ export class GranTorrentCrawler extends BaseCrawler {
         }
         const link = absoluteHttpUrl(raw, url);
         if (!link) return;
-        // No redirect following to super-enlace or other unverified third parties.
-        if (new URL(link).origin === new URL(url).origin && /\.torrent(?:\?.*)?$/i.test(new URL(link).pathname + new URL(link).search)) {
+        // No redirect following to super-enlace or other unverified third
+        // parties: only the site's own metainfo files are downloaded.
+        if (sameHost(link, url) && /\.torrent(?:\?.*)?$/i.test(link)) {
           downloads.push({ link, audio, size });
         } else if (/descargar/i.test(cleanText($(a).text()))) gated++;
       });
     });
-    return { title, quality, downloads, gated };
+    return { title, quality, imdbId, downloads, gated };
   }
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
@@ -100,7 +138,8 @@ export class GranTorrentCrawler extends BaseCrawler {
               title: detail.title, type: 'movie', sourceUrl: url,
               magnetUrl: magnet ? download.link : undefined,
               torrentFileUrl: magnet ? undefined : download.link,
-              audio: download.audio, quality: detail.quality, sizeBytes: download.size
+              audio: download.audio, quality: detail.quality, sizeBytes: download.size,
+              imdbId: detail.imdbId
             });
             if (record) records.push(record);
           } catch (error) {

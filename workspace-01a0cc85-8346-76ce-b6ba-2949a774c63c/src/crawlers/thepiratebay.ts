@@ -11,8 +11,10 @@ import {
   cleanText,
   describeError,
   isBlockedTitle,
+  mapWithConcurrency,
   parseCount,
   qualityOf,
+  sameHost
 } from './support.js';
 
 interface ApibayItem {
@@ -55,6 +57,13 @@ export class ThePirateBayCrawler extends BaseCrawler {
   public baseUrl = process.env.THEPIRATEBAY_BASE_URL || ThePirateBayCrawler.DEFAULT_MIRRORS[0];
 
   private readonly apibayBase = process.env.APIBAY_BASE_URL || 'https://apibay.org';
+
+  /**
+   * Fichas HTML que se leen como máximo por ejecución. La fase HTML solo llega
+   * aquí cuando el JSON no cubre el término, así que el presupuesto evita que
+   * `maxPages` grande se convierta en cientos de peticiones de ficha.
+   */
+  private detailBudget = 0;
 
   private readonly defaultTrackers = [
     'udp://tracker.opentrackr.org:1337/announce',
@@ -174,6 +183,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
     if (!workingMirror) {
       this.log.warn('Skipping HTML phase: no reachable web mirror.');
     } else {
+      this.detailBudget = Math.max(60, maxPages * 30);
       for (const term of searchTerms) {
         for (let page = 0; page < maxPages; page++) {
           if (this.deadline.expired) break;
@@ -183,7 +193,16 @@ export class ThePirateBayCrawler extends BaseCrawler {
             this.log.debug(`Scraping search term '${term}': ${searchUrl}`);
             const html = await this.fetchHtml(searchUrl);
             this.metrics.add('listings');
+            const before = results.length;
             const { rows } = this.collectHtmlRows(html, workingMirror, uniqueHashes, results);
+
+            // IMDb and the metainfo link live on the `/description.php?id=`
+            // page, not on the listing row: they are read here so the HTML
+            // phase stores the same fields the JSON phase already had.
+            const pageRecords = results.slice(before);
+            if (pageRecords.length) {
+              await this.enrichFromDetails(pageRecords, workingMirror);
+            }
 
             // Stop on an empty page, not on a page whose rows were already
             // known from APiBay: that used to end pagination after page 1.
@@ -232,17 +251,29 @@ export class ThePirateBayCrawler extends BaseCrawler {
       const descText = row.find('font.detDesc').text();
       const sizeMatch = descText.match(/Size\s+([^,]+)/i);
 
-      const meta = parseTorrentTitle(title, 'movie');
+      // The first cell of a result row is the category link ("Movies",
+      // "TV shows", "HD - Movies", ...): typing from it avoids labelling
+      // every episode as a movie just because the parser defaulted to one.
+      const categoryText = cleanText(tds.first().text());
+      const meta = parseTorrentTitle(title, this.typeFromCategory(categoryText));
       const langs = detectLanguages(title, ['thepiratebay']);
 
       const seedersText = tds.length >= 2 ? tds.eq(tds.length - 2).text() : '';
       const leechersText = tds.length >= 1 ? tds.eq(tds.length - 1).text() : '';
+
+      // Real metainfo link, when the template publishes one next to the
+      // magnet (`/download/<id>/<name>.torrent` or a `.torrent` anchor).
+      const torrentFileUrl = this.torrentLink(
+        row.find('a[href$=".torrent"], a[href*="/download"]').first().attr('href'),
+        mirror
+      );
 
       const record = buildTorrentRecord({
         title,
         type: meta.type,
         infoHash: parsedMagnet.infoHash,
         magnetUrl,
+        torrentFileUrl,
         sourceUrl: this.resolveUrl(titleEl.attr('href') || '', mirror),
         trackers: parsedMagnet.trackers.length ? parsedMagnet.trackers : this.defaultTrackers,
         audio: langs.audio,
@@ -263,6 +294,81 @@ export class ThePirateBayCrawler extends BaseCrawler {
     });
 
     return { rows, added };
+  }
+
+  /** Type advertised by a TPB category cell; `undefined` when it says nothing. */
+  public typeFromCategory(category: string): ContentType | undefined {
+    if (!category) return undefined;
+    if (/\b(?:tv|series|shows?|episode|temporada|cap[ií]tulo)\b/i.test(category)) return 'series';
+    if (/anime/i.test(category)) return 'anime';
+    if (/document(?:al|ary|ales|aries)/i.test(category)) return 'documentary';
+    if (/movies?|peliculas?|films?/i.test(category)) return 'movie';
+    return undefined;
+  }
+
+  /** Keeps only same-host links that really point at a metainfo file. */
+  private torrentLink(href: string | undefined, mirror: string): string | null {
+    if (!href) return null;
+    const url = absoluteHttpUrl(href, mirror);
+    if (!url || !sameHost(url, mirror)) return null;
+    try {
+      const { pathname } = new URL(url);
+      if (/\.torrent$/i.test(pathname) || /\/download(?:\.php)?(?:$|\/|\?)/i.test(pathname)) return url;
+    } catch {
+      return null;
+    }
+    return null;
+  }
+
+  /** `/description.php?id=` -> IMDb id and metainfo link published there. */
+  public parseDetail(html: string, sourceUrl: string): {
+    imdbId: string | null;
+    torrentFileUrl: string | null;
+  } {
+    const $ = cheerio.load(html);
+    const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
+    const imdbId = imdbMatch ? imdbMatch[1].toLowerCase() : null;
+
+    const href = $('a[href*="imdb.com/title/tt"]').first().attr('href');
+    const fromAnchor = href?.match(/(tt\d{7,10})/i)?.[1]?.toLowerCase() ?? null;
+
+    const torrentFileUrl = this.torrentLink(
+      $('a[href$=".torrent"], a[href*="/download"]').first().attr('href'),
+      sourceUrl
+    );
+
+    return { imdbId: imdbId ?? fromAnchor, torrentFileUrl };
+  }
+
+  /**
+   * Fills `imdb_id` / `torrent_file_url` on the records of the HTML phase.
+   * Bounded by the runtime deadline: a detail that fails is skipped instead of
+   * being turned into a fabricated value.
+   */
+  private async enrichFromDetails(records: TorrentRecord[], mirror: string): Promise<void> {
+    const limit = Math.max(
+      1,
+      Number.parseInt(process.env.THEPIRATEBAY_DETAIL_CONCURRENCY || '3', 10) || 3
+    );
+
+    await mapWithConcurrency(records, limit, async record => {
+      if (this.deadline.expired || this.detailBudget <= 0) return null;
+      if (!record.source_url) return null;
+      this.detailBudget--;
+      try {
+        const html = await this.fetchHtml(record.source_url, { headers: { Referer: `${mirror}/` } });
+        this.metrics.add('details');
+        const detail = this.parseDetail(html, record.source_url);
+        if (detail.imdbId && !record.imdb_id) record.imdb_id = detail.imdbId;
+        if (detail.torrentFileUrl && !record.torrent_file_url) {
+          record.torrent_file_url = detail.torrentFileUrl;
+        }
+      } catch (error) {
+        this.metrics.add('detailErrors');
+        this.log.debug(`Detail unavailable for ${record.source_url}: ${describeError(error)}`);
+      }
+      return null;
+    });
   }
 
   public mapApibayItem(item: ApibayItem): TorrentRecord | null {

@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText } from './support.js';
+import { cleanText, sameHost } from './support.js';
 
 /** DataLife Engine: numbered .html posts and public do=download attachments. */
 export class SinsitioCrawler extends HtmlCatalogCrawler {
@@ -38,9 +38,8 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
     const $ = cheerio.load(html);
     const links = new Set<string>();
 
-    let baseOrigin = '';
     try {
-      baseOrigin = new URL(url).origin;
+      new URL(url);
     } catch {
       return [];
     }
@@ -51,7 +50,9 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
 
       try {
         const parsed = new URL(link);
-        if (parsed.origin === baseOrigin && /\/\d+-[^/]+\.html$/i.test(parsed.pathname)) {
+        // `www.sinsitio.site` and `sinsitio.site` are the same site: a strict
+        // origin comparison dropped every post when the mirror alternated.
+        if (sameHost(link, url) && /\/\d+-[^/]+\.html$/i.test(parsed.pathname)) {
           links.add(link);
         }
       } catch {
@@ -121,10 +122,9 @@ export function decodeSinsitioDownload(href: string, base: string): string | nul
   if (!resolved) return null;
 
   try {
-    const baseUrl = new URL(base);
     let url = new URL(resolved);
 
-    if (url.origin !== baseUrl.origin) return null;
+    if (!sameHost(resolved, base)) return null;
 
     if (url.pathname === '/ddlUrl.php') {
       const encoded = url.searchParams.get('url');
@@ -141,7 +141,7 @@ export function decodeSinsitioDownload(href: string, base: string): string | nul
         if (!decoded) return null;
 
         url = new URL(decoded);
-        if (url.origin !== baseUrl.origin) return null;
+        if (!sameHost(decoded, base)) return null;
       } catch {
         return null;
       }

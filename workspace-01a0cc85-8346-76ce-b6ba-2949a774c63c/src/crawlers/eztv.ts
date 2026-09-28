@@ -231,6 +231,11 @@ export class EztvCrawler extends BaseCrawler {
       // instead of by a hard-coded index.
       const { sizeText, seedersText } = EztvCrawler.readRowCounters($, row);
 
+      // Some mirrors link the show's IMDb page from the row; it is stored
+      // when present so these releases can dedupe against the API rows.
+      const imdbHref = row.find('a[href*="imdb.com/title/tt"]').first().attr('href') ?? '';
+      const imdbMatch = imdbHref.match(/(tt\d{7,10})/i);
+
       const record = buildTorrentRecord({
         title,
         type: 'series',
@@ -246,6 +251,7 @@ export class EztvCrawler extends BaseCrawler {
         sizeBytes: parseSizeToBytes(sizeText),
         seeders: parseCount(seedersText),
         leechers: null,
+        imdbId: imdbMatch ? imdbMatch[1].toLowerCase() : null,
         sourceTracker: parsedMagnet.trackers[0] || this.defaultTrackers[0]
       });
 

@@ -11,9 +11,17 @@ import {
   cleanText,
   describeError,
   isBlockedTitle,
+  nextPaginationLink,
   parseCount,
   qualityOf,
 } from './support.js';
+
+/** True when an iTorrents-style link points at the very same infohash. */
+function itorrentHashMatches(href: string, infoHash: string): boolean {
+  if (!href) return false;
+  const match = href.match(/([0-9a-fA-F]{40})/);
+  return Boolean(match) && match![1].toLowerCase() === infoHash.toLowerCase();
+}
 
 /**
  * TorrentGalaxy: `.tgxtablerow` grids. The title comes from the release anchor
@@ -75,16 +83,20 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
     for (const endpoint of endpoints) {
       this.log.debug(`Crawling endpoint: ${endpoint}`);
 
-      for (let page = 0; page < maxPages; page++) {
-        if (this.deadline.expired) break;
+      // The bare endpoint IS the first page; every following page comes from
+      // the pager the response publishes. Guessing `page=N` was hopeless here:
+      // TGX mirrors disagree on whether numbering starts at 0 or at 1, so either
+      // the second request repeated page 1 (endpoint aborted) or page 2 was
+      // skipped entirely.
+      let listUrl: string | null = `${activeMirror}${endpoint}`;
+      const visited = new Set<string>();
 
-        // The bare endpoint IS the first page. TGX mirrors disagree on whether
-        // `page=` is 0- or 1-based, and asking for `page=0` on a 1-based mirror
-        // returned an empty grid that aborted the whole endpoint.
-        const separator = endpoint.includes('?') ? '&' : '?';
-        const fullUrl = page === 0
-          ? `${activeMirror}${endpoint}`
-          : `${activeMirror}${endpoint}${separator}page=${page}`;
+      for (let page = 1; listUrl && page <= maxPages; page++) {
+        if (this.deadline.expired) break;
+        if (visited.has(listUrl)) break;
+        visited.add(listUrl);
+
+        const fullUrl = listUrl;
 
         try {
           this.log.debug(`Fetching page ${page + 1}: ${fullUrl}`);
@@ -103,8 +115,11 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
           }
           this.log.debug(`Extracted ${added} new records from page ${page + 1}.`);
 
-          // `added === 0` also catches mirrors that ignore `page=` and keep
-          // serving page 1: without it every endpoint burned maxPages requests.
+          // Follow the pager only while it actually produces new releases: a
+          // mirror that ignores the page marker would otherwise repeat page 1
+          // until `maxPages` requests were spent.
+          listUrl = nextPaginationLink(html, fullUrl);
+
           if (!records.length || added === 0) {
             this.log.debug('No more records found. Moving to next endpoint.');
             break;
@@ -144,23 +159,38 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       let infoHash: string | null = null;
       let parsedMagnet = magnetHref ? parseMagnetUri(magnetHref) : null;
 
+      // Themetainfo link TGX publishes (iTorrents): kept as `torrent_file_url`
+      // whenever it really describes the same release.
+      const itorrentHref = row.find('a[href*="/torrent/"][href$=".torrent"]').first().attr('href') || '';
+      let torrentFileUrl: string | null = null;
+
       if (parsedMagnet?.infoHash) {
         infoHash = parsedMagnet.infoHash;
+        torrentFileUrl = itorrentHashMatches(itorrentHref, infoHash)
+          ? absoluteHttpUrl(itorrentHref, activeMirror)
+          : null;
       } else {
-        const itorrentLink = row.find('a[href*="/torrent/"][href$=".torrent"]').attr('href') || '';
-        const hashMatch = itorrentLink.match(/torrent\/([0-9a-fA-F]{40})/i);
+        const hashMatch = itorrentHref.match(/torrent\/([0-9a-fA-F]{40})/i);
         if (hashMatch) {
           infoHash = hashMatch[1].toLowerCase();
           magnetHref = buildMagnetUri(infoHash, title);
           parsedMagnet = parseMagnetUri(magnetHref);
+          torrentFileUrl = absoluteHttpUrl(itorrentHref, activeMirror);
         }
       }
 
       if (!infoHash || !magnetHref) return;
 
-      // 3. Swarm counters (TGX colours them with <font> or classes).
-      const seeders = parseCount(row.find('font[color="green"], font[color="lime"], span.seeders, .seeders').first().text());
-      const leechers = parseCount(row.find('font[color="#ff0000"], font[color="red"], span.leechers, .leechers').first().text());
+      // 3. Swarm counters. TGX colours them with <font>, but newer templates
+      //    use `td.tgxtablecell` with `seed`/`leech` classes or a `<b>` inside.
+      const seeders = parseCount(
+        row.find('[class*="seed"], font[color="green"], font[color="lime"], span.seeders, .seeders')
+          .first().text()
+      );
+      const leechers = parseCount(
+        row.find('[class*="leech"], font[color="#ff0000"], font[color="red"], span.leechers, .leechers')
+          .first().text()
+      );
 
       // 4. Size: badge first, then short-circuit evaluation on cells.
       let sizeBytes = parseSizeToBytes(cleanText(row.find('span.badge').first().text()));
@@ -191,8 +221,8 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
         type: meta.type,
         infoHash,
         magnetUrl: magnetHref,
-        // TGX redirects .torrent links to iTorrents; the magnet is the reliable source.
-        torrentFileUrl: null,
+        // Only a metainfo link describing this very hash is stored.
+        torrentFileUrl,
         sourceUrl: detailUrl ?? sourceUrl,
         trackers: parsedMagnet?.trackers ?? [],
         audio: langs.audio,

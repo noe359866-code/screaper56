@@ -12,8 +12,10 @@ import {
   describeError,
   isBlockedTitle,
   mapWithConcurrency,
+  nextPaginationLink,
   parseCount,
   qualityOf,
+  sameHost
 } from './support.js';
 
 interface ScrapedRow {
@@ -87,20 +89,26 @@ export class Leech1337xCrawler extends BaseCrawler {
     ];
 
     for (const endpoint of searchEndpoints) {
-      for (let page = 1; page <= maxPages; page++) {
+      const isSearch = endpoint.includes('sort-search');
+
+      // Search pagination is numbered, so the guess stays as a fallback, but
+      // the pager the page publishes (when it has one) always wins: mirrors
+      // differ in whether page 2 is `/2/` or `/seeders/desc/2/`.
+      let url: string | null = isSearch ? `${mirror}${endpoint}/1/` : `${mirror}${endpoint}`;
+      const visited = new Set<string>();
+
+      for (let page = 1; url && page <= maxPages; page++) {
         if (this.deadline.expired) break;
+        if (visited.has(url)) break;
+        visited.add(url);
 
-        const isSearch = endpoint.includes('sort-search');
-        const url = isSearch
-          ? `${mirror}${endpoint}/${page}/`
-          : (page === 1 ? `${mirror}${endpoint}` : null);
-        if (!url) break;
-
+        let listingHtml = '';
         try {
           this.log.debug(`Scraping listing: ${url}`);
           const html = await this.fetchHtml(url);
           this.metrics.add('listings');
           const $ = cheerio.load(html);
+          listingHtml = html;
 
           const tableRows = $('table.table-list tbody tr');
           if (tableRows.length === 0) {
@@ -159,6 +167,8 @@ export class Leech1337xCrawler extends BaseCrawler {
           this.log.warn(`Failed loading listing ${url}: ${describeError(error)}`);
           break;
         }
+
+        url = nextPaginationLink(listingHtml, url) ?? (isSearch ? `${mirror}${endpoint}/${page + 1}/` : null);
       }
     }
 
@@ -228,6 +238,15 @@ export class Leech1337xCrawler extends BaseCrawler {
 
     const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
 
+    // Metainfo link published next to the magnet, when the mirror offers one.
+    // Third-party download buttons are dropped: they are not this source's
+    // file. The href is resolved first, because it is usually relative.
+    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
+    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, row.detailUrl) : null;
+    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, row.detailUrl)
+      ? resolvedTorrent
+      : null;
+
     const finalSizeStr = row.sizeStr || detailsMap.get('total size') || detailsMap.get('size') || '';
     const seeders = row.seeders ?? parseCount(detailsMap.get('seeders'));
     const leechers = row.leechers ?? parseCount(detailsMap.get('leechers'));
@@ -237,6 +256,7 @@ export class Leech1337xCrawler extends BaseCrawler {
       type: meta.type,
       infoHash: parsedMagnet.infoHash,
       magnetUrl: magnetHref,
+      torrentFileUrl,
       sourceUrl: row.detailUrl,
       trackers: parsedMagnet.trackers,
       audio: langs.audio,
