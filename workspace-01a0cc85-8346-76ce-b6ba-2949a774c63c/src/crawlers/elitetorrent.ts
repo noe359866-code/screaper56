@@ -370,9 +370,11 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     if (!infoHash) return null;
 
-    // Fallback: build a valid magnet URI if infoHash exists but no original magnet was found
+    // Fallback: build a valid magnet URI if infoHash exists but no original
+    // magnet was found. Only the trackers the metainfo really announces are
+    // written; public defaults are never fabricated into a source's magnet.
     if (!magnetLink && infoHash) {
-      magnetLink = buildMagnetUri(infoHash, cleanTitle);
+      magnetLink = buildMagnetUri(infoHash, cleanTitle, trackers, { includeDefaultTrackers: false });
     }
 
     const isSeries = url.includes('/series/') || /\bS\d{1,2}(?:E\d{1,3})?\b|Temporada|\b\d{1,2}[xX×]\d{1,3}\b/i.test(cleanTitle);

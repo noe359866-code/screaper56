@@ -3,18 +3,11 @@ import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText, nextPaginationLink, sameHost } from './support.js';
+import { cleanText, nextPaginationLink, sameSite as sharedSameSite } from './support.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 
 function sameSite(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    if (left.username || left.password || right.username || right.password) return false;
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sharedSameSite(a, b);
 }
 
 /** DataLife Engine: numbered .html posts and public do=download attachments. */

@@ -15,7 +15,7 @@ import {
   nextPaginationLink,
   parseCount,
   qualityOf,
-  sameHost
+  sameSite
 } from './support.js';
 
 export interface RarbgRow {
@@ -31,13 +31,7 @@ export interface RarbgRow {
 const EXCLUDED_CATEGORY = /\b(xxx|porn|adult|games?|music|apps?|software|e-?books?)\b/i;
 
 function sameMirrorSite(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sameSite(a, b);
 }
 
 /**

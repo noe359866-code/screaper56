@@ -6,7 +6,6 @@ import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import { looksLikeBlockedPage } from './mirrors.js';
 import {
-  absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
   describeError,
@@ -14,8 +13,9 @@ import {
   mapWithConcurrency,
   nextPaginationLink,
   parseCount,
+  politePause,
   qualityOf,
-  sameHost
+  sameSiteHttpUrl as sharedSameSiteHttpUrl
 } from './support.js';
 
 interface LimeCandidate {
@@ -36,18 +36,7 @@ const NON_VIDEO_CATEGORY = /\b(audio|music|games?|software|applications?|apps?|p
 
 /** Resolve a site URL while preventing cross-site, scheme-downgrade and port escapes. */
 function sameSiteHttpUrl(value: string, resolveAgainst: string, siteBase: string): string | null {
-  const candidate = absoluteHttpUrl(value, resolveAgainst);
-  if (!candidate) return null;
-  try {
-    const left = new URL(candidate);
-    const right = new URL(siteBase);
-    if (left.username || left.password) return null;
-    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, siteBase)
-      ? candidate
-      : null;
-  } catch {
-    return null;
-  }
+  return sharedSameSiteHttpUrl(value, resolveAgainst, siteBase);
 }
 
 /** Ensure a pager stays on the current catalogue route (including page/N forms). */
@@ -215,13 +204,18 @@ export class LimeTorrentsCrawler extends BaseCrawler {
   private async searchHtml(mirror: string, query: string): Promise<string | null> {
     this.log.debug(`Querying search for "${query}"...`);
     try {
-      this.requestWithinBudget();
-      const response = await this.httpClient.request<string>({
+      await politePause();
+      // `requestWithinBudget` both rejects work after the deadline AND caps the
+      // timeout to the remaining budget: its return value has to be used.
+      const response = await this.httpClient.request<string>(this.requestWithinBudget({
         method: 'POST',
         url: `${mirror}/search`,
         data: new URLSearchParams({ q: query }).toString(),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      });
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Referer: `${mirror}/`
+        }
+      }));
       if (isLimeListingHtml(response.data)) {
         return response.data;
       }

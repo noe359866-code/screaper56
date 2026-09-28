@@ -157,6 +157,42 @@ export function sameHost(a: string, b: string): boolean {
 }
 
 /**
+ * True when both URLs belong to the same site front-end: same scheme, same
+ * port and same host ignoring a `www.` prefix, with no embedded credentials
+ * on either side.
+ *
+ * This is the check every adapter needs before trusting a detail, pager or
+ * metainfo link. A dozen private copies existed (some had forgotten the
+ * credential or port guard), so it is defined once here.
+ */
+export function sameSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    if (left.username || left.password || right.username || right.password) return false;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Resolves `value` against `resolveAgainst` and returns it only when it is a
+ * plain http(s) URL on the same site as `siteBase` (defaults to the resolve
+ * base). Anything off-site, on another scheme/port or carrying credentials
+ * yields `null`.
+ */
+export function sameSiteHttpUrl(
+  value: string | undefined | null,
+  resolveAgainst: string,
+  siteBase: string = resolveAgainst
+): string | null {
+  const candidate = absoluteHttpUrl(value, resolveAgainst);
+  if (!candidate) return null;
+  return sameSite(candidate, siteBase) ? candidate : null;
+}
+
+/**
  * Trims, drops empties and dedupes case-insensitively while preserving the
  * first-seen spelling (`[' a ', 'A', 'b']` -> `['a', 'b']`).
  */
@@ -217,8 +253,14 @@ const PAGER_LINK_SELECTOR = [
   'a[href*="start="]'
 ].join(', ');
 
-/** Default "next page" wording (`next`, `siguiente`, arrows, `more results`). */
-const DEFAULT_NEXT_TEXT = /^(?:next|siguiente|siguientes?|pr[oó]xima?|›|»|>|→|more(?:\s+torrent)?(?:\s+results?)?|\d+\s*(?:›|»))$/i;
+/**
+ * Default "next page" wording (`next`, `siguiente`, arrows, `more results`),
+ * with an optional arrow on either side (`Siguiente »`, `→ Next`). Without it
+ * those very common labels only worked through the numeric fallback, which
+ * cannot tell 0-based pagers apart from 1-based ones.
+ */
+const DEFAULT_NEXT_TEXT =
+  /^(?:[›»>→]\s*)?(?:next|siguiente|siguientes?|pr[oó]xima?|›|»|>|→|more(?:\s+torrent)?(?:\s+results?)?|\d+\s*(?:›|»))(?:\s*[›»>→])?$/i;
 
 const PAGE_QUERY_KEYS = ['page', 'p', 'pagina', 'paged', 'pagenum'] as const;
 const OFFSET_QUERY_KEYS = ['start', 'offset'] as const;

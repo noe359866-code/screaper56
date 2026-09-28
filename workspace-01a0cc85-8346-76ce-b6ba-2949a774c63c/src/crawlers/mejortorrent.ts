@@ -15,21 +15,14 @@ import {
   mapWithConcurrency,
   nextPaginationLink,
   qualityOf,
-  sameHost,
+  sameSite
 } from './support.js';
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
 
 /** Same site, allowing `www.` variation without accepting a scheme/port change. */
 function sameSiteHost(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return !left.username && !left.password && !right.username && !right.password &&
-      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sameSite(a, b);
 }
 
 /**
@@ -92,6 +85,16 @@ export class MejorTorrentCrawler extends BaseCrawler {
 
     const deduplicated = this.deduplicateRecords(records);
     this.logRunSummary(deduplicated);
+
+    // An unreachable/blocked catalogue must not look like a successful empty
+    // run: every other adapter reports this, and the failure diagnosis relies
+    // on it to tell "network/layout" apart from "no releases".
+    if (this.metrics.get('listings') === 0) {
+      throw new Error(
+        `[mejortorrent] No usable catalogue responses on ${mirror} (mode=${mode}). ` +
+        'Check mirror availability, blocking and the template (WordPress vs legacy).'
+      );
+    }
     return deduplicated;
   }
 
@@ -134,7 +137,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         visited.add(url);
 
         try {
-          const html = await this.fetchHtml(url);
+          const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
           this.metrics.add('listings');
           const $ = cheerio.load(html);
           $('.comments, #comentarios, .related, .relacionados, footer, nav').remove();

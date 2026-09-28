@@ -4,7 +4,6 @@ import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
 import {
-  absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
   dedupeStrings,
@@ -13,7 +12,7 @@ import {
   mapWithConcurrency,
   parseCount,
   qualityOf,
-  sameHost
+  sameSiteHttpUrl as sharedSameSiteHttpUrl
 } from './support.js';
 
 interface PelispandaItemSummary {
@@ -43,18 +42,7 @@ function pelispandaListItems(data: unknown, category: string): PelispandaItemSum
 
 /** Accept a metainfo URL only when it remains on the verified mirror site. */
 function sameSiteHttpUrl(value: string, base: string): string | null {
-  const candidate = absoluteHttpUrl(value, base);
-  if (!candidate) return null;
-  try {
-    const left = new URL(candidate);
-    const right = new URL(base);
-    if (left.username || left.password) return null;
-    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, base)
-      ? candidate
-      : null;
-  } catch {
-    return null;
-  }
+  return sharedSameSiteHttpUrl(value, base);
 }
 
 interface PelispandaDownload {
@@ -122,6 +110,12 @@ export class PelispandaCrawler extends BaseCrawler {
   ];
 
   private readonly concurrency = Math.max(1, Number.parseInt(process.env.PELISPANDA_CONCURRENCY || '3', 10) || 3);
+
+  /** Parallel metainfo downloads inside ONE ficha (`PELISPANDA_DOWNLOAD_CONCURRENCY`). */
+  private readonly downloadConcurrency = Math.max(
+    1,
+    Number.parseInt(process.env.PELISPANDA_DOWNLOAD_CONCURRENCY || '3', 10) || 3
+  );
 
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     if (!Number.isInteger(maxPages) || maxPages < 1) return [];
@@ -235,7 +229,10 @@ export class PelispandaCrawler extends BaseCrawler {
     this.metrics.add('details');
     const detailTitle = cleanText(detail.title) || cleanText(detail.slug) || cleanText(slug);
 
-    const records: TorrentRecord[] = [];
+    // Every download of the ficha is collected first and resolved with bounded
+    // parallelism below: a season with dozens of `.torrent` entries used to be
+    // downloaded strictly one after another.
+    const tasks: Array<() => Promise<TorrentRecord | null>> = [];
 
     const tmdbId = detail.tmdb_id ? parseCount(detail.tmdb_id) : null;
     let imdbId: string | null = null;
@@ -250,11 +247,7 @@ export class PelispandaCrawler extends BaseCrawler {
     for (const download of Array.isArray(detail.downloads) ? detail.downloads : []) {
       if (!download || typeof download !== 'object') continue;
       const fallbackTitle = cleanText(`${detailTitle} ${download.quality ?? ''}`);
-      const record = await this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
-      if (record) {
-        records.push(record);
-        this.metrics.add('records');
-      }
+      tasks.push(() => this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId));
     }
 
     // 2. Contenido episódico (Series / Animes)
@@ -273,19 +266,25 @@ export class PelispandaCrawler extends BaseCrawler {
         for (const download of Array.isArray(episode.downloads) ? episode.downloads : []) {
           if (!download || typeof download !== 'object') continue;
           const fallbackTitle = cleanText(`${detailTitle} ${episodeTag} ${download.quality ?? ''}`);
-
-          const record = await this.buildRecord(
+          tasks.push(() => this.buildRecord(
             download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId,
             seasonNum ?? undefined, episodeNum ?? undefined
-          );
-          if (record) {
-            records.push(record);
-            this.metrics.add('records');
-          }
+          ));
         }
       }
     }
 
+    const built = await mapWithConcurrency(tasks, this.downloadConcurrency, async task => {
+      if (this.deadline.expired) return null;
+      return task();
+    });
+
+    const records: TorrentRecord[] = [];
+    for (const record of built) {
+      if (!record) continue;
+      records.push(record);
+      this.metrics.add('records');
+    }
     return records;
   }
 

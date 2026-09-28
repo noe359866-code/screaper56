@@ -16,7 +16,7 @@ import {
   mapWithConcurrency,
   politePause,
   qualityOf,
-  sameHost,
+  sameSite as sharedSameSite
 } from './support.js';
 
 export interface DonTorrentSection {
@@ -99,13 +99,7 @@ let cachedCdnAllowList: RegExp[] | null = null;
 
 /** Same scheme and site host, treating an optional `www.` as equivalent. */
 function sameSite(a: string, b: string): boolean {
-  try {
-    const left = new URL(a);
-    const right = new URL(b);
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
-  } catch {
-    return false;
-  }
+  return sharedSameSite(a, b);
 }
 
 /** Returns cached regex patterns for allowed metainfo hosts. */
@@ -277,15 +271,21 @@ export class DonTorrentCrawler extends BaseCrawler {
   /** Real pagination links (`?p=N`); guessed routes are never followed. */
   public nextPage(html: string, currentUrl: string): string | null {
     const $ = cheerio.load(html);
-    const current = new URL(currentUrl);
+    let current: URL;
+    try {
+      current = new URL(currentUrl);
+    } catch {
+      return null;
+    }
     const currentPage = Number.parseInt(current.searchParams.get('p') || '1', 10) || 1;
     const currentPath = current.pathname.replace(/\/$/, '');
 
     for (const el of $('a[href]').toArray()) {
       const anchor = $(el);
       const text = cleanText(anchor.text());
-      const rel = anchor.attr('rel') || '';
-      if (rel !== 'next' && !/^(siguiente|next|[»›→]|\d{1,3})$/i.test(text)) continue;
+      // `rel` is a space-separated token list (`next nofollow`), not a scalar.
+      const isRelNext = (anchor.attr('rel') || '').split(/\s+/).includes('next');
+      if (!isRelNext && !/^(siguiente|next|[»›→]|\d{1,3})$/i.test(text)) continue;
 
       const link = absoluteHttpUrl(anchor.attr('href'), currentUrl);
       if (!link || !sameSite(link, currentUrl)) continue;
@@ -509,8 +509,8 @@ export class DonTorrentCrawler extends BaseCrawler {
         if (this.deadline.expired) return;
         try {
           await politePause();
-          this.requestWithinBudget();
-          const response = await this.httpClient.request<string>({
+          // Use the budget-capped config, not just the deadline check.
+          const response = await this.httpClient.request<string>(this.requestWithinBudget({
             method: 'POST',
             url: `${mirror}/buscar`,
             data: new URLSearchParams({ valor: term, Buscar: 'Buscar', p: String(page) }).toString(),
@@ -518,7 +518,7 @@ export class DonTorrentCrawler extends BaseCrawler {
               'Content-Type': 'application/x-www-form-urlencoded',
               Referer: `${mirror}/`
             }
-          });
+          }));
 
           const html = typeof response.data === 'string' ? response.data : '';
           if (!html) break;

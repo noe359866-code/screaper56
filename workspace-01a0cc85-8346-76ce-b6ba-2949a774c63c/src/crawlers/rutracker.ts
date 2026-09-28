@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import { readFileSync } from 'node:fs';
-import { BaseCrawler, MAX_TORRENT_BYTES } from './base.js';
+import { BaseCrawler, MAX_TORRENT_BYTES, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { ParsedTorrentFile, parseTorrentBuffer } from '../utils/bencode2.js';
 import { parseMagnetUri } from '../utils/magnet.js';
@@ -144,6 +144,23 @@ function looksLikeRateLimitPage(html: string): boolean {
   return Boolean(html) && RATE_LIMIT_PATTERN.test(html.slice(0, 4096));
 }
 
+/**
+ * Errors that must abort the whole run instead of being logged per topic:
+ * the tracker's own captcha/rate-limit signals plus the shared terminal
+ * conditions (HTTP 429, WAF interstitial, expired run budget). Swallowing a
+ * `CrawlerDeadlineError` here made every remaining in-flight topic print a
+ * misleading "Topic failed" warning after the budget had already expired.
+ */
+function isTerminalRutrackerError(error: unknown): boolean {
+  if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) return true;
+  try {
+    rethrowIfBlockedOrRateLimited(error);
+    return false;
+  } catch {
+    return true;
+  }
+}
+
 // ============================================================================
 // Windows-1251 helpers
 // ============================================================================
@@ -275,47 +292,116 @@ function sameOriginHttpUrl(value: string, base: string): string | null {
   }
 }
 
-export function parseCookieJar(raw: string, now = Date.now()): [string, string][] {
+/** Why configured cookies were kept or dropped; surfaced in the run log. */
+export interface CookieJarDiagnostics {
+  format: 'empty' | 'json' | 'netscape' | 'header' | 'invalid-json';
+  kept: string[];
+  expired: number;
+  foreignDomain: number;
+  unsafe: number;
+  /** Cookie domains seen for kept entries (used to prefer the matching mirror). */
+  domains: string[];
+}
+
+function emptyDiagnostics(format: CookieJarDiagnostics['format']): CookieJarDiagnostics {
+  return { format, kept: [], expired: 0, foreignDomain: 0, unsafe: 0, domains: [] };
+}
+
+/** Seconds vs milliseconds since epoch: extension exports disagree. */
+function expiryMs(value: unknown): number | null {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return null;
+  return value > 1e12 ? value : value * 1000;
+}
+
+/**
+ * Accepts every shape an operator is likely to paste into the secret:
+ *   - JSON array from Cookie-Editor / EditThisCookie (`expirationDate` seconds),
+ *   - Playwright `storageState()` (`{ cookies: [...] }`, `expires` seconds, -1 = session),
+ *   - Netscape `cookies.txt` (7 tab-separated columns, `#HttpOnly_` prefix allowed),
+ *   - a raw `Cookie:` header string.
+ * Entries from other domains are ignored and expired ones dropped.
+ */
+export function parseCookieJar(
+  raw: string,
+  now = Date.now(),
+  diagnostics: CookieJarDiagnostics = emptyDiagnostics('empty')
+): [string, string][] {
   if (!raw || typeof raw !== 'string') return [];
-  const trimmed = raw.trim();
+  const trimmed = raw.replace(/^\uFEFF/, '').trim();
   if (!trimmed) return [];
 
-  if (trimmed.startsWith('[')) {
+  const pairs: [string, string][] = [];
+  const keep = (name: string, value: string, domain?: string): void => {
+    pairs.push([name, value]);
+    diagnostics.kept.push(name);
+    if (domain) {
+      const clean = domain.trim().toLowerCase().replace(/^\.+/, '');
+      if (clean && !diagnostics.domains.includes(clean)) diagnostics.domains.push(clean);
+    }
+  };
+
+  if (trimmed.startsWith('[') || trimmed.startsWith('{')) {
     let parsed: unknown;
     try {
       parsed = JSON.parse(trimmed);
     } catch {
+      diagnostics.format = 'invalid-json';
       return [];
     }
-    if (!Array.isArray(parsed)) return [];
+    diagnostics.format = 'json';
+    const list = Array.isArray(parsed)
+      ? parsed
+      : parsed && typeof parsed === 'object' && Array.isArray((parsed as { cookies?: unknown }).cookies)
+        ? (parsed as { cookies: unknown[] }).cookies
+        : [];
 
-    const pairs: [string, string][] = [];
-    for (const entry of parsed as RutrackerCookieExport[]) {
+    for (const entry of list as RutrackerCookieExport[]) {
       if (!entry || typeof entry !== 'object') continue;
       const { name, value, domain } = entry as RutrackerCookieExport;
       if (typeof name !== 'string' || typeof value !== 'string' || !value) continue;
       const cleanName = name.trim();
-      if (!isSafeCookiePair(cleanName, value)) continue;
+      if (!isSafeCookiePair(cleanName, value)) { diagnostics.unsafe++; continue; }
       // Browser exports can include cookies for every open site. Never forward
       // unrelated credentials to the tracker, even if the user pasted a full jar.
-      if (typeof domain === 'string' && domain.trim() && !isRutrackerCookieDomain(domain)) continue;
+      if (typeof domain === 'string' && domain.trim() && !isRutrackerCookieDomain(domain)) { diagnostics.foreignDomain++; continue; }
       // A session cookie already expired is worse than no cookie: it triggers a
       // "please log in" page that looks like a template change.
-      const expires = typeof entry.expirationDate === 'number' ? entry.expirationDate * 1000 : null;
-      if (expires !== null && expires <= now) continue;
-      pairs.push([cleanName, value]);
+      const expires = expiryMs(entry.expirationDate) ?? expiryMs((entry as { expires?: unknown }).expires);
+      if (expires !== null && expires <= now) { diagnostics.expired++; continue; }
+      keep(cleanName, value, typeof domain === 'string' ? domain : undefined);
     }
     return pairs;
   }
 
-  const pairs: [string, string][] = [];
-  for (const rawPair of trimmed.split(/;\s*/)) {
+  const lines = trimmed.split(/\r?\n/);
+  const netscapeRows = lines
+    .map(line => line.replace(/^#HttpOnly_/i, ''))
+    .filter(line => line.trim() && !line.trimStart().startsWith('#'))
+    .map(line => line.split('\t'))
+    .filter(columns => columns.length >= 7);
+  if (netscapeRows.length) {
+    diagnostics.format = 'netscape';
+    for (const columns of netscapeRows) {
+      const [domain, , , , expiresRaw, name, ...rest] = columns;
+      const value = rest.join('\t').trim();
+      const cleanName = name.trim();
+      if (!value || !isSafeCookiePair(cleanName, value)) { diagnostics.unsafe++; continue; }
+      if (domain.trim() && !isRutrackerCookieDomain(domain)) { diagnostics.foreignDomain++; continue; }
+      const expires = expiryMs(Number.parseInt(expiresRaw, 10));
+      if (expires !== null && expires <= now) { diagnostics.expired++; continue; }
+      keep(cleanName, value, domain);
+    }
+    return pairs;
+  }
+
+  diagnostics.format = 'header';
+  for (const rawPair of trimmed.replace(/^cookie:\s*/i, '').split(/;\s*/)) {
     const separator = rawPair.indexOf('=');
     if (separator <= 0) continue;
     const name = rawPair.slice(0, separator).trim();
     const value = rawPair.slice(separator + 1).trim();
-    if (!value || !isSafeCookiePair(name, value)) continue;
-    pairs.push([name, value]);
+    if (!value || !isSafeCookiePair(name, value)) { diagnostics.unsafe++; continue; }
+    keep(name, value);
   }
   return pairs;
 }
@@ -400,6 +486,8 @@ export class RutrackerCrawler extends BaseCrawler {
 
   /** Cookie jar shared by every request of this adapter instance. */
   private readonly cookies = new Map<string, string>();
+  /** Domains the configured cookies were issued for (mirror preference). */
+  private readonly cookieDomains: string[] = [];
   private sessionCheckedFor: string | null = null;
   private loggedIn = false;
 
@@ -511,12 +599,15 @@ export class RutrackerCrawler extends BaseCrawler {
   }
 
   private loadConfiguredCookies(): void {
-    const sources = [
-      this.parseCookieSource(process.env.RUTRACKER_COOKIE_JSON),
-      this.parseCookieSource(process.env.RUTRACKER_COOKIES)
+    const sources: Array<[string, string | undefined]> = [
+      ['RUTRACKER_COOKIE_JSON', process.env.RUTRACKER_COOKIE_JSON],
+      ['RUTRACKER_COOKIES', process.env.RUTRACKER_COOKIES]
     ];
     let loaded = 0;
-    for (const pairs of sources) {
+    for (const [label, raw] of sources) {
+      if (!raw || !raw.trim()) continue;
+      const diagnostics = emptyDiagnostics('empty');
+      const pairs = this.parseCookieSource(raw, diagnostics);
       for (const [name, value] of pairs) {
         // The freshest source wins: an exported cookie jar is more recent than
         // a hand-typed header, but a login below always overwrites the session.
@@ -524,18 +615,37 @@ export class RutrackerCrawler extends BaseCrawler {
         this.cookies.set(name, value);
         loaded++;
       }
+      for (const domain of diagnostics.domains) {
+        if (!this.cookieDomains.includes(domain)) this.cookieDomains.push(domain);
+      }
+      // Names only: values are credentials and must never reach the log.
+      const dropped = `expired=${diagnostics.expired}, otherDomain=${diagnostics.foreignDomain}, unsafe=${diagnostics.unsafe}`;
+      if (diagnostics.format === 'invalid-json') {
+        this.log.warn(`${label} starts like JSON but does not parse; check the secret is the raw export (no quotes/escaping added).`);
+      } else if (!pairs.length) {
+        this.log.warn(`${label} is set (${raw.trim().length} chars, format=${diagnostics.format}) but yielded no usable cookie (${dropped}).`);
+      } else {
+        this.log.info(
+          `${label}: ${pairs.length} cookie(s) loaded [${diagnostics.kept.join(', ')}] ` +
+          `for ${diagnostics.domains.join(', ') || 'unspecified domain'} (${dropped}).`
+        );
+      }
     }
     if (loaded) {
-      this.log.debug(`Loaded ${loaded} configured cookie(s); session cookie present: ${isSessionCookieJar(this.cookies)}.`);
+      const session = isSessionCookieJar(this.cookies);
+      this.log.info(`Configured cookie jar ready; session cookie present: ${session}.`);
+      if (!session) {
+        this.log.warn('Configured cookies lack bb_session/bb_data: the export was taken while logged out, or the session cookie was filtered as expired.');
+      }
     }
   }
 
-  private parseCookieSource(raw: string | undefined): [string, string][] {
+  private parseCookieSource(raw: string | undefined, diagnostics = emptyDiagnostics('empty')): [string, string][] {
     if (!raw) return [];
     const expanded = raw.trim().startsWith('@')
       ? this.readCookieFile(raw.slice(1).trim())
       : raw;
-    return parseCookieJar(expanded);
+    return parseCookieJar(expanded, Date.now(), diagnostics);
   }
 
   /** `RUTRACKER_COOKIE_JSON=@secrets/rutracker.cookies.json` keeps secrets off the CLI. */
@@ -571,7 +681,11 @@ export class RutrackerCrawler extends BaseCrawler {
     if (this.sessionCheckedFor === mirror && this.loggedIn) return;
 
     const indexUrl = `${mirror.replace(/\/+$/, '')}${RUTRACKER_FORUM_PREFIX}/index.php`;
+    let cookieOutcome = this.cookies.size
+      ? 'configured cookies carry no bb_session/bb_data'
+      : 'no cookies configured';
     if (isSessionCookieJar(this.cookies)) {
+      cookieOutcome = 'session check request failed';
       try {
         const html = await this.fetchForumPage(indexUrl);
         if (looksLoggedIn(html, this.username)) {
@@ -580,19 +694,21 @@ export class RutrackerCrawler extends BaseCrawler {
           this.log.info(`Session cookie accepted by ${mirror}.`);
           return;
         }
+        cookieOutcome = `${mirror} served an anonymous page for the configured bb_session`;
         this.log.warn('Configured RuTracker cookies are no longer valid; logging in again.');
         this.cookies.delete('bb_session');
       } catch (error) {
-        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+        if (isTerminalRutrackerError(error)) throw error;
         this.log.warn(`Session check failed for ${indexUrl}: ${describeError(error)}`);
       }
     }
 
     if (!this.username || !this.password) {
       throw new RutrackerAuthError(
-        '[rutracker] No active session and no credentials configured. ' +
+        `[rutracker] No active session (${cookieOutcome}) and no username/password to log in with. ` +
         'Set RUTRACKER_USERNAME + RUTRACKER_PASSWORD, or export the logged-in cookies as ' +
-        'RUTRACKER_COOKIE_JSON / RUTRACKER_COOKIES ("bb_session" is the important one).'
+        'RUTRACKER_COOKIE_JSON / RUTRACKER_COOKIES ("bb_session" is the important one; ' +
+        'export them again after logging in with "remember me" so bb_data is included too).'
       );
     }
 
@@ -622,8 +738,7 @@ export class RutrackerCrawler extends BaseCrawler {
     try {
       // The anonymous `bb_guid`/`bb_ssl` cookies come with this page and must
       // be sent back with the POST, exactly as a browser would.
-      this.requestWithinBudget();
-      const page = await this.httpClient.request({
+      const page = await this.httpClient.request(this.requestWithinBudget({
         method: 'GET',
         url: loginUrl,
         headers: this.authHeaders(base, `${base}${RUTRACKER_FORUM_PREFIX}/index.php`),
@@ -631,7 +746,7 @@ export class RutrackerCrawler extends BaseCrawler {
         maxRedirects: 0,
         maxRetries: 1,
         autoSolveCloudflare: false
-      });
+      }));
       const loginPageHtml = typeof page?.data === 'string' ? page.data : '';
       if (page?.status === 429 || looksLikeRateLimitPage(loginPageHtml)) {
         this.metrics.add('rateLimited');
@@ -643,7 +758,7 @@ export class RutrackerCrawler extends BaseCrawler {
       }
       absorbSetCookie(this.cookies, page?.headers?.['set-cookie']);
     } catch (error) {
-      if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+      if (isTerminalRutrackerError(error)) throw error;
       this.log.debug(`Login page unavailable (${describeError(error)}); posting anyway.`);
     }
 
@@ -656,8 +771,7 @@ export class RutrackerCrawler extends BaseCrawler {
 
     let response;
     try {
-      this.requestWithinBudget();
-      response = await this.httpClient.request<string>({
+      response = await this.httpClient.request<string>(this.requestWithinBudget({
         method: 'POST',
         url: loginUrl,
         data: body,
@@ -670,8 +784,9 @@ export class RutrackerCrawler extends BaseCrawler {
         maxRedirects: 0,
         maxRetries: 1,
         autoSolveCloudflare: false
-      });
+      }));
     } catch (error) {
+      if (isTerminalRutrackerError(error)) throw error;
       this.metrics.add('loginErrors');
       this.log.warn(`Login POST failed: ${describeError(error)}`);
       return false;
@@ -702,7 +817,7 @@ export class RutrackerCrawler extends BaseCrawler {
       }
       return looksLoggedIn(html, this.username);
     } catch (error) {
-      if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+      if (isTerminalRutrackerError(error)) throw error;
       this.log.warn(`Login verification failed: ${describeError(error)}`);
       return false;
     }
@@ -957,7 +1072,7 @@ export class RutrackerCrawler extends BaseCrawler {
 
     const mirror = await this.resolveMirror({
       envPrefix: 'RUTRACKER',
-      defaults: RUTRACKER_DEFAULT_MIRRORS,
+      defaults: this.preferredMirrors(),
       fallback: null,
       probes: [
         {
@@ -1008,7 +1123,7 @@ export class RutrackerCrawler extends BaseCrawler {
       try {
         return await this.crawlTopic(topic);
       } catch (error) {
-        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+        if (isTerminalRutrackerError(error)) throw error;
         this.metrics.add('detailErrors');
         this.log.warn(`Topic failed ${topic.url}: ${describeError(error)}`);
         return [];
@@ -1027,6 +1142,19 @@ export class RutrackerCrawler extends BaseCrawler {
     }
 
     return records;
+  }
+
+  /**
+   * Default mirrors, with the domain the configured cookies belong to first:
+   * a `bb_session` exported from rutracker.org should be presented to
+   * rutracker.org before any other domain of the pool.
+   */
+  public preferredMirrors(): string[] {
+    const preferred = RUTRACKER_DEFAULT_MIRRORS.filter(mirror => {
+      const host = new URL(mirror).hostname.toLowerCase();
+      return this.cookieDomains.some(domain => domain === host || domain.endsWith(`.${host}`) || host.endsWith(`.${domain}`));
+    });
+    return [...preferred, ...RUTRACKER_DEFAULT_MIRRORS.filter(mirror => !preferred.includes(mirror))];
   }
 
   /** Walks one route following only the pagination the pages publish. */
@@ -1076,7 +1204,7 @@ export class RutrackerCrawler extends BaseCrawler {
 
         listUrl = this.nextPage(html, listUrl);
       } catch (error) {
-        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+        if (isTerminalRutrackerError(error)) throw error;
         this.metrics.add('listingErrors');
         this.log.warn(`Route ${route.label} failed at ${listUrl}: ${describeError(error)}`);
         break;
@@ -1113,8 +1241,7 @@ export class RutrackerCrawler extends BaseCrawler {
     const cookie = this.cookieHeader();
     let buffer: Buffer;
     try {
-      this.requestWithinBudget();
-      buffer = await this.httpClient.getBuffer(safeUrl, {
+      buffer = await this.httpClient.getBuffer(safeUrl, this.requestWithinBudget({
         autoSolveCloudflare: false,
         maxContentLength: MAX_TORRENT_BYTES,
         maxBodyLength: MAX_TORRENT_BYTES,
@@ -1123,7 +1250,7 @@ export class RutrackerCrawler extends BaseCrawler {
           Referer: referer,
           ...(cookie ? { Cookie: cookie } : {})
         }
-      });
+      }));
     } catch (error) {
       const body = responseBody(error);
       if (this.looksLikeCaptcha(body)) {
@@ -1190,7 +1317,7 @@ export class RutrackerCrawler extends BaseCrawler {
         if (!sizeBytes && metainfo.sizeBytes > 0) sizeBytes = metainfo.sizeBytes;
         if (!trackers.length) trackers = metainfo.trackers;
       } catch (error) {
-        if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) throw error;
+        if (isTerminalRutrackerError(error)) throw error;
         this.metrics.add('downloadErrors');
         this.log.debug(`Metainfo download failed for ${detail.torrentUrl}: ${describeError(error)}`);
       }
