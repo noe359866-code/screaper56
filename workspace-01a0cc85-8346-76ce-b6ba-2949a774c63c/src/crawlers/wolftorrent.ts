@@ -1,6 +1,7 @@
+import { createHash } from 'node:crypto';
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
-import { MAX_TORRENT_BYTES, MirrorSetup } from './base.js';
+import { MAX_TORRENT_BYTES, MirrorSetup, rethrowIfBlockedOrRateLimited } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
 import { cleanText, describeError, nextPaginationLink } from './support.js';
@@ -280,7 +281,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
           // browser session. The metainfo is kept for hashing, but a local blob
           // is never published as a download link.
           const finalUrl = isBlobUrl
-            ? `torrent:stream:${buffer.toString('hex').slice(0, 16)}`
+            ? `torrent:stream:${createHash('sha256').update(buffer).digest('hex')}`
             : trustedDownloadUrl!;
 
           rendered.downloads.push({
@@ -292,6 +293,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
 
           await download.delete().catch(() => {});
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('browserErrors');
           this.log.warn(`Download button failed in ${url}: ${describeError(error)}`);
         }

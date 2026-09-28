@@ -1,7 +1,7 @@
 /**
  * Shared crawler kit used by every adapter.
  *
- * Centralises the boring-but-critical plumbing so the 13 site crawlers stay
+ * Centralises the boring-but-critical plumbing so the site crawlers stay
  * small and consistent:
  *
  *   - `CrawlerLogger` / `CrawlerMetrics` / `Deadline`: per-run observability
@@ -59,14 +59,16 @@ export function cleanText(value: unknown): string {
  * those into `[object Object]` in the logs, which hides the real reason a
  * source failed.
  */
-export function describeError(error: unknown): string {
+export function describeError(error: unknown, seen = new Set<unknown>()): string {
+  if (seen.has(error)) return '[circular error]';
+  seen.add(error);
   if (error instanceof Error) return error.message;
   if (typeof error === 'string') return error;
   if (error && typeof error === 'object') {
     const candidate = (error as { message?: unknown }).message;
     if (typeof candidate === 'string' && candidate.trim()) return candidate;
     const nested = (error as { error?: unknown }).error;
-    if (nested && nested !== error) return describeError(nested);
+    if (nested && nested !== error) return describeError(nested, seen);
     // Last resort for plain throwables: a JSON dump beats the information-free
     // `[object Object]`. Circular structures throw here and fall through.
     try {
@@ -85,15 +87,15 @@ export function describeError(error: unknown): string {
 
 export function parseCount(value: unknown): number | null {
   if (typeof value === 'number') {
-    if (!Number.isFinite(value) || value < 0) return null;
-    return Math.floor(value);
+    if (!Number.isSafeInteger(value) || value < 0) return null;
+    return value;
   }
   if (typeof value === 'string') {
     const trimmed = value.trim();
     // "1,234" / "1.234" / "1 234" are thousands separators, never decimals.
     const normalized = /^\d{1,3}(?:[.,\s\u00a0]\d{3})+$/.test(trimmed)
       ? trimmed.replace(/[.,\s\u00a0]/g, '')
-      : trimmed.replace(/[,\s]+/g, '');
+      : trimmed;
     if (!/^\d+$/.test(normalized)) return null;
     const parsed = Number.parseInt(normalized, 10);
     return Number.isSafeInteger(parsed) ? parsed : null;
@@ -120,6 +122,7 @@ export function absoluteHttpUrl(
   try {
     const url = new URL(trimmed, base);
     if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    if (url.username || url.password) return null;
     url.hash = '';
     return url.href;
   } catch {
@@ -417,7 +420,8 @@ export async function mapWithConcurrency<T, R>(
 ): Promise<R[]> {
   const list = Array.isArray(items) ? items : [];
   if (!list.length) return [];
-  const workers = Math.max(1, Math.floor(limit) || 1);
+  // Misconfigured per-source limits must not schedule thousands of requests.
+  const workers = Number.isFinite(limit) ? Math.min(32, Math.max(1, Math.floor(limit) || 1)) : 1;
   const results: R[] = new Array(list.length);
   let cursor = 0;
   let aborted = false;

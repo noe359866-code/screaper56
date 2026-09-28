@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { parseSizeToBytes } from '../utils/regex.js';
@@ -84,6 +84,18 @@ export class GranTorrentCrawler extends BaseCrawler {
     // IMDb is what lets the same movie dedupe against the other sources.
     const imdbId = html.match(/imdb\.com\/title\/(tt\d{7,10})/i)?.[1]?.toLowerCase() ?? null;
     const downloads: Array<{ link: string; audio: string[]; size: number | null }> = [];
+    const byLink = new Map<string, typeof downloads[number]>();
+    const addDownload = (link: string, audio: string[], size: number | null): void => {
+      const previous = byLink.get(link);
+      if (previous) {
+        previous.audio = [...new Set([...previous.audio, ...audio])];
+        previous.size ??= size;
+      } else {
+        const download = { link, audio, size };
+        byLink.set(link, download);
+        downloads.push(download);
+      }
+    };
     let gated = 0;
     $('tr').each((_, row) => {
       const cells = $(row).find('td');
@@ -95,15 +107,15 @@ export class GranTorrentCrawler extends BaseCrawler {
       $(row).find('a[href]').each((_, a) => {
         const raw = $(a).attr('href') || '';
         if (/^magnet:/i.test(raw)) {
-          if (parseMagnetUri(raw)) downloads.push({ link: raw, audio, size });
+          if (parseMagnetUri(raw)) addDownload(raw, audio, size);
           return;
         }
         const link = absoluteHttpUrl(raw, url);
         if (!link) return;
         // No redirect following to super-enlace or other unverified third
         // parties: only the site's own metainfo files are downloaded.
-        if (sameSite(link, url) && /\.torrent(?:\?.*)?$/i.test(link)) {
-          downloads.push({ link, audio, size });
+        if (sameSite(link, url) && /\.torrent$/i.test(new URL(link).pathname)) {
+          addDownload(link, audio, size);
         } else if (/descargar/i.test(cleanText($(a).text()))) gated++;
       });
     });
@@ -143,6 +155,7 @@ export class GranTorrentCrawler extends BaseCrawler {
         listingSignatures.add(signature);
         for (const link of links) candidates.add(link);
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('listingErrors');
         this.log.warn(`Listing failed: ${describeError(error)}`);
         break;
@@ -153,6 +166,7 @@ export class GranTorrentCrawler extends BaseCrawler {
       try {
         const html = await this.fetchHtml(url, { headers: { Referer: `${base}/` } }, { rejectBlocked: true });
         const detail = this.parseDetail(html, url);
+        this.metrics.add('details');
         this.metrics.add('gated', detail.gated);
         const records: TorrentRecord[] = [];
         for (const download of detail.downloads) {
@@ -165,17 +179,21 @@ export class GranTorrentCrawler extends BaseCrawler {
               title: detail.title, type: 'movie', sourceUrl: url,
               magnetUrl: magnet ? download.link : undefined,
               torrentFileUrl: magnet ? undefined : download.link,
-              audio: download.audio, quality: detail.quality, sizeBytes: download.size,
+              audio: download.audio, quality: detail.quality, sizeBytes: metainfo?.sizeBytes ?? download.size,
+              trackers: (magnet ?? metainfo)!.trackers,
+              sourceTracker: magnet?.trackers[0] ?? metainfo?.primaryTracker ?? null,
               imdbId: detail.imdbId
             });
-            if (record) records.push(record);
+            if (record) { records.push(record); this.metrics.add('records'); }
           } catch (error) {
+            rethrowIfBlockedOrRateLimited(error);
             this.metrics.add('downloadErrors');
             this.log.warn(`Download metadata failed: ${describeError(error)}`);
           }
         }
         return records;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Detail failed ${url}: ${describeError(error)}`);
         return [] as TorrentRecord[];

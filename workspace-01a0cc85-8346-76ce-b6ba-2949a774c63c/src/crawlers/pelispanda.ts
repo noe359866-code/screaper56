@@ -1,4 +1,4 @@
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -190,6 +190,7 @@ export class PelispandaCrawler extends BaseCrawler {
             try {
               return await this.crawlDetail(category.type, item.slug, mirror);
             } catch (error) {
+              rethrowIfBlockedOrRateLimited(error);
               this.metrics.add('detailErrors');
               this.log.warn(`Failed to fetch detail for "${item.slug}": ${describeError(error)}`);
               return [];
@@ -202,6 +203,7 @@ export class PelispandaCrawler extends BaseCrawler {
             }
           }
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Error reading ${category.path} page ${page}: ${describeError(error)}`);
           break;
@@ -245,7 +247,8 @@ export class PelispandaCrawler extends BaseCrawler {
     }
 
     // 1. Películas / Descargas directas
-    for (const download of detail.downloads ?? []) {
+    for (const download of Array.isArray(detail.downloads) ? detail.downloads : []) {
+      if (!download || typeof download !== 'object') continue;
       const fallbackTitle = cleanText(`${detailTitle} ${download.quality ?? ''}`);
       const record = await this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
       if (record) {
@@ -255,9 +258,11 @@ export class PelispandaCrawler extends BaseCrawler {
     }
 
     // 2. Contenido episódico (Series / Animes)
-    for (const season of detail.seasons ?? []) {
+    for (const season of Array.isArray(detail.seasons) ? detail.seasons : []) {
+      if (!season || typeof season !== 'object') continue;
       const seasonNum = parseCount(season.season_number);
-      for (const episode of season.episodes ?? []) {
+      for (const episode of Array.isArray(season.episodes) ? season.episodes : []) {
+        if (!episode || typeof episode !== 'object') continue;
         const episodeNum = parseCount(episode.episode_number);
         // Keep absent numbering absent: defaulting missing values to S01E01
         // caused unrelated episodes to collide on the same release metadata.
@@ -265,7 +270,8 @@ export class PelispandaCrawler extends BaseCrawler {
         const episodeLabel = episodeNum !== null ? `E${String(episodeNum).padStart(2, '0')}` : '';
         const episodeTag = seasonLabel || episodeLabel ? `${seasonLabel}${episodeLabel}` : '';
 
-        for (const download of episode.downloads ?? []) {
+        for (const download of Array.isArray(episode.downloads) ? episode.downloads : []) {
+          if (!download || typeof download !== 'object') continue;
           const fallbackTitle = cleanText(`${detailTitle} ${episodeTag} ${download.quality ?? ''}`);
 
           const record = await this.buildRecord(
@@ -293,7 +299,7 @@ export class PelispandaCrawler extends BaseCrawler {
     season?: number,
     episode?: number
   ): Promise<TorrentRecord | null> {
-    const rawLink = download.download_link?.trim();
+    const rawLink = typeof download.download_link === 'string' ? download.download_link.trim() : '';
     if (!rawLink) return null;
 
     const parsedMagnet = parseMagnetUri(rawLink);
@@ -324,6 +330,7 @@ export class PelispandaCrawler extends BaseCrawler {
         metainfoTrackers = parsedTorrent.trackers ?? [];
         metainfoSize = parsedTorrent.sizeBytes ?? null;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('downloadErrors');
         this.log.debug(`Metainfo unavailable for ${rawLink}: ${describeError(error)}`);
         return null;

@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -133,6 +133,7 @@ export class NyaaCrawler extends BaseCrawler {
             // look short and hide eligible releases on the next page.
             if (pageRowCount < 75) break;
           } catch (error) {
+            rethrowIfBlockedOrRateLimited(error);
             this.metrics.add('listingErrors');
             this.log.warn(`Failed fetching ${url}: ${describeError(error)}`);
             break;
@@ -164,7 +165,7 @@ export class NyaaCrawler extends BaseCrawler {
 
     // Hints dinámicos basados en la consulta/endpoint de búsqueda
     const hints: string[] = ['nyaa'];
-    if (endpoint.includes('1_2')) hints.push('sub_en');
+    const endpointCategory = new URL(endpoint || '/', mirror).searchParams.get('c');
     // q=spanish/latino/castellano are search hints, not proof that a release
     // has that language as audio; title metadata remains the audio source.
     // 'multi' alone matched no subtitle pattern, so MultiSubs searches were
@@ -198,15 +199,24 @@ export class NyaaCrawler extends BaseCrawler {
       // Nyaa publishes its category in the icon title of the first cell
       // ("Anime - English-translated", "Live Action - ..."). A `c=0_0` search
       // spans every category, so a live-action movie is no longer filed as anime.
+      const categoryHref = tds.eq(0).find('a[href]').first().attr('href');
+      let rowCategory: string | null = null;
+      try { rowCategory = categoryHref ? new URL(categoryHref, mirror).searchParams.get('c') : null; } catch { /* malformed category */ }
       const categoryLabel = cleanText(tds.eq(0).find('img').attr('title') || tds.eq(0).text());
       // Nyaa also indexes audio, books, software and pictures. A `c=0_0` search
       // spans every one of them, and the schema only stores video, so those
       // rows are dropped instead of being filed as anime releases.
+      if (rowCategory && !/^(?:1|4)_\d+$/.test(rowCategory)) return;
       if (/audio|literature|software|pictures|games?|other/i.test(categoryLabel)) return;
-      const contentType: 'anime' | 'movie' = /^live\s*action/i.test(categoryLabel) ? 'movie' : 'anime';
+      const contentType: 'anime' | 'movie' = (/^live\s*action/i.test(categoryLabel) || rowCategory?.startsWith('4_')) ? 'movie' : 'anime';
 
       const meta = parseTorrentTitle(title, contentType);
-      const langs = detectLanguages(title, hints, false);
+      // A search spans every category: the row, not the search term, is
+      // authoritative. Only fall back to a category endpoint if the row omits it.
+      const englishTranslated = rowCategory ? rowCategory === '1_2' || rowCategory === '4_1'
+        : categoryLabel ? /English-translated/i.test(categoryLabel) && !/Non-English/i.test(categoryLabel)
+          : endpointCategory === '1_2' || endpointCategory === '4_1';
+      const langs = detectLanguages(title, englishTranslated ? [...hints, 'sub_en'] : hints, false);
       let torrentFileUrl: string | null = null;
       for (const element of tds.eq(2).find('a[href]').toArray()) {
         const candidate = sameSiteHttpUrl($(element).attr('href') || '', mirror);
@@ -224,7 +234,7 @@ export class NyaaCrawler extends BaseCrawler {
       const trustedViewUrl = viewHref ? sameSiteHttpUrl(viewHref, mirror) : null;
       const record = buildTorrentRecord({
         title,
-        type: contentType,
+        type: contentType === 'anime' ? 'anime' : meta.type,
         infoHash: parsedMagnet.infoHash,
         magnetUrl: magnetHref,
         torrentFileUrl,

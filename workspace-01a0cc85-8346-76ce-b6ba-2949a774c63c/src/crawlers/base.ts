@@ -30,9 +30,16 @@ export class BlockedPageError extends Error {
   }
 }
 
+export class CrawlerDeadlineError extends Error {
+  constructor(name: string) {
+    super(`[${name}] Crawler deadline exceeded`);
+    this.name = 'CrawlerDeadlineError';
+  }
+}
+
 /** Blocking and rate-limit responses must abort a source run, not look like empty pages. */
 export function rethrowIfBlockedOrRateLimited(error: unknown): void {
-  if (error instanceof BlockedPageError) throw error;
+  if (error instanceof BlockedPageError || error instanceof CrawlerDeadlineError) throw error;
   const response = (error as { response?: { status?: unknown } } | null)?.response;
   if (response?.status === 429) throw error;
 }
@@ -130,7 +137,7 @@ export abstract class BaseCrawler {
     const mirror = await resolveWorkingMirror({
       name: this.name,
       mirrors,
-      http: this.httpClient,
+      http: { get: (url, config) => this.httpClient.get(url, this.requestWithinBudget(config)) },
       probes: setup.probes,
       logger: this.log,
       fallback: setup.fallback,
@@ -141,10 +148,19 @@ export abstract class BaseCrawler {
     return mirror;
   }
 
+  /** Prevent fresh requests once the cooperative run budget has expired. */
+  protected requestWithinBudget(config: RequestOptions = {}): RequestOptions {
+    const remaining = this.deadline.remainingMs;
+    if (remaining <= 0) throw new CrawlerDeadlineError(this.name);
+    if (!Number.isFinite(remaining)) return config;
+    const timeout = typeof config.timeout === 'number' && config.timeout > 0 ? config.timeout : 20_000;
+    return { ...config, timeout: Math.max(1, Math.min(timeout, remaining)) };
+  }
+
   /**
    * GET returning HTML, with an explicit error when the payload is not HTML.
-   * Pass `{ rejectBlocked: true }` to turn a WAF/parked interstitial served with
-   * a 200 into a `BlockedPageError` instead of handing garbage to cheerio.
+   * By default, a WAF/parked interstitial served with HTTP 200 raises
+   * `BlockedPageError` instead of handing garbage to cheerio.
    */
   protected async fetchHtml(
     url: string,
@@ -152,11 +168,11 @@ export abstract class BaseCrawler {
     options: { rejectBlocked?: boolean } = {}
   ): Promise<string> {
     await politePause();
-    const response = await this.httpClient.get<string>(url, config);
+    const response = await this.httpClient.get<string>(url, this.requestWithinBudget(config));
     if (typeof response.data !== 'string') {
       throw new Error(`Expected HTML from ${url} but received ${typeof response.data}`);
     }
-    if (options.rejectBlocked && looksLikeBlockedPage(response.data)) {
+    if (options.rejectBlocked !== false && looksLikeBlockedPage(response.data)) {
       this.metrics.add('blockedPages');
       throw new BlockedPageError(url);
     }
@@ -166,7 +182,7 @@ export abstract class BaseCrawler {
   /** GET returning parsed JSON. */
   protected async fetchJson<T>(url: string, config: RequestOptions = {}): Promise<T> {
     await politePause();
-    const response = await this.httpClient.get<T>(url, config);
+    const response = await this.httpClient.get<T>(url, this.requestWithinBudget({ responseType: 'json', ...config }));
     return response.data;
   }
 
@@ -179,7 +195,7 @@ export abstract class BaseCrawler {
    */
   protected async fetchBytes(url: string, config: RequestOptions = {}): Promise<Buffer> {
     await politePause();
-    return this.httpClient.getBuffer(url, config);
+    return this.httpClient.getBuffer(url, this.requestWithinBudget(config));
   }
 
   /**
@@ -191,7 +207,8 @@ export abstract class BaseCrawler {
     task: (page: import('playwright').Page) => Promise<T>,
     timeoutMs?: number
   ): Promise<T> {
-    return this.bypassEngine.withPage(page => task(page), timeoutMs);
+    const config = this.requestWithinBudget({ timeout: timeoutMs });
+    return this.bypassEngine.withPage(page => task(page), config.timeout);
   }
 
   /**
@@ -205,7 +222,7 @@ export abstract class BaseCrawler {
     extraHeaders: Record<string, string> = {}
   ): Promise<ParsedTorrentFile> {
     await politePause();
-    const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, {
+    const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, this.requestWithinBudget({
       responseType: 'arraybuffer',
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
@@ -214,7 +231,7 @@ export abstract class BaseCrawler {
         ...(referer ? { Referer: referer } : {}),
         ...extraHeaders
       }
-    });
+    }));
 
     const data = response.data;
     const buffer = Buffer.isBuffer(data) ? data : Buffer.from(data as ArrayBuffer);
@@ -236,7 +253,7 @@ export abstract class BaseCrawler {
     extraHeaders: Record<string, string> = {}
   ): Promise<ParsedTorrentFile> {
     await politePause();
-    const buffer = await this.httpClient.getBuffer(url, {
+    const buffer = await this.httpClient.getBuffer(url, this.requestWithinBudget({
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
       headers: {
@@ -244,7 +261,7 @@ export abstract class BaseCrawler {
         ...(referer ? { Referer: referer } : {}),
         ...extraHeaders
       }
-    });
+    }));
     const parsed = parseTorrentBuffer(buffer);
     if (!parsed) {
       throw new Error(`Response from ${url} is not valid v1/hybrid torrent metainfo`);

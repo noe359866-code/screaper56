@@ -75,11 +75,12 @@ export interface CrawlerStats {
   filteredSpanish: number;
   discardedNonSpanish: number;
   upserted: number;
+  wouldUpsert: number;
   errors: number;
   /** Last fatal error, for the end-of-run summary. */
   failureReason?: string;
   failureAdvice?: string;
-  failureKind?: import('../crawlers/failure-diagnosis.js').FailureKind;
+  failureKind?: import('../crawlers/failure-diagnosis.js').FailureKind | 'persistence';
   executionTimeMs: number;
 }
 
@@ -90,6 +91,7 @@ export interface ScraperExecutionSummary {
   totalSpanishAccepted: number;
   totalDiscarded: number;
   totalUpserted: number;
+  totalWouldUpsert: number;
   crawlers: CrawlerStats[];
 }
 
@@ -110,7 +112,7 @@ const IMDB_REGEX = /^tt\d{7,10}$/;
  * Acepta `unknown` para permitir la validación segura de datos de origen no confiable.
  */
 export function isValidInfoHash(hash: unknown): hash is string {
-  return typeof hash === 'string' && INFO_HASH_REGEX.test(hash);
+  return typeof hash === 'string' && INFO_HASH_REGEX.test(hash) && !/^0{40}$/.test(hash);
 }
 
 /**

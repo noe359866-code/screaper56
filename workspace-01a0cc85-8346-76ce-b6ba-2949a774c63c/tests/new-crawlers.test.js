@@ -79,7 +79,7 @@ test('Sinsitio: bad attachment does not drop a later valid one', async () => {
 test('Sinsitio: an unavailable site or changed layout is an error, not silent success', async () => {
   for (const get of [() => { throw new Error('offline'); }, () => '<html>parked domain</html>']) {
     const crawler = new SinsitioCrawler(); mockHttp(crawler, get);
-    await assert.rejects(crawler.crawl(1), /No usable releases/);
+    await assert.rejects(crawler.crawl(1), /No compatible mirror available/);
   }
 });
 test('Wolf: dedicated routes and real next links', () => {

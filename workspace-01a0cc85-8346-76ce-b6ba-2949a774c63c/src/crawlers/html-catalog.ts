@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler, MirrorSetup } from './base.js';
+import { BaseCrawler, MirrorSetup, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseTorrentBuffer } from '../utils/bencode2.js';
 import { parseMagnetUri } from '../utils/magnet.js';
@@ -42,7 +42,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
   public abstract parseListing(html: string, url: string): string[];
   public abstract parseDetail(html: string, url: string): CatalogDetail | Promise<CatalogDetail>;
 
-  /** Optional mirror pool; resolution is soft so the adapter can still report a precise error. */
+  /** Optional mirror pool; an unverified fallback must be explicitly opted into. */
   protected get mirrorSetup(): MirrorSetup | null {
     return null;
   }
@@ -133,7 +133,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
 
     const setup = this.mirrorSetup;
     const resolved = setup
-      ? await this.resolveMirror({ ...setup, fallback: setup.fallback === undefined ? this.baseUrl : setup.fallback })
+      ? await this.resolveMirror(setup)
       : this.baseUrl;
     // Defaults such as 'https://site/' produced 'https://site//' Referers.
     const base = resolved.replace(/\/+$/, '');
@@ -154,7 +154,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
         try {
           // Same-site Referer: DLE/WordPress mirrors 403 direct hits on a
           // paginated catalogue URL that they happily serve from the index.
-          const html = await this.fetchHtml(listUrl, { headers: { Referer: `${base}/` } });
+          const html = await this.fetchHtml(listUrl, { headers: { Referer: `${base}/` } }, { rejectBlocked: true });
           listingsRead++;
           this.metrics.add('listings');
 
@@ -182,6 +182,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
           // Seguir enlaces reales de paginación
           listUrl = this.nextPage(html, listUrl);
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Catalog failed ${listUrl}: ${describeError(error)}`);
           break;
@@ -220,6 +221,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
             this.metrics.add('records');
           }
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('downloadErrors');
           this.log.warn(`Invalid/unavailable download ${download.url}: ${describeError(error)}`);
         }
@@ -231,6 +233,7 @@ export abstract class HtmlCatalogCrawler extends BaseCrawler {
       }
       return records;
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('detailErrors');
       this.log.warn(`Detail failed ${url}: ${describeError(error)}`);
       return [];

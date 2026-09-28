@@ -257,7 +257,7 @@ export class ResilientHttpClient {
     const raw = (headers as Record<string, string> | undefined)?.['retry-after'];
     if (!raw) return null;
 
-    const seconds = Number.parseInt(raw, 10);
+    const seconds = /^\d+(?:\.\d+)?$/.test(String(raw).trim()) ? Number(raw) : NaN;
     if (Number.isFinite(seconds)) return Math.min(Math.max(seconds, 0) * 1000, 60_000);
 
     const date = Date.parse(raw);
@@ -364,10 +364,19 @@ export class ResilientHttpClient {
 
         const isCloudflare =
           err instanceof CloudflareChallengeError ||
-          status === 403 ||
-          status === 503 ||
           (isAxiosError && err.response?.headers?.['cf-mitigated'] === 'challenge') ||
           this.isCloudflareChallenge(responseData);
+
+        // Cancellation and permanent transport failures cannot recover through
+        // retries. In particular ENOTFOUND is not the transient EAI_AGAIN.
+        if (axios.isCancel(err) || axiosConfig.signal?.aborted ||
+            (isAxiosError && /^(?:ENOTFOUND|ERR_INVALID_URL|ERR_BAD_OPTION_VALUE|ERR_BAD_OPTION|CERT_HAS_EXPIRED|DEPTH_ZERO_SELF_SIGNED_CERT|UNABLE_TO_VERIFY_LEAF_SIGNATURE|ERR_TLS_CERT_ALTNAME_INVALID)$/.test(err.code ?? ''))) {
+          throw err;
+        }
+        // A plain 403 is a refusal, not evidence of a Cloudflare challenge.
+        if (status && status >= 400 && status < 500 && status !== 408 && status !== 429 && !isCloudflare) {
+          throw err;
+        }
 
         // --------------------------------------------------------------
         // Stealth escalation
@@ -459,6 +468,7 @@ export class ResilientHttpClient {
   ): AxiosResponse<T> | null {
     const html = bypassResult.html;
     if (!html || bypassResult.solved === false) return null;
+    if ((axiosConfig.method ?? 'GET').toUpperCase() !== 'GET' || axiosConfig.data != null) return null;
 
     const responseType = axiosConfig.responseType;
     if (responseType && responseType !== 'text') return null;

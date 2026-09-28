@@ -1,3 +1,9 @@
+> **Actualización 2026-09-28:** la descripción histórica del fallback INSERT
+> de Supabase en este documento ya no aplica. Se eliminó porque podía crear
+> duplicados y ocultar fallos parciales. El servicio requiere UNIQUE(info_hash),
+> conserva UPSERT al dividir lotes y comunica los errores al orquestador.
+> Ver `AUDITORIA_SERVICIOS_2026-09-28.md`.
+
 # Corrección de errores críticos — Auditoría crawler por crawler
 
 Fecha: 2026-09-27

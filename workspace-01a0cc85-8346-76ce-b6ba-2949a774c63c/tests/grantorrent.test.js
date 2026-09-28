@@ -183,7 +183,7 @@ test('GranTorrent: blocked catalogue after a passing probe is not an empty succe
     };
 
     await withConfiguredMirror(async () => {
-      await assert.rejects(crawler.crawl(1), /No verified infohash/);
+      await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
     });
   } finally {
     if (previousMirrors === undefined) delete process.env.GRANTORRENT_MIRRORS;

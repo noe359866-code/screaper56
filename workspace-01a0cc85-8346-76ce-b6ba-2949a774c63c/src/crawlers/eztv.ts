@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import type { Element } from 'domhandler';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, normalizeInfoHash, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -164,6 +164,7 @@ export class EztvCrawler extends BaseCrawler {
       }
       apiSuccess = true;
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('listingErrors');
       const msg = describeError(error);
       const is403 = msg.includes('403') || msg.toLowerCase().includes('forbidden');
@@ -212,6 +213,7 @@ export class EztvCrawler extends BaseCrawler {
         htmlPageSignatures.add(signature);
       }
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('listingErrors');
       const msg = describeError(error);
       if (msg.includes('403')) {
@@ -235,7 +237,7 @@ export class EztvCrawler extends BaseCrawler {
     const identities: string[] = [];
     $('tr.forum_header_border').each((_, element) => {
       const row = $(element);
-      const magnet = row.find('a.magnet').attr('href') || '';
+      const magnet = row.find('a[href^="magnet:" i]').attr('href') || '';
       const detail = row.find('a.epinfo').attr('href') || '';
       identities.push(magnet || detail || cleanText(row.text()));
     });
@@ -261,7 +263,7 @@ export class EztvCrawler extends BaseCrawler {
 
       let magnetLink: string | null = null;
       let parsedMagnet: ReturnType<typeof parseMagnetUri> = null;
-      for (const element of row.find('a.magnet[href]').toArray()) {
+      for (const element of row.find('a[href]').toArray()) {
         const href = $(element).attr('href') || '';
         const candidate = parseMagnetUri(href);
         if (!candidate?.infoHash) continue;

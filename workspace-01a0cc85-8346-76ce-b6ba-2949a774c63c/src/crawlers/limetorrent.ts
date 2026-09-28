@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -175,6 +175,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
           const publishedNext: string | null = cat.paginated ? nextPaginationLink(html, listUrl) : null;
           listUrl = publishedNext && sameListingRoute(publishedNext, listUrl, mirror) ? publishedNext : null;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Failed fetching listing ${listUrl}: ${describeError(error)}`);
           break;
@@ -198,6 +199,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         if (record) this.metrics.add('records');
         return record;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Error parsing ${item.detailUrl}: ${describeError(error)}`);
         return null;
@@ -213,6 +215,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
   private async searchHtml(mirror: string, query: string): Promise<string | null> {
     this.log.debug(`Querying search for "${query}"...`);
     try {
+      this.requestWithinBudget();
       const response = await this.httpClient.request<string>({
         method: 'POST',
         url: `${mirror}/search`,
@@ -223,6 +226,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         return response.data;
       }
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.log.debug(`POST search failed for "${query}": ${describeError(error)}`);
     }
 
@@ -237,6 +241,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       this.log.warn(`Search response for "${query}" did not contain table2.`);
       return null;
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('listingErrors');
       this.log.warn(`Search error for "${query}": ${describeError(error)}`);
       return null;

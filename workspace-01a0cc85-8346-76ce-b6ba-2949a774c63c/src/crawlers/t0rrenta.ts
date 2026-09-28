@@ -46,15 +46,6 @@ function sameSiteUrl(a: string, b: string): boolean {
   }
 }
 
-function fileKey(url: string): string {
-  try {
-    return decodeURIComponent(new URL(url).pathname.split('/').pop() || '')
-      .replace(/\.torrent$/i, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase().replace(/[^a-z0-9]/g, '');
-  } catch {
-    return url.toLowerCase();
-  }
-}
 
 /** Public metadata pages and signed metainfo links published by t0rrenta.org. */
 export class T0rrentaCrawler extends BaseCrawler {
@@ -105,7 +96,7 @@ export class T0rrentaCrawler extends BaseCrawler {
       const anchor = $(element);
       const href = anchor.attr('href') || '';
       if (!/\/p\/\d+\/?(?:[?#]|$)/.test(href)) return;
-      const title = anchor.attr('title') || anchor.text() || anchor.find('img').first().attr('alt') || '';
+      const title = cleanText(anchor.attr('title')) || cleanText(anchor.text()) || anchor.find('img').first().attr('alt') || '';
       add(href, title);
     });
     $('loc').each((_, element) => add($(element).text(), 'Torrent release'));
@@ -147,7 +138,9 @@ export class T0rrentaCrawler extends BaseCrawler {
         return;
       }
       if (!/^\/download\/\d+\/[^/]+\.torrent$/i.test(path)) return;
-      const key = fileKey(url);
+      // Signed query parameters may rotate; distinct paths are distinct files.
+      // Normalising just the filename lost releases with different download IDs.
+      const key = new URL(url).pathname;
       if (seen.has(key)) return;
       seen.add(key);
       const label = cleanText(anchor.text() || anchor.attr('title') || '');

@@ -1,6 +1,6 @@
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -418,6 +418,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       try {
         return await this.crawlDetail(item);
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Detail failed ${item.url}: ${describeError(error)}`);
         return [];
@@ -447,17 +448,21 @@ export class DonTorrentCrawler extends BaseCrawler {
     for (const section of this.sections) {
       let listUrl: string | null = `${mirror}${section.path}`;
       const visited = new Set<string>();
+      const signatures = new Set<string>();
 
       for (let page = 0; listUrl && page < maxPages; page++) {
         if (visited.has(listUrl) || this.deadline.expired) break;
         visited.add(listUrl);
 
         try {
-          const html = await this.fetchHtml(listUrl, { headers: { Referer: `${mirror}/` } });
+          const html = await this.fetchHtml(listUrl, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
           this.metrics.add('listings');
 
           const items = this.parseListing(html, listUrl);
           if (!items.length) break;
+          const signature = items.map(item => item.url).sort().join('|');
+          if (signatures.has(signature)) break;
+          signatures.add(signature);
 
           let added = 0;
           for (const item of items) {
@@ -467,8 +472,8 @@ export class DonTorrentCrawler extends BaseCrawler {
             added++;
           }
           this.log.debug(`${section.label} page ${page + 1}: ${items.length} links (${added} new).`);
-          // A page with nothing new means `?p=N` was ignored and page 1 repeats.
-          if (page > 0 && added === 0) break;
+          // Overlap with other sections is not page exhaustion. Only a repeated
+          // page signature or a missing published pager ends this section.
 
           // Only follow pagination the page really publishes. Guessing `?p=N`
           // used to keep hammering `?p=2`, `?p=3`... on single-page sections
@@ -476,6 +481,7 @@ export class DonTorrentCrawler extends BaseCrawler {
           // looked exactly like an IP block.
           listUrl = this.nextPage(html, listUrl);
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Catalogue failed ${listUrl}: ${describeError(error)}`);
           break;
@@ -503,6 +509,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         if (this.deadline.expired) return;
         try {
           await politePause();
+          this.requestWithinBudget();
           const response = await this.httpClient.request<string>({
             method: 'POST',
             url: `${mirror}/buscar`,
@@ -532,6 +539,7 @@ export class DonTorrentCrawler extends BaseCrawler {
           this.log.debug(`Search "${term}" page ${page}: ${items.length} links (${added} new).`);
           if (added === 0) break;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Search "${term}" page ${page} failed: ${describeError(error)}`);
           break;
@@ -541,7 +549,7 @@ export class DonTorrentCrawler extends BaseCrawler {
   }
 
   private async crawlDetail(item: DonTorrentListItem): Promise<TorrentRecord[]> {
-    const html = await this.fetchHtml(item.url, { headers: { Referer: this.baseUrl } });
+    const html = await this.fetchHtml(item.url, { headers: { Referer: this.baseUrl } }, { rejectBlocked: true });
     this.metrics.add('details');
 
     const detail = this.parseDetail(html, item.url);
@@ -568,6 +576,7 @@ export class DonTorrentCrawler extends BaseCrawler {
           this.metrics.add('records');
         }
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('downloadErrors');
         this.log.warn(`Invalid download ${download.url}: ${describeError(error)}`);
       }
@@ -637,6 +646,7 @@ export class DonTorrentCrawler extends BaseCrawler {
         this.log.info(`Official domain list refreshed: ${mirrors.length} mirrors available as fallback.`);
       }
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.log.debug(`Official domain list unavailable: ${describeError(error)}`);
     }
   }

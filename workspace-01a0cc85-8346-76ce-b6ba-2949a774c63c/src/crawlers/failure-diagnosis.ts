@@ -5,6 +5,14 @@ export type FailureKind = 'dns' | 'network' | 'blocked' | 'layout' | 'empty' | '
 
 /** Operational next steps, not promises that a domain or an extraction method works. */
 const sourceHints: Record<string, string> = {
+  yts: 'Check YTS_MIRRORS and /api/v2/list_movies.json; validate the API status and movies array.',
+  nyaa: 'Check NYAA_MIRRORS and table.torrent-list; row category and title supply language evidence.',
+  tokyotosho: 'Check TOKYOTOSHO_MIRRORS and paired desc-top/desc-bot rows; missing metadata must remain unknown.',
+  mejortorrent: 'Check MEJORTORRENT_MIRRORS and whether the selected template is WordPress or legacy.',
+  sinsitio: 'Check SINSITIO_MIRRORS and DLE detail pages with public attachments; an unverified mirror is not used as fallback.',
+  eztv: 'Check EZTV_MIRRORS and both /api/get-torrents and /home; HTML and API availability can differ.',
+  thepiratebay: 'Check APIBAY_BASE_URL separately from THEPIRATEBAY_MIRRORS; a web mirror failure does not prove the API is down.',
+  rutracker: 'Check RUTRACKER_MIRRORS and the configured account session locally; never include cookies or credentials in logs.',
   leech1337x: 'Verify a reachable 1337x mirror with LEECH1337X_MIRRORS; then inspect search and /torrent/ pages.',
   pelispanda: 'Check the wpreact WordPress API response and PELISPANDA_MIRRORS before changing movie/season parsing.',
   torrentgalaxy: 'Verify TORRENTGALAXY_MIRRORS serves tgxtable rows and check /torrents.php pagination.',
@@ -32,13 +40,13 @@ export function diagnoseFailure(source: string, error: unknown): { kind: Failure
   else if (all(/time(?:d)?\s*out|deadline|ETIMEDOUT/i)) kind = 'timeout';
   else if (all(/403|429|captcha|cloudflare|blocked|challenge/i)) kind = 'blocked';
   else if (all(/unexpected payload|layout|invalid json|parse/i)) kind = 'layout';
-  else if (attempts.length && any(/ENOTFOUND|EAI_AGAIN|socket|TLS|ECONN|network|ETIMEDOUT/i)) kind = 'network';
+  else if (attempts.length && any(/ENOTFOUND|EAI_AGAIN|socket|TLS|SSL|certificate|ECONN|network|ETIMEDOUT/i)) kind = 'network';
   else if (/proof.of.work|gated|hourly limit|No verified infohash/i.test(message)) kind = 'download';
   else if (/time(?:d)?\s*out|deadline|ETIMEDOUT/i.test(message)) kind = 'timeout';
   else if (/403|429|captcha|cloudflare|blocked|challenge/i.test(message)) kind = 'blocked';
   else if (/unexpected payload|layout|invalid json|parse/i.test(message)) kind = 'layout';
   else if (/zero extracted|no usable (?:releases|catalogue responses)|no records/i.test(message)) kind = 'empty';
-  else if (/ENOTFOUND|EAI_AGAIN|socket|TLS|ECONN|network/i.test(message)) kind = 'network';
+  else if (/ENOTFOUND|EAI_AGAIN|socket|TLS|SSL|certificate|ECONN|network/i.test(message)) kind = 'network';
 
   const action: Record<FailureKind, string> = {
     dns: 'All probes failed DNS: check DNS from the runner and configure an authorized reachable mirror.',

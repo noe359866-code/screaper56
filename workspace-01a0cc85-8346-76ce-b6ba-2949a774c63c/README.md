@@ -421,3 +421,31 @@ la limpieza, sin confundirlo con una ejecución exitosa. La identificación v1
 solo admite `urn:btih:` válido (hex o Base32): rechaza `urn:btmh:` de v2,
 infohash todo ceros y magnets con `xt` BTIH contradictorios. Los metainfo
 `.torrent` con campos de piezas malformados tampoco se aceptan.
+
+## Persistencia segura y pruebas del orquestador
+
+El servicio requiere un índice/constraint **UNIQUE(info_hash)**. Ante un error de
+esquema ya no hace INSERT a ciegas: falla con diagnóstico y el CLI devuelve código
+1. Los lotes fallidos pueden dejar otros lotes ya guardados; no es una transacción
+global. Los metadatos ausentes se agrupan por columnas para no borrar valores
+conocidos en los UPSERT mixtos. Comprueba los defaults del esquema antes de usarlo.
+
+En `DRY_RUN=true`, `Upserted` es **0** y `Would upsert` muestra los registros que se
+habrían enviado. Los errores de persistencia parcial quedan en el resumen.
+`DRY_RUN`, los enteros de configuración y la lista de fuentes se validan de forma
+estricta; los typos no se convierten silenciosamente en otro modo de ejecución.
+
+`index.ts` se puede importar sin arrancar el scraper; `main` acepta configuración,
+repositorio y registro de crawlers para pruebas offline. La suite prueba también
+el transporte Supabase con fetch simulado, sin credenciales reales.
+
+Detalles, límites de esquema y cambios respecto al antiguo fallback:
+[AUDITORIA_SERVICIOS_2026-09-28.md](AUDITORIA_SERVICIOS_2026-09-28.md).
+
+### Segunda auditoría de las 20 fuentes
+
+La matriz de regresión se genera desde `CRAWLER_REGISTRY`, con pruebas comunes
+para todos los adaptadores y casos específicos de extracción. Ver
+[AUDITORIA_TODOS_CRAWLERS_2026-09-28.md](AUDITORIA_TODOS_CRAWLERS_2026-09-28.md)
+para las correcciones, los límites cooperativos y los resultados de conectividad.
+Bloqueos y HTTP 429 ya no se confunden con catálogos vacíos recuperables.

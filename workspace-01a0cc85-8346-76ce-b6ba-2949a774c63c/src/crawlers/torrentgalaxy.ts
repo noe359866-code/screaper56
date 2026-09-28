@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -167,6 +167,7 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
           listUrl = nextUrl && sameSiteUrl(nextUrl, activeMirror) ? nextUrl : null;
           if (!listUrl) break;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Failed fetching ${fullUrl}: ${describeError(error)}. Skipping endpoint.`);
           break;
@@ -223,9 +224,17 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
       const detailUrl = rawDetailUrl && sameSiteUrl(rawDetailUrl, activeMirror) ? rawDetailUrl : null;
 
       // 2. Magnet / infohash (falls back to the iTorrents hash in the file link).
-      let magnetHref = row.find('a[href^="magnet:?xt="]').first().attr('href');
+      let magnetHref: string | undefined;
+      let parsedMagnet: ReturnType<typeof parseMagnetUri> = null;
+      for (const anchor of row.find('a[href]').toArray()) {
+        const href = $(anchor).attr('href') ?? '';
+        const candidate = parseMagnetUri(href);
+        if (!candidate?.infoHash) continue;
+        magnetHref = href;
+        parsedMagnet = candidate;
+        break;
+      }
       let infoHash: string | null = null;
-      let parsedMagnet = magnetHref ? parseMagnetUri(magnetHref) : null;
 
       // TG may publish the metainfo on its own mirror or on iTorrents. Only
       // accept its known host and a path carrying the exact release infohash.
