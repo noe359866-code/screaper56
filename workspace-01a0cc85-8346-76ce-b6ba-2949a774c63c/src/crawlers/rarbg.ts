@@ -30,6 +30,16 @@ export interface RarbgRow {
 /** Categories that are never indexed (the schema only stores video). */
 const EXCLUDED_CATEGORY = /\b(xxx|porn|adult|games?|music|apps?|software|e-?books?)\b/i;
 
+function sameMirrorSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * RARBG proxy clones (rarbgproxy.to and friends): `lista2` tables with a
  * detail page per release that holds the magnet, language and peers.
@@ -97,6 +107,7 @@ export class RarbgCrawler extends BaseCrawler {
     // Routes are crawled with a small bounded parallelism: they are independent
     // listings, and reading them one by one made a full run wait for the slowest
     // route before even starting the next one.
+    let successfulListings = 0;
     const perRoute = await mapWithConcurrency(routes, 2, async route => {
       const found = new Map<string, RarbgRow>();
       let url: string | null = this.listingUrl(mirror, route, 1);
@@ -110,17 +121,18 @@ export class RarbgCrawler extends BaseCrawler {
         try {
           const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
           this.metrics.add('listings');
+          successfulListings++;
           const parsed = this.parseListing(html, url);
-          let added = 0;
           for (const row of parsed) {
-            if (found.has(row.detailUrl)) continue;
-            found.set(row.detailUrl, row);
-            added++;
+            if (!found.has(row.detailUrl)) found.set(row.detailUrl, row);
           }
-          // Only offsets the page publishes: a repeated page ends the route
-          // instead of being requested `maxPages` times.
-          url = nextPaginationLink(html, url);
-          if (!parsed.length || added === 0) break;
+          // Deduplication must not stop a page that repeats earlier rows but
+          // still publishes a later page with new releases. The URL set and
+          // maxPages budget bound loops, while only published same-site links
+          // are followed.
+          const next = nextPaginationLink(html, url);
+          url = next && sameMirrorSite(next, mirror) ? next : null;
+          if (!url) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
@@ -130,6 +142,10 @@ export class RarbgCrawler extends BaseCrawler {
 
       return [...found.values()];
     });
+
+    if (successfulListings === 0) {
+      throw new Error('[rarbg] No usable catalogue responses. Check mirror availability, blocking and page layout.');
+    }
 
     const rows = new Map<string, RarbgRow>();
     for (const routeRows of perRoute) {
@@ -145,7 +161,11 @@ export class RarbgCrawler extends BaseCrawler {
     const records = await mapWithConcurrency(candidates, this.concurrency, async row => {
       if (this.deadline.expired) return null;
       try {
-        const html = await this.fetchHtml(row.detailUrl, { headers: { Referer: `${mirror}/` } });
+        const html = await this.fetchHtml(
+          row.detailUrl,
+          { headers: { Referer: `${mirror}/` } },
+          { rejectBlocked: true }
+        );
         this.metrics.add('details');
         const record = this.parseDetail(html, row);
         if (record) this.metrics.add('records');
@@ -169,12 +189,25 @@ export class RarbgCrawler extends BaseCrawler {
 
     $('tr').each((_, tr) => {
       const tds = $(tr).children('td');
-      if (tds.length < 7) return;
+      // Some clones omit the date or uploader column; the release route and
+      // size/peer cells are enough to parse a row with six cells.
+      if (tds.length < 6) return;
 
-      const anchor = $(tr).find('a[href*="_torrent/"][href$=".html"]').first();
-      if (!anchor.length) return;
-
-      const detailUrl = absoluteHttpUrl(anchor.attr('href'), pageUrl);
+      const candidates = $(tr).find('a[href*="_torrent/"]').toArray();
+      let anchor = $(tr).find('a[href*="_torrent/"]').first();
+      let detailUrl: string | null = null;
+      for (const element of candidates) {
+        const candidate = absoluteHttpUrl($(element).attr('href'), pageUrl);
+        if (!candidate || !sameMirrorSite(candidate, pageUrl)) continue;
+        try {
+          if (!/\.html?$/i.test(new URL(candidate).pathname)) continue;
+        } catch {
+          continue;
+        }
+        anchor = $(element);
+        detailUrl = candidate;
+        break;
+      }
       if (!detailUrl) return;
 
       const title = cleanText(anchor.text()) ||
@@ -222,12 +255,21 @@ export class RarbgCrawler extends BaseCrawler {
     const title = cleanText((truncated ? releaseName || heading : '') || row.title || releaseName || heading);
     if (!title || isBlockedTitle(title)) return null;
 
-    let magnetHref = $('a[href^="magnet:?"]').first().attr('href') ?? null;
-    let parsed = magnetHref ? parseMagnetUri(magnetHref) : null;
+    let magnetHref: string | null = null;
+    let parsed = null;
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      if (!/^magnet:/i.test(href)) continue;
+      const candidate = parseMagnetUri(href);
+      if (!candidate?.infoHash) continue;
+      magnetHref = href;
+      parsed = candidate;
+      break;
+    }
     if (!parsed?.infoHash) {
       const hash = (fields.get('info hash') || fields.get('hash') || '').match(/\b([0-9a-f]{40})\b/i);
       if (!hash) return null;
-      magnetHref = buildMagnetUri(hash[1].toLowerCase(), title);
+      magnetHref = buildMagnetUri(hash[1].toLowerCase(), title, [], { includeDefaultTrackers: false });
       parsed = parseMagnetUri(magnetHref);
       if (!parsed?.infoHash) return null;
     }
@@ -250,14 +292,24 @@ export class RarbgCrawler extends BaseCrawler {
     const leechers = row.leechers ?? parseCount(peers.match(/leechers\s*:\s*([\d,.]+)/i)?.[1] ?? null);
     const imdb = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
 
-    // Some clones publish the metainfo next to the magnet; only same-host,
-    // `.torrent` links are stored (the href is resolved before comparing,
-    // because it is usually relative).
-    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
-    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, row.detailUrl) : null;
-    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, row.detailUrl)
-      ? resolvedTorrent
-      : null;
+    // Some clones publish metainfo next to the magnet. Ignore off-site buttons,
+    // and keep searching if the first `.torrent` anchor is an advert.
+    let torrentFileUrl: string | null = null;
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      let isTorrent = false;
+      try {
+        isTorrent = /\.torrent$/i.test(new URL(href, row.detailUrl).pathname);
+      } catch {
+        continue;
+      }
+      if (!isTorrent) continue;
+      const candidate = absoluteHttpUrl(href, row.detailUrl);
+      if (candidate && sameMirrorSite(candidate, row.detailUrl)) {
+        torrentFileUrl = candidate;
+        break;
+      }
+    }
 
     return buildTorrentRecord({
       title,

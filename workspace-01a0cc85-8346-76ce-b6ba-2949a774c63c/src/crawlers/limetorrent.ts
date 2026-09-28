@@ -4,9 +4,8 @@ import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { htmlMarkerValidator } from './mirrors.js';
+import { looksLikeBlockedPage } from './mirrors.js';
 import {
-  DEFAULT_TRACKERS,
   absoluteHttpUrl,
   buildTorrentRecord,
   cleanText,
@@ -26,6 +25,54 @@ interface LimeCandidate {
   seeders?: number | null;
   leeches?: number | null;
   type: ContentType;
+}
+
+const LIME_TABLE_MARKER = /<table\b[^>]*class=["'][^"']*\btable2\b/i;
+
+function isLimeListingHtml(data: unknown): data is string {
+  return typeof data === 'string' && !looksLikeBlockedPage(data) && LIME_TABLE_MARKER.test(data);
+}
+const NON_VIDEO_CATEGORY = /\b(audio|music|games?|software|applications?|apps?|pictures?|literature|books?|e-?books?|adult|porn|xxx)\b/i;
+
+/** Resolve a site URL while preventing cross-site, scheme-downgrade and port escapes. */
+function sameSiteHttpUrl(value: string, resolveAgainst: string, siteBase: string): string | null {
+  const candidate = absoluteHttpUrl(value, resolveAgainst);
+  if (!candidate) return null;
+  try {
+    const left = new URL(candidate);
+    const right = new URL(siteBase);
+    if (left.username || left.password) return null;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, siteBase)
+      ? candidate
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Ensure a pager stays on the current catalogue route (including page/N forms). */
+function sameListingRoute(next: string, current: string, siteBase: string): boolean {
+  const trustedNext = sameSiteHttpUrl(next, siteBase, siteBase);
+  if (!trustedNext) return false;
+  try {
+    const nextUrl = new URL(trustedNext);
+    const currentUrl = new URL(current);
+    const routePath = (pathname: string) => pathname
+      .replace(/\/page\/\d+\/?$/i, '/')
+      .replace(/\/\d+\/?$/, '/')
+      .replace(/\/+$/, '') || '/';
+    return routePath(nextUrl.pathname) === routePath(currentUrl.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function inferLimeType(title: string, category: string): ContentType {
+  if (/documentar/i.test(category)) return 'documentary';
+  if (/\banime\b/i.test(category)) return 'anime';
+  if (/\b(tv|television|series|shows?)\b/i.test(category)) return 'series';
+  if (/\b(movie|movies|film|films)\b/i.test(category)) return 'movie';
+  return parseTorrentTitle(title).type;
 }
 
 /**
@@ -63,13 +110,12 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     this.resetRunState();
     this.log.info(`Starting crawl across catalogs and searches (maxPages=${maxPages})...`);
 
-    const validate = htmlMarkerValidator([/class=["'][^"']*table2/]);
     const mirror = await this.resolveMirror({
       envPrefix: 'LIMETORRENTS',
       defaults: LimeTorrentsCrawler.DEFAULT_MIRRORS,
       probes: [
-        { path: '/latest100', label: 'latest100', timeoutMs: 6000, validate },
-        { path: '/top100', label: 'top100', timeoutMs: 6000, validate }
+        { path: '/latest100', label: 'latest100', timeoutMs: 6000, validate: data => isLimeListingHtml(data) },
+        { path: '/top100', label: 'top100', timeoutMs: 6000, validate: data => isLimeListingHtml(data) }
       ]
     });
 
@@ -77,6 +123,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     this.baseUrl = mirror;
 
     const candidateMap = new Map<string, LimeCandidate>();
+    let successfulListings = 0;
 
     // 1. Spanish-oriented searches first: candidates are capped below, and
     //    running them last meant the Spanish results were the ones cut off.
@@ -90,6 +137,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       if (this.deadline.expired) break;
       const html = await this.searchHtml(mirror, query);
       if (!html) continue;
+      successfulListings++;
       this.metrics.add('listings');
       this.collectRows(html, `${mirror}/search`, mirror, null, candidateMap);
     }
@@ -119,17 +167,23 @@ export class LimeTorrentsCrawler extends BaseCrawler {
 
         try {
           this.log.debug(`Fetching catalog listing: ${listUrl}`);
-          const html = await this.fetchHtml(listUrl);
+          const html = await this.fetchHtml(listUrl, {}, { rejectBlocked: true });
+          if (!isLimeListingHtml(html)) throw new Error('Expected table2 in LimeTorrents catalogue response');
+          successfulListings++;
           this.metrics.add('listings');
-          const added = this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
-          listUrl = cat.paginated ? nextPaginationLink(html, listUrl) : null;
-          if (added === 0) break;
+          this.collectRows(html, listUrl, mirror, cat.type, candidateMap);
+          const publishedNext: string | null = cat.paginated ? nextPaginationLink(html, listUrl) : null;
+          listUrl = publishedNext && sameListingRoute(publishedNext, listUrl, mirror) ? publishedNext : null;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Failed fetching listing ${listUrl}: ${describeError(error)}`);
           break;
         }
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error('[limetorrents] No usable catalogue responses. Check mirror availability, blocking and page layout.');
     }
 
     this.log.info(`Discovered ${candidateMap.size} candidates. Extracting release details...`);
@@ -165,7 +219,7 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         data: new URLSearchParams({ q: query }).toString(),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       });
-      if (typeof response.data === 'string' && response.data.includes('table2')) {
+      if (isLimeListingHtml(response.data)) {
         return response.data;
       }
     } catch (error) {
@@ -173,7 +227,15 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     }
 
     try {
-      return await this.fetchHtml(`${mirror}/search/all/${encodeURIComponent(query)}/seeds/1/`);
+      const html = await this.fetchHtml(
+        `${mirror}/search/all/${encodeURIComponent(query)}/seeds/1/`,
+        {},
+        { rejectBlocked: true }
+      );
+      if (isLimeListingHtml(html)) return html;
+      this.metrics.add('listingErrors');
+      this.log.warn(`Search response for "${query}" did not contain table2.`);
+      return null;
     } catch (error) {
       this.metrics.add('listingErrors');
       this.log.warn(`Search error for "${query}": ${describeError(error)}`);
@@ -192,20 +254,33 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     let parsed = 0;
     const $ = cheerio.load(html);
 
-    $('table.table2 tr').each((index, tr) => {
-      if (index === 0) return;
+    $('table.table2 tr').each((_, tr) => {
       const tds = $(tr).find('td');
       if (tds.length < 2) return;
 
-      // Se utiliza una selección precisa del enlace del título para evitar enlaces secundarios o íconos de descarga
-      const nameAnchor = tds.find('div.tt-name a[href*=".html"], a[href*=".html"]').first();
-      const href = nameAnchor.attr('href');
-      const title = cleanText(nameAnchor.text());
+      // Prefer the site's title wrapper, then fall back to other same-site
+      // `.html` anchors. This skips off-site ad links and tolerates headerless tables.
+      const preferred = $(tr).find('div.tt-name a[href]').toArray();
+      const candidates = [...preferred, ...$(tr).find('a[href]').toArray()];
+      let title = '';
+      let fullUrl: string | null = null;
+      const seenAnchors = new Set<unknown>();
+      for (const element of candidates) {
+        if (seenAnchors.has(element)) continue;
+        seenAnchors.add(element);
+        const candidateUrl = sameSiteHttpUrl($(element).attr('href') || '', sourceUrl, mirror);
+        if (!candidateUrl) continue;
+        try {
+          if (!/\.html?$/i.test(new URL(candidateUrl).pathname)) continue;
+        } catch {
+          continue;
+        }
+        title = cleanText($(element).attr('title') || $(element).text());
+        fullUrl = candidateUrl;
+        break;
+      }
 
-      if (!href || !title || isBlockedTitle(title)) return;
-
-      const fullUrl = absoluteHttpUrl(href, sourceUrl) ?? absoluteHttpUrl(href, mirror);
-      if (!fullUrl || sink.has(fullUrl)) return;
+      if (!fullUrl || !title || isBlockedTitle(title) || sink.has(fullUrl)) return;
 
       const tdsArray = tds.toArray();
       const sizeIndex = tdsArray.findIndex((td, position) => {
@@ -229,13 +304,21 @@ export class LimeTorrentsCrawler extends BaseCrawler {
         }
       }
 
+      const categoryLabel = cleanText(
+        tds.eq(0).find('img').first().attr('title') ||
+        tds.eq(0).find('img').first().attr('alt') ||
+        tds.eq(0).attr('data-category') ||
+        $(tr).attr('data-category') || ''
+      );
+      if (NON_VIDEO_CATEGORY.test(categoryLabel)) return;
+
       sink.set(fullUrl, {
         title,
         detailUrl: fullUrl,
         sizeBytes,
         seeders,
         leeches,
-        type: forcedType ?? (/\bs\d{1,2}\b|\bseason\b|temporada|cap[ií]tulo|\b\d{1,2}x\d{1,3}\b/i.test(title) ? 'series' : 'movie')
+        type: forcedType ?? inferLimeType(title, categoryLabel)
       });
       parsed++;
     });
@@ -244,7 +327,11 @@ export class LimeTorrentsCrawler extends BaseCrawler {
   }
 
   private async parseLimeDetail(item: LimeCandidate, mirror: string): Promise<TorrentRecord | null> {
-    const html = await this.fetchHtml(item.detailUrl, { headers: { Referer: `${mirror}/` } });
+    const html = await this.fetchHtml(
+      item.detailUrl,
+      { headers: { Referer: `${mirror}/` } },
+      { rejectBlocked: true }
+    );
     this.metrics.add('details');
     const $ = cheerio.load(html);
 
@@ -259,14 +346,15 @@ export class LimeTorrentsCrawler extends BaseCrawler {
     const trackers: string[] = [];
 
     // 1. Extracción de URI Magnet
-    const magnetHref = $('a[href^="magnet:?xt="]').first().attr('href');
-    if (magnetHref) {
-      magnetUri = magnetHref;
-      const parsed = parseMagnetUri(magnetHref);
-      if (parsed?.infoHash) {
-        infoHash = parsed.infoHash;
-        trackers.push(...parsed.trackers);
-      }
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      if (!/^magnet:/i.test(href)) continue;
+      const parsed = parseMagnetUri(href);
+      if (!parsed?.infoHash) continue;
+      magnetUri = href;
+      infoHash = parsed.infoHash;
+      trackers.push(...parsed.trackers);
+      break;
     }
 
     // 2. Búsqueda de Hash, Size, Seeders/Leechers en las tablas de detalles
@@ -322,15 +410,24 @@ export class LimeTorrentsCrawler extends BaseCrawler {
 
     // Metainfo link published next to the magnet, when the template has one.
     // The href is resolved before comparing hosts: it is usually relative.
-    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
-    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, item.detailUrl) : null;
-    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, item.detailUrl)
-      ? resolvedTorrent
-      : null;
+    let torrentFileUrl: string | null = null;
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      let isTorrent = false;
+      try {
+        isTorrent = /\.torrent$/i.test(new URL(href, item.detailUrl).pathname);
+      } catch {
+        continue;
+      }
+      if (!isTorrent) continue;
+      const candidate = sameSiteHttpUrl(href, item.detailUrl, mirror);
+      if (candidate) {
+        torrentFileUrl = candidate;
+        break;
+      }
+    }
 
     if (!infoHash) return null;
-
-    if (!trackers.length) trackers.push(...DEFAULT_TRACKERS.slice(0, 3));
 
     // Si no existía el enlace magnet directo en el HTML pero sí obtuvimos el infoHash, se construye sintéticamente
     if (!magnetUri) {

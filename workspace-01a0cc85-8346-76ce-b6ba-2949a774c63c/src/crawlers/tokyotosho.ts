@@ -13,7 +13,8 @@ import {
   isBlockedTitle,
   mapWithConcurrency,
   parseCount,
-  qualityOf
+  qualityOf,
+  sameHost
 } from './support.js';
 
 interface TokyoRoute {
@@ -23,6 +24,42 @@ interface TokyoRoute {
   /** Category-level language hint ('sub_en' for English-translated anime). */
   hints: string[];
 }
+
+/** Keep source and metainfo URLs on the verified mirror; allow only www/apex variation. */
+function sameSiteHttpUrl(value: string, resolveAgainst: string, siteBase: string): string | null {
+  const candidate = absoluteHttpUrl(value, resolveAgainst);
+  if (!candidate) return null;
+  try {
+    const left = new URL(candidate);
+    const right = new URL(siteBase);
+    if (left.username || left.password) return null;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(candidate, siteBase)
+      ? candidate
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function categoryCode(categoryText: string): string | null {
+  return categoryText.match(/(?:[?&]cat=|cat[=_]|category[_-]?)(\d+)/i)?.[1] ?? null;
+}
+
+function inferTokyoType(categoryText: string, title: string, fallback: ContentType): ContentType {
+  const code = categoryCode(categoryText);
+  if (code === '8' || /\bdrama\b/i.test(categoryText)) return 'series';
+  if (/live[\s_-]*action|\bmovie\b|\bfilm\b/i.test(categoryText)) return 'movie';
+  if (/documentar/i.test(categoryText)) return 'documentary';
+  if (/\banime\b/i.test(categoryText)) return 'anime';
+
+  const inferred = parseTorrentTitle(title).type;
+  return inferred === 'anime' || inferred === 'series' || inferred === 'documentary'
+    ? inferred
+    : fallback;
+}
+
+const NON_VIDEO_CATEGORY_IDS = new Set(['2', '3', '4', '9', '12', '13', '14', '15']);
+const NON_VIDEO_CATEGORY_LABEL = /hentai|\bjav\b|music|manga|\braws?\b/i;
 
 /**
  * Tokyo Toshokan: two-row listings (`td.desc-top` + `td.desc-bot`). The magnet
@@ -51,7 +88,6 @@ export class TokyoToshoCrawler extends BaseCrawler {
     return this.resolveMirror({
       envPrefix: 'TOKYOTOSHO',
       defaults: TokyoToshoCrawler.DEFAULT_MIRRORS,
-      fallback: this.baseUrl,
       probes: [
         {
           path: '/?cat=1',
@@ -86,21 +122,27 @@ export class TokyoToshoCrawler extends BaseCrawler {
       }))
     ];
 
-    // Routes in parallel, pages of a route in order (stop at the first page
-    // that adds nothing new instead of fetching every page blindly).
+    // Routes run in parallel; each route's pages are fetched in order until
+    // an actually empty page appears (overlapping pages may add no new hashes).
+    let successfulListings = 0;
     const nested = await mapWithConcurrency(routes, this.concurrency, async route => {
       const collected: TorrentRecord[] = [];
       const seen = new Set<string>();
       // Tokyo Toshokan numbering is 1-based: starting at 0 requested page 1
-      // twice (`/?cat=1` then `/?cat=1&page=1`), the second page added nothing
-      // and the `added === 0` guard ended every route after page one.
+      // twice (`/?cat=1` then `/?cat=1&page=1`).
       for (let page = 1; page <= maxPages; page++) {
         if (this.deadline.expired) break;
         const url = page === 1 ? `${mirror}${route.path}` : `${mirror}${route.path}&page=${page}`;
         try {
-          const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
+          const html = await this.fetchHtml(
+            url,
+            { headers: { Referer: `${mirror}/` } },
+            { rejectBlocked: true }
+          );
+          successfulListings++;
           this.metrics.add('listings');
-          const rows = this.parseListing(html, url, route.type, route.hints);
+          const pageRowCount = cheerio.load(html)('td.desc-top').length;
+          const rows = this.parseListing(html, url, route.type, route.hints, mirror);
           let added = 0;
           for (const row of rows) {
             // Guard against a record without a hash: `seen.add(undefined)`
@@ -111,7 +153,9 @@ export class TokyoToshoCrawler extends BaseCrawler {
             added++;
           }
           this.metrics.add('records', added);
-          if (added === 0) break;
+          // Keep following numbered pages when a full/overlapping page adds no
+          // new hashes; only an actually empty page ends the route.
+          if (pageRowCount === 0) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
@@ -121,12 +165,22 @@ export class TokyoToshoCrawler extends BaseCrawler {
       return collected;
     });
 
+    if (successfulListings === 0) {
+      throw new Error('[tokyotosho] No usable catalogue responses. Check mirror availability, blocking and page layout.');
+    }
+
     const deduplicated = this.deduplicateRecords(nested.flat());
     this.logRunSummary(deduplicated);
     return deduplicated;
   }
 
-  public parseListing(html: string, pageUrl: string, defaultType: ContentType, categoryHints: string[] = []): TorrentRecord[] {
+  public parseListing(
+    html: string,
+    pageUrl: string,
+    defaultType: ContentType,
+    categoryHints: string[] = [],
+    mirror = this.baseUrl
+  ): TorrentRecord[] {
     const $ = cheerio.load(html);
     const records: TorrentRecord[] = [];
 
@@ -135,20 +189,30 @@ export class TokyoToshoCrawler extends BaseCrawler {
       const row = top.closest('tr');
       const bottom = row.next('tr');
 
-      const magnet = top.find('a[href^="magnet:?"]').first().attr('href')
-        ?? row.find('a[href^="magnet:?"]').first().attr('href');
-      const parsed = magnet ? parseMagnetUri(magnet) : null;
+      let magnet: string | null = null;
+      let parsed: ReturnType<typeof parseMagnetUri> = null;
+      for (const element of row.find('a[href]').toArray()) {
+        const href = $(element).attr('href') || '';
+        if (!/^magnet:/i.test(href)) continue;
+        const candidate = parseMagnetUri(href);
+        if (!candidate?.infoHash) continue;
+        magnet = href;
+        parsed = candidate;
+        break;
+      }
       if (!magnet || !parsed?.infoHash) return;
 
-      // The details link always carries the release title; `.last()` picked up
-      // trailing uploader links ("[Website]") and stored them as the title.
-      const titleAnchor = top.find('a[href*="details.php"]').first().length > 0
-        ? top.find('a[href*="details.php"]').first()
-        : top.find('a').filter((__, a) => {
-            const href = $(a).attr('href') || '';
-            return !href.startsWith('magnet:') && !/\.torrent(?:[?#]|$)/i.test(href) && cleanText($(a).text()).length > 0;
-          }).first();
-      const title = cleanText(titleAnchor.text()) || cleanText(parsed.displayName || '');
+      // Skip category/download/uploader links when the template has no title
+      // anchor; a valid magnet display name is the safe fallback.
+      const titleAnchor = top.find('a[href]').filter((__, a) => {
+        const href = $(a).attr('href') || '';
+        const label = cleanText($(a).attr('title') || $(a).text());
+        return !/^magnet:/i.test(href) &&
+          !/\.torrent(?:[?#]|$)|download\.php|\/torrents\/|[?&]cat=/i.test(href) &&
+          !/^\[?(?:details?|download|dl|website|web|comments?|torrent|magnet)\]?$/i.test(label) &&
+          label.length > 0;
+      }).first();
+      const title = cleanText(titleAnchor.attr('title') || titleAnchor.text()) || cleanText(parsed.displayName || '');
       if (!title || isBlockedTitle(title)) return;
 
       // Category filter (row class / cat link / category icon): hentai, JAV,
@@ -159,7 +223,8 @@ export class TokyoToshoCrawler extends BaseCrawler {
         row.find('a[href*="cat="]').first().attr('href') || '',
         row.find('td.cat img, img[src*="cat"]').first().attr('src') || ''
       ].join(' ');
-      if (/(?:cat[=_]|cat=)(?:2|3|4|9|12|13|14|15)\b/i.test(categoryText)) return;
+      const code = categoryCode(categoryText);
+      if ((code && NON_VIDEO_CATEGORY_IDS.has(code)) || NON_VIDEO_CATEGORY_LABEL.test(categoryText)) return;
 
       const bottomText = cleanText(bottom.find('td.desc-bot').text() || bottom.text());
       // `td.stats` lives in the TOP row next to `td.desc-top`, not in the
@@ -174,10 +239,27 @@ export class TokyoToshoCrawler extends BaseCrawler {
         ?? bottom.find('a[href*="details.php?id="]').first().attr('href');
       // Only a real metainfo link belongs in `torrent_file_url`; pointing it at
       // the HTML details page stored a web page as if it were a .torrent.
-      const torrentHref = row.find('a[href$=".torrent"], a[href*=".torrent?"], a[href*="download.php"], a[href*="/torrents/"]')
-        .first().attr('href') || null;
+      let torrentFileUrl: string | null = null;
+      const downloadAnchors = [
+        ...row.find('a[href]').toArray(),
+        ...bottom.find('a[href]').toArray()
+      ];
+      for (const element of downloadAnchors) {
+        const href = $(element).attr('href') || '';
+        let isMetainfo = false;
+        try {
+          const candidateUrl = new URL(href, pageUrl);
+          isMetainfo = /\.torrent$/i.test(candidateUrl.pathname) || /\/download\.php$/i.test(candidateUrl.pathname);
+        } catch {
+          continue;
+        }
+        if (!isMetainfo) continue;
+        torrentFileUrl = sameSiteHttpUrl(href, pageUrl, mirror);
+        if (torrentFileUrl) break;
+      }
 
-      const type: ContentType = /\bdrama\b/i.test(title) ? 'series' : defaultType;
+      const trustedDetailUrl = detailHref ? sameSiteHttpUrl(detailHref, pageUrl, mirror) : null;
+      const type = inferTokyoType(categoryText, title, defaultType);
       const meta = parseTorrentTitle(title, type);
       // Titles and the uploader comment are evidence; "tokyotosho" is not a language.
       const langs = detectLanguages(`${title} ${comment}`, categoryHints, false);
@@ -187,8 +269,8 @@ export class TokyoToshoCrawler extends BaseCrawler {
         type: meta.type,
         infoHash: parsed.infoHash,
         magnetUrl: magnet,
-        torrentFileUrl: torrentHref ? absoluteHttpUrl(torrentHref, pageUrl) : null,
-        sourceUrl: (detailHref ? absoluteHttpUrl(detailHref, pageUrl) : null) ?? pageUrl,
+        torrentFileUrl,
+        sourceUrl: trustedDetailUrl ?? pageUrl,
         trackers: parsed.trackers,
         audio: langs.audio,
         subtitles: langs.subtitles,

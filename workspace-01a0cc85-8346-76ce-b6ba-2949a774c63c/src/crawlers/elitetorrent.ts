@@ -34,6 +34,17 @@ export function sameHost(a: string, b: string): boolean {
   }
 }
 
+function sameSiteUrl(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return !left.username && !left.password && !right.username && !right.password &&
+      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Path segments that always belong to a listing, a filter or the pager —
  * never to a single release. `/peliculas/accion/` or `/series/page/2/` used to
@@ -66,7 +77,7 @@ export function isEliteDetailUrl(href: string, base: string): boolean {
     return false;
   }
 
-  if (!sameHost(fullUrl, base)) return false;
+  if (!sameSiteUrl(fullUrl, base)) return false;
   // `/page/N/` inside the path is a pager, wherever it appears.
   if (/\/(?:page|pagina|paged)\/\d+/i.test(url.pathname)) return false;
 
@@ -147,6 +158,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     const results: TorrentRecord[] = [];
     const visitedUrls = new Set<string>();
+    let successfulListings = 0;
 
     const sectionRoutes: EliteRoute[] = [
       { path: '/', hasPagination: false, type: 'movie' },
@@ -171,7 +183,8 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
         try {
           this.log.debug(`Fetching listing: ${listUrl}`);
-          const html = await this.fetchHtml(listUrl);
+          const html = await this.fetchHtml(listUrl, {}, { rejectBlocked: true });
+          successfulListings++;
           this.metrics.add('listings');
 
           const candidates: string[] = [];
@@ -187,7 +200,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
             const fullUrl = absoluteHttpUrl(href, listUrl);
             if (!fullUrl) return;
-            if (!sameHost(fullUrl, mirror)) return;
+            if (!sameSiteUrl(fullUrl, mirror)) return;
             candidates.push(fullUrl);
           });
 
@@ -245,15 +258,27 @@ export class EliteTorrentCrawler extends BaseCrawler {
       }
     }
 
+    if (successfulListings === 0) {
+      throw new Error('[elitetorrent] No usable catalogue responses. Check mirror availability, blocking and page layout.');
+    }
+
     const deduplicated = this.deduplicateRecords(results);
     this.logRunSummary(deduplicated);
     return deduplicated;
   }
 
   public async parseEliteTorrentDetail(url: string, mirror: string): Promise<TorrentRecord | null> {
-    // fetchHtml (not a raw httpClient.get) so the courtesy pause, the HTML type
-    // check and the shared Referer policy all apply to detail pages too.
-    const html = await this.fetchHtml(url, { headers: { Referer: `${mirror}/` } });
+    const trustedUrl = absoluteHttpUrl(url, mirror);
+    if (!trustedUrl || !sameSiteUrl(trustedUrl, mirror)) return null;
+    url = trustedUrl;
+
+    // fetchHtml (not a raw httpClient.get) so the courtesy pause, HTML type,
+    // blocked-page and shared Referer checks apply to detail pages too.
+    const html = await this.fetchHtml(
+      url,
+      { headers: { Referer: `${mirror}/` } },
+      { rejectBlocked: true }
+    );
     if (!html) return null;
     this.metrics.add('details');
 
@@ -307,16 +332,18 @@ export class EliteTorrentCrawler extends BaseCrawler {
           const param = safeQueryParam(href, url, 'i');
           if (param) {
             const decoded = decodeAcortameString(param);
-            if (decoded.startsWith('magnet:') && !magnetLink) {
-              magnetLink = decoded;
+            if (/^magnet:/i.test(decoded) && !magnetLink) {
+              if (parseMagnetUri(decoded)?.infoHash) magnetLink = decoded;
             } else if (decoded.includes('.torrent') && !torrentDownloadUrl) {
-              torrentDownloadUrl = absoluteHttpUrl(decoded, url);
+              const resolved = absoluteHttpUrl(decoded, url);
+              if (resolved && sameSiteUrl(resolved, url)) torrentDownloadUrl = resolved;
             }
           }
-        } else if (href.startsWith('magnet:') && !magnetLink) {
-          magnetLink = href;
+        } else if (/^magnet:/i.test(href) && !magnetLink) {
+          if (parseMagnetUri(href)?.infoHash) magnetLink = href;
         } else if (/\.torrent(?:[?#]|$)/i.test(href) && !torrentDownloadUrl) {
-          torrentDownloadUrl = absoluteHttpUrl(href, url);
+          const resolved = absoluteHttpUrl(href, url);
+          if (resolved && sameSiteUrl(resolved, url)) torrentDownloadUrl = resolved;
         }
       }
     });

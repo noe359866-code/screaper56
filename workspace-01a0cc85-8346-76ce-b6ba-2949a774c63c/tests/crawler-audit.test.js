@@ -101,6 +101,91 @@ test('RARBG: size/seeders/leechers are located by content, not by fixed columns'
   assert.equal(row.leechers, 56);
 });
 
+test('RARBG: six-column rows survive and off-site detail links are rejected', () => {
+  const crawler = new RarbgCrawler();
+  const pageUrl = 'https://rarbg.test/movies/';
+  const listing = `<table>
+    <tr><td><img></td><td><a href="/rarbgproxy_torrent/good.html?ref=movie">Sample Castellano</a></td>
+      <td>Movies</td><td>1.5 GB</td><td>12</td><td>4</td></tr>
+    <tr><td><img></td><td><a href="https://ads.example/rarbgproxy_torrent/ad.html">Ad</a></td>
+      <td>Movies</td><td>1.5 GB</td><td>12</td><td>4</td></tr>
+  </table>`;
+  const rows = crawler.parseListing(listing, pageUrl);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].detailUrl, 'https://rarbg.test/rarbgproxy_torrent/good.html?ref=movie');
+  assert.equal(rows[0].seeders, 12);
+  assert.equal(rows[0].leechers, 4);
+});
+
+test('RARBG: duplicate listings do not hide later pages with new torrents', async () => {
+  const previousBase = process.env.RARBG_BASE_URL;
+  const previousSearch = process.env.RARBG_SEARCH;
+  const mirror = 'https://rarbg.test';
+  process.env.RARBG_BASE_URL = mirror;
+  process.env.RARBG_SEARCH = 'spanish';
+  clearMirrorCache('rarbg');
+  try {
+    const crawler = new RarbgCrawler();
+    const calls = mockHttp(crawler, url => {
+      if (url.includes('_torrent/')) {
+        const hash = url.includes('first') ? HASH : HASH2;
+        return `<h1>Sample Castellano 1080p</h1><a href="magnet:?xt=urn:btih:${hash}">Magnet</a>`;
+      }
+      if (url === `${mirror}/movies/`) return rarbgListing([
+        { id: 'probe', title: 'Probe Sample Castellano', size: '1 GB', seeders: '1', leechers: '0' }
+      ]);
+      if (url === `${mirror}/search/?search=spanish`) {
+        return `${rarbgListing([{ id: 'first', title: 'First Castellano 1080p', size: '1 GB', seeders: '1', leechers: '0' }])}` +
+          '<div class="pagination"><a href="/search/2/?search=spanish">2</a></div>';
+      }
+      if (url === `${mirror}/search/2/?search=spanish`) {
+        return `${rarbgListing([{ id: 'first', title: 'First Castellano 1080p', size: '1 GB', seeders: '1', leechers: '0' }])}` +
+          '<div class="pagination"><a href="/search/3/?search=spanish">3</a></div>';
+      }
+      if (url === `${mirror}/search/3/?search=spanish`) {
+        return rarbgListing([{ id: 'second', title: 'Second Castellano 720p', size: '1 GB', seeders: '2', leechers: '0' }]);
+      }
+      return '<table></table>';
+    });
+    const records = await crawler.crawl(3);
+    assert.ok(calls.includes(`${mirror}/search/3/?search=spanish`));
+    assert.ok(records.some(record => record.info_hash === HASH));
+    assert.ok(records.some(record => record.info_hash === HASH2));
+  } finally {
+    if (previousBase === undefined) delete process.env.RARBG_BASE_URL;
+    else process.env.RARBG_BASE_URL = previousBase;
+    if (previousSearch === undefined) delete process.env.RARBG_SEARCH;
+    else process.env.RARBG_SEARCH = previousSearch;
+    clearMirrorCache('rarbg');
+  }
+});
+
+test('RARBG: catalogue failures after a successful probe are not reported as an empty success', async () => {
+  const previousBase = process.env.RARBG_BASE_URL;
+  const previousSearch = process.env.RARBG_SEARCH;
+  const mirror = 'https://rarbg-flaky.test';
+  process.env.RARBG_BASE_URL = mirror;
+  process.env.RARBG_SEARCH = '';
+  clearMirrorCache('rarbg');
+  try {
+    const crawler = new RarbgCrawler();
+    let movieRequests = 0;
+    mockHttp(crawler, url => {
+      if (url === `${mirror}/movies/` && movieRequests++ === 0) {
+        return rarbgListing([{ id: 'probe', title: 'Probe Castellano', size: '1 GB', seeders: '1', leechers: '0' }]);
+      }
+      throw new Error('simulated catalogue outage');
+    });
+    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+  } finally {
+    if (previousBase === undefined) delete process.env.RARBG_BASE_URL;
+    else process.env.RARBG_BASE_URL = previousBase;
+    if (previousSearch === undefined) delete process.env.RARBG_SEARCH;
+    else process.env.RARBG_SEARCH = previousSearch;
+    clearMirrorCache('rarbg');
+  }
+});
+
 test('RARBG: pagination follows the published pager, never a guessed number', async () => {
   const crawler = new RarbgCrawler();
   clearMirrorCache('rarbg');
@@ -162,13 +247,138 @@ test('MagnetDL: nextPage follows the pager of the route, not only numbered links
   assert.equal(crawler.nextPage('<div class="pagination"></div>', 'https://magnetdl.test/movies', '/movies', 1), null);
 });
 
-test('MagnetDL: the metainfo link of the /single page is stored only for the site itself', () => {
+test('MagnetDL: detail links stay on the active site and the first valid magnet wins', () => {
   const crawler = new MagnetDlCrawler();
-  const { torrentFileUrl } = crawler.parseDetail(
-    `<h1>Sample</h1><a href="${MAGNET}">magnet</a><a href="https://ad.example/file.torrent">ad</a>`,
-    'Sample...'
+  const pageUrl = 'https://magnetdl.test/single/1';
+  const details = crawler.parseDetail(
+    `<h1>Sample Castellano</h1>
+      <a href="magnet:?xt=urn:btih:invalid">Malformed</a>
+      <a href="magnet:?xt=urn:btih:${HASH}">Valid</a>
+      <a href="https://ad.example/file.torrent">Ad</a>
+      <a href="http://magnetdl.test/downgrade.torrent">Downgrade</a>
+      <a href="https://user:pass@magnetdl.test/credentialed.torrent">Credentials</a>
+      <a href="https://magnetdl.test:444/other-port.torrent">Other port</a>
+      <a href="/files/sample.torrent?download=1">Valid file</a>`,
+    'Sample...',
+    pageUrl
   );
-  assert.equal(torrentFileUrl, null, 'third-party download buttons are not this source\'s file');
+  assert.equal(details.magnet, `magnet:?xt=urn:btih:${HASH}`);
+  assert.equal(details.torrentFileUrl, 'https://magnetdl.test/files/sample.torrent?download=1');
+
+  const hashOnly = crawler.parseDetail(`Info Hash: ${'0'.repeat(40)}; Hash: ${HASH2}`, 'Hash fallback', pageUrl);
+  assert.equal(hashOnly.magnet, `magnet:?xt=urn:btih:${HASH2}&dn=Hash%20fallback`);
+  assert.equal(hashOnly.torrentFileUrl, null);
+
+  const embedded = crawler.parseDetail(
+    `<script>const magnet = 'magnet:?xt=urn:btih:${HASH2}&amp;dn=Embedded%20Castellano';</script>`,
+    'Embedded Castellano',
+    pageUrl
+  );
+  assert.equal(embedded.magnet, `magnet:?xt=urn:btih:${HASH2}&dn=Embedded%20Castellano`);
+});
+
+test('MagnetDL: pagination must remain on the current route and mirror origin', () => {
+  const crawler = new MagnetDlCrawler();
+  const current = 'https://magnetdl.test/download/movies/';
+  assert.equal(
+    crawler.nextPage('<div class="pagination"><a href="/download/movies/2/">Next</a></div>', current, '/download/movies/', 1),
+    'https://magnetdl.test/download/movies/2/'
+  );
+  for (const href of [
+    'https://attacker.example/download/movies/2/',
+    'https://magnetdl.test:444/download/movies/2/',
+    'http://magnetdl.test/download/movies/2/',
+    '/download/movies-evil/2/',
+    'https://user:pass@magnetdl.test/download/movies/2/'
+  ]) {
+    assert.equal(
+      crawler.nextPage(`<div class="pagination"><a rel="next" href="${href}">Next</a></div>`, current, '/download/movies/', 1),
+      null,
+      `${href} must not be followed`
+    );
+  }
+});
+
+test('MagnetDL: listing rejects detail links outside the active mirror site', () => {
+  const crawler = new MagnetDlCrawler();
+  const pageUrl = 'https://magnetdl.test/download/movies/';
+  const row = (href, id) => `<tr><td><a href="magnet:?xt=urn:btih:invalid">Bad</a>
+      <a href="magnet:?xt=urn:btih:${HASH}">Valid</a></td><td><a href="${href}">Sample Castellano ${id}</a></td>
+    <td>Today</td><td>movies</td><td>1 GB</td><td>5</td><td>2</td></tr>`;
+  const rows = crawler.parseListing(`<table>${[
+    row('/single/1', 1),
+    row('https://attacker.example/single/2', 2),
+    row('http://magnetdl.test/single/3', 3),
+    row('https://magnetdl.test:444/single/4', 4),
+    row('https://user:pass@magnetdl.test/single/5', 5)
+  ].join('')}</table>`, pageUrl, null);
+  assert.deepEqual(rows.map(item => item.detailUrl), ['https://magnetdl.test/single/1']);
+  assert.equal(rows[0].magnet, `magnet:?xt=urn:btih:${HASH}`);
+});
+
+test('MagnetDL: repeated listing rows do not hide later published pages', async () => {
+  const previousBase = process.env.MAGNETDL_BASE_URL;
+  const previousSearch = process.env.MAGNETDL_SEARCH;
+  const mirror = 'https://magnetdl-pagination.test';
+  process.env.MAGNETDL_BASE_URL = mirror;
+  process.env.MAGNETDL_SEARCH = 'spanish';
+  clearMirrorCache('magnetdl');
+  try {
+    const crawler = new MagnetDlCrawler();
+    const row = (id, title, hash) => `<tr><td></td><td><a href="/single/${id}">${title}</a></td>
+      <td>Today</td><td>movies</td><td>1 GB</td><td>5</td><td>2</td>
+      <td><a href="magnet:?xt=urn:btih:${hash}">Magnet</a></td></tr>`;
+    const listing = rows => `<table>${rows}</table>`;
+    const pageOneRow = row(1, 'Sample Castellano 1080p', HASH);
+    const laterRow = row(2, 'Otra Castellano 720p', HASH2);
+    const calls = mockHttp(crawler, url => {
+      if (url === `${mirror}/download/movies/`) return listing(pageOneRow); // probe + movie catalog
+      if (url === `${mirror}/download/tv/`) return listing('');
+      if (url === `${mirror}/s/spanish/`) {
+        return `${listing(pageOneRow)}<div class="pagination"><a href="/s/spanish/2/">Next »</a></div>`;
+      }
+      if (url === `${mirror}/s/spanish/2/`) {
+        return `${listing(pageOneRow)}<div class="pagination"><a href="/s/spanish/3/">Next »</a></div>`;
+      }
+      if (url === `${mirror}/s/spanish/3/`) return listing(laterRow);
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const records = await crawler.crawl(3);
+    assert.ok(calls.includes(`${mirror}/s/spanish/3/`));
+    assert.deepEqual(new Set(records.map(record => record.info_hash)), new Set([HASH, HASH2]));
+  } finally {
+    if (previousBase === undefined) delete process.env.MAGNETDL_BASE_URL;
+    else process.env.MAGNETDL_BASE_URL = previousBase;
+    if (previousSearch === undefined) delete process.env.MAGNETDL_SEARCH;
+    else process.env.MAGNETDL_SEARCH = previousSearch;
+    clearMirrorCache('magnetdl');
+  }
+});
+
+test('MagnetDL: a mirror probe followed by catalogue failures is an explicit error', async () => {
+  const previousBase = process.env.MAGNETDL_BASE_URL;
+  const previousSearch = process.env.MAGNETDL_SEARCH;
+  const mirror = 'https://magnetdl-flaky.test';
+  process.env.MAGNETDL_BASE_URL = mirror;
+  process.env.MAGNETDL_SEARCH = '';
+  clearMirrorCache('magnetdl');
+  try {
+    const crawler = new MagnetDlCrawler();
+    const probeListing = '<table><tr><td><a href="/single/1">Probe Castellano</a></td></tr></table>';
+    let probeCount = 0;
+    mockHttp(crawler, async url => {
+      if (url === `${mirror}/download/movies/` && probeCount++ === 0) return probeListing;
+      throw new Error('simulated catalogue outage');
+    });
+    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+  } finally {
+    if (previousBase === undefined) delete process.env.MAGNETDL_BASE_URL;
+    else process.env.MAGNETDL_BASE_URL = previousBase;
+    if (previousSearch === undefined) delete process.env.MAGNETDL_SEARCH;
+    else process.env.MAGNETDL_SEARCH = previousSearch;
+    clearMirrorCache('magnetdl');
+  }
 });
 
 // ============================================================================
@@ -225,6 +435,62 @@ test('TPB: the type comes from the category cell of the row', () => {
   assert.equal(crawler.typeFromCategory(''), undefined);
 });
 
+test('TPB: APiBay source URLs require a content-verified web mirror', async () => {
+  const previousBase = process.env.THEPIRATEBAY_BASE_URL;
+  const previousApi = process.env.APIBAY_BASE_URL;
+  const mirror = 'https://tpb.test';
+  process.env.THEPIRATEBAY_BASE_URL = mirror;
+  process.env.APIBAY_BASE_URL = 'https://apibay.test';
+  clearMirrorCache('thepiratebay');
+  try {
+    const crawler = new ThePirateBayCrawler();
+    const item = {
+      id: '42', name: 'Sample Castellano', info_hash: HASH,
+      category: '201', seeders: '5', leechers: '1', size: '1000'
+    };
+    mockHttp(crawler, url => {
+      if (url === `${mirror}/search/test/1/99/200`) return '<table id="searchResult"></table>';
+      if (url.startsWith('https://apibay.test/')) return [item];
+      if (url.startsWith(`${mirror}/search/`)) return '<table id="searchResult"></table>';
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const [record] = await crawler.crawl(1);
+    assert.equal(record.source_url, `${mirror}/description.php?id=42`);
+    assert.equal(record.source_tracker, null);
+    assert.doesNotMatch(record.magnet_url, /[?&]tr=/);
+  } finally {
+    if (previousBase === undefined) delete process.env.THEPIRATEBAY_BASE_URL;
+    else process.env.THEPIRATEBAY_BASE_URL = previousBase;
+    if (previousApi === undefined) delete process.env.APIBAY_BASE_URL;
+    else process.env.APIBAY_BASE_URL = previousApi;
+    clearMirrorCache('thepiratebay');
+  }
+});
+
+test('TPB: total API and mirror outage is an explicit failure', async () => {
+  const previousBase = process.env.THEPIRATEBAY_BASE_URL;
+  const previousApi = process.env.APIBAY_BASE_URL;
+  const previousSearch = process.env.THEPIRATEBAY_SEARCH;
+  process.env.THEPIRATEBAY_BASE_URL = 'https://tpb-offline.test';
+  process.env.APIBAY_BASE_URL = 'https://apibay-offline.test';
+  process.env.THEPIRATEBAY_SEARCH = 'spanish';
+  clearMirrorCache('thepiratebay');
+  try {
+    const crawler = new ThePirateBayCrawler();
+    mockHttp(crawler, async () => { throw new Error('simulated network outage'); });
+    await assert.rejects(crawler.crawl(1), /No usable responses from APiBay or the web mirror/);
+  } finally {
+    if (previousBase === undefined) delete process.env.THEPIRATEBAY_BASE_URL;
+    else process.env.THEPIRATEBAY_BASE_URL = previousBase;
+    if (previousApi === undefined) delete process.env.APIBAY_BASE_URL;
+    else process.env.APIBAY_BASE_URL = previousApi;
+    if (previousSearch === undefined) delete process.env.THEPIRATEBAY_SEARCH;
+    else process.env.THEPIRATEBAY_SEARCH = previousSearch;
+    clearMirrorCache('thepiratebay');
+  }
+});
+
 test('TPB: detail page yields the IMDb id and only same-site metainfo links', () => {
   const crawler = new ThePirateBayCrawler();
   const url = 'https://tpb.test/description.php?id=1';
@@ -243,13 +509,19 @@ test('TPB: detail page yields the IMDb id and only same-site metainfo links', ()
   );
   assert.equal(bad.torrentFileUrl, null, 'an ad host is never stored as the torrent file');
   assert.equal(bad.imdbId, null);
+
+  const downgraded = crawler.parseDetail(
+    '<a href="http://tpb.test/download/1/Sample.torrent">Download</a>',
+    url
+  );
+  assert.equal(downgraded.torrentFileUrl, null, 'a same-host HTTP downgrade is not trusted');
 });
 
 test('TPB: HTML rows keep the download link of the row and the row-category type', () => {
   const crawler = new ThePirateBayCrawler();
   const html = `<table id="searchResult"><tr class="header"><td>c</td></tr>
     <tr><td class="vertTh"><a href="/browse/208">TV shows</a></td>
-    <td><div class="detName"><a href="/description.php?id=9">Sample S01E02 Castellano</a></div>
+    <td><div class="detName"><a href="https://ads.example/description.php?id=9">Sample S01E02 Castellano</a></div>
     <a href="${MAGNET}">M</a><a href="/download/9/Sample.torrent">DL</a>
     <font class="detDesc">Uploaded 01-01, Size 1.5 GiB, ULed by x</font></td>
     <td>10</td><td>2</td></tr></table>`;
@@ -259,6 +531,8 @@ test('TPB: HTML rows keep the download link of the row and the row-category type
   assert.equal(added, 1);
   assert.equal(sink[0].type, 'series', 'the row is an episode, not a movie');
   assert.equal(sink[0].torrent_file_url, 'https://tpb.test/download/9/Sample.torrent');
+  assert.equal(sink[0].source_url, null, 'off-site title links are not stored as TPB source pages');
+  assert.equal(sink[0].source_tracker, null, 'trackers absent from the page magnet stay unknown');
   assert.equal(sink[0].seeders, 10);
   assert.equal(sink[0].leechers, 2);
 });
@@ -267,7 +541,7 @@ test('TPB: HTML rows keep the download link of the row and the row-category type
 // Nyaa / TorrentGalaxy
 // ============================================================================
 
-test('Nyaa: audio, books, software and pictures rows are not indexed as video', () => {
+test('Nyaa: non-video categories are not indexed as video', () => {
   const crawler = new NyaaCrawler();
   const row = (category, title, hash) => `<tr><td><img title="${category}"></td>
     <td><a href="/view/1">${title}</a></td>
@@ -277,6 +551,10 @@ test('Nyaa: audio, books, software and pictures rows are not indexed as video', 
   const html = `<table class="torrent-list"><tbody>
     ${row('Audio - Lossless', 'Some Album', HASH)}
     ${row('Literature - Manga', 'Some Book', HASH2)}
+    ${row('Software - Applications', 'Some App', 'abcdefabcdefabcdefabcdefabcdefabcdefabcd')}
+    ${row('Pictures - Graphics', 'Some Picture', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')}
+    ${row('Games - PC', 'Some Game', '1234512345123451234512345123451234512345')}
+    ${row('Other - Miscellaneous', 'Some Other File', '2222222222222222222222222222222222222222')}
     ${row('Live Action - English-translated', 'Sample Castellano 1080p', 'abcdef1234567890abcdef1234567890abcdef12')}
   </tbody></table>`;
 
@@ -285,26 +563,133 @@ test('Nyaa: audio, books, software and pictures rows are not indexed as video', 
   assert.equal(records[0].type, 'movie');
 });
 
-test('TorrentGalaxy: peers come from the seed/leech cells and the file link must match the hash', () => {
+test('TorrentGalaxy: peers come from cells and metainfo links must be trusted and hash-matched', () => {
   const crawler = new TorrentGalaxyCrawler();
   const mirror = 'https://tgx.test';
 
-  const row = (hash, fileHash) => `<div class="tgxtablerow">
-    <a href="/torrent/1/sample">Sample Castellano 1080p</a>
+  const row = (hash, fileHref, titleHref = '/torrent/1/sample') => `<div class="tgxtablerow">
+    <a href="${titleHref}">Sample Castellano 1080p</a>
     <a href="magnet:?xt=urn:btih:${hash}">M</a>
-    <a href="/torrent/${fileHash}/sample.torrent">iTorrents</a>
+    ${fileHref ? `<a href="${fileHref}">iTorrents</a>` : ''}
     <span class="badge">2.1 GB</span>
     <span class="tgxtablecell seeders">1,234</span>
     <span class="tgxtablecell leechers">56</span>
   </div>`;
 
-  const [record] = crawler.parseTorrentGalaxyHtml(row(HASH, HASH), `${mirror}/torrents`, mirror);
+  const [record] = crawler.parseTorrentGalaxyHtml(
+    row(HASH, `/torrent/${HASH}/sample.torrent`), `${mirror}/torrents`, mirror
+  );
   assert.equal(record.seeders, 1234);
   assert.equal(record.leechers, 56);
   assert.equal(record.torrent_file_url, `${mirror}/torrent/${HASH}/sample.torrent`);
 
-  const [mismatch] = crawler.parseTorrentGalaxyHtml(row(HASH, HASH2), `${mirror}/torrents`, mirror);
+  const [mismatch] = crawler.parseTorrentGalaxyHtml(
+    row(HASH, `/torrent/${HASH2}/sample.torrent`), `${mirror}/torrents`, mirror
+  );
   assert.equal(mismatch.torrent_file_url, null, 'a file link for another hash is not stored');
+
+  const [adLink] = crawler.parseTorrentGalaxyHtml(
+    row(HASH, `https://ads.example/torrent/${HASH}/sample.torrent`, 'https://ads.example/torrent/1/sample'),
+    `${mirror}/torrents`, mirror
+  );
+  assert.equal(adLink.torrent_file_url, null, 'a matching hash does not make an arbitrary host trusted');
+  assert.equal(adLink.source_url, `${mirror}/torrents`, 'an off-site title link falls back to the listing page');
+
+  const itorrents = crawler.parseTorrentGalaxyHtml(
+    row(HASH, `https://itorrents.org/torrent/${HASH}/sample.torrent`), `${mirror}/torrents`, mirror
+  )[0];
+  assert.equal(itorrents.torrent_file_url, `https://itorrents.org/torrent/${HASH}/sample.torrent`);
+});
+
+test('TorrentGalaxy: iTorrents hash fallback builds a tracker-free magnet', () => {
+  const crawler = new TorrentGalaxyCrawler();
+  const mirror = 'https://tgx.test';
+  const html = `<div class="tgxtablerow">
+    <a href="/torrent/7/sample">Sample Castellano 1080p</a>
+    <a href="https://itorrents.org/torrent/${HASH}.torrent">iTorrents</a>
+  </div>`;
+  const [record] = crawler.parseTorrentGalaxyHtml(html, `${mirror}/torrents`, mirror);
+  assert.equal(record.info_hash, HASH);
+  assert.equal(record.torrent_file_url, `https://itorrents.org/torrent/${HASH}.torrent`);
+  assert.equal(record.source_tracker, null);
+  assert.doesNotMatch(record.magnet_url, /[?&]tr=/);
+});
+
+test('TorrentGalaxy: a duplicate page across endpoints does not stop published pagination', async () => {
+  const previousBase = process.env.TORRENTGALAXY_BASE_URL;
+  const mirror = 'https://tgx.test';
+  process.env.TORRENTGALAXY_BASE_URL = mirror;
+  clearMirrorCache('torrentgalaxy');
+  try {
+    const crawler = new TorrentGalaxyCrawler();
+    const row = (id, hash) => `<div class="tgxtablerow">
+      <a href="/torrent/${id}/sample">Sample ${id} Castellano 1080p</a>
+      <a href="magnet:?xt=urn:btih:${hash}">M</a>
+      <span class="badge">1.5 GB</span>
+    </div>`;
+    const calls = mockHttp(crawler, url => {
+      if (url === `${mirror}/`) return '<div class="tgxtable"></div>';
+      if (url === `${mirror}/movies`) return row(1, HASH);
+      if (url.includes('/torrents.php?search=spanish')) {
+        if (url.includes('page=2')) return row(2, HASH2);
+        return `${row(1, HASH)}<div class="pagination"><a href="/torrents.php?search=spanish&amp;sort=id&amp;order=desc&amp;page=2">2</a></div>`;
+      }
+      return '<div class="empty"></div>';
+    });
+
+    const records = await crawler.crawl(2);
+    assert.ok(calls.some(url => url.includes('/torrents.php?search=spanish') && url.includes('page=2')));
+    assert.ok(records.some(record => record.info_hash === HASH2), 'page 2 releases are retained after an overlap');
+  } finally {
+    if (previousBase === undefined) delete process.env.TORRENTGALAXY_BASE_URL;
+    else process.env.TORRENTGALAXY_BASE_URL = previousBase;
+    clearMirrorCache('torrentgalaxy');
+  }
+});
+
+test('TorrentGalaxy: a mirror that passes its probe but fails every catalogue is an error', async () => {
+  const previousBase = process.env.TORRENTGALAXY_BASE_URL;
+  const mirror = 'https://tgx-flaky.test';
+  process.env.TORRENTGALAXY_BASE_URL = mirror;
+  clearMirrorCache('torrentgalaxy');
+  try {
+    const crawler = new TorrentGalaxyCrawler();
+    mockHttp(crawler, url => {
+      if (url === `${mirror}/`) return '<div class="tgxtable"></div>';
+      throw new Error('simulated catalogue outage');
+    });
+    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+  } finally {
+    if (previousBase === undefined) delete process.env.TORRENTGALAXY_BASE_URL;
+    else process.env.TORRENTGALAXY_BASE_URL = previousBase;
+    clearMirrorCache('torrentgalaxy');
+  }
+});
+
+test('TorrentGalaxy: repeated result pages stop pagination without an off-by-one request', async () => {
+  const previousBase = process.env.TORRENTGALAXY_BASE_URL;
+  const mirror = 'https://tgx.test';
+  process.env.TORRENTGALAXY_BASE_URL = mirror;
+  clearMirrorCache('torrentgalaxy');
+  try {
+    const crawler = new TorrentGalaxyCrawler();
+    const row = `<div class="tgxtablerow"><a href="/torrent/1/sample">Sample Castellano 1080p</a>
+      <a href="magnet:?xt=urn:btih:${HASH}">M</a></div>`;
+    const calls = mockHttp(crawler, url => {
+      if (url === `${mirror}/`) return '<div class="tgxtable"></div>';
+      if (url === `${mirror}/movies`) return `${row}<div class="pagination"><a href="/movies?page=2">2</a></div>`;
+      if (url === `${mirror}/movies?page=2`) return `${row}<div class="pagination"><a href="/movies?page=3">3</a></div>`;
+      return '<div class="empty"></div>';
+    });
+
+    await crawler.crawl(3);
+    assert.ok(calls.includes(`${mirror}/movies?page=2`));
+    assert.equal(calls.includes(`${mirror}/movies?page=3`), false);
+  } finally {
+    if (previousBase === undefined) delete process.env.TORRENTGALAXY_BASE_URL;
+    else process.env.TORRENTGALAXY_BASE_URL = previousBase;
+    clearMirrorCache('torrentgalaxy');
+  }
 });
 
 // ============================================================================
@@ -434,6 +819,51 @@ test('MejorTorrent: legacy listings walk the published pager only', async () => 
   );
 });
 
+test('MejorTorrent: an overlapping category page does not hide its own next page', async () => {
+  const crawler = new MejorTorrentCrawler();
+  clearMirrorCache('mejortorrent');
+  const card = id => `<a href="/pelicula/${id}/sample.html">Sample ${id}</a>`;
+  const calls = mockHttp(crawler, url => {
+    if (url.includes('/pelicula/')) {
+      const id = Number(url.split('/pelicula/')[1]?.split('/')[0] || 1);
+      return `<h1>Sample ${id} Castellano</h1><a href="magnet:?xt=urn:btih:${id === 1 ? HASH : HASH2}">M</a>`;
+    }
+    if (url.endsWith('/peliculas-hd')) {
+      return `${card(1)}<div class="pagination"><a href="/peliculas-hd/page/2">2</a></div>`;
+    }
+    if (url.endsWith('/peliculas-hd/page/2')) return card(2);
+    if (url.endsWith('/inicio')) return card(1);
+    return '<div>empty section</div>';
+  });
+
+  const records = await crawler.crawl(3);
+  clearMirrorCache('mejortorrent');
+  assert.equal(records.length, 2);
+  assert.ok(calls.some(url => url.endsWith('/peliculas-hd/page/2')));
+});
+
+test('MejorTorrent: repeated WordPress API pages stop and external post links are ignored', async () => {
+  const crawler = new MejorTorrentCrawler();
+  const mirror = 'https://mejortorrent.test';
+  const pageOne = [
+    { link: `${mirror}/pelicula/sample/` },
+    { link: 'https://evil.example/pelicula/injected/' }
+  ];
+  const calls = mockHttp(crawler, url => {
+    if (url.includes('/wp-json/')) return pageOne;
+    if (url === `${mirror}/pelicula/sample/`) {
+      return `<h1>Sample Castellano 1080p</h1><a href="magnet:?xt=urn:btih:${HASH}">Magnet</a><a href="https://evil.example/ad.torrent">Ad</a>`;
+    }
+    throw new Error(`Unexpected URL: ${url}`);
+  });
+
+  const records = await crawler.crawlModernMeMode(mirror, 6);
+  assert.equal(records.length, 1);
+  assert.equal(calls.filter(url => url.includes('/wp-json/')).length, 2);
+  assert.equal(calls.filter(url => url === `${mirror}/pelicula/sample/`).length, 1);
+  assert.ok(calls.every(url => !url.includes('evil.example')));
+});
+
 // ============================================================================
 // GranTorrent / Sinsitio
 // ============================================================================
@@ -446,9 +876,9 @@ test('GranTorrent: movie cards across www/apex, never categories or pagers', () 
   assert.equal(isMovieCardPath('/a/b/c/'), false);
 
   const crawler = new GranTorrentCrawler();
-  const html = `<a href="https://www.grantorrent.foo/icefall/"><img src="/wp-content/uploads/p.jpg"></a>
-    <a href="https://grantorrent.foo/categoria/accion/"><img src="/wp-content/uploads/c.jpg"></a>`;
-  assert.deepEqual(crawler.parseListing(html, 'https://grantorrent.foo'), ['https://www.grantorrent.foo/icefall/']);
+  const html = `<a href="https://www.grantorrent.test/icefall/"><img src="/wp-content/uploads/p.jpg"></a>
+    <a href="https://grantorrent.test/categoria/accion/"><img src="/wp-content/uploads/c.jpg"></a>`;
+  assert.deepEqual(crawler.parseListing(html, 'https://grantorrent.test'), ['https://www.grantorrent.test/icefall/']);
 });
 
 test('Sinsitio: posts are collected across www/apex and only from the site', () => {
@@ -463,5 +893,6 @@ test('Sinsitio: posts are collected across www/apex and only from the site', () 
     'www/apex mismatch no longer drops the attachment'
   );
   assert.equal(decodeSinsitioDownload('https://evil.example/index.php?do=download&id=42', 'https://sinsitio.site/'), null);
+  assert.equal(decodeSinsitioDownload('http://sinsitio.site/index.php?do=download&id=42', 'https://sinsitio.site/'), null);
   assert.equal(decodeSinsitioDownload('https://sinsitio.site/index.php?do=download', 'https://sinsitio.site/'), null);
 });

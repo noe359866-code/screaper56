@@ -14,6 +14,36 @@ test('HTTP: configured timeout and per-request Referer reach the transport', asy
   });
   assert.equal((await client.get('https://example.test/', { headers:{ Referer:'https://example.test/detail' } })).data, 'ok');
 });
+test('HTTP: disabling Cloudflare handling does not replay cached clearance cookies', async () => {
+  const engine = CloudflareBypassEngine.getInstance();
+  const url = 'https://no-bypass-session.test/forum/index.php';
+  engine.rememberSession('no-bypass-session.test', {
+    cookieHeader: 'cf_clearance=stale-clearance',
+    userAgent: 'CachedAgent',
+    acceptLanguage: 'en-US',
+    solvedAt: Date.now(),
+    expiresAt: Date.now() + 60_000,
+    hasClearance: true,
+    hostname: 'no-bypass-session.test'
+  });
+  try {
+    const client = new ResilientHttpClient({
+      maxRetries: 0,
+      adapter: async config => {
+        assert.equal(config.headers.get('Cookie'), 'bb_session=account-session');
+        assert.notEqual(config.headers['User-Agent'], 'CachedAgent');
+        return reply(config, 'ok');
+      }
+    });
+    await client.get(url, {
+      autoSolveCloudflare: false,
+      headers: { Cookie: 'bb_session=account-session' }
+    });
+  } finally {
+    engine.invalidateSession(url);
+  }
+});
+
 test('HTTP: 200 challenge uses the existing fallback path rather than masquerading as HTML', async () => {
   const engine = CloudflareBypassEngine.getInstance();
   const original = engine.solveAndFetch;

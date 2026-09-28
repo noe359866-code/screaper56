@@ -33,6 +33,32 @@ const DEFAULT_CRAWLERS = Object.freeze([
   'magnetdl',
   'tokyotosho',
   'grantorrent',
+  'rutracker',
+  't0rrenta',
+  'estrenostorrent'
+]) as readonly string[];
+
+/**
+ * Curated operational preset: Spanish-focused sources plus high-volume global
+ * sources. Keep niche/legacy adapters selectable through `all` or explicitly.
+ */
+const PRIORITY_CRAWLERS = Object.freeze([
+  'pelispanda',
+  't0rrenta',
+  'estrenostorrent',
+  'mejortorrent',
+  'elitetorrent',
+  'wolftorrent',
+  'sinsitio',
+  'dontorrent',
+  'leech1337x',
+  'torrentgalaxy',
+  'yts',
+  'eztv',
+  'thepiratebay',
+  'limetorrents',
+  'magnetdl',
+  'nyaa',
   'rutracker'
 ]) as readonly string[];
 
@@ -101,11 +127,13 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
   }
 
   // Parseo y deduplicación de crawlers
-  const targetCrawlersRaw = (process.env.TARGET_CRAWLERS || 'all').trim().toLowerCase();
+  const targetCrawlersRaw = (process.env.TARGET_CRAWLERS || 'priority').trim().toLowerCase();
   let targetCrawlers: readonly string[];
 
   if (targetCrawlersRaw === 'all') {
     targetCrawlers = DEFAULT_CRAWLERS;
+  } else if (targetCrawlersRaw === 'priority') {
+    targetCrawlers = PRIORITY_CRAWLERS;
   } else {
     const parsedList = Array.from(
       new Set(

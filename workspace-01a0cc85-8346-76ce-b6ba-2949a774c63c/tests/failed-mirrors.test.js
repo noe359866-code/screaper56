@@ -3,9 +3,17 @@ import assert from 'node:assert/strict';
 import { PelispandaCrawler } from '../src/crawlers/pelispanda.ts';
 import { MagnetDlCrawler } from '../src/crawlers/magnetdl.ts';
 import { RarbgCrawler } from '../src/crawlers/rarbg.ts';
+import { T0rrentaCrawler } from '../src/crawlers/t0rrenta.ts';
+import { EstrenosTorrentCrawler } from '../src/crawlers/estrenostorrent.ts';
 import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
 
-for (const Crawler of [PelispandaCrawler, MagnetDlCrawler, RarbgCrawler]) {
+for (const Crawler of [
+  PelispandaCrawler,
+  MagnetDlCrawler,
+  RarbgCrawler,
+  T0rrentaCrawler,
+  EstrenosTorrentCrawler
+]) {
   test(`${Crawler.name}: a dead mirror must not become a successful fallback`, async () => {
     const crawler = new Crawler();
     clearMirrorCache(crawler.name);

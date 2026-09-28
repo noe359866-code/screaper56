@@ -306,8 +306,11 @@ export class ResilientHttpClient {
     let lastError: unknown = null;
 
     while (attempt <= maxRetries) {
-      const session: ClearanceSession | null =
-        bypass ?? (fullUrl ? clearanceEngine.getCachedSession(fullUrl) : null);
+      // Disabling Cloudflare handling also disables replaying any previously
+      // cached clearance; the caller's own Cookie header must remain authoritative.
+      const session: ClearanceSession | null = autoSolve
+        ? bypass ?? (fullUrl ? clearanceEngine.getCachedSession(fullUrl) : null)
+        : null;
 
       const profile: UserAgentProfile = session
         ? toProfile(session.userAgent)

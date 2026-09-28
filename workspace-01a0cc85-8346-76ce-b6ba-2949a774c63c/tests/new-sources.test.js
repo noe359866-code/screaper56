@@ -3,14 +3,28 @@ import assert from 'node:assert/strict';
 import { RarbgCrawler } from '../src/crawlers/rarbg.ts';
 import { MagnetDlCrawler } from '../src/crawlers/magnetdl.ts';
 import { TokyoToshoCrawler } from '../src/crawlers/tokyotosho.ts';
+import { T0rrentaCrawler } from '../src/crawlers/t0rrenta.ts';
+import { EstrenosTorrentCrawler } from '../src/crawlers/estrenostorrent.ts';
 import { CRAWLER_REGISTRY } from '../src/crawlers/registry.ts';
-import { mockHttp, HASH2 } from './helpers.js';
+import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
+import { BlockedPageError, rethrowIfBlockedOrRateLimited } from '../src/crawlers/base.ts';
+import { mockHttp, HASH2, torrent } from './helpers.js';
 
 const HASH = '5ac30f52edc636a18b3e28140dc90f7880fa9a1d';
 const MAGNET = `magnet:?xt=urn:btih:${HASH.toUpperCase()}&amp;dn=Carmen.and.Lola.2018.SPANISH.1080p&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce`;
 
 test('New sources are registered', () => {
-  for (const key of ['rarbg', 'magnetdl', 'tokyotosho']) assert.equal(typeof CRAWLER_REGISTRY[key], 'function');
+  for (const key of ['rarbg', 'magnetdl', 'tokyotosho', 't0rrenta', 'estrenostorrent']) {
+    assert.equal(typeof CRAWLER_REGISTRY[key], 'function');
+  }
+});
+
+test('Blocking and HTTP 429 failures remain fatal across crawler-level catches', () => {
+  const blocked = new BlockedPageError('https://t0rrenta.test/detail');
+  assert.throws(() => rethrowIfBlockedOrRateLimited(blocked), error => error === blocked);
+  const limited = Object.assign(new Error('too many requests'), { response: { status: 429 } });
+  assert.throws(() => rethrowIfBlockedOrRateLimited(limited), error => error === limited);
+  assert.doesNotThrow(() => rethrowIfBlockedOrRateLimited(Object.assign(new Error('not found'), { response: { status: 404 } })));
 });
 
 test('RARBG: listing skips XXX, detail yields magnet, language and peers', () => {
@@ -37,6 +51,17 @@ test('RARBG: listing skips XXX, detail yields magnet, language and peers', () =>
   assert.ok(record.audio.includes('Spanish'));
   assert.equal(record.leechers, 4);
   assert.ok(record.size_bytes > 8e9);
+
+  const noMagnet = crawler.parseDetail(`<h1>Sample</h1>
+    <a href="magnet:?xt=urn:btih:invalid">Bad magnet</a>
+    <a href="magnet:?xt=urn:btih:${HASH2}">Good magnet</a>`, rows[0]);
+  assert.equal(noMagnet.info_hash, HASH2, 'skip a malformed magnet and use the next valid one');
+
+  const hashOnly = crawler.parseDetail(`<h1>Sample Castellano</h1><table>
+    <tr><td>Info Hash:</td><td>${HASH2}</td></tr><tr><td>Category:</td><td>Movies</td></tr></table>`, rows[0]);
+  assert.equal(hashOnly.info_hash, HASH2);
+  assert.equal(hashOnly.source_tracker, null);
+  assert.doesNotMatch(hashOnly.magnet_url, /[?&]tr=/, 'do not invent tracker metadata for hash-only details');
 });
 
 test('MagnetDL: listing rows, search path and /single/ magnet', () => {
@@ -54,6 +79,107 @@ test('MagnetDL: listing rows, search path and /single/ magnet', () => {
   assert.equal(MagnetDlCrawler.searchPath('Español Latino'), '/e/espanol-latino/');
   const detail = crawler.parseDetail(`<h1>Widows</h1><a href="${MAGNET}">Magnet</a>`, rows[0].title);
   assert.ok(detail.magnet.toLowerCase().includes(HASH));
+});
+
+test('t0rrenta: sitemap/listing details resolve real metainfo and TMDB metadata', async () => {
+  const previousBase = process.env.T0RRENTA_BASE_URL;
+  const base = 'https://t0rrenta.test';
+  process.env.T0RRENTA_BASE_URL = base;
+  clearMirrorCache('t0rrenta');
+  const metainfo = torrent('Sample 1080p');
+  try {
+    const crawler = new T0rrentaCrawler();
+    const listing = `<img src="/static/t0rrenta-logo2-white.png">
+      <a href="/p/939243"><img alt="Sample Castellano"></a>`;
+    const detail = `<h1>Sample Castellano</h1>
+      <a href="https://www.themoviedb.org/movie/939243">TMDB</a>
+      <a href="https://ads.example/ad.torrent">Ad</a>
+      <a href="/download/939243/Sample-Castellano-1080p.torrent?e=123&amp;s=signed">torrent 1.5 GiB</a>`;
+    const calls = mockHttp(crawler, url => {
+      if (url === `${base}/` || url === `${base}/sitemap.xml`) return listing;
+      if (url === `${base}/p/939243`) return detail;
+      if (url.includes('.torrent')) return metainfo.buffer;
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const [record] = await crawler.crawl(1);
+    assert.equal(record.info_hash, metainfo.hash);
+    assert.equal(record.tmdb_id, 939243);
+    assert.equal(record.type, 'movie');
+    assert.equal(record.torrent_file_url, `${base}/download/939243/Sample-Castellano-1080p.torrent?e=123&s=signed`);
+    assert.ok(record.audio.includes('Spanish'));
+    assert.ok(calls.includes(`${base}/sitemap.xml`));
+  } finally {
+    if (previousBase === undefined) delete process.env.T0RRENTA_BASE_URL;
+    else process.env.T0RRENTA_BASE_URL = previousBase;
+    clearMirrorCache('t0rrenta');
+  }
+});
+
+test('T0rrenta: HTTP 429 on metainfo aborts the run instead of becoming a skipped download', async () => {
+  const previousBase = process.env.T0RRENTA_BASE_URL;
+  const base = 'https://t0rrenta-rate.test';
+  process.env.T0RRENTA_BASE_URL = base;
+  clearMirrorCache('t0rrenta');
+  const rateLimit = Object.assign(new Error('Too Many Requests'), { response: { status: 429 } });
+  try {
+    const crawler = new T0rrentaCrawler();
+    const listing = '<img src="/static/t0rrenta-logo2-white.png"><a href="/p/939243">Sample</a>';
+    mockHttp(crawler, url => {
+      if (url === `${base}/` || url === `${base}/sitemap.xml`) return listing;
+      if (url === `${base}/p/939243`) return '<h1>Sample</h1><a href="/download/939243/Sample.torrent">Torrent</a>';
+      if (url.endsWith('.torrent')) throw rateLimit;
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    await assert.rejects(crawler.crawl(1), error => error === rateLimit);
+  } finally {
+    if (previousBase === undefined) delete process.env.T0RRENTA_BASE_URL;
+    else process.env.T0RRENTA_BASE_URL = previousBase;
+    clearMirrorCache('t0rrenta');
+  }
+});
+
+test('EstrenosTorrent: movie/series detail links produce records from same-site .torrent files', async () => {
+  const previousBase = process.env.ESTRENOSTORRENT_BASE_URL;
+  const base = 'https://estrenostorrent.test';
+  process.env.ESTRENOSTORRENT_BASE_URL = base;
+  clearMirrorCache('estrenostorrent');
+  const metainfo = torrent('Icefall HDTV 720p');
+  try {
+    const crawler = new EstrenosTorrentCrawler();
+    const listing = `<a href="/online/icefall"><img alt="Icefall"><strong>Icefall</strong></a>`;
+    const detail = `<h1>Icefall</h1><div>Tipo Película</div>
+      <a href="https://ads.example/ad.torrent">Ad</a>
+      <a href="/assets/u/t/temp/123/icefallhdtv-720p.torrent?md5=fixture&amp;expires=999">Descargar torrent</a>`;
+    const calls = mockHttp(crawler, url => {
+      if (url === `${base}/peliculas/`) return listing;
+      if (url === `${base}/` || url === `${base}/series/`) return '<h1>Catálogo</h1>';
+      if (url === `${base}/online/icefall`) return detail;
+      if (url.includes('.torrent')) return metainfo.buffer;
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const [record] = await crawler.crawl(1);
+    assert.equal(record.info_hash, metainfo.hash);
+    assert.equal(record.title, 'Icefall HDTV 720p');
+    assert.equal(record.type, 'movie');
+    assert.equal(record.source_url, `${base}/online/icefall`);
+    assert.ok(record.audio.includes('Spanish'));
+    assert.ok(calls.some(url => url.includes('/assets/u/t/temp/123/icefallhdtv-720p.torrent')));
+
+    const seriesRows = crawler.parseListing(
+      '<a href="/series/4k-2160p/house-of-dragon"><img alt="House of Dragon"></a>',
+      `${base}/series/`,
+      'series'
+    );
+    assert.equal(seriesRows[0].detailUrl, `${base}/series/4k-2160p/house-of-dragon`);
+    assert.equal(seriesRows[0].type, 'series');
+    assert.equal(crawler.parseDetail('<h1>House of Dragon</h1><p>Tipo Serie</p>', seriesRows[0].detailUrl).type, 'series');
+  } finally {
+    if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
+    else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    clearMirrorCache('estrenostorrent');
+  }
 });
 
 test('Tokyo Toshokan: two-row entries with magnet, size, stats and English subs', () => {

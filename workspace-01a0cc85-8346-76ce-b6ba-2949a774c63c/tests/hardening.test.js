@@ -502,14 +502,16 @@ test('YTS: relative download URLs are stored as absolute', async () => {
   assert.equal(records[0].torrent_file_url, 'https://yts.mx/download/start/HASH');
 });
 
-test('TPB: source URLs never point at the parked thepiratebay.org', () => {
+test('TPB: no unverified front-end or invented trackers are published for API records', () => {
   const crawler = new ThePirateBayCrawler();
   assert.notEqual(crawler.baseUrl, 'https://thepiratebay.org');
   const record = crawler.mapApibayItem({
     id: '42', name: 'Sample Castellano', info_hash: HASH, category: '201',
     seeders: '5', leechers: '1', size: '1000'
   });
-  assert.ok(record.source_url.startsWith(ThePirateBayCrawler.DEFAULT_MIRRORS[0]), record.source_url);
+  assert.equal(record.source_url, null, 'an unprobed default mirror is not a verified source');
+  assert.equal(record.source_tracker, null);
+  assert.doesNotMatch(record.magnet_url, /[?&]tr=/, 'tracker URLs absent from APiBay are not fabricated');
   // The "no results" sentinel is filtered regardless of casing/whitespace.
   assert.equal(crawler.mapApibayItem({
     id: '1', name: ' No results returned ', info_hash: HASH,
@@ -552,13 +554,15 @@ test('Pelispanda: falsy subtitle values are not read as "has subtitles"', () => 
   }
 });
 
-test('MejorTorrent: only the site origin or a magnet/.torrent literal is downloaded', () => {
+test('MejorTorrent: only magnets and same-site torrent URLs are downloaded', () => {
   const page = 'https://mejortorrent.example/pelicula/sample';
   assert.equal(isMejortorrentDownload(MAGNET, MAGNET, page), true);
   assert.equal(isMejortorrentDownload('/files/a.torrent', 'https://mejortorrent.example/files/a.torrent', page), true);
+  assert.equal(isMejortorrentDownload('https://www.mejortorrent.example/files/a.torrent', 'https://www.mejortorrent.example/files/a.torrent', page), true);
   assert.equal(isMejortorrentDownload('/torrents/1', 'https://mejortorrent.example/torrents/1', page), true);
-  assert.equal(isMejortorrentDownload('https://ads.example/x.torrent', 'https://ads.example/x.torrent', page), true);
-  // Raw-HTML scans are origin-restricted; link attributes keep their own rules.
+  assert.equal(isMejortorrentDownload('https://ads.example/x.torrent', 'https://ads.example/x.torrent', page), false);
+  assert.equal(isMejortorrentDownload('http://mejortorrent.example/files/a.torrent', 'http://mejortorrent.example/files/a.torrent', page), false);
+  // Category links, handlers on another site and executable URLs are rejected.
   assert.equal(isMejortorrentDownload('/aviso-legal', 'https://mejortorrent.example/aviso-legal', page), false);
   assert.equal(isMejortorrentDownload('javascript:x', 'javascript:x', page), false);
 });

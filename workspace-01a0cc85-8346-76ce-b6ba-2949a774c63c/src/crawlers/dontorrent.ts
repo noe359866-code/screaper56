@@ -16,7 +16,7 @@ import {
   mapWithConcurrency,
   politePause,
   qualityOf,
-  sameOrigin,
+  sameHost,
 } from './support.js';
 
 export interface DonTorrentSection {
@@ -97,6 +97,17 @@ export const DONTORRENT_DEFAULT_MIRRORS: readonly string[] = [
 
 let cachedCdnAllowList: RegExp[] | null = null;
 
+/** Same scheme and site host, treating an optional `www.` as equivalent. */
+function sameSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
 /** Returns cached regex patterns for allowed metainfo hosts. */
 function getCdnHostAllowList(): RegExp[] {
   if (cachedCdnAllowList) return cachedCdnAllowList;
@@ -134,12 +145,12 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
   const host = url.hostname.toLowerCase();
   const isTorrentFile = /\.torrent$/i.test(url.pathname);
   const allowList = getCdnHostAllowList();
-  const trusted = sameOrigin(resolved, base) || allowList.some(pattern => pattern.test(host));
+  const trusted = sameSite(resolved, base) || allowList.some(pattern => pattern.test(host));
 
   if (isTorrentFile && trusted) return url.href;
 
   // Same-site download handlers (`/descargar/...`, `/download/...`, `/torrents/...`).
-  if (sameOrigin(resolved, base) && /^\/(descargar|download|torrents?)(\/|\.php|$)/i.test(url.pathname)) {
+  if (sameSite(resolved, base) && /^\/(descargar|download|torrents?)(\/|\.php|$)/i.test(url.pathname)) {
     return url.href;
   }
 
@@ -233,7 +244,7 @@ export class DonTorrentCrawler extends BaseCrawler {
     $('a[href]').each((_, el) => {
       const anchor = $(el);
       const link = absoluteHttpUrl(anchor.attr('href'), url);
-      if (!link || !sameOrigin(link, url)) return;
+      if (!link || !sameSite(link, url)) return;
 
       const path = new URL(link).pathname;
       if (!DETAIL_PATH.test(path)) return;
@@ -277,7 +288,7 @@ export class DonTorrentCrawler extends BaseCrawler {
       if (rel !== 'next' && !/^(siguiente|next|[»›→]|\d{1,3})$/i.test(text)) continue;
 
       const link = absoluteHttpUrl(anchor.attr('href'), currentUrl);
-      if (!link || !sameOrigin(link, currentUrl)) continue;
+      if (!link || !sameSite(link, currentUrl)) continue;
 
       const target = new URL(link);
       if (target.pathname.replace(/\/$/, '') !== currentPath) continue;

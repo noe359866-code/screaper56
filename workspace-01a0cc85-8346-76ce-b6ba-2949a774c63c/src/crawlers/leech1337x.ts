@@ -26,6 +26,31 @@ interface ScrapedRow {
   sizeStr: string;
 }
 
+const EXCLUDED_CATEGORY = /\b(games?|music|apps?|applications?|software|e-?books?|porn|xxx|adult)\b/i;
+
+/** Same mirror front-end, allowing www/apex but not a scheme or port change. */
+function sameSiteUrl(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
+
+/** Pagination must stay on the listing route, not just on the mirror host. */
+function sameListingRoute(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    const routePath = (pathname: string) => pathname.replace(/\/\d+\/?$/, '/').replace(/\/+$/, '') || '/';
+    return sameSiteUrl(a, b) && routePath(left.pathname) === routePath(right.pathname);
+  } catch {
+    return false;
+  }
+}
+
 export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
   public baseUrl = process.env.LEECH1337X_BASE_URL || 'https://1337x.la';
@@ -78,6 +103,8 @@ export class Leech1337xCrawler extends BaseCrawler {
     const mirror = await this.getWorkingMirror();
     const results: TorrentRecord[] = [];
     const visitedDetails = new Set<string>();
+    let successfulListings = 0;
+    let listingLayouts = 0;
 
     const searchEndpoints = [
       '/sort-search/spanish/seeders/desc',
@@ -103,18 +130,19 @@ export class Leech1337xCrawler extends BaseCrawler {
         visited.add(url);
 
         let listingHtml = '';
+        let listingHadRows = false;
         try {
           this.log.debug(`Scraping listing: ${url}`);
-          const html = await this.fetchHtml(url);
+          const html = await this.fetchHtml(url, {}, { rejectBlocked: true });
           this.metrics.add('listings');
+          successfulListings++;
           const $ = cheerio.load(html);
           listingHtml = html;
 
+          if ($('table.table-list').length > 0) listingLayouts++;
           const tableRows = $('table.table-list tbody tr');
-          if (tableRows.length === 0) {
-            this.log.debug(`No rows found on ${url}. Moving to next endpoint.`);
-            break;
-          }
+          if (tableRows.length === 0) this.log.debug(`No rows found on ${url}.`);
+          listingHadRows = tableRows.length > 0;
 
           const rows: ScrapedRow[] = [];
           tableRows.each((_, el) => {
@@ -123,6 +151,7 @@ export class Leech1337xCrawler extends BaseCrawler {
             if (!nameEl.length) return;
 
             const detailUrl = this.resolveUrl(nameEl.attr('href') || '', mirror);
+            if (!sameSiteUrl(detailUrl, mirror)) return;
             if (visitedDetails.has(detailUrl)) return;
 
             const title = cleanText(nameEl.text());
@@ -141,9 +170,6 @@ export class Leech1337xCrawler extends BaseCrawler {
               sizeStr: sizeMatch ? sizeMatch[0] : cleanText(sizeTdText)
             });
           });
-
-          // Every row was already visited: the next page would repeat them too.
-          if (!rows.length) break;
 
           this.log.debug(`Processing ${rows.length} torrent rows from ${url}...`);
           const records = await mapWithConcurrency(rows, this.concurrency, async row => {
@@ -168,8 +194,18 @@ export class Leech1337xCrawler extends BaseCrawler {
           break;
         }
 
-        url = nextPaginationLink(listingHtml, url) ?? (isSearch ? `${mirror}${endpoint}/${page + 1}/` : null);
+        const publishedNext = nextPaginationLink(listingHtml, url);
+        url = publishedNext && sameListingRoute(publishedNext, url)
+          ? publishedNext
+          : (isSearch && listingHadRows ? `${mirror}${endpoint}/${page + 1}/` : null);
       }
+    }
+
+    if (successfulListings === 0) {
+      throw new Error('[leech1337x] No usable catalogue responses. Check mirror availability, blocking and network access.');
+    }
+    if (listingLayouts === 0) {
+      throw new Error('[leech1337x] Catalogue pages did not contain the expected table-list layout.');
     }
 
     const deduplicated = this.deduplicateRecords(results);
@@ -181,12 +217,21 @@ export class Leech1337xCrawler extends BaseCrawler {
     // Mirrors 403 detail pages that arrive without a same-site Referer.
     const html = await this.fetchHtml(row.detailUrl, {
       headers: mirror ? { Referer: `${mirror}/` } : {}
-    });
+    }, { rejectBlocked: true });
     this.metrics.add('details');
     const $ = cheerio.load(html);
 
-    let magnetHref = $('a[href^="magnet:?xt="]').first().attr('href') ?? null;
-    let parsedMagnet = magnetHref ? parseMagnetUri(magnetHref) : null;
+    let magnetHref: string | null = null;
+    let parsedMagnet: ReturnType<typeof parseMagnetUri> = null;
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      if (!/^magnet:/i.test(href)) continue;
+      const candidate = parseMagnetUri(href);
+      if (!candidate?.infoHash) continue;
+      magnetHref = href;
+      parsedMagnet = candidate;
+      break;
+    }
 
     const detailsMap = new Map<string, string>();
     $('.torrent-category-detail li, .torrent-detail-page li').each((_, el) => {
@@ -202,6 +247,7 @@ export class Leech1337xCrawler extends BaseCrawler {
     });
 
     const pageCategory = (detailsMap.get('category') || '').toLowerCase();
+    if (EXCLUDED_CATEGORY.test(pageCategory)) return null;
     const pageLanguage = detailsMap.get('language') || '';
 
     let defaultType: ContentType = 'movie';
@@ -222,12 +268,12 @@ export class Leech1337xCrawler extends BaseCrawler {
     if (!parsedMagnet?.infoHash) {
       const publishedHash = (detailsMap.get('infohash') || detailsMap.get('info hash') || '')
         .match(/\b([0-9a-f]{40})\b/i)
-        || html.match(/infohash[^0-9a-fA-F]{0,40}([0-9a-f]{40})/i);
+        || html.match(/info\s*hash[^0-9a-fA-F]{0,40}([0-9a-f]{40})/i);
 
       if (!publishedHash) return null;
 
       const recovered = publishedHash[1].toLowerCase();
-      magnetHref = buildMagnetUri(recovered, title);
+      magnetHref = buildMagnetUri(recovered, title, [], { includeDefaultTrackers: false });
       parsedMagnet = parseMagnetUri(magnetHref);
       if (!parsedMagnet?.infoHash) return null;
       this.metrics.add('hashRecovered');
@@ -241,11 +287,22 @@ export class Leech1337xCrawler extends BaseCrawler {
     // Metainfo link published next to the magnet, when the mirror offers one.
     // Third-party download buttons are dropped: they are not this source's
     // file. The href is resolved first, because it is usually relative.
-    const torrentHref = $('a[href$=".torrent"]').first().attr('href') ?? null;
-    const resolvedTorrent = torrentHref ? absoluteHttpUrl(torrentHref, row.detailUrl) : null;
-    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, row.detailUrl)
-      ? resolvedTorrent
-      : null;
+    let torrentFileUrl: string | null = null;
+    for (const element of $('a[href]').toArray()) {
+      const href = $(element).attr('href') || '';
+      let isTorrent = false;
+      try {
+        isTorrent = /\.torrent$/i.test(new URL(href, row.detailUrl).pathname);
+      } catch {
+        continue;
+      }
+      if (!isTorrent) continue;
+      const candidate = absoluteHttpUrl(href, row.detailUrl);
+      if (candidate && sameSiteUrl(candidate, row.detailUrl)) {
+        torrentFileUrl = candidate;
+        break;
+      }
+    }
 
     const finalSizeStr = row.sizeStr || detailsMap.get('total size') || detailsMap.get('size') || '';
     const seeders = row.seeders ?? parseCount(detailsMap.get('seeders'));

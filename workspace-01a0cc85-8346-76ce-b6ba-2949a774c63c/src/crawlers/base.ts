@@ -30,6 +30,13 @@ export class BlockedPageError extends Error {
   }
 }
 
+/** Blocking and rate-limit responses must abort a source run, not look like empty pages. */
+export function rethrowIfBlockedOrRateLimited(error: unknown): void {
+  if (error instanceof BlockedPageError) throw error;
+  const response = (error as { response?: { status?: unknown } } | null)?.response;
+  if (response?.status === 429) throw error;
+}
+
 export interface MirrorSetup {
   /** Curated fallbacks shipped with the adapter; env overrides always win. */
   defaults: readonly string[];

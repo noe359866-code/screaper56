@@ -11,6 +11,7 @@ import {
   RutrackerCrawler,
   RutrackerAuthError,
   RutrackerCaptchaError,
+  RutrackerRateLimitError,
   RUTRACKER_DEFAULT_MIRRORS,
   RUTRACKER_DEFAULT_SEARCHES,
   absorbSetCookie,
@@ -35,7 +36,7 @@ const MAGNET = `magnet:?xt=urn:btih:${HASH}&dn=El+Camino&tr=udp%3A%2F%2Fbt.rutra
 
 /** A session cookie jar in the exact format exported by browser extensions. */
 const COOKIE_EXPORT = JSON.stringify([
-  { domain: '.rutracker.org', hostOnly: false, httpOnly: false, name: 'bb_guid', path: '/forum/', value: '0CZUU830TNvZ' },
+  { domain: '.rutracker.org', hostOnly: false, httpOnly: false, name: 'bb_guid', path: '/forum/', value: 'test-guid-value' },
   { domain: '.rutracker.org', hostOnly: false, httpOnly: false, name: 'bb_ssl', path: '/forum/', value: '1' },
   {
     domain: '.rutracker.org',
@@ -45,13 +46,13 @@ const COOKIE_EXPORT = JSON.stringify([
     name: 'bb_session',
     path: '/forum/',
     secure: true,
-    value: '0-55637203-cR0IHydXuosvjViyZspV'
+    value: 'test-session-token'
   }
 ]);
 
 const LOGGED_IN_INDEX = '<html><head><title>RuTracker.org</title></head><body>' +
-  '<a href="profile.php?mode=viewprofile">BastianMillanBarber</a> ' +
-  '<a href="login.php?logout=1">Выход [ BastianMillanBarber ]</a></body></html>';
+  '<a href="profile.php?mode=viewprofile">test-user</a> ' +
+  '<a href="login.php?logout=1">Выход [ test-user ]</a></body></html>';
 
 function listing(extraRows = '', pager = '') {
   return `<html><head><meta charset="windows-1251"></head><body>
@@ -156,19 +157,30 @@ test('Windows-1251: search terms are encoded the way the site submits them', () 
 test('Cookies: browser export, header string, expired entries and set-cookie folding', () => {
   const fromExport = parseCookieJar(COOKIE_EXPORT);
   assert.deepEqual(fromExport, [
-    ['bb_guid', '0CZUU830TNvZ'],
+    ['bb_guid', 'test-guid-value'],
     ['bb_ssl', '1'],
-    ['bb_session', '0-55637203-cR0IHydXuosvjViyZspV']
+    ['bb_session', 'test-session-token']
   ]);
 
   const jar = new Map(fromExport);
   assert.equal(isSessionCookieJar(jar), true);
-  assert.equal(cookieHeaderOf(jar), 'bb_guid=0CZUU830TNvZ; bb_ssl=1; bb_session=0-55637203-cR0IHydXuosvjViyZspV');
+  assert.equal(cookieHeaderOf(jar), 'bb_guid=test-guid-value; bb_ssl=1; bb_session=test-session-token');
 
   // A header string works too, and garbage never throws.
   assert.deepEqual(parseCookieJar('bb_session=abc; bb_ssl=1'), [['bb_session', 'abc'], ['bb_ssl', '1']]);
+  // Cookie values may contain '='; keep everything after the first separator.
+  assert.deepEqual(parseCookieJar('bb_session=abc==; bb_ssl=1'), [['bb_session', 'abc=='], ['bb_ssl', '1']]);
   assert.deepEqual(parseCookieJar('not json ['), []);
   assert.deepEqual(parseCookieJar(''), []);
+
+  // Pasting a full browser export must not forward another site's credentials.
+  const mixedDomains = JSON.stringify([
+    { name: 'bb_session', value: 'tracker-session', domain: '.rutracker.org' },
+    { name: 'other_session', value: 'private-value', domain: '.example.com' },
+    { name: 'bad;name', value: 'invalid', domain: '.rutracker.org' },
+    { name: 'injected', value: 'x\r\nX-Evil: yes', domain: '.rutracker.org' }
+  ]);
+  assert.deepEqual(parseCookieJar(mixedDomains), [['bb_session', 'tracker-session']]);
 
   // An expired session is dropped: replaying it only looks like a broken parser.
   const expired = JSON.stringify([{ name: 'bb_session', value: 'old', expirationDate: 1 }]);
@@ -182,11 +194,19 @@ test('Cookies: browser export, header string, expired entries and set-cookie fol
   );
   assert.equal(fresh.get('bb_session'), 'new-value');
   assert.deepEqual(absorbSetCookie(new Map(), undefined), []);
+
+  const safeSetCookies = new Map();
+  assert.deepEqual(
+    absorbSetCookie(safeSetCookies, ['bb_session=; path=/forum/', 'bad:name=value', 'unsafe=x\tbad']),
+    ['bb_session']
+  );
+  assert.equal(isSessionCookieJar(safeSetCookies), false, 'an empty session value is not an authenticated session');
 });
 
-test('Session: the "log out" control is what identifies a logged-in page', () => {
-  assert.equal(looksLoggedIn(LOGGED_IN_INDEX, 'BastianMillanBarber'), true);
+test('Session: only an explicit account control identifies a logged-in page', () => {
+  assert.equal(looksLoggedIn(LOGGED_IN_INDEX, 'test-user'), true);
   assert.equal(looksLoggedIn('<html><body><a href="login.php">Вход</a></body></html>', 'nope'), false);
+  assert.equal(looksLoggedIn('<form><input name="login_username" value="test-user"></form>', 'test-user'), false);
   assert.equal(looksLoggedIn('', 'x'), false);
 });
 
@@ -199,6 +219,26 @@ test('Sections and descriptions map onto content types and language hints', () =
 
   assert.deepEqual(languageHintsFromBody(''), []);
   assert.ok(languageHintsFromBody('Перевод: профессиональный (испанский язык)')[0].length > 0);
+});
+
+test('Routes: account-cookie requests cannot be redirected by an absolute cross-origin route', async () => {
+  const crawler = new RutrackerCrawler();
+  await withEnv({
+    RUTRACKER_ROUTES: '/forum/tracker.php?f=7',
+    RUTRACKER_FORUMS: '',
+    RUTRACKER_SEARCH: ''
+  }, async () => {
+    assert.equal(crawler.routes(BASE)[0].url, `${FORUM}/tracker.php?f=7`);
+
+    process.env.RUTRACKER_ROUTES = 'https://attacker.example/collect';
+    assert.throws(() => crawler.routes(BASE), /Refusing cross-origin RUTRACKER_ROUTES/);
+
+    process.env.RUTRACKER_ROUTES = '//attacker.example/collect';
+    assert.throws(() => crawler.routes(BASE), /Refusing cross-origin RUTRACKER_ROUTES/);
+
+    process.env.RUTRACKER_ROUTES = 'https://user:pass@rutracker.org/forum/tracker.php?f=7';
+    assert.throws(() => crawler.routes(BASE), /credentialed URL/);
+  });
 });
 
 test('Listing: topic rows keep size, swarm counters, section and type', () => {
@@ -224,7 +264,9 @@ test('Listing: topic rows keep size, swarm counters, section and type', () => {
 test('Listing: rows without a topic id or with an adult title are skipped', () => {
   const crawler = new RutrackerCrawler();
   const html = `<table><tr><td><a href="viewforum.php?f=7">No topic here</a></td></tr>
-    <tr id="t-row-1"><td class="t-title-col"><a class="tLink" href="./viewtopic.php?t=1">Some XXX release</a></td></tr></table>`;
+    <tr id="t-row-1"><td class="t-title-col"><a class="tLink" href="./viewtopic.php?t=1">Some XXX release</a></td></tr>
+    <tr id="t-row-2"><td class="t-title-col"><a class="tLink" href="https://attacker.example/viewtopic.php?t=2">Spanish release</a></td></tr>
+    <tr id="t-row-3"><td class="t-title-col"><a class="tLink" href="https://user:pass@rutracker.org/forum/viewtopic.php?t=3">Spanish release with URL credentials</a></td></tr></table>`;
   assert.deepEqual(crawler.parseListing(html, `${FORUM}/tracker.php?nm=x`), []);
 });
 
@@ -243,6 +285,16 @@ test('Pagination: only the offsets the pager publishes are followed', () => {
     '<a class="pg" href="tracker.php?nm=x&start=50">2</a>' +
     '<a class="pg" href="tracker.php?nm=x&start=100">3</a>';
   assert.equal(crawler.nextPage(numbered, `${FORUM}/tracker.php?nm=x&start=50`), `${FORUM}/tracker.php?nm=x&start=100`);
+
+  // Pagination is authenticated too: never forward the session Cookie header to a linked host.
+  assert.equal(
+    crawler.nextPage('<a class="pg" href="https://attacker.example/forum/tracker.php?nm=x&start=50">2</a>', url),
+    null
+  );
+  assert.equal(
+    crawler.nextPage('<a class="pg" href="https://user:pass@rutracker.org/forum/tracker.php?nm=x&start=50">2</a>', url),
+    null
+  );
 });
 
 test('Topic: magnet, dl.php link, declared size and language hints', () => {
@@ -259,6 +311,24 @@ test('Topic: magnet, dl.php link, declared size and language hints', () => {
   const withoutMagnet = crawler.parseTopic(topic({ magnet: '' }), url);
   assert.equal(withoutMagnet.magnetUrl, null);
   assert.equal(withoutMagnet.torrentUrl, `${FORUM}/dl.php?t=6466319`);
+
+  const externalDownload = crawler.parseTopic(
+    topic({ download: 'https://attacker.example/dl.php?t=6466319' }),
+    url
+  );
+  assert.equal(externalDownload.torrentUrl, null);
+
+  const laterValidLinks = crawler.parseTopic(
+    `<h1>El Camino Castellano</h1>
+      <a href="magnet:?xt=urn:btih:invalid">Malformed magnet</a>
+      <a href="${MAGNET}">Valid magnet</a>
+      <a href="https://attacker.example/dl.php?t=1">External download</a>
+      <a href="https://user:pass@rutracker.org/forum/dl.php?t=2">Credentialed URL</a>
+      <a href="dl.php?t=6466319">Valid download</a>`,
+    url
+  );
+  assert.equal(laterValidLinks.magnetUrl, MAGNET);
+  assert.equal(laterValidLinks.torrentUrl, `${FORUM}/dl.php?t=6466319`);
 });
 
 test('Full crawl: session check, one listing, one detail per kept topic', async () => {
@@ -268,12 +338,15 @@ test('Full crawl: session check, one listing, one detail per kept topic', async 
     const calls = mockHttp(
       crawler,
       url => (url.includes('index.php') ? LOGGED_IN_INDEX : listing(RUSSIAN_ROW)),
-      url => Buffer.from(
-        url.includes('index.php') ? LOGGED_IN_INDEX
-          : url.includes('viewtopic.php') ? topic()
-            : listing(RUSSIAN_ROW),
-        'utf-8'
-      )
+      (url, options) => {
+        assert.equal(options.autoSolveCloudflare, false, 'RuTracker requests never invoke the shared WAF solver');
+        return Buffer.from(
+          url.includes('index.php') ? LOGGED_IN_INDEX
+            : url.includes('viewtopic.php') ? topic()
+              : listing(RUSSIAN_ROW),
+          'utf-8'
+        );
+      }
     );
 
     const records = await crawler.crawl(1);
@@ -379,6 +452,53 @@ test('A CAPTCHA is reported as such instead of being counted as a parsing error'
   clearMirrorCache('rutracker');
 });
 
+test('A CAPTCHA on a topic page aborts the crawl with a CAPTCHA error', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({ RUTRACKER_COOKIE_JSON: COOKIE_EXPORT, RUTRACKER_SEARCH: 'castellano', RUTRACKER_FORUMS: '', RUTRACKER_ROUTES: '' }, async () => {
+    const crawler = new RutrackerCrawler();
+    mockHttp(
+      crawler,
+      url => (url.includes('index.php') ? LOGGED_IN_INDEX : listing()),
+      url => Buffer.from(
+        url.includes('index.php') ? LOGGED_IN_INDEX
+          : url.includes('viewtopic.php') ? '<html><form><img src="captcha.php">Enter code</form></html>'
+            : listing(),
+        'utf-8'
+      )
+    );
+    await assert.rejects(crawler.crawl(1), RutrackerCaptchaError);
+  });
+  clearMirrorCache('rutracker');
+});
+
+test('A rate limit stops the run before another configured search is requested', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({
+    RUTRACKER_COOKIE_JSON: COOKIE_EXPORT,
+    RUTRACKER_SEARCH: 'castellano,espanol',
+    RUTRACKER_FORUMS: '',
+    RUTRACKER_ROUTES: ''
+  }, async () => {
+    const crawler = new RutrackerCrawler();
+    const listingCalls = [];
+    const rateLimit = Object.assign(new Error('HTTP 429'), {
+      response: { status: 429, data: Buffer.from('Too Many Requests') }
+    });
+    mockHttp(
+      crawler,
+      url => (url.includes('index.php') ? LOGGED_IN_INDEX : listing()),
+      url => {
+        if (url.includes('index.php')) return Buffer.from(LOGGED_IN_INDEX, 'utf-8');
+        listingCalls.push(url);
+        throw rateLimit;
+      }
+    );
+    await assert.rejects(crawler.crawl(1), RutrackerRateLimitError);
+    assert.deepEqual(listingCalls, [`${FORUM}/tracker.php?nm=castellano`]);
+  });
+  clearMirrorCache('rutracker');
+});
+
 test('Routes: searches, forums and raw paths are all supported', async () => {
   await withEnv({ RUTRACKER_SEARCH: 'castellano', RUTRACKER_FORUMS: '7, 22', RUTRACKER_ROUTES: '/forum/tracker.php?f=7&o=10' }, () => {
     const routes = new RutrackerCrawler().routes(BASE);
@@ -463,8 +583,8 @@ test('Login: credentials are posted in cp1251 and the returned session is kept',
   await withEnv({
     RUTRACKER_COOKIE_JSON: undefined,
     RUTRACKER_COOKIES: 'bb_guid=anon',
-    RUTRACKER_USERNAME: 'BastianMillanBarber',
-    RUTRACKER_PASSWORD: 'V$JX4G3&&zVc;jq',
+    RUTRACKER_USERNAME: 'test-user',
+    RUTRACKER_PASSWORD: 'Fake$pass&&test;jq',
     RUTRACKER_SEARCH: 'castellano',
     RUTRACKER_FORUMS: '',
     RUTRACKER_ROUTES: ''
@@ -480,6 +600,7 @@ test('Login: credentials are posted in cp1251 and the returned session is kept',
         'utf-8'
       ),
       request: async options => {
+        assert.equal(options.autoSolveCloudflare, false);
         requests.push(options);
         if (options.method === 'POST') {
           return {
@@ -499,7 +620,7 @@ test('Login: credentials are posted in cp1251 and the returned session is kept',
     assert.equal(post.url, `${FORUM}/login.php`);
     assert.equal(
       post.data,
-      'login_username=BastianMillanBarber&login_password=V%24JX4G3%26%26zVc%3Bjq&login=%C2%F5%EE%E4&redirect=index.php'
+      'login_username=test-user&login_password=Fake%24pass%26%26test%3Bjq&login=%C2%F5%EE%E4&redirect=index.php'
     );
     assert.equal(post.headers['Content-Type'], 'application/x-www-form-urlencoded');
     assert.equal(post.validateStatus(), true, 'the 302 must not be treated as an error');
@@ -517,7 +638,7 @@ test('Login refused: the adapter fails with advice instead of crawling anonymous
   await withEnv({
     RUTRACKER_COOKIE_JSON: undefined,
     RUTRACKER_COOKIES: undefined,
-    RUTRACKER_USERNAME: 'BastianMillanBarber',
+    RUTRACKER_USERNAME: 'test-user',
     RUTRACKER_PASSWORD: 'wrong',
     RUTRACKER_SEARCH: 'castellano',
     RUTRACKER_FORUMS: '',

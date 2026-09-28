@@ -3,7 +3,19 @@ import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText, sameHost } from './support.js';
+import { cleanText, nextPaginationLink, sameHost } from './support.js';
+import { parseMagnetUri } from '../utils/magnet.js';
+
+function sameSite(a: string, b: string): boolean {
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    if (left.username || left.password || right.username || right.password) return false;
+    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+  } catch {
+    return false;
+  }
+}
 
 /** DataLife Engine: numbered .html posts and public do=download attachments. */
 export class SinsitioCrawler extends HtmlCatalogCrawler {
@@ -52,7 +64,7 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
         const parsed = new URL(link);
         // `www.sinsitio.site` and `sinsitio.site` are the same site: a strict
         // origin comparison dropped every post when the mirror alternated.
-        if (sameHost(link, url) && /\/\d+-[^/]+\.html$/i.test(parsed.pathname)) {
+        if (sameSite(link, url) && /\/\d+-[^/]+\.html$/i.test(parsed.pathname)) {
           links.add(link);
         }
       } catch {
@@ -63,9 +75,15 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
     return [...links];
   }
 
+  /** Preserve DLE's www/apex pager links without crossing scheme or port boundaries. */
+  public override nextPage(html: string, current: string): string | null {
+    const next = nextPaginationLink(html, current, { linkSelector: '.navigation a' });
+    return next && sameSite(next, current) ? next : null;
+  }
+
   public parseDetail(html: string, url: string): CatalogDetail {
     const $ = cheerio.load(html);
-    const title = $('h1').first().text().replace(/\s+/g, ' ').trim();
+    const title = cleanText($('h1').first().text());
     const downloads: CatalogDetail['downloads'] = [];
     const seenUrls = new Set<string>();
 
@@ -78,8 +96,8 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
       // Fallback a 'movie' ante URL no válida
     }
 
-    // Exclude comments/recommendations: they may contain somebody else's magnets.
-    $('.comments, #dle-comments-list, .related').remove();
+    // Exclude comments, navigation and related posts: they may contain another release's links.
+    $('.comments, #dle-comments-list, .related, .related-torrents, .recommendations, .recomendados, .sidebar, header, nav, footer').remove();
 
     // Hoisted: the hints are document-wide, not per-download.
     const releaseHints = spanishReleaseHints($);
@@ -93,7 +111,7 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
 
         let releaseTitle = '';
         try {
-          if (!target.startsWith('magnet:?')) {
+          if (!/^magnet:\?/i.test(target)) {
             releaseTitle = new URL(href, url).searchParams.get('name') || '';
           }
         } catch {
@@ -116,7 +134,7 @@ export function decodeSinsitioDownload(href: string, base: string): string | nul
   if (!href || typeof href !== 'string') return null;
 
   const trimmed = href.trim();
-  if (/^magnet:\?/i.test(trimmed)) return trimmed;
+  if (/^magnet:\?/i.test(trimmed)) return parseMagnetUri(trimmed)?.infoHash ? trimmed : null;
 
   const resolved = httpUrl(trimmed, base);
   if (!resolved) return null;
@@ -124,7 +142,7 @@ export function decodeSinsitioDownload(href: string, base: string): string | nul
   try {
     let url = new URL(resolved);
 
-    if (!sameHost(resolved, base)) return null;
+    if (!sameSite(resolved, base)) return null;
 
     if (url.pathname === '/ddlUrl.php') {
       const encoded = url.searchParams.get('url');
@@ -134,14 +152,14 @@ export function decodeSinsitioDownload(href: string, base: string): string | nul
         const decodedText = Buffer.from(encoded, 'base64').toString('utf8').trim();
 
         if (/^magnet:\?/i.test(decodedText)) {
-          return decodedText;
+          return parseMagnetUri(decodedText)?.infoHash ? decodedText : null;
         }
 
         const decoded = httpUrl(decodedText, base);
         if (!decoded) return null;
 
         url = new URL(decoded);
-        if (!sameHost(decoded, base)) return null;
+        if (!sameSite(decoded, base)) return null;
       } catch {
         return null;
       }
