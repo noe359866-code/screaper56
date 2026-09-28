@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -95,6 +95,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
         fallback: null
       });
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.log.warn(`No working web mirror: ${describeError(error)}`);
       return null;
     }
@@ -152,6 +153,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
           }
         }
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('listingErrors');
         this.log.warn(`Apibay ${endpoint} failed: ${describeError(error)}`);
       }
@@ -183,6 +185,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
           }
         }
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('listingErrors');
         this.log.debug(`Apibay search "${term}" failed: ${describeError(error)}`);
       }
@@ -223,6 +226,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
               break;
             }
           } catch (error) {
+            rethrowIfBlockedOrRateLimited(error);
             this.metrics.add('listingErrors');
             this.log.warn(`Failed scraping ${searchUrl}: ${describeError(error)}`);
             break;
@@ -256,12 +260,13 @@ export class ThePirateBayCrawler extends BaseCrawler {
     $('#searchResult tr:not(.header)').each((_, el) => {
       const row = $(el);
       const titleEl = row.find('.detName a, a.detLink').first();
-      const magnetEl = row.find('a[href^="magnet:?xt="]').first();
-      if (!titleEl.length || !magnetEl.length) return;
+      if (!titleEl.length) return;
       rows++;
 
       const title = cleanText(titleEl.text());
-      const magnetUrl = magnetEl.attr('href') || '';
+      const magnetUrl = row.find('a[href]').toArray()
+        .map(anchor => $(anchor).attr('href') || '')
+        .find(href => parseMagnetUri(href)?.infoHash) || '';
       const parsedMagnet = parseMagnetUri(magnetUrl);
       if (!title || !parsedMagnet?.infoHash || isBlockedTitle(title)) return;
       if (uniqueHashes.has(parsedMagnet.infoHash)) return;
@@ -385,6 +390,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
           record.torrent_file_url = detail.torrentFileUrl;
         }
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.debug(`Detail unavailable for ${record.source_url}: ${describeError(error)}`);
       }
@@ -395,7 +401,7 @@ export class ThePirateBayCrawler extends BaseCrawler {
   public mapApibayItem(item: ApibayItem): TorrentRecord | null {
     if (!item?.info_hash || !/^[0-9a-fA-F]{40}$/.test(item.info_hash)) return null;
     // APiBay answers "no hits" with a sentinel row, not an empty array.
-    if (!item.name || /^no results returned$/i.test(item.name.trim())) return null;
+    if (typeof item.name !== 'string' || /^no results returned$/i.test(item.name.trim())) return null;
 
     const cleanTitle = cleanText(item.name);
     if (!cleanTitle || isBlockedTitle(cleanTitle)) return null;

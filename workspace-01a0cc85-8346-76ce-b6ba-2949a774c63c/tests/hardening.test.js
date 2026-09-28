@@ -585,8 +585,8 @@ test('Supabase: unknown swarm counters are omitted, not zero-filled', () => {
     seeders: null, leechers: null, size_bytes: null
   });
   assert.ok(sanitized);
-  // `undefined` keys are dropped by JSON.stringify, so PostgreSQL keeps the
-  // column default on INSERT and the stored value on UPDATE.
+  // Serialization omits undefined. services.test.js also checks grouping by
+  // key set: omission alone is not sufficient for a mixed PostgREST batch.
   assert.deepEqual(JSON.parse(JSON.stringify(sanitized)).seeders, undefined);
   assert.ok(!('seeders' in JSON.parse(JSON.stringify(sanitized))));
 

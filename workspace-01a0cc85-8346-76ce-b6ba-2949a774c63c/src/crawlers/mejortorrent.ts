@@ -1,7 +1,7 @@
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { detectLanguages, SPANISH_AUDIO_CANONICAL } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
@@ -25,7 +25,8 @@ function sameSiteHost(a: string, b: string): boolean {
   try {
     const left = new URL(a);
     const right = new URL(b);
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+    return !left.username && !left.password && !right.username && !right.password &&
+      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
   } catch {
     return false;
   }
@@ -99,7 +100,8 @@ export class MejorTorrentCrawler extends BaseCrawler {
     try {
       const html = await this.fetchHtml(mirror, { timeout: 6000 });
       return /wp-json|wp-content|api\.w\.org/i.test(html) ? 'modern_me' : 'legacy_eu';
-    } catch {
+    } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       return 'legacy_eu';
     }
   }
@@ -155,6 +157,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
           const nextUrl = nextPaginationLink(html, url);
           url = nextUrl && sameSiteHost(nextUrl, mirror) ? nextUrl : null;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.debug(`Listing failed ${url}: ${describeError(error)}`);
           break;
@@ -206,6 +209,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         }
         return records;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Error parsing EU detail ${url}: ${describeError(error)}`);
         return [];
@@ -238,6 +242,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         previousSignature = signature;
         for (const link of pageLinks) detailUrls.add(link);
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('listingErrors');
         this.log.debug(`WP API page ${page} finished or failed: ${describeError(error)}`);
         break;
@@ -306,6 +311,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         }
         return records;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Error parsing ME detail ${url}: ${describeError(error)}`);
         return [];
@@ -362,6 +368,7 @@ export class MejorTorrentCrawler extends BaseCrawler {
         sourceTracker: parsedTorrent?.primaryTracker || magnet?.trackers[0] || null
       });
     } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('downloadErrors');
       this.log.warn(`Failed to process torrent ${torrentUrl}: ${describeError(error)}`);
       return null;

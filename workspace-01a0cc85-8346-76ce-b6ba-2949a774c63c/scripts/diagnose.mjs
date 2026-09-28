@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { CRAWLER_REGISTRY } from '../src/crawlers/registry.ts';
+import { CloudflareBypassEngine } from '../src/utils/anti-cloudflare.ts';
 import { diagnoseFailure } from '../src/crawlers/failure-diagnosis.ts';
 
 const spanish = ['dontorrent', 'mejortorrent', 'elitetorrent', 'pelispanda', 'wolftorrent', 'sinsitio'];
@@ -18,16 +19,22 @@ if (process.argv[2] === '--worker') {
   } catch (error) {
     result = { status: 'ERROR', error: error instanceof Error ? error.message : String(error), diagnosis: diagnoseFailure(process.argv[3], error) };
   }
+  try {
+    try { await crawler?.close(); }
+    finally { await CloudflareBypassEngine.getInstance().shutdown(); }
+  } catch (error) {
+    result = { ...result, status: 'ERROR', cleanupError: error instanceof Error ? error.message : String(error) };
+  }
   process.send({ ...result, mirror: crawler?.baseUrl, metrics: crawler?.diagnostics() }, () => process.exit(0));
 } else {
   const args = process.argv.slice(2);
-  const names = args.includes('--spanish') ? spanish : args.length ? args : Object.keys(CRAWLER_REGISTRY);
-  if (names.some(name => !CRAWLER_REGISTRY[name])) {
+  const names = args.length === 1 && args[0] === '--spanish' ? spanish : args.length ? [...new Set(args)] : Object.keys(CRAWLER_REGISTRY);
+  if (names.some(name => !Object.hasOwn(CRAWLER_REGISTRY, name))) {
     console.error('Use --spanish or crawler names: ' + Object.keys(CRAWLER_REGISTRY).join(', '));
     process.exit(1);
   }
   const timeout = Number(process.env.DIAGNOSE_TIMEOUT_MS || 60000);
-  if (!Number.isFinite(timeout) || timeout < 1000) throw new Error('DIAGNOSE_TIMEOUT_MS must be >= 1000');
+  if (!Number.isSafeInteger(timeout) || timeout < 1000 || timeout > 2_147_483_647) throw new Error('DIAGNOSE_TIMEOUT_MS must be an integer between 1000 and 2147483647');
   const results = [];
   for (const name of names) {
     const result = await new Promise(resolve => {

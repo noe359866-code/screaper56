@@ -1,5 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { TorrentRecord } from '../types/torrent.js';
+import { mergeRecords, recordScore } from '../crawlers/support.js';
 import { config } from '../config/env.js';
 
 // Estructura sanitizada garantizada lista para persistir en la BD
@@ -25,9 +26,8 @@ export interface SanitizedTorrentRecord {
   channels: string | null;
   /**
    * Unknown counters are OMITTED (left `undefined`) instead of being written as
-   * `0`. PostgREST drops undefined keys, so PostgreSQL applies the column
-   * default on INSERT and — crucially — keeps the real value already stored on
-   * UPDATE. Zero-filling used to overwrite live seeder counts with 0.
+   * `0`. Records must also be grouped by column set before bulk UPSERT:
+   * PostgREST otherwise uses the union of keys and fills missing values.
    */
   size_bytes?: number;
   seeders?: number;
@@ -37,22 +37,43 @@ export interface SanitizedTorrentRecord {
 
 // Regex pre-compilados fuera del flujo de ejecución (Ahorro importante de CPU)
 const HEX_40_REGEX = /^[0-9a-f]{40}$/;
-const IMDB_REGEX = /^tt\d+$/;
+const IMDB_REGEX = /^tt\d{7,10}$/;
 const DIGITS_ONLY_REGEX = /^\d+$/;
+
+export interface RepositoryOptions {
+  dryRun?: boolean;
+  supabaseUrl?: string;
+  supabaseServiceRoleKey?: string;
+  client?: SupabaseClient;
+  timeoutMs?: number;
+  sleep?: (ms: number) => Promise<void>;
+}
+
+/** Includes confirmed writes so the orchestrator can report a partial failure. */
+export class BatchPersistenceError extends Error {
+  constructor(public readonly persisted: number, public readonly attempted: number,
+    public readonly rejected: number, public readonly failures: readonly string[]) {
+    super(`Database persistence incomplete: ${persisted}/${attempted} saved, ${rejected} rejected. ${failures.join('; ')}`);
+    this.name = 'BatchPersistenceError';
+  }
+}
 
 export class SupabaseTorrentRepository {
   private client: SupabaseClient | null = null;
   private readonly isDryRun: boolean;
+  private readonly timeoutMs: number;
+  private readonly sleep: (ms: number) => Promise<void>;
 
-  constructor() {
-    this.isDryRun = config.dryRun;
-
-    if (!this.isDryRun && config.supabaseUrl && config.supabaseServiceRoleKey) {
-      this.client = createClient(config.supabaseUrl, config.supabaseServiceRoleKey, {
-        auth: {
-          persistSession: false,
-          autoRefreshToken: false
-        }
+  constructor(options: RepositoryOptions = {}) {
+    this.isDryRun = options.dryRun ?? config.dryRun;
+    this.timeoutMs = options.timeoutMs ?? 20_000;
+    if (!Number.isSafeInteger(this.timeoutMs) || this.timeoutMs < 1 || this.timeoutMs > 2_147_483_647) {
+      throw new Error('Invalid Supabase timeoutMs');
+    }
+    this.sleep = options.sleep ?? (ms => new Promise(resolve => setTimeout(resolve, ms)));
+    if (!this.isDryRun) {
+      this.client = options.client ?? createClient(options.supabaseUrl ?? config.supabaseUrl, options.supabaseServiceRoleKey ?? config.supabaseServiceRoleKey, {
+        auth: { persistSession: false, autoRefreshToken: false }
       });
     }
   }
@@ -60,7 +81,7 @@ export class SupabaseTorrentRepository {
   // --- MÉTODOS ESTÁTICOS DE UTILIDAD ---
 
   private static parseNonNegativeInt(val: unknown, defaultValue: number | null = null): number | null {
-    if (typeof val === 'number' && Number.isFinite(val) && val >= 0) {
+    if (typeof val === 'number' && Number.isSafeInteger(val) && val >= 0) {
       return Math.floor(val);
     }
     if (typeof val === 'string') {
@@ -80,35 +101,6 @@ export class SupabaseTorrentRepository {
     return trimmed.substring(0, maxLength);
   }
 
-  private static isNonRetriableError(code?: string): boolean {
-    if (!code) return false;
-    // 42P10 (no unique constraint matching ON CONFLICT) has its own fallback.
-    if (code === '42P10') return false;
-    // 23505 (unique violation on another constraint) is rescued row by row:
-    // dropping the whole batch because ONE row collided lost hundreds of records.
-    if (code === '23505') return false;
-    // 57014 (statement timeout) / 40001 (serialisation failure) are retryable.
-    if (code === '57014' || code === '40001' || code === '40P01') return false;
-    // PostgreSQL: 22*** data exception, 23*** integrity violation, 42*** syntax/schema.
-    return code.startsWith('22') || code.startsWith('23') || code.startsWith('42');
-  }
-
-  /** Payload-too-large / too many parameters: the chunk must be split. */
-  private static isPayloadTooLargeError(error: { message?: string; code?: string } | null | undefined): boolean {
-    if (!error) return false;
-    if (error.code === '413' || error.code === '54000') return true;
-    const message = (error.message ?? '').toLowerCase();
-    return message.includes('payload too large') || message.includes('too many parameters') ||
-      message.includes('request entity too large');
-  }
-
-  private static isMissingOnConflictConstraintError(error: { message?: string; code?: string; details?: string; hint?: string } | null | undefined): boolean {
-    if (!error) return false;
-    if (error.code === '42P10') return true;
-    const combined = `${error.message ?? ''} ${error.details ?? ''} ${error.hint ?? ''}`.toLowerCase();
-    return combined.includes('no unique or exclusion constraint matching the on conflict');
-  }
-
   /**
    * Sanitiza y valida un registro según las restricciones del esquema
    */
@@ -116,10 +108,10 @@ export class SupabaseTorrentRepository {
     if (!raw || typeof raw.info_hash !== 'string') return null;
 
     const cleanHash = raw.info_hash.toLowerCase().trim();
-    if (!HEX_40_REGEX.test(cleanHash)) return null;
+    if (!HEX_40_REGEX.test(cleanHash) || /^0{40}$/.test(cleanHash)) return null;
 
     const title = typeof raw.title === 'string' ? raw.title.trim() : '';
-    if (title.length === 0) return null;
+    if (title.length === 0 || title.includes('\0')) return null;
 
     let validImdbId: string | null = null;
     if (typeof raw.imdb_id === 'string') {
@@ -184,225 +176,104 @@ export class SupabaseTorrentRepository {
     };
   }
 
-  /** `undefined` keys must never reach the wire: they defeat the column default. */
-  private static pruneUndefined(record: SanitizedTorrentRecord): SanitizedTorrentRecord {
-    return Object.fromEntries(
-      Object.entries(record).filter(([, value]) => value !== undefined)
-    ) as SanitizedTorrentRecord;
+  /** Unknown metadata must not erase an existing value on UPDATE. */
+  private static pruneUnknown(record: SanitizedTorrentRecord): SanitizedTorrentRecord {
+    return Object.fromEntries(Object.entries(record).filter(([key, value]) =>
+      value !== undefined && value !== null && !(Array.isArray(value) && value.length === 0) &&
+      !(key === 'quality' && value === 'Unknown')
+    )) as SanitizedTorrentRecord;
   }
 
   /**
-   * Intenta insertar un chunk sin ON CONFLICT (fallback cuando falta el índice único).
-   * Primero prueba insert masivo; si falla por duplicados, hace upsert fila a fila.
+   * Requires UNIQUE(info_hash). Never falls back to non-idempotent INSERT.
+   * Sparse records are grouped by key set to preserve absent columns on UPDATE.
+   * A return value means the entire validated batch succeeded; otherwise throws
+   * BatchPersistenceError with confirmed writes (not a transaction rollback).
    */
-  private async fallbackInsertChunk(chunk: SanitizedTorrentRecord[]): Promise<{ inserted: number; error?: string }> {
-    if (!this.client) return { inserted: 0, error: 'Client uninitialized' };
-
-    // Intento 1: insert masivo simple (funciona si no hay constraint, o si no hay duplicados)
-    const { error: insertError } = await this.client.from('torrents').insert(chunk);
-    if (!insertError) {
-      return { inserted: chunk.length };
+  public async upsertBatch(records: TorrentRecord[], batchSize = 100, onConflictColumn = 'info_hash'): Promise<number> {
+    if (!Number.isSafeInteger(batchSize) || batchSize < 1 || batchSize > 10_000) {
+      throw new Error('batchSize must be an integer between 1 and 10000');
     }
+    if (onConflictColumn !== 'info_hash') throw new Error('Only info_hash conflict resolution is supported');
+    if (!Array.isArray(records)) throw new Error('records must be an array');
+    if (!records.length) return 0;
 
-    // Intento 2: fila por fila (duplicado -> update). Con concurrencia acotada:
-    // 2 500 inserts secuenciales tardaban minutos y agotaban el job de CI.
-    let inserted = 0;
-    let lastError = insertError.message;
-    const concurrency = 8;
-    let cursor = 0;
-
-    const worker = async (): Promise<void> => {
-      while (cursor < chunk.length) {
-        const record = chunk[cursor++];
-        const { error: rowInsertError } = await this.client!.from('torrents').insert(record);
-        if (!rowInsertError) {
-          inserted++;
-          continue;
-        }
-
-        const isDuplicate = rowInsertError.code === '23505' ||
-          (rowInsertError.message ?? '').toLowerCase().includes('duplicate');
-
-        if (!isDuplicate) {
-          lastError = rowInsertError.message;
-          continue;
-        }
-
-        // Never write the conflict key back: updating `info_hash` to itself can
-        // trip the very unique index we collided with.
-        const { info_hash: _hash, ...patch } = record;
-        const { error: updateError } = await this.client!
-          .from('torrents')
-          .update(patch)
-          .eq('info_hash', record.info_hash);
-
-        if (!updateError) inserted++;
-        else lastError = updateError.message;
-      }
-    };
-
-    await Promise.all(
-      Array.from({ length: Math.min(concurrency, chunk.length) }, () => worker())
-    );
-
-    if (inserted > 0) return { inserted };
-    return { inserted: 0, error: lastError };
-  }
-
-  /**
-   * Ejecuta UPSERT masivo deduplicado por info_hash con fallback automático si falta el índice único.
-   */
-  public async upsertBatch(
-    records: TorrentRecord[],
-    batchSize = 100,
-    onConflictColumn = 'info_hash'
-  ): Promise<number> {
-    if (!Array.isArray(records) || records.length === 0) return 0;
-
-    // Deduplicación en memoria por info_hash antes del envío a la BD
-    const uniqueMap = new Map<string, SanitizedTorrentRecord>();
+    const unique = new Map<string, TorrentRecord>();
+    let rejected = 0;
     for (const record of records) {
       const sanitized = this.sanitizeRecord(record);
-      if (sanitized) uniqueMap.set(sanitized.info_hash, sanitized);
+      if (!sanitized) { rejected++; continue; }
+      const normalized: TorrentRecord = { ...sanitized, quality: sanitized.quality === 'Unknown' ? null : sanitized.quality };
+      const previous = unique.get(sanitized.info_hash);
+      unique.set(sanitized.info_hash, previous
+        ? recordScore(previous) >= recordScore(normalized) ? mergeRecords(previous, normalized) : mergeRecords(normalized, previous)
+        : normalized);
     }
-
-    const validRecords = Array.from(uniqueMap.values())
-      .map(record => SupabaseTorrentRepository.pruneUndefined(record));
-    if (validRecords.length === 0) return 0;
+    const valid = [...unique.values()].map(record => SupabaseTorrentRepository.pruneUnknown(this.sanitizeRecord(record)!));
+    const failures: string[] = [];
+    let persisted = 0;
 
     if (this.isDryRun) {
-      console.log(`[DRY RUN] DB UPSERT: Would upsert ${validRecords.length} records. Skipping.`);
-      return validRecords.length;
+      if (rejected) throw new BatchPersistenceError(0, valid.length, rejected, ['Validation failed in dry run']);
+      console.log(`[DRY RUN] Would upsert ${valid.length} records; no database writes.`);
+      return valid.length;
     }
+    if (!this.client) throw new Error('[SUPABASE] Client uninitialized');
 
-    if (!this.client) {
-      throw new Error('[SUPABASE] Client uninitialized. Database connection or credentials missing.');
+    // PostgREST derives its columns from the union of all keys in an array.
+    // Grouping is essential even after removing undefined/null values.
+    const groups = new Map<string, SanitizedTorrentRecord[]>();
+    for (const record of valid) {
+      const key = Object.keys(record).sort().join(',');
+      const group = groups.get(key) ?? [];
+      group.push(record);
+      groups.set(key, group);
     }
-
-    let totalUpserted = 0;
-    const maxRetries = 3;
-    let schemaFallbackMode = false;
-    let schemaWarningLogged = false;
-
-    for (let i = 0; i < validRecords.length; i += batchSize) {
-      const chunk = validRecords.slice(i, i + batchSize);
-      let success = false;
-      const currentBatchNumber = Math.floor(i / batchSize) + 1;
-      const totalBatches = Math.ceil(validRecords.length / batchSize);
-
-      // Si ya detectamos falta de constraint, vamos directo a fallback sin intentar onConflict
-      if (schemaFallbackMode) {
-        const { inserted, error } = await this.fallbackInsertChunk(chunk);
-        if (inserted > 0) {
-          totalUpserted += inserted;
-          console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} saved via fallback INSERT: ${inserted}/${chunk.length} torrents.`);
-          success = true;
-        } else {
-          console.error(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} fallback failed: ${error ?? 'unknown'}`);
-        }
-        if (!success) {
-          console.error(`[SUPABASE] ❌ Batch ${currentBatchNumber} could not be saved via fallback.`);
-        }
-        continue;
-      }
-
-      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    let fatal = false;
+    const save = async (chunk: SanitizedTorrentRecord[]): Promise<void> => {
+      for (let attempt = 0; attempt < 3; attempt++) {
+        let error: { code?: string; message?: string } | null;
+        let status = 0;
         try {
-          const { error } = await this.client
-            .from('torrents')
-            .upsert(chunk, {
-              onConflict: onConflictColumn,
-              ignoreDuplicates: false
-            });
-
-          if (error) {
-            // --- FIX CRÍTICO: detectar falta de índice único y hacer fallback en lugar de reintentar indefinidamente ---
-            if (SupabaseTorrentRepository.isMissingOnConflictConstraintError(error)) {
-              if (!schemaWarningLogged) {
-                console.warn(`[SUPABASE] ⚠️  Schema error detectado: la tabla "torrents" NO tiene UNIQUE constraint en "${onConflictColumn}".`);
-                console.warn(`[SUPABASE]    El error "there is no unique or exclusion constraint matching the ON CONFLICT specification" indica que falta el índice.`);
-                console.warn(`[SUPABASE]    Solución permanente (ejecuta en Supabase SQL Editor):`);
-                console.warn(`[SUPABASE]    → CREATE UNIQUE INDEX IF NOT EXISTS torrents_info_hash_unique ON public.torrents (info_hash);`);
-                console.warn(`[SUPABASE]    Activando fallback automático INSERT para este run (sin ON CONFLICT). Datos no se perderán, pero pueden quedar duplicados hasta crear el índice.`);
-                schemaWarningLogged = true;
-              }
-              schemaFallbackMode = true;
-              // Intentar fallback inmediato para este chunk
-              const { inserted, error: fbError } = await this.fallbackInsertChunk(chunk);
-              if (inserted > 0) {
-                totalUpserted += inserted;
-                console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} recovered via fallback INSERT: ${inserted}/${chunk.length} torrents.`);
-                success = true;
-              } else {
-                console.error(`[SUPABASE] Batch ${currentBatchNumber} (Attempt ${attempt}) fallback failed: ${fbError ?? error.message}`);
-              }
-              break; // salir del bucle de reintentos, pasar al siguiente batch en modo fallback
-            }
-
-            console.error(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} (Attempt ${attempt}/${maxRetries}) failed:`, error.message);
-
-            // Un batch demasiado grande se parte por la mitad y se reintenta:
-            // antes se perdía entero por un 413/54000.
-            if (SupabaseTorrentRepository.isPayloadTooLargeError(error) && chunk.length > 1) {
-              const half = Math.ceil(chunk.length / 2);
-              console.warn(`[SUPABASE] Batch ${currentBatchNumber} too large; splitting into ${half}/${chunk.length - half}.`);
-              const first = await this.fallbackInsertChunk(chunk.slice(0, half));
-              const second = await this.fallbackInsertChunk(chunk.slice(half));
-              totalUpserted += first.inserted + second.inserted;
-              if (first.inserted + second.inserted > 0) success = true;
-              else console.error(`[SUPABASE] Split batch failed: ${first.error ?? second.error ?? 'unknown'}`);
-              break;
-            }
-
-            // Rescate fila a fila cuando un único registro rompe el batch.
-            if (error.code === '23505') {
-              const rescued = await this.fallbackInsertChunk(chunk);
-              if (rescued.inserted > 0) {
-                totalUpserted += rescued.inserted;
-                success = true;
-                console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} rescued row-by-row: ${rescued.inserted}/${chunk.length}.`);
-              } else {
-                console.error(`[SUPABASE] Batch ${currentBatchNumber} row-by-row rescue failed: ${rescued.error ?? error.message}`);
-              }
-              break;
-            }
-
-            // Cancelar reintentos si el error no es solucionable reintentando (ej. error de sintaxis o constraint)
-            if (SupabaseTorrentRepository.isNonRetriableError(error.code)) {
-              console.error(`[SUPABASE] Non-retriable error (code ${error.code}). Skipping batch ${currentBatchNumber}.`);
-              break;
-            }
-
-            if (attempt < maxRetries) {
-              await new Promise(res => setTimeout(res, 1000 * Math.pow(2, attempt))); // Backoff exponencial
-              continue;
-            }
-          } else {
-            success = true;
-            totalUpserted += chunk.length;
-            console.log(`[SUPABASE] Batch ${currentBatchNumber}/${totalBatches} saved: ${chunk.length} torrents.`);
-            break;
-          }
-        } catch (err: unknown) {
-          const errorMessage = err instanceof Error ? err.message : String(err);
-          console.error(`[SUPABASE] Network crash on batch ${currentBatchNumber} [${i} to ${i + chunk.length}]:`, errorMessage);
-          if (attempt < maxRetries) {
-            await new Promise(res => setTimeout(res, 1000 * Math.pow(2, attempt)));
-          }
+          const response = await this.client!.from('torrents')
+            .upsert(chunk, { onConflict: 'info_hash', ignoreDuplicates: false, defaultToNull: false })
+            .abortSignal(AbortSignal.timeout(this.timeoutMs));
+          error = response.error;
+          status = response.status;
+        } catch (caught) {
+          error = { message: caught instanceof Error ? caught.message : String(caught) };
         }
+        if (!error) { persisted += chunk.length; return; }
+        const code = error.code ?? '';
+        // Splitting retains UPSERT semantics, including when a smaller request
+        // fails again. A bad row must not discard unrelated valid rows.
+        const splittable = status === 413 || ['413', '54000'].includes(code) || /^(22|23)/.test(code);
+        if (splittable && chunk.length > 1) {
+          const half = Math.ceil(chunk.length / 2);
+          await save(chunk.slice(0, half));
+          if (!fatal) await save(chunk.slice(half));
+          return;
+        }
+        const permanent = splittable || (/^(42|28|PGRST)/.test(code) && !/^PGRST00[0-3]$/.test(code)) ||
+          (status >= 400 && status < 500 && ![408, 429].includes(status));
+        if (!permanent && attempt < 2) {
+          await this.sleep(1000 * 2 ** attempt);
+          continue;
+        }
+        // Do not expose row contents, tokens, or server error details in logs.
+        const reason = code === '42P10'
+          ? 'Missing UNIQUE(info_hash); create the unique index after resolving existing duplicates. Unsafe INSERT fallback disabled.'
+          : `Database request failed (status=${status}, code=${code || 'network'}; rows=${chunk.length})`;
+        failures.push(reason);
+        if (!splittable) fatal = true;
+        return;
       }
-
-      if (!success && !schemaFallbackMode) {
-        console.error(`[SUPABASE] ❌ Critical: Batch ${currentBatchNumber}/${totalBatches} permanently failed after ${maxRetries} attempts. ${chunk.length} records lost.`);
-      } else if (!success && schemaFallbackMode) {
-        // Ya logueado arriba en fallback
-      }
+    };
+    for (const group of groups.values()) {
+      for (let i = 0; i < group.length && !fatal; i += batchSize) await save(group.slice(i, i + batchSize));
+      if (fatal) break;
     }
-
-    if (schemaFallbackMode) {
-      console.log(`[SUPABASE] Fallback mode completed: ${totalUpserted}/${validRecords.length} records persisted without ON CONFLICT. Crea el índice único para restaurar UPSERT idempotente.`);
-    }
-
-    return totalUpserted;
+    if (failures.length || rejected) throw new BatchPersistenceError(persisted, valid.length, rejected, failures);
+    return persisted;
   }
 }

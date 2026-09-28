@@ -622,6 +622,7 @@ export class RutrackerCrawler extends BaseCrawler {
     try {
       // The anonymous `bb_guid`/`bb_ssl` cookies come with this page and must
       // be sent back with the POST, exactly as a browser would.
+      this.requestWithinBudget();
       const page = await this.httpClient.request({
         method: 'GET',
         url: loginUrl,
@@ -655,6 +656,7 @@ export class RutrackerCrawler extends BaseCrawler {
 
     let response;
     try {
+      this.requestWithinBudget();
       response = await this.httpClient.request<string>({
         method: 'POST',
         url: loginUrl,
@@ -1111,6 +1113,7 @@ export class RutrackerCrawler extends BaseCrawler {
     const cookie = this.cookieHeader();
     let buffer: Buffer;
     try {
+      this.requestWithinBudget();
       buffer = await this.httpClient.getBuffer(safeUrl, {
         autoSolveCloudflare: false,
         maxContentLength: MAX_TORRENT_BYTES,

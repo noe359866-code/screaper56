@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -33,7 +33,8 @@ function sameSiteUrl(a: string, b: string): boolean {
   try {
     const left = new URL(a);
     const right = new URL(b);
-    return left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
+    return !left.username && !left.password && !right.username && !right.password &&
+      left.protocol === right.protocol && left.port === right.port && sameHost(a, b);
   } catch {
     return false;
   }
@@ -147,7 +148,11 @@ export class Leech1337xCrawler extends BaseCrawler {
           const rows: ScrapedRow[] = [];
           tableRows.each((_, el) => {
             const $row =$(el);
-            const nameEl = $row.find('td.name a[href^="/torrent/"]').first();
+            const nameEl = $row.find('td.name a[href]').filter((_, anchor) => {
+              try {
+                return /^\/torrent\/\d+(?:\/|$)/.test(new URL($(anchor).attr('href') || '', mirror).pathname);
+              } catch { return false; }
+            }).first();
             if (!nameEl.length) return;
 
             const detailUrl = this.resolveUrl(nameEl.attr('href') || '', mirror);
@@ -179,6 +184,7 @@ export class Leech1337xCrawler extends BaseCrawler {
               if (record) this.metrics.add('records');
               return record;
             } catch (error) {
+              rethrowIfBlockedOrRateLimited(error);
               this.metrics.add('detailErrors');
               this.log.warn(`Failed to scrape detail for "${row.title}": ${describeError(error)}`);
               return null;
@@ -189,6 +195,7 @@ export class Leech1337xCrawler extends BaseCrawler {
             if (record) results.push(record);
           }
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Failed loading listing ${url}: ${describeError(error)}`);
           break;

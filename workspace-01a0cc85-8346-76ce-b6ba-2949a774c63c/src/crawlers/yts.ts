@@ -1,4 +1,4 @@
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, normalizeInfoHash } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -62,7 +62,7 @@ const YTS_API_PAGE_SIZE = 50;
  * audio tag of perfectly well labelled releases.
  */
 export function ytsLanguageHints(language: string): string[] {
-  const native = (language || '').toLowerCase().trim();
+  const native = cleanText(language).toLowerCase();
   if (!native) return [];
   if (native === 'spanish' || /^es(?:[-_]|$)/.test(native)) {
     return /^es[-_](?:mx|ar|419|co|ve|pe|cl|ec|uy|gt|cu|do|hn|ni|pa|bo|py|sv|cr)$/.test(native) ? ['latino'] : ['spanish'];
@@ -206,6 +206,7 @@ export class YtsCrawler extends BaseCrawler {
           // Fewer than `limit` movies = last page; skip the empty follow-up request.
           if (movies.length < YTS_API_PAGE_SIZE) break;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Error reading YTS page ${page} (${query}): ${describeError(error)}`);
           break;
@@ -227,7 +228,7 @@ export class YtsCrawler extends BaseCrawler {
     if (!movie || !Array.isArray(movie.torrents) || movie.torrents.length === 0) return [];
 
     const records: TorrentRecord[] = [];
-    const nativeLanguage = (movie.language || '').toLowerCase().trim();
+    const nativeLanguage = cleanText(movie.language).toLowerCase();
     const langHints = ytsLanguageHints(nativeLanguage);
 
     let imdbId: string | null = null;

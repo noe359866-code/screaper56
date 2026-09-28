@@ -70,18 +70,22 @@ const DEFAULT_CRAWLERS_SET = new Set(DEFAULT_CRAWLERS);
 function parseBoolean(value: string | undefined, defaultValue: boolean): boolean {
   if (value === undefined || value.trim() === '') return defaultValue;
   const normalized = value.trim().toLowerCase();
-  return normalized === 'true' || normalized === '1' || normalized === 'yes';
+  if (['true', '1', 'yes'].includes(normalized)) return true;
+  if (['false', '0', 'no'].includes(normalized)) return false;
+  throw new Error('DRY_RUN must be true/false, 1/0 or yes/no.');
 }
 
 /**
  * Parsea un número entero estricto asegurando un valor mínimo.
  */
 function parseInteger(value: string | undefined, defaultValue: number, min = 1): number {
-  if (!value) return defaultValue;
+  if (value === undefined || value.trim() === '') return defaultValue;
   const trimmed = value.trim();
-  if (!/^\d+$/.test(trimmed)) return defaultValue;
-  const parsed = parseInt(trimmed, 10);
-  return isNaN(parsed) ? defaultValue : Math.max(min, parsed);
+  const parsed = Number(trimmed);
+  if (!/^\d+$/.test(trimmed) || !Number.isSafeInteger(parsed) || parsed < min || parsed > 2_147_483_647) {
+    throw new Error(`Invalid integer configuration: expected ${min}..2147483647.`);
+  }
+  return parsed;
 }
 
 /**
@@ -90,7 +94,7 @@ function parseInteger(value: string | undefined, defaultValue: number, min = 1):
 function isValidUrl(urlString: string): boolean {
   try {
     const url = new URL(urlString);
-    return url.protocol === 'http:' || url.protocol === 'https:';
+    return ['http:', 'https:'].includes(url.protocol) && !url.username && !url.password && !url.search && !url.hash;
   } catch {
     return false;
   }
@@ -105,6 +109,9 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
   if (cachedConfig && !forceReload) {
     return cachedConfig;
   }
+
+  // A failed reload must not leave an older live configuration cached.
+  cachedConfig = null;
 
   const dryRun = parseBoolean(process.env.DRY_RUN, false);
   const supabaseUrl = (process.env.SUPABASE_URL || '').trim();
@@ -121,7 +128,7 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
 
     if (!isValidUrl(supabaseUrl)) {
       throw new Error(
-        `🚨 FATAL ERROR: SUPABASE_URL "${supabaseUrl}" is not a valid HTTP/HTTPS URL.`
+        '🚨 FATAL ERROR: SUPABASE_URL must be an HTTP/HTTPS URL without credentials, query or fragment.'
       );
     }
   }
@@ -152,6 +159,8 @@ export function loadConfig(forceReload = false): EnvironmentConfig {
     targetCrawlers = Object.freeze(parsedList);
   }
 
+  if (!targetCrawlers.length) throw new Error('TARGET_CRAWLERS must select at least one source.');
+
   // 2. INMUTABILIDAD PROFUNDA: Congelamos el objeto raíz
   cachedConfig = Object.freeze({
     supabaseUrl,
@@ -177,10 +186,15 @@ export const config = new Proxy({} as EnvironmentConfig, {
     }
     return loadConfig()[prop as keyof EnvironmentConfig];
   },
+  set() { return false; },
+  defineProperty() { return false; },
+  deleteProperty() { return false; },
+  preventExtensions() { return false; },
   ownKeys() {
     return Reflect.ownKeys(loadConfig());
   },
   getOwnPropertyDescriptor(_target, prop) {
-    return Object.getOwnPropertyDescriptor(loadConfig(), prop);
+    const descriptor = Object.getOwnPropertyDescriptor(loadConfig(), prop);
+    return descriptor ? { ...descriptor, configurable: true } : undefined;
   }
 });

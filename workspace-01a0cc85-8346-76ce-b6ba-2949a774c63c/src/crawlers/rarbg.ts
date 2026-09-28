@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -134,6 +134,7 @@ export class RarbgCrawler extends BaseCrawler {
           url = next && sameMirrorSite(next, mirror) ? next : null;
           if (!url) break;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
           break;
@@ -171,6 +172,7 @@ export class RarbgCrawler extends BaseCrawler {
         if (record) this.metrics.add('records');
         return record;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Detail failed ${row.detailUrl}: ${describeError(error)}`);
         return null;

@@ -314,7 +314,7 @@ test('1337x: catalog failures after a successful probe are surfaced', async () =
       if (url === `${mirror}/`) return '<table class="table-list"><tr><td><a href="/torrent/probe/sample">probe</a></td></tr></table>';
       return '<title>Access Denied</title>';
     });
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
     else process.env.LEECH1337X_BASE_URL = previousBase;
@@ -398,7 +398,7 @@ test('Nyaa: blocked catalog pages after a successful probe are reported', async 
       }
       return '<title>Access Denied</title>';
     });
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.NYAA_BASE_URL;
     else process.env.NYAA_BASE_URL = previousBase;
@@ -509,7 +509,7 @@ test('LimeTorrents: blocked catalogs after a passing mirror probe are surfaced',
       if (url === `${mirror}/latest100` && probeCalls++ === 0) return '<table class="table2"></table>';
       return '<title>Access Denied</title>';
     });
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.LIMETORRENTS_BASE_URL;
     else process.env.LIMETORRENTS_BASE_URL = previousBase;
@@ -595,7 +595,7 @@ test('Tokyo Toshokan: blocked catalog responses after a passing probe are errors
       if (url === `${mirror}/?cat=1` && probeCalls++ === 0) return '<td class="desc-top">Probe</td>';
       return '<title>Access Denied</title>';
     });
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.TOKYOTOSHO_BASE_URL;
     else process.env.TOKYOTOSHO_BASE_URL = previousBase;
@@ -666,7 +666,7 @@ test('EliteTorrent: blocked catalog responses after a passing mirror probe are e
       }
       return '<title>Access Denied</title>';
     });
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.ELITETORRENT_BASE_URL;
     else process.env.ELITETORRENT_BASE_URL = previousBase;
@@ -759,7 +759,7 @@ test('EZTV: blocked API and HTML catalogues after a passing mirror probe are err
       return '<title>Access Denied</title>';
     });
 
-    await assert.rejects(crawler.crawl(1), /No usable catalogue responses/);
+    await assert.rejects(crawler.crawl(1), { name: 'BlockedPageError' });
   } finally {
     if (previousBase === undefined) delete process.env.EZTV_BASE_URL;
     else process.env.EZTV_BASE_URL = previousBase;

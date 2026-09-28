@@ -1,6 +1,6 @@
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -241,6 +241,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
               if (record) this.metrics.add('records');
               return record;
             } catch (error) {
+              rethrowIfBlockedOrRateLimited(error);
               this.metrics.add('detailErrors');
               this.log.warn(`Error parsing detail [${url}]: ${describeError(error)}`);
               return null;
@@ -251,6 +252,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
             if (record) results.push(record);
           }
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Failed fetching ${listUrl}: ${describeError(error)}. Skipping to next route.`);
           break;
@@ -360,6 +362,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
         if (!sizeBytes && parsed.sizeBytes > 0) sizeBytes = parsed.sizeBytes;
         if (!trackers.length) trackers = parsed.trackers;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('downloadErrors');
         this.log.debug(`Metainfo download failed for ${torrentDownloadUrl}: ${describeError(error)}`);
       }

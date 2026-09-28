@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -157,6 +157,7 @@ export class TokyoToshoCrawler extends BaseCrawler {
           // new hashes; only an actually empty page ends the route.
           if (pageRowCount === 0) break;
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
           break;
@@ -187,7 +188,10 @@ export class TokyoToshoCrawler extends BaseCrawler {
     $('td.desc-top').each((_, cell) => {
       const top = $(cell);
       const row = top.closest('tr');
-      const bottom = row.next('tr');
+      // A missing desc-bot row must not borrow the following release's stats,
+      // category, comment, or download link.
+      const nextRow = row.next('tr');
+      const bottom = nextRow.find('td.desc-bot').length && !nextRow.find('td.desc-top').length ? nextRow : $([]);
 
       let magnet: string | null = null;
       let parsed: ReturnType<typeof parseMagnetUri> = null;
@@ -218,9 +222,9 @@ export class TokyoToshoCrawler extends BaseCrawler {
       // Category filter (row class / cat link / category icon): hentai, JAV,
       // music, manga and raws are never indexed.
       const categoryText = [
+        row.find('a[href*="cat="]').first().attr('href') || '',
         row.attr('class') || '',
         bottom.attr('class') || '',
-        row.find('a[href*="cat="]').first().attr('href') || '',
         row.find('td.cat img, img[src*="cat"]').first().attr('src') || ''
       ].join(' ');
       const code = categoryCode(categoryText);
@@ -262,7 +266,8 @@ export class TokyoToshoCrawler extends BaseCrawler {
       const type = inferTokyoType(categoryText, title, defaultType);
       const meta = parseTorrentTitle(title, type);
       // Titles and the uploader comment are evidence; "tokyotosho" is not a language.
-      const langs = detectLanguages(`${title} ${comment}`, categoryHints, false);
+      const hints = code && code !== '0' ? (code === '1' ? ['sub_en'] : []) : categoryHints;
+      const langs = detectLanguages(`${title} ${comment}`, hints, false);
 
       const record = buildTorrentRecord({
         title,

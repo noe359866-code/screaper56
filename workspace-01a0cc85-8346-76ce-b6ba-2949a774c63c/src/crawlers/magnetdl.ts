@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler } from './base.js';
+import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -132,6 +132,7 @@ export class MagnetDlCrawler extends BaseCrawler {
           if (!found.length) break;
           url = this.nextPage(html, url, route.path, page);
         } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
           this.metrics.add('listingErrors');
           this.log.warn(`Listing failed ${url}: ${describeError(error)}`);
           break;
@@ -169,6 +170,7 @@ export class MagnetDlCrawler extends BaseCrawler {
         else this.metrics.add('skipped');
         return record;
       } catch (error) {
+        rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('detailErrors');
         this.log.warn(`Detail failed ${row.detailUrl}: ${describeError(error)}`);
         return null;

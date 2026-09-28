@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Fuentes en español + grandes globales, una fuente o las 18"
+        description: "Fuentes en español + grandes globales, una fuente o todas"
         required: false
         default: "priority"
         type: choice
@@ -31,6 +31,8 @@ on:
           - tokyotosho
           - grantorrent
           - rutracker
+          - t0rrenta
+          - estrenostorrent
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
@@ -42,6 +44,9 @@ on:
         default: "3"
         type: string
 
+permissions:
+  contents: read
+
 concurrency:
   group: torrent-crawler-job
   cancel-in-progress: false
@@ -52,28 +57,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
+    defaults:
+      run:
+        working-directory: workspace-01a0cc85-8346-76ce-b6ba-2949a774c63c
+
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
-
-      - name: "Normalize Project Directory Structure"
-        run: |
-          if [ ! -f "package.json" ]; then
-            SUBDIR=$(find . -maxdepth 2 -name "package.json" -not -path "*/.*" | head -n 1 | xargs dirname)
-            if [ -n "$SUBDIR" ] && [ "$SUBDIR" != "." ]; then
-              echo "Project found in subfolder: $SUBDIR. Moving files to root..."
-              shopt -s dotglob
-              mv "$SUBDIR"/* .
-            fi
-          fi
-          echo "Repository root contents:"
-          ls -la
 
       - name: "Set up Node.js LTS"
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: workspace-01a0cc85-8346-76ce-b6ba-2949a774c63c/package-lock.json
 
       - name: "Install Node Dependencies"
         run: npm ci
@@ -83,7 +80,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('workspace-01a0cc85-8346-76ce-b6ba-2949a774c63c/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
 
@@ -121,7 +118,7 @@ jobs:
           MIRROR_PROBE_STAGGER_MS: "700"
           # Courtesy delay between requests of a single crawler.
           CRAWLER_REQUEST_DELAY_MS: "150"
-          # Hard budget per source so one slow mirror cannot eat the 60 min job.
+          # Cooperative loop budget; in-flight requests may exceed it. The job timeout is the hard limit.
           CRAWLER_TIME_BUDGET_MS: "420000"
           # RuTracker needs an account: without these secrets it fails with an
           # actionable auth error, so add them or drop "rutracker" from the list.

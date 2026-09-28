@@ -115,6 +115,7 @@ export class MirrorResolutionError extends Error {
 interface CacheEntry {
   mirror: string;
   expiresAt: number;
+  poolKey?: string;
 }
 
 const mirrorCache = new Map<string, CacheEntry>();
@@ -325,7 +326,11 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
     throw new MirrorResolutionError(name, [{ mirror: '(empty pool)', reason: 'No candidates configured' }]);
   }
 
-  const cached = useCache ? getCachedMirror(name) : null;
+  const poolKey = JSON.stringify(pool);
+  const cacheEntry = mirrorCache.get(name);
+  // A changed configuration must not resurrect a removed mirror or override a
+  // newly configured BASE_URL. Reuse priority only for the same ordered pool.
+  const cached = useCache && cacheEntry?.poolKey === poolKey ? getCachedMirror(name) : null;
   const ordered = cached ? dedupeMirrors([cached, ...pool]) : pool;
   const candidates = ordered.slice(0, Math.max(1, maxCandidates));
 
@@ -352,7 +357,9 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
         if (accepted) {
           return { index, mirror, accepted: true, elapsedMs: Date.now() - startedAt, label: probe.label, attempts };
         }
-        attempts.push({ mirror: target, reason: `Unexpected payload (status ${response.status})` });
+        attempts.push({ mirror: target, reason: typeof response.data === 'string' && looksLikeBlockedPage(response.data)
+          ? `Blocked or interstitial page (status ${response.status})`
+          : `Unexpected payload (status ${response.status})` });
       } catch (error) {
         attempts.push({ mirror: target, reason: describeError(error) });
       }
@@ -383,9 +390,13 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
     inflight.push(task);
     task.then(record, () => { /* probeCandidate never rejects */ });
 
-    const delay = cancellableDelay(Math.max(0, probeStaggerMs));
-    await Promise.race([task, delay.promise]);
-    delay.cancel();
+    if (probeStaggerMs === 0) {
+      await task;
+    } else {
+      const delay = cancellableDelay(Math.max(0, probeStaggerMs));
+      await Promise.race([task, delay.promise]);
+      delay.cancel();
+    }
 
     if (!winner) logger?.debug?.(`No verdict yet from ${candidates[index]}; hedging the next candidate.`);
   }
@@ -399,7 +410,10 @@ export async function resolveWorkingMirror(options: ResolveMirrorOptions): Promi
     logger?.info(
       `Active mirror: ${outcome.mirror} (${outcome.elapsedMs}ms${outcome.label ? `, ${outcome.label}` : ''})`
     );
-    if (useCache) rememberMirror(name, outcome.mirror, cacheTtlMs);
+    if (useCache) {
+      rememberMirror(name, outcome.mirror, cacheTtlMs);
+      mirrorCache.get(name)!.poolKey = poolKey;
+    }
     return outcome.mirror;
   }
 
