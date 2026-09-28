@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       crawlers:
-        description: "Crawler a ejecutar (all incluye las 17 fuentes)"
+        description: "Crawler a ejecutar (all incluye las 18 fuentes)"
         required: false
         default: "all"
         type: choice
@@ -29,6 +29,7 @@ on:
           - magnetdl
           - tokyotosho
           - grantorrent
+          - rutracker
       dry_run:
         description: "Dry run mode (crawl and validate without writing to Supabase)"
         required: false
@@ -121,4 +122,9 @@ jobs:
           CRAWLER_REQUEST_DELAY_MS: "150"
           # Hard budget per source so one slow mirror cannot eat the 60 min job.
           CRAWLER_TIME_BUDGET_MS: "420000"
+          # RuTracker needs an account: without these secrets it fails with an
+          # actionable auth error, so add them or drop "rutracker" from the list.
+          RUTRACKER_USERNAME: ${{ secrets.RUTRACKER_USERNAME }}
+          RUTRACKER_PASSWORD: ${{ secrets.RUTRACKER_PASSWORD }}
+          RUTRACKER_COOKIE_JSON: ${{ secrets.RUTRACKER_COOKIE_JSON }}
         run: npm start

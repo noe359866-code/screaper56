@@ -55,6 +55,23 @@ interface PelispandaDetail {
 type CategoryType = 'movie' | 'series' | 'anime';
 
 /**
+ * True for links that really are a metainfo file. Magnets are handled by
+ * `parseMagnetUri`; everything else (shorteners, HTML pages, ad hosts) is
+ * rejected before a single byte is downloaded.
+ */
+export function isPelispandaTorrentLink(link: string, downloadType?: string): boolean {
+  if (!/^https?:\/\//i.test(link)) return false;
+  if (/\.torrent(?:[?#]|$)/i.test(link)) return true;
+  // `download_type: torrent` alone is not enough: some entries advertise it
+  // while linking an HTML landing page. Only an explicit metainfo path
+  // (`/torrent/...`, `/download/...torrent`) is downloaded.
+  if (typeof downloadType === 'string' && /torrent/i.test(downloadType)) {
+    return /\/torrent(?:\/|s?\.|$)|\/download\//i.test(link);
+  }
+  return false;
+}
+
+/**
  * Pelispanda: WordPress `wpreact` JSON API (movies, series and anime).
  * Every download entry keeps its own quality/language, and swarm counters are
  * left as `null` because the API does not publish them.
@@ -133,7 +150,10 @@ export class PelispandaCrawler extends BaseCrawler {
             return true;
           });
 
-          if (!unvisitedItems.length) continue;
+          // A page whose items were all already visited means the API is
+          // repeating its last page: `continue` used to spin up to
+          // `maxPages` requests for nothing.
+          if (!unvisitedItems.length) break;
 
           const detailRecords = await mapWithConcurrency(unvisitedItems, this.concurrency, async item => {
             if (this.deadline.expired) return [];
@@ -187,7 +207,7 @@ export class PelispandaCrawler extends BaseCrawler {
     // 1. Películas / Descargas directas
     for (const download of detail.downloads ?? []) {
       const fallbackTitle = cleanText(`${detail.title} ${download.quality ?? ''}`);
-      const record = this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
+      const record = await this.buildRecord(download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId);
       if (record) {
         records.push(record);
         this.metrics.add('records');
@@ -205,7 +225,7 @@ export class PelispandaCrawler extends BaseCrawler {
         for (const download of episode.downloads ?? []) {
           const fallbackTitle = cleanText(`${detail.title} S${seasonStr}E${episodeStr} ${download.quality ?? ''}`);
 
-          const record = this.buildRecord(
+          const record = await this.buildRecord(
             download, detailUrl, categoryType, fallbackTitle, tmdbId, imdbId,
             seasonNum ?? undefined, episodeNum ?? undefined
           );
@@ -220,7 +240,7 @@ export class PelispandaCrawler extends BaseCrawler {
     return records;
   }
 
-  private buildRecord(
+  private async buildRecord(
     download: PelispandaDownload,
     sourceUrl: string,
     categoryType: CategoryType,
@@ -229,14 +249,41 @@ export class PelispandaCrawler extends BaseCrawler {
     imdbId: string | null,
     season?: number,
     episode?: number
-  ): TorrentRecord | null {
+  ): Promise<TorrentRecord | null> {
     const rawLink = download.download_link?.trim();
-    if (!rawLink || !/^magnet:\?/i.test(rawLink)) return null;
+    if (!rawLink) return null;
 
     const parsedMagnet = parseMagnetUri(rawLink);
-    if (!parsedMagnet?.infoHash) return null;
+    let infoHash = parsedMagnet?.infoHash ?? null;
+    let torrentFileUrl: string | null = null;
+    let metainfoName: string | null = null;
+    let metainfoTrackers: string[] = [];
+    let metainfoSize: number | null = null;
 
-    const releaseTitle = cleanText(parsedMagnet.displayName || fallbackTitle);
+    if (!parsedMagnet) {
+      // Not every entry publishes a magnet: some publish a `.torrent` file
+      // instead. The metainfo is downloaded so the hash is the real one —
+      // a guessed hash would break every cross-source dedupe.
+      if (!isPelispandaTorrentLink(rawLink, download.download_type)) return null;
+      try {
+        const parsedTorrent = await this.fetchTorrentMetainfoViaGet(rawLink, sourceUrl);
+        this.metrics.add('downloads');
+        if (!parsedTorrent?.infoHash) return null;
+        infoHash = parsedTorrent.infoHash;
+        torrentFileUrl = rawLink;
+        metainfoName = parsedTorrent.name ?? null;
+        metainfoTrackers = parsedTorrent.trackers ?? [];
+        metainfoSize = parsedTorrent.sizeBytes ?? null;
+      } catch (error) {
+        this.metrics.add('downloadErrors');
+        this.log.debug(`Metainfo unavailable for ${rawLink}: ${describeError(error)}`);
+        return null;
+      }
+    }
+
+    if (!infoHash) return null;
+
+    const releaseTitle = cleanText(parsedMagnet?.displayName || metainfoName || fallbackTitle);
     if (!releaseTitle || isBlockedTitle(releaseTitle)) return null;
 
     const meta = parseTorrentTitle(releaseTitle, categoryType);
@@ -267,22 +314,23 @@ export class PelispandaCrawler extends BaseCrawler {
     return buildTorrentRecord({
       title: releaseTitle,
       type: categoryType,
-      infoHash: parsedMagnet.infoHash,
-      magnetUrl: rawLink,
+      infoHash,
+      magnetUrl: parsedMagnet ? rawLink : null,
+      torrentFileUrl,
       sourceUrl,
-      trackers: parsedMagnet.trackers,
+      trackers: parsedMagnet?.trackers ?? metainfoTrackers,
       audio: audioLangs,
       subtitles: subLangs,
       meta,
       season: season ?? meta.season ?? null,
       episode: episode ?? meta.episode ?? null,
       quality: download.quality || qualityOf(meta),
-      sizeBytes: download.size ? parseSizeToBytes(download.size) : null,
+      sizeBytes: (download.size ? parseSizeToBytes(download.size) : null) ?? metainfoSize,
       seeders: null,
       leechers: null,
       tmdbId,
       imdbId,
-      sourceTracker: parsedMagnet.trackers[0] ?? null
+      sourceTracker: parsedMagnet?.trackers[0] ?? metainfoTrackers[0] ?? null
     });
   }
 }

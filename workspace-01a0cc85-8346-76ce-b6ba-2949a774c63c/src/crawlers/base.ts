@@ -164,6 +164,18 @@ export abstract class BaseCrawler {
   }
 
   /**
+   * GET returning the raw body as a Buffer (with the courtesy pause applied).
+   *
+   * Needed by adapters whose site is not UTF-8: decoding a Windows-1251 page
+   * with the axios default text decoder turns every Cyrillic title into
+   * mojibake, so the adapter must decode the bytes itself.
+   */
+  protected async fetchBytes(url: string, config: RequestOptions = {}): Promise<Buffer> {
+    await politePause();
+    return this.httpClient.getBuffer(url, config);
+  }
+
+  /**
    * Runs `task` with a page from the ONE shared stealth browser.
    * Adapters that need a real DOM must use this instead of launching their own
    * Chromium: launching per detail page spawned hundreds of browsers per run.
@@ -177,8 +189,14 @@ export abstract class BaseCrawler {
 
   /**
    * Downloads a `.torrent` metainfo file via GET ArrayBuffer and validates it.
+   * `extraHeaders` is merged last so an authenticated adapter can attach its
+   * session cookie (private trackers reject an anonymous `dl.php` request).
    */
-  protected async fetchTorrentMetainfoViaGet(url: string, referer?: string): Promise<ParsedTorrentFile> {
+  protected async fetchTorrentMetainfoViaGet(
+    url: string,
+    referer?: string,
+    extraHeaders: Record<string, string> = {}
+  ): Promise<ParsedTorrentFile> {
     await politePause();
     const response = await this.httpClient.get<ArrayBuffer | Buffer>(url, {
       responseType: 'arraybuffer',
@@ -186,7 +204,8 @@ export abstract class BaseCrawler {
       maxBodyLength: MAX_TORRENT_BYTES,
       headers: {
         Accept: 'application/x-bittorrent,application/octet-stream;q=0.9,*/*;q=0.5',
-        ...(referer ? { Referer: referer } : {})
+        ...(referer ? { Referer: referer } : {}),
+        ...extraHeaders
       }
     });
 
@@ -201,15 +220,22 @@ export abstract class BaseCrawler {
 
   /**
    * Downloads a `.torrent` metainfo file (capped) and validates it.
+   * `extraHeaders` is merged last so an authenticated adapter can attach its
+   * session cookie (private trackers reject an anonymous `dl.php` request).
    */
-  protected async fetchTorrentMetainfo(url: string, referer?: string): Promise<ParsedTorrentFile> {
+  protected async fetchTorrentMetainfo(
+    url: string,
+    referer?: string,
+    extraHeaders: Record<string, string> = {}
+  ): Promise<ParsedTorrentFile> {
     await politePause();
     const buffer = await this.httpClient.getBuffer(url, {
       maxContentLength: MAX_TORRENT_BYTES,
       maxBodyLength: MAX_TORRENT_BYTES,
       headers: {
         Accept: 'application/x-bittorrent,application/octet-stream;q=0.9,*/*;q=0.5',
-        ...(referer ? { Referer: referer } : {})
+        ...(referer ? { Referer: referer } : {}),
+        ...extraHeaders
       }
     });
     const parsed = parseTorrentBuffer(buffer);

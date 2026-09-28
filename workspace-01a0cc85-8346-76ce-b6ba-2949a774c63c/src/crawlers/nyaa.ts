@@ -166,6 +166,10 @@ export class NyaaCrawler extends BaseCrawler {
       // ("Anime - English-translated", "Live Action - ..."). A `c=0_0` search
       // spans every category, so a live-action movie is no longer filed as anime.
       const categoryLabel = cleanText(tds.eq(0).find('img').attr('title') || tds.eq(0).text());
+      // Nyaa also indexes audio, books, software and pictures. A `c=0_0` search
+      // spans every one of them, and the schema only stores video, so those
+      // rows are dropped instead of being filed as anime releases.
+      if (/audio|literature|software|pictures/i.test(categoryLabel)) return;
       const contentType: 'anime' | 'movie' = /^live\s*action/i.test(categoryLabel) ? 'movie' : 'anime';
 
       const meta = parseTorrentTitle(title, contentType);

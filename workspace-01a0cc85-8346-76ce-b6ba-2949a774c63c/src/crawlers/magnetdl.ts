@@ -12,9 +12,10 @@ import {
   describeError,
   isBlockedTitle,
   mapWithConcurrency,
+  nextPaginationLink,
   parseCount,
   qualityOf,
-  sameOrigin
+  sameHost
 } from './support.js';
 
 export interface MagnetDlRow {
@@ -26,6 +27,8 @@ export interface MagnetDlRow {
   leechers: number | null;
   /** Present when the listing already publishes the magnet. */
   magnet: string | null;
+  /** Metainfo link published by the `/single/:id` page (when there is one). */
+  torrentFileUrl?: string | null;
 }
 
 /**
@@ -131,6 +134,7 @@ export class MagnetDlCrawler extends BaseCrawler {
           const detail = this.parseDetail(html, row.title);
           magnet = detail.magnet;
           title = detail.title || title;
+          if (detail.torrentFileUrl) row.torrentFileUrl = detail.torrentFileUrl;
         }
         const record = magnet ? this.buildRecord(row, magnet, title) : null;
         if (record) this.metrics.add('records');
@@ -148,18 +152,21 @@ export class MagnetDlCrawler extends BaseCrawler {
     return deduplicated;
   }
 
-  /** Published pagination only: "next"/"»"/"More results" or number `page + 1`. */
+  /**
+   * Published pagination only: `rel=next`, "next"/"»"/"More results", or the
+   * page number that follows the current one inside the same route.
+   */
   public nextPage(html: string, current: string, routePath: string, page: number): string | null {
-    const $ = cheerio.load(html);
-    for (const el of $('a[href]').toArray()) {
-      const anchor = $(el);
-      const text = cleanText(anchor.text());
-      const link = absoluteHttpUrl(anchor.attr('href'), current);
-      if (!link || !sameOrigin(link, current) || link === current) continue;
-      if (!new URL(link).pathname.startsWith(routePath)) continue;
-      if (/^(next|siguiente|»|›|>|more torrent results)/i.test(text) || text === String(page + 1)) return link;
+    const link = nextPaginationLink(html, current, {
+      nextText: /^(?:next|siguiente|siguientes?|pr[oó]xima?|»|›|>|→|more torrent results)(?:\s*(?:»|›|>|→))?$/i
+    });
+    if (!link) return null;
+    try {
+      if (!new URL(link).pathname.startsWith(routePath)) return null;
+    } catch {
+      return null;
     }
-    return null;
+    return link;
   }
 
   public parseListing(html: string, pageUrl: string, forcedType: ContentType | null): MagnetDlRow[] {
@@ -203,18 +210,34 @@ export class MagnetDlCrawler extends BaseCrawler {
     return rows;
   }
 
-  /** `/single/:id` page -> magnet (or a magnet rebuilt from the printed hash). */
-  public parseDetail(html: string, fallbackTitle: string): { magnet: string | null; title: string } {
+  /**
+   * `/single/:id` page -> magnet (or a magnet rebuilt from the printed hash),
+   * its real title and, when the page publishes it, the metainfo link.
+   */
+  public parseDetail(html: string, fallbackTitle: string): {
+    magnet: string | null;
+    title: string;
+    torrentFileUrl: string | null;
+  } {
     const $ = cheerio.load(html);
     const heading = cleanText($('h1').first().text());
     const title = /(?:\.\.\.|…)$/.test(fallbackTitle) && heading ? heading : fallbackTitle || heading;
 
+    // Only same-host `.torrent` links: the download buttons of this template
+    // sometimes point at advertising domains. The href is resolved before
+    // comparing hosts, because it is usually relative.
+    const rawTorrent = $('a[href$=".torrent"]').first().attr('href') ?? null;
+    const resolvedTorrent = rawTorrent ? absoluteHttpUrl(rawTorrent, this.baseUrl) : null;
+    const torrentFileUrl = resolvedTorrent && sameHost(resolvedTorrent, this.baseUrl)
+      ? resolvedTorrent
+      : null;
+
     const href = $('a[href^="magnet:?"]').first().attr('href') ??
       html.match(/magnet:\?xt=urn:btih:[^"'<>\s]+/i)?.[0]?.replace(/&amp;/g, '&') ?? null;
-    if (href && parseMagnetUri(href)) return { magnet: href, title };
+    if (href && parseMagnetUri(href)) return { magnet: href, title, torrentFileUrl };
 
     const hash = html.match(/(?:info\s*hash|hash)[^0-9a-f]{0,40}\b([0-9a-f]{40})\b/i);
-    return { magnet: hash ? buildMagnetUri(hash[1].toLowerCase(), title) : null, title };
+    return { magnet: hash ? buildMagnetUri(hash[1].toLowerCase(), title) : null, title, torrentFileUrl };
   }
 
   private buildRecord(row: MagnetDlRow, magnet: string, title: string): TorrentRecord | null {
@@ -231,6 +254,7 @@ export class MagnetDlCrawler extends BaseCrawler {
       type: meta.type,
       infoHash: parsed.infoHash,
       magnetUrl: magnet,
+      torrentFileUrl: row.torrentFileUrl ?? null,
       sourceUrl: row.detailUrl,
       trackers: parsed.trackers,
       audio: langs.audio,

@@ -23,6 +23,70 @@ interface EliteRoute {
   type: ContentType;
 }
 
+/** Host comparison that ignores a `www.` prefix on either side. */
+export function sameHost(a: string, b: string): boolean {
+  try {
+    const left = new URL(a).hostname.replace(/^www\./i, '').toLowerCase();
+    const right = new URL(b).hostname.replace(/^www\./i, '').toLowerCase();
+    return left === right && left.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Path segments that always belong to a listing, a filter or the pager —
+ * never to a single release. `/peliculas/accion/` or `/series/page/2/` used to
+ * be queued as details: every one of them cost a request and an empty record.
+ */
+const ELITE_LISTING_SEGMENTS =
+  /^(?:page|pagina|paginas|paged|feed|rss|categoria|categorias|cat|genero|generos|calidad|idioma|idiomas|orden|order|etiquetas?|tags?|autor|autores|buscar|search|busqueda|index|inicio|home|ultimas?|ultimos?|estrenos?|estreno|novedades|destacad[ao]s?|accion|animacion|anime|aventura|belic[ao]|biografia|ciencia-ficcion|comedia|crimen|documental|drama|erotic[oa]s?|familia|fantasia|guerra|historia|horror|intriga|misterio|musical|policiac[ao]|romance|suspenso|suspense|terror|thriller|western|deporte|adultos?|xxx|hentai)$/i;
+
+/**
+ * Root sections that hold releases. Everything else (`/foro/`, `/noticias/`,
+ * `/contacto/`, ...) is not a torrent and is dropped.
+ */
+const ELITE_SECTIONS = /^(?:peliculas|peliculas-1|series|series-1|documentales|documentales-1)$/i;
+
+/**
+ * True when `href` points at one release ("…/peliculas/1234-slug",
+ * "…/series/1234/nombre/" or "…/series/slug/"), false for every category,
+ * filter or pager route.
+ */
+export function isEliteDetailUrl(href: string, base: string): boolean {
+  if (!href || typeof href !== 'string') return false;
+
+  const fullUrl = absoluteHttpUrl(href, base);
+  if (!fullUrl) return false;
+
+  let url: URL;
+  try {
+    url = new URL(fullUrl);
+  } catch {
+    return false;
+  }
+
+  if (!sameHost(fullUrl, base)) return false;
+  // `/page/N/` inside the path is a pager, wherever it appears.
+  if (/\/(?:page|pagina|paged)\/\d+/i.test(url.pathname)) return false;
+
+  const segments = url.pathname.split('/').filter(Boolean);
+  if (segments.length < 2) return false; // "/peliculas/" is the catalogue root.
+  if (!ELITE_SECTIONS.test(segments[0])) return false;
+
+  const rest = segments.slice(1);
+  if (rest.some(segment => ELITE_LISTING_SEGMENTS.test(segment))) return false;
+
+  const slug = rest[rest.length - 1].replace(/\.html?$/i, '');
+  if (!slug) return false;
+  // A pure numeric slug is an id, not a title, unless a real slug follows it.
+  if (!/[a-z]/i.test(slug)) return false;
+  // Scripts, feeds and images are never a release.
+  if (/\.(?:php|asp|aspx|json|xml|css|js|png|jpe?g|gif|webp|svg|ico)$/i.test(rest[rest.length - 1])) return false;
+
+  return true;
+}
+
 /**
  * EliteTorrent: detail pages, Base64/ROT13 shortener, hex/Base32 magnets and
  * relative `.torrent` URLs with a query string. Swarm counters are not published
@@ -81,13 +145,6 @@ export class EliteTorrentCrawler extends BaseCrawler {
     const mirror = await this.getWorkingMirror();
     this.baseUrl = mirror;
 
-    let mirrorOrigin = mirror;
-    try {
-      mirrorOrigin = new URL(mirror).origin;
-    } catch {
-      // Retain full mirror string on URL parse fallback
-    }
-
     const results: TorrentRecord[] = [];
     const visitedUrls = new Set<string>();
 
@@ -102,6 +159,8 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     for (const route of sectionRoutes) {
       const pagesToCrawl = route.hasPagination ? maxPages : 1;
+      // Fingerprint of the links published by the previous page of this route.
+      let previousSignature = '';
 
       for (let page = 1; page <= pagesToCrawl; page++) {
         if (this.deadline.expired) break;
@@ -115,33 +174,50 @@ export class EliteTorrentCrawler extends BaseCrawler {
           const html = await this.fetchHtml(listUrl);
           this.metrics.add('listings');
 
-          const pageDetailUrls: string[] = [];
+          const candidates: string[] = [];
           const $ = cheerio.load(html);
 
-          $('a[href*="/peliculas/"], a[href*="/series/"]').each((_, el) => {
+          $('a[href*="/peliculas/"], a[href*="/series/"], a[href*="/documentales/"]').each((_, el) => {
             const href = $(el).attr('href');
             if (!href) return;
-            if (/\/feed\/|\/page\//.test(href)) return;
-            // Category roots are listings, not releases: fetching them as detail
-            // pages wasted a request and produced an empty record every time.
-            if (/\/(?:peliculas|peliculas-1|series|documentales)(?:\/)?$/.test(href)) return;
+            // Genre / quality / language filters (`/peliculas/accion/`) and the
+            // pager match the loose `href*=` selector: `isEliteDetailUrl` keeps
+            // only real releases, and the host check ignores a missing `www.`.
+            if (!isEliteDetailUrl(href, listUrl)) return;
 
             const fullUrl = absoluteHttpUrl(href, listUrl);
             if (!fullUrl) return;
-
-            try {
-              if (new URL(fullUrl).origin !== mirrorOrigin) return;
-            } catch {
-              return;
-            }
-
-            if (visitedUrls.has(fullUrl)) return;
-            visitedUrls.add(fullUrl);
-            pageDetailUrls.push(fullUrl);
+            if (!sameHost(fullUrl, mirror)) return;
+            candidates.push(fullUrl);
           });
 
+          if (!candidates.length) {
+            // The page publishes no release link at all: the route is over.
+            this.log.debug(`No release links on page ${page} for ${route.path}. Ending pagination.`);
+            break;
+          }
+
+          // `page=N` ignored by the template: the very same listing came back,
+          // so every further page would repeat these links (the old code spent
+          // `maxPages - page` requests on them).
+          const candidateSignature = [...new Set(candidates)].sort().join('|');
+          if (candidateSignature === previousSignature) {
+            this.log.debug(`Page ${page} repeated the previous listing for ${route.path}. Ending pagination.`);
+            break;
+          }
+          previousSignature = candidateSignature;
+
+          const pageDetailUrls: string[] = [];
+          for (const fullUrl of candidates) {
+            if (visitedUrls.has(fullUrl)) continue;
+            visitedUrls.add(fullUrl);
+            pageDetailUrls.push(fullUrl);
+          }
+
           if (!pageDetailUrls.length) {
-            this.log.debug(`No new records on page ${page} for ${route.path}. Continuing route.`);
+            // Links exist but every one of them was already crawled through
+            // another route: keep paginating (bounded by `maxPages`), the next
+            // page can still hold new releases.
             continue;
           }
 
@@ -199,12 +275,23 @@ export class EliteTorrentCrawler extends BaseCrawler {
     let calidadStr = '';
     let formatoStr = '';
 
+    // The selector matches `<li>` AND the `<span>` inside it, so the loop used
+    // to read "1.5 GB" from the li and then overwrite it with the empty value
+    // of the child `<span>Tamaño:</span>`. A field is only replaced when the
+    // candidate really carries a value.
     $('p.descrip span, .ficha span, li').each((_, el) => {
       const txt = cleanText($(el).text());
-      if (/^Tamaño:/i.test(txt)) sizeStr = txt.replace(/^Tamaño:/i, '').trim();
-      else if (/^Idioma:/i.test(txt)) idiomaStr = txt.replace(/^Idioma:/i, '').trim();
-      else if (/^Calidad:/i.test(txt)) calidadStr = txt.replace(/^Calidad:/i, '').trim();
-      else if (/^Formato:/i.test(txt)) formatoStr = txt.replace(/^Formato:/i, '').trim();
+      const extract = (prefix: RegExp): string | null => {
+        if (!prefix.test(txt)) return null;
+        const value = txt.replace(prefix, '').trim();
+        // "Tamaño:" on its own (the label span) must never blank a real value.
+        return value.length > 0 ? value : null;
+      };
+
+      sizeStr = extract(/^Tamaño:/i) ?? sizeStr;
+      idiomaStr = extract(/^Idioma:/i) ?? idiomaStr;
+      calidadStr = extract(/^Calidad:/i) ?? calidadStr;
+      formatoStr = extract(/^Formato:/i) ?? formatoStr;
     });
 
     let magnetLink: string | null = null;
@@ -278,14 +365,21 @@ export class EliteTorrentCrawler extends BaseCrawler {
     // The explicit field now wins over that generic default.
     if (idiomaStr) {
       if (/vose|v\.o\.s\.e|subtitulad/i.test(idiomaStr)) {
+        // VOSE is English audio + Spanish subs; no other audio track applies.
         langs.audio = ['English'];
         if (!langs.subtitles.includes('Sub_ES')) langs.subtitles.push('Sub_ES');
-      } else if (/latino/i.test(idiomaStr)) {
-        if (!langs.audio.includes('Spanish (Latino)')) langs.audio.push('Spanish (Latino)');
-      } else if (/castellano|espa[ñn]ol/i.test(idiomaStr)) {
-        if (!langs.audio.includes('Spanish')) langs.audio.push('Spanish');
-      } else if (/ingl[eé]s|english|v\.o\./i.test(idiomaStr)) {
-        if (!langs.audio.includes('English')) langs.audio.push('English');
+      } else {
+        // Not mutually exclusive: "Castellano / Inglés" or "Dual (Latino /
+        // Castellano)" used to lose the second language to `else if`.
+        if (/latino/i.test(idiomaStr) && !langs.audio.includes('Spanish (Latino)')) {
+          langs.audio.push('Spanish (Latino)');
+        }
+        if (/castellano|espa[ñn]ol/i.test(idiomaStr) && !langs.audio.includes('Spanish')) {
+          langs.audio.push('Spanish');
+        }
+        if (/ingl[eé]s|english|v\.o\./i.test(idiomaStr) && !langs.audio.includes('English')) {
+          langs.audio.push('English');
+        }
       }
     }
 
@@ -336,15 +430,21 @@ export function decodeAcortameString(raw: string): string {
   const initialRot = rot13(s);
   if (/^(magnet:|http:\/\/|https:\/\/)/i.test(initialRot)) return initialRot;
 
-  // URL-safe Base64 ("-" / "_", missing padding) is normalised first.
-  let current = s.replace(/-/g, '+').replace(/_/g, '/');
-  if (current.length % 4) current += '='.repeat(4 - (current.length % 4));
+  // Multi-layer encoding: every decoded layer is re-normalised, because URL-safe
+  // characters ("-" / "_") and missing padding only appeared in the FIRST layer
+  // under the old single-pass normalisation, which broke nested payloads.
+  let current = s;
   for (let i = 0; i < 8; i++) {
+    const normalized = current.trim().replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized.length % 4
+      ? normalized + '='.repeat(4 - (normalized.length % 4))
+      : normalized;
+
     // Buffer.from(..., 'base64') never throws: without this guard the loop
     // happily decoded garbage eight times before giving up.
-    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(current)) break;
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(padded)) break;
     try {
-      current = Buffer.from(current, 'base64').toString('utf-8');
+      current = Buffer.from(padded, 'base64').toString('utf-8');
       if (/^(magnet:|http:\/\/|https:\/\/)/i.test(current)) return current;
 
       const rotDecoded = rot13(current);

@@ -58,6 +58,9 @@ const DETAIL_PATH = /^\/(pelicula|serie|documental|variado|musica|juego)\/\d+(?:
 // concatenate into e.g. `1x02Descargar`, where no word boundary exists after
 // the episode number, while `1x0234` still cannot match as episode 023.
 const EPISODE_REGEX = /\b(\d{1,2})\s*[x×]\s*(\d{1,3})(?!\d)/i;
+// Above this length a "row" is really the page: it is neither a reliable
+// episode scope nor a usable language hint.
+const ROW_HINT_LIMIT = 150;
 
 const SECTION_TYPES: Record<string, ContentType> = {
   pelicula: 'movie',
@@ -143,6 +146,11 @@ export function dontorrentDownloadUrl(value: string | undefined | null, base: st
   return null;
 }
 
+/** Escapes regex metacharacters so a label like "año (estreno)" cannot throw. */
+export function escapeRegex(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /**
  * `$.root().text()` materialises the whole document text, so it is computed once
  * per detail page and threaded through instead of once per labelled field.
@@ -157,7 +165,9 @@ function labelledValue($: cheerio.CheerioAPI, labels: string[], rootText?: strin
     if (holder.length) {
       const parent = holder.parent();
       const parentText = cleanText(parent.text());
-      const labelRegex = new RegExp(`^${label}\\s*:\\s*`, 'i');
+      // Labels come from configuration, not from the parser author: without
+      // escaping, one `(` inside a label throws SyntaxError mid-page.
+      const labelRegex = new RegExp(`^${escapeRegex(label)}\\s*:\\s*`, 'i');
 
       if (labelRegex.test(parentText)) {
         const val = cleanText(parentText.replace(labelRegex, ''));
@@ -170,7 +180,8 @@ function labelledValue($: cheerio.CheerioAPI, labels: string[], rootText?: strin
   }
 
   // Fallback: plain "Formato: BluRay-1080p" inside any block of text.
-  const pattern = new RegExp(`(?:${labels.join('|')})\\s*:\\s*([^\\n<|]{2,60})`, 'i');
+  const safeLabels = labels.map(escapeRegex);
+  const pattern = new RegExp(`(?:${safeLabels.join('|')})\\s*:\\s*([^\\n<|]{2,60})`, 'i');
   const match = (rootText ?? cleanText($.root().text())).match(pattern);
   return match ? cleanText(match[1]) : null;
 }
@@ -319,14 +330,30 @@ export class DonTorrentCrawler extends BaseCrawler {
         if (!target || seen.has(target)) continue;
         seen.add(target);
 
-        const row = node.closest('tr, li, .card-body');
-        const rowText = cleanText(row.text());
-        const episodeMatch = rowText.match(EPISODE_REGEX);
+        // `.card-body` is the page wrapper on some templates, so climbing into
+        // it made every link on the page inherit the FIRST episode of the page.
+        // Prefer a real row; when the only ancestor is the wrapper, fall back to
+        // the immediate container and never to the whole document.
+        const row = node.closest('tr, li, div.row, div.download-link');
+        let scopeText = '';
+        if (row.length && !row.is('.card-body')) {
+          scopeText = cleanText(row.text());
+        } else {
+          const parent = node.parent();
+          scopeText = cleanText(parent.length ? parent.text() : node.text());
+          // Still the whole page (a bare `<a>` directly inside the wrapper):
+          // keep only the link itself.
+          if (scopeText.length > ROW_HINT_LIMIT) scopeText = cleanText(node.text());
+        }
+        const episodeMatch = scopeText.match(EPISODE_REGEX);
+        // A multi-kilobyte row (synopsis, comments) is not a hint: it slows the
+        // title parser down and produces false quality/language matches.
+        const hintText = !episodeMatch && scopeText.length <= ROW_HINT_LIMIT ? scopeText : null;
 
         downloads.push({
           url: target,
           title: episodeMatch ? `${title} ${episodeMatch[0]}` : title,
-          hints: dedupeStrings([...releaseHints, format, rowText && !episodeMatch ? rowText : null]),
+          hints: dedupeStrings([...releaseHints, format, hintText]),
           season: episodeMatch ? Number.parseInt(episodeMatch[1], 10) : null,
           episode: episodeMatch ? Number.parseInt(episodeMatch[2], 10) : null
         });
@@ -432,11 +459,11 @@ export class DonTorrentCrawler extends BaseCrawler {
           // A page with nothing new means `?p=N` was ignored and page 1 repeats.
           if (page > 0 && added === 0) break;
 
-          // Prefer the real `?p=N` link. DonTorrent's template sometimes omits
-          // it, so fall back to the documented `?p=N` scheme — but only after a
-          // page that actually produced links, and `visited` stops any loop.
-          const next = this.nextPage(html, listUrl);
-          listUrl = next ?? (page + 1 < maxPages ? `${mirror}${section.path}?p=${page + 2}` : null);
+          // Only follow pagination the page really publishes. Guessing `?p=N`
+          // used to keep hammering `?p=2`, `?p=3`... on single-page sections
+          // (the site answers with page 1 again) which burned requests and
+          // looked exactly like an IP block.
+          listUrl = this.nextPage(html, listUrl);
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Catalogue failed ${listUrl}: ${describeError(error)}`);
@@ -481,10 +508,18 @@ export class DonTorrentCrawler extends BaseCrawler {
 
           const items = this.parseListing(html, `${mirror}/buscar`);
           if (!items.length) break;
+
+          // Many internal search engines ignore `p` and return page 1 forever.
+          // Without this counter the same results were requested `maxPages`
+          // times and then discarded as duplicates.
+          let added = 0;
           for (const item of items) {
             if (isBlockedTitle(item.title) || sink.has(item.url)) continue;
             sink.set(item.url, item);
+            added++;
           }
+          this.log.debug(`Search "${term}" page ${page}: ${items.length} links (${added} new).`);
+          if (added === 0) break;
         } catch (error) {
           this.metrics.add('listingErrors');
           this.log.warn(`Search "${term}" page ${page} failed: ${describeError(error)}`);
@@ -596,15 +631,30 @@ export class DonTorrentCrawler extends BaseCrawler {
   }
 }
 
+/** Section roots: `/pelicula/12345/` has no title at all, only an id. */
+const SECTION_ROOT = /^(?:peliculas?|series?|documentales?|variados?|musicas?|juegos?|juego)$/i;
+
 function slugTitle(pathname: string): string {
-  const slug = pathname.split('/').filter(Boolean).pop() || '';
-  let decoded = slug;
+  const segments = pathname.split('/').filter(Boolean);
+  // Drop a trailing id and the section root themselves: storing "12345" (or
+  // "pelicula") as the movie name was worse than leaving the title empty.
+  while (segments.length && /^\d+$/.test(segments[segments.length - 1])) {
+    segments.pop();
+  }
+  while (segments.length && SECTION_ROOT.test(segments[segments.length - 1])) {
+    segments.pop();
+  }
+
+  const candidate = segments.pop() || '';
+  let decoded = candidate;
   try {
-    decoded = decodeURIComponent(slug);
+    decoded = decodeURIComponent(candidate);
   } catch {
     /* malformed %-escape: keep the raw slug */
   }
-  return cleanText(decoded.replace(/[-_]+/g, ' '));
+
+  const cleaned = cleanText(decoded.replace(/[-_]+/g, ' '));
+  return /^\d+$/.test(cleaned) ? '' : cleaned;
 }
 
 export default DonTorrentCrawler;

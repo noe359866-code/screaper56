@@ -53,6 +53,23 @@ interface YtsApiResponse {
  * French or Japanese release is never relabelled as English by the generic
  * fallback heuristics.
  */
+/**
+ * The API's own `language` field -> language hints. Region variants
+ * (`es-ve`, `en-gb`, ...) used to fall through to "unknown", which dropped the
+ * audio tag of perfectly well labelled releases.
+ */
+export function ytsLanguageHints(language: string): string[] {
+  const native = (language || '').toLowerCase().trim();
+  if (!native) return [];
+  if (native === 'spanish' || /^es(?:[-_]|$)/.test(native)) {
+    return /^es[-_](?:mx|ar|419|co|ve|pe|cl|ec|uy|gt|cu|do|hn|ni|pa|bo|py|sv|cr)$/.test(native) ? ['latino'] : ['spanish'];
+  }
+  if (native === 'latino' || /^español\s+latino$/.test(native)) return ['latino'];
+  if (native === 'english' || /^en(?:[-_]|$)/.test(native)) return ['english'];
+  if (/^pt(?:[-_]|$)/.test(native)) return ['portuguese'];
+  return [];
+}
+
 export class YtsCrawler extends BaseCrawler {
   public readonly name = 'yts';
   public baseUrl = process.env.YTS_BASE_URL || 'https://yts.mx';
@@ -165,11 +182,7 @@ export class YtsCrawler extends BaseCrawler {
 
     const records: TorrentRecord[] = [];
     const nativeLanguage = (movie.language || '').toLowerCase().trim();
-    const langHints = nativeLanguage === 'es' || nativeLanguage === 'es-es' || nativeLanguage === 'spanish'
-      ? ['spanish']
-      : /^es[-_](mx|ar|419)$/.test(nativeLanguage) || nativeLanguage === 'latino'
-        ? ['latino']
-        : nativeLanguage === 'en' || nativeLanguage === 'english' ? ['english'] : [];
+    const langHints = ytsLanguageHints(nativeLanguage);
 
     let imdbId: string | null = null;
     if (movie.imdb_code) {
