@@ -599,3 +599,57 @@ Verificación en vivo de TODA la cadena de mejortorrent sobre el mirror real
   visitados → filtros `letter/`/`genre/` jamás pedidos.
 - API de WordPress que responde página de WAF → la corrida cae al modo HTML y
   produce records (antes: error fatal).
+
+---
+
+# Profundización: The Pirate Bay (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de thepiratebay (apibay.org + 9 mirrors
+HTML del pool).
+
+## Estado real verificado (2026-09-28)
+
+- **APiBay viva y exacta**: `data_top100_20N.json` y `q.php?q=castellano&cat=200`
+  responden con el formato que `mapApibayItem` espera, con la dualidad real:
+  precompilados traen números (`id: 38033514`, `category: 201`, imdb
+  `"tt0113247"`) y `q.php` trae TODO como strings (`category: "201"`,
+  `imdb: ""`). Cubierto con tests de ambas formas.
+- **Pool de mirrors**: 7 de 9 vivos respondiendo el probe
+  `/search/test/1/99/200` con la tabla `searchResult`:
+  `tpb.party`, `thepiratebay10.org` (redirige a `.xyz`, el fetch lo sigue),
+  `thehiddenbay.com`, `thepiratebay0.org`, `piratebay.live`,
+  `pirateproxy.live` (redirige a `pirateproxylive.org`), `thepiratebay.zone`.
+  FUERA: `pirate-bays.net` (aparcado, página de anuncios) y
+  `tpb.skynetcloud.site` (muerto).
+- **DOS variantes del template conviven** entre los mirrors, y el parser
+  actual cubre ambas:
+  - Clásica (tpb.party, thepiratebay10.xyz, pirateproxylive.org): categoría
+    `Video > HD - TV shows`, columnas separadas de tamaño/S/L y uploader.
+  - Minimalista (thehiddenbay, thepiratebay0, piratebay.live, thepiratebay.zone):
+    celda de categoría con DOS enlaces (`Video` + `( HD - TV shows )`), sin
+    columna de tamaño (va dentro de `detDesc`) y contadores `| 98 | 34 |` al
+    final — exactamente el caso que protegió el fix 10 (últimas celdas
+    numéricas).
+- **Fichas**: `description.php?id=N` puede 404ear en algunos proxies, pero es
+  inofensivo (los records del JSON ya traen imdb de apibay; los de la fase
+  HTML usan `source_url` = `/torrent/ID/...`, que vive y publica el enlace
+  IMDb — verificado con `tt32230839` en tpb.party).
+
+## Cambios
+
+- `DEFAULT_MIRRORS` depurado: fuera el dominio aparcado y el muerto;
+  `tpb.party` primero (canónico, sin hop de redirect). El probe rechaza
+  cualquier otro espejo que deje de hablar el dialecto TPB, así que la lista
+  corta no reduce resiliencia real.
+
+## Tests nuevos (suite 459/459)
+
+- Fila clásica 2026 real → `series`, S/L 98/34, tamaño 2.13 GiB, hash
+  lowercase, `source_url` mismo-sitio, magnets con trackers, sin
+  `torrent_file_url` (las filas publican magnets, nunca .torrent).
+- Fila minimalista 2026 real (2 enlaces de categoría, sin columna de tamaño)
+  → record `series` y record `movie` con S/L de las últimas celdas numéricas.
+- APiBay 2026: forma precompilada (números + imdb) y forma `q.php` (strings +
+  imdb vacío → `null`, nunca fabricado).
+- Higiene del pool: primer mirror `tpb.party`, sin los dominios muertos.

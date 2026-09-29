@@ -537,6 +537,119 @@ test('TPB: HTML rows keep the download link of the row and the row-category type
   assert.equal(sink[0].leechers, 2);
 });
 
+test('TPB: the 2026 classic row (tpb.party) parses type, swarm counters and size from the real markup', () => {
+  const crawler = new ThePirateBayCrawler();
+  // Real row shape on tpb.party / thepiratebay10(.xyz) / pirateproxylive.org
+  // (2026-09): category cell with "Video > ...", detName/detLink title, magnet
+  // WITH trackers, detDesc "Uploaded ... , Size ..., ULed by ...", then the
+  // size, seeders, leechers and uploader columns. No .torrent link on rows.
+  const magnet = 'magnet:?xt=urn:btih:A0E324B4A1B0A9020DF7482D46A6830EBB2781FB' +
+    '&dn=Special+Forces+S05E01&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337';
+  const html = `<table id="searchResult"><tr class="header"><th>Type</th><th>Name</th><th></th><th></th><th>Seed</th><th>Leech</th></tr>
+    <tr><td class="vertTh"><center><a href="/browse/208" title="More from this category">Video &gt; HD - TV shows</a></center></td>
+    <td><div class="detName"><a href="/torrent/84539559/Special_Forces_Worlds_Toughest_Test_S05E01" class="detLink" title="Details for Special Forces S05E01">Special Forces Worlds Toughest Test S05E01 Jungle Warfare 1080p DSNP WEB-DL AAC2 0 H 264-RAWR</a></div>
+    <a href="${magnet}" title="Download this torrent using magnet"><img src="/static/img/icon-magnet.gif"></a><a href="/user/jajaja/"><img src="/static/img/vip.gif"></a>
+    <font class="detDesc">Uploaded 09-25&nbsp;09:35, Size 2.13&nbsp;GiB, ULed by <a href="/user/jajaja/">jajaja</a></font></td>
+    <td align="right">2.13 GiB</td><td align="right">98</td><td align="right">34</td>
+    <td align="right"><a href="/user/jajaja/" title="Browse jajaja">jajaja</a></td></tr></table>`;
+
+  const sink = [];
+  const { rows, added } = crawler.collectHtmlRows(html, 'https://tpb.party', new Set(), sink);
+  assert.equal(rows, 1);
+  assert.equal(added, 1);
+  const [record] = sink;
+  assert.equal(record.type, 'series');
+  assert.equal(record.seeders, 98);
+  assert.equal(record.leechers, 34);
+  assert.equal(record.size_bytes, Math.round(2.13 * 1024 ** 3));
+  assert.equal(record.info_hash, 'a0e324b4a1b0a9020df7482d46a6830ebb2781fb');
+  assert.equal(record.source_url, 'https://tpb.party/torrent/84539559/Special_Forces_Worlds_Toughest_Test_S05E01');
+  assert.equal(record.torrent_file_url, null, 'the listing rows publish magnets, never .torrent links');
+  assert.match(record.magnet_url, /tr=udp%3A%2F%2Ftracker\.opentrackr\.org/, 'the row magnet trackers are kept');
+});
+
+test('TPB: the 2026 minimal row (thehiddenbay/zone) reads its counters as the last numeric cells', () => {
+  const crawler = new ThePirateBayCrawler();
+  // Real row shape on thehiddenbay.com / thepiratebay0.org / piratebay.live /
+  // thepiratebay.zone (2026-09): the category cell holds TWO links ("Video"
+  // and "( HD - TV shows )"), there is NO size column and the row ends with
+  // the bare seeders/leechers numbers.
+  const episodeMagnet = 'magnet:?xt=urn:btih:D0D1B469D49B030DB68600BCF11682CE7BE5328E&dn=Smartypants+S03E07';
+  const movieMagnet = 'magnet:?xt=urn:btih:7e829f9533b0fcd80fb18249c205fb57f802245b';
+  const html = `<table id="searchResult">
+    <tr><td class="vertTh"><center><a href="/browse/200">Video</a><br>( <a href="/browse/208">HD - TV shows</a> )</center></td>
+    <td><div class="detName"><a href="/torrent/84332861/Smartypants_S03E07" class="detLink">Smartypants S03E07 A Rorschach Test But On Their Face 1080p</a></div>
+    <a href="${episodeMagnet}" title="Download this torrent using magnet"><img src="/static/img/icon-magnet.gif"></a>
+    <font class="detDesc">Uploaded 09-05&nbsp;01:55, Size 1.3&nbsp;GiB, ULed by jajaja</font></td>
+    <td align="right">87</td><td align="right">5</td></tr>
+    <tr><td class="vertTh"><center><a href="/browse/200">Video</a><br>( <a href="/browse/207">HD - Movies</a> )</center></td>
+    <td><div class="detName"><a href="/torrent/82429296/This_Is_Not_a_Test_2025" class="detLink">This Is Not a Test 2025 1080p WEB-DL HEVC x265 5.1 BONE</a></div>
+    <a href="${movieMagnet}" title="Download this torrent using magnet"><img src="/static/img/icon-magnet.gif"></a>
+    <font class="detDesc">Uploaded 03-13&nbsp;11:06, Size 1.46&nbsp;GiB, ULed by .BONE.</font></td>
+    <td align="right">83</td><td align="right">23</td></tr></table>`;
+
+  const sink = [];
+  const { added } = crawler.collectHtmlRows(html, 'https://thehiddenbay.com', new Set(), sink);
+  assert.equal(added, 2, 'both layout variants produce records');
+  const [episode, movie] = sink;
+  assert.equal(episode.type, 'series');
+  assert.equal(episode.seeders, 87);
+  assert.equal(episode.leechers, 5);
+  assert.equal(episode.size_bytes, Math.round(1.3 * 1024 ** 3));
+  assert.equal(movie.type, 'movie');
+  assert.equal(movie.seeders, 83);
+  assert.equal(movie.leechers, 23);
+});
+
+test('TPB: APiBay 2026 responses (number and string shapes) map without loss', () => {
+  const crawler = new ThePirateBayCrawler();
+
+  // /precompiled/data_top100_201.json item: numeric fields, uppercase hash,
+  // imdb id present.
+  const precompiled = crawler.mapApibayItem({
+    id: 38033514,
+    name: 'La.Haine.1995.REMASTERED.BDRip.x264-ORBS[TGx]',
+    info_hash: 'B4CADA42F869B6B142B55FD72CD490E29AEE8615',
+    category: 201,
+    size: 1142665040,
+    seeders: 173,
+    leechers: 1,
+    imdb: 'tt0113247'
+  });
+  assert.equal(precompiled.type, 'movie');
+  assert.equal(precompiled.info_hash, 'b4cada42f869b6b142b55fd72cd490e29aee8615');
+  assert.equal(precompiled.seeders, 173);
+  assert.equal(precompiled.leechers, 1);
+  assert.equal(precompiled.size_bytes, 1142665040);
+  assert.equal(precompiled.imdb_id, 'tt0113247');
+
+  // /q.php item: everything as strings, imdb empty.
+  const search = crawler.mapApibayItem({
+    id: '10073952',
+    name: 'Jamon, jamon (1992) [HDrip][Castellano]',
+    info_hash: '4B122528D4CA166200A3D5210E7DE51DABE9224F',
+    leechers: '14',
+    seeders: '28',
+    size: '1416521728',
+    category: '201',
+    imdb: ''
+  });
+  assert.equal(search.type, 'movie');
+  assert.equal(search.seeders, 28);
+  assert.equal(search.size_bytes, 1416521728);
+  assert.equal(search.imdb_id, null, 'an empty imdb string is not fabricated into an id');
+});
+
+test('TPB: the mirror pool only lists front-ends verified alive (2026-09-28)', () => {
+  assert.equal(ThePirateBayCrawler.DEFAULT_MIRRORS[0], 'https://tpb.party');
+  for (const dead of ['https://pirate-bays.net', 'https://tpb.skynetcloud.site']) {
+    assert.ok(!ThePirateBayCrawler.DEFAULT_MIRRORS.includes(dead), `${dead} is parked or dead`);
+  }
+  for (const alive of ['https://thehiddenbay.com', 'https://piratebay.live', 'https://thepiratebay.zone']) {
+    assert.ok(ThePirateBayCrawler.DEFAULT_MIRRORS.includes(alive), `${alive} is still in the pool`);
+  }
+});
+
 // ============================================================================
 // Nyaa / TorrentGalaxy
 // ============================================================================
