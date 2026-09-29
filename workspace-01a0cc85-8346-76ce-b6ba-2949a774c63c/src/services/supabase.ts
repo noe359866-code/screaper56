@@ -40,6 +40,9 @@ const HEX_40_REGEX = /^[0-9a-f]{40}$/;
 const IMDB_REGEX = /^tt\d{7,10}$/;
 const DIGITS_ONLY_REGEX = /^\d+$/;
 
+/** Every other column is capped by `safeString`; the title had no bound at all. */
+const MAX_TITLE_LENGTH = 500;
+
 export interface RepositoryOptions {
   dryRun?: boolean;
   supabaseUrl?: string;
@@ -147,7 +150,9 @@ export class SupabaseTorrentRepository {
 
     return {
       info_hash: cleanHash,
-      title,
+      // Same bounding discipline as every other string column: a 300+ char
+      // release name must not break a whole batch against a varchar column.
+      title: title.substring(0, MAX_TITLE_LENGTH),
       type: validType,
       imdb_id: validImdbId,
       tmdb_id: SupabaseTorrentRepository.parseNonNegativeInt(raw.tmdb_id),
@@ -209,7 +214,15 @@ export class SupabaseTorrentRepository {
         ? recordScore(previous) >= recordScore(normalized) ? mergeRecords(previous, normalized) : mergeRecords(normalized, previous)
         : normalized);
     }
-    const valid = [...unique.values()].map(record => SupabaseTorrentRepository.pruneUnknown(this.sanitizeRecord(record)!));
+    const valid: SanitizedTorrentRecord[] = [];
+    for (const record of unique.values()) {
+      const resanitized = this.sanitizeRecord(record);
+      // Defensive: merged records are sanitizeRecord outputs, so a null here
+      // can only be a merge bug. Count it as rejected (the same contract as
+      // the first pass) instead of crashing with a TypeError on pruneUnknown.
+      if (!resanitized) { rejected++; continue; }
+      valid.push(SupabaseTorrentRepository.pruneUnknown(resanitized));
+    }
     const failures: string[] = [];
     let persisted = 0;
 

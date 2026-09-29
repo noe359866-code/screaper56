@@ -13,12 +13,15 @@ import { MagnetDlCrawler } from '../src/crawlers/magnetdl.ts';
 import { ThePirateBayCrawler } from '../src/crawlers/thepiratebay.ts';
 import { TorrentGalaxyCrawler } from '../src/crawlers/torrentgalaxy.ts';
 import { LimeTorrentsCrawler } from '../src/crawlers/limetorrent.ts';
+import { GranTorrentCrawler } from '../src/crawlers/grantorrent.ts';
+import { SupabaseTorrentRepository } from '../src/services/supabase.ts';
+import { ResilientHttpClient } from '../src/utils/http.ts';
 import { BlockedPageError } from '../src/crawlers/base.ts';
 import { detectLanguages } from '../src/utils/language.ts';
 import { parseCount } from '../src/crawlers/support.ts';
 import { CloudflareBypassEngine } from '../src/utils/anti-cloudflare.ts';
 import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
-import { mockHttp, MAGNET } from './helpers.js';
+import { mockHttp, MAGNET, HASH } from './helpers.js';
 
 test('EZTV: the first counter after the size column is seeders, the second leechers', () => {
   const crawler = new EztvCrawler();
@@ -111,11 +114,16 @@ test('EliteTorrent: MAX_PAGES reaches page 2 of a /idioma/ filter through its tr
     const listing = n =>
       `<a href="/peliculas/sample-${n}-a/" title="Sample Castellano ${n}">Sample Castellano ${n}</a>`;
     const calls = mockHttp(crawler, url => {
+      // Detail URLs get a real ficha (h1 + magnet) so the crawl yields records.
+      const detail = url.match(/\/peliculas\/sample-(\d+)-a\/$/);
+      if (detail) {
+        return `<h1>Descargar Sample Castellano ${detail[1]} por torrent</h1><a href="${MAGNET}">Magnet</a>`;
+      }
       const pageMatch = url.match(/(\d+)\/?$/);
       return listing(Number(pageMatch?.[1] ?? 1));
     });
 
-    await crawler.crawl(2);
+    const records = await crawler.crawl(2);
 
     assert.ok(
       calls.includes(`${mirror}/idioma/castellano-17-2/`),
@@ -317,4 +325,102 @@ test('EZTV: abbreviated 1.5K seeders are parsed instead of lost', () => {
   crawler.collectHtmlRows(html, 'https://eztv.test', new Set(), sink);
   assert.equal(sink[0].seeders, 1500);
   assert.equal(sink[0].leechers, 120);
+});
+
+// ============================================================================
+// Third round: minor findings
+// ============================================================================
+
+test('Supabase: the title is truncated like every other string column', () => {
+  const repo = new SupabaseTorrentRepository({ dryRun: true });
+  const longTitle = 'X'.repeat(600);
+  const sanitized = repo.sanitizeRecord({
+    info_hash: HASH, title: longTitle, type: 'movie', audio: ['Spanish'], subtitles: []
+  });
+  assert.equal(sanitized.title.length, 500);
+  assert.ok(sanitized.title.startsWith('XXXXX'));
+});
+
+test('HTTP: timeouts and 5xx keep the harvested clearance; a 403 discards it', async () => {
+  const engine = CloudflareBypassEngine.getInstance();
+  const host = 'http-invalidate.test';
+  const remember = () => engine.rememberSession(host, {
+    cookieHeader: 'cf_clearance=still-valid',
+    userAgent: 'CachedAgent',
+    acceptLanguage: 'es-ES',
+    solvedAt: Date.now(),
+    expiresAt: Date.now() + 60_000,
+    hasClearance: true,
+    hostname: host
+  });
+  const axiosLike = (status, code) => Object.assign(
+    new Error(`Request failed (status ${status ?? code})`),
+    { isAxiosError: true, code, ...(status ? { response: { status, headers: {} } } : {}) }
+  );
+
+  // A server error says nothing about the clearance: it must survive.
+  remember();
+  const serverError = new ResilientHttpClient({
+    maxRetries: 0, autoSolveCloudflare: true,
+    adapter: async () => { throw axiosLike(503); }
+  });
+  await assert.rejects(serverError.get(`https://${host}/page`));
+  assert.ok(engine.getCachedSession(`https://${host}/page`), 'a 503 must not discard the clearance');
+
+  // A one-off timeout must not force a 30 s re-solve either.
+  remember();
+  const timeout = new ResilientHttpClient({
+    maxRetries: 0, autoSolveCloudflare: true,
+    adapter: async () => { throw axiosLike(undefined, 'ECONNABORTED'); }
+  });
+  await assert.rejects(timeout.get(`https://${host}/page`));
+  assert.ok(engine.getCachedSession(`https://${host}/page`), 'a timeout must not discard the clearance');
+
+  // An explicit refusal IS evidence the clearance is dead.
+  remember();
+  const refused = new ResilientHttpClient({
+    maxRetries: 0, autoSolveCloudflare: true,
+    adapter: async () => { throw axiosLike(403); }
+  });
+  await assert.rejects(refused.get(`https://${host}/page`));
+  assert.equal(engine.getCachedSession(`https://${host}/page`), null, 'a 403 must discard the clearance');
+});
+
+test('EliteTorrent: catalogues read but zero records is an explicit error, not an empty success', async () => {
+  const mirror = 'https://elite-empty.test';
+  const previousBase = process.env.ELITETORRENT_BASE_URL;
+  process.env.ELITETORRENT_BASE_URL = mirror;
+  clearMirrorCache('elitetorrent');
+  try {
+    const crawler = new EliteTorrentCrawler();
+    mockHttp(crawler, () => '<div class="pagination"><a href="/peliculas/page/2/">2</a></div>');
+
+    await assert.rejects(
+      () => crawler.crawl(1),
+      /no release produced a valid infohash/
+    );
+  } finally {
+    if (previousBase === undefined) delete process.env.ELITETORRENT_BASE_URL;
+    else process.env.ELITETORRENT_BASE_URL = previousBase;
+    clearMirrorCache('elitetorrent');
+  }
+});
+
+test('GranTorrent: detail concurrency follows GRANTORRENT_CONCURRENCY like the other adapters', () => {
+  const previous = process.env.GRANTORRENT_CONCURRENCY;
+  try {
+    process.env.GRANTORRENT_CONCURRENCY = '5';
+    assert.equal(new GranTorrentCrawler().detailConcurrency, 5);
+    // Repo convention (`parseInt(env) || default`): invalid or zero falls back
+    // to the default 2; mapWithConcurrency clamps the final value to >= 1.
+    process.env.GRANTORRENT_CONCURRENCY = 'not-a-number';
+    assert.equal(new GranTorrentCrawler().detailConcurrency, 2, 'invalid values fall back to 2');
+    process.env.GRANTORRENT_CONCURRENCY = '0';
+    assert.equal(new GranTorrentCrawler().detailConcurrency, 2, 'zero falls back to the default');
+    process.env.GRANTORRENT_CONCURRENCY = '1';
+    assert.equal(new GranTorrentCrawler().detailConcurrency, 1);
+  } finally {
+    if (previous === undefined) delete process.env.GRANTORRENT_CONCURRENCY;
+    else process.env.GRANTORRENT_CONCURRENCY = previous;
+  }
 });

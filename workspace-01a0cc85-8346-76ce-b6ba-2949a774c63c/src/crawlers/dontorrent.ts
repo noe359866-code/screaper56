@@ -618,7 +618,9 @@ export class DonTorrentCrawler extends BaseCrawler {
       ...download.hints
     ]).join(' ');
 
-    const defaultType: ContentType = download.episode !== null ? 'series' : detail.type ?? item.type;
+    // `DonTorrentDetail.type` is never null, so the old `detail.type ?? item.type`
+    // fallback was dead code.
+    const defaultType: ContentType = download.episode !== null ? 'series' : detail.type;
     const meta = parseTorrentTitle(context, defaultType);
     const languages = detectLanguages(context, ['dontorrent']);
 

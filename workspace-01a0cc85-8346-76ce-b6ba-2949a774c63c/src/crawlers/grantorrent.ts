@@ -46,6 +46,12 @@ export class GranTorrentCrawler extends BaseCrawler {
   public readonly name = 'grantorrent';
   public baseUrl = process.env.GRANTORRENT_BASE_URL || '';
 
+  /** Detail pages fetched in parallel (`GRANTORRENT_CONCURRENCY`, like every other adapter). */
+  private readonly detailConcurrency = Math.max(
+    1,
+    Number.parseInt(process.env.GRANTORRENT_CONCURRENCY || '2', 10) || 2
+  );
+
   public parseListing(html: string, base: string): string[] {
     const $ = cheerio.load(html);
     const found = new Set<string>();
@@ -154,7 +160,7 @@ export class GranTorrentCrawler extends BaseCrawler {
         break;
       }
     }
-    const results = (await mapWithConcurrency([...candidates], 2, async url => {
+    const results = (await mapWithConcurrency([...candidates], this.detailConcurrency, async url => {
       if (this.deadline.expired) return [] as TorrentRecord[];
       try {
         const html = await this.fetchHtml(url, { headers: { Referer: `${base}/` } }, { rejectBlocked: true });

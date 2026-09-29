@@ -351,12 +351,6 @@ export class ResilientHttpClient {
         lastError = err;
         attempt++;
 
-        // A cached clearance the server just rejected is dead: forget it so the
-        // next request to this host does not replay the same stale cookie.
-        if (session && session !== bypass) {
-          clearanceEngine.invalidateSession(fullUrl);
-        }
-
         const isAxiosError = axios.isAxiosError(err);
         const status = isAxiosError ? err.response?.status : undefined;
         const responseData = isAxiosError ? err.response?.data : undefined;
@@ -366,6 +360,15 @@ export class ResilientHttpClient {
           err instanceof CloudflareChallengeError ||
           (isAxiosError && err.response?.headers?.['cf-mitigated'] === 'challenge') ||
           this.isCloudflareChallenge(responseData);
+
+        // A cached clearance the server just REFUSED is dead: forget it so the
+        // next request to this host does not replay the same stale cookie.
+        // Timeouts, 5xx and network errors say nothing about the clearance,
+        // which used to be discarded on ANY failure and forced a needless
+        // 30 s headless re-solve on the next request.
+        if (session && session !== bypass && (isCloudflare || status === 401 || status === 403)) {
+          clearanceEngine.invalidateSession(fullUrl);
+        }
 
         // Cancellation and permanent transport failures cannot recover through
         // retries. In particular ENOTFOUND is not the transient EAI_AGAIN.

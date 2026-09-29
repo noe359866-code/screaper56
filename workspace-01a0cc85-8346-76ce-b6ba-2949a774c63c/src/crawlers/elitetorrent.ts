@@ -280,6 +280,15 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     const deduplicated = this.deduplicateRecords(results);
     this.logRunSummary(deduplicated);
+
+    // Same contract as every other adapter: reading catalogues but extracting
+    // zero records is a layout/protection problem, not a successful empty run.
+    if (successfulListings > 0 && !deduplicated.length) {
+      throw new Error(
+        `[elitetorrent] ${successfulListings} catalogue pages read on ${this.baseUrl} but no release produced ` +
+        'a valid infohash. Check the ficha layout and whether downloads are protected.'
+      );
+    }
     return deduplicated;
   }
 

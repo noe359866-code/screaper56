@@ -343,3 +343,58 @@ precedencia y el parseo del texto libre se acota a un máximo plausible
 Cuando ningún selector de clase/color matchea, las dos últimas celdas
 puramente numéricas de la fila son los contadores (solo cuando faltan AMBOS,
 para no sobreescribir un valor ya fiable).
+
+---
+
+# Corrección de hallazgos menores — Cuarta ronda de la auditoría
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests: `tests/audit-fixes.test.js` ampliado a 22 casos; suite completa 447/447, `tsc` limpio.
+
+## Fix 16 — `src/services/supabase.ts`: el título era el único campo sin acotar
+
+Todos los campos de texto se recortaban (10–100 chars) menos `title`: un nombre
+de entrega de 300+ caracteres podía romper un lote entero contra una columna
+`varchar`. Ahora se trunca a 500. Además, el re-saneado tras `mergeRecords`
+usaba una aserción no nula (`sanitizeRecord(record)!`): un `null` ahí habría
+sido un `TypeError`; ahora se cuenta como rechazado bajo el mismo contrato.
+
+Nota: el contrato "un registro rechazado lanza `BatchPersistenceError`" está
+explícitamente probado en `tests/services.test.js` (decisión de la auditoría
+anterior: no se descartan silenciosamente registros inválidos junto a válidos),
+así que se conserva tal cual.
+
+## Fix 17 — `src/utils/http.ts`: la cf_clearance ya no se tira por cualquier fallo
+
+Cualquier error (incluido un timeout puntual) llamaba `invalidateSession` y
+descartaba una clearance posiblemente vigente, forzando un re-solve de 30 s con
+el navegador. Ahora solo se invalida con evidencia de rechazo: 401, 403 o
+indicadores de challenge Cloudflare. Timeouts, 5xx y errores de red la conservan.
+
+## Fix 18 — `src/crawlers/grantorrent.ts`: concurrencia configurable
+
+La concurrencia de fichas estaba clavada a `2`; ahora lee
+`GRANTORRENT_CONCURRENCY` (default 2, convención `parseInt || default` del resto
+de adaptadores).
+
+## Fix 19 — `src/crawlers/dontorrent.ts`: código muerto
+
+`detail.type ?? item.type` era inalcanzable (`DonTorrentDetail.type` nunca es
+nulo); se simplificó a `detail.type`.
+
+## Fix 20 — `src/crawlers/elitetorrent.ts`: catálogos leídos pero 0 registros
+
+Devuelve ahora el mismo error accionable que el resto de adaptadores en vez de
+un `[]` silencioso que solo el orquestador convertía en genérico "Zero extracted
+records".
+
+## Descartados tras revisión (son decisiones probadas, no bugs)
+
+- `upsertBatch` lanza con registros rechazados: contrato probado dos veces en
+  `tests/services.test.js`.
+- `priority` incluye `rutracker`: aserto explícito en `tests/new-crawlers.test.js`;
+  sin credenciales fallará a propósito con un mensaje accionable (el workflow ya
+  lo documenta).
+- `parseCount` abreviado y el relanzamiento post-`shutdown()` se corrigieron en
+  las rondas anteriores.
