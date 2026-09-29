@@ -49,16 +49,25 @@ export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
   public baseUrl = process.env.LEECH1337X_BASE_URL || 'https://1337x.la';
 
+  /**
+   * Known 1337x domains; extend with LEECH1337X_BASE_URL / LEECH1337X_MIRRORS.
+   * Live check 2026-09-28: five domains served real listings that day —
+   * 1337x.la (verified end to end: sort-search pagination + magnet fichas),
+   * 1337xx.to, 1337x.st and x1337x.ws (classic template) and 1337xxx.to.
+   * `1337x.to` is the canonical site but answered "Bad category." for its
+   * popular routes that day (kept as a fallback; its probe decides).
+   * `1377x.to` is officially listed but unreachable from this network.
+   * OUT: `www.1337x.tw` and `1337xto.to` are domain-hub landing pages (their
+   * category links 404 or point at other domains), and `x1337x.eu`,
+   * `x1337x.se`, `1337x.is`, `1337x.gd` are stale proxies with no evidence.
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://1337x.la',
-    'https://www.1337x.tw',
-    'https://1337x.to',
+    'https://1337xx.to',
     'https://1337x.st',
     'https://x1337x.ws',
-    'https://x1337x.eu',
-    'https://x1337x.se',
-    'https://1337x.is',
-    'https://1337x.gd',
+    'https://1337xxx.to',
+    'https://1337x.to',
     'https://1377x.to'
   ];
 

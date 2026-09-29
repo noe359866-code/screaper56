@@ -1007,3 +1007,119 @@ test('YTS: the live pool leads with the domain that serves and keeps the canonic
     );
   }
 });
+
+const LEET_HASH = 'ce7bc668be8b36c0ec029426c565ac014b45a6e4';
+const LEET_MAGNET = 'magnet:?xt=urn:btih:CE7BC668BE8B36C0EC029426C565AC014B45A6E4' +
+  '&dn=Money.Heist.S05.SPANISH.1080p.NF.WEBRip.DDP5.1.Atmos.x264-AGLET' +
+  '&tr=http%3A%2F%2Ftracker.trackerfix.com%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2880%2Fannounce';
+
+/** Real ficha anatomy of 1337x.la on 2026-09-28 (magnet + details + IMDb, NO .torrent). */
+const LEET_DETAIL = `<div class="box-info-heading"><h1>Money.Heist.S05.SPANISH.1080p.NF.WEBRip.DDP5.1.Atmos.x264-AGLET</h1></div>
+  <div class="torrent-category-detail"><ul>
+    <li><strong>Category:</strong> <span>TV</span></li>
+    <li><strong>Type:</strong> <span>HD</span></li>
+    <li><strong>Language:</strong> <span>English</span></li>
+    <li><strong>Total size:</strong> <span>8.8 GB</span></li>
+    <li><strong>Downloads:</strong> <span>6603</span></li>
+    <li><strong>Seeders:</strong> <span>824</span></li>
+    <li><strong>Leechers:</strong> <span>283</span></li>
+    <li><strong>Infohash:</strong> <span>CE7BC668BE8B36C0EC029426C565AC014B45A6E4</span></li>
+  </ul></div>
+  <a href="${LEET_MAGNET}">Magnet Download</a>
+  <a href="https://1337x.la/torrent/4972701/Money-Heist-S05-SPANISH-1080p-NF-WEBRip-DDP5-1-Atmos-x264-AGLET/#">Torrent Download</a>
+  <a href="http://torrage.info/torrent.php?h=CE7BC668BE8B36C0EC029426C565AC014B45A6E4">TORRAGE MIRROR</a>
+  <a href="https://www.imdb.com/title/tt6468322/">Infolink</a>`;
+
+test('1337x: the live 2026 ficha (magnet, details map, IMDb) builds a series record and stores no fake .torrent', async () => {
+  const previousBase = process.env.LEECH1337X_BASE_URL;
+  const mirror = 'https://leet-live.test';
+  process.env.LEECH1337X_BASE_URL = mirror;
+  clearMirrorCache('leech1337x');
+  try {
+    const crawler = new Leech1337xCrawler();
+    // Real row anatomy of /sort-search/spanish/seeders/desc/1/ (2026-09-28).
+    const listing = `<table class="table-list"><tbody>
+      <tr><td class="coll-1 name"><a href="/torrent/4972701/Money-Heist-S05-SPANISH-1080p-NF-WEBRip-DDP5-1-Atmos-x264-AGLET/">Money.Heist.S05.SPANISH.1080p.NF.WEBRip.DDP5.1.Atmos.x264-AGLET</a></td>
+      <td class="coll-2 seeds">824</td><td class="coll-3 leeches">283</td>
+      <td class="coll-date">Sep. 04th '21</td>
+      <td class="coll-4 size mob-up-size">8.8 GB<span>6603</span></td>
+      <td class="coll-5"><a href="/user/TheMorozko/">TheMorozko</a></td></tr></tbody></table>`;
+    const calls = mockHttp(crawler, url => {
+      if (url === `${mirror}/` || url.includes('sort-search/spanish')) return listing;
+      if (url.includes('/torrent/')) return LEET_DETAIL;
+      // The other configured routes answer with a valid but empty catalogue.
+      return '<table class="table-list"><tbody></tbody></table>';
+    });
+
+    const [record] = await crawler.crawl(1);
+
+    assert.equal(record.type, 'series', 'Category TV maps onto series');
+    assert.equal(record.info_hash, LEET_HASH);
+    assert.equal(record.seeders, 824);
+    assert.equal(record.leechers, 283);
+    assert.ok(record.size_bytes > 8 * 1024 ** 3 && record.size_bytes < 9 * 1024 ** 3, 'size reads the listing cell, not the download count');
+    assert.equal(record.torrent_file_url, null, 'the "#" download button and third-party mirrors are not a .torrent');
+    assert.equal(record.source_url, `${mirror}/torrent/4972701/Money-Heist-S05-SPANISH-1080p-NF-WEBRip-DDP5-1-Atmos-x264-AGLET/`);
+    assert.equal(record.imdb_id, 'tt6468322');
+    assert.match(record.magnet_url, /trackerfix\.com/, 'the published magnet keeps its trackers');
+    assert.ok(record.audio.includes('Spanish'), 'the SPANISH title evidence wins over the English details field');
+    assert.ok(calls.includes(`${mirror}/sort-search/spanish/seeders/desc/1/`));
+  } finally {
+    if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
+    else process.env.LEECH1337X_BASE_URL = previousBase;
+    clearMirrorCache('leech1337x');
+  }
+});
+
+test('1337x: the classic template of 1337x.st / x1337x.ws concatenates size and downloads — only the size is read', async () => {
+  const previousBase = process.env.LEECH1337X_BASE_URL;
+  const mirror = 'https://leet-classic.test';
+  process.env.LEECH1337X_BASE_URL = mirror;
+  clearMirrorCache('leech1337x');
+  try {
+    const crawler = new Leech1337xCrawler();
+    // Real row of 1337x.st (2026-09-28): the size cell prints "1.5 GB2218"
+    // (size + download count glued) and some titles carry a stray badge
+    // number OUTSIDE the anchor.
+    const listing = `<table class="table-list"><tbody>
+      <tr><td class="coll-1 name"><a href="/torrent/6728476/Runner-2026-1080p-WEB-DL-HEVC-x265-5-1-BONE/">Runner 2026 1080p WEB-DL HEVC x265 5.1 BONE</a><span class="magnet-extra">5</span></td>
+      <td class="coll-2 seeds">2218</td><td class="coll-3 leeches">565</td>
+      <td class="coll-date">8pm Sep. 27th</td>
+      <td class="coll-4 size mob-up-size">1.5 GB2218</td>
+      <td class="coll-5"><a href="/user/bone111/">bone111</a></td></tr></tbody></table>`;
+    mockHttp(crawler, url => {
+      if (url === `${mirror}/` || url.includes('sort-search/spanish')) return listing;
+      if (url.includes('/torrent/')) {
+        return `<h1>Runner 2026 1080p WEB-DL HEVC x265 5.1 BONE</h1><a href="magnet:?xt=urn:btih:${LEET_HASH}">Magnet Download</a>`;
+      }
+      return '<table class="table-list"><tbody></tbody></table>';
+    });
+
+    const [record] = await crawler.crawl(1);
+
+    assert.equal(record.title, 'Runner 2026 1080p WEB-DL HEVC x265 5.1 BONE', 'the badge outside the anchor never joins the title');
+    assert.equal(record.size_bytes, 1610612736, '1.5 GB is read even with the download count glued on');
+    assert.equal(record.seeders, 2218);
+    assert.equal(record.leechers, 565);
+  } finally {
+    if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
+    else process.env.LEECH1337X_BASE_URL = previousBase;
+    clearMirrorCache('leech1337x');
+  }
+});
+
+test('1337x: the live pool keeps the five domains that served real listings on 2026-09-28', () => {
+  assert.equal(Leech1337xCrawler.DEFAULT_MIRRORS[0], 'https://1337x.la');
+  for (const verified of ['1337xx.to', '1337x.st', 'x1337x.ws', '1337xxx.to', '1337x.to', '1377x.to']) {
+    assert.ok(
+      Leech1337xCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes(verified)),
+      `${verified} stays in the pool`
+    );
+  }
+  for (const dead of ['www.1337x.tw', '1337xto.to', 'x1337x.eu', 'x1337x.se', '1337x.is', '1337x.gd']) {
+    assert.ok(
+      !Leech1337xCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes(dead)),
+      `${dead} left the pool`
+    );
+  }
+});

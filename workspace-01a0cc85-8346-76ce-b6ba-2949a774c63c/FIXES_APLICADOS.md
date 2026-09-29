@@ -813,3 +813,64 @@ fase HTML.
 - Higiene del pool: `yts.gg` primero, sin los 5 dominios muertos/rotos.
 - El test de "URLs relativas" ahora fija su propio dominio (antes dependía
   implícitamente del orden del pool).
+
+---
+
+# Profundización: 1337x (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de leech1337x (pool de 10 dominios,
+rutas sort-search + populares, fichas, paginación). Cadenas completas
+verificadas contra las páginas reales de 2026.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `1337x.la` | 🟢 **Cadena completa verificada**: `/sort-search/spanish/seeders/desc/1/` con filas frescas, paginación publicada, fichas con magnet |
+| `1337xx.to` | 🟢 Listado real (mismos ids de contenido que .la, plantilla nueva) |
+| `1337x.st` | 🟢 Listado real (plantilla clásica) |
+| `x1337x.ws` | 🟢 Listado real (plantilla clásica) |
+| `1337xxx.to` | 🟢 Listado real (plantilla nueva) |
+| `1337x.to` | 🟠 Canónico vivo, pero `/popular-movies` respondió "Bad category." ese día (queda como fallback; el probe decide) |
+| `1377x.to` | ⚪ Oficial según el hub; inalcanzable desde esta red (queda; el probe lo salta) |
+| `www.1337x.tw` / `1337xto.to` | 🔴 Son hubs/puertas de dominios: categorías 404 o apuntan a OTROS dominios — fuera |
+| `x1337x.eu`, `x1337x.se`, `1337x.is`, `1337x.gd` | 🔴 Proxies viejos sin evidencia — fuera |
+
+La propia página del hub (`1337x.la/about`) publica la lista de dominios
+oficiales actual: `1377x.to, 1337x.tw, 1337xto.to, 1337xx.to, 1337xxx.to,
+1337x.is, 13377x.tw` — el pool nuevo adopta los que sirven listados reales.
+
+## Cadena verificada contra el markup real (sin cambios de código)
+
+- Probe "first accepted wins": la plantilla nueva convirtió la portada en un
+  hub SIN tabla de torrents, pero el segundo probe (`/popular-movies`) sí es
+  un listado real → el mirror se acepta igual. El diseño de dos probes ya lo
+  cubría.
+- `sort-search` sigue vivo con paginación publicada exactamente del formato
+  `/sort-search/<term>/seeders/desc/2/` que `sameListingRoute` espera.
+- **Fichas**: magnet público para anónimos con dn + 8 trackers reales, mapa
+  de detalles (Category/Language/Total size/Seeders/Leechers), Infohash
+  impreso (fallback por hash disponible) y enlace IMDb. El botón "Torrent
+  Download" es un ancla `#` y los espejos (torrage/btcache) son
+  third-party → `torrent_file_url: null` correctamente (nada inventado).
+- La variante clásica de `.st`/`.ws` pega el contador de descargas a la
+  celda de tamaño (`"1.5 GB2218"`) y suelta badges numéricos fuera del
+  anchor: el parser de tamaño (por regex) y el de título (solo texto del
+  anchor) ya lo manejan — fijado con tests.
+
+## Cambios
+
+- Pool depurado con evidencia: `[1337x.la, 1337xx.to, 1337x.st, x1337x.ws,
+  1337xxx.to, 1337x.to, 1377x.to]` (7 dominios, 5 verificados con listado
+  real). Fuera los 2 hubs y los 4 proxies viejos sin evidencia.
+
+## Tests nuevos (suite 472/472)
+
+- Ficha real 2026 (magnet con trackers + details map + IMDb + botón `#`) →
+  record `series`, S/L 824/283, tamaño desde el listing (no el contador de
+  descargas), `torrent_file_url` null, IMDb tt6468322, audio Spanish desde el
+  título aunque el campo Language del sitio diga English.
+- Fila clásica de `.st` → título limpio (badge fuera del anchor), 1.5 GB con
+  el contador pegado, S/L 2218/565.
+- Higiene del pool: los 5 verificados quedan, los 6 muertos/hub fuera.
