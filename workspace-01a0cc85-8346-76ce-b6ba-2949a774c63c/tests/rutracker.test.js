@@ -22,6 +22,7 @@ import {
   isSessionCookieJar,
   languageHintsFromBody,
   looksLoggedIn,
+  looksLikeRutrackerLoginPage,
   parseCookieJar,
   typeFromForumTitle
 } from '../src/crawlers/rutracker.ts';
@@ -654,6 +655,112 @@ test('Login refused: the adapter fails with advice instead of crawling anonymous
     };
 
     await assert.rejects(crawler.crawl(1), /Login was refused/);
+  });
+  clearMirrorCache('rutracker');
+});
+
+/** The real login page the tracker answers with once bb_session is dead. */
+const LOGIN_FORM_PAGE = `<html><head><title>rutracker.org</title></head><body>
+  <a href="profile.php?mode=register">Регистрация</a> · <a href="login.php">Вход</a>
+  <form action="login.php?redirect=tracker.php%3Fnm%3Dcastellano" method="post">
+    Имя: <input type="text" name="login_username">
+    Пароль: <input type="password" name="login_password">
+    <input type="submit" name="login" value="Вход">
+  </form>
+</body></html>`;
+
+test('Login form: the expired-session redirect is detected structurally', () => {
+  assert.equal(looksLikeRutrackerLoginPage(LOGIN_FORM_PAGE), true);
+  // A logged-in page (logout control present) is never a login page.
+  assert.equal(looksLikeRutrackerLoginPage(LOGGED_IN_INDEX), false);
+  // Listings, error pages and free text never carry both structural markers.
+  assert.equal(looksLikeRutrackerLoginPage(listing()), false);
+  assert.equal(looksLikeRutrackerLoginPage('<html>Неверный пароль</html>'), false);
+  assert.equal(looksLikeRutrackerLoginPage(''), false);
+});
+
+test('An expired session mid-crawl stops the run at the first login-form answer', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({ RUTRACKER_COOKIE_JSON: COOKIE_EXPORT, RUTRACKER_SEARCH: 'castellano', RUTRACKER_FORUMS: '', RUTRACKER_ROUTES: '' }, async () => {
+    const crawler = new RutrackerCrawler();
+    const calls = mockHttp(
+      crawler,
+      url => (url.includes('index.php') ? LOGGED_IN_INDEX : LOGIN_FORM_PAGE),
+      url => Buffer.from(url.includes('index.php') ? LOGGED_IN_INDEX : LOGIN_FORM_PAGE, 'utf-8')
+    );
+
+    const failure = crawler.crawl(1);
+    await assert.rejects(failure, RutrackerAuthError);
+    await assert.rejects(failure, /bb_session is no longer valid/);
+
+    // The run stopped at the first listing: no detail budget was spent on
+    // pages that could never publish a magnet.
+    assert.equal(calls.filter(url => url.includes('tracker.php')).length, 1);
+    assert.equal(calls.filter(url => url.includes('viewtopic.php')).length, 0);
+  });
+  clearMirrorCache('rutracker');
+});
+
+test('The dl.php metainfo download also refuses a login-form answer', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({ RUTRACKER_COOKIE_JSON: COOKIE_EXPORT, RUTRACKER_SEARCH: 'castellano', RUTRACKER_FORUMS: '', RUTRACKER_ROUTES: '' }, async () => {
+    const crawler = new RutrackerCrawler();
+    mockHttp(
+      crawler,
+      url => (url.includes('index.php') ? LOGGED_IN_INDEX : listing()),
+      url => {
+        if (url.includes('index.php')) return Buffer.from(LOGGED_IN_INDEX, 'utf-8');
+        if (url.includes('dl.php')) return Buffer.from(LOGIN_FORM_PAGE, 'utf-8');
+        if (url.includes('viewtopic.php')) return Buffer.from(topic({ magnet: '' }), 'utf-8');
+        return Buffer.from(listing(), 'utf-8');
+      }
+    );
+
+    await assert.rejects(crawler.crawl(1), /metainfo download .* login form/);
+  });
+  clearMirrorCache('rutracker');
+});
+
+test('An expired configured session still recovers through username/password login', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({
+    RUTRACKER_COOKIE_JSON: COOKIE_EXPORT,
+    RUTRACKER_USERNAME: 'test-user',
+    RUTRACKER_PASSWORD: 'test-pass',
+    RUTRACKER_SEARCH: 'castellano',
+    RUTRACKER_FORUMS: '',
+    RUTRACKER_ROUTES: ''
+  }, async () => {
+    const crawler = new RutrackerCrawler();
+    const requests = [];
+    let loggedIn = false;
+    crawler.httpClient = {
+      get: async () => ({ status: 200, data: LOGGED_IN_INDEX }),
+      getBuffer: async url => Buffer.from(
+        url.includes('index.php') ? (loggedIn ? LOGGED_IN_INDEX : LOGIN_FORM_PAGE)
+          : url.includes('viewtopic.php') ? topic()
+            : listing(),
+        'utf-8'
+      ),
+      request: async options => {
+        requests.push(options);
+        if (options.method === 'POST') {
+          loggedIn = true;
+          return {
+            status: 302,
+            headers: { 'set-cookie': ['bb_session=fresh-session; path=/forum/; HttpOnly'] },
+            data: ''
+          };
+        }
+        return { status: 200, headers: {}, data: '<form action="login.php"></form>' };
+      }
+    };
+
+    const records = await crawler.crawl(1);
+    assert.ok(requests.some(request => request.method === 'POST'), 'the dead cookie jar must trigger the credential login');
+    assert.match(crawler.cookieHeader(), /bb_session=fresh-session/);
+    assert.equal(records.length, 1);
+    assert.equal(records[0].info_hash, HASH);
   });
   clearMirrorCache('rutracker');
 });

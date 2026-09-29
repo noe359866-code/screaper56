@@ -81,6 +81,90 @@ test('MagnetDL: listing rows, search path and /single/ magnet', () => {
   assert.ok(detail.magnet.toLowerCase().includes(HASH));
 });
 
+test('MagnetDL: the live 2026 .app row carries a real magnet and no detail fetch is needed', () => {
+  const crawler = new MagnetDlCrawler();
+  // Real row markup on magnetdl.app (2026-09): icon -> magnet WITH trackers,
+  // title -> /single/:id on the same host, then age | category | size | S | L.
+  const magnet = 'magnet:?xt=urn:btih:9C44B972403C6BE7B2D5FEB25288698ECFEADC58' +
+    '&dn=Jawaan+%282018%29+HDRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce' +
+    '&tr=http%3A%2F%2Ft.nyaatracker.com%3A80%2Fannounce';
+  const listing = `<table class="download"><tbody>
+    <tr><td class="m"><a href="${magnet}" title="Direct Download"><img src="/images/m.gif" alt="Magnet Link"></a></td>
+    <td class="n"><a href="https://magnetdl.app/single/2904123" title="Jawaan 2018 HDRip Hindi Dubbed 720p 750MB">Jawaan (2018) HDRip Hindi Dubbed 720p 750MB</a></td>
+    <td>1 Years+</td><td class="t2">movies</td><td>743.83 MB</td><td class="s">6</td><td class="l">4</td></tr></tbody></table>`;
+
+  const rows = crawler.parseListing(listing, 'https://magnetdl.app/download/movies/', 'movie');
+  assert.equal(rows.length, 1);
+  const [row] = rows;
+  assert.equal(row.detailUrl, 'https://magnetdl.app/single/2904123');
+  assert.ok(row.magnet, 'the row magnet is harvested without visiting the ficha');
+  assert.match(row.magnet, /tracker\.opentrackr\.org/, 'row trackers survive');
+  assert.equal(row.seeders, 6);
+  assert.equal(row.leechers, 4);
+  assert.equal(row.sizeStr, '743.83 MB');
+});
+
+test('MagnetDL: the degraded .co ficha resolves its magnet from the printed Info Hash table', () => {
+  const crawler = new MagnetDlCrawler();
+  // Real ficha markup on magnetdl.co (2026-09): NO magnet link at all (the
+  // download button links to an HTML page on the .app sibling) — the only
+  // source is the "Info Hash:</td><td>…</td>" cell.
+  const detail = crawler.parseDetail(
+    `<h1>Jawaan (2018) HDRip Hindi Dubbed 720p 750MB</h1>
+     <table><tr><td>Download:</td><td><a href="https://magnetdl.app/single/2904123" title="Download: Jawaan">[Download]</a></td></tr>
+     <tr><td>Info Hash:</td><td>9C44B972403C6BE7B2D5FEB25288698ECFEADC58</td></tr>
+     <tr><td>Seeders:</td><td>6</td></tr></table>`,
+    'Jawaan (2018) HDRip Hindi Dubbed 720p 750MB',
+    'https://magnetdl.co/single/2904123'
+  );
+  assert.match(
+    detail.magnet ?? '',
+    /urn:btih:9c44b972403c6be7b2d5feb25288698ecfeadc58/,
+    'the printed hash becomes a magnet even across </td><td> markup'
+  );
+  assert.equal(detail.torrentFileUrl, null, 'a sibling-domain HTML link is never stored as metainfo');
+  assert.equal(detail.title, 'Jawaan (2018) HDRip Hindi Dubbed 720p 750MB');
+});
+
+test('MagnetDL: the live pool starts at the variant with row magnets; language searches are off by default', async () => {
+  // Live check 2026-09-28: .app publishes row magnets; .co is degraded;
+  // www.magnetdl.com and magnetdl.org were Cloudflare 522 (origin down).
+  assert.equal(MagnetDlCrawler.DEFAULT_MIRRORS[0], 'https://magnetdl.app');
+  assert.ok(MagnetDlCrawler.DEFAULT_MIRRORS.includes('https://magnetdl.co'));
+
+  const previousBase = process.env.MAGNETDL_BASE_URL;
+  const base = 'https://magnetdl.test';
+  process.env.MAGNETDL_BASE_URL = base;
+  clearMirrorCache('magnetdl');
+  const magnet = `magnet:?xt=urn:btih:${HASH}&dn=Widows+2018`;
+  try {
+    const crawler = new MagnetDlCrawler();
+    const calls = mockHttp(crawler, url => {
+      if (url === `${base}/download/movies/`) {
+        return `<table class="download"><tbody>
+          <tr><td class="m"><a href="${magnet}"><img></a></td>
+          <td class="n"><a href="/single/274364" title="Widows 2018 1080p Castellano">Widows 2018 1080p Castellano</a></td>
+          <td>6 Years+</td><td class="t2">movies</td><td>3.36 GB</td><td class="s">4</td><td class="l">1</td></tr></tbody></table>`;
+      }
+      if (url === `${base}/download/tv/`) return '<table class="download"><tbody></tbody></table>';
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const records = await crawler.crawl(1);
+    assert.equal(records.length, 1);
+    assert.equal(records[0].seeders, 4);
+    assert.ok(calls.includes(`${base}/download/movies/`));
+    assert.ok(
+      !calls.some(url => /^https:\/\/magnetdl\.test\/[a-z]\//.test(url)),
+      'no letter-search routes are fired when MAGNETDL_SEARCH is unset'
+    );
+  } finally {
+    if (previousBase === undefined) delete process.env.MAGNETDL_BASE_URL;
+    else process.env.MAGNETDL_BASE_URL = previousBase;
+    clearMirrorCache('magnetdl');
+  }
+});
+
 test('t0rrenta: sitemap/listing details resolve real metainfo and TMDB metadata', async () => {
   const previousBase = process.env.T0RRENTA_BASE_URL;
   const base = 'https://t0rrenta.test';
@@ -178,6 +262,101 @@ test('EstrenosTorrent: movie/series detail links produce records from same-site 
   } finally {
     if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
     else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    clearMirrorCache('estrenostorrent');
+  }
+});
+
+test('EstrenosTorrent: a long single-page catalogue is processed in full, batch by batch', async () => {
+  const previousBase = process.env.ESTRENOSTORRENT_BASE_URL;
+  const base = 'https://estrenostorrent.test';
+  process.env.ESTRENOSTORRENT_BASE_URL = base;
+  clearMirrorCache('estrenostorrent');
+  // Mirrors the real site: /peliculas/ is one long response (~100 items) with
+  // no pager, so maxPages cannot bound the work and nothing may be truncated.
+  const TOTAL = 75;
+  const metainfos = new Map(Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return [n, torrent(`Pelicula ${n} Castellano 1080p`)];
+  }));
+  try {
+    const crawler = new EstrenosTorrentCrawler();
+    const listing = Array.from({ length: TOTAL }, (_, i) => {
+      const n = i + 1;
+      return `<a href="/online/pelicula-${n}"><img alt="Pelicula ${n}"><strong>Pelicula ${n}</strong></a>`;
+    }).join('');
+    const calls = mockHttp(crawler, url => {
+      if (url === `${base}/peliculas/`) return `<div id="catalogo">${listing}</div>`;
+      if (url === `${base}/` || url === `${base}/series/`) return '<h1>Catálogo</h1>';
+      const detail = url.match(/\/online\/pelicula-(\d+)$/);
+      if (detail) {
+        const n = Number(detail[1]);
+        return `<h1>Pelicula ${n}</h1><div>Tipo Película</div>` +
+          `<a href="/assets/u/t/temp/${n}/${n}.torrent?token=fixture">Descargar torrent</a>`;
+      }
+      const file = url.match(/\/assets\/u\/t\/temp\/(\d+)\/\1\.torrent/);
+      if (file) return metainfos.get(Number(file[1])).buffer;
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const records = await crawler.crawl(1);
+    assert.equal(records.length, TOTAL, 'every item of the long listing must produce a record');
+    assert.equal(new Set(records.map(r => r.title)).size, TOTAL, 'each record keeps its own release');
+    const detailsFetched = calls.filter(url => url.includes('/online/pelicula-')).length;
+    assert.equal(detailsFetched, TOTAL, 'all 75 detail pages were visited, not just the first maxPages*30');
+  } finally {
+    if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
+    else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    clearMirrorCache('estrenostorrent');
+  }
+});
+
+test('EstrenosTorrent: ESTRENOSTORRENT_MAX_DETAILS caps the batches; an invalid value means no cap', async () => {
+  const previousBase = process.env.ESTRENOSTORRENT_BASE_URL;
+  const previousCap = process.env.ESTRENOSTORRENT_MAX_DETAILS;
+  const base = 'https://estrenostorrent.test';
+  process.env.ESTRENOSTORRENT_BASE_URL = base;
+  const TOTAL = 45;
+  const listing = Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return `<a href="/online/pelicula-${n}"><img alt="Pelicula ${n}"><strong>Pelicula ${n}</strong></a>`;
+  }).join('');
+  const metainfos = new Map(Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return [n, torrent(`Pelicula ${n} Castellano 1080p`)];
+  }));
+  try {
+    const buildCrawler = () => {
+      const crawler = new EstrenosTorrentCrawler();
+      mockHttp(crawler, url => {
+        if (url === `${base}/peliculas/`) return `<div id="catalogo">${listing}</div>`;
+        if (url === `${base}/` || url === `${base}/series/`) return '<h1>Catálogo</h1>';
+        const detail = url.match(/\/online\/pelicula-(\d+)$/);
+        if (detail) {
+          const n = Number(detail[1]);
+          return `<h1>Pelicula ${n}</h1><div>Tipo Película</div>` +
+            `<a href="/assets/u/t/temp/${n}/${n}.torrent?token=fixture">Descargar torrent</a>`;
+        }
+        const file = url.match(/\/assets\/u\/t\/temp\/(\d+)\/\1\.torrent/);
+        if (file) return metainfos.get(Number(file[1])).buffer;
+        throw new Error(`Unexpected URL: ${url}`);
+      });
+      return crawler;
+    };
+
+    process.env.ESTRENOSTORRENT_MAX_DETAILS = '10';
+    clearMirrorCache('estrenostorrent');
+    const capped = await buildCrawler().crawl(1);
+    assert.equal(capped.length, 10, 'the cap limits how many detail pages are processed');
+
+    process.env.ESTRENOSTORRENT_MAX_DETAILS = 'not-a-number';
+    clearMirrorCache('estrenostorrent');
+    const uncapped = await buildCrawler().crawl(1);
+    assert.equal(uncapped.length, TOTAL, 'an invalid cap means every discovered page is processed');
+  } finally {
+    if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
+    else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    if (previousCap === undefined) delete process.env.ESTRENOSTORRENT_MAX_DETAILS;
+    else process.env.ESTRENOSTORRENT_MAX_DETAILS = previousCap;
     clearMirrorCache('estrenostorrent');
   }
 });

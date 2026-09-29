@@ -92,6 +92,16 @@ export function parseCount(value: unknown): number | null {
   }
   if (typeof value === 'string') {
     const trimmed = value.trim();
+    // "1.5K" / "2,3M" abbreviated swarm counters ("1.5K" used to become null,
+    // silently dropping the seeders of every mirror that rounds them).
+    const abbreviated = trimmed.match(/^(\d{1,4})(?:[.,](\d{1,2}))?\s*([kKmM])$/);
+    if (abbreviated) {
+      const whole = Number.parseInt(abbreviated[1], 10);
+      const fraction = abbreviated[2] ? Number(abbreviated[2]) / 10 ** abbreviated[2].length : 0;
+      const multiplier = abbreviated[3].toLowerCase() === 'k' ? 1_000 : 1_000_000;
+      const parsed = Math.floor((whole + fraction) * multiplier);
+      return Number.isSafeInteger(parsed) ? parsed : null;
+    }
     // "1,234" / "1.234" / "1 234" are thousands separators, never decimals.
     const normalized = /^\d{1,3}(?:[.,\s\u00a0]\d{3})+$/.test(trimmed)
       ? trimmed.replace(/[.,\s\u00a0]/g, '')

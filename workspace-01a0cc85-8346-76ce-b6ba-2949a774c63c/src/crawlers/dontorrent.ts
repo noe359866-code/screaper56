@@ -5,7 +5,7 @@ import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { extractBrandMirrors, htmlMarkerValidator, MirrorProbe } from './mirrors.js';
+import { extractBrandMirrors, htmlMarkerValidator, looksLikeBlockedPage, MirrorProbe } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
@@ -124,7 +124,12 @@ function getCdnHostAllowList(): RegExp[] {
 export function dontorrentDownloadUrl(value: string | undefined | null, base: string): string | null {
   if (!value) return null;
   const candidate = value.trim();
-  if (/^magnet:\?/i.test(candidate)) return candidate;
+  if (/^magnet:\?/i.test(candidate)) {
+    // Only a magnet carrying a valid BTIH reaches the downloader: an
+    // unparseable one used to fall through to fetchTorrentMetainfo, i.e. an
+    // HTTP GET against a `magnet:` URL that could never succeed.
+    return parseMagnetUri(candidate)?.infoHash ? candidate : null;
+  }
 
   const resolved = absoluteHttpUrl(candidate, base);
   if (!resolved) return null;
@@ -522,6 +527,14 @@ export class DonTorrentCrawler extends BaseCrawler {
 
           const html = typeof response.data === 'string' ? response.data : '';
           if (!html) break;
+          // A parked/WAF page answered the POST with HTTP 200. It is not an
+          // empty result, and aborting the run here would discard every record
+          // the catalogues already collected; stop the search phase only.
+          if (looksLikeBlockedPage(html)) {
+            this.metrics.add('blockedPages');
+            this.log.warn(`Search "${term}" served a block/parked page; stopping the search phase.`);
+            break;
+          }
           this.metrics.add('listings');
 
           const items = this.parseListing(html, `${mirror}/buscar`);
@@ -605,7 +618,9 @@ export class DonTorrentCrawler extends BaseCrawler {
       ...download.hints
     ]).join(' ');
 
-    const defaultType: ContentType = download.episode !== null ? 'series' : detail.type ?? item.type;
+    // `DonTorrentDetail.type` is never null, so the old `detail.type ?? item.type`
+    // fallback was dead code.
+    const defaultType: ContentType = download.episode !== null ? 'series' : detail.type;
     const meta = parseTorrentTitle(context, defaultType);
     const languages = detectLanguages(context, ['dontorrent']);
 

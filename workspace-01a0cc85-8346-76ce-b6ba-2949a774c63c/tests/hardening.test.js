@@ -16,7 +16,7 @@ import {
   ResilientHttpClient,
   toProfile
 } from '../src/utils/http.ts';
-import { looksLikeBlockedPage, resolveWorkingMirror } from '../src/crawlers/mirrors.ts';
+import { clearMirrorCache, looksLikeBlockedPage, resolveWorkingMirror } from '../src/crawlers/mirrors.ts';
 import { buildTorrentRecord, describeError, mapWithConcurrency } from '../src/crawlers/support.ts';
 import { canonicalAudioTag, canonicalSubtitleTag, detectLanguages } from '../src/utils/language.ts';
 import { normalizeSource, parseTorrentTitle } from '../src/utils/regex.ts';
@@ -492,14 +492,24 @@ test('EZTV: the API season/episode beat title heuristics, and specials survive',
 });
 
 test('YTS: relative download URLs are stored as absolute', async () => {
-  const crawler = new YtsCrawler();
-  const movie = {
-    id: 1, slug: 'sample', title: 'Sample', year: 2026, language: 'es',
-    torrents: [{ hash: HASH, quality: '1080p', type: 'bluray', url: '/download/start/HASH' }]
-  };
-  mockHttp(crawler, () => ({ status: 'ok', data: { movies: [movie] } }));
-  const records = await crawler.crawl(1);
-  assert.equal(records[0].torrent_file_url, 'https://yts.mx/download/start/HASH');
+  const previousBase = process.env.YTS_BASE_URL;
+  const mirror = 'https://yts-rel.test';
+  process.env.YTS_BASE_URL = mirror;
+  clearMirrorCache('yts');
+  try {
+    const crawler = new YtsCrawler();
+    const movie = {
+      id: 1, slug: 'sample', title: 'Sample', year: 2026, language: 'es',
+      torrents: [{ hash: HASH, quality: '1080p', type: 'bluray', url: '/download/start/HASH' }]
+    };
+    mockHttp(crawler, () => ({ status: 'ok', data: { movies: [movie] } }));
+    const records = await crawler.crawl(1);
+    assert.equal(records[0].torrent_file_url, `${mirror}/download/start/HASH`);
+  } finally {
+    if (previousBase === undefined) delete process.env.YTS_BASE_URL;
+    else process.env.YTS_BASE_URL = previousBase;
+    clearMirrorCache('yts');
+  }
 });
 
 test('TPB: no unverified front-end or invented trackers are published for API records', () => {

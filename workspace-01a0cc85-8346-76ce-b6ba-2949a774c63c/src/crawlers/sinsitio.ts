@@ -16,12 +16,16 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
   public baseUrl = process.env.SINSITIO_BASE_URL || 'https://www.sinsitio.site/';
   protected readonly sections = ['/', '/dvdrip-bdrip/', '/series/'];
 
-  /** Known Sinsitio domains; add your own with SINSITIO_MIRRORS. */
+  /**
+   * Known Sinsitio domains; add your own with SINSITIO_MIRRORS.
+   * Live check 2026-09-28: `www.sinsitio.site` serves the full DLE site
+   * (fresh posts, fichas with ddlUrl.php links that decode to public
+   * `index.php?do=download&id=N` attachments) and the apex 301s to it.
+   * `sinsitio.info` and `sinsitio.online` stopped answering entirely.
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://www.sinsitio.site',
-    'https://sinsitio.site',
-    'https://www.sinsitio.info',
-    'https://sinsitio.online'
+    'https://sinsitio.site'
   ];
 
   protected override get mirrorSetup(): MirrorSetup {

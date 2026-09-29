@@ -1,7 +1,7 @@
 import { DOWNLOAD_NODES, literalDownloadCandidates, spanishReleaseHints } from './spanish-catalog.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import * as cheerio from 'cheerio';
-import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
+import { BaseCrawler, BlockedPageError, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { detectLanguages, SPANISH_AUDIO_CANONICAL } from '../utils/language.js';
 import { parseTorrentTitle } from '../utils/regex.js';
@@ -20,9 +20,26 @@ import {
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
 
-/** Same site, allowing `www.` variation without accepting a scheme/port change. */
+/**
+ * Same site, allowing `www.` variation without accepting a scheme/port change.
+ * The `.eu` template rotates its `wwwNN.` front-ends by redirecting
+ * (`www45.mejortorrent.eu` -> `www46.mejortorrent.eu`) and the redirected
+ * pages render ABSOLUTE links on the final host, so an exact-host comparison
+ * discarded every listing link and silently produced zero records.
+ */
 function sameSiteHost(a: string, b: string): boolean {
-  return sameSite(a, b);
+  if (sameSite(a, b)) return true;
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    if (left.username || left.password || right.username || right.password) return false;
+    if (left.protocol !== right.protocol || left.port !== right.port) return false;
+    const normalize = (host: string) => host.replace(/^www\d*\./i, '').toLowerCase();
+    const leftHost = normalize(left.hostname);
+    return leftHost.length > 0 && leftHost === normalize(right.hostname);
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -116,8 +133,13 @@ export class MejorTorrentCrawler extends BaseCrawler {
     const categories: Array<{ path: string; type: ContentType }> = [
       { path: '/inicio', type: 'movie' },
       { path: '/peliculas-hd', type: 'movie' },
-      { path: '/peliculas-4k', type: 'movie' },
       { path: '/series-hd', type: 'series' },
+      // Full per-type indexes (live 2026-09: linked from every ficha as
+      // "Volver al índice"). They extend the window beyond the recent uploads;
+      // the maxPages*35 quota still bounds how many fichas are processed.
+      { path: '/peliculas', type: 'movie' },
+      { path: '/series', type: 'series' },
+      { path: '/peliculas-4k', type: 'movie' },
       { path: '/documentales', type: 'documentary' }
     ];
 
@@ -245,6 +267,14 @@ export class MejorTorrentCrawler extends BaseCrawler {
         previousSignature = signature;
         for (const link of pageLinks) detailUrls.add(link);
       } catch (error) {
+        // A WP API that answers with an HTML page (SPA shell or WAF) only
+        // proves the mirror is not WordPress: fall back to the HTML catalogues
+        // instead of aborting the run. A genuinely blocked mirror re-raises
+        // from the legacy fetches below (they use rejectBlocked).
+        if (error instanceof BlockedPageError) {
+          this.log.debug(`WP API answered with HTML: ${describeError(error)}`);
+          break;
+        }
         rethrowIfBlockedOrRateLimited(error);
         this.metrics.add('listingErrors');
         this.log.debug(`WP API page ${page} finished or failed: ${describeError(error)}`);

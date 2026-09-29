@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { BaseCrawler, rethrowIfBlockedOrRateLimited } from './base.js';
+import { BaseCrawler, BlockedPageError, rethrowIfBlockedOrRateLimited } from './base.js';
 import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
@@ -219,6 +219,13 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       if (isLimeListingHtml(response.data)) {
         return response.data;
       }
+      // A parked/WAF page served with HTTP 200 is a refusal, not a failed
+      // POST; the GET fallback below would just be refused again.
+      if (typeof response.data === 'string' && looksLikeBlockedPage(response.data)) {
+        this.metrics.add('blockedPages');
+        this.log.warn(`Search "${query}" served a block/parked page; skipping it.`);
+        return null;
+      }
     } catch (error) {
       rethrowIfBlockedOrRateLimited(error);
       this.log.debug(`POST search failed for "${query}": ${describeError(error)}`);
@@ -235,6 +242,13 @@ export class LimeTorrentsCrawler extends BaseCrawler {
       this.log.warn(`Search response for "${query}" did not contain table2.`);
       return null;
     } catch (error) {
+      // Search is a secondary discovery phase: a WAF interstitial on it must
+      // degrade to "no results", not abort a run whose catalogues still work.
+      if (error instanceof BlockedPageError) {
+        this.metrics.add('blockedPages');
+        this.log.warn(`Search "${query}" was blocked by the mirror; skipping it.`);
+        return null;
+      }
       rethrowIfBlockedOrRateLimited(error);
       this.metrics.add('listingErrors');
       this.log.warn(`Search error for "${query}": ${describeError(error)}`);

@@ -41,17 +41,23 @@ function sameSiteUrl(a: string, b: string): boolean {
 export class ThePirateBayCrawler extends BaseCrawler {
   public readonly name = 'thepiratebay';
 
-  /** Known TPB front-ends; extend with THEPIRATEBAY_MIRRORS. */
+  /**
+   * Known TPB front-ends; extend with THEPIRATEBAY_MIRRORS.
+   * Live check 2026-09-28: every entry below answered the probe
+   * `/search/test/1/99/200` with the `searchResult` table. `pirate-bays.net`
+   * (parked ad page) and `tpb.skynetcloud.site` (dead) were removed. Two row
+   * layouts coexist across these mirrors — the classic one with separate
+   * size/seed/leech columns and a minimal one whose counters are the last two
+   * numeric cells — both are parsed (see the audit tests).
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
-    'https://thepiratebay10.org',
     'https://tpb.party',
-    'https://pirate-bays.net',
+    'https://thepiratebay10.org',
     'https://thehiddenbay.com',
     'https://thepiratebay0.org',
     'https://piratebay.live',
     'https://pirateproxy.live',
-    'https://thepiratebay.zone',
-    'https://tpb.skynetcloud.site'
+    'https://thepiratebay.zone'
   ];
 
   /**
@@ -276,8 +282,16 @@ export class ThePirateBayCrawler extends BaseCrawler {
       const meta = parseTorrentTitle(title, this.typeFromCategory(categoryText));
       const langs = detectLanguages(title, ['thepiratebay']);
 
-      const seedersText = tds.length >= 2 ? tds.eq(tds.length - 2).text() : '';
-      const leechersText = tds.length >= 1 ? tds.eq(tds.length - 1).text() : '';
+      // The seed/leech counters are the LAST TWO pure-numeric cells of the
+      // row: fixed `tds.eq(length-2/-1)` indices shifted onto junk whenever a
+      // mirror added a moderation/report column or rendered "---" at the edge.
+      const counterTexts = tds.toArray()
+        .map(td => cleanText($(td).text()))
+        .filter(text => parseCount(text) !== null);
+      const seedersText = counterTexts.length >= 2
+        ? counterTexts[counterTexts.length - 2]
+        : (counterTexts[0] ?? '');
+      const leechersText = counterTexts.length >= 2 ? counterTexts[counterTexts.length - 1] : '';
 
       // Real metainfo link, when the template publishes one next to the
       // magnet (`/download/<id>/<name>.torrent` or a `.torrent` anchor).

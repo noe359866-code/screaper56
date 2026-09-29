@@ -99,6 +99,20 @@ export function isEliteDetailUrl(href: string, base: string): boolean {
 }
 
 /**
+ * Page N of a route. On the `/idioma/castellano-17-1/` and
+ * `/calidad/1080p-10-1/` filters the TRAILING NUMBER is the page
+ * (`castellano-17-2`), so appending `/page/2/` 404'd and silently cut every
+ * language/quality catalogue to its first page. Routes without a trailing
+ * number (`/series/`) keep the `/page/N/` scheme.
+ */
+export function eliteRoutePagePath(routePath: string, page: number): string {
+  if (page <= 1) return routePath;
+  const numbered = routePath.match(/^(.*?)(\d+)(\/?)$/);
+  if (numbered) return `${numbered[1]}${page}${numbered[3]}`;
+  return `${routePath.replace(/\/+$/, '')}/page/${page}/`;
+}
+
+/**
  * EliteTorrent: detail pages, Base64/ROT13 shortener, hex/Base32 magnets and
  * relative `.torrent` URLs with a query string. Swarm counters are not published
  * by the site, so they stay `null` instead of being faked as zero.
@@ -178,7 +192,7 @@ export class EliteTorrentCrawler extends BaseCrawler {
         if (this.deadline.expired) break;
 
         const listUrl = page > 1
-          ? `${mirror}${route.path.replace(/\/$/, '')}/page/${page}/`
+          ? `${mirror}${eliteRoutePagePath(route.path, page)}`
           : `${mirror}${route.path}`;
 
         try {
@@ -266,6 +280,15 @@ export class EliteTorrentCrawler extends BaseCrawler {
 
     const deduplicated = this.deduplicateRecords(results);
     this.logRunSummary(deduplicated);
+
+    // Same contract as every other adapter: reading catalogues but extracting
+    // zero records is a layout/protection problem, not a successful empty run.
+    if (successfulListings > 0 && !deduplicated.length) {
+      throw new Error(
+        `[elitetorrent] ${successfulListings} catalogue pages read on ${this.baseUrl} but no release produced ` +
+        'a valid infohash. Check the ficha layout and whether downloads are protected.'
+      );
+    }
     return deduplicated;
   }
 

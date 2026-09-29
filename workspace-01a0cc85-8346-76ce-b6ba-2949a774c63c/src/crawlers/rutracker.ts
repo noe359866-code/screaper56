@@ -46,7 +46,13 @@ import {
 /** Forum path prefix shared by every RuTracker route. */
 export const RUTRACKER_FORUM_PREFIX = '/forum';
 
-/** Official domains; override with RUTRACKER_BASE_URL / RUTRACKER_MIRRORS. */
+/** Official domains; override with RUTRACKER_BASE_URL / RUTRACKER_MIRRORS.
+ * Live check 2026-09-28: rutracker.org and rutracker.net serve the forum
+ * normally; rutracker.nl answered HTTP 500 and rutracker.me / rutracker.cc
+ * did not answer from this network. All five stay in the pool on purpose —
+ * the probe asks each one and the first healthy answer wins (guest access is
+ * login-only anyway: tracker.php redirects guests to the login form, so the
+ * whole crawl runs authenticated). */
 export const RUTRACKER_DEFAULT_MIRRORS: readonly string[] = [
   'https://rutracker.org',
   'https://rutracker.net',
@@ -69,6 +75,18 @@ export const RUTRACKER_DEFAULT_SEARCHES: readonly string[] = [
 
 /** Characters of a topic body scanned for language evidence. */
 const BODY_SCAN_LIMIT = 1600;
+
+/**
+ * A quoted "сиды: 123456789..." inside a post is prose, not swarm data: the
+ * free-text counter parse is capped at a plausible swarm size so citations
+ * cannot fabricate a seeders value.
+ */
+const PLAUSIBLE_SWARM_MAX = 100_000_000;
+
+function parseSwarmCounter(raw: string | null | undefined): number | null {
+  const parsed = parseCount(raw);
+  return parsed !== null && parsed <= PLAUSIBLE_SWARM_MAX ? parsed : null;
+}
 
 export interface RutrackerRoute {
   url: string;
@@ -144,15 +162,57 @@ function looksLikeRateLimitPage(html: string): boolean {
   return Boolean(html) && RATE_LIMIT_PATTERN.test(html.slice(0, 4096));
 }
 
+// Captcha evidence is STRUCTURAL, never free text: a reCAPTCHA/Turnstile
+// widget, a form field or image whose name/src says "captcha", or the
+// tracker's own "código de la imagen" label. The bare word inside a post or
+// comment used to raise the terminal RutrackerCaptchaError and abort the
+// whole run because ONE user quoted it.
+const CAPTCHA_WIDGET_PATTERN = /g-recaptcha|recaptcha\/api|google\.com\/recaptcha|sitekey|cf-turnstile/i;
+const CAPTCHA_FORM_PATTERN = /<(?:input|img|script|iframe|form)[^>]+(?:name|src|id|action|class)=["'][^"']*captcha/i;
+const CAPTCHA_LABEL_PATTERN = /код\s+с\s+картинки/i;
+
+/** True only when the page really renders a captcha challenge. */
+export function looksLikeRutrackerCaptcha(html: string): boolean {
+  if (typeof html !== 'string' || !html) return false;
+  // A logged-in page is never a captcha, whatever a post quotes.
+  if (/logout=1/i.test(html)) return false;
+  return (
+    CAPTCHA_WIDGET_PATTERN.test(html) ||
+    CAPTCHA_FORM_PATTERN.test(html) ||
+    CAPTCHA_LABEL_PATTERN.test(html)
+  );
+}
+
+/**
+ * The tracker answers an expired `bb_session` by REDIRECTING the requested
+ * page to the login form (`login.php?redirect=...`). Evidence is structural:
+ * a form whose action is login.php carrying the `login_username` field — the
+ * same fields the adapter's own login posts. A logged-in page is never a
+ * login page, whatever a post quotes.
+ */
+const LOGIN_FORM_PATTERN = /<form[^>]+action=["'][^"']*login\.php/i;
+const LOGIN_USER_FIELD_PATTERN = /name=["']login_username["']/i;
+
+/** True only when the page really is the tracker's login form. */
+export function looksLikeRutrackerLoginPage(html: string): boolean {
+  if (typeof html !== 'string' || !html) return false;
+  if (/logout=1/i.test(html)) return false;
+  return LOGIN_FORM_PATTERN.test(html) && LOGIN_USER_FIELD_PATTERN.test(html);
+}
+
 /**
  * Errors that must abort the whole run instead of being logged per topic:
- * the tracker's own captcha/rate-limit signals plus the shared terminal
+ * the tracker's own captcha/rate-limit/auth signals plus the shared terminal
  * conditions (HTTP 429, WAF interstitial, expired run budget). Swallowing a
  * `CrawlerDeadlineError` here made every remaining in-flight topic print a
  * misleading "Topic failed" warning after the budget had already expired.
  */
 function isTerminalRutrackerError(error: unknown): boolean {
-  if (error instanceof RutrackerCaptchaError || error instanceof RutrackerRateLimitError) return true;
+  if (
+    error instanceof RutrackerCaptchaError ||
+    error instanceof RutrackerRateLimitError ||
+    error instanceof RutrackerAuthError
+  ) return true;
   try {
     rethrowIfBlockedOrRateLimited(error);
     return false;
@@ -698,7 +758,13 @@ export class RutrackerCrawler extends BaseCrawler {
         this.log.warn('Configured RuTracker cookies are no longer valid; logging in again.');
         this.cookies.delete('bb_session');
       } catch (error) {
-        if (isTerminalRutrackerError(error)) throw error;
+        if (error instanceof RutrackerAuthError) {
+          // fetchForumPage recognised the login form: the configured bb_session
+          // is dead, but the operator's credentials may still recover it below.
+          cookieOutcome = `${mirror} served the login form for the configured bb_session`;
+          this.log.warn('Configured RuTracker cookies are no longer valid; logging in again.');
+          this.cookies.delete('bb_session');
+        } else if (isTerminalRutrackerError(error)) throw error;
         this.log.warn(`Session check failed for ${indexUrl}: ${describeError(error)}`);
       }
     }
@@ -833,8 +899,7 @@ export class RutrackerCrawler extends BaseCrawler {
   }
 
   private looksLikeCaptcha(html: string): boolean {
-    if (typeof html !== 'string' || !html) return false;
-    return /captcha|капча|введите\s+код|g-recaptcha/i.test(html) && !/logout=1/i.test(html);
+    return looksLikeRutrackerCaptcha(html);
   }
 
   /** Releases the session when the adapter is torn down (see `BaseCrawler.close`). */
@@ -881,6 +946,17 @@ export class RutrackerCrawler extends BaseCrawler {
     if (looksLikeRateLimitPage(html)) {
       this.metrics.add('rateLimited');
       throw new RutrackerRateLimitError(safeUrl);
+    }
+    // A requested page answered with the login form: the session died. Stop
+    // the run here instead of parsing the form as an empty listing and
+    // silently skipping every remaining topic.
+    if (looksLikeRutrackerLoginPage(html)) {
+      this.metrics.add('authRedirects');
+      throw new RutrackerAuthError(
+        `[rutracker] ${safeUrl} was answered with the login form: the bb_session is no longer valid. ` +
+        'Re-export the logged-in cookies into RUTRACKER_COOKIE_JSON / RUTRACKER_COOKIES ' +
+        '(or check RUTRACKER_USERNAME / RUTRACKER_PASSWORD).'
+      );
     }
     return html;
   }
@@ -1047,8 +1123,8 @@ export class RutrackerCrawler extends BaseCrawler {
     // order) and turn the whole page into the "description".
     const bodyNode = $('.post_body, .postbody, td.post-body, #topic_main').first();
     const pageText = cleanText(bodyNode.length ? bodyNode.text() : $('body').text());
-    const seeders = parseCount(pageText.match(/(?:сиды|раздают|seeders?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
-    const leechers = parseCount(pageText.match(/(?:личи|качают|leechers?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
+    const seeders = parseSwarmCounter(pageText.match(/(?:сиды|раздают|seeders?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
+    const leechers = parseSwarmCounter(pageText.match(/(?:личи|качают|leechers?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
 
     return {
       title,
@@ -1275,6 +1351,15 @@ export class RutrackerCrawler extends BaseCrawler {
         this.metrics.add('rateLimited');
         throw new RutrackerRateLimitError(safeUrl);
       }
+      // dl.php redirects to the login form once the session is gone; that
+      // HTML is never valid metainfo, so fail with the real cause.
+      if (looksLikeRutrackerLoginPage(html)) {
+        this.metrics.add('authRedirects');
+        throw new RutrackerAuthError(
+          `[rutracker] The metainfo download ${safeUrl} was answered with the login form: ` +
+          'the bb_session is no longer valid. Re-export RUTRACKER_COOKIE_JSON / RUTRACKER_COOKIES.'
+        );
+      }
     }
 
     const metainfo = parseTorrentBuffer(buffer);
@@ -1346,8 +1431,11 @@ export class RutrackerCrawler extends BaseCrawler {
       meta,
       quality: qualityOf(meta),
       sizeBytes,
-      seeders: detail.seeders ?? topic.seeders ?? null,
-      leechers: detail.leechers ?? topic.leechers ?? null,
+      // The listing row's counters are rendered by the tracker from live swarm
+      // data; the topic-page match is prose that may quote other numbers, so
+      // it only fills the gap.
+      seeders: topic.seeders ?? detail.seeders ?? null,
+      leechers: topic.leechers ?? detail.leechers ?? null,
       sourceTracker: trackers[0] ?? null
     });
 

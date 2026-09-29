@@ -67,6 +67,20 @@ export class EstrenosTorrentCrawler extends BaseCrawler {
     Number.parseInt(process.env.ESTRENOSTORRENT_CONCURRENCY || '3', 10) || 3
   );
 
+  /** Detail pages are processed in ordered batches of this size ("pages"),
+   *  so a long single-response catalogue is walked page by page instead of
+   *  being truncated to `maxPages * 30` candidates. */
+  private readonly detailPageSize = 30;
+
+  /** Optional hard cap (ESTRENOSTORRENT_MAX_DETAILS); unset/invalid = no cap:
+   *  every discovered detail page is processed, bounded by the run deadline. */
+  private resolveDetailLimit(): number {
+    const raw = process.env.ESTRENOSTORRENT_MAX_DETAILS;
+    if (raw === undefined || raw.trim() === '') return Number.POSITIVE_INFINITY;
+    const parsed = Number.parseInt(raw, 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : Number.POSITIVE_INFINITY;
+  }
+
   private async getWorkingMirror(): Promise<string> {
     return this.resolveMirror({
       envPrefix: 'ESTRENOSTORRENT',
@@ -156,6 +170,63 @@ export class EstrenosTorrentCrawler extends BaseCrawler {
     }
   }
 
+  private async processDetail(item: EstrenosTorrentItem, mirror: string): Promise<TorrentRecord[]> {
+    if (this.deadline.expired) return [];
+    try {
+      const html = await this.fetchHtml(item.detailUrl, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
+      this.metrics.add('details');
+      const detail = this.parseDetail(html, item.detailUrl, item.type);
+      if (!detail.title || isBlockedTitle(detail.title)) return [];
+      const records: TorrentRecord[] = [];
+      for (const download of detail.downloads.slice(0, 8)) {
+        try {
+          const magnet = parseMagnetUri(download.url);
+          const metainfo = magnet ? null : await this.fetchTorrentMetainfoViaGet(download.url, item.detailUrl);
+          const infoHash = magnet?.infoHash || metainfo?.infoHash;
+          if (!infoHash) continue;
+          const title = cleanText(metainfo?.name || magnet?.displayName || download.label || detail.title);
+          if (!title || isBlockedTitle(title)) continue;
+          const context = `${title} ${detail.title} ${download.label}`;
+          const meta = parseTorrentTitle(context, detail.type);
+          const languages = detectLanguages(context, ['estrenostorrent']);
+          const trackers = magnet?.trackers || metainfo?.trackers || [];
+          const magnetUrl = magnet
+            ? download.url
+            : buildMagnetUri(infoHash, title, trackers, { includeDefaultTrackers: false });
+          const record = buildTorrentRecord({
+            title,
+            type: meta.type,
+            infoHash,
+            magnetUrl,
+            torrentFileUrl: magnet ? null : download.url,
+            sourceUrl: item.detailUrl,
+            trackers,
+            audio: languages.audio,
+            subtitles: languages.subtitles,
+            meta,
+            quality: qualityOf(meta),
+            sizeBytes: metainfo?.sizeBytes ?? download.sizeBytes,
+            seeders: null,
+            leechers: null,
+            sourceTracker: metainfo?.primaryTracker ?? magnet?.trackers[0] ?? null
+          });
+          if (record) records.push(record);
+          this.metrics.add('downloads');
+        } catch (error) {
+          rethrowIfBlockedOrRateLimited(error);
+          this.metrics.add('downloadErrors');
+          this.log.debug(`Metainfo failed ${download.url}: ${describeError(error)}`);
+        }
+      }
+      return records;
+    } catch (error) {
+      rethrowIfBlockedOrRateLimited(error);
+      this.metrics.add('detailErrors');
+      this.log.warn(`Detail failed ${item.detailUrl}: ${describeError(error)}`);
+      return [];
+    }
+  }
+
   public async crawl(maxPages: number): Promise<TorrentRecord[]> {
     if (!Number.isInteger(maxPages) || maxPages < 1) return [];
     this.resetRunState();
@@ -198,67 +269,30 @@ export class EstrenosTorrentCrawler extends BaseCrawler {
     if (!successfulListings) {
       throw new Error('[estrenostorrent] No usable catalogue responses. Check the configured domain and page layout.');
     }
-    const candidates = [...items.values()].slice(0, Math.max(30, maxPages * 30));
+    const candidates = [...items.values()];
     if (!candidates.length) {
       throw new Error('[estrenostorrent] No detail pages found in the home, movies or series catalogues.');
     }
 
-    const results = (await mapWithConcurrency(candidates, this.concurrency, async item => {
-      if (this.deadline.expired) return [] as TorrentRecord[];
-      try {
-        const html = await this.fetchHtml(item.detailUrl, { headers: { Referer: `${mirror}/` } }, { rejectBlocked: true });
-        this.metrics.add('details');
-        const detail = this.parseDetail(html, item.detailUrl, item.type);
-        if (!detail.title || isBlockedTitle(detail.title)) return [] as TorrentRecord[];
-        const records: TorrentRecord[] = [];
-        for (const download of detail.downloads.slice(0, 8)) {
-          try {
-            const magnet = parseMagnetUri(download.url);
-            const metainfo = magnet ? null : await this.fetchTorrentMetainfoViaGet(download.url, item.detailUrl);
-            const infoHash = magnet?.infoHash || metainfo?.infoHash;
-            if (!infoHash) continue;
-            const title = cleanText(metainfo?.name || magnet?.displayName || download.label || detail.title);
-            if (!title || isBlockedTitle(title)) continue;
-            const context = `${title} ${detail.title} ${download.label}`;
-            const meta = parseTorrentTitle(context, detail.type);
-            const languages = detectLanguages(context, ['estrenostorrent']);
-            const trackers = magnet?.trackers || metainfo?.trackers || [];
-            const magnetUrl = magnet
-              ? download.url
-              : buildMagnetUri(infoHash, title, trackers, { includeDefaultTrackers: false });
-            const record = buildTorrentRecord({
-              title,
-              type: meta.type,
-              infoHash,
-              magnetUrl,
-              torrentFileUrl: magnet ? null : download.url,
-              sourceUrl: item.detailUrl,
-              trackers,
-              audio: languages.audio,
-              subtitles: languages.subtitles,
-              meta,
-              quality: qualityOf(meta),
-              sizeBytes: metainfo?.sizeBytes ?? download.sizeBytes,
-              seeders: null,
-              leechers: null,
-              sourceTracker: metainfo?.primaryTracker ?? magnet?.trackers[0] ?? null
-            });
-            if (record) records.push(record);
-            this.metrics.add('downloads');
-          } catch (error) {
-            rethrowIfBlockedOrRateLimited(error);
-            this.metrics.add('downloadErrors');
-            this.log.debug(`Metainfo failed ${download.url}: ${describeError(error)}`);
-          }
-        }
-        return records;
-      } catch (error) {
-        rethrowIfBlockedOrRateLimited(error);
-        this.metrics.add('detailErrors');
-        this.log.warn(`Detail failed ${item.detailUrl}: ${describeError(error)}`);
-        return [] as TorrentRecord[];
-      }
-    })).flat();
+    // The movie and series catalogues are served as one long response without a
+    // pager, so every discovered detail page is processed, in batches ("pages")
+    // of `detailPageSize`, until the catalogue, the optional
+    // ESTRENOSTORRENT_MAX_DETAILS cap or the run deadline is exhausted.
+    const limit = this.resolveDetailLimit();
+    const pending = Math.min(candidates.length, limit);
+    this.log.info(`Processing ${pending} detail pages in batches of ${this.detailPageSize} (discovered: ${candidates.length})...`);
+    const results: TorrentRecord[] = [];
+    let processed = 0;
+    for (let offset = 0; offset < candidates.length && processed < limit && !this.deadline.expired; offset += this.detailPageSize) {
+      const batch = candidates.slice(offset, offset + Math.min(this.detailPageSize, limit - processed));
+      const batchRecords = (await mapWithConcurrency(batch, this.concurrency, item => this.processDetail(item, mirror))).flat();
+      processed += batch.length;
+      results.push(...batchRecords);
+      this.log.info(
+        `[estrenostorrent] detail page ${Math.floor(offset / this.detailPageSize) + 1}: ` +
+        `${batch.length} fichas, +${batchRecords.length} records (${processed}/${pending}).`
+      );
+    }
 
     const unique = this.deduplicateRecords(results);
     this.logRunSummary(unique);

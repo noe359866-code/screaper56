@@ -202,6 +202,18 @@ export abstract class BaseCrawler {
   /** GET returning parsed JSON. */
   protected async fetchJson<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const response = await this.httpClient.get<T>(url, await this.admitRequest({ responseType: 'json', ...config }));
+    // A WAF/parked interstitial answered HTTP 200 with an HTML body: with
+    // `responseType: 'json'` axios leaves that string untouched, and handing
+    // it to the API parsers only produced cryptic schema errors.
+    if (typeof response.data === 'string') {
+      if (looksLikeBlockedPage(response.data)) {
+        this.metrics.add('blockedPages');
+        throw new BlockedPageError(url);
+      }
+      if (/^\s*</.test(response.data)) {
+        throw new Error(`Expected JSON from ${url} but received an HTML document`);
+      }
+    }
     return response.data;
   }
 

@@ -213,3 +213,715 @@ Si el índice ya existe, el código sigue funcionando idempotente (UPSERT real).
 - `src/crawlers/eztv.ts` — headers + timeout + 403 handling
 - `supabase/migrations/001_fix_torrents_info_hash_unique.sql` — migración SQL
 - `FIXES_APLICADOS.md` — este documento
+
+---
+
+# Corrección de errores críticos — Segunda auditoría crawler por crawler
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests de regresión: `tests/audit-fixes.test.js` (10 casos, suite completa 435/435, `tsc` limpio).
+
+## Fix 1 — `src/crawlers/eztv.ts`: los seeders guardaban el valor de LEECHERS
+
+`readRowCounters()` elegía el seeders como "la última celda numérica de la fila",
+de modo que en las plantillas con columnas S **y** L separadas el valor
+almacenado como `seeders` era el de leechers (y con el formato real `S: 120`
+el contador se perdía por completo: `parseCount("S: 120")` → `null`).
+
+Ahora: el **primer** contador numérico posterior a la columna de tamaño es el
+seeders y el **segundo** el leechers; los prefijos `S:`/`L:` se eliminan antes
+de parsear y el leechers de la fase HTML ya no se descarta.
+
+## Fix 2 — `src/crawlers/rarbg.ts`: desplazamiento de columnas size/S/L
+
+`sizeIndex` se localizaba con `parseSizeToBytes(texto) !== null`, que acepta un
+número suelto como bytes (`parseSizeToBytes("847") === 847`). Con la celda de
+tamaño vacía, el índice caía sobre los SEEDERS: `size_bytes=847`,
+`seeders=<leechers>` y `leechers=<uploader>`. Ahora la celda de tamaño exige
+unidad (`[KMGT]i?B`), igual que limetorrents y magnetdl.
+
+## Fix 3 — `src/crawlers/rutracker.ts`: un post que mencionara "captcha" abortaba la run
+
+`looksLikeCaptcha()` hacía `/captcha|капча|введите код/i.test(html)` sobre el
+HTML **completo** del topic. Un solo comentario de usuario con esa palabra
+disparaba `RutrackerCaptchaError` (terminal) y descartaba todo lo recolectado.
+Ahora la detección es solo estructural (widget reCAPTCHA/Turnstile, campo o
+imagen cuyo `name/src` contiene "captcha", o el label propio del tracker
+"код с картинки") vía `looksLikeRutrackerCaptcha()`, exportada para tests.
+
+## Fix 4 — `src/crawlers/dontorrent.ts`: magnets sin BTIH válidos llegaban al descargador
+
+`dontorrentDownloadUrl()` aceptaba cualquier `magnet:?…` sin validar; el hash
+inválido hacía que `buildRecord` intentara `fetchTorrentMetainfo("magnet:?…")`,
+es decir, un GET HTTP contra una URL magnet. Ahora el magnet se valida con
+`parseMagnetUri` (BTIH hex o Base32) antes de aceptarse.
+
+## Fix 5 — `src/crawlers/elitetorrent.ts`: los filtros /idioma y /calidad solo rastreaban 1 página
+
+Para páginas 2+ se construía `<ruta>/page/N/`, pero en las rutas filtradas
+(`/idioma/castellano-17-1/`, `/calidad/1080p-10-1/`) el **número final del slug
+es la página** (`castellano-17-2`): el `/page/N/` daba 404 y la paginación
+terminaba en silencio tras la página 1. Nuevo `eliteRoutePagePath()` (exportado):
+incrementa el número final cuando existe y reserva `/page/N/` para las secciones
+sin número (`/series/`).
+
+## Fix 6 — `src/utils/anti-cloudflare.ts`: `shutdown()` no impedía relanzar Chromium
+
+`permanentlyClosed` solo se consultaba en el temporizador de inactividad, así
+que tras el teardown de `runCli` cualquier `solve()`/`withPage()` relanzaba el
+navegador. `getOrCreateBrowser()` ahora rechaza con un error claro si el motor
+fue apagado.
+
+## Fix 7 — `src/utils/language.ts`: "Audio en 5.1" se etiquetaba como audio inglés
+
+La alternativa `audio[\s._-]*en` de `REGEX_ENG` solo excluía "en
+español/castellano/latino", de modo que cualquier ficha española con
+"Audio en 5.1", "Audio en Dual", etc. recibía un falso track `English` (que
+además el filtro de idioma nunca descarta). El lookahead ahora también excluye
+`dual`, `sub` y dígitos.
+
+---
+
+# Corrección de riesgos altos — Tercera ronda de la auditoría
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests: `tests/audit-fixes.test.js` ampliado a 18 casos; suite completa 443/443, `tsc` limpio.
+
+## Fix 8 — `src/crawlers/support.ts`: contadores abreviados ("1.5K", "2,3M")
+
+`parseCount('1.5k')` devolvía `null`: los mirrors que redondean los sembradores
+a "1.5K" perdían el contador por completo. Ahora los sufijos `k`/`m` (con
+separador decimal opcional) se multiplican; los decimales sin sufijo siguen
+siendo inválidos (`'12.5'` → `null`). Beneficia a EZTV, 1337x y TGx.
+
+## Fix 9 — `src/crawlers/magnetdl.ts`: categoría de la fila localizada por contenido
+
+`tds.eq(3)` asumía la plantilla exacta de 7 columnas; un mirror sin la columna
+"type" ponía el tamaño en esa posición y `"1.4 GB"` fallaba el test de
+categoría de video → TODAS las filas del mirror se descartaban en silencio.
+La categoría ahora se localiza buscando la primera celda corta con formato de
+categoría (desde la posición 2); si no hay ninguna, la fila no se filtra.
+
+## Fix 10 — `src/crawlers/thepiratebay.ts`: contadores S/L por contenido
+
+`tds.eq(length-2/-1)` leía basura cuando el mirror añadía una columna de
+moderación al final. Ahora los contadores son las dos últimas celdas
+PURAMENTE numéricas de la fila.
+
+## Fix 11 — `src/crawlers/base.ts`: `fetchJson` rechaza interstitials con HTTP 200
+
+Con `responseType: 'json'`, axios deja el HTML de una página de WAF/aparcado
+como string y los parsers de API solo daban errores crípticos de esquema.
+`fetchJson` ahora lanza `BlockedPageError` (con métrica `blockedPages`) o un
+error claro "Expected JSON... received an HTML document".
+
+## Fix 12 — `src/crawlers/dontorrent.ts`: fase de búsqueda no se traga páginas de bloqueo
+
+El POST a `/buscar` usaba el cliente en crudo sin validar el HTML. Una página
+de bloqueo/aparcada con HTTP 200 ya no se parsea como listado: corta solo la
+fase de búsqueda (`blockedPages`) sin descartar los registros que los
+catálogos ya recolectaron.
+
+## Fix 13 — `src/crawlers/limetorrent.ts`: la búsqueda bloqueada degrada, no aborta
+
+El fallback GET de `searchHtml` relanzaba `BlockedPageError` y mataba toda la
+run por una búsqueda WAF-eada aunque los catálogos funcionaran. Ahora la
+búsqueda (fase secundaria de descubrimiento) devuelve `null` ante páginas de
+bloqueo; los 403/429/deadline siguen siendo terminales.
+
+## Fix 14 — `src/crawlers/rutracker.ts`: contadores del listado primero, texto del post después
+
+`detail.seeders ?? topic.seeders` daba prioridad a la cita en prosa del post
+frente al contador que el tracker renderiza de la oleada real. Se invirtió la
+precedencia y el parseo del texto libre se acota a un máximo plausible
+(≤100M) para que un "сиды: 98765432112345" citado no se guarde como dato.
+
+## Fix 15 — `src/crawlers/torrentgalaxy.ts`: fallback numérico para S/L
+
+Cuando ningún selector de clase/color matchea, las dos últimas celdas
+puramente numéricas de la fila son los contadores (solo cuando faltan AMBOS,
+para no sobreescribir un valor ya fiable).
+
+---
+
+# Corrección de hallazgos menores — Cuarta ronda de la auditoría
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests: `tests/audit-fixes.test.js` ampliado a 22 casos; suite completa 447/447, `tsc` limpio.
+
+## Fix 16 — `src/services/supabase.ts`: el título era el único campo sin acotar
+
+Todos los campos de texto se recortaban (10–100 chars) menos `title`: un nombre
+de entrega de 300+ caracteres podía romper un lote entero contra una columna
+`varchar`. Ahora se trunca a 500. Además, el re-saneado tras `mergeRecords`
+usaba una aserción no nula (`sanitizeRecord(record)!`): un `null` ahí habría
+sido un `TypeError`; ahora se cuenta como rechazado bajo el mismo contrato.
+
+Nota: el contrato "un registro rechazado lanza `BatchPersistenceError`" está
+explícitamente probado en `tests/services.test.js` (decisión de la auditoría
+anterior: no se descartan silenciosamente registros inválidos junto a válidos),
+así que se conserva tal cual.
+
+## Fix 17 — `src/utils/http.ts`: la cf_clearance ya no se tira por cualquier fallo
+
+Cualquier error (incluido un timeout puntual) llamaba `invalidateSession` y
+descartaba una clearance posiblemente vigente, forzando un re-solve de 30 s con
+el navegador. Ahora solo se invalida con evidencia de rechazo: 401, 403 o
+indicadores de challenge Cloudflare. Timeouts, 5xx y errores de red la conservan.
+
+## Fix 18 — `src/crawlers/grantorrent.ts`: concurrencia configurable
+
+La concurrencia de fichas estaba clavada a `2`; ahora lee
+`GRANTORRENT_CONCURRENCY` (default 2, convención `parseInt || default` del resto
+de adaptadores).
+
+## Fix 19 — `src/crawlers/dontorrent.ts`: código muerto
+
+`detail.type ?? item.type` era inalcanzable (`DonTorrentDetail.type` nunca es
+nulo); se simplificó a `detail.type`.
+
+## Fix 20 — `src/crawlers/elitetorrent.ts`: catálogos leídos pero 0 registros
+
+Devuelve ahora el mismo error accionable que el resto de adaptadores en vez de
+un `[]` silencioso que solo el orquestador convertía en genérico "Zero extracted
+records".
+
+## Descartados tras revisión (son decisiones probadas, no bugs)
+
+- `upsertBatch` lanza con registros rechazados: contrato probado dos veces en
+  `tests/services.test.js`.
+- `priority` incluye `rutracker`: aserto explícito en `tests/new-crawlers.test.js`;
+  sin credenciales fallará a propósito con un mensaje accionable (el workflow ya
+  lo documenta).
+- `parseCount` abreviado y el relanzamiento post-`shutdown()` se corrigieron en
+  las rondas anteriores.
+
+---
+
+# Mejora de cobertura — estrenostorrent página por página
+
+Fecha: 2026-09-28
+Pedido del usuario: recorrer `https://estrenostorrent.org/peliculas/` y
+`https://estrenostorrent.org/series/` "página por página".
+
+## Qué se encontró en el sitio real
+
+- Ambas rutas YA estaban en las rutas del crawler (`/`, `/peliculas/`,
+  `/series/`) y los enlaces de ficha (`/online/<slug>`, `/online/movie/<id>`,
+  `/movie/movie/<id>`, `/serie-online/<id>`, `/series/<calidad>/<slug>`)
+  ya se parsean bien.
+- El sitio NO pagina esas secciones: `/peliculas/page/2/`, `/peliculas/2/` y
+  `/peliculas/?p=2` devuelven exactamente el mismo listado (una sola respuesta
+  larga, ~100 películas; las series, ~23). No hay pager en el HTML estático.
+- El recorte real era nuestro: `candidates.slice(0, maxPages*30)` descartaba
+  fichas descubiertas (con `MAX_PAGES=3` default, de ~120 descubiertas solo se
+  procesaban 90; las de `/series/` eran las primeras en perderse).
+
+## Cambios (`src/crawlers/estrenostorrent.ts`)
+
+- Ya no se trunca la lista de fichas descubiertas: se procesan TODAS, en lotes
+  ("páginas") de 30, con log por lote
+  (`[estrenostorrent] detail page N: X fichas, +Y records (P/T)`).
+- Tope opcional por si se quiere limitar el run: `ESTRENOSTORRENT_MAX_DETAILS`
+  (sin setear o valor inválido = sin tope; el deadline de la run sigue acotando).
+- El procesado de fichas se extrajo a `processDetail()` (misma lógica).
+
+## Tests
+
+`tests/new-sources.test.js`: 2 casos nuevos (suite 449/449): un listado de 75
+ítems produce 75 registros y visita las 75 fichas con `crawl(1)`, y
+`ESTRENOSTORRENT_MAX_DETAILS=10` corta en 10 mientras que un valor inválido no
+corta.
+
+---
+
+# Revisión de la familia "pctn/newtemplate" (estilo WolfMax4K) contra los sitios en vivo
+
+Fecha: 2026-09-28
+Verificación crawler por crawler de los clones españoles contra el sitio real
+de cada mirror configurado (vía fetch externo; el sandbox no tiene salida
+directa). Tests: 451/451, `tsc` limpio.
+
+| Crawler | Mirror default | Estado real | Veredicto |
+|---|---|---|---|
+| dontorrent | dontorrent.moi | Vivo; fichas `/pelicula/31025/slug`, pager `?p=N` | 🟢 OK |
+| elitetorrent | www.elitetorrent.com | Vivo; fichas `/peliculas/slug-calidad/` | 🟢 OK |
+| estrenostorrent | estrenostorrent.org | Vivo; catálogos largos sin pager (mejorado el turno anterior) | 🟢 OK |
+| sinsitio | www.sinsitio.site | Vivo; posts DLE `/categoria/NN-slug.html` = lo que parsea | 🟢 OK |
+| t0rrenta | t0rrenta.org | Vivo; home con grilla JS pero sitemap.xml publicando cientos de `/p/ID` | 🟢 OK (sitemap) |
+| wolftorrent | wolftorrent.com → wolfmax4k.com | wolftorrent.com es un placeholder "Próximamente"; wolfmax4k.com vive con **layout nuevo** | 🔴→✅ corregido |
+| mejortorrent | www45.mejortorrent.eu | Vivo pero **redirige a www46** y sirve enlaces absolutos www46 | 🔴→✅ corregido |
+| pelispanda | pelispanda.org | Vivo (SPA); el navegador recibe el HTML del SPA también en `/wp-json/...` | 🟡 verificar en run real |
+| grantorrent | (sin defaults, exige `GRANTORRENT_BASE_URL`/`MIRRORS`) | No verificable sin dominio | ⚪ por diseño |
+
+## Fix 21 — `src/crawlers/wolftorrent.ts`: el layout 2026 de WolfMax4K
+
+- `wolftorrent.com` ya no es un catálogo (placeholder); el resolver rota
+  correctamente a `wolfmax4k.com`, pero allí las fichas son `/pelicula/ryqb95`
+  (id corto SIN slug) y hay fichas por episodio `/serie/episodio/5sjfvr`.
+- La regex vieja exigía 2 segmentos (`/pelicula/:id/:slug`): cero fichas
+  descubiertas, y el probe del mirror exigía lo mismo, así que ni siquiera
+  hubiera validado el mirror. Este era el 🟡 "exige 2 segmentos" de la
+  auditoría, confirmado ahora como rotura total.
+- Ahora `isWolfDetailPath` acepta ambos layouts (1 segmento con forma de id:
+  letras Y dígitos, sin guiones; 2 segmentos legacy id/slug; `episodio/:id`),
+  y el probe acepta hrefs de 1 segmento. Los rechazos (pager, categorías,
+  ficheros, filtros `?anyo=`) siguen iguales.
+
+## Fix 22 — `src/crawlers/mejortorrent.ts`: rotación wwwNN por redirect
+
+- `www45.mejortorrent.eu` responde con redirect a `www46.mejortorrent.eu` y el
+  HTML redirigido usa enlaces ABSOLUTOS al host final. El chequeo de host era
+  exacto (`www45 ≠ www46`): descartaba todos los enlaces del listado y
+  terminaba en 0 registros **sin error** (listings>0).
+- `sameSiteHost` ahora tolera la rotación `wwwNN.` dentro del mismo dominio
+  (protocolo/puerto iguales, sin credenciales — el caso
+  `user:pass@` sigue rechazándose), aplicado a listados, pager, API de posts y
+  chequeo de descargas. Dominios ajenos siguen fuera.
+
+## Verificación
+
+- `tests/crawler-fixes.test.js`: layout 2026 de WolfMax4K de punta a punta
+  (`/pelicula/ryqb95`, `/serie/5se8eg`, `/serie/episodio/5sjfvr` en cola de
+  fichas; legacy sigue; junk rechazado).
+- `tests/crawler-audit.test.js`: listado servido por el host redirigido
+  (enlaces absolutos www46 con mirror www45) produce su release; descarga
+  misma-dominio con wwwNN distinto aceptada; dominio ajeno rechazada.
+
+## Pendientes de esta revisión
+
+- pelispanda: confirmar con un run real si la API `wp-json/wpreact/v1` sigue
+  respondiendo JSON a axios (aquí solo pudimos probar con navegador, que recibe
+  el SPA). Si el probe falla, hace falta el endpoint real del SPA (devtools).
+- grantorrent: requiere dominios por env; sin defaults por diseño.
+
+---
+
+# Profundización: wolftorrent / WolfMax4K (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de wolftorrent, complemento del fix 21.
+
+## Estado real de los mirrors (2026-09-28)
+
+| Dominio de `DEFAULT_MIRRORS` | Estado real |
+|---|---|
+| `wolftorrent.com` | 🟠 Placeholder "Próximamente" (sin catálogo) |
+| `wolfmax4k.com` / `www.` | 🟢 Único catálogo vivo |
+| `wolftorrent.net` | 🔴 No resuelve |
+| `wolfmax4k.org` | 🔴 No resuelve |
+
+## Qué se confirmó del template 2026
+
+- **Listados**: `/peliculas` (23.054 títulos, "Página 1 de 961") y `/series`
+  son reales, pero el paginador es de JS: `?page=2` devuelve de nuevo la
+  página 1. El bucle de `html-catalog` ya está protegido (dedup de URLs y de
+  fichas + tope `maxPages`), así que el máximo desperdicio es 1 fetch
+  repetido por sección; cada listing estático trae ~24 fichas con todas sus
+  variantes de calidad (cada variante es su propia ficha `/pelicula/<id>`).
+- **Ficha** (`/pelicula/ryqb95`): título en `h1`, calidad/tamaño en una lista
+  de definiciones SIN dos puntos (`Calidad` → `HDRip`), y el botón
+  **"Descargar torrent" es un `<button>` sin href** (JS). El parseo estático
+  no inventa descargas; el fallback de navegador ya cliquea ese botón por
+  nombre (`/^descargar(?: torrent)?$/i`) y valida el archivo resultante
+  (mismo dominio, `.torrent`, o blob local). Cap por run:
+  `WOLFTORRENT_BROWSER_MAX` (default 25; subirlo cubre más fichas).
+  Si el template expone el endpoint en un atributo (`data-url`), el camino
+  estático lo toma sin navegador (`/descargar/` es endpoint confiado).
+
+## Cambio
+
+- `DEFAULT_MIRRORS` reordenado: `wolfmax4k.com` primero (ahorra el probe
+  fallido del placeholder en cada run); los dominios muertos quedan al final
+  por si vuelven (el probe igualmente los rechaza).
+
+## Tests nuevos (suite 453/453)
+
+- Ficha 2026 realista: título/type correctos, botón sin href → 0 descargas
+  estáticas, `/serie/episodio/:id` → type `series`, `data-url=/descargar/:id`
+  → descarga estática aceptada.
+- Orden de mirrors vivo (`DEFAULT_MIRRORS[0] === wolfmax4k.com`) y pager
+  `?page=N` aceptado intra-dominio / ausencia de pager corta la sección.
+
+## Única incógnita restante (requiere run con navegador real)
+
+Si el click del botón sirve el `.torrent` desde OTRO dominio (CDN) en vez de
+uno propio o blob, `wolfDownloadUrl` lo rechaza y la ficha queda sin descarga.
+No es verificable sin Playwright contra el sitio; si pasa, habría que sumar el
+CDN real a los endpoints confiables.
+
+---
+
+# Profundización: mejortorrent (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de mejortorrent sobre el mirror real
+(`www45.mejortorrent.eu` → redirige a `www46.mejortorrent.eu`).
+
+## Qué se confirmó del sitio real (2026-09-28)
+
+- El fix 22 (rotación wwwNN) era exactamente lo que necesitaba: los listados
+  de `//inicio` y `/peliculas-hd` sirven enlaces ABSOLUTOS a `www46`.
+- Las rutas que usa el crawler existen en el template nuevo: `/inicio`,
+  `/peliculas-hd`, `/series-hd`, `/documentales` (y `/peliculas-4k`).
+- Las fichas tienen descarga ESTÁTICA real: películas un enlace
+  `/torrents/peliculas/<nombre>.torrent`; series una tabla
+  `ID | Episodios | Fecha | Clave | Download` con un `.torrent` por episodio.
+  El parsing de episodios por posición (`td.eq(1)` = `1x01`) calza EXACTO con
+  esa tabla — quedó protegido con un test con el markup real.
+- Los catálogos NO tienen paginador estático (ventana por fechas); los filtros
+  por letra/género son enlaces estáticos (`/series-hd/letter/a`,
+  `/peliculas/genre/drama`) y NO se cuelan como fichas (verificado en test).
+- Los índices completos `/peliculas` y `/series` existen ("Volver al índice"
+  en cada ficha).
+
+## Cambios (`src/crawlers/mejortorrent.ts`)
+
+- Fix 23 — fallback del modo `modern_me`: desde el fix 11, una API
+  `/wp-json/wp/v2/posts` que responde HTML (SPA/WAF, HTTP 200) lanza
+  `BlockedPageError`, y el catch del modo WordPress lo RE-LANZABA: la corrida
+  moría aunque el template legacy funcionara perfecto. Ahora ese error solo
+  corta la fase API y cae al modo HTML (un mirror realmente bloqueado sigue
+  levantando el error desde los fetch legacy, que usan rejectBlocked).
+  429, deadline y demás errores siguen re-lanzándose.
+- Nuevas rutas legacy: `/peliculas` y `/series` (índices completos por tipo),
+  después de las ventanas recientes; el cupo `maxPages*35` sigue acotando.
+
+## Tests nuevos (suite 455/455)
+
+- Recorrido end-to-end del template 2026: portada legacy → listados con
+  enlaces absolutos www46 → ficha de película con `/torrents/peliculas/…`
+  (1 record, hash del metainfo real) → ficha de serie con la tabla real
+  (3 episodios 1x01..1x03, season=1) → índices `/peliculas` y `/series`
+  visitados → filtros `letter/`/`genre/` jamás pedidos.
+- API de WordPress que responde página de WAF → la corrida cae al modo HTML y
+  produce records (antes: error fatal).
+
+---
+
+# Profundización: The Pirate Bay (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de thepiratebay (apibay.org + 9 mirrors
+HTML del pool).
+
+## Estado real verificado (2026-09-28)
+
+- **APiBay viva y exacta**: `data_top100_20N.json` y `q.php?q=castellano&cat=200`
+  responden con el formato que `mapApibayItem` espera, con la dualidad real:
+  precompilados traen números (`id: 38033514`, `category: 201`, imdb
+  `"tt0113247"`) y `q.php` trae TODO como strings (`category: "201"`,
+  `imdb: ""`). Cubierto con tests de ambas formas.
+- **Pool de mirrors**: 7 de 9 vivos respondiendo el probe
+  `/search/test/1/99/200` con la tabla `searchResult`:
+  `tpb.party`, `thepiratebay10.org` (redirige a `.xyz`, el fetch lo sigue),
+  `thehiddenbay.com`, `thepiratebay0.org`, `piratebay.live`,
+  `pirateproxy.live` (redirige a `pirateproxylive.org`), `thepiratebay.zone`.
+  FUERA: `pirate-bays.net` (aparcado, página de anuncios) y
+  `tpb.skynetcloud.site` (muerto).
+- **DOS variantes del template conviven** entre los mirrors, y el parser
+  actual cubre ambas:
+  - Clásica (tpb.party, thepiratebay10.xyz, pirateproxylive.org): categoría
+    `Video > HD - TV shows`, columnas separadas de tamaño/S/L y uploader.
+  - Minimalista (thehiddenbay, thepiratebay0, piratebay.live, thepiratebay.zone):
+    celda de categoría con DOS enlaces (`Video` + `( HD - TV shows )`), sin
+    columna de tamaño (va dentro de `detDesc`) y contadores `| 98 | 34 |` al
+    final — exactamente el caso que protegió el fix 10 (últimas celdas
+    numéricas).
+- **Fichas**: `description.php?id=N` puede 404ear en algunos proxies, pero es
+  inofensivo (los records del JSON ya traen imdb de apibay; los de la fase
+  HTML usan `source_url` = `/torrent/ID/...`, que vive y publica el enlace
+  IMDb — verificado con `tt32230839` en tpb.party).
+
+## Cambios
+
+- `DEFAULT_MIRRORS` depurado: fuera el dominio aparcado y el muerto;
+  `tpb.party` primero (canónico, sin hop de redirect). El probe rechaza
+  cualquier otro espejo que deje de hablar el dialecto TPB, así que la lista
+  corta no reduce resiliencia real.
+
+## Tests nuevos (suite 459/459)
+
+- Fila clásica 2026 real → `series`, S/L 98/34, tamaño 2.13 GiB, hash
+  lowercase, `source_url` mismo-sitio, magnets con trackers, sin
+  `torrent_file_url` (las filas publican magnets, nunca .torrent).
+- Fila minimalista 2026 real (2 enlaces de categoría, sin columna de tamaño)
+  → record `series` y record `movie` con S/L de las últimas celdas numéricas.
+- APiBay 2026: forma precompilada (números + imdb) y forma `q.php` (strings +
+  imdb vacío → `null`, nunca fabricado).
+- Higiene del pool: primer mirror `tpb.party`, sin los dominios muertos.
+
+---
+
+# Profundización: MagnetDL (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de magnetdl (pool de 4 dominios,
+catálogos, fichas /single/:id y rutas de búsqueda por letra).
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `magnetdl.app` | 🟢 **La mejor variante**: las filas traen `magnet:` REALES con trackers → cero fichas necesarias |
+| `magnetdl.co` | 🟠 Vivo pero degradado: el icono de descarga enlaza a una página HTML en `.app` (no a un magnet) y la ficha solo imprime el hash |
+| `www.magnetdl.com` | 🔴 Cloudflare 522 (origin caído; puede volver, el probe lo salta) |
+| `magnetdl.org` | 🔴 Cloudflare 522 (mismo origin) |
+
+## Fix 24 — la ficha `.co` nunca producía magnet
+
+- En `magnetdl.co` el botón "Download" es un enlace HTTP a
+  `magnetdl.app/single/:id` (OTRA página HTML, no metainfo): `sameMirrorSite`
+  lo rechaza correctamente. La única fuente real es la celda impresa
+  `Info Hash:</td><td>9C44…</td>`.
+- El fallback por hash usaba un gap `[^0-9a-f]{0,40}` entre la etiqueta y el
+  hash: imposible atravesar `</td><td>` porque la "d" de "td" ES un carácter
+  hex → el fallback NUNCA matcheaba y toda ficha terminaba en `skipped`.
+- Ahora se limpia el HTML (strip de tags) y se busca
+  `info hash \D{0,80}? [0-9a-f]{40}` sobre el texto visible: el hash impreso
+  se convierte en magnet (sin trackers, como manda la política del repo:
+  nada fabricado).
+
+## Ajustes
+
+- Pool reordenado: `magnetdl.app` primero (filas con magnet → la corrida
+  resuelve TODO desde el listing, sin pedir una sola ficha); `.co` de
+  respaldo; `.com`/`.org` al final por si el origin vuelve.
+- `MAGNETDL_SEARCH` default ahora vacío: el esquema de búsqueda del sitio
+  matchea slugs de TÍTULOS exactos (`/h/house-of-dragon-s02e05-2160p/`), así
+  que los términos de idioma default (`spanish`, `castellano`, `latino`)
+  respondían 404 SIEMPRE (verificado: `/s/spanish/` y `/c/castellano/` = 404
+  nginx) — 3 pedidos muertos por corrida. La ruta por letra queda disponible
+  vía `MAGNETDL_SEARCH=<slug-de-título>`.
+
+## Tests nuevos (suite 462/462)
+
+- Fila real de `.app` → magnet con trackers cosechado del listing, S/L/tamaño
+  correctos, sin tocar la ficha.
+- Ficha real degradada de `.co` → el hash impreso se convierte en magnet a
+  través del markup de tabla; el enlace HTML del hermano jamás se guarda como
+  `torrent_file_url`.
+- Pool vivo (`.app` primero) + una corrida default sin `MAGNETDL_SEARCH` solo
+  pide `/download/movies/` y `/download/tv/` (cero rutas de letra).
+
+---
+
+# Profundización: RuTracker (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de la cadena de rutracker (pool de 5 dominios oficiales,
+probe, acceso de invitados, formularios y contrato de sesión). Tracker
+privado: la cadena autenticada completa no es runnable sin credenciales, así
+que lo verificable en vivo se verificó y el resto quedó fijado por tests.
+
+## Estado real verificado (2026-09-28)
+
+- `rutracker.org` y `rutracker.net` 🟢 vivas, foro completo, markup idéntico
+  (los fixtures de la suite `tLink`/`tor-size`/`seedmed`/`leechmed`/`a.pg`
+  siguen siendo el markup real).
+- `rutracker.nl` 🟠 responde HTTP 500 (servidor vivo, sitio roto hoy);
+  `rutracker.me` y `rutracker.cc` no respondieron desde esta red. Los cinco
+  dominios siguen en el pool a propósito: el probe pregunta uno por uno y se
+  queda con el primero sano (ahora documentado en el JSDoc con la fecha).
+- **`tracker.php?nm=…` anónimo redirige a `login.php?redirect=…`**: los
+  invitados ya no pueden ni buscar. El adapter ya lo modelaba bien (falla
+  explícito con `RutrackerAuthError` antes de crawler anónimo) — verificado
+  en vivo que el redirect existe tal cual.
+
+## Fix 25 — sesión muerta a mitad de corrida: fallo inmediato y con causa real
+
+- Antes: cuando `bb_session` expiraba durante la fase de fichas, cada
+  `tracker.php`/`viewtopic.php`/`dl.php` devolvía la página del formulario de
+  login; el parser la leía como un listing vacío o como "sin magnet" → la
+  corrida entera se gastaba en `skipped` silenciosos y el error final
+  *adivinaba* ("The session is probably no longer attached").
+- Ahora `looksLikeRutrackerLoginPage()` detecta el formulario de forma
+  estructural (form con `action=…login.php` + campo `login_username`, nunca
+  en una página con logout): `fetchForumPage` y la descarga de metainfo
+  lanzan `RutrackerAuthError` con la causa exacta, y ese error es terminal
+  (`isTerminalRutrackerError`) → la corrida para en la primera respuesta de
+  login, sin quemar el presupuesto de fichas.
+- La recuperación NO se rompe: si hay `RUTRACKER_USERNAME`/`PASSWORD`,
+  `ensureSession` captura ese error en su chequeo inicial, descarta la
+  cookie muerta y loguea por credenciales (test que fija ese camino).
+
+## Tests nuevos (suite 466/466)
+
+- Detección estructural del formulario (positivo real, negativos: página
+  logueada, listing, error de login, vacío).
+- Sesión muerta a mitad de corrida → `RutrackerAuthError` "bb_session is no
+  longer valid" con EXACTAMENTE 1 request de listing y 0 fichas pedidas.
+- `dl.php` respondiendo el formulario → rechazo con la causa real (antes:
+  "not valid v1/hybrid torrent metainfo").
+- Cookie muerta + credenciales válidas → re-login cp1251 → corrida completa
+  produce el record (camino de recuperación intacto).
+
+---
+
+# Profundización: YTS (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de yts (pool de 8 dominios, API v2,
+shape real del payload, queries default). El crawler es 100% JSON API, sin
+fase HTML.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `yts.gg` | 🟢 **El que sirve**: API v2 completa (movie_count 77478, uploads del día) |
+| `movies-api.accel.li` | 🟢 **Nuevo base oficial del API** (anunciado en el propio payload, `@meta.migration`), payload idéntico |
+| `yts.lt` / `yts.am` | 🟠 Vivos pero **redirigen a yts.gg** |
+| `yts.mx` | 🟡 canónico; no respondió desde esta red (bloquea IPs de datacenter; el probe lo salta) — se mantiene |
+| `yts.do` / `yts.pm` | 🔴 API → 404 HTML |
+| `yts.rs` | 🔴 API rota (`Cannot read property 'moviesPerPage' of undefined`) |
+| `yts.nz` / `yts.homes` | 🔴 sin respuesta (con evidencia de que la familia SÍ es alcanzable desde esta red) |
+
+- **Shape verificado**: hash UPPERCASE (el mapper lo normaliza), `size_bytes`
+  numérico, `seeds`/`peers` numéricos, `language` de dos letras (`nl`, `en`…),
+  `imdb_code` "tt…", URLs de película y de torrent **absolutas** en el dominio
+  que sirve el contenido (`yts.gg`).
+- `query_term=spanish` sigue vivo (busca por TÍTULO: 12 resultados); se
+  mantiene en las queries default.
+
+## Fix 26 — los mirrors que redirigen tiraban TODAS las URLs de descarga
+
+- `resolveMirror` devuelve el dominio configurado (p.ej. `yts.lt`), pero el
+  payload (served por `yts.gg` tras el redirect) publica URLs absolutas en
+  `yts.gg` → `trustedYtsUrl` las rechazaba TODAS: cada record salía con
+  `torrent_file_url: null` y `source_url` degradada al fallback del slug.
+- Ahora la corrida adopta, una sola vez y con log, el **origen que el propio
+  payload publica** (host de la primera `movie.url` absoluta) como base de
+  confianza: requests al dominio de API sondeado, URLs al origen real del
+  contenido. Funciona para `.lt`/`.am` (redirect) y para `accel.li` (base
+  API-only). Si el payload usa URLs relativas, todo queda como antes.
+- Pool reordenado: `yts.gg` primero (el que sirve, sin hop), `yts.mx`
+  canónico de reserva, `accel.li` (base nueva oficial), `.lt`/`.am` al final;
+  fuera `do/rs/pm/nz/homes` con evidencia negativa.
+
+## Tests nuevos (suite 469/469)
+
+- Payload REAL de yts.gg (2026-09-28) → 2 records: hash uppercase→lowercase,
+  `imdb_id` tt1319699, size_bytes/seeds/peers numéricos, quality/channels del
+  API, audio `[]` para `language: "nl"` (nada inventado), magnets sin `tr=`.
+- Escenario redirect (`yts.lt`→otro origen): el origen del payload se adopta →
+  `torrent_file_url` y `source_url` apuntan al sitio real; los requests
+  quedan en el dominio configurado.
+- Higiene del pool: `yts.gg` primero, sin los 5 dominios muertos/rotos.
+- El test de "URLs relativas" ahora fija su propio dominio (antes dependía
+  implícitamente del orden del pool).
+
+---
+
+# Profundización: 1337x (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de leech1337x (pool de 10 dominios,
+rutas sort-search + populares, fichas, paginación). Cadenas completas
+verificadas contra las páginas reales de 2026.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `1337x.la` | 🟢 **Cadena completa verificada**: `/sort-search/spanish/seeders/desc/1/` con filas frescas, paginación publicada, fichas con magnet |
+| `1337xx.to` | 🟢 Listado real (mismos ids de contenido que .la, plantilla nueva) |
+| `1337x.st` | 🟢 Listado real (plantilla clásica) |
+| `x1337x.ws` | 🟢 Listado real (plantilla clásica) |
+| `1337xxx.to` | 🟢 Listado real (plantilla nueva) |
+| `1337x.to` | 🟠 Canónico vivo, pero `/popular-movies` respondió "Bad category." ese día (queda como fallback; el probe decide) |
+| `1377x.to` | ⚪ Oficial según el hub; inalcanzable desde esta red (queda; el probe lo salta) |
+| `www.1337x.tw` / `1337xto.to` | 🔴 Son hubs/puertas de dominios: categorías 404 o apuntan a OTROS dominios — fuera |
+| `x1337x.eu`, `x1337x.se`, `1337x.is`, `1337x.gd` | 🔴 Proxies viejos sin evidencia — fuera |
+
+La propia página del hub (`1337x.la/about`) publica la lista de dominios
+oficiales actual: `1377x.to, 1337x.tw, 1337xto.to, 1337xx.to, 1337xxx.to,
+1337x.is, 13377x.tw` — el pool nuevo adopta los que sirven listados reales.
+
+## Cadena verificada contra el markup real (sin cambios de código)
+
+- Probe "first accepted wins": la plantilla nueva convirtió la portada en un
+  hub SIN tabla de torrents, pero el segundo probe (`/popular-movies`) sí es
+  un listado real → el mirror se acepta igual. El diseño de dos probes ya lo
+  cubría.
+- `sort-search` sigue vivo con paginación publicada exactamente del formato
+  `/sort-search/<term>/seeders/desc/2/` que `sameListingRoute` espera.
+- **Fichas**: magnet público para anónimos con dn + 8 trackers reales, mapa
+  de detalles (Category/Language/Total size/Seeders/Leechers), Infohash
+  impreso (fallback por hash disponible) y enlace IMDb. El botón "Torrent
+  Download" es un ancla `#` y los espejos (torrage/btcache) son
+  third-party → `torrent_file_url: null` correctamente (nada inventado).
+- La variante clásica de `.st`/`.ws` pega el contador de descargas a la
+  celda de tamaño (`"1.5 GB2218"`) y suelta badges numéricos fuera del
+  anchor: el parser de tamaño (por regex) y el de título (solo texto del
+  anchor) ya lo manejan — fijado con tests.
+
+## Cambios
+
+- Pool depurado con evidencia: `[1337x.la, 1337xx.to, 1337x.st, x1337x.ws,
+  1337xxx.to, 1337x.to, 1377x.to]` (7 dominios, 5 verificados con listado
+  real). Fuera los 2 hubs y los 4 proxies viejos sin evidencia.
+
+## Tests nuevos (suite 472/472)
+
+- Ficha real 2026 (magnet con trackers + details map + IMDb + botón `#`) →
+  record `series`, S/L 824/283, tamaño desde el listing (no el contador de
+  descargas), `torrent_file_url` null, IMDb tt6468322, audio Spanish desde el
+  título aunque el campo Language del sitio diga English.
+- Fila clásica de `.st` → título limpio (badge fuera del anchor), 1.5 GB con
+  el contador pegado, S/L 2218/565.
+- Higiene del pool: los 5 verificados quedan, los 6 muertos/hub fuera.
+
+---
+
+# Profundización: SinSitio (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de sinsitio (pool de 4 dominios,
+portada, secciones, fichas, attachments DLE, paginación). La 7ª lo había
+marcado 🟢: esta ronda confirmó la cadena contra el markup de hoy.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `www.sinsitio.site` | 🟢 DLE completo: portada con posts frescos (septiembre 2026), secciones `/dvdrip-bdrip/` y `/series/` vivas con pager publicado |
+| `sinsitio.site` | 🟢 vivo (301 → www; mismo sitio) |
+| `www.sinsitio.info` | 🔴 sin respuesta (fetch + curl) — fuera |
+| `sinsitio.online` | 🔴 sin respuesta (fetch + curl) — fuera |
+
+## Cadena verificada contra el markup real (sin cambios de código)
+
+- **Probe**: portada con posts `/N-slug.html` ✓ (el marcador esperado).
+- **Fichas**: el enlace de descarga real es exactamente
+  `ddlUrl.php?url=<base64(%2F/%3D escapados)>&name=<título release>`; el
+  base64 de hoy decodifica a `index.php?do=download&id=69707` (attachment DLE
+  público con id numérico) — la forma que `decodeSinsitioDownload` espera,
+  verbatim.
+- **Attachment**: un pedido directo SIN Referer devuelve la ficha otra vez
+  (DLE rebota al post) — es exactamente por eso que `fetchTorrentMetainfo`
+  envía el Referer de la ficha; el camino del crawler es el correcto.
+- **Paginación**: `/series/` publica pager DLE con URLs `/series/page/2/` y
+  texto "Adelante"; el matcher actual lo sigue (número 2 = actual+1 dentro de
+  `.navigation`) — fijado con test del markup real.
+- 1 calidad por post (un solo ddlUrl por ficha); los comentarios (reales,
+  activos) quedan excluidos por `#dle-comments-list` como ya diseñado.
+
+## Cambios
+
+- Pool depurado: `[www.sinsitio.site, sinsitio.site]` con JSDoc de live-check.
+  Fuera `sinsitio.info` y `sinsitio.online` (muertos con doble evidencia).
+
+## Tests nuevos (suite 476/476)
+
+- El href ddlUrl.php VERBATIM de la ficha de hoy (id 69707) decodifica al
+  attachment público; relativo y absoluto.
+- E2E con anatomía real (portada + ficha + comentarios): record con título
+  del `name=` param, `torrent_file_url` = attachment, `source_url` = ficha y
+  **el Referer del pedido de descarga es la ficha** (la evidencia en vivo del
+  rebote de DLE).
+- Pager DLE real (`/series/page/2/` + "Adelante") seguido desde `.navigation`.
+- Higiene del pool: solo el par www/apex vivo.

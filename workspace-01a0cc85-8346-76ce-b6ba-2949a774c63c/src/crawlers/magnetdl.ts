@@ -51,11 +51,19 @@ export class MagnetDlCrawler extends BaseCrawler {
   public readonly name = 'magnetdl';
   public baseUrl = process.env.MAGNETDL_BASE_URL || 'https://magnetdl.co';
 
-  /** Known domains; extend with MAGNETDL_MIRRORS. */
+  /**
+   * Known domains; extend with MAGNETDL_MIRRORS.
+   * Live check 2026-09-28: `magnetdl.app` is the best variant — its listing
+   * rows carry REAL magnet links (with trackers), so no detail pages are
+   * needed at all. `magnetdl.co` serves the same catalogue degraded (the icon
+   * links to an HTML page on .app and the ficha only prints the info hash).
+   * `www.magnetdl.com` and `magnetdl.org` were Cloudflare 522 (origin down);
+   * they stay in the pool in case the origin recovers (the probe skips them).
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://magnetdl.app',
     'https://magnetdl.co',
     'https://www.magnetdl.com',
-    'https://magnetdl.app',
     'https://magnetdl.org'
   ];
 
@@ -95,7 +103,11 @@ export class MagnetDlCrawler extends BaseCrawler {
     const mirror = (await this.getWorkingMirror()).replace(/\/+$/, '');
     this.baseUrl = mirror;
 
-    const searches = (process.env.MAGNETDL_SEARCH ?? 'spanish,castellano,latino')
+    // The live search scheme matches EXACT title slugs (`/h/house-of-dragon…/`);
+    // language words like "spanish" or "castellano" have no such directory and
+    // always answer 404, so by default only the catalogues are crawled. Set
+    // MAGNETDL_SEARCH with concrete title slugs to use the letter routes.
+    const searches = (process.env.MAGNETDL_SEARCH ?? '')
       .split(/[,\n]+/).map(term => MagnetDlCrawler.searchPath(term.trim())).filter((p): p is string => Boolean(p));
     const routes: Array<{ path: string; type: ContentType | null }> = [
       ...searches.map(path => ({ path, type: null })),
@@ -212,8 +224,16 @@ export class MagnetDlCrawler extends BaseCrawler {
       const title = cleanText(anchor.attr('title') || anchor.text());
       if (!detailUrl || !title || isBlockedTitle(title)) return;
 
-      const category = cleanText(tds.eq(3).text()).toLowerCase();
-      if (category && !/movie|tv|anime|video|documentar/.test(category)) return;
+      // Columns: magnet | name | age | type | [files] | size | seeds | leech.
+      const cells = tds.toArray().map(td => cleanText($(td).text()));
+
+      // The category cell is located BY CONTENT: mirrors that drop the type
+      // column shifted `tds.eq(3)` onto the size, and "1.4 GB" failed the
+      // video-word test so every row of those mirrors was silently dropped.
+      const CATEGORY_CELL =
+        /^(?:movies?|tv|series|anime|video|documentar\w*|music|audio|games?|apps?|applications?|software|xxx|adult|pictures?|books?|other)\b/i;
+      const category = cells.slice(2).find(text => text.length <= 30 && CATEGORY_CELL.test(text)) ?? '';
+      if (category && !/movie|tv|anime|video|documentar/i.test(category)) return;
 
       let magnet: string | null = null;
       $(tr).find('a[href]').each((__, element) => {
@@ -224,8 +244,6 @@ export class MagnetDlCrawler extends BaseCrawler {
       const type: ContentType = forcedType ??
         (/tv/.test(category) || /\bS\d{1,2}(?:E\d{1,3})?\b/i.test(title) ? 'series' : 'movie');
 
-      // Columns: magnet | name | age | type | [files] | size | seeds | leech.
-      const cells = tds.toArray().map(td => cleanText($(td).text()));
       const sizeIndex = cells.findIndex((text, i) => i > 1 && parseSizeToBytes(text) !== null && /[KMGT]i?B/i.test(text));
       rows.push({
         detailUrl,
@@ -286,9 +304,15 @@ export class MagnetDlCrawler extends BaseCrawler {
     if (magnet) return { magnet, title, torrentFileUrl };
 
     let hashMagnet: string | null = null;
-    for (const hash of html.matchAll(/(?:info\s*hash|hash)[^0-9a-f]{0,40}\b([0-9a-f]{40})\b/gi)) {
-      if (/^0{40}$/i.test(hash[1])) continue;
-      hashMagnet = buildMagnetUri(hash[1].toLowerCase(), title, [], { includeDefaultTrackers: false });
+    // The live ficha prints the hash in a table ("...</td><td>9C44...</td>"):
+    // tag text contains the hex letter "d", which defeats any [^0-9a-f] gap,
+    // so match on the visible text with the tags stripped instead.
+    const plain = html
+      .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ');
+    for (const match of plain.matchAll(/(?:info\s*hash|\bhash)\D{0,80}?([0-9a-f]{40})\b/gi)) {
+      if (/^0{40}$/i.test(match[1])) continue;
+      hashMagnet = buildMagnetUri(match[1].toLowerCase(), title, [], { includeDefaultTrackers: false });
       break;
     }
     return { magnet: hashMagnet, title, torrentFileUrl };
