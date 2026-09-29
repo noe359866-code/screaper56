@@ -706,3 +706,55 @@ catálogos, fichas /single/:id y rutas de búsqueda por letra).
   `torrent_file_url`.
 - Pool vivo (`.app` primero) + una corrida default sin `MAGNETDL_SEARCH` solo
   pide `/download/movies/` y `/download/tv/` (cero rutas de letra).
+
+---
+
+# Profundización: RuTracker (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de la cadena de rutracker (pool de 5 dominios oficiales,
+probe, acceso de invitados, formularios y contrato de sesión). Tracker
+privado: la cadena autenticada completa no es runnable sin credenciales, así
+que lo verificable en vivo se verificó y el resto quedó fijado por tests.
+
+## Estado real verificado (2026-09-28)
+
+- `rutracker.org` y `rutracker.net` 🟢 vivas, foro completo, markup idéntico
+  (los fixtures de la suite `tLink`/`tor-size`/`seedmed`/`leechmed`/`a.pg`
+  siguen siendo el markup real).
+- `rutracker.nl` 🟠 responde HTTP 500 (servidor vivo, sitio roto hoy);
+  `rutracker.me` y `rutracker.cc` no respondieron desde esta red. Los cinco
+  dominios siguen en el pool a propósito: el probe pregunta uno por uno y se
+  queda con el primero sano (ahora documentado en el JSDoc con la fecha).
+- **`tracker.php?nm=…` anónimo redirige a `login.php?redirect=…`**: los
+  invitados ya no pueden ni buscar. El adapter ya lo modelaba bien (falla
+  explícito con `RutrackerAuthError` antes de crawler anónimo) — verificado
+  en vivo que el redirect existe tal cual.
+
+## Fix 25 — sesión muerta a mitad de corrida: fallo inmediato y con causa real
+
+- Antes: cuando `bb_session` expiraba durante la fase de fichas, cada
+  `tracker.php`/`viewtopic.php`/`dl.php` devolvía la página del formulario de
+  login; el parser la leía como un listing vacío o como "sin magnet" → la
+  corrida entera se gastaba en `skipped` silenciosos y el error final
+  *adivinaba* ("The session is probably no longer attached").
+- Ahora `looksLikeRutrackerLoginPage()` detecta el formulario de forma
+  estructural (form con `action=…login.php` + campo `login_username`, nunca
+  en una página con logout): `fetchForumPage` y la descarga de metainfo
+  lanzan `RutrackerAuthError` con la causa exacta, y ese error es terminal
+  (`isTerminalRutrackerError`) → la corrida para en la primera respuesta de
+  login, sin quemar el presupuesto de fichas.
+- La recuperación NO se rompe: si hay `RUTRACKER_USERNAME`/`PASSWORD`,
+  `ensureSession` captura ese error en su chequeo inicial, descarta la
+  cookie muerta y loguea por credenciales (test que fija ese camino).
+
+## Tests nuevos (suite 466/466)
+
+- Detección estructural del formulario (positivo real, negativos: página
+  logueada, listing, error de login, vacío).
+- Sesión muerta a mitad de corrida → `RutrackerAuthError` "bb_session is no
+  longer valid" con EXACTAMENTE 1 request de listing y 0 fichas pedidas.
+- `dl.php` respondiendo el formulario → rechazo con la causa real (antes:
+  "not valid v1/hybrid torrent metainfo").
+- Cookie muerta + credenciales válidas → re-login cp1251 → corrida completa
+  produce el record (camino de recuperación intacto).
