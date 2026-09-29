@@ -241,3 +241,43 @@ test('Wolftorrent: every same-domain download endpoint is accepted, offsite ones
   assert.equal(wolfDownloadUrl(MAGNET, base), MAGNET);
   assert.equal(wolfDownloadUrl('magnet:?xt=urn:btih:invalid', base), null);
 });
+
+test('Wolftorrent: the 2026 WolfMax4K layout (slugless ids and episode fichas) is queued as details', () => {
+  const base = 'https://wolfmax4k.com';
+  // Links observed on the live site (2026-09): short ids, no slug, and
+  // per-episode fichas under /serie/episodio/.
+  assert.equal(isWolfDetailPath('/pelicula/ryqb95', base), true);
+  assert.equal(isWolfDetailPath('/serie/5se8eg', base), true);
+  assert.equal(isWolfDetailPath('/serie/episodio/5sjfvr', base), true);
+  assert.equal(isWolfDetailPath('https://wolfmax4k.com/pelicula/ryqb95', base), true);
+
+  // The legacy id/slug fichas keep working.
+  assert.equal(isWolfDetailPath('/pelicula/abc123/Sample', base), true);
+
+  for (const href of [
+    '/peliculas',                  // catalogue root, no id segment
+    '/peliculas?anyo=2025',        // filter query, not a release
+    '/peliculas/estrenos',         // listing word, no digits in the id slot
+    '/pelicula/mortal-kombat-ii',  // slug-only, no id
+    '/serie/page/2/',
+    '/pelicula/ryqb95/caratula.webp',
+    'https://ads.example/pelicula/ryqb95'
+  ]) {
+    assert.equal(isWolfDetailPath(href, base), false, href);
+  }
+
+  // End to end: a home like the live one queues movie AND episode fichas.
+  const crawler = new WolftorrentCrawler();
+  const html = `
+    <a href="/pelicula/ryqb95">Las catadoras del Hitler</a>
+    <a href="/serie/5se8eg">El problema final</a>
+    <a href="/serie/episodio/5sjfvr">Episodio 1x02</a>
+    <a href="/peliculas?genero=Drama">Drama</a>
+    <a href="/peliculas">Catálogo</a>`;
+  const links = crawler.parseListing(html, `${base}/peliculas`).sort();
+  assert.deepEqual(links, [
+    `${base}/pelicula/ryqb95`,
+    `${base}/serie/5se8eg`,
+    `${base}/serie/episodio/5sjfvr`
+  ]);
+});

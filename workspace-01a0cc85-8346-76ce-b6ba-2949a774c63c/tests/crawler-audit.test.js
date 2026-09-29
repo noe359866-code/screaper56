@@ -12,7 +12,7 @@ import { YtsCrawler, ytsLanguageHints } from '../src/crawlers/yts.ts';
 import { NyaaCrawler } from '../src/crawlers/nyaa.ts';
 import { TorrentGalaxyCrawler } from '../src/crawlers/torrentgalaxy.ts';
 import { PelispandaCrawler, isPelispandaTorrentLink } from '../src/crawlers/pelispanda.ts';
-import { MejorTorrentCrawler } from '../src/crawlers/mejortorrent.ts';
+import { MejorTorrentCrawler, isMejortorrentDownload } from '../src/crawlers/mejortorrent.ts';
 import { GranTorrentCrawler, isMovieCardPath } from '../src/crawlers/grantorrent.ts';
 import { SinsitioCrawler, decodeSinsitioDownload } from '../src/crawlers/sinsitio.ts';
 import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
@@ -817,6 +817,50 @@ test('MejorTorrent: legacy listings walk the published pager only', async () => 
     calls.filter(url => /\/series-hd\/page\/\d+$/.test(url)).length === 0,
     'an empty section is not paged through'
   );
+});
+
+test('MejorTorrent: a wwwNN mirror redirect keeps the absolute links the redirected page renders', async () => {
+  const crawler = new MejorTorrentCrawler();
+  clearMirrorCache('mejortorrent');
+
+  const calls = mockHttp(crawler, url => {
+    const withoutTrailingSlash = url.replace(/\/$/, '');
+    // Portada + template detection: legacy template (no wp-json anywhere).
+    if (withoutTrailingSlash === 'https://www45.mejortorrent.eu') {
+      return '<html><body>portada <a href="/pelicula/1/x.html">x</a></body></html>';
+    }
+    if (url.endsWith('/inicio')) {
+      // The www45 -> www46 redirect renders ABSOLUTE links on the final host;
+      // an exact-host check discarded every one of these and yielded zero records.
+      return '<a href="https://www46.mejortorrent.eu/pelicula/31040/Las-catadoras-del-Hitler.html">Las catadoras</a>';
+    }
+    if (url === 'https://www46.mejortorrent.eu/pelicula/31040/Las-catadoras-del-Hitler.html') {
+      return `<h1>Las catadoras del Hitler Castellano 1080p</h1><a href="magnet:?xt=urn:btih:${HASH}">Descargar torrent</a>`;
+    }
+    return '<div>seccion vacia</div>';
+  });
+
+  const records = await crawler.crawl(3);
+  clearMirrorCache('mejortorrent');
+
+  assert.equal(records.length, 1, 'the redirected listing still yields its release');
+  assert.ok(
+    calls.some(url => url.startsWith('https://www46.mejortorrent.eu/pelicula/')),
+    'the detail page on the redirected host was followed'
+  );
+
+  // The download check tolerates the wwwNN rotation on the same domain…
+  assert.equal(isMejortorrentDownload(
+    'https://www46.mejortorrent.eu/torrents/2026/a.torrent',
+    'https://www46.mejortorrent.eu/torrents/2026/a.torrent',
+    'https://www45.mejortorrent.eu/pelicula/31040/x.html'
+  ), true);
+  // …but never a different domain.
+  assert.equal(isMejortorrentDownload(
+    'https://evil.example/torrents/2026/a.torrent',
+    'https://evil.example/torrents/2026/a.torrent',
+    'https://www45.mejortorrent.eu/pelicula/31040/x.html'
+  ), false);
 });
 
 test('MejorTorrent: an overlapping category page does not hide its own next page', async () => {

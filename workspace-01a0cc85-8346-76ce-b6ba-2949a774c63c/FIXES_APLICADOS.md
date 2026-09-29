@@ -435,3 +435,65 @@ Pedido del usuario: recorrer `https://estrenostorrent.org/peliculas/` y
 ítems produce 75 registros y visita las 75 fichas con `crawl(1)`, y
 `ESTRENOSTORRENT_MAX_DETAILS=10` corta en 10 mientras que un valor inválido no
 corta.
+
+---
+
+# Revisión de la familia "pctn/newtemplate" (estilo WolfMax4K) contra los sitios en vivo
+
+Fecha: 2026-09-28
+Verificación crawler por crawler de los clones españoles contra el sitio real
+de cada mirror configurado (vía fetch externo; el sandbox no tiene salida
+directa). Tests: 451/451, `tsc` limpio.
+
+| Crawler | Mirror default | Estado real | Veredicto |
+|---|---|---|---|
+| dontorrent | dontorrent.moi | Vivo; fichas `/pelicula/31025/slug`, pager `?p=N` | 🟢 OK |
+| elitetorrent | www.elitetorrent.com | Vivo; fichas `/peliculas/slug-calidad/` | 🟢 OK |
+| estrenostorrent | estrenostorrent.org | Vivo; catálogos largos sin pager (mejorado el turno anterior) | 🟢 OK |
+| sinsitio | www.sinsitio.site | Vivo; posts DLE `/categoria/NN-slug.html` = lo que parsea | 🟢 OK |
+| t0rrenta | t0rrenta.org | Vivo; home con grilla JS pero sitemap.xml publicando cientos de `/p/ID` | 🟢 OK (sitemap) |
+| wolftorrent | wolftorrent.com → wolfmax4k.com | wolftorrent.com es un placeholder "Próximamente"; wolfmax4k.com vive con **layout nuevo** | 🔴→✅ corregido |
+| mejortorrent | www45.mejortorrent.eu | Vivo pero **redirige a www46** y sirve enlaces absolutos www46 | 🔴→✅ corregido |
+| pelispanda | pelispanda.org | Vivo (SPA); el navegador recibe el HTML del SPA también en `/wp-json/...` | 🟡 verificar en run real |
+| grantorrent | (sin defaults, exige `GRANTORRENT_BASE_URL`/`MIRRORS`) | No verificable sin dominio | ⚪ por diseño |
+
+## Fix 21 — `src/crawlers/wolftorrent.ts`: el layout 2026 de WolfMax4K
+
+- `wolftorrent.com` ya no es un catálogo (placeholder); el resolver rota
+  correctamente a `wolfmax4k.com`, pero allí las fichas son `/pelicula/ryqb95`
+  (id corto SIN slug) y hay fichas por episodio `/serie/episodio/5sjfvr`.
+- La regex vieja exigía 2 segmentos (`/pelicula/:id/:slug`): cero fichas
+  descubiertas, y el probe del mirror exigía lo mismo, así que ni siquiera
+  hubiera validado el mirror. Este era el 🟡 "exige 2 segmentos" de la
+  auditoría, confirmado ahora como rotura total.
+- Ahora `isWolfDetailPath` acepta ambos layouts (1 segmento con forma de id:
+  letras Y dígitos, sin guiones; 2 segmentos legacy id/slug; `episodio/:id`),
+  y el probe acepta hrefs de 1 segmento. Los rechazos (pager, categorías,
+  ficheros, filtros `?anyo=`) siguen iguales.
+
+## Fix 22 — `src/crawlers/mejortorrent.ts`: rotación wwwNN por redirect
+
+- `www45.mejortorrent.eu` responde con redirect a `www46.mejortorrent.eu` y el
+  HTML redirigido usa enlaces ABSOLUTOS al host final. El chequeo de host era
+  exacto (`www45 ≠ www46`): descartaba todos los enlaces del listado y
+  terminaba en 0 registros **sin error** (listings>0).
+- `sameSiteHost` ahora tolera la rotación `wwwNN.` dentro del mismo dominio
+  (protocolo/puerto iguales, sin credenciales — el caso
+  `user:pass@` sigue rechazándose), aplicado a listados, pager, API de posts y
+  chequeo de descargas. Dominios ajenos siguen fuera.
+
+## Verificación
+
+- `tests/crawler-fixes.test.js`: layout 2026 de WolfMax4K de punta a punta
+  (`/pelicula/ryqb95`, `/serie/5se8eg`, `/serie/episodio/5sjfvr` en cola de
+  fichas; legacy sigue; junk rechazado).
+- `tests/crawler-audit.test.js`: listado servido por el host redirigido
+  (enlaces absolutos www46 con mirror www45) produce su release; descarga
+  misma-dominio con wwwNN distinto aceptada; dominio ajeno rechazada.
+
+## Pendientes de esta revisión
+
+- pelispanda: confirmar con un run real si la API `wp-json/wpreact/v1` sigue
+  respondiendo JSON a axios (aquí solo pudimos probar con navegador, que recibe
+  el SPA). Si el probe falla, hace falta el endpoint real del SPA (devtools).
+- grantorrent: requiere dominios por env; sin defaults por diseño.

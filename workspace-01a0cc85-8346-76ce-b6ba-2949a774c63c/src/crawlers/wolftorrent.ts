@@ -18,6 +18,12 @@ const WOLF_LISTING_SEGMENTS =
 /** Attributes a download button may carry the magnet in, before any click. */
 const MAGNET_ATTRIBUTES = ['href', 'data-magnet', 'data-url', 'data-href', 'data-torrent', 'data-download', 'data-file'] as const;
 
+/**
+ * A real WolfMax4K release id (`ryqb95`, `5se8eg`): short, letters AND digits,
+ * no dashes. Slug-only or word-only segments never qualify.
+ */
+const WOLF_ID_SEGMENT = /^(?=.*\d)(?=.*[a-z])[a-z0-9]{4,20}$/i;
+
 /** Hosts compared without their `www.` prefix and across direct subdomains. */
 export function isSameDomain(urlA: string, urlB: string): boolean {
   try {
@@ -35,9 +41,12 @@ export function isSameDomain(urlA: string, urlB: string): boolean {
 }
 
 /**
- * True when `href` is a single release (`/pelicula/:id/:slug`, `/serie/...`).
- * `/pelicula/page/2/`, `/serie/categoria/accion/` and friends matched the old
- * two-segment regex and were queued as details.
+ * True when `href` is a single release. Two layouts are accepted:
+ *  - legacy `/pelicula/:id/:slug`, `/serie/:id/:slug`;
+ *  - the 2026 WolfMax4K template: `/pelicula/ryqb95`, `/serie/5se8eg` (short
+ *    id, no slug) and single-episode fichas `/serie/episodio/5sjfvr`.
+ * `/pelicula/page/2/`, `/serie/categoria/accion/` and friends were queued as
+ * details by earlier regexes; the listing/file/pager checks below reject them.
  */
 export function isWolfDetailPath(href: string, base: string): boolean {
   if (!href || typeof href !== 'string') return false;
@@ -53,9 +62,16 @@ export function isWolfDetailPath(href: string, base: string): boolean {
     return false;
   }
 
-  if (!/^\/(?:pelicula|peliculas|serie|series)\/[^/]+\/[^/]+\/?$/i.test(url.pathname)) return false;
+  // Only release sections are considered, in both layouts.
+  if (!/^\/(?:peliculas?|series?)\//i.test(url.pathname)) return false;
 
   const segments = url.pathname.split('/').filter(Boolean).slice(1);
+  if (segments.length < 1 || segments.length > 2) return false;
+  // The slugless layout has exactly one segment and it must look like an id
+  // (letters AND digits), so `/peliculas/estrenos` or `/serie/calidad` never
+  // pass even if they are not in WOLF_LISTING_SEGMENTS.
+  if (segments.length === 1 && !WOLF_ID_SEGMENT.test(segments[0])) return false;
+
   if (segments.some(segment => WOLF_LISTING_SEGMENTS.test(segment))) return false;
   // A file nested under a detail-shaped path is still a file, not a release page.
   if (/\.(?:torrent|zip|rar|7z|mp4|mkv|avi|jpe?g|png|webp|gif|pdf|php|xml)$/i.test(segments[segments.length - 1] || '')) return false;
@@ -66,7 +82,8 @@ export function isWolfDetailPath(href: string, base: string): boolean {
 }
 
 /**
- * WolfMax4K catalog: /pelicula/:id/:slug and /serie/:id/:slug.
+ * WolfMax4K catalog: `/pelicula/:id/:slug` (legacy) or `/pelicula/:id`,
+ * `/serie/:id` and `/serie/episodio/:id` (2026 layout).
  * Download URLs are discovered from the page, never manufactured from an ID.
  */
 export class WolftorrentCrawler extends HtmlCatalogCrawler {
@@ -107,7 +124,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
           path: '/peliculas',
           label: 'catálogo de películas',
           timeoutMs: 8000,
-          validate: htmlMarkerValidator([/href=["'][^"']*\/(?:pelicula|serie)\/[^"']+\/[^"']+/i])
+          validate: htmlMarkerValidator([/href=["'][^"']*\/(?:pelicula|serie)\/[a-z0-9]/i])
         }
       ]
     };

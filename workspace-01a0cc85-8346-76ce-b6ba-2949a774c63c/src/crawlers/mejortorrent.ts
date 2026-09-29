@@ -20,9 +20,26 @@ import {
 
 type MirrorMode = 'legacy_eu' | 'modern_me';
 
-/** Same site, allowing `www.` variation without accepting a scheme/port change. */
+/**
+ * Same site, allowing `www.` variation without accepting a scheme/port change.
+ * The `.eu` template rotates its `wwwNN.` front-ends by redirecting
+ * (`www45.mejortorrent.eu` -> `www46.mejortorrent.eu`) and the redirected
+ * pages render ABSOLUTE links on the final host, so an exact-host comparison
+ * discarded every listing link and silently produced zero records.
+ */
 function sameSiteHost(a: string, b: string): boolean {
-  return sameSite(a, b);
+  if (sameSite(a, b)) return true;
+  try {
+    const left = new URL(a);
+    const right = new URL(b);
+    if (left.username || left.password || right.username || right.password) return false;
+    if (left.protocol !== right.protocol || left.port !== right.port) return false;
+    const normalize = (host: string) => host.replace(/^www\d*\./i, '').toLowerCase();
+    const leftHost = normalize(left.hostname);
+    return leftHost.length > 0 && leftHost === normalize(right.hostname);
+  } catch {
+    return false;
+  }
 }
 
 /**
