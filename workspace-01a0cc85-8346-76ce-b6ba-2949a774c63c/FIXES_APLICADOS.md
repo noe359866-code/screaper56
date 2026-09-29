@@ -758,3 +758,58 @@ que lo verificable en vivo se verificó y el resto quedó fijado por tests.
   "not valid v1/hybrid torrent metainfo").
 - Cookie muerta + credenciales válidas → re-login cp1251 → corrida completa
   produce el record (camino de recuperación intacto).
+
+---
+
+# Profundización: YTS (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de yts (pool de 8 dominios, API v2,
+shape real del payload, queries default). El crawler es 100% JSON API, sin
+fase HTML.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `yts.gg` | 🟢 **El que sirve**: API v2 completa (movie_count 77478, uploads del día) |
+| `movies-api.accel.li` | 🟢 **Nuevo base oficial del API** (anunciado en el propio payload, `@meta.migration`), payload idéntico |
+| `yts.lt` / `yts.am` | 🟠 Vivos pero **redirigen a yts.gg** |
+| `yts.mx` | 🟡 canónico; no respondió desde esta red (bloquea IPs de datacenter; el probe lo salta) — se mantiene |
+| `yts.do` / `yts.pm` | 🔴 API → 404 HTML |
+| `yts.rs` | 🔴 API rota (`Cannot read property 'moviesPerPage' of undefined`) |
+| `yts.nz` / `yts.homes` | 🔴 sin respuesta (con evidencia de que la familia SÍ es alcanzable desde esta red) |
+
+- **Shape verificado**: hash UPPERCASE (el mapper lo normaliza), `size_bytes`
+  numérico, `seeds`/`peers` numéricos, `language` de dos letras (`nl`, `en`…),
+  `imdb_code` "tt…", URLs de película y de torrent **absolutas** en el dominio
+  que sirve el contenido (`yts.gg`).
+- `query_term=spanish` sigue vivo (busca por TÍTULO: 12 resultados); se
+  mantiene en las queries default.
+
+## Fix 26 — los mirrors que redirigen tiraban TODAS las URLs de descarga
+
+- `resolveMirror` devuelve el dominio configurado (p.ej. `yts.lt`), pero el
+  payload (served por `yts.gg` tras el redirect) publica URLs absolutas en
+  `yts.gg` → `trustedYtsUrl` las rechazaba TODAS: cada record salía con
+  `torrent_file_url: null` y `source_url` degradada al fallback del slug.
+- Ahora la corrida adopta, una sola vez y con log, el **origen que el propio
+  payload publica** (host de la primera `movie.url` absoluta) como base de
+  confianza: requests al dominio de API sondeado, URLs al origen real del
+  contenido. Funciona para `.lt`/`.am` (redirect) y para `accel.li` (base
+  API-only). Si el payload usa URLs relativas, todo queda como antes.
+- Pool reordenado: `yts.gg` primero (el que sirve, sin hop), `yts.mx`
+  canónico de reserva, `accel.li` (base nueva oficial), `.lt`/`.am` al final;
+  fuera `do/rs/pm/nz/homes` con evidencia negativa.
+
+## Tests nuevos (suite 469/469)
+
+- Payload REAL de yts.gg (2026-09-28) → 2 records: hash uppercase→lowercase,
+  `imdb_id` tt1319699, size_bytes/seeds/peers numéricos, quality/channels del
+  API, audio `[]` para `language: "nl"` (nada inventado), magnets sin `tr=`.
+- Escenario redirect (`yts.lt`→otro origen): el origen del payload se adopta →
+  `torrent_file_url` y `source_url` apuntan al sitio real; los requests
+  quedan en el dominio configurado.
+- Higiene del pool: `yts.gg` primero, sin los 5 dominios muertos/rotos.
+- El test de "URLs relativas" ahora fija su propio dominio (antes dependía
+  implícitamente del orden del pool).

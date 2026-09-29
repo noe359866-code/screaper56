@@ -91,18 +91,26 @@ function trustedYtsUrl(value: string | undefined, mirror: string): string | null
 
 export class YtsCrawler extends BaseCrawler {
   public readonly name = 'yts';
-  public baseUrl = process.env.YTS_BASE_URL || 'https://yts.mx';
+  public baseUrl = process.env.YTS_BASE_URL || 'https://yts.gg';
 
-  /** Known YTS domains; extend with YTS_MIRRORS. */
+  /**
+   * Known YTS domains; extend with YTS_MIRRORS.
+   * Live check 2026-09-28: `yts.gg` serves the v2 API directly (and the API
+   * announces its official new base, movies-api.accel.li, which serves the
+   * identical payload). `yts.lt` and `yts.am` answer with a redirect to
+   * yts.gg, so their payloads publish absolute yts.gg URLs — the crawler
+   * adopts that published origin as the trust base instead of dropping every
+   * download URL. `yts.do`, `yts.rs` and `yts.pm` serve a 404 page or an
+   * internal error for the API; `yts.nz` and `yts.homes` did not answer.
+   * `yts.mx` stays: it is the canonical domain and commonly blocks
+   * datacenter IPs only, so the probe skips it when it is unreachable.
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://yts.gg',
     'https://yts.mx',
-    'https://yts.do',
-    'https://yts.rs',
-    'https://yts.pm',
+    'https://movies-api.accel.li',
     'https://yts.lt',
-    'https://yts.am',
-    'https://yts.homes',
-    'https://yts.nz'
+    'https://yts.am'
   ];
 
   private async getWorkingDomain(): Promise<string> {
@@ -132,6 +140,12 @@ export class YtsCrawler extends BaseCrawler {
 
     const activeDomain = await this.getWorkingDomain();
     this.baseUrl = activeDomain;
+
+    // Requests go to the probed API domain, but the payload publishes ABSOLUTE
+    // URLs of the real content site (yts.lt / yts.am redirect to yts.gg, and
+    // the accel.li API base serves yts.gg URLs). Trust that published origin
+    // for movie/torrent URLs instead of dropping them all.
+    let contentBase = activeDomain;
 
     const results: TorrentRecord[] = [];
     const uniqueHashes = new Set<string>();
@@ -195,8 +209,27 @@ export class YtsCrawler extends BaseCrawler {
           }
           pageSignatures.add(pageSignature);
 
+          // Adopt the payload's own content origin once (see contentBase):
+          // only absolute movie URLs count, relative ones mean the API host
+          // already is the content site.
+          if (contentBase === activeDomain) {
+            const published = movies.find(movie => typeof movie?.url === 'string' && /^https?:\/\//i.test(movie.url));
+            const resolved = published ? absoluteHttpUrl(published.url as string, activeDomain) : null;
+            if (resolved) {
+              try {
+                const origin = new URL(resolved).origin;
+                if (origin !== new URL(activeDomain).origin) {
+                  this.log.info(`YTS payload publishes absolute URLs on ${origin}; trusting it as the content base.`);
+                  contentBase = origin;
+                }
+              } catch {
+                /* keep the active domain */
+              }
+            }
+          }
+
           for (const movie of movies) {
-            for (const record of this.mapMovie(movie, activeDomain)) {
+            for (const record of this.mapMovie(movie, contentBase)) {
               if (uniqueHashes.has(record.info_hash)) continue;
               uniqueHashes.add(record.info_hash);
               results.push(record);
@@ -223,8 +256,13 @@ export class YtsCrawler extends BaseCrawler {
     return deduplicated;
   }
 
-  /** One API movie -> one record per published quality. */
-  public mapMovie(movie: YtsApiMovie, activeDomain: string): TorrentRecord[] {
+  /**
+   * One API movie -> one record per published quality. `contentBase` is the
+   * origin absolute payload URLs must stay on: the probed API domain, or the
+   * content origin the payload itself publishes when the API runs on a
+   * redirecting or API-only host.
+   */
+  public mapMovie(movie: YtsApiMovie, contentBase: string): TorrentRecord[] {
     if (!movie || !Array.isArray(movie.torrents) || movie.torrents.length === 0) return [];
 
     const records: TorrentRecord[] = [];
@@ -239,14 +277,14 @@ export class YtsCrawler extends BaseCrawler {
       }
     }
 
-    const publishedSourceUrl = trustedYtsUrl(movie.url, activeDomain);
+    const publishedSourceUrl = trustedYtsUrl(movie.url, contentBase);
     const slug = typeof movie.slug === 'string' ? movie.slug.trim() : '';
     const slugSourceUrl = /^[a-z0-9-]+$/i.test(slug)
-      ? `${activeDomain}/movies/${slug}`
+      ? `${contentBase}/movies/${slug}`
       : null;
     const movieId = Number(movie.id);
     const idSourceUrl = Number.isSafeInteger(movieId) && movieId > 0
-      ? `${activeDomain}/movie/${movieId}`
+      ? `${contentBase}/movie/${movieId}`
       : null;
     const sourceUrl = publishedSourceUrl ?? slugSourceUrl ?? idSourceUrl;
 
@@ -276,7 +314,7 @@ export class YtsCrawler extends BaseCrawler {
 
       // YTS publishes `url` as a root-relative path; resolve it only when it
       // remains on the verified mirror, never to an off-site download host.
-      const torrentFileUrl = trustedYtsUrl(torrent.url, activeDomain);
+      const torrentFileUrl = trustedYtsUrl(torrent.url, contentBase);
       // The API provides a hash, not tracker URLs. Keep the generated magnet
       // tracker-free instead of inventing announce endpoints.
       const magnetUrl = buildMagnetUri(infoHash, torrentTitle, [], { includeDefaultTrackers: false });

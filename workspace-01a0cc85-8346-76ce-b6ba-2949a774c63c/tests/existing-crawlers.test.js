@@ -887,3 +887,123 @@ test('YTS: malformed catalogues after a passing API probe are reported', async (
     clearMirrorCache('yts');
   }
 });
+
+/** The exact movie shape served by yts.gg on 2026-09-28 (limit=1 probe). */
+const YTS_LIVE_MOVIE = {
+  id: 78819,
+  url: 'https://yts.gg/movies/ballistica-2009',
+  imdb_code: 'tt1319699',
+  title: 'Ballistica',
+  title_english: 'Ballistica',
+  slug: 'ballistica-2009',
+  year: 2009,
+  rating: 3.4,
+  language: 'nl',
+  torrents: [
+    {
+      url: 'https://yts.gg/torrent/download/1A4FE3199DC1C6C529CF7B16167340F8CF5CB43A',
+      hash: '1A4FE3199DC1C6C529CF7B16167340F8CF5CB43A',
+      quality: '720p',
+      type: 'bluray',
+      is_repack: '0',
+      video_codec: 'x264',
+      bit_depth: '8',
+      audio_channels: '2.0',
+      seeds: 0,
+      peers: 0,
+      size: '834.3 MB',
+      size_bytes: 874826957
+    },
+    {
+      url: 'https://yts.gg/torrent/download/DDBEAFCC4EE91ED21AB07CB840C3A581384AFF65',
+      hash: 'DDBEAFCC4EE91ED21AB07CB840C3A581384AFF65',
+      quality: '1080p',
+      type: 'bluray',
+      is_repack: '0',
+      video_codec: 'x264',
+      bit_depth: '8',
+      audio_channels: '5.1',
+      seeds: 3,
+      peers: 1,
+      size: '1.67 GB',
+      size_bytes: 1793148846
+    }
+  ]
+};
+
+test('YTS: the live 2026 gg payload maps uppercase hashes, numeric counters and no invented audio', () => {
+  const crawler = new YtsCrawler();
+  const records = crawler.mapMovie(YTS_LIVE_MOVIE, 'https://yts.gg');
+
+  assert.equal(records.length, 2);
+  assert.equal(records[0].info_hash, '1a4fe3199dc1c6c529cf7b16167340f8cf5cb43a', 'uppercase API hashes are normalised');
+  assert.equal(records[0].source_url, 'https://yts.gg/movies/ballistica-2009');
+  assert.equal(records[0].torrent_file_url, 'https://yts.gg/torrent/download/1A4FE3199DC1C6C529CF7B16167340F8CF5CB43A');
+  assert.equal(records[0].imdb_id, 'tt1319699');
+  assert.equal(records[0].size_bytes, 874826957);
+  assert.equal(records[0].quality, '720p');
+  assert.equal(records[0].channels, '2.0');
+  assert.equal(records[1].seeders, 3);
+  assert.equal(records[1].leechers, 1);
+  assert.deepEqual(records[0].audio, [], 'a "nl" API language invents no English/Spanish audio');
+  assert.doesNotMatch(records[0].magnet_url, /[?&]tr=/, 'the API publishes hashes, not trackers');
+  assert.match(records[0].title, /^Ballistica 2009 720p BluRay YTS/);
+});
+
+test('YTS: a redirecting mirror (yts.lt -> yts.gg) trusts the origin the payload publishes', async () => {
+  const previousBase = process.env.YTS_BASE_URL;
+  const configured = 'https://yts-lt.test';
+  const real = 'https://yts-gg.test';
+  process.env.YTS_BASE_URL = configured;
+  clearMirrorCache('yts');
+  try {
+    const crawler = new YtsCrawler();
+    // The probe hits the configured domain, but its answer carries absolute
+    // URLs of the real content site (exactly what yts.lt serves today: every
+    // movie and torrent URL points at yts.gg).
+    const movie = origin => ({
+      ...YTS_LIVE_MOVIE,
+      url: `${origin}/movies/ballistica-2009`,
+      torrents: YTS_LIVE_MOVIE.torrents.map(torrent => ({ ...torrent, url: torrent.url.replace('https://yts.gg', origin) }))
+    });
+    const redirectedPayload = () => ({
+      status: 'ok',
+      data: { movie_count: 1, movies: [movie(real)] }
+    });
+    const calls = mockHttp(crawler, url => {
+      if (url === `${configured}/api/v2/list_movies.json?limit=1`) return { status: 'ok', data: { movie_count: 1, movies: [movie(real)] } };
+      return redirectedPayload();
+    });
+
+    const records = await crawler.crawl(1);
+
+    assert.ok(records.length >= 1);
+    for (const record of records) {
+      assert.ok(
+        record.torrent_file_url && record.torrent_file_url.startsWith(`${real}/torrent/download/`),
+        'the payload origin is adopted instead of dropping every download URL'
+      );
+      assert.equal(record.source_url, `${real}/movies/ballistica-2009`);
+    }
+    assert.ok(calls.every(url => url.startsWith(`${configured}/`)), 'requests stay on the configured API domain');
+  } finally {
+    if (previousBase === undefined) delete process.env.YTS_BASE_URL;
+    else process.env.YTS_BASE_URL = previousBase;
+    clearMirrorCache('yts');
+  }
+});
+
+test('YTS: the live pool leads with the domain that serves and keeps the canonical fallbacks', () => {
+  // Live check 2026-09-28: yts.gg serves; yts.mx is canonical but blocks
+  // datacenter IPs; movies-api.accel.li is the official new API base;
+  // yts.lt / yts.am redirect to gg; do/rs/pm are 404 or broken, nz/homes mute.
+  assert.equal(YtsCrawler.DEFAULT_MIRRORS[0], 'https://yts.gg');
+  assert.ok(YtsCrawler.DEFAULT_MIRRORS.includes('https://yts.mx'));
+  assert.ok(YtsCrawler.DEFAULT_MIRRORS.includes('https://movies-api.accel.li'));
+  for (const dead of ['yts.do', 'yts.rs', 'yts.pm', 'yts.nz', 'yts.homes']) {
+    assert.ok(
+      !YtsCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes(dead)),
+      `${dead} left the pool`
+    );
+  }
+});
