@@ -653,3 +653,56 @@ HTML del pool).
 - APiBay 2026: forma precompilada (números + imdb) y forma `q.php` (strings +
   imdb vacío → `null`, nunca fabricado).
 - Higiene del pool: primer mirror `tpb.party`, sin los dominios muertos.
+
+---
+
+# Profundización: MagnetDL (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de magnetdl (pool de 4 dominios,
+catálogos, fichas /single/:id y rutas de búsqueda por letra).
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `magnetdl.app` | 🟢 **La mejor variante**: las filas traen `magnet:` REALES con trackers → cero fichas necesarias |
+| `magnetdl.co` | 🟠 Vivo pero degradado: el icono de descarga enlaza a una página HTML en `.app` (no a un magnet) y la ficha solo imprime el hash |
+| `www.magnetdl.com` | 🔴 Cloudflare 522 (origin caído; puede volver, el probe lo salta) |
+| `magnetdl.org` | 🔴 Cloudflare 522 (mismo origin) |
+
+## Fix 24 — la ficha `.co` nunca producía magnet
+
+- En `magnetdl.co` el botón "Download" es un enlace HTTP a
+  `magnetdl.app/single/:id` (OTRA página HTML, no metainfo): `sameMirrorSite`
+  lo rechaza correctamente. La única fuente real es la celda impresa
+  `Info Hash:</td><td>9C44…</td>`.
+- El fallback por hash usaba un gap `[^0-9a-f]{0,40}` entre la etiqueta y el
+  hash: imposible atravesar `</td><td>` porque la "d" de "td" ES un carácter
+  hex → el fallback NUNCA matcheaba y toda ficha terminaba en `skipped`.
+- Ahora se limpia el HTML (strip de tags) y se busca
+  `info hash \D{0,80}? [0-9a-f]{40}` sobre el texto visible: el hash impreso
+  se convierte en magnet (sin trackers, como manda la política del repo:
+  nada fabricado).
+
+## Ajustes
+
+- Pool reordenado: `magnetdl.app` primero (filas con magnet → la corrida
+  resuelve TODO desde el listing, sin pedir una sola ficha); `.co` de
+  respaldo; `.com`/`.org` al final por si el origin vuelve.
+- `MAGNETDL_SEARCH` default ahora vacío: el esquema de búsqueda del sitio
+  matchea slugs de TÍTULOS exactos (`/h/house-of-dragon-s02e05-2160p/`), así
+  que los términos de idioma default (`spanish`, `castellano`, `latino`)
+  respondían 404 SIEMPRE (verificado: `/s/spanish/` y `/c/castellano/` = 404
+  nginx) — 3 pedidos muertos por corrida. La ruta por letra queda disponible
+  vía `MAGNETDL_SEARCH=<slug-de-título>`.
+
+## Tests nuevos (suite 462/462)
+
+- Fila real de `.app` → magnet con trackers cosechado del listing, S/L/tamaño
+  correctos, sin tocar la ficha.
+- Ficha real degradada de `.co` → el hash impreso se convierte en magnet a
+  través del markup de tabla; el enlace HTML del hermano jamás se guarda como
+  `torrent_file_url`.
+- Pool vivo (`.app` primero) + una corrida default sin `MAGNETDL_SEARCH` solo
+  pide `/download/movies/` y `/download/tv/` (cero rutas de letra).
