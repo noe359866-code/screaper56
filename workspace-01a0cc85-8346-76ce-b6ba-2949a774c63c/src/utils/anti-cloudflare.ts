@@ -549,6 +549,11 @@ export class CloudflareBypassEngine {
 
   /** Launches (once) a stealth Chromium and returns it. Safe under concurrency. */
   private async getOrCreateBrowser(budgetMs: number): Promise<Browser> {
+    // shutdown() is terminal (process teardown): silently relaunching Chromium
+    // after it defeated the whole point of the teardown hooks.
+    if (this.permanentlyClosed) {
+      throw new Error('[ANTI-CLOUDFLARE] Engine was shut down for this process; the browser is never relaunched.');
+    }
     if (this.activeBrowser?.isConnected()) {
       this.cancelIdleClose();
       return this.activeBrowser;

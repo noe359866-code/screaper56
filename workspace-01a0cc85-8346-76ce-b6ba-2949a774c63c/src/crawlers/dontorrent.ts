@@ -124,7 +124,12 @@ function getCdnHostAllowList(): RegExp[] {
 export function dontorrentDownloadUrl(value: string | undefined | null, base: string): string | null {
   if (!value) return null;
   const candidate = value.trim();
-  if (/^magnet:\?/i.test(candidate)) return candidate;
+  if (/^magnet:\?/i.test(candidate)) {
+    // Only a magnet carrying a valid BTIH reaches the downloader: an
+    // unparseable one used to fall through to fetchTorrentMetainfo, i.e. an
+    // HTTP GET against a `magnet:` URL that could never succeed.
+    return parseMagnetUri(candidate)?.infoHash ? candidate : null;
+  }
 
   const resolved = absoluteHttpUrl(candidate, base);
   if (!resolved) return null;

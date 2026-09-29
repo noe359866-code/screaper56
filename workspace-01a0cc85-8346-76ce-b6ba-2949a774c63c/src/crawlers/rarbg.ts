@@ -216,8 +216,14 @@ export class RarbgCrawler extends BaseCrawler {
       // Columns: cat | title | category | added | size | S | L | uploader.
       // The size column is located by content (mirrors add or drop the
       // uploader/date cells), and the fixed indices are only the fallback.
+      // A size cell MUST carry a unit: `parseSizeToBytes` accepts a bare
+      // number as bytes, so without that requirement an empty size cell made
+      // the SEEDERS count become the "size" and shifted S/L one cell to the
+      // left (leechers ended up in the uploader column).
       const cells = tds.toArray().map(td => cleanText($(td).text()));
-      let sizeIndex = cells.findIndex((text, position) => position > 2 && parseSizeToBytes(text) !== null);
+      let sizeIndex = cells.findIndex((text, position) =>
+        position > 2 && parseSizeToBytes(text) !== null && /[KMGT]i?B/i.test(text)
+      );
       if (sizeIndex === -1 && cells.length > 6) sizeIndex = 4;
 
       rows.push({

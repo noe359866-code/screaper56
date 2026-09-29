@@ -213,3 +213,70 @@ Si el índice ya existe, el código sigue funcionando idempotente (UPSERT real).
 - `src/crawlers/eztv.ts` — headers + timeout + 403 handling
 - `supabase/migrations/001_fix_torrents_info_hash_unique.sql` — migración SQL
 - `FIXES_APLICADOS.md` — este documento
+
+---
+
+# Corrección de errores críticos — Segunda auditoría crawler por crawler
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests de regresión: `tests/audit-fixes.test.js` (10 casos, suite completa 435/435, `tsc` limpio).
+
+## Fix 1 — `src/crawlers/eztv.ts`: los seeders guardaban el valor de LEECHERS
+
+`readRowCounters()` elegía el seeders como "la última celda numérica de la fila",
+de modo que en las plantillas con columnas S **y** L separadas el valor
+almacenado como `seeders` era el de leechers (y con el formato real `S: 120`
+el contador se perdía por completo: `parseCount("S: 120")` → `null`).
+
+Ahora: el **primer** contador numérico posterior a la columna de tamaño es el
+seeders y el **segundo** el leechers; los prefijos `S:`/`L:` se eliminan antes
+de parsear y el leechers de la fase HTML ya no se descarta.
+
+## Fix 2 — `src/crawlers/rarbg.ts`: desplazamiento de columnas size/S/L
+
+`sizeIndex` se localizaba con `parseSizeToBytes(texto) !== null`, que acepta un
+número suelto como bytes (`parseSizeToBytes("847") === 847`). Con la celda de
+tamaño vacía, el índice caía sobre los SEEDERS: `size_bytes=847`,
+`seeders=<leechers>` y `leechers=<uploader>`. Ahora la celda de tamaño exige
+unidad (`[KMGT]i?B`), igual que limetorrents y magnetdl.
+
+## Fix 3 — `src/crawlers/rutracker.ts`: un post que mencionara "captcha" abortaba la run
+
+`looksLikeCaptcha()` hacía `/captcha|капча|введите код/i.test(html)` sobre el
+HTML **completo** del topic. Un solo comentario de usuario con esa palabra
+disparaba `RutrackerCaptchaError` (terminal) y descartaba todo lo recolectado.
+Ahora la detección es solo estructural (widget reCAPTCHA/Turnstile, campo o
+imagen cuyo `name/src` contiene "captcha", o el label propio del tracker
+"код с картинки") vía `looksLikeRutrackerCaptcha()`, exportada para tests.
+
+## Fix 4 — `src/crawlers/dontorrent.ts`: magnets sin BTIH válidos llegaban al descargador
+
+`dontorrentDownloadUrl()` aceptaba cualquier `magnet:?…` sin validar; el hash
+inválido hacía que `buildRecord` intentara `fetchTorrentMetainfo("magnet:?…")`,
+es decir, un GET HTTP contra una URL magnet. Ahora el magnet se valida con
+`parseMagnetUri` (BTIH hex o Base32) antes de aceptarse.
+
+## Fix 5 — `src/crawlers/elitetorrent.ts`: los filtros /idioma y /calidad solo rastreaban 1 página
+
+Para páginas 2+ se construía `<ruta>/page/N/`, pero en las rutas filtradas
+(`/idioma/castellano-17-1/`, `/calidad/1080p-10-1/`) el **número final del slug
+es la página** (`castellano-17-2`): el `/page/N/` daba 404 y la paginación
+terminaba en silencio tras la página 1. Nuevo `eliteRoutePagePath()` (exportado):
+incrementa el número final cuando existe y reserva `/page/N/` para las secciones
+sin número (`/series/`).
+
+## Fix 6 — `src/utils/anti-cloudflare.ts`: `shutdown()` no impedía relanzar Chromium
+
+`permanentlyClosed` solo se consultaba en el temporizador de inactividad, así
+que tras el teardown de `runCli` cualquier `solve()`/`withPage()` relanzaba el
+navegador. `getOrCreateBrowser()` ahora rechaza con un error claro si el motor
+fue apagado.
+
+## Fix 7 — `src/utils/language.ts`: "Audio en 5.1" se etiquetaba como audio inglés
+
+La alternativa `audio[\s._-]*en` de `REGEX_ENG` solo excluía "en
+español/castellano/latino", de modo que cualquier ficha española con
+"Audio en 5.1", "Audio en Dual", etc. recibía un falso track `English` (que
+además el filtro de idioma nunca descarta). El lookahead ahora también excluye
+`dual`, `sub` y dígitos.

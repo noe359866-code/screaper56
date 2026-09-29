@@ -144,6 +144,27 @@ function looksLikeRateLimitPage(html: string): boolean {
   return Boolean(html) && RATE_LIMIT_PATTERN.test(html.slice(0, 4096));
 }
 
+// Captcha evidence is STRUCTURAL, never free text: a reCAPTCHA/Turnstile
+// widget, a form field or image whose name/src says "captcha", or the
+// tracker's own "código de la imagen" label. The bare word inside a post or
+// comment used to raise the terminal RutrackerCaptchaError and abort the
+// whole run because ONE user quoted it.
+const CAPTCHA_WIDGET_PATTERN = /g-recaptcha|recaptcha\/api|google\.com\/recaptcha|sitekey|cf-turnstile/i;
+const CAPTCHA_FORM_PATTERN = /<(?:input|img|script|iframe|form)[^>]+(?:name|src|id|action|class)=["'][^"']*captcha/i;
+const CAPTCHA_LABEL_PATTERN = /код\s+с\s+картинки/i;
+
+/** True only when the page really renders a captcha challenge. */
+export function looksLikeRutrackerCaptcha(html: string): boolean {
+  if (typeof html !== 'string' || !html) return false;
+  // A logged-in page is never a captcha, whatever a post quotes.
+  if (/logout=1/i.test(html)) return false;
+  return (
+    CAPTCHA_WIDGET_PATTERN.test(html) ||
+    CAPTCHA_FORM_PATTERN.test(html) ||
+    CAPTCHA_LABEL_PATTERN.test(html)
+  );
+}
+
 /**
  * Errors that must abort the whole run instead of being logged per topic:
  * the tracker's own captcha/rate-limit signals plus the shared terminal
@@ -833,8 +854,7 @@ export class RutrackerCrawler extends BaseCrawler {
   }
 
   private looksLikeCaptcha(html: string): boolean {
-    if (typeof html !== 'string' || !html) return false;
-    return /captcha|капча|введите\s+код|g-recaptcha/i.test(html) && !/logout=1/i.test(html);
+    return looksLikeRutrackerCaptcha(html);
   }
 
   /** Releases the session when the adapter is torn down (see `BaseCrawler.close`). */

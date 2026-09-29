@@ -145,7 +145,10 @@ const REGEX_CAST_RAW = /-(cast|esp|spa)\b/i;
 const REGEX_CAST_BRACKET = /\[(castellano|espa[ñn]ol)\]/i;
 const REGEX_CAST_EXACT = /\b(castellano|espa[ñn]ol)\b/i;
 
-const REGEX_ENG = /\b(english|eng|ingl[eé]s|audio[\s._-]*en(?![\s._-]*(?:espa|castellano|latino))|audio[\s._-]*english)\b/i;
+// "Audio en 5.1", "Audio en Dual", "Audio en Subs..." are CHANNEL/side notes of
+// Spanish fichas, not English audio: the `en` alternative must not fire when a
+// digit or another qualifier follows ("Audio en español" was already excluded).
+const REGEX_ENG = /\b(english|eng|ingl[eé]s|audio[\s._-]*en(?![\s._-]*(?:espa|castellano|latino|dual|sub|\d))|audio[\s._-]*english)\b/i;
 const REGEX_ENG_RAW = /-(eng)\b/i;
 const REGEX_ENG_BRACKET = /\[english\]/i;
 

@@ -289,7 +289,7 @@ export class EztvCrawler extends BaseCrawler {
 
       // Mirrors reorder/shrink these columns, so they are located by content
       // instead of by a hard-coded index.
-      const { sizeText, seedersText } = EztvCrawler.readRowCounters($, row);
+      const { sizeText, seedersText, leechersText } = EztvCrawler.readRowCounters($, row);
 
       // Some mirrors link the show's IMDb page from the row; it is stored
       // when present so these releases can dedupe against the API rows.
@@ -310,7 +310,7 @@ export class EztvCrawler extends BaseCrawler {
         quality: qualityOf(meta),
         sizeBytes: parseSizeToBytes(sizeText),
         seeders: parseCount(seedersText),
-        leechers: null,
+        leechers: parseCount(leechersText),
         imdbId: imdbMatch ? imdbMatch[1].toLowerCase() : null,
         sourceTracker: parsedMagnet.trackers[0] ?? null
       });
@@ -325,16 +325,14 @@ export class EztvCrawler extends BaseCrawler {
     return { rows: rows.length, added };
   }
 
-  /** Size comes from the only pure-size cell; seeds from the last numeric cell. */
+  /** Size comes from the only pure-size cell; seeds from the first counter after it. */
   private static readRowCounters(
     $: cheerio.CheerioAPI,
     row: cheerio.Cheerio<Element>
-  ): { sizeText: string; seedersText: string } {
+  ): { sizeText: string; seedersText: string; leechersText: string } {
     const cells = row.find('td');
     let sizeText = '';
     let sizeIndex = -1;
-    let seedersText = '';
-
     cells.each((index, cell) => {
       const text = cleanText($(cell).text());
       if (sizeIndex === -1 && SIZE_CELL_PATTERN.test(text)) {
@@ -349,14 +347,20 @@ export class EztvCrawler extends BaseCrawler {
       sizeIndex = 3;
     }
 
+    // The FIRST numeric cell after the size column is the seeders count and the
+    // second one the leechers. The old "last numeric cell wins" rule stored the
+    // LEECHERS as seeders on templates that expose both columns.
+    const counterTexts: string[] = [];
     cells.each((index, cell) => {
-      if (index === sizeIndex) return;
+      if (sizeIndex !== -1 && index <= sizeIndex) return;
       const node = $(cell);
-      const text = cleanText(node.find('font').first().text() || node.text());
-      if (parseCount(text) !== null) seedersText = text;
+      // "S: 1,234" / "L: 56" prefixed counters are swarm counters too.
+      const text = cleanText(node.find('font').first().text() || node.text())
+        .replace(/^[SL]\s*:\s*/i, '');
+      if (parseCount(text) !== null) counterTexts.push(text);
     });
 
-    return { sizeText, seedersText };
+    return { sizeText, seedersText: counterTexts[0] ?? '', leechersText: counterTexts[1] ?? '' };
   }
 
   public mapApiTorrentToRecord(torrent: EztvApiTorrent, activeDomain: string): TorrentRecord | null {
