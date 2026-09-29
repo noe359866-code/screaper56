@@ -874,3 +874,54 @@ oficiales actual: `1377x.to, 1337x.tw, 1337xto.to, 1337xx.to, 1337xxx.to,
 - Fila clásica de `.st` → título limpio (badge fuera del anchor), 1.5 GB con
   el contador pegado, S/L 2218/565.
 - Higiene del pool: los 5 verificados quedan, los 6 muertos/hub fuera.
+
+---
+
+# Profundización: SinSitio (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de sinsitio (pool de 4 dominios,
+portada, secciones, fichas, attachments DLE, paginación). La 7ª lo había
+marcado 🟢: esta ronda confirmó la cadena contra el markup de hoy.
+
+## Estado real del pool (2026-09-28)
+
+| Dominio | Estado real |
+|---|---|
+| `www.sinsitio.site` | 🟢 DLE completo: portada con posts frescos (septiembre 2026), secciones `/dvdrip-bdrip/` y `/series/` vivas con pager publicado |
+| `sinsitio.site` | 🟢 vivo (301 → www; mismo sitio) |
+| `www.sinsitio.info` | 🔴 sin respuesta (fetch + curl) — fuera |
+| `sinsitio.online` | 🔴 sin respuesta (fetch + curl) — fuera |
+
+## Cadena verificada contra el markup real (sin cambios de código)
+
+- **Probe**: portada con posts `/N-slug.html` ✓ (el marcador esperado).
+- **Fichas**: el enlace de descarga real es exactamente
+  `ddlUrl.php?url=<base64(%2F/%3D escapados)>&name=<título release>`; el
+  base64 de hoy decodifica a `index.php?do=download&id=69707` (attachment DLE
+  público con id numérico) — la forma que `decodeSinsitioDownload` espera,
+  verbatim.
+- **Attachment**: un pedido directo SIN Referer devuelve la ficha otra vez
+  (DLE rebota al post) — es exactamente por eso que `fetchTorrentMetainfo`
+  envía el Referer de la ficha; el camino del crawler es el correcto.
+- **Paginación**: `/series/` publica pager DLE con URLs `/series/page/2/` y
+  texto "Adelante"; el matcher actual lo sigue (número 2 = actual+1 dentro de
+  `.navigation`) — fijado con test del markup real.
+- 1 calidad por post (un solo ddlUrl por ficha); los comentarios (reales,
+  activos) quedan excluidos por `#dle-comments-list` como ya diseñado.
+
+## Cambios
+
+- Pool depurado: `[www.sinsitio.site, sinsitio.site]` con JSDoc de live-check.
+  Fuera `sinsitio.info` y `sinsitio.online` (muertos con doble evidencia).
+
+## Tests nuevos (suite 476/476)
+
+- El href ddlUrl.php VERBATIM de la ficha de hoy (id 69707) decodifica al
+  attachment público; relativo y absoluto.
+- E2E con anatomía real (portada + ficha + comentarios): record con título
+  del `name=` param, `torrent_file_url` = attachment, `source_url` = ficha y
+  **el Referer del pedido de descarga es la ficha** (la evidencia en vivo del
+  rebote de DLE).
+- Pager DLE real (`/series/page/2/` + "Adelante") seguido desde `.navigation`.
+- Higiene del pool: solo el par www/apex vivo.

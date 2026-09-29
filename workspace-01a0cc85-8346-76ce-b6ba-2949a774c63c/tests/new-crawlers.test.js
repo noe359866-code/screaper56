@@ -295,3 +295,69 @@ test('Wolf: browser fallback never clicks a known off-site button target', async
     else process.env.WOLFTORRENT_BROWSER = previous;
   }
 });
+
+/** Verbatim ddlUrl.php href published by a real ficha on 2026-09-28 (id 69707). */
+const LIVE_DDLURL_HREF = 'https://www.sinsitio.site/ddlUrl.php?url=aHR0cHM6Ly93d3cuc2luc2l0aW8uc2l0ZS9pbmRleC5waHA%2FZG89ZG93bmxvYWQmaWQ9Njk3MDc%3D&name=Normal%20Castellano%20Inglessubt%20Castellano%20Ingles%20Forzados%20H264%20E%20Ac3%205%201%20Bd%20Rip%20Hd%201080p';
+const LIVE_ATTACHMENT = 'https://www.sinsitio.site/index.php?do=download&id=69707';
+
+test('Sinsitio: the real 2026 ddlUrl.php link decodes to its public DLE attachment', () => {
+  assert.equal(decodeSinsitioDownload(LIVE_DDLURL_HREF, base), LIVE_ATTACHMENT);
+  // Same link relative, exactly as the ficha publishes it.
+  assert.equal(
+    decodeSinsitioDownload(LIVE_DDLURL_HREF.replace('https://www.sinsitio.site', ''), base),
+    LIVE_ATTACHMENT
+  );
+  // The attachment itself is accepted with its numeric id.
+  assert.equal(decodeSinsitioDownload('/index.php?do=download&id=69707', base), LIVE_ATTACHMENT);
+});
+
+test('Sinsitio: the live 2026 ficha anatomy (ddlUrl + name param + DLE pager) builds the record with the post as Referer', async () => {
+  const crawler = new SinsitioCrawler();
+  // Real row markup of the 2026-09-28 homepage (posts moved under /dvdrip-bdrip/).
+  const listing = `<div class="navigation"><a href="/series/page/2/">2</a><a href="/series/page/2/">Adelante</a></div>
+    <h2>Estrenos en BDrip Castellano</h2>
+    <a href="/dvdrip-bdrip/35917-normal-bdrip-xvid-castellano.html" title="Normal BDrip XviD Castellano">Normal BDrip XviD Castellano</a>`;
+  // Real ficha anatomy: h1, metadata table and ONE ddlUrl.php download link.
+  const ficha = `<h1>Normal BDrip XviD Castellano</h1>
+    <table>Título original <td>Normal</td> Año <td>2025</td></table>
+    <a href="/ddlUrl.php?url=aHR0cHM6Ly93d3cuc2luc2l0aW8uc2l0ZS9pbmRleC5waHA%2FZG89ZG93bmxvYWQmaWQ9Njk3MDc%3D&name=Normal%20Castellano%20Inglessubt%20Castellano%20Ingles%20Forzados%20H264%20E%20Ac3%205%201%20Bd%20Rip%20Hd%201080p">🎬 Normal Castellano ... 2.09 GB</a>
+    <div id="dle-comments-list"><a href="${MAGNET}">other release</a></div>`;
+  const file = torrent('Normal Castellano Inglessubt Castellano Ingles Forzados H264 E Ac3 5 1 Bd Rip Hd 1080p');
+  const downloadRequests = [];
+  mockHttp(
+    crawler,
+    url => {
+      if (url.endsWith('.html')) return ficha;
+      return listing;
+    },
+    (url, options) => {
+      downloadRequests.push({ url, referer: options.headers?.Referer ?? null });
+      return file.buffer;
+    }
+  );
+
+  const records = await crawler.crawl(1);
+
+  assert.equal(records.length, 1);
+  const [record] = records;
+  assert.match(record.title, /^Normal Castellano Inglessubt/, 'the ddlUrl name param carries the release title');
+  assert.equal(record.type, 'movie');
+  assert.equal(record.torrent_file_url, LIVE_ATTACHMENT);
+  assert.equal(record.source_url, `${base.replace(/\/+$/, '')}/dvdrip-bdrip/35917-normal-bdrip-xvid-castellano.html`);
+  assert.equal(downloadRequests.length, 1);
+  assert.equal(downloadRequests[0].url, LIVE_ATTACHMENT);
+  // The live site bounces direct attachment hits back to the post: the
+  // Referer of the ficha is what makes the download answer with the .torrent.
+  assert.equal(downloadRequests[0].referer, `${base}dvdrip-bdrip/35917-normal-bdrip-xvid-castellano.html`);
+});
+
+test('Sinsitio: the live DLE pager (/series/page/2/) is followed from a .navigation block', () => {
+  const crawler = new SinsitioCrawler();
+  const pager = `<div class="navigation"><span>1</span> <a href="/series/page/2/">2</a> <a href="/series/page/3/">3</a> <a href="/series/page/2/">Adelante</a></div>`;
+  assert.equal(crawler.nextPage(pager, `${base}series/`), `${base}series/page/2/`);
+});
+
+test('Sinsitio: the live pool keeps only the domain pair that answered on 2026-09-28', () => {
+  assert.deepEqual(SinsitioCrawler.DEFAULT_MIRRORS, ['https://www.sinsitio.site', 'https://sinsitio.site']);
+  assert.ok(!SinsitioCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes('info') || mirror.includes('online')));
+});
