@@ -301,16 +301,22 @@ export function detectLanguages(rawText: string, metadataHints: string[] = [], i
   }
 
   // 6. Default Fallback Logic when no explicit audio tag is in the title
+  //
+  // A purely Spanish tracker is Spanish even in EXPLICIT mode: adapters whose
+  // pages publish no language field at all pass the site marker as a hint
+  // (wolftorrent's live ficha has «Calidad/Tamaño» rows only) and depend on
+  // this rule to survive filterSpanishReleases. Explicit evidence from steps
+  // 1–5 always wins, so a «(Latino)» title stays Latino-only.
+  if (audioSet.size === 0 && REGEX_ES_TRACKERS.test(combinedText)) {
+    audioSet.add(SPANISH_AUDIO_CANONICAL);
+  }
   if (inferDefaults && audioSet.size === 0) {
-    // If from a purely Spanish tracker
-    if (REGEX_ES_TRACKERS.test(combinedText)) {
-      audioSet.add(SPANISH_AUDIO_CANONICAL);
-    } else {
-      // Check if release is explicitly tagged with another foreign language without English or Spanish
-      if (!REGEX_OTHER_FOREIGN.test(combinedText)) {
-        // Western / international releases on YTS, EZTV, 1337x, TPB, TorrentGalaxy default to English
-        audioSet.add(ENGLISH_AUDIO_CANONICAL);
-      }
+    // (An ES tracker already filled the set above, so this English default
+    // only runs for international sites.)
+    // Check if release is explicitly tagged with another foreign language without English or Spanish
+    if (!REGEX_OTHER_FOREIGN.test(combinedText)) {
+      // Western / international releases on YTS, EZTV, 1337x, TPB, TorrentGalaxy default to English
+      audioSet.add(ENGLISH_AUDIO_CANONICAL);
     }
   }
 

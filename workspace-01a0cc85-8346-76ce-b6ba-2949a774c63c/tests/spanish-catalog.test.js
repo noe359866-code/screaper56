@@ -3,12 +3,13 @@ import assert from 'node:assert/strict';
 import * as cheerio from 'cheerio';
 import { literalDownloadCandidates, spanishReleaseHints } from '../src/crawlers/spanish-catalog.ts';
 import { CRAWLER_REGISTRY } from '../src/crawlers/registry.ts';
+import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
 import { SinsitioCrawler } from '../src/crawlers/sinsitio.ts';
 import { WolftorrentCrawler } from '../src/crawlers/wolftorrent.ts';
 import { DonTorrentCrawler } from '../src/crawlers/dontorrent.ts';
 import { EliteTorrentCrawler } from '../src/crawlers/elitetorrent.ts';
 import { MejorTorrentCrawler } from '../src/crawlers/mejortorrent.ts';
-import { HASH, mockHttp } from './helpers.js';
+import { HASH, mockHttp, torrent } from './helpers.js';
 const magnet = `magnet:?xt=urn:btih:${HASH}`;
 
 test('Spanish fields exclude navigation and recommendations; subtitle-only stays subtitle-only', () => {
@@ -48,6 +49,33 @@ test('EliteTorrent: literal button download and language ficha', async () => {
   assert.equal(record.info_hash, HASH);
   assert.deepEqual(record.audio, ['Spanish (Latino)']);
 });
+test('Wolftorrent: a live-shaped ficha (no Idioma row) passes the language filter and keeps quality', async () => {
+  // Live shape 2026-09-29: h1 title, «Calidad/Tamaño» as dt/dd WITHOUT colons,
+  // no language row anywhere and a scene-style torrent name with no language
+  // tag either. The catalogue is «películas en español», so the record must
+  // still reach the database instead of being discarded with audio=[].
+  clearMirrorCache('wolftorrent');
+  const crawler = new WolftorrentCrawler();
+  const file = torrent('Normal.2026.1080p.WEB-DL');
+  mockHttp(crawler, url => {
+    if (url.includes('/pelicula/')) {
+      return `<h1>Normal</h1>
+        <dl><dt>Año</dt><dd>2026</dd><dt>Calidad</dt><dd>1080p</dd><dt>Tamaño</dt><dd>955,72 MB</dd></dl>
+        <button data-url="/descargar/rytkrd">Descargar torrent</button>`;
+    }
+    return '<a href="/pelicula/rytkrd">Normal</a>';
+  }, () => file.buffer);
+
+  const records = await crawler.crawl(1);
+
+  assert.equal(records.length, 1);
+  assert.deepEqual(records[0].audio, ['Spanish']);
+  assert.deepEqual(records[0].subtitles, []);
+  assert.equal(records[0].quality, '1080p', 'the dt/dd «Calidad» row must reach the title parser');
+  assert.equal(crawler.filterSpanishReleases(records).accepted.length, 1);
+  clearMirrorCache('wolftorrent');
+});
+
 test('MejorTorrent: magnet-only releases need no metainfo download', async () => {
   const crawler = new MejorTorrentCrawler();
   const calls = mockHttp(crawler, () => { throw new Error('must not fetch'); });

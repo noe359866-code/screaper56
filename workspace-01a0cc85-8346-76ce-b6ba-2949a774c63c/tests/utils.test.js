@@ -66,6 +66,19 @@ test('Explicit language mode does not manufacture English for unknown releases',
   assert.deepEqual(detectLanguages('Sample', ['sub_en'], false), { audio: [], subtitles: ['Sub_EN'] });
 });
 
+test('Site markers of the Spanish trackers are Spanish even in explicit mode', () => {
+  // Adapters whose pages publish no Idioma field pass the site marker as a
+  // hint (the wolftorrent ficha has «Calidad/Tamaño», never a language row);
+  // without this rule every live record would be discarded by
+  // filterSpanishReleases with audio=[].
+  assert.deepEqual(detectLanguages('Normal', ['wolftorrent'], false), { audio: ['Spanish'], subtitles: [] });
+  // Explicit evidence above the marker still wins: no dual-tag pollution.
+  assert.deepEqual(detectLanguages('Película (Latino)', ['wolftorrent'], false), { audio: ['Spanish (Latino)'], subtitles: [] });
+  assert.deepEqual(detectLanguages('Sample Castellano', ['wolftorrent'], false), { audio: ['Spanish'], subtitles: [] });
+  // Unmarked explicit mode is untouched (no manufactured English, no Spanish).
+  assert.deepEqual(detectLanguages('Sample', [], false), { audio: [], subtitles: [] });
+});
+
 test('Cyrillic language evidence (RuTracker): labels count, bare adjectives do not', () => {
   const cases = [
     // Audio evidence: an explicit language label next to the adjective.

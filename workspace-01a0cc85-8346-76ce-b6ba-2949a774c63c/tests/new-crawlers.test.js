@@ -152,7 +152,7 @@ test('Wolf: browser-resolved buttons retain language hints from the rendered pag
       'https://wolftorrent.com/serie/abc123/Sample'
     );
     assert.equal(detail.downloads.length, 1);
-    assert.deepEqual(detail.downloads[0].hints, ['Idioma: Castellano']);
+    assert.deepEqual(detail.downloads[0].hints, ['Idioma: Castellano', 'wolftorrent']);
   } finally {
     if (previous === undefined) delete process.env.WOLFTORRENT_BROWSER;
     else process.env.WOLFTORRENT_BROWSER = previous;

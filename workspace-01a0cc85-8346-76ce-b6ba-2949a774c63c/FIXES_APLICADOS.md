@@ -1071,3 +1071,103 @@ bug que dejaba muerta la búsqueda `испанский` de los defaults.
   `audio: [Spanish]` mientras «Русская версия» sigue sin costar requests; y
   el probe: marca+dialecto ✓, muro de login ✓, marca sola ✗, dialecto sin
   marca ✗, challenge con ambas marcas ✗.
+
+# Profundización: wolftorrent / WolfMax4K — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Segunda pasada sobre la cadena completa de wolftorrent, con la evidencia en
+vivo del día. Ronda con DOS fallos graves que la ronda anterior no podía ver
+(sus fixtures de test usaban ids con dígitos y títulos «Castellano», así que
+la suite estaba verde mientras el sitio real se caía a la mitad).
+
+## Estado real del pool (2026-09-29)
+
+| Dominio de `DEFAULT_MIRRORS` | Estado real |
+|---|---|
+| `wolfmax4k.com` | 🟢 Único catálogo vivo: `/peliculas` 23.055 títulos / 961 páginas, `/series` 14.974 / 624, subidas del propio día |
+| `www.wolfmax4k.com` | 🟢 Redirige al apex (mismo catálogo; `isSameDomain` lo tolera) |
+| `wolftorrent.com` | 🟠 Placeholder «Próximamente» (sin catálogo; el probe lo rechaza) |
+| `wolftorrent.net` | 🔴 No responde |
+| `wolfmax4k.org` | 🔴 No responde |
+
+Sin cambios de composición: el orden ya arranca por el catálogo vivo.
+
+## Cadena verificada hoy (sin cambios de código)
+
+- **Listados**: ids slugless en TODAS las variantes de calidad (cada
+  variante es su propia ficha), sin enlace de paginación publicado (pager de
+  JS, protegido por dedup + `maxPages`), `www` → apex. El marcador del probe
+  (`href="/pelicula|[a-z0-9]`) está presente en el `/peliculas` en vivo.
+- **Ficha**: título en `h1`, campos en lista de definiciones `dt`/`dd` SIN
+  dos puntos («Calidad» → `dd` «HDRip»), botón **«Descargar torrent» sin
+  href** → el fallback de navegador sigue siendo load-bearing para la
+  mayoría de fichas (camino estático solo si el template expone `data-*`).
+  Enlaces de compartir (facebook/x/whatsapp) rechazados por
+  `wolfDownloadUrl` ✓.
+
+## Fix grave 1 — los ids SOLO-LETRA eran descartados (~mitad del catálogo)
+
+- `WOLF_ID_SEGMENT` exigía letras Y dígitos (muestras del fix-21:
+  `ryqb95`, `5se8eg`). El listado en vivo (2026-09-29) está lleno de ids
+  solo-letra: `rytkrd`, `rx3whk`, `rwtzzg`, `ucufem` (serie), `ucv3nr`
+  (episodio)… **32 de 69 ids únicos de la primera página de `/peliculas`
+  (~46%)** eran rechazados en silencio por `isWolfDetailPath` → ni siquiera
+  se pedía su ficha.
+- Ahora: `[a-z0-9]{4,20}` CON al menos una letra. Siguen rechazados los
+  digit-only (`/pelicula/2026`), los slugs con guiones
+  (`/pelicula/mortal-kombat-ii`) y las palabras de listado
+  (`/peliculas/estrenos` → `WOLF_LISTING_SEGMENTS`).
+
+## Fix grave 2 — `audio: []`: la ficha NO publica fila de idioma
+
+- La ficha en vivo solo tiene «Calidad/Tamaño/Añadido»; títulos como
+  «Normal»; los nombres de torrent de escena no garantizan etiqueta de
+  idioma. `html-catalog` construye el record con
+  `detectLanguages(context, [], false)` → `audio: []` →
+  `filterSpanishReleases` (`index.ts`) **descartaba cada record en
+  producción** («No Spanish/English records found to upsert»).
+- `REGEX_ES_TRACKERS` YA listaba `wolftorrent`… pero la regla vivía dentro
+  de `if (inferDefaults)` (step 6) y los adaptadores html-catalog llaman con
+  `inferDefaults=false` → el mecanismo «sitio puramente español ⇒ Spanish»
+  estaba cableado pero inalcanzable.
+- Arreglo en dos puntas:
+  - `language.ts`: la regla del tracker español se aplica TAMBIÉN en modo
+    explícito, solo cuando no hay evidencia (la evidencia explícita de los
+    pasos 1–5 gana: un título «(Latino)» sigue siendo SOLO Latino, sin
+    dual-tag). El default English sigue gated a `inferDefaults`.
+  - `wolftorrent.ts`: `wolfReleaseHints()` añade el marcador `wolftorrent`
+    a los hints (parseDetail Y el fallback de navegador de
+    `discoverDownloads`).
+
+## Fix 3 — «Calidad» sin dos puntos: el quality no llegaba al record
+
+- `spanishReleaseHints` exige `etiqueta:` con dos puntos; la ficha real
+  escribe `dt` «Calidad» + `dd` «1080p» sin nada entre ellos → el hint no
+  se extraía y `record.quality` quedaba null en la mayoría de fichas
+  (las de 720p/1080p/4K, que son la mayoría).
+- `wolfReleaseHints` canoniza las filas `dt`/`dd` con las etiquetas
+  conocidas (`Calidad`, `Idioma`, `Audio`, `Subtítulos`, `Formato`,
+  `Resolución`) a «Calidad: 1080p» → llega a `parseTorrentTitle`. Un
+  «HDRip» solo da quality null, consistente con el modelo resolution-only
+  de todo el proyecto.
+
+## Tests nuevos (suite 483/483)
+
+- `utils.test.js`: marcador de sitio en modo explícito (`wolftorrent` →
+  Spanish; «(Latino)» gana y NO se contamina con Spanish; sin marcador el
+  modo explícito sigue intacto).
+- `spanish-catalog.test.js`: e2e con la forma REAL de la ficha (h1 «Normal»,
+  `dt`/`dd` sin dos puntos, sin fila de idioma, torrent de escena sin
+  etiqueta) → `audio: ['Spanish']`, `quality: '1080p'` y
+  `filterSpanishReleases` acepta el record.
+- `crawler-fixes.test.js`: ids solo-letra aceptados (`rytkrd`, `rwtzzg`),
+  `/pelicula/2026` sigue rechazado.
+- `new-crawlers.test.js`: los hints del camino del navegador llevan el
+  marcador del sitio.
+
+## Incógnita abierta (sin cambios)
+
+- Sigue sin ser verificable sin Playwright real si el click del botón
+  «Descargar torrent» sirve el `.torrent` desde un CDN de OTRO dominio
+  (hoy `wolfDownloadUrl` lo rechazaría: sería el único caso que pierde
+  descargas). Todo lo demás de la cadena quedó fijado por tests.
