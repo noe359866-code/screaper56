@@ -925,3 +925,72 @@ marcado 🟢: esta ronda confirmó la cadena contra el markup de hoy.
   rebote de DLE).
 - Pager DLE real (`/series/page/2/` + "Adelante") seguido desde `.navigation`.
 - Higiene del pool: solo el par www/apex vivo.
+
+---
+
+# Profundización: mejortorrent (foco exclusivo)
+
+Fecha: 2026-09-29
+Verificación en vivo de TODA la cadena de mejortorrent sobre los mirrors reales
+(los probes locales del sandbox no tienen salida de red — fallan hasta
+example.com — así que la verificación se hizo contra el sitio directamente).
+
+## Estado real del pool (2026-09-29)
+
+| Dominio | Estado real |
+|---|---|
+| `www45.mejortorrent.eu` | 🟢 Vivo: 301 → `www46` (entry point con rotación) |
+| `www46.mejortorrent.eu` | 🟢 Vivo: plantilla legacy 2026 completa |
+| `mejortorrent.me` | 🟢 Vivo: plantilla WordPress; `/wp-json/wp/v2/posts` responde |
+| `mejortorrent.wtf` | 🟠 Cloudflare 1005 (ASN de salida baneado) — depende de la IP |
+| `mejortorrent.app` | 🔴 Cloudflare 522 (origin caído; puede volver) |
+| `www.mejortorrent.icu` | 🔴 NXDOMAIN |
+| `mejortorrent1.com` | 🔴 Aparcado (parking de anuncios → ww17.mejortorrent1.com) |
+| `mejortorrents.net` | 🔴 NXDOMAIN |
+| `mejortorrent.nz` | 🔴 NXDOMAIN |
+| `www50.mejortorrent.eu` | 🔴 NXDOMAIN (la rotación wwwNN ya no lo sirve) |
+
+## Qué se confirmó de la plantilla legacy (www45 → www46)
+
+- Las 7 rutas que recorre el crawler siguen vivas y con el formato exacto:
+  `/inicio`, `/peliculas-hd`, `/series-hd`, `/peliculas`, `/series`,
+  `/peliculas-4k`, `/documentales` — enlaces ABSOLUTOS al front activo (www46),
+  que es lo que `sameSiteHost` ya normaliza (fix 22).
+- Sin paginador estático en los listados (el pie va directo al banner WARP);
+  la ventana por fechas corta el recorrido — ya cubierto por los tests.
+- Ficha de película: descarga ESTÁTICA `/torrents/peliculas/<nombre>.torrent`
+  verificada con la ficha real `31040/Las-catadoras-del-Hitler`.
+- Ficha de serie: tabla `ID | Episodios | Fecha | Clave | Download` con un
+  `.torrent` por episodio — `td.eq(1)` = `1x01` calza con el parser de
+  episodios, verificado con `serie/130307` (3 episodios 1x01..1x03).
+- Filtros `letter/` y `genre/` presentes y jamás aceptados como fichas.
+
+## Qué se confirmó del modo WordPress (mejortorrent.me)
+
+- La API `/wp-json/wp/v2/posts?page=1` responde con `link` por post
+  (verificado con el post real `patrulla-nocturna`).
+- Las fichas publican `.torrent` estático en
+  `/wp-content/uploads/2026/09/<slug>-(torrentNN).torrent` del MISMO dominio →
+  lo acepta `isMejortorrentDownload` sin cambios.
+
+## Cambios (`src/crawlers/mejortorrent.ts`)
+
+- Pod del pool: fuera `www.mejortorrent.icu`, `mejortorrent1.com` (aparcado),
+  `mejortorrents.net`, `mejortorrent.nz` y `www50.mejortorrent.eu` (NXDOMAIN).
+  Dentro `www46.mejortorrent.eu` (front directo actual, sin hop de redirect).
+  El primer puesto sigue siendo `www45` (entry point con rotación, que es lo
+  que mockean los tests existentes); `wtf`/`app` quedan al final por si el
+  ASN ban o el origin 522 se levantan.
+- El probe de portada acepta `wp-content` además de `wp-json` y
+  `href=/pelicula|serie/`: la portada .me publica carteles en
+  `wp-content/uploads` y slugs sin `/pelicula/`, sin necesidad del link tag
+  wp-json. Es el mismo conjunto de marcas que ya usa `detectTemplate`.
+
+## Tests nuevos (suite 478/478)
+
+- Higiene del pool: primer mirror `www45`, fuera los 5 dominios muertos o
+  aparcados, dentro `www46` y `mejortorrent.me`, pool ≤ 6.
+- Portada WordPress que SOLO publica `wp-content` (sin link wp-json ni rutas
+  `/pelicula/`): los fronts .eu responden HTML sin marcas → el probe acepta
+  `.me`, la API lista los posts y el `.torrent` publicado se descarga con
+  bencode → record movie con el hash real.

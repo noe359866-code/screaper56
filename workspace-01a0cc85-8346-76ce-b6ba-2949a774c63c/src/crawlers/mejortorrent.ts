@@ -51,17 +51,22 @@ export class MejorTorrentCrawler extends BaseCrawler {
   public readonly name = 'mejortorrent';
   public baseUrl: string;
 
-  /** Known MejorTorrent domains; extend with MEJORTORRENT_MIRRORS. */
+  /**
+   * Known MejorTorrent domains; extend with MEJORTORRENT_MIRRORS.
+   *
+   * Live check 2026-09-29: `www45` keeps 301-rotating to the active `wwwNN`
+   * front (www46 today) and `mejortorrent.me` still serves the WordPress
+   * template with a working `/wp-json/wp/v2/posts` API. NXDOMAIN and parked
+   * domains were pruned from the pool so a cold resolution never waits on
+   * them: www.mejortorrent.icu, mejortorrent1.com (parked), mejortorrents.net,
+   * mejortorrent.nz and www50.mejortorrent.eu (the rotation left it behind).
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://www45.mejortorrent.eu',
+    'https://www46.mejortorrent.eu',
     'https://mejortorrent.me',
     'https://mejortorrent.wtf',
-    'https://mejortorrent.app',
-    'https://www.mejortorrent.icu',
-    'https://mejortorrent1.com',
-    'https://mejortorrents.net',
-    'https://mejortorrent.nz',
-    'https://www50.mejortorrent.eu'
+    'https://mejortorrent.app'
   ];
 
   private readonly concurrency = Math.max(
@@ -83,7 +88,14 @@ export class MejorTorrentCrawler extends BaseCrawler {
     this.resetRunState();
     this.log.info(`Starting crawl across movies and series (maxPages=${maxPages})...`);
 
-    const validate = htmlMarkerValidator([/wp-json/i, /href=["'][^"']*\/(?:pelicula|serie)\//i]);
+    // Legacy portadas speak through `/pelicula|serie/` hrefs; the WordPress
+    // portada (.me) only publishes `wp-content` posters and slug links, so it
+    // needs its own marker to pass the probe without a wp-json link tag.
+    const validate = htmlMarkerValidator([
+      /wp-json/i,
+      /wp-content/i,
+      /href=["'][^"']*\/(?:pelicula|serie)\//i
+    ]);
     const mirror = await this.resolveMirror({
       envPrefix: 'MEJORTORRENT',
       defaults: MejorTorrentCrawler.DEFAULT_MIRRORS,
