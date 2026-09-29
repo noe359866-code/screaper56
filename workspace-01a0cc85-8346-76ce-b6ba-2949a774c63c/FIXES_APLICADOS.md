@@ -497,3 +497,58 @@ directa). Tests: 451/451, `tsc` limpio.
   respondiendo JSON a axios (aquí solo pudimos probar con navegador, que recibe
   el SPA). Si el probe falla, hace falta el endpoint real del SPA (devtools).
 - grantorrent: requiere dominios por env; sin defaults por diseño.
+
+---
+
+# Profundización: wolftorrent / WolfMax4K (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de wolftorrent, complemento del fix 21.
+
+## Estado real de los mirrors (2026-09-28)
+
+| Dominio de `DEFAULT_MIRRORS` | Estado real |
+|---|---|
+| `wolftorrent.com` | 🟠 Placeholder "Próximamente" (sin catálogo) |
+| `wolfmax4k.com` / `www.` | 🟢 Único catálogo vivo |
+| `wolftorrent.net` | 🔴 No resuelve |
+| `wolfmax4k.org` | 🔴 No resuelve |
+
+## Qué se confirmó del template 2026
+
+- **Listados**: `/peliculas` (23.054 títulos, "Página 1 de 961") y `/series`
+  son reales, pero el paginador es de JS: `?page=2` devuelve de nuevo la
+  página 1. El bucle de `html-catalog` ya está protegido (dedup de URLs y de
+  fichas + tope `maxPages`), así que el máximo desperdicio es 1 fetch
+  repetido por sección; cada listing estático trae ~24 fichas con todas sus
+  variantes de calidad (cada variante es su propia ficha `/pelicula/<id>`).
+- **Ficha** (`/pelicula/ryqb95`): título en `h1`, calidad/tamaño en una lista
+  de definiciones SIN dos puntos (`Calidad` → `HDRip`), y el botón
+  **"Descargar torrent" es un `<button>` sin href** (JS). El parseo estático
+  no inventa descargas; el fallback de navegador ya cliquea ese botón por
+  nombre (`/^descargar(?: torrent)?$/i`) y valida el archivo resultante
+  (mismo dominio, `.torrent`, o blob local). Cap por run:
+  `WOLFTORRENT_BROWSER_MAX` (default 25; subirlo cubre más fichas).
+  Si el template expone el endpoint en un atributo (`data-url`), el camino
+  estático lo toma sin navegador (`/descargar/` es endpoint confiado).
+
+## Cambio
+
+- `DEFAULT_MIRRORS` reordenado: `wolfmax4k.com` primero (ahorra el probe
+  fallido del placeholder en cada run); los dominios muertos quedan al final
+  por si vuelven (el probe igualmente los rechaza).
+
+## Tests nuevos (suite 453/453)
+
+- Ficha 2026 realista: título/type correctos, botón sin href → 0 descargas
+  estáticas, `/serie/episodio/:id` → type `series`, `data-url=/descargar/:id`
+  → descarga estática aceptada.
+- Orden de mirrors vivo (`DEFAULT_MIRRORS[0] === wolfmax4k.com`) y pager
+  `?page=N` aceptado intra-dominio / ausencia de pager corta la sección.
+
+## Única incógnita restante (requiere run con navegador real)
+
+Si el click del botón sirve el `.torrent` desde OTRO dominio (CDN) en vez de
+uno propio o blob, `wolfDownloadUrl` lo rechaza y la ficha queda sin descarga.
+No es verificable sin Playwright contra el sitio; si pasa, habría que sumar el
+CDN real a los endpoints confiables.

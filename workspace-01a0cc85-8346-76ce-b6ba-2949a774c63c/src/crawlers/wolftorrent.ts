@@ -105,11 +105,17 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
     return Number.isFinite(parsed) && parsed >= 0 ? parsed : 25;
   }
 
-  /** Known Wolf/WolfMax4K domains; add your own with WOLFTORRENT_MIRRORS. */
+  /**
+   * Known Wolf/WolfMax4K domains; add your own with WOLFTORRENT_MIRRORS.
+   * Live check 2026-09-28: `wolftorrent.com` is a "Próximamente" placeholder
+   * and `wolftorrent.net` / `wolfmax4k.org` do not resolve; the only catalogue
+   * is wolfmax4k.com, so it is probed first. The other domains are kept in
+   * case they come back (the mirror probe rejects a placeholder anyway).
+   */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
-    'https://wolftorrent.com',
     'https://wolfmax4k.com',
     'https://www.wolfmax4k.com',
+    'https://wolftorrent.com',
     'https://wolftorrent.net',
     'https://wolfmax4k.org'
   ];

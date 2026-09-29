@@ -281,3 +281,50 @@ test('Wolftorrent: the 2026 WolfMax4K layout (slugless ids and episode fichas) i
     `${base}/serie/episodio/5sjfvr`
   ]);
 });
+
+test('Wolftorrent: the 2026 ficha is parsed (JS button static-safe, episode type, data-url download)', () => {
+  const crawler = new WolftorrentCrawler();
+  // Shape observed on the live ficha (2026-09): title in h1, quality/size in a
+  // definition list WITHOUT colons, and a "Descargar torrent" BUTTON with no
+  // href at all (the browser fallback resolves it by clicking).
+  const ficha = `
+    <h1>Las catadoras del Hitler</h1>
+    <dl>
+      <dt>Año</dt><dd>2025</dd>
+      <dt>Calidad</dt><dd>HDRip</dd>
+      <dt>Tamaño</dt><dd>1,09 GB</dd>
+    </dl>
+    <button>Descargar torrent</button>`;
+
+  const movie = crawler.parseDetail(ficha, 'https://wolfmax4k.com/pelicula/ryqb95');
+  assert.equal(movie.title, 'Las catadoras del Hitler');
+  assert.equal(movie.type, 'movie');
+  assert.equal(movie.downloads.length, 0, 'a href-less button is left to the browser fallback, never invented');
+
+  const episode = crawler.parseDetail(ficha, 'https://wolfmax4k.com/serie/episodio/5sjfvr');
+  assert.equal(episode.type, 'series', 'episode fichas inherit the series type from the path');
+
+  // When the template exposes the endpoint in a data attribute, the static
+  // path picks it up: /descargar/ is a trusted same-domain download endpoint.
+  const withDataUrl = crawler.parseDetail(
+    ficha.replace('<button>Descargar torrent</button>', '<button data-url="/descargar/ryqb95">Descargar torrent</button>'),
+    'https://wolfmax4k.com/pelicula/ryqb95'
+  );
+  assert.deepEqual(withDataUrl.downloads.map(download => download.url), ['https://wolfmax4k.com/descargar/ryqb95']);
+});
+
+test('Wolftorrent: the live mirror order starts at the working catalogue', () => {
+  // Live check 2026-09-28: only wolfmax4k.com serves the catalogue
+  // (wolftorrent.com is a placeholder; .net and .org do not resolve).
+  assert.equal(WolftorrentCrawler.DEFAULT_MIRRORS[0], 'https://wolfmax4k.com');
+
+  // The published ?page=N pager is followed within the same domain; a page
+  // without a pager ends the section.
+  const crawler = new WolftorrentCrawler();
+  const current = 'https://wolfmax4k.com/peliculas';
+  assert.equal(
+    crawler.nextPage('<div class="pagination"><a href="/peliculas?page=2">2</a></div>', current),
+    'https://wolfmax4k.com/peliculas?page=2'
+  );
+  assert.equal(crawler.nextPage('<div class="pagination"><span>1</span></div>', current), null);
+});
