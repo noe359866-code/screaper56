@@ -70,6 +70,18 @@ export const RUTRACKER_DEFAULT_SEARCHES: readonly string[] = [
 /** Characters of a topic body scanned for language evidence. */
 const BODY_SCAN_LIMIT = 1600;
 
+/**
+ * A quoted "сиды: 123456789..." inside a post is prose, not swarm data: the
+ * free-text counter parse is capped at a plausible swarm size so citations
+ * cannot fabricate a seeders value.
+ */
+const PLAUSIBLE_SWARM_MAX = 100_000_000;
+
+function parseSwarmCounter(raw: string | null | undefined): number | null {
+  const parsed = parseCount(raw);
+  return parsed !== null && parsed <= PLAUSIBLE_SWARM_MAX ? parsed : null;
+}
+
 export interface RutrackerRoute {
   url: string;
   type: ContentType;
@@ -1067,8 +1079,8 @@ export class RutrackerCrawler extends BaseCrawler {
     // order) and turn the whole page into the "description".
     const bodyNode = $('.post_body, .postbody, td.post-body, #topic_main').first();
     const pageText = cleanText(bodyNode.length ? bodyNode.text() : $('body').text());
-    const seeders = parseCount(pageText.match(/(?:сиды|раздают|seeders?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
-    const leechers = parseCount(pageText.match(/(?:личи|качают|leechers?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
+    const seeders = parseSwarmCounter(pageText.match(/(?:сиды|раздают|seeders?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
+    const leechers = parseSwarmCounter(pageText.match(/(?:личи|качают|leechers?)\D{0,12}(\d[\d\s.,]*)/i)?.[1] ?? null);
 
     return {
       title,
@@ -1366,8 +1378,11 @@ export class RutrackerCrawler extends BaseCrawler {
       meta,
       quality: qualityOf(meta),
       sizeBytes,
-      seeders: detail.seeders ?? topic.seeders ?? null,
-      leechers: detail.leechers ?? topic.leechers ?? null,
+      // The listing row's counters are rendered by the tracker from live swarm
+      // data; the topic-page match is prose that may quote other numbers, so
+      // it only fills the gap.
+      seeders: topic.seeders ?? detail.seeders ?? null,
+      leechers: topic.leechers ?? detail.leechers ?? null,
       sourceTracker: trackers[0] ?? null
     });
 

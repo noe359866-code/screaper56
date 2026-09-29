@@ -212,8 +212,16 @@ export class MagnetDlCrawler extends BaseCrawler {
       const title = cleanText(anchor.attr('title') || anchor.text());
       if (!detailUrl || !title || isBlockedTitle(title)) return;
 
-      const category = cleanText(tds.eq(3).text()).toLowerCase();
-      if (category && !/movie|tv|anime|video|documentar/.test(category)) return;
+      // Columns: magnet | name | age | type | [files] | size | seeds | leech.
+      const cells = tds.toArray().map(td => cleanText($(td).text()));
+
+      // The category cell is located BY CONTENT: mirrors that drop the type
+      // column shifted `tds.eq(3)` onto the size, and "1.4 GB" failed the
+      // video-word test so every row of those mirrors was silently dropped.
+      const CATEGORY_CELL =
+        /^(?:movies?|tv|series|anime|video|documentar\w*|music|audio|games?|apps?|applications?|software|xxx|adult|pictures?|books?|other)\b/i;
+      const category = cells.slice(2).find(text => text.length <= 30 && CATEGORY_CELL.test(text)) ?? '';
+      if (category && !/movie|tv|anime|video|documentar/i.test(category)) return;
 
       let magnet: string | null = null;
       $(tr).find('a[href]').each((__, element) => {
@@ -224,8 +232,6 @@ export class MagnetDlCrawler extends BaseCrawler {
       const type: ContentType = forcedType ??
         (/tv/.test(category) || /\bS\d{1,2}(?:E\d{1,3})?\b/i.test(title) ? 'series' : 'movie');
 
-      // Columns: magnet | name | age | type | [files] | size | seeds | leech.
-      const cells = tds.toArray().map(td => cleanText($(td).text()));
       const sizeIndex = cells.findIndex((text, i) => i > 1 && parseSizeToBytes(text) !== null && /[KMGT]i?B/i.test(text));
       rows.push({
         detailUrl,

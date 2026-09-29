@@ -276,8 +276,16 @@ export class ThePirateBayCrawler extends BaseCrawler {
       const meta = parseTorrentTitle(title, this.typeFromCategory(categoryText));
       const langs = detectLanguages(title, ['thepiratebay']);
 
-      const seedersText = tds.length >= 2 ? tds.eq(tds.length - 2).text() : '';
-      const leechersText = tds.length >= 1 ? tds.eq(tds.length - 1).text() : '';
+      // The seed/leech counters are the LAST TWO pure-numeric cells of the
+      // row: fixed `tds.eq(length-2/-1)` indices shifted onto junk whenever a
+      // mirror added a moderation/report column or rendered "---" at the edge.
+      const counterTexts = tds.toArray()
+        .map(td => cleanText($(td).text()))
+        .filter(text => parseCount(text) !== null);
+      const seedersText = counterTexts.length >= 2
+        ? counterTexts[counterTexts.length - 2]
+        : (counterTexts[0] ?? '');
+      const leechersText = counterTexts.length >= 2 ? counterTexts[counterTexts.length - 1] : '';
 
       // Real metainfo link, when the template publishes one next to the
       // magnet (`/download/<id>/<name>.torrent` or a `.torrent` anchor).

@@ -280,3 +280,66 @@ español/castellano/latino", de modo que cualquier ficha española con
 "Audio en 5.1", "Audio en Dual", etc. recibía un falso track `English` (que
 además el filtro de idioma nunca descarta). El lookahead ahora también excluye
 `dual`, `sub` y dígitos.
+
+---
+
+# Corrección de riesgos altos — Tercera ronda de la auditoría
+
+Fecha: 2026-09-28
+Rama: `arena/01a0eaa6-screaper56`
+Tests: `tests/audit-fixes.test.js` ampliado a 18 casos; suite completa 443/443, `tsc` limpio.
+
+## Fix 8 — `src/crawlers/support.ts`: contadores abreviados ("1.5K", "2,3M")
+
+`parseCount('1.5k')` devolvía `null`: los mirrors que redondean los sembradores
+a "1.5K" perdían el contador por completo. Ahora los sufijos `k`/`m` (con
+separador decimal opcional) se multiplican; los decimales sin sufijo siguen
+siendo inválidos (`'12.5'` → `null`). Beneficia a EZTV, 1337x y TGx.
+
+## Fix 9 — `src/crawlers/magnetdl.ts`: categoría de la fila localizada por contenido
+
+`tds.eq(3)` asumía la plantilla exacta de 7 columnas; un mirror sin la columna
+"type" ponía el tamaño en esa posición y `"1.4 GB"` fallaba el test de
+categoría de video → TODAS las filas del mirror se descartaban en silencio.
+La categoría ahora se localiza buscando la primera celda corta con formato de
+categoría (desde la posición 2); si no hay ninguna, la fila no se filtra.
+
+## Fix 10 — `src/crawlers/thepiratebay.ts`: contadores S/L por contenido
+
+`tds.eq(length-2/-1)` leía basura cuando el mirror añadía una columna de
+moderación al final. Ahora los contadores son las dos últimas celdas
+PURAMENTE numéricas de la fila.
+
+## Fix 11 — `src/crawlers/base.ts`: `fetchJson` rechaza interstitials con HTTP 200
+
+Con `responseType: 'json'`, axios deja el HTML de una página de WAF/aparcado
+como string y los parsers de API solo daban errores crípticos de esquema.
+`fetchJson` ahora lanza `BlockedPageError` (con métrica `blockedPages`) o un
+error claro "Expected JSON... received an HTML document".
+
+## Fix 12 — `src/crawlers/dontorrent.ts`: fase de búsqueda no se traga páginas de bloqueo
+
+El POST a `/buscar` usaba el cliente en crudo sin validar el HTML. Una página
+de bloqueo/aparcada con HTTP 200 ya no se parsea como listado: corta solo la
+fase de búsqueda (`blockedPages`) sin descartar los registros que los
+catálogos ya recolectaron.
+
+## Fix 13 — `src/crawlers/limetorrent.ts`: la búsqueda bloqueada degrada, no aborta
+
+El fallback GET de `searchHtml` relanzaba `BlockedPageError` y mataba toda la
+run por una búsqueda WAF-eada aunque los catálogos funcionaran. Ahora la
+búsqueda (fase secundaria de descubrimiento) devuelve `null` ante páginas de
+bloqueo; los 403/429/deadline siguen siendo terminales.
+
+## Fix 14 — `src/crawlers/rutracker.ts`: contadores del listado primero, texto del post después
+
+`detail.seeders ?? topic.seeders` daba prioridad a la cita en prosa del post
+frente al contador que el tracker renderiza de la oleada real. Se invirtió la
+precedencia y el parseo del texto libre se acota a un máximo plausible
+(≤100M) para que un "сиды: 98765432112345" citado no se guarde como dato.
+
+## Fix 15 — `src/crawlers/torrentgalaxy.ts`: fallback numérico para S/L
+
+Cuando ningún selector de clase/color matchea, las dos últimas celdas
+puramente numéricas de la fila son los contadores (solo cuando faltan AMBOS,
+para no sobreescribir un valor ya fiable).

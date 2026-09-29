@@ -5,7 +5,7 @@ import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { extractBrandMirrors, htmlMarkerValidator, MirrorProbe } from './mirrors.js';
+import { extractBrandMirrors, htmlMarkerValidator, looksLikeBlockedPage, MirrorProbe } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
@@ -527,6 +527,14 @@ export class DonTorrentCrawler extends BaseCrawler {
 
           const html = typeof response.data === 'string' ? response.data : '';
           if (!html) break;
+          // A parked/WAF page answered the POST with HTTP 200. It is not an
+          // empty result, and aborting the run here would discard every record
+          // the catalogues already collected; stop the search phase only.
+          if (looksLikeBlockedPage(html)) {
+            this.metrics.add('blockedPages');
+            this.log.warn(`Search "${term}" served a block/parked page; stopping the search phase.`);
+            break;
+          }
           this.metrics.add('listings');
 
           const items = this.parseListing(html, `${mirror}/buscar`);

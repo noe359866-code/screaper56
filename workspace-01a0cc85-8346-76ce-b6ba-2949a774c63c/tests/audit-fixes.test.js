@@ -8,8 +8,14 @@ import { EztvCrawler } from '../src/crawlers/eztv.ts';
 import { RarbgCrawler } from '../src/crawlers/rarbg.ts';
 import { dontorrentDownloadUrl } from '../src/crawlers/dontorrent.ts';
 import { EliteTorrentCrawler, eliteRoutePagePath } from '../src/crawlers/elitetorrent.ts';
-import { looksLikeRutrackerCaptcha } from '../src/crawlers/rutracker.ts';
+import { looksLikeRutrackerCaptcha, RutrackerCrawler } from '../src/crawlers/rutracker.ts';
+import { MagnetDlCrawler } from '../src/crawlers/magnetdl.ts';
+import { ThePirateBayCrawler } from '../src/crawlers/thepiratebay.ts';
+import { TorrentGalaxyCrawler } from '../src/crawlers/torrentgalaxy.ts';
+import { LimeTorrentsCrawler } from '../src/crawlers/limetorrent.ts';
+import { BlockedPageError } from '../src/crawlers/base.ts';
 import { detectLanguages } from '../src/utils/language.ts';
+import { parseCount } from '../src/crawlers/support.ts';
 import { CloudflareBypassEngine } from '../src/utils/anti-cloudflare.ts';
 import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
 import { mockHttp, MAGNET } from './helpers.js';
@@ -178,4 +184,137 @@ test('Anti-Cloudflare: a shut-down engine never relaunches the browser', async (
   await assert.rejects(() => engine.withPage(async () => 'unused'), /shut down/);
   // Drop the poisoned singleton so any later test in this process starts fresh.
   CloudflareBypassEngine.resetInstance();
+});
+
+// ============================================================================
+// Second round: high-risk findings
+// ============================================================================
+
+test('parseCount: abbreviated swarm counters (1.5K / 2,3M) parse; decimals stay invalid', () => {
+  assert.equal(parseCount('1.5k'), 1500);
+  assert.equal(parseCount('1.5K'), 1500);
+  assert.equal(parseCount('2,3M'), 2_300_000);
+  assert.equal(parseCount('10K'), 10_000);
+  assert.equal(parseCount('12.5'), null);
+  assert.equal(parseCount('1,5'), null);
+  assert.equal(parseCount('1,234'), 1234);
+  assert.equal(parseCount('N/A'), null);
+});
+
+test('MagnetDL: rows without a type column survive; a non-video category still drops the row', () => {
+  const crawler = new MagnetDlCrawler();
+  // Six cells (no `type` column): the old tds.eq(3) read "1.5 GB" as the
+  // category and silently dropped EVERY row of such mirrors.
+  const listing = `<table><tbody>
+    <tr><td class="m"><a href="/single/274364"><img></a></td>
+      <td class="n"><a href="/single/274364" title="Widows 2018 1080p Castellano">Widows 2018 1080p Castellano</a></td>
+      <td>6 Years+</td><td>1.5 GB</td><td>4</td><td>1</td></tr>
+    <tr><td></td><td><a href="/single/9">Some Game</a></td>
+      <td>1 Days</td><td>games</td><td>3 GB</td><td>9</td></tr></tbody></table>`;
+
+  const rows = crawler.parseListing(listing, 'https://magnetdl.test/download/movies/', null);
+  assert.equal(rows.length, 1, `only the video row survives: ${JSON.stringify(rows)}`);
+  assert.equal(rows[0].detailUrl, 'https://magnetdl.test/single/274364');
+  assert.equal(rows[0].seeders, 4);
+  assert.equal(rows[0].leechers, 1);
+});
+
+test('TPB: trailing non-numeric cells no longer blank the swarm counters', () => {
+  const crawler = new ThePirateBayCrawler();
+  const html = `<table id="searchResult"><tr class="header"><td>c</td></tr>
+    <tr><td class="vertTh"><a href="/browse/208">TV shows</a></td>
+    <td><div class="detName"><a href="/description.php?id=9">Sample S01E02 Castellano</a></div>
+    <a href="${MAGNET}">M</a>
+    <font class="detDesc">Uploaded 01-01, Size 1.5 GiB, ULed by x</font></td>
+    <td>10</td><td>2</td><td>mod</td><td>report</td></tr></table>`;
+
+  const sink = [];
+  const { added } = crawler.collectHtmlRows(html, 'https://tpb.test', new Set(), sink);
+  assert.equal(added, 1);
+  assert.equal(sink[0].seeders, 10, 'seeders are the last two numeric cells, not the last two tds');
+  assert.equal(sink[0].leechers, 2);
+});
+
+test('fetchJson: a WAF interstitial with HTTP 200 raises BlockedPageError, not a schema error', async () => {
+  const crawler = new ThePirateBayCrawler();
+  const blockPage = '<html><head><title>Attention Required! | Cloudflare</title></head><body></body></html>';
+  mockHttp(crawler, () => blockPage);
+  await assert.rejects(
+    () => crawler.crawl(1),
+    error => error instanceof BlockedPageError,
+    'the old code parsed the interstitial as an empty API response'
+  );
+});
+
+test('LimeTorrents: a blocked search degrades to no results instead of aborting the run', async () => {
+  const mirror = 'https://lime-audit.test';
+  const previousBase = process.env.LIMETORRENTS_BASE_URL;
+  process.env.LIMETORRENTS_BASE_URL = mirror;
+  clearMirrorCache('limetorrents');
+  try {
+    const crawler = new LimeTorrentsCrawler();
+    const blockPage = '<html><head><title>Just a moment...</title></head><body>Checking your browser</body></html>';
+    const list = '<table class="table2"><tr><th>Name</th></tr><tr><td><div class="tt-name"><a href="/sample.html">Sample Castellano</a></div></td><td>3 hours ago</td><td>1.5 GiB</td><td>123</td><td>7</td></tr></table>';
+    mockHttp(crawler, url => {
+      if (url === `${mirror}/search`) return blockPage;               // POST search
+      if (url.includes('/search/all/')) return blockPage;             // GET fallback
+      if (url.endsWith('/sample.html')) return `<h1>Sample Castellano</h1><a href="${MAGNET}">M</a>`;
+      return list;                                                    // catalogues
+    });
+
+    const records = await crawler.crawl(1);
+    assert.equal(records.length, 1, 'the catalogue records survive a blocked search phase');
+    assert.equal(records[0].seeders, 123);
+  } finally {
+    if (previousBase === undefined) delete process.env.LIMETORRENTS_BASE_URL;
+    else process.env.LIMETORRENTS_BASE_URL = previousBase;
+    clearMirrorCache('limetorrents');
+  }
+});
+
+test('RuTracker: an implausible quoted count is not stored; a normal one still parses', () => {
+  const crawler = new RutrackerCrawler();
+  const url = 'https://rutracker.org/forum/viewtopic.php?t=6466319';
+
+  const quoted = crawler.parseTopic(
+    `<h1>El Camino Castellano</h1><a href="${MAGNET}">M</a>
+     <div class="post_body">alguien dijo que los Seeders: 98765432112345 eran falsos</div>`,
+    url
+  );
+  assert.equal(quoted.seeders, null, 'a quoted impossible count must not become swarm data');
+
+  const clean = crawler.parseTopic(
+    `<h1>El Camino Castellano</h1><a href="${MAGNET}">M</a>
+     <div class="post_body">Seeders: 42</div>`,
+    url
+  );
+  assert.equal(clean.seeders, 42);
+});
+
+test('TGX: rows without seed/leech markup fall back to the last numeric cells', () => {
+  const crawler = new TorrentGalaxyCrawler();
+  const html = `<table><tr class="tgxtablerow">
+    <td class="tgxtablecell"><a href="/torrent/1/Sample" title="Sample Castellano">Sample</a></td>
+    <td class="tgxtablecell">1.5 GiB</td>
+    <td><a href="${MAGNET}">M</a></td>
+    <td>0</td><td>12</td><td>3</td></tr></table>`;
+
+  const [record] = crawler.parseTorrentGalaxyHtml(html, 'https://tgx.test/torrents.php', 'https://tgx.test');
+  assert.ok(record, 'the row produces a record');
+  assert.equal(record.seeders, 12);
+  assert.equal(record.leechers, 3);
+  assert.equal(record.size_bytes, 1610612736);
+});
+
+test('EZTV: abbreviated 1.5K seeders are parsed instead of lost', () => {
+  const crawler = new EztvCrawler();
+  const html = `<table><tr class="forum_header_border">
+    <td><a class="epinfo" href="/ep/1">Show S01E02</a></td>
+    <td><a class="magnet" href="${MAGNET}">M</a></td>
+    <td>650 MiB</td><td></td><td><font>1.5K</font></td><td><font>120</font></td></tr></table>`;
+
+  const sink = [];
+  crawler.collectHtmlRows(html, 'https://eztv.test', new Set(), sink);
+  assert.equal(sink[0].seeders, 1500);
+  assert.equal(sink[0].leechers, 120);
 });

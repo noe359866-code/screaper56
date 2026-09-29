@@ -264,14 +264,28 @@ export class TorrentGalaxyCrawler extends BaseCrawler {
 
       // 3. Swarm counters. TGX colours them with <font>, but newer templates
       //    use `td.tgxtablecell` with `seed`/`leech` classes or a `<b>` inside.
-      const seeders = parseCount(
+      let seeders = parseCount(
         row.find('[class*="seed"], font[color="green"], font[color="lime"], span.seeders, .seeders')
           .first().text()
       );
-      const leechers = parseCount(
+      let leechers = parseCount(
         row.find('[class*="leech"], font[color="#ff0000"], font[color="red"], span.leechers, .leechers')
           .first().text()
       );
+
+      // When no class- or colour-based selector matched, the last two
+      // pure-numeric cells of the row are the swarm counters (a comment count
+      // may precede them, so only the final pair is trusted, and only when
+      // BOTH counters are missing).
+      if (seeders === null && leechers === null) {
+        const numericCells = row.find('td, .tgxtablecell').toArray()
+          .map(cell => cleanText($(cell).text()))
+          .filter(text => parseCount(text) !== null);
+        if (numericCells.length >= 2) {
+          seeders = parseCount(numericCells[numericCells.length - 2]);
+          leechers = parseCount(numericCells[numericCells.length - 1]);
+        }
+      }
 
       // 4. Size: badge first, then short-circuit evaluation on cells.
       let sizeBytes = parseSizeToBytes(cleanText(row.find('span.badge').first().text()));
