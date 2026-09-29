@@ -552,3 +552,50 @@ Si el click del botón sirve el `.torrent` desde OTRO dominio (CDN) en vez de
 uno propio o blob, `wolfDownloadUrl` lo rechaza y la ficha queda sin descarga.
 No es verificable sin Playwright contra el sitio; si pasa, habría que sumar el
 CDN real a los endpoints confiables.
+
+---
+
+# Profundización: mejortorrent (foco exclusivo)
+
+Fecha: 2026-09-28
+Verificación en vivo de TODA la cadena de mejortorrent sobre el mirror real
+(`www45.mejortorrent.eu` → redirige a `www46.mejortorrent.eu`).
+
+## Qué se confirmó del sitio real (2026-09-28)
+
+- El fix 22 (rotación wwwNN) era exactamente lo que necesitaba: los listados
+  de `//inicio` y `/peliculas-hd` sirven enlaces ABSOLUTOS a `www46`.
+- Las rutas que usa el crawler existen en el template nuevo: `/inicio`,
+  `/peliculas-hd`, `/series-hd`, `/documentales` (y `/peliculas-4k`).
+- Las fichas tienen descarga ESTÁTICA real: películas un enlace
+  `/torrents/peliculas/<nombre>.torrent`; series una tabla
+  `ID | Episodios | Fecha | Clave | Download` con un `.torrent` por episodio.
+  El parsing de episodios por posición (`td.eq(1)` = `1x01`) calza EXACTO con
+  esa tabla — quedó protegido con un test con el markup real.
+- Los catálogos NO tienen paginador estático (ventana por fechas); los filtros
+  por letra/género son enlaces estáticos (`/series-hd/letter/a`,
+  `/peliculas/genre/drama`) y NO se cuelan como fichas (verificado en test).
+- Los índices completos `/peliculas` y `/series` existen ("Volver al índice"
+  en cada ficha).
+
+## Cambios (`src/crawlers/mejortorrent.ts`)
+
+- Fix 23 — fallback del modo `modern_me`: desde el fix 11, una API
+  `/wp-json/wp/v2/posts` que responde HTML (SPA/WAF, HTTP 200) lanza
+  `BlockedPageError`, y el catch del modo WordPress lo RE-LANZABA: la corrida
+  moría aunque el template legacy funcionara perfecto. Ahora ese error solo
+  corta la fase API y cae al modo HTML (un mirror realmente bloqueado sigue
+  levantando el error desde los fetch legacy, que usan rejectBlocked).
+  429, deadline y demás errores siguen re-lanzándose.
+- Nuevas rutas legacy: `/peliculas` y `/series` (índices completos por tipo),
+  después de las ventanas recientes; el cupo `maxPages*35` sigue acotando.
+
+## Tests nuevos (suite 455/455)
+
+- Recorrido end-to-end del template 2026: portada legacy → listados con
+  enlaces absolutos www46 → ficha de película con `/torrents/peliculas/…`
+  (1 record, hash del metainfo real) → ficha de serie con la tabla real
+  (3 episodios 1x01..1x03, season=1) → índices `/peliculas` y `/series`
+  visitados → filtros `letter/`/`genre/` jamás pedidos.
+- API de WordPress que responde página de WAF → la corrida cae al modo HTML y
+  produce records (antes: error fatal).
