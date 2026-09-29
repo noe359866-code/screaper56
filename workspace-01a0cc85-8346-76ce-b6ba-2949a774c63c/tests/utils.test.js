@@ -65,3 +65,26 @@ test('Explicit language mode does not manufacture English for unknown releases',
   assert.deepEqual(detectLanguages('Sample', [], false), { audio: [], subtitles: [] });
   assert.deepEqual(detectLanguages('Sample', ['sub_en'], false), { audio: [], subtitles: ['Sub_EN'] });
 });
+
+test('Cyrillic language evidence (RuTracker): labels count, bare adjectives do not', () => {
+  const cases = [
+    // Audio evidence: an explicit language label next to the adjective.
+    ['Фильм (2024) [WEB-DL] (испанский язык)', ['Spanish'], []],
+    ['звучание испанское', ['Spanish'], []],
+    ['фильм на испанском языке', ['Spanish'], []],
+    ['оригинальный звук: испанский', ['Spanish'], []],
+    ['испанский дубляж', ['Spanish'], []],
+    ['английский язык', ['English'], []],
+    // Subtitle wording wins: it describes subs, not the audio track.
+    ['английские субтитры', [], ['Sub_EN']],
+    ['субтитры: испанские', [], ['Sub_ES']],
+    // Not evidence: a bare adjective is a title, «перевод с испанского» is
+    // the SOURCE of a Russian dub, and unrelated Russian titles stay empty.
+    ['испанская империя (документальный)', [], []],
+    ['перевод с испанского языка', [], []],
+    ['Русская версия фильма 2019 BDRip', [], []]
+  ];
+  for (const [text, audio, subtitles] of cases) {
+    assert.deepEqual(detectLanguages(text, [], false), { audio, subtitles }, text);
+  }
+});

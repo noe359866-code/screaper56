@@ -994,3 +994,80 @@ example.com — así que la verificación se hizo contra el sitio directamente).
   `/pelicula/`): los fronts .eu responden HTML sin marcas → el probe acepta
   `.me`, la API lista los posts y el `.torrent` publicado se descarga con
   bencode → record movie con el hash real.
+
+# Profundización: RuTracker — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Revisión de la cadena entera del crawler de RuTracker tras la ronda anterior
+(que fijó sesión, CAPTCHA y paginación). Esta ronda encontró y arregló el
+bug que dejaba muerta la búsqueda `испанский` de los defaults.
+
+## Estado real del pool (2026-09-29)
+
+- `rutracker.org` 🟢 y `rutracker.net` 🟢: índice de invitados completo
+  («Регистрация · Вход» + navegación `viewforum`/`viewtopic`) — re-verificado
+  hoy.
+- `rutracker.me` responde HTTP 500 (ayer no respondía); `rutracker.nl` no
+  responde hoy (ayer devolvía 500); `rutracker.cc` no responde. Los cinco
+  siguen en el pool a propósito: un 5xx o una respuesta sin red lo descarta
+  el probe (el fetch lanza antes de llegar a la validación) y el primer
+  dominio sano gana.
+- `tracker.php?nm=` de invitado sigue redirigiendo a `login.php?redirect=`
+  (acceso login-only, la corrida corre autenticada) — sin cambios.
+
+## El bug: `detectLanguages` no entendía ruso (cascada completa)
+
+- `RUTRACKER_DEFAULT_SEARCHES` incluye `испанский` y `LANG_HINT_PATTERN`
+  extrae hints `испанск` del cuerpo del post, pero
+  `detectLanguages('Фильм (2024) [WEB-DL] (испанский язык)')` devolvía
+  `{audio: [], subtitles: []}`: `src/utils/language.ts` tenía SOLO aliases
+  latinos (`spanish|castellano|…`), cero patrones cirílicos.
+- Cascada: el prefiltro de idioma descartaba todo título cirílico → el
+  término `испанский` no llegaba a pedir ni una página, y cualquier fila que
+  colaba moría después en `filterSpanishReleases` (`base.ts` →
+  `hasValidLanguageRelease`, que descarta `audio: []`).
+- `languageHintsFromBody` capturaba los hints cirílicos bien (2 snippets),
+  pero al volver por `detectLanguages` se parseaban a `[]`: la extracción
+  funcionaba, el parseo no.
+
+## Cambio principal (`src/utils/language.ts`)
+
+- `detectLanguages` reconoce ahora evidencia cirílica CON contexto:
+  - Audio: «испанский язык/дубляж», «звучание испанское», «оригинальный
+    звук: испанский», «на испанском» → `Spanish`; los análogos «английский»
+    → `English`. La regla latino-vs-castellano de las etiquetas latinas se
+    reutiliza en la rama cirílica.
+  - Subtítulos: «английские субтитры» / «субтитры: испанские» → `Sub_EN` /
+    `Sub_ES`, y esa redacción se excluye del scan de audio («английские
+    субтитры» no es audio inglés).
+  - Trampas evitadas a propósito: el adjetivo solo NO es evidencia
+    («испанская империя», «Русская версия» → `[]`) y «перевод с испанского»
+    nombra la FUENTE de un doblaje ruso (el audio que trae la release no es
+    español) → también `[]`.
+- Detalle que costó un debugging: `\w` en JS es ASCII-only, así que
+  «испанск\w*» no comía las declinaciones («испанский/испанские/испанского»).
+  Todas las ramas usan un sufijo `[\wа-яё]*`.
+
+## Cambio secundario (`src/crawlers/rutracker.ts`)
+
+- El probe de mirror exige MARCA + dialecto del foro vía
+  `looksLikeRutrackerForumPage()` (exportado): `rutracker` Y
+  (`viewtopic|viewforum|login.php|login_username`), con
+  `looksLikeBlockedPage` vetando antes. Antes,
+  `htmlMarkerValidator([/rutracker/i, …])` con `.some()` aceptaba cualquiera
+  de las dos marcas POR SEPARADO (riesgo latente: una 200-OK que no es el
+  foro — error/mantenimiento — podía resolver como mirror ganador). Verificado
+  en vivo: el índice de invitado de .org/.net trae ambas marcas, y un muro
+  de login trae `login.php`/`login_username`.
+- JSDoc del pool actualizado con los estados de 2026-09-29 (composición del
+  pool sin cambios).
+
+## Tests nuevos (suite 481/481)
+
+- `utils.test.js`: matriz de 11 casos cirílicos — audio con etiqueta, subs
+  ganando al audio, adjetivo solo, fuente de traducción, título ruso neutro.
+- `rutracker.test.js`: crawl completo con `RUTRACKER_SEARCH=испанский` — la
+  fila «(испанский язык, русские субтитры)» pide su ficha y produce
+  `audio: [Spanish]` mientras «Русская версия» sigue sin costar requests; y
+  el probe: marca+dialecto ✓, muro de login ✓, marca sola ✗, dialecto sin
+  marca ✗, challenge con ambas marcas ✗.

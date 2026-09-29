@@ -22,6 +22,7 @@ import {
   isSessionCookieJar,
   languageHintsFromBody,
   looksLoggedIn,
+  looksLikeRutrackerForumPage,
   looksLikeRutrackerLoginPage,
   parseCookieJar,
   typeFromForumTitle
@@ -575,6 +576,85 @@ test('Language prefilter can be disabled and min-seeders is honoured', async () 
     );
     // Every row has fewer than 100 seeders: nothing survives the filter.
     await assert.rejects(crawler.crawl(1), /no topic row|Spanish\/English/);
+  });
+  clearMirrorCache('rutracker');
+});
+
+test('Probe: a mirror is accepted only when it is the forum itself', () => {
+  // The guest index (verified live on .org/.net 2026-09-29) carries brand +
+  // the viewforum/viewtopic navigation, and that combination must pass.
+  const forumIndex = '<html><head><title>RuTracker.org — главная</title></head><body>' +
+    '<a href="./viewforum.php?f=7">Фильмы</a><a href="./viewtopic.php?t=1">Правила</a></body></html>';
+  assert.equal(looksLikeRutrackerForumPage(forumIndex), true);
+
+  // A login wall still counts: the form IS the forum for a guest.
+  const wall = '<html><head><title>RuTracker</title></head><body>' +
+    '<form action="login.php"><input name="login_username" value=""></form></body></html>';
+  assert.equal(looksLikeRutrackerForumPage(wall), true);
+
+  // Brand without dialect proves nothing: an error/maintenance page on the
+  // same domain can mention rutracker without serving the board.
+  const maintenance = '<html><head><title>rutracker.org</title></head><body>' +
+    'Maintenance in progress, come back later.</body></html>';
+  assert.equal(looksLikeRutrackerForumPage(maintenance), false);
+
+  // Dialect without brand could be another board entirely.
+  const otherBoard = '<html><body><a href="viewtopic.php?t=1">Some topic</a> generic forum</body></html>';
+  assert.equal(looksLikeRutrackerForumPage(otherBoard), false);
+
+  // A challenge page that happens to quote both markers stays blocked.
+  assert.equal(looksLikeRutrackerForumPage('<div id="challenge-stage">rutracker viewtopic.php</div>'), false);
+  assert.equal(looksLikeRutrackerForumPage(''), false);
+  assert.equal(looksLikeRutrackerForumPage(null), false);
+});
+
+test('RuTracker: Cyrillic «испанский язык» titles survive the language prefilter', async () => {
+  clearMirrorCache('rutracker');
+  await withEnv({ RUTRACKER_COOKIE_JSON: COOKIE_EXPORT, RUTRACKER_SEARCH: 'испанский', RUTRACKER_FORUMS: '', RUTRACKER_ROUTES: '' }, async () => {
+    const crawler = new RutrackerCrawler();
+    const SPANISH_ROW = `<tr id="t-row-6466321" class="tCenter hl-tr">
+      <td class="row1 t-title-col"><div class="t-title">
+        <a class="tLink" href="./viewtopic.php?t=6466321">Сериал (2025) [WEB-DL 1080p] (испанский язык, русские субтитры)</a>
+      </div></td>
+      <td class="row4 nowrap"><a href="tracker.php?f=22">Наши сериалы</a></td>
+      <td class="row4 small nowrap tor-size"><u>4.00&nbsp;GB</u></td>
+      <td class="row1 small number-format"><b class="seedmed">12</b></td>
+      <td class="row4 small number-format leechmed">3</td>
+    </tr>`;
+    const cyrillicTopic = `<html><head><title>RuTracker.org :: Сериал</title></head><body>
+      <h1 class="maintitle"><a id="topic-title" href="viewtopic.php?t=6466321">Сериал (2025) [WEB-DL 1080p] (испанский язык, русские субтитры)</a></h1>
+      <div class="attach"><a href="magnet:?xt=urn:btih:${'a'.repeat(40)}&dn=Serial">magnet link</a>
+        <span id="tor-size-humn">4.00 GB</span></div>
+      <div class="post_body">Оригинальное аудио: испанский. Перевод: русский.</div>
+      </body></html>`;
+    const detailCalls = [];
+    // The shared listing() fixture declares windows-1251 while mockHttp serves
+    // UTF-8 bytes; declare utf-8 so the Cyrillic title reaches the prefilter
+    // readable (cp1251 decoding itself is covered by its own test above).
+    const utf8Listing = () => listing(SPANISH_ROW).replace('windows-1251', 'utf-8');
+    mockHttp(
+      crawler,
+      url => (url.includes('index.php') ? LOGGED_IN_INDEX : utf8Listing()),
+      url => {
+        if (url.includes('index.php')) return Buffer.from(LOGGED_IN_INDEX, 'utf-8');
+        if (url.includes('viewtopic.php')) {
+          detailCalls.push(url);
+          return Buffer.from(url.includes('t=6466321') ? cyrillicTopic : topic(), 'utf-8');
+        }
+        return Buffer.from(utf8Listing(), 'utf-8');
+      }
+    );
+
+    const records = await crawler.crawl(1);
+
+    // The «испанский язык» row was fetched — the default Cyrillic search term
+    // is no longer dead weight — while «Русская версия» still costs no request.
+    assert.equal(detailCalls.filter(url => url.includes('t=6466321')).length, 1);
+    assert.equal(detailCalls.length, 2);
+    const spanish = records.find(record => record.source_url.includes('t=6466321'));
+    assert.ok(spanish, 'the Cyrillic row must survive until a record exists');
+    assert.ok(spanish.audio.includes('Spanish'), JSON.stringify(spanish.audio));
+    assert.equal(records.length, 2);
   });
   clearMirrorCache('rutracker');
 });
