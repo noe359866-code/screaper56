@@ -182,6 +182,101 @@ test('EstrenosTorrent: movie/series detail links produce records from same-site 
   }
 });
 
+test('EstrenosTorrent: a long single-page catalogue is processed in full, batch by batch', async () => {
+  const previousBase = process.env.ESTRENOSTORRENT_BASE_URL;
+  const base = 'https://estrenostorrent.test';
+  process.env.ESTRENOSTORRENT_BASE_URL = base;
+  clearMirrorCache('estrenostorrent');
+  // Mirrors the real site: /peliculas/ is one long response (~100 items) with
+  // no pager, so maxPages cannot bound the work and nothing may be truncated.
+  const TOTAL = 75;
+  const metainfos = new Map(Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return [n, torrent(`Pelicula ${n} Castellano 1080p`)];
+  }));
+  try {
+    const crawler = new EstrenosTorrentCrawler();
+    const listing = Array.from({ length: TOTAL }, (_, i) => {
+      const n = i + 1;
+      return `<a href="/online/pelicula-${n}"><img alt="Pelicula ${n}"><strong>Pelicula ${n}</strong></a>`;
+    }).join('');
+    const calls = mockHttp(crawler, url => {
+      if (url === `${base}/peliculas/`) return `<div id="catalogo">${listing}</div>`;
+      if (url === `${base}/` || url === `${base}/series/`) return '<h1>Catálogo</h1>';
+      const detail = url.match(/\/online\/pelicula-(\d+)$/);
+      if (detail) {
+        const n = Number(detail[1]);
+        return `<h1>Pelicula ${n}</h1><div>Tipo Película</div>` +
+          `<a href="/assets/u/t/temp/${n}/${n}.torrent?token=fixture">Descargar torrent</a>`;
+      }
+      const file = url.match(/\/assets\/u\/t\/temp\/(\d+)\/\1\.torrent/);
+      if (file) return metainfos.get(Number(file[1])).buffer;
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+
+    const records = await crawler.crawl(1);
+    assert.equal(records.length, TOTAL, 'every item of the long listing must produce a record');
+    assert.equal(new Set(records.map(r => r.title)).size, TOTAL, 'each record keeps its own release');
+    const detailsFetched = calls.filter(url => url.includes('/online/pelicula-')).length;
+    assert.equal(detailsFetched, TOTAL, 'all 75 detail pages were visited, not just the first maxPages*30');
+  } finally {
+    if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
+    else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    clearMirrorCache('estrenostorrent');
+  }
+});
+
+test('EstrenosTorrent: ESTRENOSTORRENT_MAX_DETAILS caps the batches; an invalid value means no cap', async () => {
+  const previousBase = process.env.ESTRENOSTORRENT_BASE_URL;
+  const previousCap = process.env.ESTRENOSTORRENT_MAX_DETAILS;
+  const base = 'https://estrenostorrent.test';
+  process.env.ESTRENOSTORRENT_BASE_URL = base;
+  const TOTAL = 45;
+  const listing = Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return `<a href="/online/pelicula-${n}"><img alt="Pelicula ${n}"><strong>Pelicula ${n}</strong></a>`;
+  }).join('');
+  const metainfos = new Map(Array.from({ length: TOTAL }, (_, i) => {
+    const n = i + 1;
+    return [n, torrent(`Pelicula ${n} Castellano 1080p`)];
+  }));
+  try {
+    const buildCrawler = () => {
+      const crawler = new EstrenosTorrentCrawler();
+      mockHttp(crawler, url => {
+        if (url === `${base}/peliculas/`) return `<div id="catalogo">${listing}</div>`;
+        if (url === `${base}/` || url === `${base}/series/`) return '<h1>Catálogo</h1>';
+        const detail = url.match(/\/online\/pelicula-(\d+)$/);
+        if (detail) {
+          const n = Number(detail[1]);
+          return `<h1>Pelicula ${n}</h1><div>Tipo Película</div>` +
+            `<a href="/assets/u/t/temp/${n}/${n}.torrent?token=fixture">Descargar torrent</a>`;
+        }
+        const file = url.match(/\/assets\/u\/t\/temp\/(\d+)\/\1\.torrent/);
+        if (file) return metainfos.get(Number(file[1])).buffer;
+        throw new Error(`Unexpected URL: ${url}`);
+      });
+      return crawler;
+    };
+
+    process.env.ESTRENOSTORRENT_MAX_DETAILS = '10';
+    clearMirrorCache('estrenostorrent');
+    const capped = await buildCrawler().crawl(1);
+    assert.equal(capped.length, 10, 'the cap limits how many detail pages are processed');
+
+    process.env.ESTRENOSTORRENT_MAX_DETAILS = 'not-a-number';
+    clearMirrorCache('estrenostorrent');
+    const uncapped = await buildCrawler().crawl(1);
+    assert.equal(uncapped.length, TOTAL, 'an invalid cap means every discovered page is processed');
+  } finally {
+    if (previousBase === undefined) delete process.env.ESTRENOSTORRENT_BASE_URL;
+    else process.env.ESTRENOSTORRENT_BASE_URL = previousBase;
+    if (previousCap === undefined) delete process.env.ESTRENOSTORRENT_MAX_DETAILS;
+    else process.env.ESTRENOSTORRENT_MAX_DETAILS = previousCap;
+    clearMirrorCache('estrenostorrent');
+  }
+});
+
 test('Tokyo Toshokan: two-row entries with magnet, size, stats and English subs', () => {
   const base = 'https://www.tokyotosho.info';
   const html = `<table class="listing">

@@ -398,3 +398,40 @@ records".
   lo documenta).
 - `parseCount` abreviado y el relanzamiento post-`shutdown()` se corrigieron en
   las rondas anteriores.
+
+---
+
+# Mejora de cobertura — estrenostorrent página por página
+
+Fecha: 2026-09-28
+Pedido del usuario: recorrer `https://estrenostorrent.org/peliculas/` y
+`https://estrenostorrent.org/series/` "página por página".
+
+## Qué se encontró en el sitio real
+
+- Ambas rutas YA estaban en las rutas del crawler (`/`, `/peliculas/`,
+  `/series/`) y los enlaces de ficha (`/online/<slug>`, `/online/movie/<id>`,
+  `/movie/movie/<id>`, `/serie-online/<id>`, `/series/<calidad>/<slug>`)
+  ya se parsean bien.
+- El sitio NO pagina esas secciones: `/peliculas/page/2/`, `/peliculas/2/` y
+  `/peliculas/?p=2` devuelven exactamente el mismo listado (una sola respuesta
+  larga, ~100 películas; las series, ~23). No hay pager en el HTML estático.
+- El recorte real era nuestro: `candidates.slice(0, maxPages*30)` descartaba
+  fichas descubiertas (con `MAX_PAGES=3` default, de ~120 descubiertas solo se
+  procesaban 90; las de `/series/` eran las primeras en perderse).
+
+## Cambios (`src/crawlers/estrenostorrent.ts`)
+
+- Ya no se trunca la lista de fichas descubiertas: se procesan TODAS, en lotes
+  ("páginas") de 30, con log por lote
+  (`[estrenostorrent] detail page N: X fichas, +Y records (P/T)`).
+- Tope opcional por si se quiere limitar el run: `ESTRENOSTORRENT_MAX_DETAILS`
+  (sin setear o valor inválido = sin tope; el deadline de la run sigue acotando).
+- El procesado de fichas se extrajo a `processDetail()` (misma lógica).
+
+## Tests
+
+`tests/new-sources.test.js`: 2 casos nuevos (suite 449/449): un listado de 75
+ítems produce 75 registros y visita las 75 fichas con `crawl(1)`, y
+`ESTRENOSTORRENT_MAX_DETAILS=10` corta en 10 mientras que un valor inválido no
+corta.
