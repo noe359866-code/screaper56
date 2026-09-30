@@ -10,7 +10,7 @@
 <header>
   <div class="wrap">
     <h1>🎬 Peerflix Ingest</h1>
-    <p class="muted">Agregador de <b>6 manifests Stremio</b>: consulta Peerflix, TorrentsDB, Torrentio, ThePirateBay+ y Ytztvio por IMDb; registra TPB Adult como catálogo separado porque no ofrece streams movie/series por IMDb. Fusiona por info_hash y hace UPSERT en la tabla <code>torrents</code> de tu Supabase. Tu web existente no necesita cambios.</p>
+    <p class="muted">Busca tus películas y series en <b>5 addons Stremio</b> (Peerflix, TorrentsDB, Torrentio, ThePirateBay+ y Ytztvio), fusiona por info_hash y se queda con <b>solo 2 torrents por título</b>: 🇪🇸 el mejor en español (castellano o latino) y 🇬🇧 el mejor en inglés, cada uno con los mejores trackers. <b>Funciona sin token</b>: procesa la lista en tu navegador o pide la ingesta con un Issue de GitHub.</p>
     <nav>
       <button data-tab="dashboard" class="active">Dashboard</button>
       <button data-tab="ingest">Subir TXT / Ingestar</button>
@@ -25,34 +25,51 @@
 <!-- =============== SETTINGS =============== -->
 <section id="tab-settings" class="tab">
   <h2>Ajustes</h2>
-  <p class="muted">Necesitas un <b>Personal Access Token (PAT)</b> de GitHub con permisos <code>repo</code> (contents + actions). El token solo se guarda en <code>localStorage</code> de tu navegador.</p>
+  <p class="muted">Nada de esto es obligatorio. Sin token ni claves puedes procesar listas en el navegador, ver lo publicado y pedir ingestas por Issue. Todo se guarda solo en el <code>localStorage</code> de este navegador.</p>
 
+  <h3>Repositorio de GitHub</h3>
+  <p class="muted small" id="repo-detected"></p>
   <div class="grid">
     <label>Owner / Usuario GitHub
-      <input id="gh-owner" type="text" placeholder="ej: noe359866" />
+      <input id="gh-owner" type="text" placeholder="ej: noe359866-code" autocomplete="off" />
     </label>
     <label>Repo
-      <input id="gh-repo" type="text" placeholder="ej: screaper56" />
+      <input id="gh-repo" type="text" placeholder="ej: screaper56" autocomplete="off" />
     </label>
     <label>Rama
-      <input id="gh-branch" type="text" placeholder="main" />
+      <input id="gh-branch" type="text" placeholder="main" autocomplete="off" />
     </label>
-    <label class="full">Personal Access Token
-      <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+    <label>Personal Access Token <span class="optional">opcional</span>
+      <input id="gh-token" type="password" placeholder="solo si quieres lanzar la Action sin pasar por un Issue" autocomplete="off" />
     </label>
-    <label>Supabase URL (para el dashboard, clave pública anon)
-      <input id="sb-url" type="text" placeholder="https://xxxxx.supabase.co" />
+  </div>
+  <p class="muted small">Con token (fine-grained, solo este repo, permisos <i>Contents</i> y <i>Actions</i> en lectura/escritura), <b>☁️ Guardar en el repo</b> actualiza <code>watchlist.txt</code> y lanza la Action directamente. Sin token, abre un Issue ya relleno. Lo envías tú con tu sesión de GitHub y la Action hace el resto.</p>
+
+  <h3>Supabase <span class="optional">opcional</span></h3>
+  <div class="grid">
+    <label>Supabase URL
+      <input id="sb-url" type="text" placeholder="https://xxxxx.supabase.co" autocomplete="off" />
     </label>
     <label>Supabase anon (public) key
-      <input id="sb-anon" type="text" placeholder="eyJhbGciOi..." />
+      <input id="sb-anon" type="text" placeholder="eyJhbGciOi..." autocomplete="off" />
     </label>
     <label>Tamaño de página
       <input id="sb-page-size" type="number" min="20" max="500" value="50" />
     </label>
+  </div>
+  <p class="muted small">Solo sirve para la fuente “Supabase” del Dashboard (histórico de la tabla <code>torrents</code>). Las fuentes “Publicado” y “Este navegador” no lo necesitan.</p>
+
+  <h3>Procesamiento</h3>
+  <div class="grid">
     <label class="full">Proveedores Stremio a consultar
       <div class="provider-list" id="provider-list"></div>
     </label>
+    <label class="chk"><input type="checkbox" id="use-cinemeta" checked /> Usar Cinemeta (títulos, años y temporadas completas, sin API key)</label>
+    <label>Consultas simultáneas (navegador)
+      <input id="concurrency" type="number" min="1" max="8" value="4" />
+    </label>
   </div>
+
   <div class="row">
     <button id="save-settings" class="primary">Guardar ajustes</button>
     <button id="test-settings" class="ghost">Probar conexión</button>
@@ -62,34 +79,57 @@
 
 <!-- =============== DASHBOARD =============== -->
 <section id="tab-dashboard" class="tab active">
-  <div class="summary" id="summary">
-    <div class="stat"><div class="num" id="stat-total">—</div><div class="lbl">total torrents</div></div>
-    <div class="stat"><div class="num" id="stat-movies">—</div><div class="lbl">películas</div></div>
-    <div class="stat"><div class="num" id="stat-series">—</div><div class="lbl">episodios</div></div>
-    <div class="stat"><div class="num" id="stat-spanish">—</div><div class="lbl">audio ES</div></div>
-    <div class="stat"><div class="num" id="stat-last">—</div><div class="lbl">último updated</div></div>
+  <div class="source-bar">
+    <div class="segmented" role="tablist" aria-label="Origen de los datos">
+      <button data-source="published" class="active" title="data/index.json de esta web (lo que publicó la última Action)">📦 Publicado</button>
+      <button data-source="local" title="Resultados de ⚡ Procesar aquí, guardados en este navegador">💻 Este navegador</button>
+      <button data-source="supabase" title="Tabla torrents de tu Supabase (necesita URL + anon key)">🗄 Supabase</button>
+    </div>
+    <span id="source-info" class="muted small"></span>
   </div>
 
-  <p class="muted dashboard-note">Cada fila representa un torrent/hash, no una película única: una misma película o episodio puede tener varias versiones o calidades. Los resultados con el mismo hash se fusionan; hashes distintos son torrents distintos.</p>
+  <div class="summary" id="summary">
+    <div class="stat"><div class="num" id="stat-total">—</div><div class="lbl" id="stat-total-lbl">títulos</div></div>
+    <div class="stat"><div class="num" id="stat-movies">—</div><div class="lbl">películas</div></div>
+    <div class="stat"><div class="num" id="stat-series">—</div><div class="lbl">episodios</div></div>
+    <div class="stat"><div class="num" id="stat-spanish">—</div><div class="lbl" id="stat-spanish-lbl">con 🇪🇸</div></div>
+    <div class="stat"><div class="num" id="stat-english">—</div><div class="lbl" id="stat-english-lbl">con 🇬🇧</div></div>
+    <div class="stat"><div class="num" id="stat-last">—</div><div class="lbl">actualizado</div></div>
+  </div>
 
   <div class="controls">
-    <input id="q" type="search" placeholder="Buscar por título o IMDb ID (tt…)…" autocomplete="off" />
-    <select id="quality">
+    <input id="q" type="search" placeholder="Buscar por título, release o IMDb ID (tt…)…" autocomplete="off" />
+    <select id="type-filter" aria-label="Tipo">
+      <option value="">Todo</option>
+      <option value="movie">Películas</option>
+      <option value="series">Series</option>
+    </select>
+    <select id="quality" aria-label="Calidad">
       <option value="">Calidad</option>
       <option>4K</option><option>1080p</option><option>720p</option><option>480p</option>
     </select>
-    <select id="lang">
+    <select id="lang" aria-label="Idioma">
       <option value="">Idioma</option>
-      <option value="es">Español</option>
-      <option value="en">Inglés</option>
+      <option value="es">Con 🇪🇸 español</option>
+      <option value="en">Con 🇬🇧 inglés</option>
+      <option value="missing">Falta alguno</option>
     </select>
-    <select id="order">
-      <option value="updated_at">Más recientes</option>
+    <select id="order" aria-label="Orden">
+      <option value="updated_at">Orden original / recientes</option>
+      <option value="title">Título A–Z</option>
       <option value="seeders">Más seeds</option>
       <option value="size_bytes">Mayor tamaño</option>
-      <option value="title">Título A–Z</option>
     </select>
-    <button id="refresh" class="ghost">↻</button>
+    <button id="refresh" class="ghost" title="Recargar">↻</button>
+  </div>
+
+  <div class="export-bar" id="export-bar">
+    <span class="muted small" id="export-count"></span>
+    <button class="ghost small-btn" data-export="copy">📋 Copiar magnets</button>
+    <button class="ghost small-btn" data-export="txt">⬇ magnets.txt</button>
+    <button class="ghost small-btn" data-export="csv">⬇ CSV</button>
+    <button class="ghost small-btn" data-export="json">⬇ JSON</button>
+    <button class="ghost small-btn danger hidden" id="clear-local">🗑 Borrar datos de este navegador</button>
   </div>
 
   <div id="torrent-list" class="torrent-list"><div class="empty">Cargando…</div></div>
@@ -103,35 +143,49 @@
 <!-- =============== INGEST =============== -->
 <section id="tab-ingest" class="tab">
   <h2>Sube tu lista de IMDb IDs</h2>
-  <p class="muted">Sí: puedes subir aquí tu propio archivo <code>.txt</code> o pegar la lista. Usa una línea por ID. Al pulsar <b>Ingestar en la BD</b>, tu lista reemplaza por completo el <code>watchlist.txt</code> del repositorio (no se añade a los ejemplos); los IDs duplicados se consultan una sola vez. Los registros antiguos de Supabase no se borran y seguirán apareciendo en el Dashboard.</p>
-  <p class="muted">Formatos: <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code> o <code>tt0944947:s1 Temporada</code> (temporada completa requiere <code>TMDB_API_KEY</code>).</p>
+  <p class="muted">Sube un <code>.txt</code> o pega la lista, una línea por ID. De cada película o episodio se quedan solo 2 torrents: el mejor en español y el mejor en inglés.</p>
+  <p class="muted">Formatos: <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code> o <code>tt0944947:s1 Temporada</code> (la temporada completa sale de Cinemeta, sin API key).</p>
 
   <div class="row upload-row">
     <label class="file-picker">📄 Elegir archivo TXT
       <input id="upload-file" type="file" accept=".txt,text/plain" />
     </label>
     <span id="upload-name" class="muted">Ningún archivo seleccionado</span>
-    <button id="load-current" class="ghost" title="Carga el watchlist.txt actual del repo">Cargar watchlist.txt del repo</button>
+    <button id="load-current" class="ghost" title="Carga el watchlist.txt actual del repo (no necesita token)">Cargar watchlist.txt del repo</button>
     <button id="clear-wl" class="ghost">Limpiar</button>
   </div>
   <div id="watchlist-preview" class="watchlist-preview muted" aria-live="polite">Aún no has añadido IDs.</div>
 
   <textarea id="watchlist" aria-label="Lista de IMDb IDs, uno por línea" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
 
+  <div class="modes">
+    <div class="mode">
+      <button id="process-local" class="primary">⚡ Procesar aquí (sin token)</button>
+      <p class="muted small">Tu navegador consulta los addons y Cinemeta directamente y en 1–2 minutos tienes los 2 torrents de cada título. Se guardan en este navegador (Dashboard → 💻 Este navegador). No toca el repositorio.</p>
+    </div>
+    <div class="mode">
+      <button id="ingest" class="ghost strong">☁️ Guardar en el repo / BD</button>
+      <label class="chk"><input type="checkbox" id="dryrun" /> Dry-run (la Action no escribe en Supabase)</label>
+      <p class="muted small" id="ingest-mode-hint">La GitHub Action reemplaza <code>watchlist.txt</code>, publica los JSON y el addon Stremio en GitHub Pages y, si hay credenciales, hace UPSERT en Supabase.</p>
+    </div>
+  </div>
   <div class="row">
-    <button id="ingest" class="primary">▶ Ingestar en la BD</button>
-    <label class="chk"><input type="checkbox" id="dryrun" /> Dry-run (no escribe, solo consulta)</label>
+    <button id="cancel-run" class="ghost danger hidden">✖ Cancelar</button>
     <span id="ingest-status" class="muted"></span>
   </div>
 
   <h3>Progreso</h3>
   <div id="run-progress" class="progress-bar"><div id="run-progress-fill"></div></div>
   <div id="run-meta" class="muted"></div>
+  <div id="run-steps" class="steps"></div>
   <pre id="run-log" class="log"></pre>
 
   <h3>Resultado</h3>
   <div id="run-summary" class="summary"></div>
-  <div id="run-items"></div>
+  <div id="run-actions" class="row hidden">
+    <button id="open-local-dashboard" class="ghost">Ver en el Dashboard →</button>
+  </div>
+  <div id="run-items" class="torrent-list"></div>
 </section>
 
 <!-- =============== HISTORY =============== -->
@@ -139,7 +193,7 @@
   <h2>Historial de ejecuciones</h2>
   <div class="row">
     <button id="refresh-history" class="ghost">↻ Actualizar</button>
-    <span class="muted">Últimas 10 ejecuciones del workflow <code>static.yml</code>.</span>
+    <span class="muted">Últimas 10 ejecuciones del workflow <code>static.yml</code> (API pública de GitHub, sin token).</span>
   </div>
   <div id="history-list"></div>
 </section>
@@ -148,13 +202,12 @@
 
 <footer>
   <small class="muted">
-    Datos desde Supabase · Workflow: <code id="footer-repo">—</code> ·
-    <a href="manifest.json">Addon Stremio</a> ·
+    Repo: <a id="footer-repo" href="#" target="_blank" rel="noopener">—</a> ·
+    <a href="manifest.json" id="addon-link">Addon Stremio</a> ·
     <a href="data/index.json">index.json</a>
   </small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 </body>
 </html>

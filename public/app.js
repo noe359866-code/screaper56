@@ -1,33 +1,50 @@
-/* Peerflix Ingest – client-side app
- * - Tab navigation
- * - Settings persisted in localStorage (gh token, supabase creds)
- * - Dashboard: live search against Supabase (anon key)
- * - Ingest: writes watchlist.txt to repo, dispatches workflow_dispatch,
- *           polls the run, streams logs into a panel, then shows report.json
- * - History: lists recent workflow runs via GitHub API
+/* Peerflix Ingest – web app (módulo ES, sin build)
+ *
+ * Funciona SIN token:
+ *  - ⚡ Procesar aquí: el navegador consulta los addons Stremio y Cinemeta
+ *    (todos permiten CORS) con la misma librería que la GitHub Action
+ *    (./lib/*.js) y guarda los 2 picks por título en localStorage.
+ *  - ☁️ Guardar en el repo: con token lanza la Action directamente; sin token
+ *    abre un Issue ya relleno que el workflow issue-ingest.yml convierte en
+ *    watchlist.txt + ejecución de la Action (con el GITHUB_TOKEN automático).
+ *  - Dashboard: lo publicado (data/index.json), lo procesado en este navegador
+ *    o, si se configura, la tabla torrents de Supabase.
+ *  - Historial: API pública de GitHub (sin token, 60 peticiones/hora).
  */
 
-const LS_KEY = 'peerflix-static.settings.v2';
-const WORKFLOW_ID = 'static.yml'; // file name under .github/workflows/
-const WATCHLIST_LINE_RE = /^(tt\d{7,10})(?::s(\d{1,2})(?::e(\d{1,3}))?)?(?:\s+(.*))?$/i;
+import { PROVIDERS, DEFAULT_PROVIDER_SLUGS, queryableProviders, resolveProviderSlugs } from './lib/providers.js';
+import { formatBytes, parseWatchlist, releaseTags, IMDB_LINE_RE } from './lib/parse.js';
+import { posterUrl } from './lib/meta.js';
+import {
+  PICK_META,
+  createJsonFetcher,
+  createLimiter,
+  describeError,
+  loadBestTrackers,
+  picksFromPublishedItem,
+  processWatchlist,
+} from './lib/pipeline.js';
+import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/issue.js';
+import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
 
-const ALL_PROVIDERS = [
-  { slug: 'peerflix',   name: 'Peerflix',        adult: false, default: true,  manifestUrl: 'https://peerflix.mov/manifest.json', note: 'Fuente principal' },
-  { slug: 'torrentsdb', name: 'TorrentsDB',      adult: false, default: true,  manifestUrl: 'https://torrentsdb.com/manifest.json', note: 'Agrega YTS, EZTV, 1337x, RARGB, Nyaa, TPB, Kat, TTL, Rutracker…' },
-  { slug: 'torrentio',  name: 'Torrentio',       adult: false, default: true,  manifestUrl: 'https://torrentio.strem.fun/manifest.json', note: 'Agrega YTS, EZTV, RARGB, 1337x, TPB, TGx, MagnetDL, Nyaa, MejorTorrent…' },
-  { slug: 'piratebay',  name: 'ThePirateBay+',   adult: false, default: true,  manifestUrl: 'https://thepiratebay-plus.strem.fun/manifest.json', note: 'TPB directo' },
-  { slug: 'ytztvio',    name: 'Ytztvio',          adult: false, default: true,  manifestUrl: 'https://ytztvio.galacticcapsule.workers.dev/manifest.json', note: 'YTS + EZTV' },
-  { slug: 'tpbAdult',   name: 'TPB Adult',       adult: true,  default: false, manifestUrl: 'https://tpb-adult-addon.click/manifest.json', note: 'Solo catálogo Porn; su manifest no ofrece streams movie/series por IMDb, por eso no se mezcla en esta ingestada.' },
-];
+const LS_KEY = 'peerflix-static.settings.v2';
+const LOCAL_KEY = 'peerflix-static.local.v1';
+const WORKFLOW_ID = 'static.yml'; // file name under .github/workflows/
+const CARDS_PER_PAGE = 30;
+const REMOTE_WAIT_MS = 15 * 60 * 1000;
+const MAX_ISSUE_URL = 8000;
+const SUPABASE_ESM = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const state = {
   settings: loadSettings(),
+  source: 'published',
+  published: null,
   supabase: null,
   page: 0,
-  pageSize: 50,
   total: 0,
-  currentRunId: null,
-  pollTimer: null,
+  detectedRepo: null,
+  running: null,
+  lastExportItems: [],
 };
 
 // ---------- helpers ----------
@@ -40,80 +57,29 @@ function loadSettings() {
 }
 function saveSettings() { localStorage.setItem(LS_KEY, JSON.stringify(state.settings)); }
 
-function renderProviderList() {
-  const box = $('#provider-list');
-  if (!box) return;
-  const defaults = ALL_PROVIDERS.filter(p => p.default && !p.adult).map(p => p.slug);
-  const selected = new Set(state.settings.providers && state.settings.providers.length
-    ? state.settings.providers
-    : defaults);
-  box.innerHTML = ALL_PROVIDERS.map(p => `
-    <label class="${p.adult ? 'adult' : ''}" title="${escapeHtml(p.manifestUrl)}">
-      <input type="checkbox" data-provider="${p.slug}" ${selected.has(p.slug) ? 'checked' : ''} ${p.adult ? 'disabled' : ''}/>
-      <span><b>${escapeHtml(p.name)}</b>${p.adult ? ' 🔞' : ''}<br/><small>${escapeHtml(p.note)}</small><br/><a href="${escapeHtml(p.manifestUrl)}" target="_blank" rel="noopener">manifest ↗</a></span>
-    </label>
-  `).join('');
-}
-
-function readProvidersFromUI() {
-  return [...$$('#provider-list input[type=checkbox]')]
-    .filter(c => c.checked && !c.disabled)
-    .map(c => c.dataset.provider);
-}
-
-function applySettingsToUI() {
-  $('#gh-owner').value = state.settings.ghOwner || '';
-  $('#gh-repo').value  = state.settings.ghRepo  || '';
-  $('#gh-token').value = state.settings.ghToken || '';
-  $('#gh-branch').value = state.settings.ghBranch || 'main';
-  $('#sb-url').value   = state.settings.sbUrl   || '';
-  $('#sb-anon').value  = state.settings.sbAnon  || '';
-  $('#sb-page-size').value = state.settings.pageSize || 50;
-  renderProviderList();
-  $('#footer-repo').textContent =
-    state.settings.ghOwner && state.settings.ghRepo
-      ? `${state.settings.ghOwner}/${state.settings.ghRepo}` : '—';
-}
-function settingsValid(needsGh = true, needsSb = true) {
-  const s = state.settings;
-  const gh = s.ghOwner && s.ghRepo && s.ghToken;
-  const sb = s.sbUrl && s.sbAnon;
-  return (!needsGh || gh) && (!needsSb || sb);
-}
-function ghHeaders() {
-  return {
-    authorization: `Bearer ${state.settings.ghToken}`,
-    accept: 'application/vnd.github+json',
-    'x-github-api-version': '2022-11-28',
-    'user-agent': 'peerflix-static-ui',
-  };
-}
-function ghApi(path, opts = {}) {
-  return fetch(`https://api.github.com${path}`, { headers: ghHeaders(), ...opts }).then(async r => {
-    if (!r.ok) {
-      const body = await r.text().catch(() => '');
-      throw new Error(`GitHub API ${r.status}: ${body.slice(0, 200)}`);
-    }
-    return r.status === 204 ? null : r.json();
-  });
-}
-function decodeBase64Utf8(value) {
-  const binary = atob(String(value || '').replace(/\s/g, ''));
-  return new TextDecoder('utf-8').decode(Uint8Array.from(binary, char => char.charCodeAt(0)));
-}
-function fmtBytes(b) {
-  if (b == null) return '';
-  const u = ['B','KB','MB','GB','TB']; let i=0,v=b;
-  while (v>=1024 && i<u.length-1){v/=1024;i++;}
-  return v.toFixed(v>=100?0:1)+' '+u[i];
+function escapeHtml(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function fmtDate(d) {
   if (!d) return '—';
   const dt = new Date(d);
-  return dt.toLocaleString('es-ES');
+  return Number.isNaN(dt.getTime()) ? '—' : dt.toLocaleString('es-ES');
 }
-function escapeHtml(s) {
-  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function pad2(n) { return String(n ?? 0).padStart(2, '0'); }
+// Solo enlaces magnet: un valor raro (p. ej. "javascript:…" en la tabla de Supabase) se ignora.
+function safeMagnet(url, infoHash) {
+  if (typeof url === 'string' && /^magnet:\?/i.test(url.trim())) return url.trim();
+  return /^[a-f0-9]{40}$/i.test(String(infoHash || '')) ? `magnet:?xt=urn:btih:${String(infoHash).toLowerCase()}` : null;
+}
+function plural(n, word) { return `${n} ${word}${n === 1 ? '' : 's'}`; }
+const MODE_LABELS = { fixture: 'datos de prueba', reprocess: 'reprocesado sin red' };
+function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+function clamp(n, min, max) { return Math.min(max, Math.max(min, Number(n) || min)); }
+function sleep(ms, signal) {
+  return new Promise(resolve => {
+    const t = setTimeout(resolve, ms);
+    signal?.addEventListener('abort', () => { clearTimeout(t); resolve(); }, { once: true });
+  });
 }
 function seedsClass(n) {
   if (n == null) return 'badge';
@@ -121,131 +87,536 @@ function seedsClass(n) {
   if (n >= 1) return 'badge warn';
   return 'badge bad';
 }
-
-function inspectWatchlist(text) {
-  const seen = new Set();
-  let valid = 0;
-  let duplicates = 0;
-  let invalid = 0;
-  for (const rawLine of text.split(/\r?\n/)) {
-    const line = rawLine.replace(/#.*$/, '').trim();
-    if (!line) continue;
-    const match = line.match(WATCHLIST_LINE_RE);
-    if (!match) { invalid++; continue; }
-    const imdbId = match[1].toLowerCase();
-    const season = match[2] !== undefined ? Number(match[2]) : null;
-    const episode = match[3] !== undefined ? Number(match[3]) : null;
-    const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
-      : season !== null ? `${imdbId}:s${season}`
-      : imdbId;
-    if (seen.has(key)) duplicates++;
-    else { seen.add(key); valid++; }
-  }
-  return { valid, duplicates, invalid };
-}
-
-function updateWatchlistPreview() {
-  const preview = $('#watchlist-preview');
-  const stats = inspectWatchlist($('#watchlist').value);
-  if (!stats.valid && !stats.duplicates && !stats.invalid) {
-    preview.textContent = 'Aún no has añadido IDs.';
-  } else {
-    preview.textContent = `IDs válidos únicos: ${stats.valid} · repetidos exactos (se omiten): ${stats.duplicates} · líneas no reconocidas (se ignoran): ${stats.invalid}`;
-  }
-  preview.classList.toggle('warning', stats.invalid > 0);
-  return stats;
-}
-
-// ---------- tabs ----------
-$$('nav button').forEach(b => b.addEventListener('click', () => {
-  $$('nav button').forEach(x => x.classList.remove('active'));
-  $$('.tab').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  const tab = b.dataset.tab;
-  $(`#tab-${tab}`).classList.add('active');
-  if (tab === 'dashboard') refreshDashboard();
-  if (tab === 'history') loadHistory();
-}));
-
-// ---------- settings ----------
-$('#save-settings').addEventListener('click', () => {
-  state.settings.ghOwner = $('#gh-owner').value.trim();
-  state.settings.ghRepo  = $('#gh-repo').value.trim();
-  state.settings.ghToken = $('#gh-token').value.trim();
-  state.settings.ghBranch = $('#gh-branch').value.trim() || 'main';
-  state.settings.sbUrl   = $('#sb-url').value.trim();
-  state.settings.sbAnon  = $('#sb-anon').value.trim();
-  state.settings.pageSize = Math.max(20, Math.min(500, Number($('#sb-page-size').value) || 50));
-  state.settings.providers = readProvidersFromUI();
-  saveSettings();
-  initSupabase();
-  applySettingsToUI();
-  flash('#settings-status', '✅ Guardado');
-});
-$('#test-settings').addEventListener('click', async () => {
-  $('#settings-status').textContent = 'Probando…';
-  const ghOk = settingsValid(true, false);
-  const sbOk = settingsValid(false, true);
-  const msgs = [];
-  if (ghOk) {
-    try { await ghApi(`/repos/${state.settings.ghOwner}/${state.settings.ghRepo}`); msgs.push('GitHub OK'); }
-    catch (e) { msgs.push(`GitHub: ${e.message}`); }
-  } else msgs.push('GitHub: faltan datos');
-  if (sbOk) {
-    try {
-      initSupabase();
-      const { error } = await state.supabase.from('torrents').select('info_hash', { count: 'exact', head: true });
-      msgs.push(error ? `Supabase: ${error.message}` : 'Supabase OK');
-    } catch (e) { msgs.push(`Supabase: ${e.message}`); }
-  } else msgs.push('Supabase: faltan datos');
-  $('#settings-status').textContent = msgs.join(' · ');
-});
 function flash(sel, text) {
   $(sel).textContent = text;
   setTimeout(() => { if ($(sel).textContent === text) $(sel).textContent = ''; }, 3000);
 }
+function setStatus(text) { $('#ingest-status').textContent = text; }
+function statCard(num, lbl) {
+  return `<div class="stat"><div class="num">${escapeHtml(String(num))}</div><div class="lbl">${escapeHtml(lbl)}</div></div>`;
+}
+function download(filename, text, type) {
+  const blob = new Blob([text], { type });
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch {
+    // Fallback for http:// previews or browsers without the async clipboard API.
+    const ta = Object.assign(document.createElement('textarea'), { value: text });
+    document.body.append(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  }
+}
 
-// ---------- supabase ----------
-function initSupabase() {
-  if (!settingsValid(false, true)) { state.supabase = null; return; }
-  state.supabase = window.supabase.createClient(state.settings.sbUrl, state.settings.sbAnon, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+// ---------- repositorio (auto-detectado: no hace falta configurarlo) ----------
+
+function repoFromLocation() {
+  const m = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i);
+  if (!m) return null;
+  const first = location.pathname.split('/').filter(Boolean)[0];
+  return { owner: m[1], repo: first || `${m[1]}.github.io`, branch: 'main', source: 'la URL de GitHub Pages' };
+}
+
+function currentRepo() {
+  const s = state.settings;
+  if (s.ghOwner && s.ghRepo) return { owner: s.ghOwner, repo: s.ghRepo, branch: s.ghBranch || 'main', source: 'Ajustes' };
+  return state.detectedRepo || null;
+}
+
+function updateRepoLabels() {
+  const repo = currentRepo();
+  const footer = $('#footer-repo');
+  if (repo) {
+    footer.textContent = `${repo.owner}/${repo.repo}`;
+    footer.href = `https://github.com/${repo.owner}/${repo.repo}`;
+  } else {
+    footer.textContent = '—';
+    footer.removeAttribute('href');
+  }
+  const detected = state.detectedRepo;
+  $('#repo-detected').innerHTML = detected
+    ? `Detectado automáticamente desde ${escapeHtml(detected.source)}: <b>${escapeHtml(detected.owner)}/${escapeHtml(detected.repo)}</b> (rama ${escapeHtml(detected.branch)}). Déjalo vacío para usarlo.`
+    : 'No lo pude detectar automáticamente (no estás en GitHub Pages): escribe owner y repo si quieres cargar o guardar el watchlist del repo.';
+}
+
+async function gh(path, { method = 'GET', body = null } = {}) {
+  const headers = { accept: 'application/vnd.github+json' };
+  if (state.settings.ghToken) headers.authorization = `Bearer ${state.settings.ghToken}`;
+  if (body) headers['content-type'] = 'application/json';
+  const res = await fetch(`https://api.github.com${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+  if (!res.ok) {
+    let message = `GitHub API ${res.status}`;
+    if ((res.status === 403 || res.status === 429) && res.headers.get('x-ratelimit-remaining') === '0') {
+      const reset = Number(res.headers.get('x-ratelimit-reset')) * 1000;
+      message += `: límite de la API sin token alcanzado (60/h); se libera a las ${new Date(reset).toLocaleTimeString('es-ES')}`;
+    } else {
+      message += `: ${(await res.text().catch(() => '')).slice(0, 200)}`;
+    }
+    const err = new Error(message);
+    err.status = res.status;
+    throw err;
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+function rawUrl(repo, path) {
+  return `https://raw.githubusercontent.com/${repo.owner}/${repo.repo}/${encodeURI(repo.branch || 'main')}/${path}?t=${Date.now()}`;
+}
+
+function decodeBase64Utf8(value) {
+  const binary = atob(String(value || '').replace(/\s/g, ''));
+  return new TextDecoder('utf-8').decode(Uint8Array.from(binary, char => char.charCodeAt(0)));
+}
+
+/** Lee un fichero del repo: raw (sin token, repos públicos) y, si falla, la API. */
+async function readRepoFile(repo, path) {
+  try {
+    const res = await fetch(rawUrl(repo, path), { cache: 'no-store' });
+    if (res.ok) return await res.text();
+    if (!state.settings.ghToken) throw new Error(`HTTP ${res.status}${res.status === 404 ? ' (¿repo privado o rama incorrecta?)' : ''}`);
+  } catch (err) {
+    if (!state.settings.ghToken) throw err;
+  }
+  const data = await gh(`/repos/${repo.owner}/${repo.repo}/contents/${path}?ref=${encodeURIComponent(repo.branch || 'main')}`);
+  return decodeBase64Utf8(data.content);
+}
+
+// ---------- ajustes ----------
+
+function selectedProviders() {
+  const saved = state.settings.providers;
+  return resolveProviderSlugs(Array.isArray(saved) && saved.length ? saved : DEFAULT_PROVIDER_SLUGS);
+}
+
+function renderProviderList() {
+  const selected = new Set(selectedProviders());
+  $('#provider-list').innerHTML = Object.values(PROVIDERS).map(p => `
+    <label class="${p.adult ? 'adult' : ''}" title="${escapeHtml(p.manifestUrl)}">
+      <input type="checkbox" data-provider="${p.slug}" ${selected.has(p.slug) && p.queryable ? 'checked' : ''} ${p.queryable ? '' : 'disabled'}/>
+      <span><b>${escapeHtml(p.name)}</b>${p.adult ? ' 🔞' : ''}<br/><small>${escapeHtml(p.description || '')}</small><br/><a href="${escapeHtml(p.manifestUrl)}" target="_blank" rel="noopener">manifest ↗</a></span>
+    </label>`).join('');
+}
+
+function readProvidersFromUI() {
+  return $$('#provider-list input[type=checkbox]').filter(c => c.checked && !c.disabled).map(c => c.dataset.provider);
+}
+
+function applySettingsToUI() {
+  const s = state.settings;
+  $('#gh-owner').value = s.ghOwner || '';
+  $('#gh-repo').value = s.ghRepo || '';
+  $('#gh-token').value = s.ghToken || '';
+  $('#gh-branch').value = s.ghBranch || '';
+  $('#sb-url').value = s.sbUrl || '';
+  $('#sb-anon').value = s.sbAnon || '';
+  $('#sb-page-size').value = s.pageSize || 50;
+  $('#use-cinemeta').checked = s.cinemeta !== false;
+  $('#concurrency').value = s.concurrency || 4;
+  const detected = state.detectedRepo;
+  $('#gh-owner').placeholder = detected ? `${detected.owner} (detectado)` : 'ej: noe359866-code';
+  $('#gh-repo').placeholder = detected ? `${detected.repo} (detectado)` : 'ej: screaper56';
+  $('#gh-branch').placeholder = detected?.branch || 'main';
+  renderProviderList();
+  updateRepoLabels();
+  updateIngestHint();
+}
+
+function updateIngestHint() {
+  const hint = $('#ingest-mode-hint');
+  const token = Boolean(state.settings.ghToken);
+  hint.innerHTML = token
+    ? 'Con tu token: actualiza <code>watchlist.txt</code> y lanza la Action directamente. Publica los JSON y el addon Stremio en GitHub Pages y, si hay credenciales, hace UPSERT en Supabase.'
+    : 'Sin token: abre un <b>Issue ya relleno</b> en GitHub. Pulsa “Submit new issue” (tienes que ser el dueño o un colaborador del repo) y la Action actualiza <code>watchlist.txt</code>, publica los resultados y te responde en el Issue.';
+}
+
+$('#save-settings').addEventListener('click', () => {
+  const s = state.settings;
+  s.ghOwner = $('#gh-owner').value.trim();
+  s.ghRepo = $('#gh-repo').value.trim();
+  s.ghToken = $('#gh-token').value.trim();
+  s.ghBranch = $('#gh-branch').value.trim();
+  const sbChanged = s.sbUrl !== $('#sb-url').value.trim() || s.sbAnon !== $('#sb-anon').value.trim();
+  s.sbUrl = $('#sb-url').value.trim();
+  s.sbAnon = $('#sb-anon').value.trim();
+  s.pageSize = clamp($('#sb-page-size').value, 20, 500);
+  s.providers = readProvidersFromUI();
+  s.cinemeta = $('#use-cinemeta').checked;
+  s.concurrency = clamp($('#concurrency').value, 1, 8);
+  if (sbChanged) state.supabase = null;
+  saveSettings();
+  applySettingsToUI();
+  flash('#settings-status', '✅ Guardado');
+});
+
+$('#test-settings').addEventListener('click', async () => {
+  const out = $('#settings-status');
+  out.textContent = 'Probando…';
+  const msgs = [];
+  const repo = currentRepo();
+  if (repo) {
+    try {
+      const info = await gh(`/repos/${repo.owner}/${repo.repo}`);
+      msgs.push(`GitHub ✅ ${info.full_name}${info.private ? ' (privado: necesitarás token)' : ''}${state.settings.ghToken ? (info.permissions?.push ? ' · token con escritura' : ' · el token NO puede escribir') : ' · sin token'}`);
+    } catch (e) { msgs.push(`GitHub ❌ ${e.message}`); }
+  } else msgs.push('GitHub: sin repo');
+  // ¿El navegador llega a los addons? (CORS + red)
+  const fetchJSON = createJsonFetcher({ timeoutMs: 8000, retries: 0 });
+  const checks = await Promise.all(queryableProviders(selectedProviders()).map(async p => {
+    const t0 = performance.now();
+    try { await fetchJSON(p.manifestUrl); return `${p.name} ✅ ${Math.round(performance.now() - t0)} ms`; }
+    catch (e) { return `${p.name} ❌ ${describeError(e)}`; }
+  }));
+  msgs.push(...checks);
+  if (state.settings.sbUrl && state.settings.sbAnon) {
+    try {
+      const sb = await getSupabase();
+      const { error } = await sb.from('torrents').select('info_hash', { count: 'exact', head: true });
+      msgs.push(error ? `Supabase ❌ ${error.message}` : 'Supabase ✅');
+    } catch (e) { msgs.push(`Supabase ❌ ${e.message}`); }
+  }
+  out.textContent = msgs.join(' · ');
+});
+
+// ---------- tabs ----------
+function showTab(tab) {
+  $$('nav button').forEach(x => x.classList.toggle('active', x.dataset.tab === tab));
+  $$('.tab').forEach(x => x.classList.toggle('active', x.id === `tab-${tab}`));
+  if (tab === 'dashboard') refreshDashboard();
+  if (tab === 'history') loadHistory();
+}
+$$('nav button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+// ---------- almacén local (resultados de ⚡ Procesar aquí) ----------
+
+function loadLocal() {
+  try {
+    const data = JSON.parse(localStorage.getItem(LOCAL_KEY) || 'null');
+    return data && Array.isArray(data.items) ? data : { items: [], updatedAt: null };
+  } catch { return { items: [], updatedAt: null }; }
+}
+
+function saveLocal(newItems) {
+  const store = loadLocal();
+  const byId = new Map(store.items.map(it => [it.id, it]));
+  const stamp = new Date().toISOString();
+  for (const it of newItems) {
+    byId.delete(it.id); // re-insert so the newest run comes first
+    byId.set(it.id, { ...it, savedAt: stamp });
+  }
+  const items = [...byId.values()].sort((a, b) => String(b.savedAt).localeCompare(String(a.savedAt)));
+  try {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify({ version: 1, updatedAt: stamp, items }));
+    return { ok: true, count: items.length };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
 }
 
 // ---------- dashboard ----------
-$('#q').addEventListener('input', debounce(() => { state.page = 0; loadTorrents(); }, 250));
-$('#quality').addEventListener('change', () => { state.page = 0; loadTorrents(); });
-$('#lang').addEventListener('change', () => { state.page = 0; loadTorrents(); });
-$('#order').addEventListener('change', () => { state.page = 0; loadTorrents(); });
-$('#refresh').addEventListener('click', loadTorrents);
-$('#prev-page').addEventListener('click', () => { if (state.page > 0) { state.page--; loadTorrents(); } });
-$('#next-page').addEventListener('click', () => {
-  const maxPage = Math.floor((state.total - 1) / state.pageSize);
-  if (state.page < maxPage) { state.page++; loadTorrents(); }
+
+$$('.segmented button').forEach(b => b.addEventListener('click', () => setSource(b.dataset.source)));
+$('#q').addEventListener('input', debounce(() => { state.page = 0; renderDashboard(); }, 200));
+for (const id of ['#type-filter', '#quality', '#lang', '#order']) {
+  $(id).addEventListener('change', () => { state.page = 0; renderDashboard(); });
+}
+$('#refresh').addEventListener('click', () => refreshDashboard(true));
+$('#prev-page').addEventListener('click', () => { if (state.page > 0) { state.page--; renderDashboard(); } });
+$('#next-page').addEventListener('click', () => { state.page++; renderDashboard(); });
+$('#clear-local').addEventListener('click', () => {
+  if (!confirm('¿Borrar los resultados guardados en este navegador?')) return;
+  localStorage.removeItem(LOCAL_KEY);
+  refreshDashboard();
 });
 
-function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+function setSource(source) {
+  state.source = source;
+  state.page = 0;
+  state.settings.dashboardSource = source;
+  saveSettings();
+  refreshDashboard();
+}
 
-async function refreshDashboard() {
-  if (!state.supabase) {
-    $('#torrent-list').innerHTML = '<div class="empty">Configura Supabase en la pestaña "Ajustes" para ver el dashboard.</div>';
+async function refreshDashboard(force = false) {
+  $$('.segmented button').forEach(b => b.classList.toggle('active', b.dataset.source === state.source));
+  $('#clear-local').classList.toggle('hidden', state.source !== 'local');
+  $('#export-bar').classList.toggle('hidden', state.source === 'supabase');
+  if (state.source === 'supabase') return refreshSupabase();
+  if (state.source === 'published') {
+    $('#torrent-list').innerHTML = '<div class="empty">Cargando lo publicado…</div>';
+    try {
+      await loadPublished(force);
+    } catch (err) {
+      state.published = null;
+      $('#source-info').textContent = '';
+      $('#torrent-list').innerHTML = `<div class="empty">${escapeHtml(err.message)}<br/>Prueba <b>⚡ Procesar aquí</b> en la pestaña “Subir TXT / Ingestar”: no necesita token.</div>`;
+      renderStats([], null);
+      return;
+    }
+  }
+  renderDashboard();
+}
+
+async function loadPublished(force = false) {
+  if (state.published && !force) return state.published;
+  const res = await fetch(`data/index.json?t=${Date.now()}`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(res.status === 404 ? 'Aún no hay datos publicados (data/index.json no existe).' : `No se pudo leer data/index.json (HTTP ${res.status}).`);
+  const index = await res.json();
+  if (index.repository?.owner && index.repository?.name) {
+    state.detectedRepo = { owner: index.repository.owner, repo: index.repository.name, branch: index.repository.branch || 'main', source: 'data/index.json' };
+    applySettingsToUI();
+  }
+  let items = Array.isArray(index.items) ? index.items : [];
+  const legacy = items.some(it => !Array.isArray(it.picks));
+  if (legacy) items = await upgradeLegacyItems(items);
+  state.published = { index, items, legacy };
+  return state.published;
+}
+
+// Datos del formato antiguo (todos los streams, sin picks): se calculan los
+// 2 picks en el navegador con la misma selección que la Action.
+async function upgradeLegacyItems(items) {
+  const info = $('#source-info');
+  const limit = createLimiter(6);
+  let done = 0;
+  return Promise.all(items.map(item => limit(async () => {
+    if (Array.isArray(item.picks)) return item;
+    const path = item.type === 'series'
+      ? `data/series/${item.imdbId}-s${item.season}e${item.episode}.json`
+      : `data/movies/${item.imdbId}.json`;
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return { ...picksFromPublishedItem(item, await res.json()), legacy: true };
+    } catch (err) {
+      return { ...item, picks: [], missing: ['es', 'en'], errors: [{ provider: 'web', error: `no se pudo leer ${path}: ${err.message}` }] };
+    } finally {
+      info.textContent = `Datos en formato antiguo: calculando los 2 torrents por título… ${++done}/${items.length}`;
+    }
+  })));
+}
+
+function currentCardItems() {
+  if (state.source === 'local') return loadLocal().items;
+  return state.published?.items || [];
+}
+
+function bestOf(item, field) {
+  return Math.max(-1, ...(item.picks || []).map(p => p[field] ?? -1));
+}
+
+function filterItems(items) {
+  const terms = $('#q').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const type = $('#type-filter').value;
+  const quality = $('#quality').value;
+  const lang = $('#lang').value;
+  const order = $('#order').value;
+  const out = items.filter(it => {
+    const picks = it.picks || [];
+    if (type && it.type !== type) return false;
+    if (quality && !picks.some(p => p.quality === quality)) return false;
+    if ((lang === 'es' || lang === 'en') && !picks.some(p => p.pick === lang)) return false;
+    if (lang === 'missing' && picks.length >= 2) return false;
+    if (terms.length) {
+      const hay = [it.label, it.name, it.imdbId, it.id, ...picks.map(p => p.title)].join(' ').toLowerCase();
+      if (!terms.every(t => hay.includes(t))) return false;
+    }
+    return true;
+  });
+  if (order === 'title') out.sort((a, b) => String(a.label).localeCompare(String(b.label), 'es'));
+  if (order === 'seeders') out.sort((a, b) => bestOf(b, 'seeders') - bestOf(a, 'seeders'));
+  if (order === 'size_bytes') out.sort((a, b) => bestOf(b, 'sizeBytes') - bestOf(a, 'sizeBytes'));
+  return out;
+}
+
+function renderStats(items, updatedAt) {
+  $('#stat-total-lbl').textContent = 'títulos';
+  $('#stat-spanish-lbl').textContent = 'con 🇪🇸';
+  $('#stat-english-lbl').textContent = 'con 🇬🇧';
+  $('#stat-total').textContent = items.length || '0';
+  $('#stat-movies').textContent = items.filter(i => i.type === 'movie').length;
+  $('#stat-series').textContent = items.filter(i => i.type === 'series').length;
+  $('#stat-spanish').textContent = items.filter(i => (i.picks || []).some(p => p.pick === 'es')).length;
+  $('#stat-english').textContent = items.filter(i => (i.picks || []).some(p => p.pick === 'en')).length;
+  $('#stat-last').textContent = updatedAt ? fmtDate(updatedAt) : '—';
+}
+
+function renderDashboard() {
+  if (state.source === 'supabase') return loadTorrents();
+  const all = currentCardItems();
+  const local = state.source === 'local' ? loadLocal() : null;
+  const index = state.published?.index;
+  renderStats(all, local ? local.updatedAt : index?.finishedAt || index?.generatedAt);
+  $('#source-info').textContent = local
+    ? (all.length ? `${plural(all.length, 'título')} procesado${all.length === 1 ? '' : 's'} en este navegador (no se suben a ningún sitio).` : '')
+    : index ? `Publicado por la Action${MODE_LABELS[index.mode] ? ` (${MODE_LABELS[index.mode]})` : ''} · ${fmtDate(index.finishedAt || index.generatedAt)}${state.published.legacy ? ' · formato antiguo: picks calculados en el navegador' : ''}` : '';
+
+  const items = filterItems(all);
+  state.lastExportItems = items;
+  const picks = items.reduce((n, it) => n + (it.picks?.length || 0), 0);
+  $('#export-count').textContent = items.length ? `${plural(items.length, 'título')} · ${plural(picks, 'torrent')}` : '';
+  $$('#export-bar [data-export]').forEach(b => { b.disabled = !picks; });
+
+  const list = $('#torrent-list');
+  if (!all.length) {
+    list.innerHTML = state.source === 'local'
+      ? '<div class="empty">Aún no has procesado nada en este navegador. Ve a “Subir TXT / Ingestar” y pulsa <b>⚡ Procesar aquí</b>.</div>'
+      : '<div class="empty">No hay títulos publicados.</div>';
+    renderPager(0);
     return;
   }
-  // Aggregate stats
+  if (!items.length) { list.innerHTML = '<div class="empty">Sin resultados con esos filtros.</div>'; renderPager(0); return; }
+  const maxPage = Math.max(0, Math.ceil(items.length / CARDS_PER_PAGE) - 1);
+  state.page = Math.min(state.page, maxPage);
+  list.innerHTML = items.slice(state.page * CARDS_PER_PAGE, (state.page + 1) * CARDS_PER_PAGE).map(renderCard).join('');
+  renderPager(items.length, CARDS_PER_PAGE, 'títulos');
+}
+
+function renderPager(total, perPage = CARDS_PER_PAGE, noun = 'títulos') {
+  const maxPage = Math.max(0, Math.ceil(total / perPage) - 1);
+  $('#page-indicator').textContent = total ? `Página ${state.page + 1} / ${maxPage + 1} · ${total} ${noun}` : '';
+  $('#prev-page').disabled = state.page === 0;
+  $('#next-page').disabled = state.page >= maxPage;
+}
+
+function episodeTag(item) {
+  return item.type === 'series' ? `S${pad2(item.season)}E${pad2(item.episode)}` : '';
+}
+
+function renderPickRow(item, lang) {
+  const meta = PICK_META[lang];
+  const p = (item.picks || []).find(x => x.pick === lang);
+  if (!p) return `<div class="pick-row missing">${meta.flag} Sin torrent en ${lang === 'es' ? 'español' : 'inglés'}</div>`;
+  const magnet = safeMagnet(p.magnetUrl, p.infoHash);
+  const size = p.sizeLabel || formatBytes(p.sizeBytes);
+  const tags = releaseTags(p.release);
+  return `<div class="pick-row">
+    <span class="badge ${lang}">${meta.flag} ${escapeHtml(p.quality || '?')}</span>
+    <div class="pick-main">
+      <div class="pick-name" title="${escapeHtml(p.title)}">${escapeHtml(p.title)}</div>
+      <div class="pick-meta">
+        <span class="${seedsClass(p.seeders)}">👤 ${p.seeders ?? '?'}</span>
+        ${size ? `<span class="badge">💾 ${escapeHtml(size)}</span>` : ''}
+        ${tags ? `<span class="badge tags">${escapeHtml(tags)}</span>` : ''}
+        ${(p.providers || []).map(x => `<span class="badge provider">${escapeHtml(x)}</span>`).join('')}
+      </div>
+    </div>
+    <div class="pick-actions">${magnet ? `
+      <a class="ghost" href="${escapeHtml(magnet)}" title="Abrir en tu cliente torrent">🧲</a>
+      <button class="ghost copy-btn" data-magnet="${encodeURIComponent(magnet)}">Copiar</button>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderCard(item) {
+  const picks = item.picks || [];
+  const poster = posterUrl(item.imdbId);
+  const tag = episodeTag(item);
+  const typeBadge = item.type === 'series'
+    ? `<span class="badge series">${tag}</span>`
+    : '<span class="badge movie">PELÍCULA</span>';
+  const label = item.label && tag && !item.label.includes(tag) ? `${item.label} ${tag}` : item.label || item.imdbId;
+  const errors = item.errors?.length
+    ? `<span class="badge warn" title="${escapeHtml(item.errors.map(e => `${e.provider}: ${e.error}`).join('\n'))}">${item.errors.length} addon(s) con error</span>`
+    : '';
+  const cls = picks.length >= 2 ? '' : picks.length ? 'incomplete' : 'empty-card';
+  return `<article class="title-card ${cls}">
+    <div class="poster">${poster ? `<img loading="lazy" src="${escapeHtml(poster)}" alt="" />` : '🎬'}</div>
+    <div class="card-body">
+      <div class="card-head">
+        <div class="card-title">${escapeHtml(label)}</div>
+      </div>
+      <div class="card-sub">
+        ${typeBadge}
+        ${item.name && item.name !== item.label ? `<span>${escapeHtml(item.name)}${item.year ? ` (${item.year})` : ''}</span>` : ''}
+        <a href="https://www.imdb.com/title/${escapeHtml(item.imdbId)}/" target="_blank" rel="noopener">${escapeHtml(item.imdbId)}</a>
+        ${item.candidateCount != null ? `<span class="badge" title="Torrents distintos que devolvieron los addons">${picks.length} de ${item.candidateCount}</span>` : ''}
+        ${errors}
+      </div>
+      ${(item.warnings || []).map(w => `<div class="card-warn">⚠️ ${escapeHtml(w)}</div>`).join('')}
+      ${renderPickRow(item, 'es')}
+      ${renderPickRow(item, 'en')}
+    </div>
+  </article>`;
+}
+
+// Pósters: si metahub no tiene la imagen, se deja el icono.
+for (const container of [$('#torrent-list'), $('#run-items')]) {
+  container.addEventListener('error', e => {
+    if (e.target.tagName === 'IMG') e.target.parentElement.textContent = '🎬';
+  }, true);
+  container.addEventListener('click', async e => {
+    const btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    const ok = await copyText(decodeURIComponent(btn.dataset.magnet));
+    btn.textContent = ok ? '✓' : '!';
+    setTimeout(() => { btn.textContent = 'Copiar'; }, 1200);
+  });
+}
+
+$$('#export-bar [data-export]').forEach(btn => btn.addEventListener('click', async () => {
+  const items = state.lastExportItems;
+  const stamp = new Date().toISOString().slice(0, 10);
+  const kind = btn.dataset.export;
+  if (kind === 'copy') {
+    const ok = await copyText(toMagnetList(items).split('\n').filter(l => l.startsWith('magnet:')).join('\n'));
+    btn.textContent = ok ? '✓ Copiados' : '! Error';
+    setTimeout(() => { btn.textContent = '📋 Copiar magnets'; }, 1500);
+  }
+  if (kind === 'txt') download(`magnets-${stamp}.txt`, toMagnetList(items), 'text/plain;charset=utf-8');
+  if (kind === 'csv') download(`torrents-${stamp}.csv`, '\ufeff' + toCSV(picksToRows(items)), 'text/csv;charset=utf-8');
+  if (kind === 'json') download(`torrents-${stamp}.json`, JSON.stringify({ exportedAt: new Date().toISOString(), items }, null, 2), 'application/json');
+}));
+
+// ---------- Supabase (opcional, carga perezosa) ----------
+
+async function getSupabase() {
+  if (state.supabase) return state.supabase;
+  const { sbUrl, sbAnon } = state.settings;
+  if (!sbUrl || !sbAnon) return null;
+  const { createClient } = await import(SUPABASE_ESM);
+  state.supabase = createClient(sbUrl, sbAnon, { auth: { persistSession: false, autoRefreshToken: false } });
+  return state.supabase;
+}
+
+async function refreshSupabase() {
+  $('#source-info').textContent = 'Histórico de la tabla torrents (incluye filas de ingestas antiguas).';
+  let sb;
+  try { sb = await getSupabase(); }
+  catch (err) { $('#torrent-list').innerHTML = `<div class="empty">No se pudo cargar supabase-js: ${escapeHtml(err.message)}</div>`; return; }
+  if (!sb) {
+    renderStats([], null);
+    $('#torrent-list').innerHTML = '<div class="empty">Supabase es opcional: añade la URL y la anon key en “Ajustes” para ver aquí la tabla <code>torrents</code>. Mientras tanto usa 📦 Publicado o 💻 Este navegador.</div>';
+    renderPager(0);
+    return;
+  }
   try {
-    const [totalC, moviesC, seriesC, spanishC, lastC] = await Promise.all([
-      state.supabase.from('torrents').select('info_hash', { count: 'exact', head: true }),
-      state.supabase.from('torrents').select('info_hash', { count: 'exact', head: true }).eq('type','movie'),
-      state.supabase.from('torrents').select('info_hash', { count: 'exact', head: true }).eq('type','series'),
-      state.supabase.from('torrents').select('info_hash', { count: 'exact', head: true }).cs('audio','{es}'),
-      state.supabase.from('torrents').select('updated_at').order('updated_at',{ascending:false}).limit(1),
+    const head = { count: 'exact', head: true };
+    const [totalC, moviesC, seriesC, spanishC, englishC, lastC] = await Promise.all([
+      sb.from('torrents').select('info_hash', head),
+      sb.from('torrents').select('info_hash', head).eq('type', 'movie'),
+      sb.from('torrents').select('info_hash', head).eq('type', 'series'),
+      sb.from('torrents').select('info_hash', head).cs('audio', '{es}'),
+      sb.from('torrents').select('info_hash', head).cs('audio', '{en}'),
+      sb.from('torrents').select('updated_at').order('updated_at', { ascending: false }).limit(1),
     ]);
-    $('#stat-total').textContent  = totalC.count ?? '—';
+    $('#stat-total-lbl').textContent = 'torrents';
+    $('#stat-spanish-lbl').textContent = 'audio ES';
+    $('#stat-english-lbl').textContent = 'audio EN';
+    $('#stat-total').textContent = totalC.count ?? '—';
     $('#stat-movies').textContent = moviesC.count ?? '—';
     $('#stat-series').textContent = seriesC.count ?? '—';
     $('#stat-spanish').textContent = spanishC.count ?? '—';
-    $('#stat-last').textContent   = lastC.data?.[0]?.updated_at ? fmtDate(lastC.data[0].updated_at) : '—';
+    $('#stat-english').textContent = englishC.count ?? '—';
+    $('#stat-last').textContent = lastC.data?.[0]?.updated_at ? fmtDate(lastC.data[0].updated_at) : '—';
   } catch (e) {
     console.warn(e);
   }
@@ -253,27 +624,29 @@ async function refreshDashboard() {
 }
 
 async function loadTorrents() {
-  if (!state.supabase) return;
+  const sb = await getSupabase().catch(() => null);
+  if (!sb) return;
   $('#torrent-list').innerHTML = '<div class="empty">Cargando…</div>';
   const q = $('#q').value.trim();
   const quality = $('#quality').value;
   const lang = $('#lang').value;
+  const type = $('#type-filter').value;
   const order = $('#order').value;
 
-  let query = state.supabase.from('torrents').select('*', { count: 'exact' });
+  let query = sb.from('torrents').select('*', { count: 'exact' });
   if (q) {
-    // search title OR imdb_id
-    if (q.startsWith('tt')) query = query.eq('imdb_id', q);
+    if (/^tt\d+$/i.test(q)) query = query.eq('imdb_id', q.toLowerCase());
     else query = query.ilike('title', `%${q.replace(/[%_]/g, '\\$&')}%`);
   }
+  if (type) query = query.eq('type', type);
   if (quality) query = query.eq('quality', quality);
-  if (lang) query = query.cs('audio', `{${lang}}`);
+  if (lang === 'es' || lang === 'en') query = query.cs('audio', `{${lang}}`);
 
   const ordering = {
     updated_at: { column: 'updated_at', ascending: false },
-    seeders:    { column: 'seeders', ascending: false, nullsFirst: false },
+    seeders: { column: 'seeders', ascending: false, nullsFirst: false },
     size_bytes: { column: 'size_bytes', ascending: false, nullsFirst: false },
-    title:      { column: 'title', ascending: true },
+    title: { column: 'title', ascending: true },
   }[order];
   query = query.order(ordering.column, { ascending: ordering.ascending, nullsFirst: ordering.nullsFirst ?? true });
   const ps = state.settings.pageSize || 50;
@@ -285,57 +658,68 @@ async function loadTorrents() {
     return;
   }
   state.total = count ?? 0;
-  if (!data.length) {
-    $('#torrent-list').innerHTML = '<div class="empty">Sin resultados.</div>';
-  } else {
-    $('#torrent-list').innerHTML = data.map(renderTorrent).join('');
-  }
-  const maxPage = Math.floor((state.total - 1) / ps);
-  $('#page-indicator').textContent = `Página ${state.page + 1} / ${maxPage + 1} · ${state.total} torrents`;
-  $('#prev-page').disabled = state.page === 0;
-  $('#next-page').disabled = state.page >= maxPage;
+  $('#torrent-list').innerHTML = data.length ? data.map(renderTorrentRow).join('') : '<div class="empty">Sin resultados.</div>';
+  renderPager(state.total, ps, 'torrents');
 }
 
-function renderTorrent(r) {
-  const q = r.quality || '?';
-  const size = fmtBytes(r.size_bytes);
-  const seedTxt = r.seeders == null ? '?' : r.seeders;
-  const langs = (r.audio || []).map(l => `<span class="badge ${l}">${l.toUpperCase()}</span>`).join('');
+function renderTorrentRow(r) {
+  const size = formatBytes(r.size_bytes);
+  const langs = (r.audio || []).map(l => `<span class="badge ${escapeHtml(l)}">${escapeHtml(l.toUpperCase())}</span>`).join('');
   const typeBadge = r.type === 'series'
-    ? `<span class="badge series">S${String(r.season||0).padStart(2,'0')}E${String(r.episode||0).padStart(2,'0')}</span>`
-    : `<span class="badge movie">PELÍCULA</span>`;
-  const imdbLink = r.imdb_id ? `<a href="https://www.imdb.com/title/${r.imdb_id}" target="_blank" rel="noopener">${r.imdb_id}</a>` : '';
-  const magnet = r.magnet_url || (r.info_hash ? `magnet:?xt=urn:btih:${r.info_hash}` : '#');
+    ? `<span class="badge series">S${pad2(r.season)}E${pad2(r.episode)}</span>`
+    : '<span class="badge movie">PELÍCULA</span>';
+  const imdbLink = r.imdb_id ? `<a href="https://www.imdb.com/title/${escapeHtml(r.imdb_id)}" target="_blank" rel="noopener">${escapeHtml(r.imdb_id)}</a>` : '';
+  const magnet = safeMagnet(r.magnet_url, r.info_hash);
   return `
     <div class="torrent">
-      <div class="q">${escapeHtml(q)}</div>
+      <div class="q">${escapeHtml(r.quality || '?')}</div>
       <div>
         <div class="title">${escapeHtml(r.title)}</div>
         <div class="meta">
           ${typeBadge}
-          <span class="${seedsClass(r.seeders)}">👤 ${seedTxt}</span>
+          <span class="${seedsClass(r.seeders)}">👤 ${r.seeders ?? '?'}</span>
           ${size ? `<span class="badge">${escapeHtml(size)}</span>` : ''}
           ${langs}
+          ${r.codec ? `<span class="badge tags">${escapeHtml([r.codec, r.hdr_format, r.channels].filter(Boolean).join(' · '))}</span>` : ''}
           <span class="badge">${escapeHtml(r.source_tracker || '')}</span>
           <span>${imdbLink}</span>
         </div>
       </div>
-      <div class="act">
-        <a href="${escapeHtml(magnet)}" class="ghost" target="_blank">🧲</a>
-        <button class="ghost copy-btn" data-magnet="${encodeURIComponent(magnet)}">Copiar</button>
+      <div class="act">${magnet ? `
+        <a href="${escapeHtml(magnet)}" class="ghost">🧲</a>
+        <button class="ghost copy-btn" data-magnet="${encodeURIComponent(magnet)}">Copiar</button>` : ''}
       </div>
     </div>`;
 }
-$('#torrent-list').addEventListener('click', async (e) => {
-  const btn = e.target.closest('.copy-btn');
-  if (!btn) return;
-  const m = decodeURIComponent(btn.dataset.magnet);
-  try { await navigator.clipboard.writeText(m); btn.textContent = '✓'; }
-  catch { btn.textContent = '!'; }
-  setTimeout(() => { btn.textContent = 'Copiar'; }, 1200);
-});
 
-// ---------- ingest ----------
+// ---------- ingest: lista ----------
+
+function inspectWatchlist(text) {
+  let lines = 0;
+  let invalid = 0;
+  for (const rawLine of String(text).split(/\r?\n/)) {
+    const line = rawLine.replace(/#.*$/, '').trim();
+    if (!line) continue;
+    if (IMDB_LINE_RE.test(line)) lines++;
+    else invalid++;
+  }
+  const items = parseWatchlist(text);
+  const seasons = items.filter(i => i.type === 'series' && i.episode === null).length;
+  return { valid: items.length, duplicates: lines - items.length, invalid, seasons };
+}
+
+function updateWatchlistPreview() {
+  const preview = $('#watchlist-preview');
+  const stats = inspectWatchlist($('#watchlist').value);
+  if (!stats.valid && !stats.duplicates && !stats.invalid) {
+    preview.textContent = 'Aún no has añadido IDs.';
+  } else {
+    preview.textContent = `IDs válidos únicos: ${stats.valid}${stats.seasons ? ` (${stats.seasons} temporada(s) completa(s))` : ''} · repetidos (se omiten): ${stats.duplicates} · líneas no reconocidas (se ignoran): ${stats.invalid}`;
+  }
+  preview.classList.toggle('warning', stats.invalid > 0);
+  return stats;
+}
+
 $('#watchlist').addEventListener('input', updateWatchlistPreview);
 $('#clear-wl').addEventListener('click', () => {
   $('#watchlist').value = '';
@@ -348,248 +732,397 @@ $('#upload-file').addEventListener('change', async (e) => {
   try {
     $('#watchlist').value = await f.text();
     $('#upload-name').textContent = f.name;
-    $('#ingest-status').textContent = `✅ ${f.name} cargado; revisa la lista antes de ingestar.`;
+    setStatus(`✅ ${f.name} cargado; revisa la lista antes de procesar.`);
     updateWatchlistPreview();
   } catch (err) {
-    $('#ingest-status').textContent = `❌ No se pudo leer el archivo: ${err.message}`;
+    setStatus(`❌ No se pudo leer el archivo: ${err.message}`);
   } finally {
     // Allows choosing the same file again after editing/clearing the text.
     e.target.value = '';
   }
 });
 $('#load-current').addEventListener('click', async () => {
-  if (!settingsValid(true, false)) { alert('Configura GitHub en Ajustes primero.'); return; }
-  $('#ingest-status').textContent = 'Cargando watchlist.txt del repo…';
+  const repo = currentRepo();
+  if (!repo) { setStatus('❌ No sé cuál es tu repositorio: escribe owner y repo en Ajustes.'); return; }
+  setStatus(`Cargando watchlist.txt de ${repo.owner}/${repo.repo}…`);
   try {
-    const data = await ghApi(`/repos/${state.settings.ghOwner}/${state.settings.ghRepo}/contents/watchlist.txt`);
-    const content = decodeBase64Utf8(data.content);
-    $('#watchlist').value = content;
-    $('#upload-name').textContent = 'watchlist.txt del repositorio';
+    $('#watchlist').value = await readRepoFile(repo, 'watchlist.txt');
+    $('#upload-name').textContent = `watchlist.txt de ${repo.owner}/${repo.repo}`;
     updateWatchlistPreview();
-    $('#ingest-status').textContent = '✅ Watchlist cargado';
+    setStatus('✅ Watchlist cargado');
   } catch (err) {
-    $('#ingest-status').textContent = '❌ ' + err.message;
+    setStatus(`❌ No se pudo leer watchlist.txt: ${err.message}`);
   }
 });
 
-$('#ingest').addEventListener('click', runIngest);
+// ---------- ingest: progreso ----------
 
-async function runIngest() {
+function log(text, cls = '') {
+  const el = $('#run-log');
+  const line = document.createElement('div');
+  if (cls) line.className = cls;
+  line.textContent = text;
+  el.append(line);
+  el.scrollTop = el.scrollHeight;
+}
+function setProgress(pct) { $('#run-progress-fill').style.width = `${Math.max(0, Math.min(100, pct))}%`; }
+
+function resetRunUI() {
+  $('#run-log').textContent = '';
+  $('#run-meta').textContent = '';
+  $('#run-steps').innerHTML = '';
+  $('#run-summary').innerHTML = '';
+  $('#run-items').innerHTML = '';
+  $('#run-actions').classList.add('hidden');
+  setProgress(0);
+}
+
+function beginRun(kind) {
+  const controller = new AbortController();
+  state.running = { kind, controller };
+  $('#process-local').disabled = true;
+  $('#ingest').disabled = true;
+  $('#cancel-run').classList.remove('hidden');
+  return controller;
+}
+
+function endRun() {
+  state.running = null;
+  $('#process-local').disabled = false;
+  $('#ingest').disabled = false;
+  $('#cancel-run').classList.add('hidden');
+}
+
+$('#cancel-run').addEventListener('click', () => {
+  if (!state.running) return;
+  state.running.controller.abort();
+  setStatus(state.running.kind === 'remote' ? '⏹ Dejé de esperar (la Action sigue en GitHub).' : '⏹ Cancelando…');
+});
+
+function renderResultSummary({ items, candidates, errors, durationMs, extra = [] }) {
+  const es = items.filter(i => (i.picks || []).some(p => p.pick === 'es')).length;
+  const en = items.filter(i => (i.picks || []).some(p => p.pick === 'en')).length;
+  const picks = items.reduce((n, i) => n + (i.picks?.length || 0), 0);
+  $('#run-summary').innerHTML = [
+    statCard(items.length, 'títulos'),
+    statCard(picks, 'elegidos'),
+    statCard(es, 'con 🇪🇸'),
+    statCard(en, 'con 🇬🇧'),
+    ...(candidates != null ? [statCard(candidates, 'candidatos')] : []),
+    ...extra,
+    statCard(errors, 'errores'),
+    statCard(durationMs != null ? `${(durationMs / 1000).toFixed(1)}s` : '—', 'duración'),
+  ].join('');
+}
+
+function logErrorSummary(errors) {
+  const real = errors.filter(e => !e.skipped);
+  const grouped = new Map();
+  for (const e of real) grouped.set(`${e.provider}: ${e.error}`, (grouped.get(`${e.provider}: ${e.error}`) || 0) + 1);
+  for (const [key, count] of grouped) log(`❌ ${key}${count > 1 ? ` (×${count})` : ''}`, 'err');
+  const skipped = errors.length - real.length;
+  if (skipped) log(`⏭ ${skipped} consulta(s) omitidas: ese addon ya había fallado varias veces seguidas.`, 'warn');
+}
+
+// ---------- ⚡ procesar en el navegador (sin token) ----------
+
+$('#process-local').addEventListener('click', processLocally);
+
+async function processLocally() {
   const text = $('#watchlist').value;
-  const listStats = updateWatchlistPreview();
-  if (!listStats.valid) {
-    $('#ingest-status').textContent = '❌ Añade al menos un IMDb ID válido antes de ingestar.';
-    return;
+  if (!updateWatchlistPreview().valid) { setStatus('❌ Añade al menos un IMDb ID válido.'); return; }
+  const providers = queryableProviders(selectedProviders());
+  if (!providers.length) { setStatus('❌ Activa al menos un proveedor en Ajustes.'); return; }
+
+  resetRunUI();
+  const controller = beginRun('local');
+  const started = Date.now();
+  setStatus('⚡ Procesando en tu navegador…');
+  log(`⚡ Consultando ${providers.map(p => p.name).join(', ')} desde tu navegador (sin token).`);
+  try {
+    const fetchJSON = createJsonFetcher({ timeoutMs: 20000, retries: 1, signal: controller.signal });
+    const trackers = await loadBestTrackers({ timeoutMs: 6000 });
+    if (trackers.warning) log(`⚠️ ${trackers.warning}`, 'warn');
+    const cards = $('#run-items');
+    const result = await processWatchlist(text, {
+      providers,
+      fetchJSON,
+      metadata: state.settings.cinemeta !== false,
+      concurrency: clamp(state.settings.concurrency || 4, 1, 8),
+      bestTrackers: trackers.trackers,
+      signal: controller.signal,
+      onWarning: message => log(`⚠️ ${message}`, 'warn'),
+      onQueries: queries => {
+        log(`📋 ${queries.length} títulos/episodios × ${providers.length} addons = ${queries.length * providers.length} consultas`);
+        setProgress(4);
+      },
+      onItem: ({ item, streams }, { done, total }) => {
+        setProgress(4 + 96 * done / total);
+        const es = streams.find(s => s.pick === 'es');
+        const en = streams.find(s => s.pick === 'en');
+        const fmt = (s, flag) => s ? `${flag} ${s.quality || '?'} 👤${s.seeders ?? '?'}` : `${flag} —`;
+        const icon = streams.length === 2 ? '✅' : streams.length ? '🟡' : '⚠️';
+        log(`${icon} [${done}/${total}] ${item.label} · ${fmt(es, '🇪🇸')} · ${fmt(en, '🇬🇧')} · ${streams.length}/${item.candidateCount}`, streams.length ? 'ok' : 'warn');
+        $('#run-meta').textContent = `${done}/${total} títulos · ${((Date.now() - started) / 1000).toFixed(0)} s`;
+        cards.insertAdjacentHTML('beforeend', renderCard(item));
+      },
+    });
+    const finished = result.results.filter(r => !r.errors.some(e => e.error === 'cancelado')).map(r => r.item);
+    logErrorSummary(result.errors.filter(e => e.error !== 'cancelado'));
+    const failedEverywhere = result.totals.candidates === 0 && result.errors.length > 0 && !controller.signal.aborted;
+    if (failedEverywhere && result.errors.every(e => /red|CORS/i.test(e.error) || e.skipped)) {
+      log('💡 Tu navegador no pudo contactar con los addons. ¿Un bloqueador de anuncios o una red que los bloquea? Prueba ☁️ Guardar en el repo: lo procesa GitHub.', 'warn');
+    }
+    // Cards in watchlist order (they were appended in completion order).
+    cards.innerHTML = finished.map(renderCard).join('');
+    const saved = finished.length ? saveLocal(finished) : { ok: true, count: loadLocal().items.length };
+    renderResultSummary({ items: finished, candidates: result.totals.candidates, errors: result.errors.filter(e => !e.skipped && e.error !== 'cancelado').length, durationMs: Date.now() - started });
+    if (controller.signal.aborted) {
+      setStatus(`⏹ Cancelado: ${plural(finished.length, 'título')} terminado${finished.length === 1 ? '' : 's'}${finished.length ? ' y guardado' + (finished.length === 1 ? '' : 's') + ' en este navegador' : ''}.`);
+    } else if (!saved.ok) {
+      setStatus(`⚠️ Procesado, pero no cupo en el almacenamiento del navegador (${saved.error}). Descárgalo desde el Dashboard.`);
+    } else {
+      setStatus(`✅ Listo: ${plural(finished.length, 'título')}. Guardado${finished.length === 1 ? '' : 's'} en este navegador (${saved.count} en total).`);
+    }
+    setProgress(100);
+    if (finished.length) $('#run-actions').classList.remove('hidden');
+  } catch (err) {
+    setStatus(`❌ ${describeError(err)}`);
+    log(`❌ ${describeError(err)}`, 'err');
+  } finally {
+    endRun();
   }
-  if (!settingsValid(true, false)) {
-    alert('Configura GitHub (owner/repo/token) en la pestaña Ajustes primero.');
+}
+
+$('#open-local-dashboard').addEventListener('click', () => {
+  state.source = 'local';
+  state.settings.dashboardSource = 'local';
+  saveSettings();
+  state.page = 0;
+  showTab('dashboard');
+});
+
+// ---------- ☁️ guardar en el repo (token opcional) ----------
+
+$('#ingest').addEventListener('click', ingestRemote);
+
+async function ingestRemote() {
+  const text = $('#watchlist').value;
+  if (!updateWatchlistPreview().valid) { setStatus('❌ Añade al menos un IMDb ID válido.'); return; }
+  const repo = currentRepo();
+  if (!repo) {
+    setStatus('❌ No sé cuál es tu repositorio: escribe owner y repo en Ajustes (o abre esta web desde GitHub Pages).');
     return;
   }
   const dryRun = $('#dryrun').checked;
-  const btn = $('#ingest');
-  btn.disabled = true;
-  $('#ingest-status').textContent = 'Enviando watchlist.txt al repo…';
-  $('#run-log').textContent = '';
-  $('#run-progress-fill').style.width = '10%';
-  $('#run-meta').textContent = '';
-  $('#run-summary').innerHTML = '';
-  $('#run-items').innerHTML = '';
+  const providers = selectedProviders();
+  resetRunUI();
+  if (state.settings.ghToken) return dispatchWithToken(repo, text, { dryRun, providers });
+  return ingestViaIssue(repo, text, { dryRun, providers });
+}
 
+async function ingestViaIssue(repo, text, { dryRun, providers }) {
+  const { lines, invalid } = sanitizeWatchlistLines(text);
+  const title = buildIssueTitle(lines.length);
+  const body = buildIssueBody(text, { dryRun, providers });
+  const base = `https://github.com/${repo.owner}/${repo.repo}/issues/new`;
+  let url = `${base}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  let copied = false;
+  if (url.length > MAX_ISSUE_URL) {
+    // Very long lists do not fit in a URL: copy the body and open an empty issue.
+    copied = await copyText(body);
+    url = `${base}?title=${encodeURIComponent(title)}&body=${encodeURIComponent('Pega aquí (Ctrl+V) el contenido que copió la web.')}`;
+  }
+  window.open(url, '_blank', 'noopener');
+  const since = Date.now();
+  log(`📝 Issue preparado en ${repo.owner}/${repo.repo}: ${plural(lines.length, 'título')}${invalid ? ` (${invalid} líneas no válidas descartadas)` : ''}${dryRun ? ' · dry-run' : ''}.`);
+  $('#run-meta').innerHTML = `Si no se abrió la pestaña: <a href="${escapeHtml(url)}" target="_blank" rel="noopener">abrir el Issue en GitHub ↗</a>${copied ? ' · la lista está copiada en el portapapeles: pégala en el cuerpo del Issue' : ''}.`;
+  setStatus('👉 En la pestaña de GitHub pulsa “Submit new issue” (tienes que ser el dueño o un colaborador). Esperaré aquí el resultado.');
+  await watchRemoteRun(repo, since);
+}
+
+async function dispatchWithToken(repo, text, { dryRun, providers }) {
+  const controller = beginRun('remote');
   try {
-    // 1. Get current SHA of watchlist.txt to update it
-    const owner = state.settings.ghOwner, repo = state.settings.ghRepo;
-    let sha = null;
-    try {
-      const existing = await ghApi(`/repos/${owner}/${repo}/contents/watchlist.txt`);
-      sha = existing.sha;
-    } catch { /* first write */ }
-
-    const content = btoa(unescape(encodeURIComponent(text)));
-    await ghApi(`/repos/${owner}/${repo}/contents/watchlist.txt`, {
+    setStatus('Enviando watchlist.txt al repo…');
+    setProgress(8);
+    const path = `/repos/${repo.owner}/${repo.repo}/contents/watchlist.txt`;
+    let sha;
+    try { sha = (await gh(`${path}?ref=${encodeURIComponent(repo.branch)}`)).sha; } catch { /* first write */ }
+    await gh(path, {
       method: 'PUT',
-      body: JSON.stringify({
+      body: {
         message: `chore(watchlist): update from UI ${new Date().toISOString()}`,
-        content,
-        sha: sha || undefined,
-      }),
+        content: btoa(unescape(encodeURIComponent(text))),
+        branch: repo.branch,
+        ...(sha ? { sha } : {}),
+      },
     });
-
-    // 2. Trigger workflow_dispatch
-    $('#ingest-status').textContent = 'Lanzando GitHub Action…';
-    $('#run-progress-fill').style.width = '25%';
-    const providers = (state.settings.providers || []).join(',') || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio';
-    const dispatchStartedAt = Date.now();
-    await ghApi(`/repos/${owner}/${repo}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
+    log('✅ watchlist.txt actualizado.', 'ok');
+    setStatus('Lanzando la GitHub Action…');
+    setProgress(15);
+    const since = Date.now();
+    await gh(`/repos/${repo.owner}/${repo.repo}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
       method: 'POST',
-      body: JSON.stringify({ ref: state.settings.ghBranch || 'main', inputs: { dry_run: dryRun ? '1' : '0', providers } }),
+      body: { ref: repo.branch, inputs: { dry_run: dryRun ? '1' : '0', providers: providers.join(',') } },
     });
-
-    // 3. Find the run created by this dispatch, not an unrelated scheduled run.
-    $('#ingest-status').textContent = 'Esperando a que la Action arranque…';
-    await new Promise(r => setTimeout(r, 3000));
-    let runId = null;
-    for (let attempt = 0; attempt < 20 && !runId; attempt++) {
-      const runs = await ghApi(`/repos/${owner}/${repo}/actions/workflows/${WORKFLOW_ID}/runs?per_page=10`);
-      const current = runs.workflow_runs.find(r =>
-        r.event === 'workflow_dispatch' &&
-        r.status !== 'completed' &&
-        new Date(r.created_at).getTime() >= dispatchStartedAt - 30_000
-      ) || runs.workflow_runs.find(r => r.status !== 'completed');
-      if (current) { runId = current.id; break; }
-      await new Promise(r => setTimeout(r, 1500));
-    }
-    if (!runId) throw new Error('No se encontró el run recién lanzado.');
-
-    state.currentRunId = runId;
-    $('#run-meta').textContent = `Run #${runId} — en curso…`;
-
-    // 4. Poll until completed, streaming logs at the end
-    await pollRun(owner, repo, runId);
+    log('🚀 Action lanzada.', 'ok');
+    endRun();
+    await watchRemoteRun(repo, since);
   } catch (err) {
-    $('#ingest-status').textContent = '❌ ' + err.message;
-    $('#run-log').textContent += '\n' + err.message;
-    btn.disabled = false;
+    setStatus(`❌ ${err.message}`);
+    log(`❌ ${err.message}`, 'err');
+    if (err.status === 401 || err.status === 403) log('💡 Revisa el token (Contents + Actions en lectura/escritura) o bórralo para usar el modo por Issue.', 'warn');
+  } finally {
+    if (state.running?.controller === controller) endRun();
   }
 }
 
-async function pollRun(owner, repo, runId) {
-  const logEl = $('#run-log');
-  const fill = $('#run-progress-fill');
-  const meta = $('#run-meta');
-  let completed = false;
-  let lastLog = '';
-  while (!completed) {
-    const run = await ghApi(`/repos/${owner}/${repo}/actions/runs/${runId}`);
-    meta.textContent = `Run #${run.run_number} (${run.status}) – ${run.conclusion || '…'}  ·  ${fmtDate(run.updated_at)}`;
-    if (run.status === 'completed') {
-      completed = true;
-      fill.style.width = '90%';
-      // fetch job logs
-      try {
-        const jobs = await ghApi(`/repos/${owner}/${repo}/actions/runs/${runId}/jobs?per_page=10`);
-        const job = jobs.jobs?.[0];
-        if (job) {
-          const logR = await fetch(job.logs_url, { headers: ghHeaders() });
-          if (logR.ok) lastLog = await logR.text();
-        }
-      } catch {}
-      logEl.textContent = lastLog || '(no se pudieron obtener logs)';
-      fill.style.width = '100%';
-      await new Promise(r => setTimeout(r, 1500)); // wait for Pages commit
-      await showRunReport(owner, repo, run);
-      $('#ingest').disabled = false;
-      $('#ingest-status').textContent = run.conclusion === 'success' ? '✅ Completado' : `⚠️ ${run.conclusion}`;
-      return;
-    }
-    // Progress feel while running
-    const progress = 30 + Math.min(60, (Date.now() / 1000) % 60);
-    fill.style.width = progress + '%';
-    await new Promise(r => setTimeout(r, 2500));
-  }
+async function findRecentRun(repo, since) {
+  const data = await gh(`/repos/${repo.owner}/${repo.repo}/actions/workflows/${WORKFLOW_ID}/runs?per_page=5`);
+  return (data.workflow_runs || []).find(r => new Date(r.created_at).getTime() >= since - 60_000) || null;
 }
 
-async function showRunReport(owner, repo, run) {
-  // The Action commits generated public/ after checkout, so run.head_sha is
-  // the pre-ingest commit. Read the branch ref that received that generated
-  // commit instead of the stale workflow head SHA; retry while git push/Pages
-  // propagation completes.
-  const status = $('#ingest-status');
-  let report = null;
-  for (let attempt = 0; attempt < 15 && !report; attempt++) {
+async function fetchFreshReport(repo, since) {
+  const urls = [`data/report.json?t=${Date.now()}`]; // esta misma web (GitHub Pages)
+  if (repo) urls.push(rawUrl(repo, 'public/data/report.json'));
+  for (const url of urls) {
     try {
-      const ref = encodeURI(state.settings.ghBranch || run.head_branch || 'main');
-      const cacheBust = `?run=${encodeURIComponent(String(run.id))}&attempt=${attempt}`;
-      const url = `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/public/data/report.json${cacheBust}`;
-      const r = await fetch(url, { cache: 'no-store' });
-      if (r.ok) {
-        const candidate = await r.json();
-        if (candidate && candidate.finishedAt) { report = candidate; break; }
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) continue;
+      const report = await res.json();
+      if (report?.finishedAt && Date.parse(report.finishedAt) > since) return report;
+    } catch { /* try the next source */ }
+  }
+  return null;
+}
+
+function renderJob(job) {
+  $('#run-steps').innerHTML = (job.steps || []).map(step =>
+    `<span class="step ${escapeHtml(step.status)} ${escapeHtml(step.conclusion || '')}">${step.status === 'completed' ? (step.conclusion === 'success' ? '✓' : step.conclusion === 'skipped' ? '–' : '✗') : step.status === 'in_progress' ? '…' : '·'} ${escapeHtml(step.name)}</span>`
+  ).join('');
+  const steps = job.steps || [];
+  const done = steps.filter(s => s.status === 'completed').length;
+  if (steps.length) setProgress(20 + 70 * done / steps.length);
+}
+
+/**
+ * Espera el resultado de la Action sin token: sondea el report publicado (esta
+ * web o raw.githubusercontent.com, sin límite) y el estado del run en la API
+ * pública (límite 60/h, por eso cada 30 s sin token).
+ */
+async function watchRemoteRun(repo, since) {
+  const controller = beginRun('remote');
+  const deadline = since + REMOTE_WAIT_MS;
+  const apiEvery = state.settings.ghToken ? 5000 : 30000;
+  let run = null;
+  let lastApi = 0;
+  let finishedRun = null;
+  try {
+    while (Date.now() < deadline && !controller.signal.aborted) {
+      const report = await fetchFreshReport(repo, since);
+      if (report) {
+        showRunReport(report, run);
+        setProgress(100);
+        setStatus(`✅ Terminado: ${plural(report.items?.length ?? 0, 'título')} publicado${(report.items?.length ?? 0) === 1 ? '' : 's'}${report.db?.dryRun ? ' (dry-run en la BD)' : ''}.`);
+        return;
       }
-    } catch {}
-    await new Promise(r => setTimeout(r, 2000));
+      if (Date.now() - lastApi >= apiEvery) {
+        lastApi = Date.now();
+        try {
+          if (!run) {
+            run = await findRecentRun(repo, since);
+            if (run) log(`🏃 Action en marcha: ${run.display_title || run.name} · ${run.html_url}`, 'ok');
+          }
+          if (run) {
+            const jobs = await gh(`/repos/${repo.owner}/${repo.repo}/actions/runs/${run.id}/jobs?per_page=5`);
+            const job = jobs.jobs?.[0];
+            if (job) {
+              renderJob(job);
+              $('#run-meta').innerHTML = `<a href="${escapeHtml(run.html_url)}" target="_blank" rel="noopener">Run #${escapeHtml(run.run_number)}</a> · ${escapeHtml(job.status)}${job.conclusion ? ` · ${escapeHtml(job.conclusion)}` : ''}`;
+              if (job.status === 'completed') {
+                if (job.conclusion !== 'success') {
+                  setStatus(`⚠️ La Action terminó con “${job.conclusion}”. Mira el detalle en GitHub.`);
+                  return;
+                }
+                finishedRun = finishedRun || Date.now();
+              }
+            }
+          } else {
+            $('#run-meta').innerHTML = $('#run-meta').innerHTML || 'Esperando a que arranque la Action…';
+          }
+        } catch (err) {
+          log(`⚠️ ${err.message}`, 'warn');
+          if (err.status === 403 || err.status === 429) lastApi = Date.now() + 60_000;
+        }
+      }
+      // The job finished but the report is not visible yet (git push / Pages).
+      if (finishedRun && Date.now() - finishedRun > 3 * 60_000) {
+        setStatus('⚠️ La Action terminó, pero no veo el report.json nuevo. Recarga el Dashboard en un rato.');
+        return;
+      }
+      await sleep(10000, controller.signal);
+    }
+    if (!controller.signal.aborted) setStatus('⌛ Dejé de esperar tras 15 minutos. Mira el Historial o el Issue en GitHub.');
+  } finally {
+    endRun();
   }
-  if (!report) { status.textContent = 'Run terminado pero no se pudo leer report.json (despliegue Pages en curso)'; return; }
-
-  $('#run-summary').innerHTML = [
-    statCard(report.movies, 'películas'),
-    statCard(report.episodes, 'episodios'),
-    statCard(report.totalStreams, 'streams'),
-    statCard(report.db.inserted ?? '—', report.db.dryRun ? 'a insertar' : 'insertados'),
-    statCard(report.errors.length, 'errores'),
-    statCard((report.durationMs/1000).toFixed(1)+'s', 'duración'),
-  ].join('');
-
-  const rows = [];
-  for (const it of report.items) {
-    const badge = it.type === 'series'
-      ? `<span class="badge series">S${String(it.season||0).padStart(2,'0')}E${String(it.episode||0).padStart(2,'0')}</span>`
-      : `<span class="badge movie">PELÍCULA</span>`;
-    const seedClass = it.bestSeeders == null ? 'badge' : it.bestSeeders >= 5 ? 'badge good' : it.bestSeeders >= 1 ? 'badge warn' : 'badge bad';
-    rows.push(`
-      <div class="run-item">
-        <div class="head">
-          <div>
-            ${badge}
-            <strong>${escapeHtml(it.label)}</strong>
-            <span class="muted">${escapeHtml(it.imdbId)}</span>
-          </div>
-          <div>
-            <span class="${seedClass}">👤 ${it.bestSeeders ?? '?'} seeds</span>
-            <span class="badge">${it.streamCount} streams</span>
-            <span class="badge">${(it.qualities||[]).join('/') || '?'}</span>
-            <span class="badge">${(it.languages||[]).join(',').toUpperCase() || '?'}</span>
-            ${(it.providers || []).map(p => `<span class="badge provider">${escapeHtml(p)}</span>`).join('')}
-          </div>
-        </div>
-      </div>`);
-  }
-  if (report.errors.length) {
-    rows.push(`<div class="run-item"><h3 style="margin-top:0">Errores</h3><pre class="log err">${escapeHtml(report.errors.map(e => `${e.id}  ${e.error}`).join('\n'))}</pre></div>`);
-  }
-  $('#run-items').innerHTML = rows.join('');
 }
 
-function statCard(num, lbl) {
-  return `<div class="stat"><div class="num">${escapeHtml(String(num))}</div><div class="lbl">${escapeHtml(lbl)}</div></div>`;
+function showRunReport(report, run) {
+  const items = report.items || [];
+  const db = report.db || {};
+  renderResultSummary({
+    items,
+    candidates: report.totalCandidates,
+    errors: (report.errors || []).filter(e => !e.skipped).length,
+    durationMs: report.durationMs,
+    extra: [statCard(db.inserted ?? '—', db.dryRun ? 'BD (dry-run)' : 'en la BD')],
+  });
+  for (const w of report.warnings || []) log(`⚠️ ${w}`, 'warn');
+  logErrorSummary(report.errors || []);
+  if (run) log(`🔗 ${run.html_url}`);
+  $('#run-items').innerHTML = items.map(it => Array.isArray(it.picks) ? renderCard(it) : '').join('');
+  state.published = null; // el Dashboard "Publicado" se recargará
 }
 
-// ---------- history ----------
+// ---------- historial (API pública, sin token) ----------
+
 $('#refresh-history').addEventListener('click', loadHistory);
 async function loadHistory() {
   const list = $('#history-list');
-  if (!settingsValid(true, false)) { list.innerHTML = '<div class="empty">Configura GitHub en Ajustes.</div>'; return; }
+  const repo = currentRepo();
+  if (!repo) { list.innerHTML = '<div class="empty">No sé cuál es tu repositorio: escríbelo en Ajustes.</div>'; return; }
   list.innerHTML = '<div class="empty">Cargando…</div>';
   try {
-    const data = await ghApi(`/repos/${state.settings.ghOwner}/${state.settings.ghRepo}/actions/workflows/${WORKFLOW_ID}/runs?per_page=10`);
-    if (!data.workflow_runs.length) { list.innerHTML = '<div class="empty">Aún no hay ejecuciones.</div>'; return; }
-    list.innerHTML = data.workflow_runs.map(run => {
-      const isCurrent = state.currentRunId === run.id;
-      return `
-        <div class="run-item">
-          <div class="head">
-            <div>
-              <span class="status-dot ${run.conclusion || run.status}"></span>
-              <strong>#${run.run_number}</strong>
-              <span class="muted">${run.event}${isCurrent ? ' · actual' : ''} · ${fmtDate(run.created_at)}</span>
-            </div>
-            <div>
-              <span class="badge ${run.conclusion === 'success' ? 'good' : run.conclusion === 'failure' ? 'bad' : 'warn'}">${run.conclusion || run.status}</span>
-              <a href="${run.html_url}" target="_blank" rel="noopener" class="ghost" style="padding:4px 8px;text-decoration:none">abrir</a>
-            </div>
+    const data = await gh(`/repos/${repo.owner}/${repo.repo}/actions/workflows/${WORKFLOW_ID}/runs?per_page=10`);
+    if (!data.workflow_runs?.length) { list.innerHTML = '<div class="empty">Aún no hay ejecuciones.</div>'; return; }
+    list.innerHTML = data.workflow_runs.map(run => `
+      <div class="run-item">
+        <div class="head">
+          <div>
+            <span class="status-dot ${escapeHtml(run.conclusion || run.status)}"></span>
+            <strong>#${escapeHtml(run.run_number)}</strong>
+            <span>${escapeHtml(run.display_title || run.name || '')}</span>
+            <span class="muted">${escapeHtml(run.event)} · ${fmtDate(run.created_at)}</span>
           </div>
-          <div class="muted" style="margin-top:6px;font-size:12px">
-            <code>${run.head_sha.slice(0,7)}</code> · ${escapeHtml(run.head_commit?.message.split('\n')[0] || '')}
+          <div>
+            <span class="badge ${run.conclusion === 'success' ? 'good' : run.conclusion === 'failure' ? 'bad' : 'warn'}">${escapeHtml(run.conclusion || run.status)}</span>
+            <a href="${escapeHtml(run.html_url)}" target="_blank" rel="noopener" class="ghost" style="padding:4px 8px;text-decoration:none">abrir</a>
           </div>
-        </div>`;
-    }).join('');
+        </div>
+        <div class="muted" style="margin-top:6px;font-size:12px">
+          <code>${escapeHtml(run.head_sha.slice(0, 7))}</code> · ${escapeHtml(run.head_commit?.message.split('\n')[0] || '')}
+        </div>
+      </div>`).join('');
   } catch (err) {
     list.innerHTML = `<div class="empty">Error: ${escapeHtml(err.message)}</div>`;
   }
 }
 
-// ---------- boot ----------
+// ---------- arranque ----------
+state.detectedRepo = repoFromLocation();
+state.source = ['published', 'local', 'supabase'].includes(state.settings.dashboardSource) ? state.settings.dashboardSource : 'published';
 applySettingsToUI();
 updateWatchlistPreview();
-initSupabase();
-if (settingsValid(false, true)) refreshDashboard();
-else $('#torrent-list').innerHTML = '<div class="empty">Configura Supabase en la pestaña "Ajustes" para ver el dashboard.</div>';
+refreshDashboard();
