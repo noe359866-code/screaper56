@@ -6,7 +6,7 @@ import { ParsedTorrentFile, parseTorrentBuffer } from '../utils/bencode2.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages, hasValidLanguageRelease } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { htmlMarkerValidator } from './mirrors.js';
+import { looksLikeBlockedPage } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
@@ -47,12 +47,13 @@ import {
 export const RUTRACKER_FORUM_PREFIX = '/forum';
 
 /** Official domains; override with RUTRACKER_BASE_URL / RUTRACKER_MIRRORS.
- * Live check 2026-09-28: rutracker.org and rutracker.net serve the forum
- * normally; rutracker.nl answered HTTP 500 and rutracker.me / rutracker.cc
- * did not answer from this network. All five stay in the pool on purpose —
- * the probe asks each one and the first healthy answer wins (guest access is
- * login-only anyway: tracker.php redirects guests to the login form, so the
- * whole crawl runs authenticated). */
+ * Live check 2026-09-29: rutracker.org and rutracker.net serve the forum
+ * normally (guest index includes the full viewforum/viewtopic navigation);
+ * rutracker.me answered HTTP 500 and rutracker.nl / rutracker.cc did not
+ * answer from this network. All five stay in the pool on purpose — the probe
+ * asks each one and the first healthy answer wins (guest access is login-only
+ * anyway: tracker.php redirects guests to the login form, so the whole crawl
+ * runs authenticated). */
 export const RUTRACKER_DEFAULT_MIRRORS: readonly string[] = [
   'https://rutracker.org',
   'https://rutracker.net',
@@ -198,6 +199,21 @@ export function looksLikeRutrackerLoginPage(html: string): boolean {
   if (typeof html !== 'string' || !html) return false;
   if (/logout=1/i.test(html)) return false;
   return LOGIN_FORM_PATTERN.test(html) && LOGIN_USER_FIELD_PATTERN.test(html);
+}
+
+/**
+ * Mirror-probe acceptance: the page must be the FORUM itself. The brand alone
+ * proves nothing — an error or maintenance page on the same domain can mention
+ * "rutracker" — while the board markup alone could belong to another board,
+ * so BOTH are required. The guest index renders the full viewforum/viewtopic
+ * navigation (verified live 2026-09-29 on .org and .net) and a login wall
+ * still carries the login form (`login.php` action / `login_username` field).
+ */
+export function looksLikeRutrackerForumPage(data: unknown): boolean {
+  if (typeof data !== 'string' || data.length < 16) return false;
+  if (looksLikeBlockedPage(data)) return false;
+  return /rutracker/i.test(data) &&
+    /viewtopic\.php|viewforum\.php|login\.php|login_username/i.test(data);
 }
 
 /**
@@ -1155,7 +1171,7 @@ export class RutrackerCrawler extends BaseCrawler {
           path: `${RUTRACKER_FORUM_PREFIX}/index.php`,
           label: 'portada del foro',
           timeoutMs: 10000,
-          validate: htmlMarkerValidator([/rutracker/i, /viewtopic\.php|login\.php|viewforum\.php/i])
+          validate: data => looksLikeRutrackerForumPage(data)
         }
       ]
     });

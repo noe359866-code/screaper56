@@ -12,6 +12,7 @@ import { LimeTorrentsCrawler } from '../src/crawlers/limetorrent.ts';
 import { NyaaCrawler } from '../src/crawlers/nyaa.ts';
 import { TokyoToshoCrawler } from '../src/crawlers/tokyotosho.ts';
 import { parseMagnetUri } from '../src/utils/magnet.ts';
+import { hasValidLanguageRelease } from '../src/utils/language.ts';
 import { mockHttp, torrent, HASH, HASH2, MAGNET } from './helpers.js';
 import { clearMirrorCache } from '../src/crawlers/mirrors.ts';
 
@@ -950,6 +951,21 @@ test('YTS: the live 2026 gg payload maps uppercase hashes, numeric counters and 
   assert.match(records[0].title, /^Ballistica 2009 720p BluRay YTS/);
 });
 
+test('YTS: the live Portuguese payloads (language "pt") keep no invented English audio', () => {
+  const crawler = new YtsCrawler();
+  // Live 2026-09-29: query_term=cidade returns language:"pt" movies such as
+  // "Cidade dos Homens" (id 55761). ytsLanguageHints maps pt to
+  // ["portuguese"], which detectLanguages recognises neither as an audio tag
+  // nor as a foreign-language marker, so the generic default used to label
+  // the Brazilian release as English.
+  const [record] = crawler.mapMovie(
+    { ...YTS_LIVE_MOVIE, title: 'Cidade dos Homens', title_english: 'Cidade dos Homens', slug: 'cidade-dos-homens-2007', language: 'pt', url: 'https://yts.gg/movies/cidade-dos-homens-2007' },
+    'https://yts.gg'
+  );
+  assert.deepEqual(record.audio, [], 'pt is neither Spanish nor English: no default English is invented');
+  assert.equal(hasValidLanguageRelease(record.audio, record.subtitles), false, 'the registry filter discards the pt-only release');
+});
+
 test('YTS: a redirecting mirror (yts.lt -> yts.gg) trusts the origin the payload publishes', async () => {
   const previousBase = process.env.YTS_BASE_URL;
   const configured = 'https://yts-lt.test';
@@ -994,12 +1010,14 @@ test('YTS: a redirecting mirror (yts.lt -> yts.gg) trusts the origin the payload
 });
 
 test('YTS: the live pool leads with the domain that serves and keeps the canonical fallbacks', () => {
-  // Live check 2026-09-28: yts.gg serves; yts.mx is canonical but blocks
-  // datacenter IPs; movies-api.accel.li is the official new API base;
+  // Live check 2026-09-29: the API migration sunset (2026-04-10) has passed
+  // and yts.gg itself publishes "Base URL moving to movies-api.accel.li" in
+  // every payload; accel.li answers with the identical catalogue today.
+  // yts.gg keeps serving, yts.mx is canonical but blocks datacenter IPs,
   // yts.lt / yts.am redirect to gg; do/rs/pm are 404 or broken, nz/homes mute.
-  assert.equal(YtsCrawler.DEFAULT_MIRRORS[0], 'https://yts.gg');
+  assert.equal(YtsCrawler.DEFAULT_MIRRORS[0], 'https://movies-api.accel.li');
+  assert.ok(YtsCrawler.DEFAULT_MIRRORS.includes('https://yts.gg'));
   assert.ok(YtsCrawler.DEFAULT_MIRRORS.includes('https://yts.mx'));
-  assert.ok(YtsCrawler.DEFAULT_MIRRORS.includes('https://movies-api.accel.li'));
   for (const dead of ['yts.do', 'yts.rs', 'yts.pm', 'yts.nz', 'yts.homes']) {
     assert.ok(
       !YtsCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes(dead)),
@@ -1108,7 +1126,11 @@ test('1337x: the classic template of 1337x.st / x1337x.ws concatenates size and 
   }
 });
 
-test('1337x: the live pool keeps the five domains that served real listings on 2026-09-28', () => {
+test('1337x: the live pool keeps the domains verified through 2026-09-30', () => {
+  // Live 2026-09-30:1337x.la end to end;1337xx.to,1337x.st and
+  // 1337x.to answer /popular-movies with real listings (1337x.to recovered
+  // from "Bad category."); x1337x.ws and1337xxx.to still serve their
+  // landing pages; 1337xto.to (the hubs' "newest alternative") is 404.
   assert.equal(Leech1337xCrawler.DEFAULT_MIRRORS[0], 'https://1337x.la');
   for (const verified of ['1337xx.to', '1337x.st', 'x1337x.ws', '1337xxx.to', '1337x.to', '1377x.to']) {
     assert.ok(
@@ -1121,5 +1143,127 @@ test('1337x: the live pool keeps the five domains that served real listings on 2
       !Leech1337xCrawler.DEFAULT_MIRRORS.some(mirror => mirror.includes(dead)),
       `${dead} left the pool`
     );
+  }
+});
+
+test('1337x: a probe page must show a listing table AND torrent links', async () => {
+  const { looksLike1337xListing } = await import('../src/crawlers/leech1337x.ts');
+  // Live 2026-09-29: /popular-movies carries a real table whose rows link
+  // /torrent/<id>/<slug>/ (both markers), while the "/" hub is only a domains
+  // list with neither marker. One marker alone is not a listing: an empty
+  // results table or a nav stray link must not freeze the mirror selection.
+  assert.equal(
+    looksLike1337xListing('<table class="table-list"><tbody><tr><td class="name"><a href="/torrent/6727753/the-rush/">The Rush</a></td></tr></tbody></table>'),
+    true
+  );
+  assert.equal(looksLike1337xListing('<table class="table-list"><tbody></tbody></table>'), false, 'a table without torrent links is no listing');
+  assert.equal(looksLike1337xListing('<div><a href="/torrent/6727753/">Popular</a></div>'), false, 'links without the listing table are no listing');
+  assert.equal(
+    looksLike1337xListing('<div class="domains"><a href="/sub/">Movies</a><a href="/sub/2/">TV</a></div>'),
+    false,
+    'the hub page (no table, no torrent links) stays rejected'
+  );
+});
+
+test('1337x: a foreign Language field with a plain title invents no English audio', async () => {
+  const previousBase = process.env.LEECH1337X_BASE_URL;
+  const mirror = 'https://leet-lang.test';
+  process.env.LEECH1337X_BASE_URL = mirror;
+  clearMirrorCache('leech1337x');
+  try {
+    // Real anatomy of /torrent/6727753/: details map + Language field; the
+    // 1337x upload form offers non-English values (Italian, Portuguese...),
+    // and detectLanguages knows neither word — only Spanish/English fields
+    // and title evidence may produce audio tags.
+    const detail = (title, language) => `<div class="box-info-heading"><h1>${title}</h1></div>
+      <div class="torrent-category-detail"><ul>
+      <li><strong>Category:</strong> <span>Movies</span></li>
+      <li><strong>Type:</strong> <span>HD</span></li>
+      <li><strong>Language:</strong> <span>${language}</span></li>
+      <li><strong>Total size:</strong> <span>2.6 GB</span></li>
+      <li><strong>Seeders:</strong> <span>54</span></li>
+      <li><strong>Leechers:</strong> <span>6</span></li>
+      <li><strong>Infohash:</strong> <span>${HASH}</span></li>
+      </ul></div>
+      <a href="magnet:?xt=urn:btih:${HASH}">Magnet Download</a>`;
+    const crawlWith = async (title, language) => {
+      const crawler = new Leech1337xCrawler();
+      const caseListing = `<table class="table-list"><tbody>
+      <tr><td class="coll-1 name"><a href="/torrent/6727753/${title.replace(/[^a-z0-9]+/gi, '-')}/">${title}</a></td>
+      <td class="coll-2 seeds">54</td><td class="coll-3 leeches">6</td>
+      <td class="coll-date">Sep. 12th '26</td>
+      <td class="coll-4 size mob-up-size">2.6 GB</td>
+      <td class="coll-5"><a href="/user/up/">up</a></td></tr></tbody></table>`;
+      mockHttp(crawler, url => {
+        if (url === `${mirror}/` || url.includes('sort-search/spanish')) return caseListing;
+        if (url.includes('/torrent/')) return detail(title, language);
+        return '<table class="table-list"><tbody></tbody></table>';
+      });
+      const records = await crawler.crawl(1);
+      return records[0];
+    };
+
+    const italian = await crawlWith('The Rush 2026 1080p WEB-DL H264', 'Italian');
+    assert.deepEqual(italian.audio, [], 'an Italian ficha with an untagged title keeps no English default');
+
+    const english = await crawlWith('The Rush 2026 1080p WEB-DL H264', 'English');
+    assert.deepEqual(english.audio, ['English'], 'the English field still tags English');
+
+    const dual = await crawlWith('Sample 2026 1080p WEB-DL DUAL', 'English');
+    assert.ok(dual.audio.includes('English') && dual.audio.includes('Spanish'), 'DUAL keeps both tracks when field evidence exists');
+  } finally {
+    if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
+    else process.env.LEECH1337X_BASE_URL = previousBase;
+    clearMirrorCache('leech1337x');
+  }
+});
+
+test('1337x: the trailing star badge is decoration, not part of the release name', async () => {
+  const previousBase = process.env.LEECH1337X_BASE_URL;
+  const mirror = 'https://leet-star.test';
+  process.env.LEECH1337X_BASE_URL = mirror;
+  clearMirrorCache('leech1337x');
+  try {
+    // Live 2026-09-30: rows of /sort-search/spanish/... print
+    // "Money.Heist.S04...-GalaxyTV ⭐" and the ficha h1 repeats the star (the
+    // magnet dn carries it too), while the URL slug and the file list print
+    // the bare name — the star is a 1337x display badge, not release content
+    // (second sighting: "Avatar.The.Way.Of.Water...YG⭐" with slug ...-YG/).
+    const bare = 'Money.Heist.S04.COMPLETE.SPANISH.720p.NF.WEBRip.x264-GalaxyTV';
+    const detail = `<div class="box-info-heading"><h1>${bare} ⭐</h1></div>
+      <div class="torrent-category-detail"><ul>
+      <li><strong>Category:</strong> <span>TV</span></li>
+      <li><strong>Language:</strong> <span>Spanish</span></li>
+      <li><strong>Seeders:</strong> <span>454</span></li>
+      <li><strong>Leechers:</strong> <span>296</span></li>
+      </ul></div>
+      <a href="magnet:?xt=urn:btih:${HASH}&dn=${encodeURIComponent(`${bare} ⭐`)}">Magnet Download</a>`;
+    const row = title => `<table class="table-list"><tbody>
+      <tr><td class="coll-1 name"><a href="/torrent/4389694/Money-Heist-S04-COMPLETE-SPANISH-720p-NF-WEBRip-x264-GalaxyTV/">${title}</a></td>
+      <td class="coll-2 seeds">454</td><td class="coll-3 leeches">296</td>
+      <td class="coll-date">Apr. 04th '20</td>
+      <td class="coll-4 size mob-up-size">2.4 GB</td>
+      <td class="coll-5"><a href="/user/m/">m</a></td></tr></tbody></table>`;
+
+    const crawlWithRowTitle = async rowTitle => {
+      const crawler = new Leech1337xCrawler();
+      mockHttp(crawler, url => {
+        if (url === `${mirror}/` || url.includes('sort-search/spanish')) return row(rowTitle);
+        if (url.includes('/torrent/')) return detail;
+        return '<table class="table-list"><tbody></tbody></table>';
+      });
+      const records = await crawler.crawl(1);
+      return records[0];
+    };
+
+    const starred = await crawlWithRowTitle(`${bare} ⭐`);
+    assert.equal(starred.title, bare, 'the trailing star is stripped from the row title');
+
+    const truncated = await crawlWithRowTitle(`${bare.slice(0, 40)}...`);
+    assert.equal(truncated.title, bare, 'a truncated row still resolves to the starless full heading');
+  } finally {
+    if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
+    else process.env.LEECH1337X_BASE_URL = previousBase;
+    clearMirrorCache('leech1337x');
   }
 });

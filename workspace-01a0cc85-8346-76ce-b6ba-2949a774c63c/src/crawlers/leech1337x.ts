@@ -4,7 +4,7 @@ import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { htmlMarkerValidator } from './mirrors.js';
+import { looksLikeBlockedPage } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
@@ -45,21 +45,51 @@ function sameListingRoute(a: string, b: string): boolean {
   }
 }
 
+/**
+ * 1337x decorates some display names with a trailing star badge. Live
+ * 2026-09-30: rows and the ficha h1 print "…-GalaxyTV ⭐" (the magnet dn
+ * carries it too) while the URL slug and the file list print the bare name —
+ * the star is a site badge, not release content, and would pollute the
+ * stored title (second sighting: "…-YG⭐" with slug …-YG/).
+ */
+function stripDecoration(title: string): string {
+  return title.replace(/\s*[⭐🌟]+\s*$/u, '').trim();
+}
+
+/**
+ * A probe page counts as a listing only when BOTH dialect markers appear:
+ * the table-list table AND real /torrent/ links. Live check 2026-09-29: the
+ * "/" hub (a domains list) shows neither marker, while /popular-movies
+ * shows both; the shared htmlMarkerValidator accepts on ANY marker, so a
+ * page carrying just one of them (an empty results table or a stray nav
+ * link) would be accepted and freeze the mirror rotation on the wrong
+ * dialect. Same shape as the rutracker local probe fix (97cda74).
+ */
+export function looksLike1337xListing(data: unknown): boolean {
+  if (typeof data !== 'string' || data.length < 16) return false;
+  if (looksLikeBlockedPage(data)) return false;
+  return [/table-list/, /href=["'][^"']*\/torrent\//].every(marker => marker.test(data));
+}
+
 export class Leech1337xCrawler extends BaseCrawler {
   public readonly name = 'leech1337x';
   public baseUrl = process.env.LEECH1337X_BASE_URL || 'https://1337x.la';
 
   /**
    * Known 1337x domains; extend with LEECH1337X_BASE_URL / LEECH1337X_MIRRORS.
-   * Live check 2026-09-28: five domains served real listings that day —
-   * 1337x.la (verified end to end: sort-search pagination + magnet fichas),
-   * 1337xx.to, 1337x.st and x1337x.ws (classic template) and 1337xxx.to.
-   * `1337x.to` is the canonical site but answered "Bad category." for its
-   * popular routes that day (kept as a fallback; its probe decides).
-   * `1377x.to` is officially listed but unreachable from this network.
-   * OUT: `www.1337x.tw` and `1337xto.to` are domain-hub landing pages (their
-   * category links 404 or point at other domains), and `x1337x.eu`,
-   * `x1337x.se`, `1337x.is`, `1337x.gd` are stale proxies with no evidence.
+   * Live check 2026-09-30: 1337x.la verified end to end again (sort-search,
+   * dual audio, popular, fichas; Category XXX excluded as designed). Every
+   * mirror now serves a search landing or domains hub at "/" — no markers —
+   * so probe1 always rejects and probe2 (/popular-movies) decides: the
+   * canonical-template mirrors (1337xx.to, 1337x.st, x1337x.ws,
+   * 1337xxx.to, 1337x.to) answer it with real listings — 1337x.to recovered
+   * from the "Bad category." of 2026-09-28 — and 1337x.st keeps the classic
+   * glued-size rows. `1337xto.to`, advertised on the hubs as the "newest
+   * alternative domain", still answers 404 (Apache), so it stays OUT.
+   * `1377x.to` is officially listed but still unreachable from this network.
+   * OUT: `www.1337x.tw` is a domain-hub landing page (its category links 404
+   * or point at other domains), and `x1337x.eu`, `x1337x.se`, `1337x.is`,
+   * `1337x.gd` are stale proxies with no evidence.
    */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
     'https://1337x.la',
@@ -86,13 +116,13 @@ export class Leech1337xCrawler extends BaseCrawler {
           path: '/',
           label: 'portada',
           timeoutMs: 7000,
-          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
+          validate: looksLike1337xListing
         },
         {
           path: '/popular-movies',
           label: 'populares',
           timeoutMs: 7000,
-          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
+          validate: looksLike1337xListing
         }
       ]
     });
@@ -161,7 +191,7 @@ export class Leech1337xCrawler extends BaseCrawler {
             if (!sameSiteUrl(detailUrl, mirror)) return;
             if (visitedDetails.has(detailUrl)) return;
 
-            const title = cleanText(nameEl.text());
+            const title = stripDecoration(cleanText(nameEl.text()));
             if (!title || isBlockedTitle(title)) return;
 
             visitedDetails.add(detailUrl);
@@ -265,10 +295,13 @@ export class Leech1337xCrawler extends BaseCrawler {
     else if (pageCategory.includes('documentar')) defaultType = 'documentary';
 
     // Listing titles are truncated with "..." on long names; the detail heading
-    // or the magnet display name carries the full release name.
-    const heading = cleanText($('div.box-info-heading h1').first().text());
+    // or the magnet display name carries the full release name (both can carry
+    // the trailing star badge — strip it before the truncation logic runs).
+    const heading = stripDecoration(cleanText($('div.box-info-heading h1').first().text()));
     const truncated = /(?:\.\.\.|…)$/.test(row.title);
-    const title = (truncated ? heading || parsedMagnet?.displayName : null) || row.title || parsedMagnet?.displayName || heading;
+    const title = stripDecoration(
+      (truncated ? heading || parsedMagnet?.displayName : null) || row.title || parsedMagnet?.displayName || heading
+    );
     if (!title || isBlockedTitle(title)) return null;
 
     // Several front-ends hide the magnet behind a third-party download button
@@ -289,7 +322,18 @@ export class Leech1337xCrawler extends BaseCrawler {
     }
 
     const meta = parseTorrentTitle(title, defaultType);
-    const langs = detectLanguages(title, [pageLanguage, pageCategory]);
+
+    // Two-pass language reading (2026-09-29): pass 1 honours only explicit
+    // Spanish/English evidence (title tags + the ficha's Language field); the
+    // defaulting pass runs only when the field is absent or pass 1 already
+    // produced audio. detectLanguages knows neither "Italian" nor
+    // "Portuguese" (not Spanish/English tags, not in the foreign-language
+    // list), so a non-English field with an untagged title used to fall
+    // through to the generic default and mislabel the release as English.
+    const explicitLangs = detectLanguages(title, [pageLanguage, pageCategory], false);
+    const langs = pageLanguage && explicitLangs.audio.length === 0
+      ? explicitLangs
+      : detectLanguages(title, [pageLanguage, pageCategory]);
 
     const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
 

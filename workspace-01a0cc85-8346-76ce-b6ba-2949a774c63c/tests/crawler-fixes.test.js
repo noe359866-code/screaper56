@@ -250,6 +250,12 @@ test('Wolftorrent: the 2026 WolfMax4K layout (slugless ids and episode fichas) i
   assert.equal(isWolfDetailPath('/serie/5se8eg', base), true);
   assert.equal(isWolfDetailPath('/serie/episodio/5sjfvr', base), true);
   assert.equal(isWolfDetailPath('https://wolfmax4k.com/pelicula/ryqb95', base), true);
+  // Letter-only ids are real (live listing 2026-09-29: rytkrd, rx3whk,
+  // rwtzzg…): requiring a digit silently dropped about half of every page.
+  assert.equal(isWolfDetailPath('/pelicula/rytkrd', base), true);
+  assert.equal(isWolfDetailPath('/pelicula/rwtzzg', base), true);
+  // Digit-only paths still never qualify.
+  assert.equal(isWolfDetailPath('/pelicula/2026', base), false);
 
   // The legacy id/slug fichas keep working.
   assert.equal(isWolfDetailPath('/pelicula/abc123/Sample', base), true);

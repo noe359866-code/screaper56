@@ -827,6 +827,9 @@ test('1337x: a published pager replaces the guessed /N/ URL', async () => {
       return listing('/torrent/1/sample/', '<div class="pagination"><a href="/sort-search/spanish/seeders/desc/2/">&#187;</a></div>');
     }
     if (/\/sort-search\/spanish\/seeders\/desc\/2\/$/.test(url)) return listing('/torrent/2/otra/');
+    // The probe hits "/" first: it must answer with a real listing (table +
+    // /torrent/ rows), exactly as the classic template's front page does.
+    if (url === 'https://1337x.la/') return listing('/torrent/1/probe/');
     return listing('');
   });
 
@@ -1074,6 +1077,58 @@ test('MejorTorrent: a WP API that answers with a WAF page falls back to the HTML
   assert.equal(records.length, 1, 'the HTML catalogues still produce records after the WAF API');
   assert.ok(calls.some(url => url.includes('/wp-json/')), 'the WP API was attempted first');
   assert.ok(calls.some(url => url.endsWith('/inicio')), 'the legacy HTML catalogues ran afterwards');
+});
+
+test('MejorTorrent: mirror pool hygiene after the 2026-09-29 live check', () => {
+  const { DEFAULT_MIRRORS } = MejorTorrentCrawler;
+  assert.equal(DEFAULT_MIRRORS[0], 'https://www45.mejortorrent.eu', 'the rotating entry point stays first');
+  const dead = [
+    'https://www.mejortorrent.icu',
+    'https://mejortorrent1.com',
+    'https://mejortorrents.net',
+    'https://mejortorrent.nz',
+    'https://www50.mejortorrent.eu'
+  ];
+  for (const mirror of dead) {
+    assert.ok(!DEFAULT_MIRRORS.includes(mirror), `${mirror} is NXDOMAIN or parked`);
+  }
+  assert.ok(DEFAULT_MIRRORS.includes('https://www46.mejortorrent.eu'), 'the active wwwNN front is a direct candidate');
+  assert.ok(DEFAULT_MIRRORS.includes('https://mejortorrent.me'), 'the WordPress mirror stays in the pool');
+  assert.ok(DEFAULT_MIRRORS.length <= 6, 'the pool stays short so a cold run never probes dead weight');
+});
+
+test('MejorTorrent: a WordPress portada with only wp-content markers is accepted and crawled via wp-json', async () => {
+  const crawler = new MejorTorrentCrawler();
+  clearMirrorCache('mejortorrent');
+  const file = torrent('Patrulla Nocturna 2026 Castellano');
+  const portada = '<html><head><title>MejorTorrent</title></head><body>' +
+    '<img src="https://mejortorrent.me/wp-content/uploads/2026/09/patrulla-nocturna-(poster47).jpg">' +
+    '<a href="/patrulla-nocturna/">Patrulla Nocturna</a></body></html>';
+  const calls = mockHttp(crawler, url => {
+    // The .eu fronts answer with a page no probe marker recognises…
+    if (url.startsWith('https://www45.mejortorrent.eu') || url.startsWith('https://www46.mejortorrent.eu')) {
+      return '<div>front en rotacion</div>';
+    }
+    if (url === 'https://mejortorrent.me' || url === 'https://mejortorrent.me/') return portada;
+    if (url.includes('/wp-json/wp/v2/posts')) {
+      return url.includes('page=2') ? [] : [{ link: 'https://mejortorrent.me/patrulla-nocturna/' }];
+    }
+    if (url === 'https://mejortorrent.me/patrulla-nocturna/') {
+      return '<h1>Patrulla Nocturna 2026 Castellano</h1>' +
+        '<a href="/wp-content/uploads/2026/09/patrulla-nocturna-(torrent49).torrent">Descargar</a>';
+    }
+    if (url.endsWith('.torrent')) return file.buffer;
+    throw new Error(`Unexpected URL: ${url}`);
+  });
+
+  const records = await crawler.crawl(2);
+  clearMirrorCache('mejortorrent');
+
+  assert.equal(records.length, 1, 'the WordPress mirror produces its release');
+  assert.equal(records[0].type, 'movie');
+  assert.equal(records[0].info_hash, file.hash);
+  assert.ok(calls.some(url => url.includes('/wp-json/wp/v2/posts')), 'the REST API listed the posts');
+  assert.ok(calls.some(url => url.endsWith('.torrent')), 'the published .torrent was downloaded');
 });
 
 test('MejorTorrent: an overlapping category page does not hide its own next page', async () => {

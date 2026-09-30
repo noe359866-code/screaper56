@@ -169,6 +169,58 @@ const REGEX_GENERIC_SUB = /\b(subbed|subtitulado)\b/i;
 const REGEX_ES_TRACKERS = /\b(pelispanda|mejortorrent|elitetorrent|dontorrent|wolftorrent|sinsitio|t0rrenta|estrenostorrent)\b/i;
 const REGEX_OTHER_FOREIGN = /\b(french|truefrench|vostfr|german|deutsch|hindi|tamil|telugu|malayalam|korean|japanese|russian|polish|turkish|mandarin)\b/i;
 
+// ============================================================================
+// CYRILLIC EVIDENCE (RuTracker serves Russian titles and fichas)
+// ============================================================================
+//
+// RuTracker labels tracks in Russian: «испанский язык», «звучание испанское»
+// and «на испанском» are AUDIO evidence, «английские субтитры» are SUBTITLE
+// evidence. Two traps are avoided on purpose:
+//   - a bare adjective is not a language label: «испанская империя» is a
+//     documentary title, «Русская версия» is no evidence at all;
+//   - «перевод с испанского» names the SOURCE of a Russian dub, so the audio
+//     the release carries is not that language.
+// The gap between a label and the language allows only separators and «на»,
+// so «испанский язык, субтитры русские» keeps its audio meaning.
+
+const RU_GAP = '[\\s:.,;()\\[\\]\\u2014\\u2012-]{0,14}(?:на\\s+)?[\\s:.,;()\\[\\]\\u2014\\u2012-]{0,14}';
+// `\w` is ASCII-only in JS: Russian declensions («испанский», «звучание»,
+// «субтитры») need the Cyrillic range or every declined form misses.
+const RU_SUFFIX = '[\\wа-яё]*';
+const RU_SUB_PATTERN = (lang: string): RegExp =>
+  new RegExp(`(?:${lang}${RU_SUFFIX}${RU_GAP}субтитр${RU_SUFFIX}|субтитр${RU_SUFFIX}${RU_GAP}${lang}${RU_SUFFIX})`, 'i');
+// Used only by String.replace (the /g flag would make .test stateful).
+const RU_SUB_PHRASE = new RegExp(`(?:${RU_SUB_PATTERN('испанск').source}|${RU_SUB_PATTERN('английск').source})`, 'gi');
+const RU_SOURCE_PHRASE = new RegExp(`(?:^|[^\\wа-яё])(?:с|со)\\s+(?:испанск|английск)${RU_SUFFIX}`, 'gi');
+
+const RU_AUDIO_WORD_AFTER =
+  `(?:язык|звук|звуч${RU_SUFFIX}|дубляж|озвуч${RU_SUFFIX}|голос${RU_SUFFIX}|аудио|вокал)`;
+const RU_AUDIO_LABEL_BEFORE =
+  `(?:звук${RU_SUFFIX}|звуч${RU_SUFFIX}|озвуч${RU_SUFFIX}|дубляж${RU_SUFFIX}|аудио|голос${RU_SUFFIX}|оригинал${RU_SUFFIX})[\\s:.,;()-]{0,10}`;
+const RU_AUDIO_ES = new RegExp(
+  `(?:испанск${RU_SUFFIX}[\\s:.,;()-]{0,10}${RU_AUDIO_WORD_AFTER}|${RU_AUDIO_LABEL_BEFORE}испанск|(?:на|по)[\\s-]+испанск)`
+);
+const RU_AUDIO_EN = new RegExp(
+  `(?:английск${RU_SUFFIX}[\\s:.,;()-]{0,10}${RU_AUDIO_WORD_AFTER}|${RU_AUDIO_LABEL_BEFORE}английск|(?:на|по)[\\s-]+английск)`
+);
+
+/** Cyrillic audio/subtitle evidence in a Russian title or ficha text. */
+function russianEvidence(text: string): { audioEs: boolean; audioEn: boolean; subEs: boolean; subEn: boolean } {
+  if (!text) return { audioEs: false, audioEn: false, subEs: false, subEn: false };
+  const subEs = RU_SUB_PATTERN('испанск').test(text);
+  const subEn = RU_SUB_PATTERN('английск').test(text);
+  // Strip subtitle wording and source-language phrasing before the audio scan:
+  // «английские субтитры» must not become English audio and «перевод с
+  // испанского» is a Russian dub made FROM Spanish.
+  const audioText = text.replace(RU_SUB_PHRASE, ' ').replace(RU_SOURCE_PHRASE, ' ');
+  return {
+    audioEs: RU_AUDIO_ES.test(audioText),
+    audioEn: RU_AUDIO_EN.test(audioText),
+    subEs,
+    subEn
+  };
+}
+
 // Subtitle phrases ("Sub ESP", "Subs English", "Subtitulado en español") must
 // not be read as AUDIO evidence: `esp`/`eng`/`spanish` inside them used to add
 // a phantom Spanish/English audio track.
@@ -190,6 +242,8 @@ export function detectLanguages(rawText: string, metadataHints: string[] = [], i
   // Audio detection runs on the text WITHOUT subtitle phrases.
   const audioText = combinedText.replace(REGEX_SUBTITLE_PHRASES, ' ');
   const audioRaw = String(rawText ?? '').replace(REGEX_SUBTITLE_PHRASES, ' ');
+  // Cyrillic evidence shared by the audio and subtitle steps below.
+  const ru = russianEvidence(combinedText);
 
   const audioSet = new Set<string>();
   const subtitlesSet = new Set<string>();
@@ -213,6 +267,16 @@ export function detectLanguages(rawText: string, metadataHints: string[] = [], i
     audioSet.add(ENGLISH_AUDIO_CANONICAL);
   }
 
+  // 3b. Cyrillic audio evidence (RuTracker's Russian labels: «испанский язык»,
+  // «звучание испанское», «на английском»…), under the same Latino-vs-Castellano
+  // rule as the Latin tags above.
+  if (ru.audioEs && (!audioSet.has(LATINO_AUDIO_CANONICAL) || REGEX_CAST_EXACT.test(audioText))) {
+    audioSet.add(SPANISH_AUDIO_CANONICAL);
+  }
+  if (ru.audioEn) {
+    audioSet.add(ENGLISH_AUDIO_CANONICAL);
+  }
+
   // 4. Handle Dual / Multi-Audio indicators
   if (inferDefaults && REGEX_DUAL.test(audioText)) {
     if (audioSet.has(SPANISH_AUDIO_CANONICAL) || audioSet.has(LATINO_AUDIO_CANONICAL)) {
@@ -228,6 +292,8 @@ export function detectLanguages(rawText: string, metadataHints: string[] = [], i
   if (REGEX_SUB_ES.test(combinedText) || REGEX_SUB_ES_BRACKET.test(combinedText)) subtitlesSet.add('Sub_ES');
   if (REGEX_SUB_LAT.test(combinedText) || REGEX_SUB_LAT_BRACKET.test(combinedText)) subtitlesSet.add('Sub_LAT');
   if (REGEX_SUB_EN.test(combinedText) || REGEX_SUB_EN_BRACKET.test(combinedText)) subtitlesSet.add('Sub_EN');
+  if (ru.subEs) subtitlesSet.add('Sub_ES');
+  if (ru.subEn) subtitlesSet.add('Sub_EN');
   if (REGEX_MULTI_SUB.test(combinedText)) subtitlesSet.add('Multi-Subs');
 
   if (REGEX_GENERIC_SUB.test(combinedText) && subtitlesSet.size === 0) {
@@ -235,16 +301,22 @@ export function detectLanguages(rawText: string, metadataHints: string[] = [], i
   }
 
   // 6. Default Fallback Logic when no explicit audio tag is in the title
+  //
+  // A purely Spanish tracker is Spanish even in EXPLICIT mode: adapters whose
+  // pages publish no language field at all pass the site marker as a hint
+  // (wolftorrent's live ficha has «Calidad/Tamaño» rows only) and depend on
+  // this rule to survive filterSpanishReleases. Explicit evidence from steps
+  // 1–5 always wins, so a «(Latino)» title stays Latino-only.
+  if (audioSet.size === 0 && REGEX_ES_TRACKERS.test(combinedText)) {
+    audioSet.add(SPANISH_AUDIO_CANONICAL);
+  }
   if (inferDefaults && audioSet.size === 0) {
-    // If from a purely Spanish tracker
-    if (REGEX_ES_TRACKERS.test(combinedText)) {
-      audioSet.add(SPANISH_AUDIO_CANONICAL);
-    } else {
-      // Check if release is explicitly tagged with another foreign language without English or Spanish
-      if (!REGEX_OTHER_FOREIGN.test(combinedText)) {
-        // Western / international releases on YTS, EZTV, 1337x, TPB, TorrentGalaxy default to English
-        audioSet.add(ENGLISH_AUDIO_CANONICAL);
-      }
+    // (An ES tracker already filled the set above, so this English default
+    // only runs for international sites.)
+    // Check if release is explicitly tagged with another foreign language without English or Spanish
+    if (!REGEX_OTHER_FOREIGN.test(combinedText)) {
+      // Western / international releases on YTS, EZTV, 1337x, TPB, TorrentGalaxy default to English
+      audioSet.add(ENGLISH_AUDIO_CANONICAL);
     }
   }
 

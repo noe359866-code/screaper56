@@ -925,3 +925,456 @@ marcado 🟢: esta ronda confirmó la cadena contra el markup de hoy.
   rebote de DLE).
 - Pager DLE real (`/series/page/2/` + "Adelante") seguido desde `.navigation`.
 - Higiene del pool: solo el par www/apex vivo.
+
+---
+
+# Profundización: mejortorrent (foco exclusivo)
+
+Fecha: 2026-09-29
+Verificación en vivo de TODA la cadena de mejortorrent sobre los mirrors reales
+(los probes locales del sandbox no tienen salida de red — fallan hasta
+example.com — así que la verificación se hizo contra el sitio directamente).
+
+## Estado real del pool (2026-09-29)
+
+| Dominio | Estado real |
+|---|---|
+| `www45.mejortorrent.eu` | 🟢 Vivo: 301 → `www46` (entry point con rotación) |
+| `www46.mejortorrent.eu` | 🟢 Vivo: plantilla legacy 2026 completa |
+| `mejortorrent.me` | 🟢 Vivo: plantilla WordPress; `/wp-json/wp/v2/posts` responde |
+| `mejortorrent.wtf` | 🟠 Cloudflare 1005 (ASN de salida baneado) — depende de la IP |
+| `mejortorrent.app` | 🔴 Cloudflare 522 (origin caído; puede volver) |
+| `www.mejortorrent.icu` | 🔴 NXDOMAIN |
+| `mejortorrent1.com` | 🔴 Aparcado (parking de anuncios → ww17.mejortorrent1.com) |
+| `mejortorrents.net` | 🔴 NXDOMAIN |
+| `mejortorrent.nz` | 🔴 NXDOMAIN |
+| `www50.mejortorrent.eu` | 🔴 NXDOMAIN (la rotación wwwNN ya no lo sirve) |
+
+## Qué se confirmó de la plantilla legacy (www45 → www46)
+
+- Las 7 rutas que recorre el crawler siguen vivas y con el formato exacto:
+  `/inicio`, `/peliculas-hd`, `/series-hd`, `/peliculas`, `/series`,
+  `/peliculas-4k`, `/documentales` — enlaces ABSOLUTOS al front activo (www46),
+  que es lo que `sameSiteHost` ya normaliza (fix 22).
+- Sin paginador estático en los listados (el pie va directo al banner WARP);
+  la ventana por fechas corta el recorrido — ya cubierto por los tests.
+- Ficha de película: descarga ESTÁTICA `/torrents/peliculas/<nombre>.torrent`
+  verificada con la ficha real `31040/Las-catadoras-del-Hitler`.
+- Ficha de serie: tabla `ID | Episodios | Fecha | Clave | Download` con un
+  `.torrent` por episodio — `td.eq(1)` = `1x01` calza con el parser de
+  episodios, verificado con `serie/130307` (3 episodios 1x01..1x03).
+- Filtros `letter/` y `genre/` presentes y jamás aceptados como fichas.
+
+## Qué se confirmó del modo WordPress (mejortorrent.me)
+
+- La API `/wp-json/wp/v2/posts?page=1` responde con `link` por post
+  (verificado con el post real `patrulla-nocturna`).
+- Las fichas publican `.torrent` estático en
+  `/wp-content/uploads/2026/09/<slug>-(torrentNN).torrent` del MISMO dominio →
+  lo acepta `isMejortorrentDownload` sin cambios.
+
+## Cambios (`src/crawlers/mejortorrent.ts`)
+
+- Pod del pool: fuera `www.mejortorrent.icu`, `mejortorrent1.com` (aparcado),
+  `mejortorrents.net`, `mejortorrent.nz` y `www50.mejortorrent.eu` (NXDOMAIN).
+  Dentro `www46.mejortorrent.eu` (front directo actual, sin hop de redirect).
+  El primer puesto sigue siendo `www45` (entry point con rotación, que es lo
+  que mockean los tests existentes); `wtf`/`app` quedan al final por si el
+  ASN ban o el origin 522 se levantan.
+- El probe de portada acepta `wp-content` además de `wp-json` y
+  `href=/pelicula|serie/`: la portada .me publica carteles en
+  `wp-content/uploads` y slugs sin `/pelicula/`, sin necesidad del link tag
+  wp-json. Es el mismo conjunto de marcas que ya usa `detectTemplate`.
+
+## Tests nuevos (suite 478/478)
+
+- Higiene del pool: primer mirror `www45`, fuera los 5 dominios muertos o
+  aparcados, dentro `www46` y `mejortorrent.me`, pool ≤ 6.
+- Portada WordPress que SOLO publica `wp-content` (sin link wp-json ni rutas
+  `/pelicula/`): los fronts .eu responden HTML sin marcas → el probe acepta
+  `.me`, la API lista los posts y el `.torrent` publicado se descarga con
+  bencode → record movie con el hash real.
+
+# Profundización: RuTracker — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Revisión de la cadena entera del crawler de RuTracker tras la ronda anterior
+(que fijó sesión, CAPTCHA y paginación). Esta ronda encontró y arregló el
+bug que dejaba muerta la búsqueda `испанский` de los defaults.
+
+## Estado real del pool (2026-09-29)
+
+- `rutracker.org` 🟢 y `rutracker.net` 🟢: índice de invitados completo
+  («Регистрация · Вход» + navegación `viewforum`/`viewtopic`) — re-verificado
+  hoy.
+- `rutracker.me` responde HTTP 500 (ayer no respondía); `rutracker.nl` no
+  responde hoy (ayer devolvía 500); `rutracker.cc` no responde. Los cinco
+  siguen en el pool a propósito: un 5xx o una respuesta sin red lo descarta
+  el probe (el fetch lanza antes de llegar a la validación) y el primer
+  dominio sano gana.
+- `tracker.php?nm=` de invitado sigue redirigiendo a `login.php?redirect=`
+  (acceso login-only, la corrida corre autenticada) — sin cambios.
+
+## El bug: `detectLanguages` no entendía ruso (cascada completa)
+
+- `RUTRACKER_DEFAULT_SEARCHES` incluye `испанский` y `LANG_HINT_PATTERN`
+  extrae hints `испанск` del cuerpo del post, pero
+  `detectLanguages('Фильм (2024) [WEB-DL] (испанский язык)')` devolvía
+  `{audio: [], subtitles: []}`: `src/utils/language.ts` tenía SOLO aliases
+  latinos (`spanish|castellano|…`), cero patrones cirílicos.
+- Cascada: el prefiltro de idioma descartaba todo título cirílico → el
+  término `испанский` no llegaba a pedir ni una página, y cualquier fila que
+  colaba moría después en `filterSpanishReleases` (`base.ts` →
+  `hasValidLanguageRelease`, que descarta `audio: []`).
+- `languageHintsFromBody` capturaba los hints cirílicos bien (2 snippets),
+  pero al volver por `detectLanguages` se parseaban a `[]`: la extracción
+  funcionaba, el parseo no.
+
+## Cambio principal (`src/utils/language.ts`)
+
+- `detectLanguages` reconoce ahora evidencia cirílica CON contexto:
+  - Audio: «испанский язык/дубляж», «звучание испанское», «оригинальный
+    звук: испанский», «на испанском» → `Spanish`; los análogos «английский»
+    → `English`. La regla latino-vs-castellano de las etiquetas latinas se
+    reutiliza en la rama cirílica.
+  - Subtítulos: «английские субтитры» / «субтитры: испанские» → `Sub_EN` /
+    `Sub_ES`, y esa redacción se excluye del scan de audio («английские
+    субтитры» no es audio inglés).
+  - Trampas evitadas a propósito: el adjetivo solo NO es evidencia
+    («испанская империя», «Русская версия» → `[]`) y «перевод с испанского»
+    nombra la FUENTE de un doblaje ruso (el audio que trae la release no es
+    español) → también `[]`.
+- Detalle que costó un debugging: `\w` en JS es ASCII-only, así que
+  «испанск\w*» no comía las declinaciones («испанский/испанские/испанского»).
+  Todas las ramas usan un sufijo `[\wа-яё]*`.
+
+## Cambio secundario (`src/crawlers/rutracker.ts`)
+
+- El probe de mirror exige MARCA + dialecto del foro vía
+  `looksLikeRutrackerForumPage()` (exportado): `rutracker` Y
+  (`viewtopic|viewforum|login.php|login_username`), con
+  `looksLikeBlockedPage` vetando antes. Antes,
+  `htmlMarkerValidator([/rutracker/i, …])` con `.some()` aceptaba cualquiera
+  de las dos marcas POR SEPARADO (riesgo latente: una 200-OK que no es el
+  foro — error/mantenimiento — podía resolver como mirror ganador). Verificado
+  en vivo: el índice de invitado de .org/.net trae ambas marcas, y un muro
+  de login trae `login.php`/`login_username`.
+- JSDoc del pool actualizado con los estados de 2026-09-29 (composición del
+  pool sin cambios).
+
+## Tests nuevos (suite 481/481)
+
+- `utils.test.js`: matriz de 11 casos cirílicos — audio con etiqueta, subs
+  ganando al audio, adjetivo solo, fuente de traducción, título ruso neutro.
+- `rutracker.test.js`: crawl completo con `RUTRACKER_SEARCH=испанский` — la
+  fila «(испанский язык, русские субтитры)» pide su ficha y produce
+  `audio: [Spanish]` mientras «Русская версия» sigue sin costar requests; y
+  el probe: marca+dialecto ✓, muro de login ✓, marca sola ✗, dialecto sin
+  marca ✗, challenge con ambas marcas ✗.
+
+# Profundización: wolftorrent / WolfMax4K — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Segunda pasada sobre la cadena completa de wolftorrent, con la evidencia en
+vivo del día. Ronda con DOS fallos graves que la ronda anterior no podía ver
+(sus fixtures de test usaban ids con dígitos y títulos «Castellano», así que
+la suite estaba verde mientras el sitio real se caía a la mitad).
+
+## Estado real del pool (2026-09-29)
+
+| Dominio de `DEFAULT_MIRRORS` | Estado real |
+|---|---|
+| `wolfmax4k.com` | 🟢 Único catálogo vivo: `/peliculas` 23.055 títulos / 961 páginas, `/series` 14.974 / 624, subidas del propio día |
+| `www.wolfmax4k.com` | 🟢 Redirige al apex (mismo catálogo; `isSameDomain` lo tolera) |
+| `wolftorrent.com` | 🟠 Placeholder «Próximamente» (sin catálogo; el probe lo rechaza) |
+| `wolftorrent.net` | 🔴 No responde |
+| `wolfmax4k.org` | 🔴 No responde |
+
+Sin cambios de composición: el orden ya arranca por el catálogo vivo.
+
+## Cadena verificada hoy (sin cambios de código)
+
+- **Listados**: ids slugless en TODAS las variantes de calidad (cada
+  variante es su propia ficha), sin enlace de paginación publicado (pager de
+  JS, protegido por dedup + `maxPages`), `www` → apex. El marcador del probe
+  (`href="/pelicula|[a-z0-9]`) está presente en el `/peliculas` en vivo.
+- **Ficha**: título en `h1`, campos en lista de definiciones `dt`/`dd` SIN
+  dos puntos («Calidad» → `dd` «HDRip»), botón **«Descargar torrent» sin
+  href** → el fallback de navegador sigue siendo load-bearing para la
+  mayoría de fichas (camino estático solo si el template expone `data-*`).
+  Enlaces de compartir (facebook/x/whatsapp) rechazados por
+  `wolfDownloadUrl` ✓.
+
+## Fix grave 1 — los ids SOLO-LETRA eran descartados (~mitad del catálogo)
+
+- `WOLF_ID_SEGMENT` exigía letras Y dígitos (muestras del fix-21:
+  `ryqb95`, `5se8eg`). El listado en vivo (2026-09-29) está lleno de ids
+  solo-letra: `rytkrd`, `rx3whk`, `rwtzzg`, `ucufem` (serie), `ucv3nr`
+  (episodio)… **32 de 69 ids únicos de la primera página de `/peliculas`
+  (~46%)** eran rechazados en silencio por `isWolfDetailPath` → ni siquiera
+  se pedía su ficha.
+- Ahora: `[a-z0-9]{4,20}` CON al menos una letra. Siguen rechazados los
+  digit-only (`/pelicula/2026`), los slugs con guiones
+  (`/pelicula/mortal-kombat-ii`) y las palabras de listado
+  (`/peliculas/estrenos` → `WOLF_LISTING_SEGMENTS`).
+
+## Fix grave 2 — `audio: []`: la ficha NO publica fila de idioma
+
+- La ficha en vivo solo tiene «Calidad/Tamaño/Añadido»; títulos como
+  «Normal»; los nombres de torrent de escena no garantizan etiqueta de
+  idioma. `html-catalog` construye el record con
+  `detectLanguages(context, [], false)` → `audio: []` →
+  `filterSpanishReleases` (`index.ts`) **descartaba cada record en
+  producción** («No Spanish/English records found to upsert»).
+- `REGEX_ES_TRACKERS` YA listaba `wolftorrent`… pero la regla vivía dentro
+  de `if (inferDefaults)` (step 6) y los adaptadores html-catalog llaman con
+  `inferDefaults=false` → el mecanismo «sitio puramente español ⇒ Spanish»
+  estaba cableado pero inalcanzable.
+- Arreglo en dos puntas:
+  - `language.ts`: la regla del tracker español se aplica TAMBIÉN en modo
+    explícito, solo cuando no hay evidencia (la evidencia explícita de los
+    pasos 1–5 gana: un título «(Latino)» sigue siendo SOLO Latino, sin
+    dual-tag). El default English sigue gated a `inferDefaults`.
+  - `wolftorrent.ts`: `wolfReleaseHints()` añade el marcador `wolftorrent`
+    a los hints (parseDetail Y el fallback de navegador de
+    `discoverDownloads`).
+
+## Fix 3 — «Calidad» sin dos puntos: el quality no llegaba al record
+
+- `spanishReleaseHints` exige `etiqueta:` con dos puntos; la ficha real
+  escribe `dt` «Calidad» + `dd` «1080p» sin nada entre ellos → el hint no
+  se extraía y `record.quality` quedaba null en la mayoría de fichas
+  (las de 720p/1080p/4K, que son la mayoría).
+- `wolfReleaseHints` canoniza las filas `dt`/`dd` con las etiquetas
+  conocidas (`Calidad`, `Idioma`, `Audio`, `Subtítulos`, `Formato`,
+  `Resolución`) a «Calidad: 1080p» → llega a `parseTorrentTitle`. Un
+  «HDRip» solo da quality null, consistente con el modelo resolution-only
+  de todo el proyecto.
+
+## Tests nuevos (suite 483/483)
+
+- `utils.test.js`: marcador de sitio en modo explícito (`wolftorrent` →
+  Spanish; «(Latino)» gana y NO se contamina con Spanish; sin marcador el
+  modo explícito sigue intacto).
+- `spanish-catalog.test.js`: e2e con la forma REAL de la ficha (h1 «Normal»,
+  `dt`/`dd` sin dos puntos, sin fila de idioma, torrent de escena sin
+  etiqueta) → `audio: ['Spanish']`, `quality: '1080p'` y
+  `filterSpanishReleases` acepta el record.
+- `crawler-fixes.test.js`: ids solo-letra aceptados (`rytkrd`, `rwtzzg`),
+  `/pelicula/2026` sigue rechazado.
+- `new-crawlers.test.js`: los hints del camino del navegador llevan el
+  marcador del sitio.
+
+## Incógnita abierta (sin cambios)
+
+- Sigue sin ser verificable sin Playwright real si el click del botón
+  «Descargar torrent» sirve el `.torrent` desde un CDN de OTRO dominio
+  (hoy `wolfDownloadUrl` lo rechazaría: sería el único caso que pierde
+  descargas). Todo lo demás de la cadena quedó fijado por tests.
+
+# Profundización: SinSitio — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Segunda pasada sobre la cadena DLE de sinsitio con evidencia en vivo del día
+(portada, ambas secciones, ficha de película clásica y ficha de serie). La
+ronda anterior (2026-09-28) había verificado ddlUrl/Referer/pager; esta
+encontró el mismo fallo de idioma que wolftorrent, con su caso en vivo.
+
+## Estado real del pool (2026-09-29)
+
+| Dominio | Estado real |
+|---|---|
+| `www.sinsitio.site` | 🟢 DLE completo: portada con subidas del día, `/dvdrip-bdrip/` y `/series/` vivos con pager publicado (`/series/page/2/` + «Adelante») |
+| `sinsitio.site` | 🟢 301 → www (mismo sitio; el par www/apex sigue intacto) |
+| `www.sinsitio.info` | 🔴 sin respuesta — sigue fuera |
+| `sinsitio.online` | 🔴 sin respuesta — sigue fuera |
+
+Sin cambios de composición: `[www.sinsitio.site, sinsitio.site]` sigue siendo
+el pool correcto.
+
+## Cadena verificada hoy
+
+- **Portada**: posts `/N-slug.html` frescos ✓ (marcador del probe presente).
+  El bloque de comentarios de la portada enlaza posts reales de otras
+  categorías (`/bluray/`, `/cine-clsico-de-todos-los-tiempos/`,
+  `/series-que-ya-son-clasicos/`, `/estrenos/`) — todos vídeo (template
+  `flat-cinema`), así que el parseo amplio no mete basura no-vídeo.
+- **Ficha de serie** (`/series/34972-crookhaven-t1.html`): UN post con **un
+  `ddlUrl.php` POR EPISODIO** (7 enlaces 1x1…1x7), cada uno con su
+  `name=Crookhaven%201xN%20Hdtv%20Xvid%20Castellano`. El bucle del parser
+  ya los recoge todos; la ronda anterior solo había mirado posts de
+  película (1 ddlUrl).
+- **Ficha de película** (`/cine-clsico-.../35920-…`): `name=El Rostro
+  Impenetrable 1961marlon Brando Mkv` — ver abajo, el caso del bug.
+- **Descarga**: el base64 sigue decodificando a
+  `index.php?do=download&id=N` público (ids actuales 67974…69715) y el
+  ping-pong sin Referer de DLE no cambió (el adaptador ya envía el Referer
+  de la ficha, fijado con test).
+
+## El bug: posts SIN ninguna etiqueta de idioma morían en el filtro
+
+- Evidencia en vivo (2026-09-29): la ficha clásica publica
+  `name=El Rostro Impenetrable 1961marlon Brando Mkv` — **ni el `h1`, ni el
+  `name=`, ni el cuerpo llevan Castellano/Latino/Inglés** — y los títulos de
+  listado de `/series/` («Crookhaven T1», «Possession T1») tampoco. El
+  idioma del sitio REAL solo aparece cuando el uploader lo escribe en el
+  `name=` («…Hdtv Xvid Castellano»), que es costumbre suya, no una
+  garantía de la plantilla.
+- Cascada (idéntica a wolftorrent): `html-catalog` construye con
+  `detectLanguages(context, [], false)` → `audio: []` →
+  `filterSpanishReleases` (`index.ts`) descartaba esos records en
+  producción. `sinsitio` YA estaba en `REGEX_ES_TRACKERS`, pero el
+  marcador no estaba en el contexto de ningún record.
+- **Fix**: `parseDetail` inyecta el marcador `sinsitio` en los hints
+  (`dedupeStrings([...spanishReleaseHints($), 'sinsitio'])`). Gracias al
+  hoist de la ronda wolftorrent, el marcador aplica también en modo
+  explícito y SOLO cuando no hay evidencia: un `name=` con «Castellano» o
+  «Latino» sigue mandando (la evidencia explícita gana, sin dual-tag).
+
+## Ruido observado (sin código a propósito)
+
+- El post-hilo «Haz Tu Pedido Aquí» (`/estrenos/19619-…`) se enlaza desde
+  la portada y los comentarios: cuesta UN fetch y no produce record (sin
+  ddlUrl). Filtrarlo exigiría reglas por slug — no vale la fragilidad.
+
+## Tests nuevos (suite 485/485)
+
+- `spanish-catalog.test.js`: e2e con la anatomía REAL de la ficha clásica
+  (h1 + `name=` sin idioma en ningún sitio) → `audio: ['Spanish']` y
+  `filterSpanishReleases` acepta (estaba en rojo: `audio: []`).
+- `spanish-catalog.test.js`: e2e de la ficha de serie en vivo — UN post, 2
+  episodios con sus propios `ddlUrl`/`name=` → 2 records, `season: [1,1]`,
+  `episode: [1,2]`, tipo `series`, audio Spanish.
+- Aserción actualizada: el e2e previo «language from ficha» ahora espera
+  `audio: ['Spanish']` (marcador) manteniendo `subtitles: ['Sub_ES']`
+  («Subtítulos: Español» explícito sigue ganando el slot de subtítulos).
+
+## Profundización: YTS + 1337x — ronda 3 (2026-09-29)
+
+Verificación en vivo de la cadena completa, día de la ronda:
+
+- **YTS**: `yts.gg/api/v2/list_movies.json` 🟢 (`status: ok`, movie_count
+  77479; `@meta.migration` sigue anunciando el cambio de base con sunset
+  2026-04-10 — **ya vencido** — y todo payload publica «Base URL moving to
+  movies-api.accel.li»). `movies-api.accel.li` 🟢 con catálogo idéntico
+  (mismos ids y URLs absolutas de yts.gg → el fix-26 del origen del payload
+  lo absorbe). `query_term=cidade` devuelve películas `language: "pt"`
+  (p. ej. «Cidade dos Homens», id 55761).
+- **1337x**: la portada `/` sigue siendo un hub «1337x Domains» sin
+  `table-list` ni `/torrent/` (el probe la rechaza correctamente);
+  `/popular-movies` 🟢 con tabla real cuyas filas enlazan
+  `/torrent/<id>/<slug>/` — **ambos markers presentes**; ficha de
+  «The Rush» (torrent/6727753) con la anatomía conocida: magnet con
+  trackers, campo `Language` del sitio (`English`), infohash impreso,
+  «Torrent Download» = `#` + torrage/btcache third-party.
+
+### Fix 1 — YTS: el pool arranca por la base oficial anunciada
+
+- `@meta.migration` declara sunset **2026-04-10** (pasado) y gg sigue
+  publicando el anuncio en cada payload; accel.li servía catálogo idéntico
+  en vivo. `DEFAULT_MIRRORS` pasa a
+  `[movies-api.accel.li, yts.gg, yts.mx, yts.lt, yts.am]`. El probe decide:
+  si accel.li cae, se rotación a gg como hasta ahora.
+
+### Fix 2 — Idioma: dos pasadas explícito/por-defecto en ambos crawlers
+
+- **Fallo en vivo**: `ytsLanguageHints('pt') → ['portuguese']` no es una
+  etiqueta de audio conocida ni está en `REGEX_OTHER_FOREIGN` (solo
+  `french|german|hindi|…|mandarin`), así que el default inglés etiquetaba
+  las películas `language: "pt"` como inglesas; el clearing previo
+  (`nativeLanguage && !langHints.length`) no actuaba porque los hints eran
+  no vacíos. En 1337x, la ficha con campo `Language: Italian` (valor del
+  formulario de subida) caía en el mismo default.
+- **Fix (idéntico en `yts.ts` y `leech1337x.ts`)**: dos pasadas —
+  pass 1 con `detectLanguages(..., false)` (solo evidencia explícita:
+  etiquetas del título + hints del campo); el pass 2 con default corre
+  SOLO cuando el campo estructurado (`movie.language` / `Language:`) está
+  ausente o la pass 1 ya produjo audio. Un campo no inglés/español con
+  título sin etiquetas → `audio: []` → descartado en el registro.
+- **Por qué NO se amplió `REGEX_OTHER_FOREIGN`**: cada palabra añadida
+  también vive en títulos de películas ENGLISH reales («The Italian Job»,
+  «Dutch») y acabaría descartándolas. La evidencia estructurada (campo del
+  API/ficha) es precisa y con blast radius cero para otros crawlers.
+
+### Fix 3 — 1337x: el probe exige AMBOS markers de listing
+
+- Los probes declaraban `[table-list, href…/torrent/]`, pero
+  `htmlMarkerValidator` acepta con `.some()` (cualquiera basta): una
+  página con UN marker (tabla vacía o enlace suelto) se aceptaba y
+  congelaba la rotación en el dialecto equivocado. Precedente: fix idéntico
+  en rutracker (`97cda74`).
+- **Fix**: `looksLike1337xListing` local exportado (`.every()` + veto
+  `looksLikeBlockedPage`), como en rutracker. `htmlMarkerValidator` NO se
+  toca: lo comparten 6 crawlers más (fuera del foco de la ronda).
+- El mock de auditoría de paginación ahora responde a la portada con un
+  listing realista (tabla + fila `/torrent/`), como la plantilla clásica.
+
+### Tests nuevos (suite 488/488, tsc limpio)
+
+- `existing-crawlers.test.js`: YTS `language: "pt"` → `audio: []` y
+  `hasValidLanguageRelease` descarta (estaba en rojo con `['English']`).
+- `existing-crawlers.test.js`: YTS pool con `movies-api.accel.li` primero
+  (estaba en rojo con `yts.gg`).
+- `existing-crawlers.test.js`: `looksLike1337xListing` — ambos markers ✓,
+  solo tabla ✗, solo enlaces ✗, hub ✗ (estaba en rojo: no exportado).
+- `existing-crawlers.test.js`: 1337x `Language: Italian` + título plano →
+  `audio: []`; guardas: campo `English` → `['English']`; `DUAL` + campo
+  `English` → conserva ambos tracks (los 3 escenarios en rojo antes).
+- `crawler-audit.test.js`: mock del probe de portada ahora sirve un
+  listing con fila `/torrent/` (necesario bajo el validator estricto).
+
+## Profundización: 1337x — ronda 4 (2026-09-30)
+
+Verificación en vivo de la cadena completa (solo 1337x):
+
+- **`1337x.la` 🟢 end-to-end**: `/sort-search/spanish/seeders/desc/1/`
+  (20 filas reales + paginador `>>` → `/desc/2/` misma ruta),
+  `/sort-search/dual%20audio/…` 🟢, `/popular-tv` 🟢, fichas de detalle
+  con la anatomía conocida (magnet con trackers, `Language` del sitio,
+  infohash impreso, «Torrent Download» = `#` + torrage/btcache).
+- **Exclusión XXX verificada en vivo**: la ficha de «Spanish Senoritas…
+  XXX» publica `Category: XXX` → `EXCLUDED_CATEGORY` la descarta antes de
+  cualquier otro análisis ✓ (no entró nada al índice).
+- **Pool (7 dominios)**: todos los mirrors canónicos sirven hoy una landing
+  de búsqueda o hub de dominios en `/` — sin markers —, así que **probe1
+  rechaza siempre y probe2 (`/popular-movies`) decide**: `1337xx.to`,
+  `1337x.st` (clásica con tamaño pegado `1.9 GB2376`), `x1337x.ws`,
+  `1337xxx.to` y `1337x.to` responden. **`1337x.to` se RECUPERÓ** del
+  «Bad category.» del 28: sus popular routes sirven listado real hoy.
+  `1337xto.to` — anunciado en los hubs como «newest alternative domain» —
+  sigue 404 (Apache) → la poda se mantiene. `1377x.to` sigue inalcanzable.
+  El anuncio del header de `.la` («1337x» → `www.13377x.com`) es una
+  landing SEO sin tabla ni `/torrent/` → el probe la rechaza, no entra.
+- **Paginación**: el paginador publicado de `dual audio`/`spanish` apunta
+  a `/sort-search/<término>/seeders/desc/<N>/` (misma ruta → gana sobre el
+  guess, como ya cubre el test del pager).
+
+### Fix — el badge ⭐ final no ensucia el título
+
+- **Fallo en vivo (2 instancias)**: filas y h1 imprimen
+  `Money.Heist.S04.COMPLETE.SPANISH.720p.NF.WEBRip.x264-GalaxyTV ⭐`
+  (el `dn=` del magnet lo arrastra), mientras el slug de la URL
+  (`…-x264-GalaxyTV/`) y la lista de archivos del propio torrent imprimen
+  el nombre sin estrella; segunda instancia `…Dual.YG⭐` con slug `…-YG/`.
+  Es un badge decorativo de 1337x, no parte del release: guardarlo ensuciaba
+  `title` y rompía el cruce de títulos con otras fuentes. Al final del
+  nombre también interfería con la detección de truncado (`...⭐` no
+  terminaba en `...`).
+- **Fix**: `stripDecoration()` quita `⭐`/`🌟` finales y se aplica en tres
+  puntos: título de fila (antes de `isBlockedTitle` y de la lógica de
+  truncado), heading de la ficha y el título final (cubre el fallback por
+  `displayName` del magnet).
+
+### Doc de pool (sin cambios de composición)
+
+- JSDoc de `DEFAULT_MIRRORS` y comentario del test de pool actualizados con
+  el estado del 2026-09-30 (recuperación de `.to`, 404 de `1337xto.to`,
+  comportamiento probe1-hub/probe2-decide).
+
+### Tests nuevos (suite 489/489, tsc limpio)
+
+- `existing-crawlers.test.js`: fila con `⭐` → `title` sin estrella; fila
+  truncada (`…GalaxyTV ...`) + h1 con estrella → resuelve al nombre completo
+  sin estrella (estaba en rojo: ambos conservaban `⭐`).
+- Test de pool re-titulado con la fecha de verificación de hoy; asserts de
+  membresía sin cambios.

@@ -4,7 +4,7 @@ import * as cheerio from 'cheerio';
 import { MAX_TORRENT_BYTES, MirrorSetup, rethrowIfBlockedOrRateLimited } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText, describeError, nextPaginationLink } from './support.js';
+import { cleanText, dedupeStrings, describeError, nextPaginationLink } from './support.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 
 /** Same-site download endpoints used by the Wolf/WolfMax4K templates. */
@@ -19,10 +19,38 @@ const WOLF_LISTING_SEGMENTS =
 const MAGNET_ATTRIBUTES = ['href', 'data-magnet', 'data-url', 'data-href', 'data-torrent', 'data-download', 'data-file'] as const;
 
 /**
- * A real WolfMax4K release id (`ryqb95`, `5se8eg`): short, letters AND digits,
- * no dashes. Slug-only or word-only segments never qualify.
+ * A real WolfMax4K release id (`ryqb95`, `5se8eg`, but also `rytkrd`): short,
+ * alnum, no dashes, and at least one letter. Requiring letters AND digits was
+ * wrong — the live listing (2026-09-29) is full of letter-only ids like
+ * `rytkrd`/`rx3whk`/`rwtzzg`, so the digit requirement silently dropped about
+ * half of every catalogue page. Digit-only paths (`/pelicula/2026`) and
+ * dashed slugs (`/pelicula/mortal-kombat-ii`) still never qualify.
  */
-const WOLF_ID_SEGMENT = /^(?=.*\d)(?=.*[a-z])[a-z0-9]{4,20}$/i;
+const WOLF_ID_SEGMENT = /^(?=[a-z0-9]{4,20}$)(?=.*[a-z])/i;
+
+/**
+ * Release hints for this template: the shared extraction, PLUS the ficha's
+ * `dt`/`dd` definition rows — the live template writes them WITHOUT the colon
+ * `spanishReleaseHints` requires («Calidad» `dd` «1080p»), so quality never
+ * reached the title parser — PLUS the site marker.
+ *
+ * The marker (`wolftorrent` ∈ REGEX_ES_TRACKERS) is what keeps the records
+ * alive: the live ficha publishes NO Idioma row at all, so without it every
+ * record reached `filterSpanishReleases` with `audio: []` and was discarded,
+ * even though the whole catalogue is «películas en español». Explicit
+ * evidence still wins in `detectLanguages`, so a «(Latino)» title stays
+ * Latino-only.
+ */
+function wolfReleaseHints($: cheerio.CheerioAPI): string[] {
+  const definition: string[] = [];
+  $('dt').each((_, el) => {
+    const label = cleanText($(el).text()).replace(/:$/, '');
+    if (!/^(?:idiomas?|audio|subt[ií]tulos?|calidad|formato|resoluci[oó]n)$/i.test(label)) return;
+    const value = cleanText($(el).next('dd').text());
+    if (value) definition.push(`${label}: ${value}`);
+  });
+  return dedupeStrings([...spanishReleaseHints($), ...definition, 'wolftorrent']);
+}
 
 /** Hosts compared without their `www.` prefix and across direct subdomains. */
 export function isSameDomain(urlA: string, urlB: string): boolean {
@@ -167,7 +195,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
     const downloads: CatalogDetail['downloads'] = [];
     const seenUrls = new Set<string>();
     // Hoisted: the ficha is document-wide, not per-download.
-    const releaseHints = spanishReleaseHints($);
+    const releaseHints = wolfReleaseHints($);
 
     $(DOWNLOAD_NODES).each((_, el) => {
       const node = $(el);
@@ -232,7 +260,7 @@ export class WolftorrentCrawler extends HtmlCatalogCrawler {
       const renderedHtml = await page.content();
       const rendered = this.parseDetail(renderedHtml, url);
       if (rendered.downloads.length) return rendered;
-      const renderedHints = spanishReleaseHints(cheerio.load(renderedHtml));
+      const renderedHints = wolfReleaseHints(cheerio.load(renderedHtml));
 
       const buttons = page.getByRole('button', { name: /^descargar(?: torrent)?$/i })
         .or(page.getByRole('link', { name: /^descargar(?: torrent)?$/i }));
