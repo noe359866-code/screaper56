@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-30T03:03:41.388Z",
-  "finishedAt": "2026-09-30T03:04:15.506Z",
+  "generatedAt": "2026-09-30T10:19:12.038Z",
+  "finishedAt": "2026-09-30T10:22:34.744Z",
   "providers": [
     {
       "slug": "peerflix",
@@ -103,11 +103,11 @@
     }
   ],
   "fixture": false,
-  "dryRunDb": true,
+  "dryRunDb": false,
   "total": 24,
   "movies": 22,
   "episodes": 2,
-  "totalStreams": 3041,
+  "totalStreams": 3050,
   "items": [
     {
       "id": "tt0111161",
@@ -408,8 +408,8 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0816692.json"
       },
-      "streamCount": 218,
-      "bestSeeders": 2081,
+      "streamCount": 221,
+      "bestSeeders": 1202,
       "qualities": [
         "1080p",
         "4K",
@@ -646,8 +646,8 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json"
       },
-      "streamCount": 93,
-      "bestSeeders": 2081,
+      "streamCount": 96,
+      "bestSeeders": 676,
       "qualities": [
         "1080p",
         "480p",
@@ -683,8 +683,8 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json"
       },
-      "streamCount": 96,
-      "bestSeeders": 2081,
+      "streamCount": 99,
+      "bestSeeders": 963,
       "qualities": [
         "1080p",
         "4K",
@@ -1077,15 +1077,15 @@
   ],
   "perProviderStats": {
     "peerflix": {
-      "streams": 362,
+      "streams": 361,
       "errors": 0
     },
     "torrentsdb": {
-      "streams": 2314,
+      "streams": 2315,
       "errors": 0
     },
     "torrentio": {
-      "streams": 1602,
+      "streams": 1610,
       "errors": 0
     },
     "piratebay": {
@@ -1093,15 +1093,16 @@
       "errors": 0
     },
     "ytztvio": {
-      "streams": 86,
+      "streams": 87,
       "errors": 2
     }
   },
   "db": {
-    "inserted": 2900,
+    "inserted": 0,
     "rejected": 0,
-    "failures": [],
-    "dryRun": true
+    "failures": [
+      "Supabase upsert failed: status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification (persisted=0/2908)"
+    ]
   },
-  "durationMs": 34118
+  "durationMs": 202706
 }

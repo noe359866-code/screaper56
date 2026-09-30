@@ -30,25 +30,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ce71e481b9dd1822433726c6ec018368333b25c6&dn=El%20club%20de%20la%20Lucha%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:ce71e481b9dd1822433726c6ec018368333b25c6&dn=El%20club%20de%20la%20Lucha%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -77,25 +77,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b37c6eb4f8501f2c820726bc957c3cec552e68ac&dn=El%20Club%20De%20La%20Lucha%20%5BBDRemux%201080p%5D%5BDTS-%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b37c6eb4f8501f2c820726bc957c3cec552e68ac&dn=El%20Club%20De%20La%20Lucha%20%5BBDRemux%201080p%5D%5BDTS-%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -123,25 +123,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:cad62718bbb175a5d9db35073f86727eaa34ec4d&dn=Fight%20Club%20(1999)%20%5B1080P%5D%5BCastellano%5D%5BVer-Peliculas-Online.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:cad62718bbb175a5d9db35073f86727eaa34ec4d&dn=Fight%20Club%20(1999)%20%5B1080P%5D%5BCastellano%5D%5BVer-Peliculas-Online.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -170,25 +170,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:bfbb633bbe12dda220e2cbd2d17eca853f0e5273&dn=El%20club%20de%20la%20lucha%20%5BFullBluRay%201080p%5D%5BCastellano%20DTS%205.1-Ingles%20DTS-HD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:bfbb633bbe12dda220e2cbd2d17eca853f0e5273&dn=El%20club%20de%20la%20lucha%20%5BFullBluRay%201080p%5D%5BCastellano%20DTS%205.1-Ingles%20DTS-HD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -246,25 +246,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:549c75d41c47b23adc1495d5f9af646597466e43&dn=El%20Club%20de%20la%20Lucha%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:549c75d41c47b23adc1495d5f9af646597466e43&dn=El%20Club%20de%20la%20Lucha%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 480p",
@@ -292,25 +292,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:4f8e8301515fdc2ce42d26b9a33e74aa0fc99b85&dn=El%20Club%20de%20la%20Lucha%5Bdvdrip%5D%5Bspanish%5D%5Bwww.lokotorrents.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:4f8e8301515fdc2ce42d26b9a33e74aa0fc99b85&dn=El%20Club%20de%20la%20Lucha%5Bdvdrip%5D%5Bspanish%5D%5Bwww.lokotorrents.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB+Torrentio 4K",
@@ -554,13 +554,13 @@
     },
     {
       "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
-      "title": "Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265",
+      "title": "Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-Galaxy",
       "infoHash": "daa4df9eba1fa381bfa29b85d3d7580c22a1c386",
       "fileIdx": 0,
       "language": null,
       "audioLangs": [],
       "quality": "1080p",
-      "seeders": 278,
+      "seeders": 266,
       "sizeBytes": 4305704714,
       "sizeLabel": null,
       "providers": [
@@ -600,7 +600,7 @@
         "udp://coppersurfer.tk:6969/announce",
         "udp://tracker.zer0day.to:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:daa4df9eba1fa381bfa29b85d3d7580c22a1c386&dn=Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:daa4df9eba1fa381bfa29b85d3d7580c22a1c386&dn=Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-Galaxy&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
       "name": "TorrentsDB+Torrentio 4K",
@@ -2808,31 +2808,6 @@
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Imdb top 263 movies hindi english gdrive",
-      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
-      "fileIdx": 65,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 2081,
-      "sizeBytes": 1986422374,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "1337x"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
-    },
-    {
-      "name": "Torrentio 1080p",
       "title": "Fight Club 1999 REMASTERED V2 1080p BluRay HEVC x265 5.1 BONE",
       "infoHash": "ce15d6802e66964bcb0d86e7cab13e0733ecd572",
       "fileIdx": 0,
@@ -2856,29 +2831,6 @@
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe",
-      "infoHash": "6ec04ceaaa652e95475793d36042f332367fddfe",
-      "fileIdx": null,
-      "language": null,
-      "audioLangs": [],
-      "quality": "1080p",
-      "seeders": 51,
-      "sizeBytes": 5368709120,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "1337x"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:6ec04ceaaa652e95475793d36042f332367fddfe&dn=Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe"
-    },
-    {
-      "name": "Torrentio 1080p",
       "title": "Fight Club 1999 10TH ANNIVERSARY EDITION 1080p 10bit BluRay 6CH …",
       "infoHash": "54202145f23bee7f0f9432b149bdd1bd6544bf9d",
       "fileIdx": 0,
@@ -2899,6 +2851,29 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:54202145f23bee7f0f9432b149bdd1bd6544bf9d&dn=Fight%20Club%201999%2010TH%20ANNIVERSARY%20EDITION%201080p%2010bit%20BluRay%206CH%20%E2%80%A6"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe",
+      "infoHash": "6ec04ceaaa652e95475793d36042f332367fddfe",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 24,
+      "sizeBytes": 5368709120,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6ec04ceaaa652e95475793d36042f332367fddfe&dn=Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe"
     },
     {
       "name": "Torrentio 1080p",
@@ -2947,6 +2922,54 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:71fee293dc117c48487029c6dcb5038d974a0295&dn=IMDB%20Top%20250%20-%202024%20Edition%20-%201080p%20BluRay%20eSubs%20jZQ"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Imdb top 263 movies hindi english gdrive",
+      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
+      "fileIdx": 65,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 1986422374,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Podziemny krąg (1999) MULTi.1080p.BluRay.x264.DTS.AC3-DENDA",
+      "infoHash": "8023ea6eaa2f74e14e9da480a0832af97fa27cc9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 18221398753,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8023ea6eaa2f74e14e9da480a0832af97fa27cc9&dn=Podziemny%20kr%C4%85g%20(1999)%20MULTi.1080p.BluRay.x264.DTS.AC3-DENDA"
     },
     {
       "name": "Torrentio 1080p",
@@ -3073,6 +3096,29 @@
     },
     {
       "name": "Torrentio",
+      "title": "El club de la lucha (1999) HDrip",
+      "infoHash": "b604bbde283d9854d9313929881ad244b49e25cf",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 2136746230,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b604bbde283d9854d9313929881ad244b49e25cf&dn=El%20club%20de%20la%20lucha%20(1999)%20HDrip"
+    },
+    {
+      "name": "Torrentio",
       "title": "Fanedit Collection",
       "infoHash": "72809a85f76227b01ea5110a57d0225114bc53c5",
       "fileIdx": 240,
@@ -3098,12 +3144,12 @@
       "name": "Torrentio 4K",
       "title": "Fight Club (1999) AI UHD - 10th Anniversary Edition + Extras",
       "infoHash": "be9d793cd7bdfee3b0b60afb8aa372087b0c84f8",
-      "fileIdx": 24,
+      "fileIdx": 16,
       "language": null,
       "audioLangs": [],
       "quality": "4K",
       "seeders": 6,
-      "sizeBytes": 171284890,
+      "sizeBytes": 257729495,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -3162,6 +3208,34 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:1a1e4f9fc4c81bebc199aa143fc5b161321ef9be&dn=Fight%20Club%20(1999)%20AI%20UHD%20-%2010th%20Anniversary%20Edition%20%2B%20Extras%20(PROPER)%20FIX"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Fight Club (1999)",
+      "infoHash": "7da52d5473e73707ea15a63019bb05563405cd5a",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 6968584438,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "x265"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7DA52D5473E73707EA15A63019BB05563405CD5A&dn=Fight%20Club%20(1999)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
     }
   ]
 }

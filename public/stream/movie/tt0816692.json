@@ -27,25 +27,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7656f70d19bace86bad4bbbd5ecf866d4a097337&dn=Interstellar%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:7656f70d19bace86bad4bbbd5ecf866d4a097337&dn=Interstellar%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -74,25 +74,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:1e1c47b9b5cbeb198b3084fec75c224126e99021&dn=Interstellar%20IMAX%20HDR%20%5B4K%20UHD%202160p%20HEVC%20X265%5D%5BBT2020%5D%5BVISIONPLUS%5D%5BDTS-5.1%20Castellano%20DTS-5.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:1e1c47b9b5cbeb198b3084fec75c224126e99021&dn=Interstellar%20IMAX%20HDR%20%5B4K%20UHD%202160p%20HEVC%20X265%5D%5BBT2020%5D%5BVISIONPLUS%5D%5BDTS-5.1%20Castellano%20DTS-5.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -121,25 +121,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:6b26132383b202125826657b30d20fbdacc625fb&dn=Interstellar%20%5B4K%20Remux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:6b26132383b202125826657b30d20fbdacc625fb&dn=Interstellar%20%5B4K%20Remux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -168,25 +168,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7ccfbda38595ab363087a9616569bb6a13aa9f74&dn=Interstellar%20%5BBDremux%201080%20px%5D%5BAC3%205.1%20Castellano-DTS-HD%20MA%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:7ccfbda38595ab363087a9616569bb6a13aa9f74&dn=Interstellar%20%5BBDremux%201080%20px%5D%5BAC3%205.1%20Castellano-DTS-HD%20MA%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix+TorrentsDB 1080p",
@@ -218,25 +218,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:078553e766d08d2667dbb3d86d4c5d346770e7b5&dn=Interstellar%20%5BBluRay%201080p%5D%5BAC3%205.1%20Spanish%20DTS%205.1-English%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:078553e766d08d2667dbb3d86d4c5d346770e7b5&dn=Interstellar%20%5BBluRay%201080p%5D%5BAC3%205.1%20Spanish%20DTS%205.1-English%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -264,25 +264,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7d96984e2155e2c21f1505826c38911f14867ebb&dn=Interstellar%20(2014)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:7d96984e2155e2c21f1505826c38911f14867ebb&dn=Interstellar%20(2014)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -310,25 +310,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b2bf98f9b9b4041ef0223610e1da0f7a7f84809d&dn=Interestelar%20%5BBluRay%5D%5BCastellano%5D%5Bwww.planetatorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b2bf98f9b9b4041ef0223610e1da0f7a7f84809d&dn=Interestelar%20%5BBluRay%5D%5BCastellano%5D%5Bwww.planetatorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -357,25 +357,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:c966afcf733d22df4266f4f613cede3e2f0de9c1&dn=Interstellar%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-Ingles%20DTS-HD%207.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:c966afcf733d22df4266f4f613cede3e2f0de9c1&dn=Interstellar%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-Ingles%20DTS-HD%207.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -404,25 +404,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b33e2f7dbc1df274ede8420fe3547bbfcba34158&dn=Interstellar%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b33e2f7dbc1df274ede8420fe3547bbfcba34158&dn=Interstellar%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -450,25 +450,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:a76a378050f6d0e9f27b716ae74f35be9a5950e1&dn=Interestelar%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:a76a378050f6d0e9f27b716ae74f35be9a5950e1&dn=Interestelar%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -496,25 +496,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:5a816ceab69ee54dd9809f93bc7493bc0681272d&dn=Interstellar%20(2014)%20BDRip%20XviD%20Castellano-NsN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:5a816ceab69ee54dd9809f93bc7493bc0681272d&dn=Interstellar%20(2014)%20BDRip%20XviD%20Castellano-NsN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -542,25 +542,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:82ce72ca77f84ba5efa542aece411703cfa2881d&dn=Interstellar%20(2014)%20BDrip%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:82ce72ca77f84ba5efa542aece411703cfa2881d&dn=Interstellar%20(2014)%20BDrip%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -589,25 +589,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:dad87387546401de331f61476a43879559ea0166&dn=Interstellar%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-DTS%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:dad87387546401de331f61476a43879559ea0166&dn=Interstellar%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-DTS%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -636,25 +636,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b06c601f7749906ca48f771223c22f12f3b471b8&dn=Interstellar%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b06c601f7749906ca48f771223c22f12f3b471b8&dn=Interstellar%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -682,25 +682,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:416af74a85bde2370674e2959b59eeed58b2cd56&dn=Interstellar%202014%20%5BBRrip%20X264%20MKV%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:416af74a85bde2370674e2959b59eeed58b2cd56&dn=Interstellar%202014%20%5BBRrip%20X264%20MKV%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -729,25 +729,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:4eda3bca96253b870bbb25fb4ca909893ee8c549&dn=Interstellar.2014.BDRIP.1080p.H265.Castellano.AC3.5.1.Ingles.AAC.5.1.Subs.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:4eda3bca96253b870bbb25fb4ca909893ee8c549&dn=Interstellar.2014.BDRIP.1080p.H265.Castellano.AC3.5.1.Ingles.AAC.5.1.Subs.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -776,25 +776,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:638a1d8b28a3389e66a03704bfebfab43fab3319&dn=Interstellar%202014%20(1080p%20HEVC%20Catala%20Castellano%20English)%20%5Bwww.tornado.cat%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:638a1d8b28a3389e66a03704bfebfab43fab3319&dn=Interstellar%202014%20(1080p%20HEVC%20Catala%20Castellano%20English)%20%5Bwww.tornado.cat%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -822,25 +822,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:5ccfc47fc65919cd79472af5af4c9490e04a52cf&dn=Interstellar%20(HDRip)%20(Elitetorrent.net).avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:5ccfc47fc65919cd79472af5af4c9490e04a52cf&dn=Interstellar%20(HDRip)%20(Elitetorrent.net).avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -868,25 +868,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7b08684336bca68fe465f5ad3f06e03a35a516e3&dn=Interstellar%20(2014)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:7b08684336bca68fe465f5ad3f06e03a35a516e3&dn=Interstellar%20(2014)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -914,25 +914,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:eafcccd08187f44dd97690e02e4647218af5d3fa&dn=Interstellar%20(2014)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.atomixHQ.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:eafcccd08187f44dd97690e02e4647218af5d3fa&dn=Interstellar%20(2014)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.atomixHQ.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -960,25 +960,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:3be194cb05dfd845269f849de5490a20c1ee4a4f&dn=Interstellar(www.elitetorrent2.net)(Castellano)(HDRip).avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:3be194cb05dfd845269f849de5490a20c1ee4a4f&dn=Interstellar(www.elitetorrent2.net)(Castellano)(HDRip).avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix+Torrentio 1080p",
@@ -1010,25 +1010,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:3fb3060253ac95dddd5bde9563a99153576ef4dd&dn=Interstellar%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:3fb3060253ac95dddd5bde9563a99153576ef4dd&dn=Interstellar%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix",
@@ -1056,25 +1056,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:5bf1f61da7adbffdc859b5c564a5549febdf590b&dn=Interstellar%20%5BHDTS%20Screener%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:5bf1f61da7adbffdc859b5c564a5549febdf590b&dn=Interstellar%20%5BHDTS%20Screener%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix",
@@ -1102,25 +1102,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:83e133df6ba664b6b4f440a09593e94b81ded0c3&dn=Interstellar%20%5BDVD%20Screener%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:83e133df6ba664b6b4f440a09593e94b81ded0c3&dn=Interstellar%20%5BDVD%20Screener%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix",
@@ -1148,25 +1148,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:69f7aba9242bf286bc351f71b9f7ffd0442ffb2f&dn=Interstellar%20%5BCam%20Rip%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:69f7aba9242bf286bc351f71b9f7ffd0442ffb2f&dn=Interstellar%20%5BCam%20Rip%5D%5BEspa%C3%B1ol%20Castellano%5D%5B2014%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -1194,25 +1194,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:43e5cf57c7ac70df38b749cabad5e00de2899ae5&dn=Interstellar(2014)%20BDRemux%202160%20%5BHDR10%5D%20ESP%20DD%205.1%20ENG%20DTS%20Master%205.1.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:43e5cf57c7ac70df38b749cabad5e00de2899ae5&dn=Interstellar(2014)%20BDRemux%202160%20%5BHDR10%5D%20ESP%20DD%205.1%20ENG%20DTS%20Master%205.1.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB+Torrentio 4K",
@@ -2154,7 +2154,7 @@
         "es"
       ],
       "quality": "4K",
-      "seeders": 511,
+      "seeders": 503,
       "sizeBytes": 4520453079,
       "sizeLabel": null,
       "providers": [
@@ -5962,6 +5962,31 @@
     },
     {
       "name": "Torrentio 4K",
+      "title": "Interstellar (2014) BluRay - 4K SDR - 2160p HQ - HEVC - [Tamil + Eng] - (DD+2.0 - 224Kbps) - 7.4GB - ESub",
+      "infoHash": "e4b82454158cfb2f53ec80edace0e0a4c7e08ef0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 44,
+      "sizeBytes": 8053063680,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e4b82454158cfb2f53ec80edace0e0a4c7e08ef0&dn=Interstellar%20(2014)%20BluRay%20-%204K%20SDR%20-%202160p%20HQ%20-%20HEVC%20-%20%5BTamil%20%2B%20Eng%5D%20-%20(DD%2B2.0%20-%20224Kbps)%20-%207.4GB%20-%20ESub"
+    },
+    {
+      "name": "Torrentio 4K",
       "title": "Interstellar (2014) BluRay - 4K SDR - 2160p HQ - HEVC - [Tamil +…",
       "infoHash": "0c5209438e8baab2d5f51f1ae87b6b20f6ebd7bd",
       "fileIdx": 0,
@@ -6033,6 +6058,29 @@
     },
     {
       "name": "Torrentio 4K",
+      "title": "Interstellar.2014.4K.UltraHD.BluRay.2160p.x264.DTS-HD.MA.5.1.AAC",
+      "infoHash": "4e01400cbaf903d5f4d8a5fab4428785fad1fa77",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 13,
+      "sizeBytes": 15923591250,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4e01400cbaf903d5f4d8a5fab4428785fad1fa77&dn=Interstellar.2014.4K.UltraHD.BluRay.2160p.x264.DTS-HD.MA.5.1.AAC"
+    },
+    {
+      "name": "Torrentio 4K",
       "title": "Interstellar.2014.1080p.UHD.BluRay.DD5.1.HDR.x265-TnP",
       "infoHash": "b1f1e42f85b0be5e91ee37bbedf94a1fcd14acb2",
       "fileIdx": null,
@@ -6079,63 +6127,13 @@
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Imdb top 263 movies hindi english gdrive",
-      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
-      "fileIdx": 98,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 2081,
-      "sizeBytes": 2426656522,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "1337x"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
-    },
-    {
-      "name": "Torrentio 1080p",
-      "title": "Interstellar (2014) BluRay - 1080p - x264 - [Tamil + Eng] - (DD+…",
-      "infoHash": "5852fa30d4a6cc90ba85389e3658d4760996753a",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 104,
-      "sizeBytes": 2748779069,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "TorrentGalaxy"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:5852fa30d4a6cc90ba85389e3658d4760996753a&dn=Interstellar%20(2014)%20BluRay%20-%201080p%20-%20x264%20-%20%5BTamil%20%2B%20Eng%5D%20-%20(DD%2B%E2%80%A6"
-    },
-    {
-      "name": "Torrentio 1080p",
       "title": "Interstellar 2014 IMAX 1080p BluRay HEVC x265 5 1 BONE",
       "infoHash": "77af86b82b2514aad0d91ce2599907579f263550",
       "fileIdx": 0,
       "language": null,
       "audioLangs": [],
       "quality": "1080p",
-      "seeders": 77,
+      "seeders": 110,
       "sizeBytes": 4284229878,
       "sizeLabel": null,
       "providers": [
@@ -6176,18 +6174,18 @@
       "magnetUrl": "magnet:?xt=urn:btih:951ee443d9b8614f745bd56aa68e2f957a90bcaf&dn=Interstellar%202014%20IMAX%201080p%20AV1%2010Bit%20DKong"
     },
     {
-      "name": "Torrentio 1080p",
-      "title": "Интерстеллар / Interstellar [2014 BDRemux 1080p] Dub + MVO + 2x AVO (Сербин Живов) + VO (Есарев) + Ukr + Sub Rus Eng + Original Eng",
-      "infoHash": "94487f2a5adb1d11c5a86c0eefac7101e940a4ae",
-      "fileIdx": 0,
+      "name": "Torrentio 4K",
+      "title": "Videos cosas",
+      "infoHash": "b78480949e8acea0135133ad162116947588c494",
+      "fileIdx": 299,
       "language": "en",
       "audioLangs": [
         "en",
-        "ru"
+        "es"
       ],
-      "quality": "1080p",
-      "seeders": 44,
-      "sizeBytes": 55523189719,
+      "quality": "4K",
+      "seeders": 52,
+      "sizeBytes": 6055903887,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -6196,36 +6194,35 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "Rutracker"
+        "Wolfmax4k"
       ],
-      "trackers": [
-        "http://bt4.t-ru.org/ann?magnet",
-        "udp://tracker.opentrackr.org:1337/announce",
-        "udp://open.stealth.si:80/announce",
-        "udp://open.demonii.com:1337/announce",
-        "udp://tracker.skynetcloud.site:6969/announce",
-        "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
-        "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
-        "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
-        "udp://tracker.bittor.pw:1337/announce",
-        "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
-        "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
-        "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce",
-        "udp://opentor.net:6969",
-        "http://bt.t-ru.org/ann?magnet",
-        "http://bt2.t-ru.org/ann?magnet",
-        "http://bt3.t-ru.org/ann?magnet"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b78480949e8acea0135133ad162116947588c494&dn=Videos%20cosas"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Interstellar (2014) BluRay - 1080p - x264 - [Tamil + Eng] - (DD+…",
+      "infoHash": "5852fa30d4a6cc90ba85389e3658d4760996753a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:94487f2a5adb1d11c5a86c0eefac7101e940a4ae&dn=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B5%D0%BB%D0%BB%D0%B0%D1%80%20%2F%20Interstellar%20%5B2014%20BDRemux%201080p%5D%20Dub%20%2B%20MVO%20%2B%202x%20AVO%20(%D0%A1%D0%B5%D1%80%D0%B1%D0%B8%D0%BD%20%D0%96%D0%B8%D0%B2%D0%BE%D0%B2)%20%2B%20VO%20(%D0%95%D1%81%D0%B0%D1%80%D0%B5%D0%B2)%20%2B%20Ukr%20%2B%20Sub%20Rus%20Eng%20%2B%20Original%20Eng&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet"
+      "quality": "1080p",
+      "seeders": 50,
+      "sizeBytes": 2748779069,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5852fa30d4a6cc90ba85389e3658d4760996753a&dn=Interstellar%20(2014)%20BluRay%20-%201080p%20-%20x264%20-%20%5BTamil%20%2B%20Eng%5D%20-%20(DD%2B%E2%80%A6"
     },
     {
       "name": "Torrentio 1080p",
@@ -6371,6 +6368,31 @@
     },
     {
       "name": "Torrentio 1080p",
+      "title": "Imdb top 263 movies hindi english gdrive",
+      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
+      "fileIdx": 98,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2426656522,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
+    },
+    {
+      "name": "Torrentio 1080p",
       "title": "Interstellar.2014.1080p.IMAX.BluRay.DTS.HDMA5.1.H264-hallowed.DUAL-andrehsa",
       "infoHash": "b3445a7fd563f432a820868ed03785c8c427a5d7",
       "fileIdx": 0,
@@ -6510,6 +6532,29 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:306995463214adc16c9504162decc6f076bf04a4&dn=Interstellar%202014%201080p%20PTV%20WEB-DL%20AAC%202%200%20H%20264-PiRaTeS"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Anne Hathaway 22 Best Movies eSubs jQZ RARBG+",
+      "infoHash": "3aaf8394429cd3c0126a369de1e75a40a293aff7",
+      "fileIdx": 37,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 2823940997,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3aaf8394429cd3c0126a369de1e75a40a293aff7&dn=Anne%20Hathaway%2022%20Best%20Movies%20eSubs%20jQZ%20RARBG%2B"
     },
     {
       "name": "Torrentio 1080p",
@@ -6818,7 +6863,7 @@
         "en"
       ],
       "quality": "720p",
-      "seeders": 51,
+      "seeders": 33,
       "sizeBytes": 1331439862,
       "sizeLabel": null,
       "providers": [
@@ -6905,31 +6950,6 @@
       "magnetUrl": "magnet:?xt=urn:btih:00469af27016188867a663680c0eee3ed18f0cc5&dn=Interstellar%202014%3A%20Threesixtyp"
     },
     {
-      "name": "Torrentio",
-      "title": "Interstellar (2014) BR-Rip - x264 - [Tamil Dub] - (AAC 2.0) - 65…",
-      "infoHash": "b72fb7df020dc0c93b76c297abf1addbd0e4fdfa",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": null,
-      "seeders": 155,
-      "sizeBytes": 694304113,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "TorrentGalaxy"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:b72fb7df020dc0c93b76c297abf1addbd0e4fdfa&dn=Interstellar%20(2014)%20BR-Rip%20-%20x264%20-%20%5BTamil%20Dub%5D%20-%20(AAC%202.0)%20-%2065%E2%80%A6"
-    },
-    {
       "name": "Torrentio 4K",
       "title": "0peliculas series",
       "infoHash": "cca5d69debbb9dadf164d91ad6bbd8c04216f3be",
@@ -6939,7 +6959,7 @@
         "es"
       ],
       "quality": "4K",
-      "seeders": 60,
+      "seeders": 73,
       "sizeBytes": 2211908157,
       "sizeLabel": null,
       "providers": [
@@ -6978,6 +6998,31 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:658439fecd605a7f2da056f9956ccca84c225cb1&dn=Interstellar.2014.TRUEFRENCH.BRRip.x264.AC3-SVR.mkv"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Interstellar (2014) BR-Rip - x264 - [Tamil Dub] - (AAC 2.0) - 65…",
+      "infoHash": "b72fb7df020dc0c93b76c297abf1addbd0e4fdfa",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 19,
+      "sizeBytes": 694304113,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b72fb7df020dc0c93b76c297abf1addbd0e4fdfa&dn=Interstellar%20(2014)%20BR-Rip%20-%20x264%20-%20%5BTamil%20Dub%5D%20-%20(AAC%202.0)%20-%2065%E2%80%A6"
     },
     {
       "name": "Torrentio",

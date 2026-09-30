@@ -27,25 +27,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:5c6b758bc87fc252414b2acb49b1c01f123e2eb5&dn=Pulp%20Fiction%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:5c6b758bc87fc252414b2acb49b1c01f123e2eb5&dn=Pulp%20Fiction%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -74,25 +74,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:dbc69d742d307e99712af8f99aa552c367d7ff66&dn=Pulp%20Fiction%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:dbc69d742d307e99712af8f99aa552c367d7ff66&dn=Pulp%20Fiction%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -120,25 +120,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:24aecf0fb047f54c20e28fd0b596029639ff542d&dn=Pulp.Fiction.1994.2160p.UHDRemux.Dovi.HDR.ESP.ENG.DTS.HD.MA.5.1.SUBS.x265-Whisky135.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:24aecf0fb047f54c20e28fd0b596029639ff542d&dn=Pulp.Fiction.1994.2160p.UHDRemux.Dovi.HDR.ESP.ENG.DTS.HD.MA.5.1.SUBS.x265-Whisky135.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -167,25 +167,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:126a866c7bda3da6cecc8a62ba98d0e5a34a53d5&dn=Pulp%20fiction%20%5B4K%20Reescalado%202160p%5D%5BHDR10%5D%5BCustom%5D%5B%20AC3%205.1-DTS%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:126a866c7bda3da6cecc8a62ba98d0e5a34a53d5&dn=Pulp%20fiction%20%5B4K%20Reescalado%202160p%5D%5BHDR10%5D%5BCustom%5D%5B%20AC3%205.1-DTS%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -214,25 +214,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:8ed6cb7ff12ad928cf0658fcdce28486e53db510&dn=Pulp%20fiction%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:8ed6cb7ff12ad928cf0658fcdce28486e53db510&dn=Pulp%20fiction%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -261,25 +261,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:f8b9b1b87e724be81cdccee9fb5866d41f4f4ecc&dn=Pulp%20Fiction%20%5BBDremux%201080p%5D%5BDTS-HD%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:f8b9b1b87e724be81cdccee9fb5866d41f4f4ecc&dn=Pulp%20Fiction%20%5BBDremux%201080p%5D%5BDTS-HD%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -307,25 +307,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:e709b9bc0f1ecd5d5e4b4933138a7dd87bce7114&dn=Pulp%20Fiction%20(1994)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:e709b9bc0f1ecd5d5e4b4933138a7dd87bce7114&dn=Pulp%20Fiction%20(1994)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix+Torrentio 1080p",
@@ -357,25 +357,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:efe22eaa981bc9f4687896767be3ea9571418df9&dn=Pulp%20Fiction%20%5BBDremux%201080p%5D%5BDTS-HD%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:efe22eaa981bc9f4687896767be3ea9571418df9&dn=Pulp%20Fiction%20%5BBDremux%201080p%5D%5BDTS-HD%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -403,25 +403,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:6d5d3741d13a11a38f79afff7f905bb0cc749690&dn=Pulp%20fiction%20(1994)%20BDRemux%201080p%20ESP%20ENG%20DTS-HD%20MA%205.1%20x264%20-%20EML%20HDTeam%20.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:6d5d3741d13a11a38f79afff7f905bb0cc749690&dn=Pulp%20fiction%20(1994)%20BDRemux%201080p%20ESP%20ENG%20DTS-HD%20MA%205.1%20x264%20-%20EML%20HDTeam%20.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -481,25 +481,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:abd2bd0eca80dc2c2a2b5a746568496412ab33de&dn=Pulp%20Fiction%20(1994).BDrip%201080p%20(Spanish-English%2BSubs).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:abd2bd0eca80dc2c2a2b5a746568496412ab33de&dn=Pulp%20Fiction%20(1994).BDrip%201080p%20(Spanish-English%2BSubs).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -528,25 +528,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:acfdf254f5834410f8ae901a516a438ff1d80222&dn=Pulp%20Fiction%20(1994)%20BDRip.1080p.H264.Castellano.Ingles.AC3.5.1.Subt.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:acfdf254f5834410f8ae901a516a438ff1d80222&dn=Pulp%20Fiction%20(1994)%20BDRip.1080p.H264.Castellano.Ingles.AC3.5.1.Subt.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -574,25 +574,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:6acb3f6fd0cd680e6b853b474f0c0372470410b8&dn=Pulp%20Fiction%20(1994)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.nucleohd.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:6acb3f6fd0cd680e6b853b474f0c0372470410b8&dn=Pulp%20Fiction%20(1994)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.nucleohd.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -621,25 +621,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:07f4dbe5174ac00a8ea9a0803e325048b2ec831a&dn=Pulp%20Fiction%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:07f4dbe5174ac00a8ea9a0803e325048b2ec831a&dn=Pulp%20Fiction%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 480p",
@@ -667,25 +667,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:021fd671ad77d76288acae525831481700dc5a27&dn=Pulp%20Fiction%20%5BDVDRIP%5D%5BSpanish%20%5D.%5Bwww.TorrentMas.org%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:021fd671ad77d76288acae525831481700dc5a27&dn=Pulp%20Fiction%20%5BDVDRIP%5D%5BSpanish%20%5D.%5Bwww.TorrentMas.org%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB+Torrentio 4K",
@@ -754,8 +754,8 @@
         "Ytztvio"
       ],
       "externalProviders": [
-        "knaben",
         "YTS",
+        "knaben",
         "ThePirateBay",
         "x265"
       ],
@@ -2061,8 +2061,8 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "ThePirateBay",
-        "knaben"
+        "knaben",
+        "ThePirateBay"
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:ccfe1209f14bc1bdcc5e9dd8611e8405e5ab83f9&dn=Pulp%20Fiction%201994%201080p%20PMTP%20WEB-DL%20DDP%205%201%20H%20264-PiRaTeS"
@@ -2504,8 +2504,8 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "knaben",
-        "ThePirateBay"
+        "ThePirateBay",
+        "knaben"
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:49db6f2f06b5457ad3495dc6d331678dd012aa6c&dn=Pulp.Fiction.1994.1080p.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN"
@@ -2875,7 +2875,7 @@
     },
     {
       "name": "TorrentsDB+Ytztvio 720p",
-      "title": "Pulp Fiction (1994) 720p BrRip x264 - 750MB - YIFY",
+      "title": "Pulp Fiction (1994) 720p BrRip x264 - 750MB -YIFY",
       "infoHash": "d55f1e840f1bd6576ead67a4d04e5d6ea294414b",
       "fileIdx": 3,
       "language": null,
@@ -2893,8 +2893,8 @@
         "Ytztvio"
       ],
       "externalProviders": [
-        "ThePirateBay",
         "knaben",
+        "ThePirateBay",
         "x264"
       ],
       "trackers": [
@@ -3016,6 +3016,31 @@
         "udp://tracker.zer0day.to:1337/announce"
       ],
       "magnetUrl": "magnet:?xt=urn:btih:178380dcf8a6606377477f0da20796dbfa7335d0&dn=Pulp.Fiction.1994.720p.BluRay.900MB.x264-GalaxyRG&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2970%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 720p",
+      "title": "Pulp.Fiction.1994.720p.10bit.BluRay.6CH.x265.HEVC",
+      "infoHash": "1b5b312a6ac241e780d03235ee97dd3c7e013179",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 15,
+      "sizeBytes": 1879048192,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:1b5b312a6ac241e780d03235ee97dd3c7e013179&dn=Pulp.Fiction.1994.720p.10bit.BluRay.6CH.x265.HEVC"
     },
     {
       "name": "TorrentsDB+Torrentio 720p",
@@ -3640,29 +3665,29 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
         "udp://opentor.net:6969",
         "http://bt2.t-ru.org/ann?magnet",
         "http://bt3.t-ru.org/ann?magnet",
         "http://bt4.t-ru.org/ann?magnet"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:a69e225a16eb69d617f9160c188e72d7f028dc1d&dn=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D1%87%D1%82%D0%B8%D0%B2%D0%BE%20%2F%20Pulp%20Fiction%20%5B1994%20BDRip%201080p%5D%20%5BPOL%5D%20Dub%20%2B%204x%20MVO%20(West%20Video%20%D0%9D%D0%A2%D0%92%20%D0%9E%D0%A0%D0%A2%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80)%20%2B%204x%20AVO%20(%D0%9F%D1%83%D1%87%D0%BA%D0%BE%D0%B2%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%20%D0%93%D0%BE%D1%80%D1%87%D0%B0%D0%BA%D0%BE%D0%B2)%20%2B%202x%20Ukr%20%2B%20Original%20Eng%20%2B%20S&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+      "magnetUrl": "magnet:?xt=urn:btih:a69e225a16eb69d617f9160c188e72d7f028dc1d&dn=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D1%87%D1%82%D0%B8%D0%B2%D0%BE%20%2F%20Pulp%20Fiction%20%5B1994%20BDRip%201080p%5D%20%5BPOL%5D%20Dub%20%2B%204x%20MVO%20(West%20Video%20%D0%9D%D0%A2%D0%92%20%D0%9E%D0%A0%D0%A2%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80)%20%2B%204x%20AVO%20(%D0%9F%D1%83%D1%87%D0%BA%D0%BE%D0%B2%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B8%D0%B2%D0%BE%D0%B2%20%D0%93%D0%BE%D1%80%D1%87%D0%B0%D0%BA%D0%BE%D0%B2)%20%2B%202x%20Ukr%20%2B%20Original%20Eng%20%2B%20S&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
     },
     {
       "name": "Torrentio 1080p",
@@ -3709,29 +3734,6 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:e829ff6af7a15c6424f0d7ff40b95b482a3a0a98&dn=Pulp.Fiction.1994.1080p.BluRay.AVC.DTS-HD.MA.5.1-FGT"
-    },
-    {
-      "name": "Torrentio 720p",
-      "title": "Pulp.Fiction.1994.720p.10bit.BluRay.6CH.x265.HEVC",
-      "infoHash": "1b5b312a6ac241e780d03235ee97dd3c7e013179",
-      "fileIdx": 0,
-      "language": null,
-      "audioLangs": [],
-      "quality": "720p",
-      "seeders": 15,
-      "sizeBytes": 1879048192,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "ThePirateBay"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:1b5b312a6ac241e780d03235ee97dd3c7e013179&dn=Pulp.Fiction.1994.720p.10bit.BluRay.6CH.x265.HEVC"
     },
     {
       "name": "Torrentio 720p",

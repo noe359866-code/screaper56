@@ -12,8 +12,8 @@
     "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json",
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json"
   },
-  "streamCount": 96,
-  "bestSeeders": 2081,
+  "streamCount": 99,
+  "bestSeeders": 963,
   "qualities": [
     "1080p",
     "4K",
@@ -63,25 +63,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:83f710861a1a33088d6d5067656b98c6b13044fe&dn=Salvar%20al%20Soldado%20Ryan%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano%20True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:83f710861a1a33088d6d5067656b98c6b13044fe&dn=Salvar%20al%20Soldado%20Ryan%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano%20True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -110,25 +110,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:35169d4076f3a7673f800fbb1bd6fec0ee1da803&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5B4Kmicro%202160p%5D%5BHDR10%5D%5BCastellano-%20DTS-HD%207.1-AC3%205.1-Ingles%20TrueHD%207.1%2BSubs%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:35169d4076f3a7673f800fbb1bd6fec0ee1da803&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5B4Kmicro%202160p%5D%5BHDR10%5D%5BCastellano-%20DTS-HD%207.1-AC3%205.1-Ingles%20TrueHD%207.1%2BSubs%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -157,25 +157,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:5de089ff5067e4cd1b54b0f60acf641cf2c72b1e&dn=Salvar%20al%20soldado%20Ryan%20%5B4K%20UHDrip%202160p%5D%5BHDR10%5D%5BDTS-HD%207.1-AC3%205.1-%20Castellano-True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:5de089ff5067e4cd1b54b0f60acf641cf2c72b1e&dn=Salvar%20al%20soldado%20Ryan%20%5B4K%20UHDrip%202160p%5D%5BHDR10%5D%5BDTS-HD%207.1-AC3%205.1-%20Castellano-True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -203,25 +203,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:06ff01f8001cabea9d969fc7f3d1e1515fbb42a6&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20BluRay%202160p%20ESP-ENG%20DDP%205.1%20Subs%20HDR%20HEVC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:06ff01f8001cabea9d969fc7f3d1e1515fbb42a6&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20BluRay%202160p%20ESP-ENG%20DDP%205.1%20Subs%20HDR%20HEVC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 4K",
@@ -250,25 +250,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:d961cc866a3382a263d03c4ef2cdc7217143a613&dn=Salvar%20al%20soldado%20Ryan%20%5B4K%20UHDremux%202160p%5D%5BHDR10%5D%5BDTS-HD%207.1-AC3%205.1-%20Castellano-True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:d961cc866a3382a263d03c4ef2cdc7217143a613&dn=Salvar%20al%20soldado%20Ryan%20%5B4K%20UHDremux%202160p%5D%5BHDR10%5D%5BDTS-HD%207.1-AC3%205.1-%20Castellano-True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -297,25 +297,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:2725835f0ed5205a6e7b05adbe60beace2ab99a1&dn=Salvar%20al%20soldado%20Ryan%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-Ingles%20DTS%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:2725835f0ed5205a6e7b05adbe60beace2ab99a1&dn=Salvar%20al%20soldado%20Ryan%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-Ingles%20DTS%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -344,25 +344,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ae89818a19f4c2fb7ff2462572634b1df58498d4&dn=Salvar%20al%20Soldado%20Ryan%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:ae89818a19f4c2fb7ff2462572634b1df58498d4&dn=Salvar%20al%20Soldado%20Ryan%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -390,25 +390,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:fb3ea706ecc2b9687a38f742f489cbd722ba9784&dn=Saving%20Private%20Ryan%20(1998)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:fb3ea706ecc2b9687a38f742f489cbd722ba9784&dn=Saving%20Private%20Ryan%20(1998)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -436,25 +436,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:691460f832ed4750c65cbbf822bba67ae3d1667b&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBDRip%201080p%20x265%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:691460f832ed4750c65cbbf822bba67ae3d1667b&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBDRip%201080p%20x265%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -482,25 +482,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:cded6b7116dbfa89ec6cd7aecdbd33e47985fba1&dn=Salvar%20al%20soldado%20Ryan%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D%5B1998%5D%5Bwww.descargas2020.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:cded6b7116dbfa89ec6cd7aecdbd33e47985fba1&dn=Salvar%20al%20soldado%20Ryan%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D%5B1998%5D%5Bwww.descargas2020.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -529,25 +529,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b7b46d4503eebbab8e1bc9a8b246fd9645fbd861&dn=Salvar%20al%20Soldado%20Ryan%20%5BBluRay%201080p%5D%5BAC3%205.1%20Espa%C3%B1ol%20Castellano%20DTS%20English%2BSubs.Es-En%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b7b46d4503eebbab8e1bc9a8b246fd9645fbd861&dn=Salvar%20al%20Soldado%20Ryan%20%5BBluRay%201080p%5D%5BAC3%205.1%20Espa%C3%B1ol%20Castellano%20DTS%20English%2BSubs.Es-En%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -575,25 +575,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:34df4abeea9f9bfda365b35f78aeeeba3fd35c81&dn=Salvar%20al%20soldado%20Ryan%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:34df4abeea9f9bfda365b35f78aeeeba3fd35c81&dn=Salvar%20al%20soldado%20Ryan%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -622,25 +622,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ea1a9918ba9ad822d70f00b3cc912189af2f0a8a&dn=Salvar%20al%20soldado%20Ryan%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-DTS-MA%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:ea1a9918ba9ad822d70f00b3cc912189af2f0a8a&dn=Salvar%20al%20soldado%20Ryan%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-DTS-MA%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -668,25 +668,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:2be9da9cfc967111af12c2289f2771174ade3642&dn=Salvar%20al%20soldado%20ryan%20(1998).HDrip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:2be9da9cfc967111af12c2289f2771174ade3642&dn=Salvar%20al%20soldado%20ryan%20(1998).HDrip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -714,25 +714,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:216b7048b667fe5aea7c4b53da1463224124f4f0&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.nucleohd.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:216b7048b667fe5aea7c4b53da1463224124f4f0&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.nucleohd.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -760,25 +760,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:838e2d2d3bbffc9c7a0973e3dfee7e7bbb9c807e&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:838e2d2d3bbffc9c7a0973e3dfee7e7bbb9c807e&dn=Salvar%20al%20soldado%20Ryan%20(1998)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
@@ -807,25 +807,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ca7fd47ea96645a0824dae3e90b2b3cd4b86916b&dn=Salvar%20al%20soldado%20Ryan%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:ca7fd47ea96645a0824dae3e90b2b3cd4b86916b&dn=Salvar%20al%20soldado%20Ryan%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
@@ -854,25 +854,25 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.gmi.gd:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://tracker.ducks.party:1984/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "udp://tracker.peerfect.org:6969/announce",
-        "udp://tracker.opentrackr.com:6969/announce"
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:90c6a4263113071a02834050ff08eae023dacde7&dn=Salvar%20al%20soldado%20Ryan%20%5BMicroHD%5D%5B720%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:90c6a4263113071a02834050ff08eae023dacde7&dn=Salvar%20al%20soldado%20Ryan%20%5BMicroHD%5D%5B720%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB 4K",
@@ -1010,7 +1010,7 @@
       "magnetUrl": "magnet:?xt=urn:btih:3e22feb3d7b3f29311d05ac87d104a1b9c7a391c&dn=Saving%20Private%20Ryan%20(1998)%20(2160p%20BluRay%20x265%20HEVC%2010bit%20AAC%207.1%20Joy)%20%5BUTR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
-      "name": "TorrentsDB+Torrentio 4K",
+      "name": "TorrentsDB 4K",
       "title": "Saving.Private.Ryan.1998.2160p.10bit.HDR.BluRay.8CH.x265.HEVC-PSA",
       "infoHash": "2cad22981af0060bbfa103489b8c491cba0fe216",
       "fileIdx": 2,
@@ -1021,16 +1021,13 @@
       "sizeBytes": 7022271529,
       "sizeLabel": null,
       "providers": [
-        "torrentsdb",
-        "torrentio"
+        "torrentsdb"
       ],
       "providerNames": [
-        "TorrentsDB",
-        "Torrentio"
+        "TorrentsDB"
       ],
       "externalProviders": [
-        "rargb",
-        "ThePirateBay"
+        "rargb"
       ],
       "trackers": [
         "http://mgtracker.org:2710/announce",
@@ -2253,7 +2250,7 @@
       "magnetUrl": "magnet:?xt=urn:btih:8cff0d462368dca64d8e1785ccd559ed28cb959b&dn=Saving.Private.Ryan.1998.720p.BluRay.x264-Mkvking&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
-      "name": "TorrentsDB+Ytztvio 720p",
+      "name": "TorrentsDB+Torrentio+Ytztvio 720p",
       "title": "Saving Private Ryan (1998) 720p BrRip x264 - YIFY",
       "infoHash": "71dfc2b9b93b984520ff5fa66f2faf9f48dd174d",
       "fileIdx": 3,
@@ -2265,10 +2262,12 @@
       "sizeLabel": null,
       "providers": [
         "torrentsdb",
+        "torrentio",
         "ytztvio"
       ],
       "providerNames": [
         "TorrentsDB",
+        "Torrentio",
         "Ytztvio"
       ],
       "externalProviders": [
@@ -2639,6 +2638,29 @@
     },
     {
       "name": "Torrentio 4K",
+      "title": "Saving.Private.Ryan.1998.2160p.PMTP.WEB-DL.DDP5.1.DV.HDR.H.265.DUAL-EcK",
+      "infoHash": "6f2b60915540ed0eb6a376edd25656a400a2df4e",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 9,
+      "sizeBytes": 17748952351,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6f2b60915540ed0eb6a376edd25656a400a2df4e&dn=Saving.Private.Ryan.1998.2160p.PMTP.WEB-DL.DDP5.1.DV.HDR.H.265.DUAL-EcK"
+    },
+    {
+      "name": "Torrentio 4K",
       "title": "Спасти рядового Райана / Saving Private Ryan [1998 UHD BDRemux 2160p HDR10 Dolby Vision] 2x Dub + 6x MVO + 4x AVO + 2x VO + Dub (Ukr) + 2x MVO (Ukr) + Original (Eng) + Sub (Rus Ukr Eng)",
       "infoHash": "7279ceed577f3f24605895c34624114228b18e2e",
       "fileIdx": 0,
@@ -2817,6 +2839,29 @@
     },
     {
       "name": "Torrentio 4K",
+      "title": "Saving.Private.Ryan.1998.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos @nyone",
+      "infoHash": "c59136236e0f9cd5e0b303c2ab72d81598d36243",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 8,
+      "sizeBytes": 89968827433,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c59136236e0f9cd5e0b303c2ab72d81598d36243&dn=Saving.Private.Ryan.1998.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos%20%40nyone"
+    },
+    {
+      "name": "Torrentio 4K",
       "title": "Salvate il Soldato Ryan - Saving Private Ryan (1998) 2160p H265 10 bit ita eng AC3 5.1 sub ita eng Licdom.mkv",
       "infoHash": "ec7323e7ad3faf7df65ff87835ac80e79174c9c3",
       "fileIdx": 0,
@@ -2843,31 +2888,6 @@
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Imdb top 263 movies hindi english gdrive",
-      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
-      "fileIdx": 165,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 2081,
-      "sizeBytes": 2362232013,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "1337x"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
-    },
-    {
-      "name": "Torrentio 1080p",
       "title": "Grab a Tissue Pack - 30 Movies That Make Men Cry jZQ",
       "infoHash": "6dd5c9c7f2fce717bf8e5eee056530fd2304e072",
       "fileIdx": 106,
@@ -2888,29 +2908,6 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:6dd5c9c7f2fce717bf8e5eee056530fd2304e072&dn=Grab%20a%20Tissue%20Pack%20-%2030%20Movies%20That%20Make%20Men%20Cry%20jZQ"
-    },
-    {
-      "name": "Torrentio 1080p",
-      "title": "Tom Hanks Movie Collection",
-      "infoHash": "6c7eabb814d4678e7174e71ac2bbf2b969d2c28f",
-      "fileIdx": 38,
-      "language": null,
-      "audioLangs": [],
-      "quality": "1080p",
-      "seeders": 585,
-      "sizeBytes": 2362232013,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "MagnetDL"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:6c7eabb814d4678e7174e71ac2bbf2b969d2c28f&dn=Tom%20Hanks%20Movie%20Collection"
     },
     {
       "name": "Torrentio 1080p",
@@ -3035,6 +3032,31 @@
     },
     {
       "name": "Torrentio 1080p",
+      "title": "Imdb top 263 movies hindi english gdrive",
+      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
+      "fileIdx": 165,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2362232013,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
+    },
+    {
+      "name": "Torrentio 1080p",
       "title": "World War 2 On Film (New) : MP4 720p 1080p",
       "infoHash": "8361f8b1f1140509b4f4d016bffb02f71896710e",
       "fileIdx": 12,
@@ -3150,6 +3172,29 @@
     },
     {
       "name": "Torrentio 1080p",
+      "title": "The Steven Spielberg Collection (1971-2022) BDRip 1080p",
+      "infoHash": "911628538d6831c1c3ed0056d1642ab83b6bd6c4",
+      "fileIdx": 24,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 24620900024,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:911628538d6831c1c3ed0056d1642ab83b6bd6c4&dn=The%20Steven%20Spielberg%20Collection%20(1971-2022)%20BDRip%201080p"
+    },
+    {
+      "name": "Torrentio 1080p",
       "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS",
       "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
       "fileIdx": 198,
@@ -3170,6 +3215,29 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:9351bcf9e7437f706549f8b60314c39259c420b4&dn=IMDB%20TOP%20001-050%20BluRay%201080p%20x265%2010bit%20MNHD-FRDS"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Saving.Private.Ryan.1998.1080p.NF.WEB-DL.H264-ETRG[EtHD]",
+      "infoHash": "1a8102c4203bc6004261e943d3ac88006bf054e5",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 9459665469,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:1a8102c4203bc6004261e943d3ac88006bf054e5&dn=Saving.Private.Ryan.1998.1080p.NF.WEB-DL.H264-ETRG%5BEtHD%5D"
     },
     {
       "name": "Torrentio 1080p",
@@ -3249,31 +3317,6 @@
       "magnetUrl": "magnet:?xt=urn:btih:3069677432a085abe212bdfa01cd0b104ceeac66&dn=Saving%20Private%20Ryan%201998%20BDRip%201080p%20x264%20AC3%20English%20Latino%20Cas"
     },
     {
-      "name": "Torrentio 1080p",
-      "title": "[REUP] Saving Private Ryan (1998) 1080p 10bit Bluray x265 HEVC [Org DD 5.1 Hindi DD 5.1 English] MSubs ~ TombDoc",
-      "infoHash": "9e1f3c2d573916af8a2bd6314f5c9956c0e92594",
-      "fileIdx": 1,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 4,
-      "sizeBytes": 6506875453,
-      "sizeLabel": null,
-      "providers": [
-        "torrentio"
-      ],
-      "providerNames": [
-        "Torrentio"
-      ],
-      "externalProviders": [
-        "1337x"
-      ],
-      "trackers": [],
-      "magnetUrl": "magnet:?xt=urn:btih:9e1f3c2d573916af8a2bd6314f5c9956c0e92594&dn=%5BREUP%5D%20Saving%20Private%20Ryan%20(1998)%201080p%2010bit%20Bluray%20x265%20HEVC%20%5BOrg%20DD%205.1%20Hindi%20DD%205.1%20English%5D%20MSubs%20~%20TombDoc"
-    },
-    {
       "name": "Torrentio 4K",
       "title": "3D Peliculas",
       "infoHash": "ab330f1fc0e6e26c443c4b720bbf976540d98067",
@@ -3343,6 +3386,29 @@
       ],
       "trackers": [],
       "magnetUrl": "magnet:?xt=urn:btih:cc4ef8c0faf142b5cbc084c404c609bda296fe8a&dn=Private%20Snafu%20(U.S.%20Military%20cartoon%20collection%20in%20mp4%20format)%20%5BLando18%5D"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Official IMDb Top 250 Movies Collection 6/17/2011",
+      "infoHash": "4986ace2ee7a564508e0d5cfdde2d9018b8af942",
+      "fileIdx": 96,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 943120712,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4986ace2ee7a564508e0d5cfdde2d9018b8af942&dn=Official%20IMDb%20Top%20250%20Movies%20Collection%206%2F17%2F2011"
     }
   ]
 }
