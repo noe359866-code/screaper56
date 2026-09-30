@@ -1,7 +1,7 @@
 /**
  * Stremio addon sources used by the ingest Action.
  *
- * All four queryable addons expose the standard
+ * All five queryable addons expose the standard
  *   /stream/{movie|series}/{id}.json
  * contract. `tpb-adult-addon.click` is also registered by its manifest URL,
  * but its manifest exposes Porn catalogs (not IMDb movie/series streams), so
@@ -46,6 +46,16 @@ export const PROVIDERS = {
     name: 'ThePirateBay+',
     baseUrl: 'https://thepiratebay-plus.strem.fun',
     manifestUrl: 'https://thepiratebay-plus.strem.fun/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+  },
+  ytztvio: {
+    slug: 'ytztvio',
+    name: 'Ytztvio',
+    baseUrl: 'https://ytztvio.galacticcapsule.workers.dev',
+    manifestUrl: 'https://ytztvio.galacticcapsule.workers.dev/manifest.json',
     types: ['movie', 'series'],
     queryable: true,
     adult: false,

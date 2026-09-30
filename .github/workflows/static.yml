@@ -16,7 +16,7 @@ on:
       providers:
         description: "Addons Stremio (slugs separados por comas)"
         required: false
-        default: "peerflix,torrentsdb,torrentio,piratebay"
+        default: "peerflix,torrentsdb,torrentio,piratebay,ytztvio"
         type: string
 permissions:
   contents: write
@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   ingest:
-    name: "Fetch peerflix streams & UPSERT Supabase"
+    name: "Fetch Stremio streams & UPSERT Supabase"
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment:
@@ -58,7 +58,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
-          PROVIDERS: ${{ github.event.inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay' }}
+          PROVIDERS: ${{ github.event.inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
         run: node src/fetch.mjs
 
       - name: "Commit generated public/ back to repo"

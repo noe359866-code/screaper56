@@ -15,6 +15,7 @@ const ALL_PROVIDERS = [
   { slug: 'torrentsdb', name: 'TorrentsDB',      adult: false, default: true,  manifestUrl: 'https://torrentsdb.com/manifest.json', note: 'Agrega YTS, EZTV, 1337x, RARGB, Nyaa, TPB, Kat, TTL, Rutracker…' },
   { slug: 'torrentio',  name: 'Torrentio',       adult: false, default: true,  manifestUrl: 'https://torrentio.strem.fun/manifest.json', note: 'Agrega YTS, EZTV, RARGB, 1337x, TPB, TGx, MagnetDL, Nyaa, MejorTorrent…' },
   { slug: 'piratebay',  name: 'ThePirateBay+',   adult: false, default: true,  manifestUrl: 'https://thepiratebay-plus.strem.fun/manifest.json', note: 'TPB directo' },
+  { slug: 'ytztvio',    name: 'Ytztvio',          adult: false, default: true,  manifestUrl: 'https://ytztvio.galacticcapsule.workers.dev/manifest.json', note: 'YTS + EZTV' },
   { slug: 'tpbAdult',   name: 'TPB Adult',       adult: true,  default: false, manifestUrl: 'https://tpb-adult-addon.click/manifest.json', note: 'Solo catálogo Porn; su manifest no ofrece streams movie/series por IMDb, por eso no se mezcla en esta ingestada.' },
 ];
 
@@ -356,7 +357,7 @@ async function runIngest() {
     // 2. Trigger workflow_dispatch
     $('#ingest-status').textContent = 'Lanzando GitHub Action…';
     $('#run-progress-fill').style.width = '25%';
-    const providers = (state.settings.providers || []).join(',') || 'peerflix,torrentsdb,torrentio,piratebay';
+    const providers = (state.settings.providers || []).join(',') || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio';
     const dispatchStartedAt = Date.now();
     await ghApi(`/repos/${owner}/${repo}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
       method: 'POST',

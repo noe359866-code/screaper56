@@ -47,3 +47,18 @@ test('lee footer Torrentio sin asumir que es la última línea', () => {
   assert.equal(stream.externalProvider, 'YTS');
   assert.deepEqual(stream.languages, ['en']);
 });
+
+test('lee Ytztvio y conserva trackers del campo magnet', () => {
+  const stream = parseStremioStream({
+    name: '2160p',
+    title: 'The Shawshank Redemption (1994)\n👤100:59 💾6.91 GB ⚙️x265',
+    infoHash: 'c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6',
+    magnet: 'magnet:?xt=urn:btih:C3DA9A3DC2CE14D0D4FC0E87D1B2023502F8DCD6&dn=Shawshank&tr=udp://tracker.one:80&tr=https://tracker.two:443',
+  }, PROVIDERS.ytztvio);
+
+  assert.equal(stream.seeders, 100);
+  assert.equal(stream.sizeBytes, Math.round(6.91 * 1024 * 1024 * 1024));
+  assert.equal(stream.quality, '4K');
+  assert.deepEqual(stream.trackers, ['udp://tracker.one:80', 'https://tracker.two:443']);
+  assert.match(stream.magnetUrl, /^magnet:\?xt=urn:btih:/);
+});

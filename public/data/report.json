@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-30T02:37:59.607Z",
-  "finishedAt": "2026-09-30T02:37:59.655Z",
+  "generatedAt": "2026-09-30T02:43:32.095Z",
+  "finishedAt": "2026-09-30T02:43:32.150Z",
   "providers": [
     {
       "slug": "peerflix",
@@ -55,6 +55,19 @@
       "note": null
     },
     {
+      "slug": "ytztvio",
+      "name": "Ytztvio",
+      "baseUrl": "https://ytztvio.galacticcapsule.workers.dev",
+      "manifestUrl": "https://ytztvio.galacticcapsule.workers.dev/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
       "slug": "tpbAdult",
       "name": "TPB Adult",
       "baseUrl": "https://tpb-adult-addon.click",
@@ -71,13 +84,15 @@
     "peerflix",
     "torrentsdb",
     "torrentio",
-    "piratebay"
+    "piratebay",
+    "ytztvio"
   ],
   "requestedProviders": [
     "peerflix",
     "torrentsdb",
     "torrentio",
-    "piratebay"
+    "piratebay",
+    "ytztvio"
   ],
   "manifestOnlyProviders": [
     {
@@ -92,7 +107,7 @@
   "total": 24,
   "movies": 22,
   "episodes": 2,
-  "totalStreams": 384,
+  "totalStreams": 480,
   "items": [
     {
       "id": "tt0111161",
@@ -105,9 +120,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0111161.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0111161.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0111161.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0111161.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -122,7 +138,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -136,9 +153,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt1375666.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1375666.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1375666.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1375666.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -153,7 +171,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -167,9 +186,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0468569.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0468569.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0468569.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0468569.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -184,7 +204,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -198,9 +219,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0133093.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0133093.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0133093.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0133093.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -215,7 +237,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -229,9 +252,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0120737.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120737.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120737.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120737.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -246,7 +270,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -260,9 +285,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0167260.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0167260.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0167260.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0167260.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -277,7 +303,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -291,9 +318,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt1345836.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1345836.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1345836.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1345836.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -308,7 +336,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -322,9 +351,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0816692.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0816692.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0816692.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0816692.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -339,7 +369,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -353,9 +384,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -370,7 +402,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -384,9 +417,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0068646.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0068646.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0068646.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0068646.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -401,7 +435,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -415,9 +450,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0102926.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0102926.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0102926.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0102926.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -432,7 +468,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -446,9 +483,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0110912.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0110912.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0110912.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0110912.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -463,7 +501,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -477,9 +516,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0253474.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0253474.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0253474.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0253474.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -494,7 +534,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -508,9 +549,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -525,7 +567,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -539,9 +582,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt0120815.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120815.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120815.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -556,7 +600,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -570,9 +615,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -587,7 +633,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -601,9 +648,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt4154796.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt4154796.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt4154796.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt4154796.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -618,7 +666,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -632,9 +681,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt1745960.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1745960.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1745960.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1745960.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -649,7 +699,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -663,9 +714,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt15398776.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt15398776.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt15398776.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt15398776.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -680,7 +732,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -694,9 +747,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt1517268.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1517268.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1517268.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1517268.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -711,7 +765,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -725,9 +780,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt1160419.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1160419.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1160419.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1160419.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -742,7 +798,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -756,9 +813,10 @@
         "peerflix": "https://peerflix.mov/stream/movie/tt9362722.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt9362722.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt9362722.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt9362722.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -773,7 +831,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -787,9 +846,10 @@
         "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0944947:1:1.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -804,7 +864,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     },
     {
@@ -818,9 +879,10 @@
         "peerflix": "https://peerflix.mov/stream/series/tt0903747:1:1.json [fixture]",
         "torrentsdb": "https://torrentsdb.com/stream/series/tt0903747:1:1.json [fixture]",
         "torrentio": "https://torrentio.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json [fixture]"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0903747:1:1.json [fixture]"
       },
-      "streamCount": 16,
+      "streamCount": 20,
       "bestSeeders": 80,
       "qualities": [
         "1080p",
@@ -835,7 +897,8 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb"
+        "torrentsdb",
+        "ytztvio"
       ]
     }
   ],
@@ -856,13 +919,17 @@
     "piratebay": {
       "streams": 96,
       "errors": 0
+    },
+    "ytztvio": {
+      "streams": 96,
+      "errors": 0
     }
   },
   "db": {
-    "inserted": 384,
+    "inserted": 480,
     "rejected": 0,
     "failures": [],
     "dryRun": true
   },
-  "durationMs": 48
+  "durationMs": 55
 }

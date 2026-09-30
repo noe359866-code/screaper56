@@ -2,7 +2,7 @@
   "id": "com.example.peerflix-static",
   "version": "1.1.0",
   "name": "Peerflix Static (personal, aggregated)",
-  "description": "Agregador personal con Peerflix, TorrentsDB, Torrentio, ThePirateBay+. Responde solo a los IMDb IDs de tu watchlist.",
+  "description": "Agregador personal con Peerflix, TorrentsDB, Torrentio, ThePirateBay+, Ytztvio. Responde solo a los IMDb IDs de tu watchlist.",
   "catalogs": [],
   "resources": [
     {
@@ -69,6 +69,19 @@
       "name": "ThePirateBay+",
       "baseUrl": "https://thepiratebay-plus.strem.fun",
       "manifestUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "ytztvio",
+      "name": "Ytztvio",
+      "baseUrl": "https://ytztvio.galacticcapsule.workers.dev",
+      "manifestUrl": "https://ytztvio.galacticcapsule.workers.dev/manifest.json",
       "types": [
         "movie",
         "series"

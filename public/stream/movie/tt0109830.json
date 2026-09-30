@@ -423,6 +423,112 @@
         "udp://tracker.opentrackr.org:1337/announce"
       ],
       "magnetUrl": "magnet:?xt=urn:btih:9efa59dd6df3f49d7f6bf88d0f314eb0fa0ce5a3&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
+      "infoHash": "15e225aa7bbeed2165495bac89a36af27b56490c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:15e225aa7bbeed2165495bac89a36af27b56490c&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
+      "infoHash": "0503ec5569a772317bc329e1c11fd55e4d351804",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0503ec5569a772317bc329e1c11fd55e4d351804&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
+      "infoHash": "3b4aa926a3a59c3114553020f87c48085ed36676",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3b4aa926a3a59c3114553020f87c48085ed36676&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
+      "infoHash": "fda699a5fcd7f36c55f43411bdb9c8ea103d9db8",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fda699a5fcd7f36c55f43411bdb9c8ea103d9db8&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
     }
   ]
 }

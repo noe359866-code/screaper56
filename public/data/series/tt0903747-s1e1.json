@@ -9,9 +9,10 @@
     "peerflix": "https://peerflix.mov/stream/series/tt0903747:1:1.json [fixture]",
     "torrentsdb": "https://torrentsdb.com/stream/series/tt0903747:1:1.json [fixture]",
     "torrentio": "https://torrentio.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json [fixture]"
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0903747:1:1.json [fixture]"
   },
-  "streamCount": 16,
+  "streamCount": 20,
   "bestSeeders": 80,
   "qualities": [
     "1080p",
@@ -26,7 +27,8 @@
     "peerflix",
     "piratebay",
     "torrentio",
-    "torrentsdb"
+    "torrentsdb",
+    "ytztvio"
   ],
   "streams": [
     {
@@ -452,6 +454,112 @@
         "udp://tracker.opentrackr.org:1337/announce"
       ],
       "magnetUrl": "magnet:?xt=urn:btih:9347c08f0194b1a463af34f4230f3bec4a29e375&dn=Breaking%20Bad%20S01E01%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Breaking Bad S01E01 [4K][Castellano+Subs]",
+      "infoHash": "eb6fbc1c816a7f2a1f6455cd2e6a5b43c5433182",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:eb6fbc1c816a7f2a1f6455cd2e6a5b43c5433182&dn=Breaking%20Bad%20S01E01%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Breaking Bad S01E01 [1080p][Castellano+Subs]",
+      "infoHash": "3b4cbe7c3cee6f9dd2ab5573b8a84751b805d170",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3b4cbe7c3cee6f9dd2ab5573b8a84751b805d170&dn=Breaking%20Bad%20S01E01%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Breaking Bad S01E01 [1080p][Ingles+Subs]",
+      "infoHash": "2236c117b89fdfbd2e639f29ed54acaa60fbc98a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2236c117b89fdfbd2e639f29ed54acaa60fbc98a&dn=Breaking%20Bad%20S01E01%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "Breaking Bad S01E01 [720p][Castellano+Subs]",
+      "infoHash": "5613557fab29cf01cbfd6ac5b21acb7785ff876d",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5613557fab29cf01cbfd6ac5b21acb7785ff876d&dn=Breaking%20Bad%20S01E01%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
     }
   ]
 }

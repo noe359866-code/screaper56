@@ -9,9 +9,10 @@
     "peerflix": "https://peerflix.mov/stream/movie/tt1375666.json [fixture]",
     "torrentsdb": "https://torrentsdb.com/stream/movie/tt1375666.json [fixture]",
     "torrentio": "https://torrentio.strem.fun/stream/movie/tt1375666.json [fixture]",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json [fixture]"
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json [fixture]",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1375666.json [fixture]"
   },
-  "streamCount": 16,
+  "streamCount": 20,
   "bestSeeders": 80,
   "qualities": [
     "1080p",
@@ -26,7 +27,8 @@
     "peerflix",
     "piratebay",
     "torrentio",
-    "torrentsdb"
+    "torrentsdb",
+    "ytztvio"
   ],
   "streams": [
     {
@@ -452,6 +454,112 @@
         "udp://tracker.opentrackr.org:1337/announce"
       ],
       "magnetUrl": "magnet:?xt=urn:btih:81ca5730aeaa6666aebc3df50953a7f4c80e3d62&dn=Inception%20(2010)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Inception (2010) [4K][Castellano+Subs]",
+      "infoHash": "b9d9f89b5f91a43e09dc671522ee34ca6a97d8d1",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b9d9f89b5f91a43e09dc671522ee34ca6a97d8d1&dn=Inception%20(2010)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Inception (2010) [1080p][Castellano+Subs]",
+      "infoHash": "6299ec8bbe1cc2efee67082fe33f1c5e162f5c84",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6299ec8bbe1cc2efee67082fe33f1c5e162f5c84&dn=Inception%20(2010)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Inception (2010) [1080p][Ingles+Subs]",
+      "infoHash": "4d9e2b2f978a6512be21584630138892613cea52",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4d9e2b2f978a6512be21584630138892613cea52&dn=Inception%20(2010)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "Inception (2010) [720p][Castellano+Subs]",
+      "infoHash": "a38e1b677cbba9d639accfd6aa9da05dcc57edd6",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a38e1b677cbba9d639accfd6aa9da05dcc57edd6&dn=Inception%20(2010)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
     }
   ]
 }

@@ -11,6 +11,7 @@ El único código de consulta es ahora este agregador de endpoints JSON Stremio:
 - **TorrentsDB** — https://torrentsdb.com/manifest.json
 - **Torrentio** — https://torrentio.strem.fun/manifest.json
 - **ThePirateBay+** — https://thepiratebay-plus.strem.fun/manifest.json
+- **Ytztvio** — https://ytztvio.galacticcapsule.workers.dev/manifest.json
 - **TPB Adult** — https://tpb-adult-addon.click/manifest.json (registrado como fuente de catálogo; ver la nota más abajo)
 
 ## Flujo
@@ -19,8 +20,8 @@ El único código de consulta es ahora este agregador de endpoints JSON Stremio:
 web estática
   └─ PUT watchlist.txt + workflow_dispatch vía GitHub API
        └─ GitHub Actions: node src/fetch.mjs
-            ├─ consulta /stream/movie|series/...json en los 4 addons IMDb
-            ├─ normaliza Peerflix, Torrentio, TorrentsDB y TPB+
+            ├─ consulta /stream/movie|series/...json en los 5 addons IMDb
+            ├─ normaliza Peerflix, Torrentio, TorrentsDB, TPB+ y Ytztvio
             ├─ fusiona streams repetidos por info_hash
             ├─ UPSERT public.torrents usando onConflict=info_hash
             └─ publica JSON del último resultado + GitHub Pages
@@ -39,7 +40,7 @@ internos `jstrm:*`; una consulta `stream/Porn/tt...` no es una correspondencia
 válida con una lista IMDb y puede devolver contenido no relacionado. Por eso
 la URL queda registrada en `src/providers.mjs`, en `public/manifest.json` y en
 el reporte, pero **no se importan resultados adultos aleatorios** en la tabla
-`movie/series`. Los otros cuatro addons sí se consultan por cada IMDb ID.
+`movie/series`. Los otros cinco addons sí se consultan por cada IMDb ID.
 
 ## Puesta en marcha
 
@@ -57,14 +58,14 @@ el reporte, pero **no se importan resultados adultos aleatorios** en la tabla
    el service-role key se queda en el secret de Actions.
 5. En **Ingestar lista** pega o sube el TXT y pulsa **Ingestar en la BD**.
 
-La pestaña Ajustes permite activar/desactivar los cuatro providers consultables.
+La pestaña Ajustes permite activar/desactivar los cinco providers consultables.
 El workflow también admite manualmente:
 
 ```text
-PROVIDERS=peerflix,torrentsdb,torrentio,piratebay
+PROVIDERS=peerflix,torrentsdb,torrentio,piratebay,ytztvio
 ```
 
-La UI envía ese valor como input `providers`. El default incluye los cuatro.
+La UI envía ese valor como input `providers`. El default incluye los cinco.
 El input `dry_run=1` consulta y genera reportes, pero no escribe en Supabase.
 
 ## Formato de `watchlist.txt`
@@ -96,6 +97,7 @@ líneas de episodio concreto funcionan sin TMDB.
 | `seeders` | `seed` o footer `👤`; si no aparece, queda desconocido |
 | `release_group` | provider secundario que el addon muestra en el footer |
 | `source_tracker` | slugs de addons que publicaron el hash |
+| `magnet` en los JSON | se conserva cuando el addon (incluido Ytztvio) lo entrega; sus trackers se reutilizan |
 
 No se envían columnas fuera del esquema existente. El magnet se construye para
 la UI y los JSON Stremio con el hash y los trackers disponibles; no se escribe
@@ -107,7 +109,7 @@ que metadata desconocida no borra valores más ricos ya presentes.
 
 | Ruta | Función |
 |---|---|
-| `src/providers.mjs` | Registro de las cinco URLs de manifest y providers consultables |
+| `src/providers.mjs` | Registro de las seis URLs de manifest y cinco providers consultables |
 | `src/fetch.mjs` | Fetch JSON Stremio, normalización, merge, JSONs y reporte |
 | `src/db.mjs` | Sanitización y UPSERT Supabase sobre `info_hash` |
 | `public/index.html` / `public/app.js` / `public/styles.css` | Consola estática en español |

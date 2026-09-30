@@ -127,6 +127,21 @@ function normalizeQuality(nameField, titleField, explicitQuality = null) {
   return null;
 }
 
+function trackersFromMagnet(magnet) {
+  if (typeof magnet !== 'string' || !magnet.toLowerCase().startsWith('magnet:?')) return [];
+  const trackers = [];
+  try {
+    const params = new URLSearchParams(magnet.slice(magnet.indexOf('?') + 1));
+    for (const tracker of params.getAll('tr')) {
+      const clean = tracker.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+      if (clean) trackers.push(clean);
+    }
+  } catch {
+    // A malformed magnet must not make the whole provider response fail.
+  }
+  return trackers;
+}
+
 function parseStremioStream(rawStream, provider) {
   if (!rawStream) return null;
   const infoHash = String(rawStream.infoHash || '').toLowerCase();
@@ -153,15 +168,21 @@ function parseStremioStream(rawStream, provider) {
     ? explicitSize
     : parseSize(sizeMatch ? sizeMatch[1] : null);
 
-  const trackers = Array.isArray(rawStream.sources)
+  const sourceTrackers = Array.isArray(rawStream.sources)
     ? rawStream.sources
       .map(x => String(x).replace(/^tracker:/, '').replace(/[\u200B-\u200D\uFEFF]/g, '').trim())
       .filter(x => x && !/^dht:/i.test(x))
     : [];
+  const magnetUrl = rawStream.magnet || rawStream.magnetUrl || null;
+  const trackers = [...new Set([...sourceTrackers, ...trackersFromMagnet(magnetUrl)])];
 
   const quality = normalizeQuality(nameField, titleField, rawStream.quality || rawStream.tag);
   const languages = normalizeLanguage(rawStream.language, metadataText);
-  const externalProvider = sourceMatch ? sourceMatch[1].replace(/[.,]+$/, '') : null;
+  const externalProvider = sourceMatch
+    ? sourceMatch[1].replace(/[.,]+$/, '')
+    : provider.slug === 'ytztvio' && nameField && !/(?:4k|2160p|1440p|1080p|720p|480p)/i.test(nameField)
+      ? nameField.trim()
+      : null;
 
   return {
     infoHash,
@@ -170,6 +191,7 @@ function parseStremioStream(rawStream, provider) {
     seeders,
     sizeBytes,
     trackers,
+    magnetUrl,
     languages,
     fileIdx: rawStream.fileIdx ?? null,
     provider: provider.slug,
@@ -366,6 +388,7 @@ function mergeStreams(results) {
           providerNames: [s.providerName],
           externalProviders: s.externalProvider ? [s.externalProvider] : [],
           trackers: [...s.trackers],
+          magnetUrl: s.magnetUrl || null,
         });
         continue;
       }
@@ -373,6 +396,7 @@ function mergeStreams(results) {
       const tset = new Set(existing.trackers);
       for (const t of s.trackers) tset.add(t);
       existing.trackers = [...tset];
+      if (!existing.magnetUrl && s.magnetUrl) existing.magnetUrl = s.magnetUrl;
       // merge providers
       if (!existing.providers.includes(s.provider)) { existing.providers.push(s.provider); existing.providerNames.push(s.providerName); }
       if (s.externalProvider && !existing.externalProviders.includes(s.externalProvider)) existing.externalProviders.push(s.externalProvider);
@@ -382,6 +406,7 @@ function mergeStreams(results) {
         existing.title = s.title;
         existing.quality = s.quality || existing.quality;
         existing.sizeBytes = s.sizeBytes ?? existing.sizeBytes;
+        existing.magnetUrl = s.magnetUrl || existing.magnetUrl;
         existing.languages = [...new Set([...existing.languages, ...s.languages])];
       } else if (s.quality && !existing.quality) {
         existing.quality = s.quality;
@@ -543,7 +568,7 @@ async function main() {
       providerNames: s.providerNames,
       externalProviders: s.externalProviders,
       trackers: s.trackers,
-      magnetUrl: buildMagnet(s.infoHash, s.title, s.trackers),
+      magnetUrl: s.magnetUrl || buildMagnet(s.infoHash, s.title, s.trackers),
     }));
 
     if (q.kind === 'movie') {
