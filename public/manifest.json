@@ -1,0 +1,106 @@
+{
+  "id": "com.example.peerflix-static",
+  "version": "1.1.0",
+  "name": "Peerflix Static (personal, aggregated)",
+  "description": "Agregador personal con Peerflix, TorrentsDB, Torrentio, ThePirateBay+, Ytztvio. Responde solo a los IMDb IDs de tu watchlist.",
+  "catalogs": [],
+  "resources": [
+    {
+      "name": "stream",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "idPrefixes": [
+        "tt"
+      ]
+    }
+  ],
+  "types": [
+    "movie",
+    "series"
+  ],
+  "behaviorHints": {
+    "configurable": false,
+    "configurationRequired": false
+  },
+  "sourceManifests": [
+    {
+      "slug": "peerflix",
+      "name": "Peerflix",
+      "baseUrl": "https://peerflix.mov",
+      "manifestUrl": "https://peerflix.mov/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "torrentsdb",
+      "name": "TorrentsDB",
+      "baseUrl": "https://torrentsdb.com",
+      "manifestUrl": "https://torrentsdb.com/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "torrentio",
+      "name": "Torrentio",
+      "baseUrl": "https://torrentio.strem.fun",
+      "manifestUrl": "https://torrentio.strem.fun/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "piratebay",
+      "name": "ThePirateBay+",
+      "baseUrl": "https://thepiratebay-plus.strem.fun",
+      "manifestUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "ytztvio",
+      "name": "Ytztvio",
+      "baseUrl": "https://ytztvio.galacticcapsule.workers.dev",
+      "manifestUrl": "https://ytztvio.galacticcapsule.workers.dev/manifest.json",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "queryable": true,
+      "adult": false,
+      "note": null
+    },
+    {
+      "slug": "tpbAdult",
+      "name": "TPB Adult",
+      "baseUrl": "https://tpb-adult-addon.click",
+      "manifestUrl": "https://tpb-adult-addon.click/manifest.json",
+      "types": [
+        "Porn"
+      ],
+      "queryable": false,
+      "adult": true,
+      "note": "Manifest registrado; solo expone catálogos Porn y no streams IMDb movie/series."
+    }
+  ]
+}

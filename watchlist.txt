@@ -1,0 +1,50 @@
+# Peerflix Static – Watchlist
+# -----------------------------------------------------------
+# Una línea por título. La Action consultará peerflix.mov por cada una
+# y publicará los streams en public/data/.
+#
+# Formatos soportados:
+#   tt1234567                   -> película (IMDb)
+#   tt1234567:s3:e4             -> episodio concreto (serie, temporada 3, ep. 4)
+#   tt1234567:s3                -> todos los episodios conocidos de la temporada 3
+#                                 (necesita TMDB_API_KEY para expandir; si no hay clave,
+#                                 se ignora la línea con aviso)
+#
+# Líneas que empiezan por '#' son comentarios. Se ignoran líneas vacías.
+# Puedes añadir un nombre humano tras un espacio para que la web lo muestre:
+#   tt0111161 Cadena perpetua (1994)
+#   tt1375666 Inception (2010)
+#   tt0944947:s1:e1 Game of Thrones S01E01
+#
+# Si defines TMDB_API_KEY en secrets (opcional), el script puede expandir
+# temporadas automáticamente y enriquecer metadatos (título, año, póster).
+# Si no, usa el nombre que pongas en esta misma línea.
+
+# --- Películas de ejemplo ---
+tt0111161 Cadena perpetua (1994)
+tt1375666 Inception (2010)
+tt0468569 El caballero oscuro (2008)
+tt0133093 Matrix (1999)
+tt0120737 El Señor de los Anillos: La Comunidad del Anillo (2001)
+tt0167260 El Señor de los Anillos: El Retorno del Rey (2003)
+tt1345836 El caballero oscuro: La leyenda renace (2012)
+tt0816692 Interestelar (2014)
+tt0109830 Forrest Gump (1994)
+tt0068646 El Padrino (1972)
+tt0102926 El silencio de los corderos (1991)
+tt0110912 Pulp Fiction (1994)
+tt0253474 El Padrino. Parte II (1974)
+tt0137523 Fight Club (1999)
+tt0120815 Salvar al soldado Ryan (1998)
+tt7286456 Joker (2019)
+tt4154796 Avengers: Endgame (2019)
+tt1745960 Top Gun: Maverick (2022)
+tt15398776 Oppenheimer (2023)
+tt1517268 Barbie (2023)
+tt1160419 Dune: Parte dos (2024)
+tt9362722 Spider-Man: Cruzando el Multiverso (2023)
+
+# --- Series de ejemplo ---
+tt0944947:s1:e1 Juego de Tronos S01E01
+tt0903747:s1:e1 Breaking Bad S01E01
+tt0944947:s1 Juego de Tronos – Temporada 1 completa

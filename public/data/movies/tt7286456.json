@@ -1,0 +1,565 @@
+{
+  "id": "tt7286456",
+  "imdbId": "tt7286456",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Joker (2019)",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json [fixture]",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json [fixture]",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json [fixture]",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json [fixture]",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json [fixture]"
+  },
+  "streamCount": 20,
+  "bestSeeders": 80,
+  "qualities": [
+    "1080p",
+    "4K",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "piratebay",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "streams": [
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker (2019) [4K][Castellano+Subs]",
+      "infoHash": "f07c4e564f60e32d33a83f4fbc79688fbc70c75b",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f07c4e564f60e32d33a83f4fbc79688fbc70c75b&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker (2019) [1080p][Castellano+Subs]",
+      "infoHash": "aa19c23ad987a9b5ba92e24d3dbd15207c320f2c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa19c23ad987a9b5ba92e24d3dbd15207c320f2c&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker (2019) [1080p][Ingles+Subs]",
+      "infoHash": "a6e9fbaeaa129b60d6a21c3f3193630de3af5374",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a6e9fbaeaa129b60d6a21c3f3193630de3af5374&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker (2019) [720p][Castellano+Subs]",
+      "infoHash": "e1218a9ede3676470f2d5938254b6c9d53c5f6d1",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e1218a9ede3676470f2d5938254b6c9d53c5f6d1&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker (2019) [4K][Castellano+Subs]",
+      "infoHash": "52da08a66a16e9615068cd7c712a5a7f76d14eed",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:52da08a66a16e9615068cd7c712a5a7f76d14eed&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker (2019) [1080p][Castellano+Subs]",
+      "infoHash": "944e73401eed9433211fe2c675aec0c51b70f5de",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:944e73401eed9433211fe2c675aec0c51b70f5de&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker (2019) [1080p][Ingles+Subs]",
+      "infoHash": "7d2814cc8984c994067e782fe6046ed2101d7c9d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7d2814cc8984c994067e782fe6046ed2101d7c9d&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker (2019) [720p][Castellano+Subs]",
+      "infoHash": "7bbb70f4a11abee62e06b525ecef47f486297a7c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7bbb70f4a11abee62e06b525ecef47f486297a7c&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker (2019) [4K][Castellano+Subs]",
+      "infoHash": "aa9c118f3d115ef9cf00c65e2ea6dadb4a45c485",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa9c118f3d115ef9cf00c65e2ea6dadb4a45c485&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker (2019) [1080p][Castellano+Subs]",
+      "infoHash": "042275b71802af5df0cc1c8918fda1c73467e305",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:042275b71802af5df0cc1c8918fda1c73467e305&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker (2019) [1080p][Ingles+Subs]",
+      "infoHash": "61a3d36062340e679ceb6cfbdffafc618ea5171a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:61a3d36062340e679ceb6cfbdffafc618ea5171a&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 720p",
+      "title": "Joker (2019) [720p][Castellano+Subs]",
+      "infoHash": "82beb44bd2c834505c099051ae736d50b8f89b3c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:82beb44bd2c834505c099051ae736d50b8f89b3c&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 4K",
+      "title": "Joker (2019) [4K][Castellano+Subs]",
+      "infoHash": "2458c18ab15a687e76ef1cd43bcf1baecfec4993",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2458c18ab15a687e76ef1cd43bcf1baecfec4993&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "Joker (2019) [1080p][Castellano+Subs]",
+      "infoHash": "1a8f7fe15b178e58f147bdf6d9d6afca89d2d27d",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1a8f7fe15b178e58f147bdf6d9d6afca89d2d27d&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "Joker (2019) [1080p][Ingles+Subs]",
+      "infoHash": "6309371df8bc08e84d87b338c7fd37c84184ee0a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6309371df8bc08e84d87b338c7fd37c84184ee0a&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 720p",
+      "title": "Joker (2019) [720p][Castellano+Subs]",
+      "infoHash": "b6aad1947f9cdcd864f275bb62e513b9d2d82df0",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b6aad1947f9cdcd864f275bb62e513b9d2d82df0&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Joker (2019) [4K][Castellano+Subs]",
+      "infoHash": "e2321e439ebff97e53913f76fb876c69d742aaec",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e2321e439ebff97e53913f76fb876c69d742aaec&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Joker (2019) [1080p][Castellano+Subs]",
+      "infoHash": "05a8c822893c48f4047bd445a09a2cbc44b6197a",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:05a8c822893c48f4047bd445a09a2cbc44b6197a&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Joker (2019) [1080p][Ingles+Subs]",
+      "infoHash": "78e9a495c31f77a890a64afd66c1062186a5a143",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:78e9a495c31f77a890a64afd66c1062186a5a143&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "Joker (2019) [720p][Castellano+Subs]",
+      "infoHash": "8319838ede6b5d7a0d4cb498e020d797a09b153e",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8319838ede6b5d7a0d4cb498e020d797a09b153e&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    }
+  ]
+}

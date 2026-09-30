@@ -1,0 +1,565 @@
+{
+  "id": "tt0167260",
+  "imdbId": "tt0167260",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "El Señor de los Anillos: El Retorno del Rey (2003)",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0167260.json [fixture]",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0167260.json [fixture]",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0167260.json [fixture]",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json [fixture]",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0167260.json [fixture]"
+  },
+  "streamCount": 20,
+  "bestSeeders": 80,
+  "qualities": [
+    "1080p",
+    "4K",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "piratebay",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "streams": [
+    {
+      "name": "Peerflix 4K",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [4K][Castellano+Subs]",
+      "infoHash": "fbf4de9464ebbe6777cda9749e8a48a5244eee2a",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fbf4de9464ebbe6777cda9749e8a48a5244eee2a&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Castellano+Subs]",
+      "infoHash": "3e6b24c004923e992b66d819fcd5854bc3e4add5",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3e6b24c004923e992b66d819fcd5854bc3e4add5&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Ingles+Subs]",
+      "infoHash": "47ed6c3ca739b82997a6d6d7e2fe1d490bb291a2",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:47ed6c3ca739b82997a6d6d7e2fe1d490bb291a2&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [720p][Castellano+Subs]",
+      "infoHash": "91ab6e5b706e7d0b46271f6c1c937ca913cac06a",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:91ab6e5b706e7d0b46271f6c1c937ca913cac06a&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [4K][Castellano+Subs]",
+      "infoHash": "9bee5659758e87ab0a0d17d6b607f60d50083fae",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9bee5659758e87ab0a0d17d6b607f60d50083fae&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Castellano+Subs]",
+      "infoHash": "7d86ef06aca999956cf5bd58b084ce1701816c34",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7d86ef06aca999956cf5bd58b084ce1701816c34&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Ingles+Subs]",
+      "infoHash": "88f52634aa45b58d82776517b463fdddb0df3e11",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:88f52634aa45b58d82776517b463fdddb0df3e11&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [720p][Castellano+Subs]",
+      "infoHash": "b016a095e4826077b916521119dd3cdb76867cf8",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b016a095e4826077b916521119dd3cdb76867cf8&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [4K][Castellano+Subs]",
+      "infoHash": "62c51effe2495032c1a1f6b5119208ce41f7f1eb",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:62c51effe2495032c1a1f6b5119208ce41f7f1eb&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Castellano+Subs]",
+      "infoHash": "dff2591c0ee3fdf45af5ee1a01ed6da1277a6a2d",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:dff2591c0ee3fdf45af5ee1a01ed6da1277a6a2d&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Ingles+Subs]",
+      "infoHash": "54ae4e4931833fba98fec4804db272577ceae6cb",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:54ae4e4931833fba98fec4804db272577ceae6cb&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 720p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [720p][Castellano+Subs]",
+      "infoHash": "fa3c9d585b629bf30b83005d1a9a26b997e81a7f",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fa3c9d585b629bf30b83005d1a9a26b997e81a7f&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 4K",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [4K][Castellano+Subs]",
+      "infoHash": "bc57ccb6fde4e4964fb4918d6d2eb6afc49a6112",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bc57ccb6fde4e4964fb4918d6d2eb6afc49a6112&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Castellano+Subs]",
+      "infoHash": "aa101b2687e57c1c24bbedcf7946088eb2a50005",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa101b2687e57c1c24bbedcf7946088eb2a50005&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Ingles+Subs]",
+      "infoHash": "5e6bdad08308c148ff1017d840864c8dabe2a8c6",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5e6bdad08308c148ff1017d840864c8dabe2a8c6&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 720p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [720p][Castellano+Subs]",
+      "infoHash": "d7a40394ad03a79fe7f54787afb580a5eb84c1d5",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d7a40394ad03a79fe7f54787afb580a5eb84c1d5&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [4K][Castellano+Subs]",
+      "infoHash": "7ff047a797971885e477da06f9d5a63def563634",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7ff047a797971885e477da06f9d5a63def563634&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Castellano+Subs]",
+      "infoHash": "b6b58f2fed5dfc6708f794efb72b329afe7b5ee6",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b6b58f2fed5dfc6708f794efb72b329afe7b5ee6&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [1080p][Ingles+Subs]",
+      "infoHash": "4cfef841ed24a6fa46809ae7ee565129aa1f0110",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4cfef841ed24a6fa46809ae7ee565129aa1f0110&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "El Señor de los Anillos: El Retorno del Rey (2003) [720p][Castellano+Subs]",
+      "infoHash": "0e805359998554ac510969a4fb8720faec9589f6",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0e805359998554ac510969a4fb8720faec9589f6&dn=El%20Se%C3%B1or%20de%20los%20Anillos%3A%20El%20Retorno%20del%20Rey%20(2003)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    }
+  ]
+}

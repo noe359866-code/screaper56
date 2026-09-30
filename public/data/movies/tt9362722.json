@@ -1,0 +1,565 @@
+{
+  "id": "tt9362722",
+  "imdbId": "tt9362722",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Spider-Man: Cruzando el Multiverso (2023)",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt9362722.json [fixture]",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt9362722.json [fixture]",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt9362722.json [fixture]",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json [fixture]",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt9362722.json [fixture]"
+  },
+  "streamCount": 20,
+  "bestSeeders": 80,
+  "qualities": [
+    "1080p",
+    "4K",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "piratebay",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "streams": [
+    {
+      "name": "Peerflix 4K",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [4K][Castellano+Subs]",
+      "infoHash": "7de487f64e5c1e1b7e7c025438e954af5deb0fb1",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7de487f64e5c1e1b7e7c025438e954af5deb0fb1&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Castellano+Subs]",
+      "infoHash": "14a593947c3f5f1f6c426ad1021311fd65bcbc8b",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:14a593947c3f5f1f6c426ad1021311fd65bcbc8b&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Ingles+Subs]",
+      "infoHash": "d7b1a2969f817f87be49305f901113befeb7db2d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d7b1a2969f817f87be49305f901113befeb7db2d&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [720p][Castellano+Subs]",
+      "infoHash": "9ecaf8dffbfe7ed7b0b41c65542c1ad9399d7d22",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9ecaf8dffbfe7ed7b0b41c65542c1ad9399d7d22&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [4K][Castellano+Subs]",
+      "infoHash": "dd1021befdd6288d2035092ea301bd66010bd130",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:dd1021befdd6288d2035092ea301bd66010bd130&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Castellano+Subs]",
+      "infoHash": "c9916c7467ec511b5427b87cc62554e8fbb43434",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c9916c7467ec511b5427b87cc62554e8fbb43434&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Ingles+Subs]",
+      "infoHash": "d85f3283ffe6fd04288bc9c767d322de7294805a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d85f3283ffe6fd04288bc9c767d322de7294805a&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [720p][Castellano+Subs]",
+      "infoHash": "bad611ba64ccd48a35e09f24e68588e6a4b5066a",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bad611ba64ccd48a35e09f24e68588e6a4b5066a&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [4K][Castellano+Subs]",
+      "infoHash": "091c2d591a5e2b4239f69ff9ab30955d8af65b90",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:091c2d591a5e2b4239f69ff9ab30955d8af65b90&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Castellano+Subs]",
+      "infoHash": "fb10c93da4d41ce6ce512702bc93591a21be2a82",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fb10c93da4d41ce6ce512702bc93591a21be2a82&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Ingles+Subs]",
+      "infoHash": "45adab98eb04ad17aa683ac40b2d67dc5d0032d7",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:45adab98eb04ad17aa683ac40b2d67dc5d0032d7&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 720p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [720p][Castellano+Subs]",
+      "infoHash": "c94db3d799dae5cc6903e8dd971018f115c02c36",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c94db3d799dae5cc6903e8dd971018f115c02c36&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 4K",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [4K][Castellano+Subs]",
+      "infoHash": "039959e53c185b57d926bd2edeec378f5ba28ba1",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:039959e53c185b57d926bd2edeec378f5ba28ba1&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Castellano+Subs]",
+      "infoHash": "0d13c5bcc12b92aedcbf693102b36e5d8067c5c1",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0d13c5bcc12b92aedcbf693102b36e5d8067c5c1&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Ingles+Subs]",
+      "infoHash": "109f1f109cd1b36efd38e030c6ec854f9eec83cd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:109f1f109cd1b36efd38e030c6ec854f9eec83cd&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 720p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [720p][Castellano+Subs]",
+      "infoHash": "c61f5b73835494ab29fe752b0c37b646a51e6c19",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c61f5b73835494ab29fe752b0c37b646a51e6c19&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [4K][Castellano+Subs]",
+      "infoHash": "9627ba894fa3ec72779b19e48055e557a31c7e28",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9627ba894fa3ec72779b19e48055e557a31c7e28&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Castellano+Subs]",
+      "infoHash": "e50da50364105775b126c14a48f90c6d47e78237",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e50da50364105775b126c14a48f90c6d47e78237&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [1080p][Ingles+Subs]",
+      "infoHash": "268090afa6383645bee8019d65a420f0d6f0558d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:268090afa6383645bee8019d65a420f0d6f0558d&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "Spider-Man: Cruzando el Multiverso (2023) [720p][Castellano+Subs]",
+      "infoHash": "d36754e50686eb18a7555baa8823aafa52ee1cc4",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d36754e50686eb18a7555baa8823aafa52ee1cc4&dn=Spider-Man%3A%20Cruzando%20el%20Multiverso%20(2023)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    }
+  ]
+}

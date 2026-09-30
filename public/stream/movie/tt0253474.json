@@ -1,0 +1,534 @@
+{
+  "streams": [
+    {
+      "name": "Peerflix 4K",
+      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
+      "infoHash": "60eb584877a9ea9915a713640eb6f8a1e5f4be70",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:60eb584877a9ea9915a713640eb6f8a1e5f4be70&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
+      "infoHash": "f08f9fca6dad10513b4da7c27901a318e1323089",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f08f9fca6dad10513b4da7c27901a318e1323089&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
+      "infoHash": "2303a266bea671e163d75c2c820198a593b965cf",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2303a266bea671e163d75c2c820198a593b965cf&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
+      "infoHash": "43cd6fd528c0a10ea0ce90be29f45392d34e0871",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:43cd6fd528c0a10ea0ce90be29f45392d34e0871&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
+      "infoHash": "4eb4fd76f250ea9b0f7c5e5a125cdc21b2cfa16d",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4eb4fd76f250ea9b0f7c5e5a125cdc21b2cfa16d&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
+      "infoHash": "a87cd14878ecc422ed7676d65638470085d565ec",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a87cd14878ecc422ed7676d65638470085d565ec&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
+      "infoHash": "8f1a51c46174d9f5b30a9ed0facd39b8e2b8ffe5",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "torrentsdb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8f1a51c46174d9f5b30a9ed0facd39b8e2b8ffe5&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
+      "infoHash": "408f0d65855c4374ab6a784d6816e5fc218ecaa8",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:408f0d65855c4374ab6a784d6816e5fc218ecaa8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
+      "infoHash": "a700a9daf54da82749646863496520b7430577ce",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a700a9daf54da82749646863496520b7430577ce&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
+      "infoHash": "3c71fc4c7cf7cbb035b0a7700a884c3f62fa1ab8",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3c71fc4c7cf7cbb035b0a7700a884c3f62fa1ab8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
+      "infoHash": "ad3926a2b44968d4b3272bdd9dc8be93c949e85e",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "torrentio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ad3926a2b44968d4b3272bdd9dc8be93c949e85e&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Torrentio 720p",
+      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
+      "infoHash": "19258a83a6c2699995d6b0413808846e382f55ac",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:19258a83a6c2699995d6b0413808846e382f55ac&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 4K",
+      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
+      "infoHash": "570f071c4a7741aaea0841eba49f4ed1e5ec4613",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:570f071c4a7741aaea0841eba49f4ed1e5ec4613&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
+      "infoHash": "ba1957c68cda2976f7653c0c4c761bbe6f321bfe",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ba1957c68cda2976f7653c0c4c761bbe6f321bfe&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
+      "infoHash": "56a51c635009d8170a6abfd2ef8af25a89fcbdfa",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "piratebay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:56a51c635009d8170a6abfd2ef8af25a89fcbdfa&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "ThePirateBay+ 720p",
+      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
+      "infoHash": "e9876160b0c715151ed618c7641c5220255c848c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "piratebay"
+      ],
+      "providerNames": [
+        "ThePirateBay+"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e9876160b0c715151ed618c7641c5220255c848c&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 4K",
+      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
+      "infoHash": "eb7d22a9aa2c829d7598cbe2f0730f90a1a9ad50",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 40,
+      "sizeBytes": 12000000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:eb7d22a9aa2c829d7598cbe2f0730f90a1a9ad50&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
+      "infoHash": "96d1ad34cd98ed6fd699cbd5138098a41217052e",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 2800000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:96d1ad34cd98ed6fd699cbd5138098a41217052e&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 1080p",
+      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
+      "infoHash": "1d8dba61f2f82f211492e14f5fdf8752498789c8",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 1900000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ytztvio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1d8dba61f2f82f211492e14f5fdf8752498789c8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    },
+    {
+      "name": "Ytztvio 720p",
+      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
+      "infoHash": "3bb8eeeaead206d8eb23285c4b35064894720576",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 10,
+      "sizeBytes": 950000000,
+      "sizeLabel": null,
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3bb8eeeaead206d8eb23285c4b35064894720576&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    }
+  ]
+}
