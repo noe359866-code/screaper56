@@ -6,22 +6,26 @@
   "episode": null,
   "label": "Fight Club (1999)",
   "providerUrls": {
-    "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json [fixture]",
-    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json [fixture]",
-    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json [fixture]",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json [fixture]",
-    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json [fixture]"
+    "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json"
   },
-  "streamCount": 20,
-  "bestSeeders": 80,
+  "streamCount": 93,
+  "bestSeeders": 2081,
   "qualities": [
     "1080p",
+    "480p",
     "4K",
     "720p"
   ],
   "languages": [
     "en",
-    "es"
+    "es",
+    "fr",
+    "it",
+    "ru"
   ],
   "providers": [
     "peerflix",
@@ -32,71 +36,68 @@
   ],
   "streams": [
     {
-      "name": "Peerflix 4K",
-      "title": "Fight Club (1999) [4K][Castellano+Subs]",
-      "infoHash": "3cb8fd9a427e2fff77b00bdfafb1c7fa7e9747fd",
+      "name": "Peerflix+Torrentio 4K",
+      "title": "El club de la Lucha [4K UHDreescaldo][2160p][HDR10][AC3 5.1-DTS 5.1 Castellano-DTS-HD 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "ce71e481b9dd1822433726c6ec018368333b25c6",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 11,
+      "sizeBytes": 18930068357,
       "sizeLabel": null,
       "providers": [
-        "peerflix"
+        "peerflix",
+        "torrentio"
       ],
       "providerNames": [
-        "Peerflix"
+        "Peerflix",
+        "Torrentio"
       ],
       "externalProviders": [
-        "peerflix"
+        "Peerflix",
+        "MejorTorrent"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:3cb8fd9a427e2fff77b00bdfafb1c7fa7e9747fd&dn=Fight%20Club%20(1999)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:ce71e481b9dd1822433726c6ec018368333b25c6&dn=El%20club%20de%20la%20Lucha%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
-      "title": "Fight Club (1999) [1080p][Castellano+Subs]",
-      "infoHash": "84c4adbf3f1be5c637c386f7a4b5ea5926261266",
+      "title": "El Club De La Lucha [BDRemux 1080p][DTS- 5.1 Castellano DTS 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "b37c6eb4f8501f2c820726bc957c3cec552e68ac",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
-      "sizeLabel": null,
-      "providers": [
-        "peerflix"
-      ],
-      "providerNames": [
-        "Peerflix"
-      ],
-      "externalProviders": [
-        "YTS"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:84c4adbf3f1be5c637c386f7a4b5ea5926261266&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Peerflix 1080p",
-      "title": "Fight Club (1999) [1080p][Ingles+Subs]",
-      "infoHash": "ae4e44a5bd802ec8b3772e6481cb221954866b7d",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
+        "es",
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 2,
+      "sizeBytes": 28658169282,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -105,25 +106,138 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "peerflix"
+        "Peerflix"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ae4e44a5bd802ec8b3772e6481cb221954866b7d&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:b37c6eb4f8501f2c820726bc957c3cec552e68ac&dn=El%20Club%20De%20La%20Lucha%20%5BBDRemux%201080p%5D%5BDTS-%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Fight Club (1999) [1080P][Castellano][Ver-Peliculas-Online.org].mp4",
+      "infoHash": "cad62718bbb175a5d9db35073f86727eaa34ec4d",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:cad62718bbb175a5d9db35073f86727eaa34ec4d&dn=Fight%20Club%20(1999)%20%5B1080P%5D%5BCastellano%5D%5BVer-Peliculas-Online.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El club de la lucha [FullBluRay 1080p][Castellano DTS 5.1-Ingles DTS-HD 5.1+Subs][ES-EN]",
+      "infoHash": "bfbb633bbe12dda220e2cbd2d17eca853f0e5273",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bfbb633bbe12dda220e2cbd2d17eca853f0e5273&dn=El%20club%20de%20la%20lucha%20%5BFullBluRay%201080p%5D%5BCastellano%20DTS%205.1-Ingles%20DTS-HD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
-      "title": "Fight Club (1999) [720p][Castellano+Subs]",
-      "infoHash": "4c8247fc8bc57d82aad0d8b889378b3b724a3573",
-      "fileIdx": 0,
+      "title": "[Bitsearch.to] El Club de la Lucha (1999) Remastered [MicroHD720p] [AC3 5.1-Castellano-Ingles+Subs] [Provicius].rar",
+      "infoHash": "70299a97ee2f0e67c5052df8020eb74701bb83be",
+      "fileIdx": null,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en"
       ],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 0,
+      "sizeBytes": 3242700308,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -131,24 +245,212 @@
       "providerNames": [
         "Peerflix"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "BitSearch"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:4c8247fc8bc57d82aad0d8b889378b3b724a3573&dn=Fight%20Club%20(1999)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.bitsearch.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:70299a97ee2f0e67c5052df8020eb74701bb83be&dn=%5BBitsearch.to%5D%20El%20Club%20de%20la%20Lucha%20(1999)%20Remastered%20%5BMicroHD720p%5D%20%5BAC3%205.1-Castellano-Ingles%2BSubs%5D%20%5BProvicius%5D.rar&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Club de la Lucha [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]",
+      "infoHash": "549c75d41c47b23adc1495d5f9af646597466e43",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:549c75d41c47b23adc1495d5f9af646597466e43&dn=El%20Club%20de%20la%20Lucha%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 480p",
+      "title": "El Club de la Lucha[dvdrip][spanish][www.lokotorrents.com]",
+      "infoHash": "4f8e8301515fdc2ce42d26b9a33e74aa0fc99b85",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 1471026298,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "GranTorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4f8e8301515fdc2ce42d26b9a33e74aa0fc99b85&dn=El%20Club%20de%20la%20Lucha%5Bdvdrip%5D%5Bspanish%5D%5Bwww.lokotorrents.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight Club 1999 BluRay 2160p Upscaled SDR HEVC 10bits DTS-HD MA 2.0 x265-E",
+      "infoHash": "d557a508c135389b7bd0403fa2315a9cf4fa40aa",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 79,
+      "sizeBytes": 27702539059,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d557a508c135389b7bd0403fa2315a9cf4fa40aa&dn=Fight%20Club%201999%20BluRay%202160p%20Upscaled%20SDR%20HEVC%2010bits%20DTS-HD%20MA%202.0%20x265-E"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight.Club.1999.UNCUT.BluRay.2160p.Ai.MULTi.DTS-HD.MA.5.1.DDP.H265-KC",
+      "infoHash": "6d2ca694de35dbc80907bdda0e171c2d2ffd51cd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 74,
+      "sizeBytes": 40608915784,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6d2ca694de35dbc80907bdda0e171c2d2ffd51cd&dn=Fight.Club.1999.UNCUT.BluRay.2160p.Ai.MULTi.DTS-HD.MA.5.1.DDP.H265-KC"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight Club (1999) Featurettes (2160p BluRay x265 HEVC AI 10bit AAC 5.1 Joy) [UTR]",
+      "infoHash": "ccef817f7ee54f7c0a04197e31b56c4bcd901b29",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 52,
+      "sizeBytes": 7333656658,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ccef817f7ee54f7c0a04197e31b56c4bcd901b29&dn=Fight%20Club%20(1999)%20Featurettes%20(2160p%20BluRay%20x265%20HEVC%20AI%2010bit%20AAC%205.1%20Joy)%20%5BUTR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
       "name": "TorrentsDB 4K",
-      "title": "Fight Club (1999) [4K][Castellano+Subs]",
-      "infoHash": "f0de81763efa70ce6c929f5fd0557c8387614f41",
+      "title": "Fight.Club.1999.2160p.x265.10bit.DTS-HD.MA.5.1[TheUpscaler]",
+      "infoHash": "0481ed753f62f03e701f6311fa975578ec43b59e",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 26,
+      "sizeBytes": 17899276206,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -157,25 +459,333 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "rargb",
+        "knaben"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "https://opentracker.i2p.rocks:443/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://www.torrent.eu.org:451/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://9.rarbg.com:2810/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:f0de81763efa70ce6c929f5fd0557c8387614f41&dn=Fight%20Club%20(1999)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:0481ed753f62f03e701f6311fa975578ec43b59e&dn=Fight.Club.1999.2160p.x265.10bit.DTS-HD.MA.5.1%5BTheUpscaler%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
     },
     {
-      "name": "TorrentsDB 1080p",
-      "title": "Fight Club (1999) [1080p][Castellano+Subs]",
-      "infoHash": "3c3a0415ebabd369a911caca99509f2edc1654f4",
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight Club.1999.BDRip.2160p.UHD.SDR",
+      "infoHash": "4848b21d0ea70689f03aa03c348ad8e2a1704e7a",
+      "fileIdx": 9,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 19,
+      "sizeBytes": 30397631037,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4848b21d0ea70689f03aa03c348ad8e2a1704e7a&dn=Fight%20Club.1999.BDRip.2160p.UHD.SDR"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "Fight Club (1999) 1080p BrRip x264 - YIFY",
+      "infoHash": "a086ce4afabbd8ab949662e30134a49e22d1f0c7",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 676,
+      "sizeBytes": 1986422374,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a086ce4afabbd8ab949662e30134a49e22d1f0c7&dn=Fight%20Club%20(1999)%201080p%20BrRip%20x264%20-%20YIFY"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight.Club.1999.1080p.REMUX.ENG.ITA.HINDI.RUS.UKR.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN",
+      "infoHash": "6210f1575c7fb9e05e40ce2fe31042c15bb87f19",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en",
+        "ru",
+        "it"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 155,
+      "sizeBytes": 33844342292,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "http://tracker.gbitt.info:80/announce",
+        "http://bt.okmp3.ru:2710/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "http://tracker.vraphim.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce330",
+        "http://tracker2.dler.org:80/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6210f1575c7fb9e05e40ce2fe31042c15bb87f19&dn=Fight.Club.1999.1080p.REMUX.ENG.ITA.HINDI.RUS.UKR.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=http%3A%2F%2Ftracker.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Fbt.okmp3.ru%3A2710%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce330&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265",
+      "infoHash": "daa4df9eba1fa381bfa29b85d3d7580c22a1c386",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 278,
+      "sizeBytes": 4305704714,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.birkenwald.de:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://opentor.org:2710/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "https://tracker.foreverpirates.co:443/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:daa4df9eba1fa381bfa29b85d3d7580c22a1c386&dn=Fight.Club.1999.REMASTERED.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight Club (1999) RM4K (1080p BluRay x265 10bit EAC3 5.1 Celdra)",
+      "infoHash": "6237e9349cb180a3143bbfffd1603bf0d132def4",
+      "fileIdx": 10,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 173,
+      "sizeBytes": 6914897347,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6237e9349cb180a3143bbfffd1603bf0d132def4&dn=Fight%20Club%20(1999)%20RM4K%20(1080p%20BluRay%20x265%2010bit%20EAC3%205.1%20Celdra)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Fight Club (1999) RM4K (1080p BluRay x265 10bit EAC3 5.1 Celdra)",
+      "infoHash": "608866858dab45c149a3733515b12b3bd3ca3ff8",
+      "fileIdx": 29,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 101,
+      "sizeBytes": 12562779341,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:608866858dab45c149a3733515b12b3bd3ca3ff8&dn=Fight%20Club%20(1999)%20RM4K%20(1080p%20BluRay%20x265%2010bit%20EAC3%205.1%20Celdra)"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay x264-OFT",
+      "infoHash": "5e54edc4bc81d30ed42cd9b45ec588db4ddc3fd8",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 101,
+      "sizeBytes": 7408818586,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -184,25 +794,903 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "YTS"
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5e54edc4bc81d30ed42cd9b45ec588db4ddc3fd8&dn=Fight%20Club%201999%201080p%20BluRay%20x264-OFT"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 1080p",
+      "title": "Fight Club (1999) 1080p BRRip 5.1 x264 -YTS",
+      "infoHash": "74a582111d327666ebcef3a5f904b06f8dafb3d8",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 100,
+      "sizeBytes": 2759516488,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "YTS",
+        "x264"
       ],
       "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:3c3a0415ebabd369a911caca99509f2edc1654f4&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:74A582111D327666EBCEF3A5F904B06F8DAFB3D8&dn=Fight%20Club%20(1999)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
     },
     {
       "name": "TorrentsDB 1080p",
-      "title": "Fight Club (1999) [1080p][Ingles+Subs]",
-      "infoHash": "4af5b119660b0132c38506a40967568c95624db7",
+      "title": "Fight Club (1999) 10th Anniversary Edition 1080p 10bit Bluray x265 HEVC [Org DD 2.0 Hindi + DD 5.1 English] MSubs ~ TombDoc",
+      "infoHash": "511eff5e1cbc5c942eccda41283a4b0f72a73fe4",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 69,
+      "sizeBytes": 4885525299,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://retracker.lanta-net.ru:2710/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker3.itzmx.com:6961/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "http://tracker1.itzmx.com:8080/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:511eff5e1cbc5c942eccda41283a4b0f72a73fe4&dn=Fight%20Club%20(1999)%2010th%20Anniversary%20Edition%201080p%2010bit%20Bluray%20x265%20HEVC%20%5BOrg%20DD%202.0%20Hindi%20%2B%20DD%205.1%20English%5D%20MSubs%20~%20TombDoc&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) WEBRip 1080p HEVC AAC ITA ENG SUB ENG ITA - Lullozzo",
+      "infoHash": "8baba9c4890513e32c8c246b4fd170fb87b2b3ab",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 61,
+      "sizeBytes": 4402341478,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8baba9c4890513e32c8c246b4fd170fb87b2b3ab&dn=Fight%20Club%20(1999)%20WEBRip%201080p%20HEVC%20AAC%20ITA%20ENG%20SUB%20ENG%20ITA%20-%20Lullozzo"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club (1999) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "infoHash": "41f6fa669b79c9ef7ad515ba831188ea1c42c239",
+      "fileIdx": 29,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 59,
+      "sizeBytes": 6496138035,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:41f6fa669b79c9ef7ad515ba831188ea1c42c239&dn=Fight%20Club%20(1999)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) + Featurettes (1080p BluRay x265 HEVC AI 10bit AAC 5.1 Q22 Joy) [UTR]",
+      "infoHash": "28437542b2adbd03742f96804e0b5dbf5c4febf6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 57,
+      "sizeBytes": 2641404887,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:28437542b2adbd03742f96804e0b5dbf5c4febf6&dn=Fight%20Club%20(1999)%20%2B%20Featurettes%20(1080p%20BluRay%20x265%20HEVC%20AI%2010bit%20AAC%205.1%20Q22%20Joy)%20%5BUTR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay DD+ 5.1 x265-edge2020",
+      "infoHash": "c953d7a509680a6b2f06bdc7d38e482d1b8369cc",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 52,
+      "sizeBytes": 4606352425,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:6969",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c953d7a509680a6b2f06bdc7d38e482d1b8369cc&dn=Fight%20Club%201999%201080p%20BluRay%20DD%2B%205.1%20x265-edge2020&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 1080p HBO Max WEBDL H264 DUAL EAC3 TSRG",
+      "infoHash": "e7a70fe3476d97d78832eb2df1528664ce04dff2",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 50,
+      "sizeBytes": 4498978243,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e7a70fe3476d97d78832eb2df1528664ce04dff2&dn=Fight%20Club%201999%201080p%20HBO%20Max%20WEBDL%20H264%20DUAL%20EAC3%20TSRG"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 Remastered 1080p BluRay HEVC x265 5.1 BONE",
+      "infoHash": "577e16d14ecb0c39a8846a8400b901704683576c",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 41,
+      "sizeBytes": 1578400481,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.dler.org:6969/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://9.rarbg.me:2970/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.opentrackr.org:1337/",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://exodus.desync.com:6969",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://opentor.org:2710/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:577e16d14ecb0c39a8846a8400b901704683576c&dn=Fight%20Club%201999%20Remastered%201080p%20BluRay%20HEVC%20x265%205.1%20BONE&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2970%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club (1999) 1080p H265 10Bit BluRay ITA DTS 5.1 AC3 5.1 ENG DTS-XLL 5.1 AC3 5.1 SubS Ita Eng Spa NU.Ita NU.Eng - iDN_CreW",
+      "infoHash": "40712b59caaee09d17a4337c7f357bb2a57a48d6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 40,
+      "sizeBytes": 13636521165,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://martin-gebhardt.eu:25/announce",
+        "udp://ttk2.nbaonlineservice.com:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://retracker.lanta.me:2710/announce",
+        "udp://ec2-18-191-163-220.us-east-2.compute.amazonaws.com:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:40712b59caaee09d17a4337c7f357bb2a57a48d6&dn=Fight%20Club%20(1999)%201080p%20H265%2010Bit%20BluRay%20ITA%20DTS%205.1%20AC3%205.1%20ENG%20DTS-XLL%205.1%20AC3%205.1%20SubS%20Ita%20Eng%20Spa%20NU.Ita%20NU.Eng%20-%20iDN_CreW&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fmartin-gebhardt.eu%3A25%2Fannounce&tr=udp%3A%2F%2Fttk2.nbaonlineservice.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta.me%3A2710%2Fannounce&tr=udp%3A%2F%2Fec2-18-191-163-220.us-east-2.compute.amazonaws.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight.Club.1999.REMASTERED.1080p.BluRay.x265-RARBM",
+      "infoHash": "5edd93240d65fc9e53d836f6d53aaab2caf9f19c",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 40,
+      "sizeBytes": 2330019758,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay",
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5edd93240d65fc9e53d836f6d53aaab2caf9f19c&dn=Fight.Club.1999.REMASTERED.1080p.BluRay.x265-RARBM"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay x265-YAWNTiC",
+      "infoHash": "7404b4f669f7e76f82fbb066c5005f0cfc1b15c9",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 37,
+      "sizeBytes": 7730941133,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7404b4f669f7e76f82fbb066c5005f0cfc1b15c9&dn=Fight%20Club%201999%201080p%20BluRay%20x265-YAWNTiC"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club (1999) REMASTERED 1080p BluRay 10bit HEVC 6CH 3.3GB - MkvCage",
+      "infoHash": "677f5a9659602e87702c78a392f1f4b16605218f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 36,
+      "sizeBytes": 3543348019,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.ilibr.org:80/announce",
+        "udp://tracker.ilibr.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://p4p.arenabg.ch:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:677f5a9659602e87702c78a392f1f4b16605218f&dn=Fight%20Club%20(1999)%20REMASTERED%201080p%20BluRay%2010bit%20HEVC%206CH%203.3GB%20-%20MkvCage&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p Blu-Ray HEVC x265 10Bit DDP5.1 Subs KINGDOM",
+      "infoHash": "e8c607d4cb7a912fa3ec5a3a18090ab5b2643321",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 35,
+      "sizeBytes": 6871947674,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e8c607d4cb7a912fa3ec5a3a18090ab5b2643321&dn=Fight%20Club%201999%201080p%20Blu-Ray%20HEVC%20x265%2010Bit%20DDP5.1%20Subs%20KINGDOM"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) - 1080p - BD AV1 Opus MULTi3 [V2] [dAV1nci]",
+      "infoHash": "74187b74f4d49e16459564f9cd8169271d745374",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 35,
+      "sizeBytes": 3124588708,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "http://p4p.arenabg.com:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://9.rarbg.com:2810/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://openbittorrent.com:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://www.torrent.eu.org:451/announce",
+        "udp://wassermann.online:6969/announce",
+        "udp://vibe.community:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:74187b74f4d49e16459564f9cd8169271d745374&dn=Fight%20Club%20(1999)%20-%201080p%20-%20BD%20AV1%20Opus%20MULTi3%20%5BV2%5D%20%5BdAV1nci%5D&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fopenbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fwassermann.online%3A6969%2Fannounce&tr=udp%3A%2F%2Fvibe.community%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew",
+      "infoHash": "133b73a4d9187b8f6758e108b5d311ffc70a980e",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 35,
+      "sizeBytes": 3822520893,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ilCorSaRoNeRo"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://9.rarbg.to:2730/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2780/announce",
+        "udp://tracker.coppersurfer.tk:80/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.eddie4.nl:6969/announce",
+        "udp://shadowshq.yi.org:6969/announce",
+        "udp://shadowshq.eddie4.nl:6969/announce",
+        "udp://inferno.demonoid.pw:3391/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:133b73a4d9187b8f6758e108b5d311ffc70a980e&dn=Fight%20Club%20(1999)%20AC3%205.1%20ITA.ENG%201080p%20H265%20sub%20ita.eng%20Sp33dy94%20MIRCrew&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2730%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2780%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.eddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.eddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3391%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) 1080p Bluray AV1 Opus Multi4 [dAV1nci]",
+      "infoHash": "abf16c373b55b220b03026482773f8f294d821fe",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 34,
+      "sizeBytes": 3715146711,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://9.rarbg.com:2810/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "https://opentracker.i2p.rocks:443/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://trackerb.jonaslsa.com:6969/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:abf16c373b55b220b03026482773f8f294d821fe&dn=Fight%20Club%20(1999)%201080p%20Bluray%20AV1%20Opus%20Multi4%20%5BdAV1nci%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftrackerb.jonaslsa.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 RePak 1080p Blu-Ray HEVC x265 10Bit DDP5.1 Subs KINGDOM",
+      "infoHash": "2a311b715c4d0dc30803ed93e408f03f2739b9c4",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 32,
+      "sizeBytes": 6764573491,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:2a311b715c4d0dc30803ed93e408f03f2739b9c4&dn=Fight%20Club%201999%20RePak%201080p%20Blu-Ray%20HEVC%20x265%2010Bit%20DDP5.1%20Subs%20KINGDOM"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club (1999) [1080p x265 HEVC 10bit BluRay DTS-HD MA 5.1] [Prof]",
+      "infoHash": "c6b6898bb8a751302f6bb266e01cdb1b0577f77c",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 16084652524,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://denis.stalker.upeer.me:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c6b6898bb8a751302f6bb266e01cdb1b0577f77c&dn=Fight%20Club%20(1999)%20%5B1080p%20x265%20HEVC%2010bit%20BluRay%20DTS-HD%20MA%205.1%5D%20%5BProf%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Бойцовский клуб / Fight Club",
+      "infoHash": "4894f786b027d3c29ae739e2c7553f3ccfb9f900",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 26,
+      "sizeBytes": 12691628360,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4894f786b027d3c29ae739e2c7553f3ccfb9f900&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 1080p 10th Ann Edt BluRay DTS x264 D-Z0N3",
+      "infoHash": "4759632f94838be272667bf4709bc27bfba5c401",
+      "fileIdx": 19,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 40,
+      "sizeBytes": 13819057275,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4759632f94838be272667bf4709bc27bfba5c401&dn=Fight%20Club%201999%201080p%2010th%20Ann%20Edt%20BluRay%20DTS%20x264%20D-Z0N3"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight.Club.1999.iTA.ENG.AC3.SUB.iTA.ENG.BluRay.1080p.x264.jeddak-MIRCrew",
+      "infoHash": "6f8e92826af38b9dba24db31fdeb23d75d2710f0",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 3317862236,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.iamhansen.xyz:2000/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6f8e92826af38b9dba24db31fdeb23d75d2710f0&dn=Fight.Club.1999.iTA.ENG.AC3.SUB.iTA.ENG.BluRay.1080p.x264.jeddak-MIRCrew&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Klub rváčů / Fight Club (1999)(CZ)[1080p][WEB-DL][HEVC] = CSFD 88%",
+      "infoHash": "b94abef70ba878dff391f80a78b5e300000a1e16",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 6055903887,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b94abef70ba878dff391f80a78b5e300000a1e16&dn=Klub%20rv%C3%A1%C4%8D%C5%AF%20%2F%20Fight%20Club%20(1999)(CZ)%5B1080p%5D%5BWEB-DL%5D%5BHEVC%5D%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club (1999) - VO-VF - 1080p - x265",
+      "infoHash": "46076b76f3c28c006658bb8731645797a317f943",
+      "fileIdx": 0,
+      "language": "fr",
+      "audioLangs": [
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 24,
+      "sizeBytes": 1814623683,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:46076b76f3c28c006658bb8731645797a317f943&dn=Fight%20Club%20(1999)%20-%20VO-VF%20-%201080p%20-%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight.Club.1999.WEB-DL.1080p.DUAL.H.264-HDM",
+      "infoHash": "cf4c46e225dff3cc3e18660c941cccc7c1ca86b4",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 5808943268,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:cf4c46e225dff3cc3e18660c941cccc7c1ca86b4&dn=Fight.Club.1999.WEB-DL.1080p.DUAL.H.264-HDM"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 REPACK REMASTERED 1080p BluRay x265-YAWNTiC",
+      "infoHash": "329ec8d9a356c90de8a6ca8981ca5474830a6b15",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 7967164334,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:329ec8d9a356c90de8a6ca8981ca5474830a6b15&dn=Fight%20Club%201999%20REPACK%20REMASTERED%201080p%20BluRay%20x265-YAWNTiC"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club (1999) 1080p 10bit BluRay [Org JC Hindi DDP2.0 English DDP5.1] x265 HEVC ESub - ANNi",
+      "infoHash": "243889e2f4787a4d8770d77771072b78ab65e08c",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 17,
+      "sizeBytes": 9771050598,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -211,25 +1699,739 @@
         "TorrentsDB"
       ],
       "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:243889e2f4787a4d8770d77771072b78ab65e08c&dn=Fight%20Club%20(1999)%201080p%2010bit%20BluRay%20%5BOrg%20JC%20Hindi%20DDP2.0%20English%20DDP5.1%5D%20x265%20HEVC%20ESub%20-%20ANNi"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight.Club.1999.PROPER.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-TRB",
+      "infoHash": "d7924041becc26e63ad9bfd13173bd8c1dcfd898",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 41,
+      "sizeBytes": 33114197852,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d7924041becc26e63ad9bfd13173bd8c1dcfd898&dn=Fight.Club.1999.PROPER.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-TRB"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p Blu-Ray HEVC x265 10Bit DDP5 1 Subs KINGDOM",
+      "infoHash": "d7d6cb76343618b34947e3129b2552fbae0e59f9",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 13,
+      "sizeBytes": 6925634765,
+      "sizeLabel": null,
+      "providers": [
         "torrentsdb"
       ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d7d6cb76343618b34947e3129b2552fbae0e59f9&dn=Fight%20Club%201999%201080p%20Blu-Ray%20HEVC%20x265%2010Bit%20DDP5%201%20Subs%20KINGDOM"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p AUBC WEB-DL AAC 2 0 H 264-PiRaTeS",
+      "infoHash": "c49183abbe6e0adb269197bd541abdb0a6cbae4a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 2609192632,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "limetorrent"
+      ],
       "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c49183abbe6e0adb269197bd541abdb0a6cbae4a&dn=Fight%20Club%201999%201080p%20AUBC%20WEB-DL%20AAC%202%200%20H%20264-PiRaTeS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight.Club.1999.1080p.BluRay.x264.AC3-ETRG",
+      "infoHash": "5130566832cbfacbed2398c4ddc3e8fdf6d7d353",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 4284229878,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5130566832cbfacbed2398c4ddc3e8fdf6d7d353&dn=Fight.Club.1999.1080p.BluRay.x264.AC3-ETRG"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay x264-BestHD",
+      "infoHash": "295892df94e39fb59269f3b248d1242c6cbff089",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 14087492731,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:295892df94e39fb59269f3b248d1242c6cbff089&dn=Fight%20Club%201999%201080p%20BluRay%20x264-BestHD"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 REMASTERED V2 1080p BluRay HEVC x265 5 1-BONE",
+      "infoHash": "240b85c65361cb6802596da85eba900ea1e6e1c9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 3189013217,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:240b85c65361cb6802596da85eba900ea1e6e1c9&dn=Fight%20Club%201999%20REMASTERED%20V2%201080p%20BluRay%20HEVC%20x265%205%201-BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight.Club.1999.1080p.BluRay.REMUX.DTS-HD.MA.5.1",
+      "infoHash": "598cf90dc3cef0544312e9d46b855746456c8d15",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 72778220831,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:598cf90dc3cef0544312e9d46b855746456c8d15&dn=Fight.Club.1999.1080p.BluRay.REMUX.DTS-HD.MA.5.1"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Fight Club 1999 1080p ITV WEB-DL AAC 2 0 H 264-PiRaTeS",
+      "infoHash": "8234ac1e7dc2db0d31a12c349d54b51c25acd9b4",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 6979321856,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8234ac1e7dc2db0d31a12c349d54b51c25acd9b4&dn=Fight%20Club%201999%201080p%20ITV%20WEB-DL%20AAC%202%200%20H%20264-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p MAX WEB-DL H265-PiRaTeS",
+      "infoHash": "a75687cb69cf9eea9f3292cc9e8d6e1803c554cc",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 5808943268,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a75687cb69cf9eea9f3292cc9e8d6e1803c554cc&dn=Fight%20Club%201999%201080p%20MAX%20WEB-DL%20H265-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Klub rváčů / Fight Club Remastered (1999)(CZ/EN)[1080p][REMUX] = CSFD 88%",
+      "infoHash": "beb6f47df46a3699bc6c5cad62b3df2d41235e87",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 29517162742,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:beb6f47df46a3699bc6c5cad62b3df2d41235e87&dn=Klub%20rv%C3%A1%C4%8D%C5%AF%20%2F%20Fight%20Club%20Remastered%20(1999)(CZ%2FEN)%5B1080p%5D%5BREMUX%5D%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Klub bitkárov / Fight Club (1999)(SK/EN)[1080p] = CSFD 88%",
+      "infoHash": "481b9a90382e55385b5a4a18b89b860764c63263",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 4144643441,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:481b9a90382e55385b5a4a18b89b860764c63263&dn=Klub%20bitk%C3%A1rov%20%2F%20Fight%20Club%20(1999)(SK%2FEN)%5B1080p%5D%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay DD 5 1 AV1-RABBiT",
+      "infoHash": "7bf9619adb51bbd180b69b456293b2313fab6f97",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 19219978650,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7bf9619adb51bbd180b69b456293b2313fab6f97&dn=Fight%20Club%201999%201080p%20BluRay%20DD%205%201%20AV1-RABBiT"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "Fight Club 1999 REPACK 1080p BluRay DD5 1 X265-Ralphy",
+      "infoHash": "d0699f2546433fe744ee6f840c40a31c665f6c5b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 91,
+      "sizeBytes": 9062380995,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d0699f2546433fe744ee6f840c40a31c665f6c5b&dn=Fight%20Club%201999%20REPACK%201080p%20BluRay%20DD5%201%20X265-Ralphy"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Amazing Films 5 - Mp4 x264 AC3 1080p",
+      "infoHash": "9d34b41369168c08bba185cadc7e45fc4156e86f",
+      "fileIdx": 19,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 3328599654,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9d34b41369168c08bba185cadc7e45fc4156e86f&dn=Amazing%20Films%205%20-%20Mp4%20x264%20AC3%201080p"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p MAX WEB-DL DDP 5 1 H 265-PiRaTeS",
+      "infoHash": "e8287ccdf99145771543494e8d2b5709fb9f6c77",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 5808943268,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e8287ccdf99145771543494e8d2b5709fb9f6c77&dn=Fight%20Club%201999%201080p%20MAX%20WEB-DL%20DDP%205%201%20H%20265-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 1080p BluRay x264-STRiT",
+      "infoHash": "11dd1d54de162ab9581a61197a1da4f563f73505",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 19230716068,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:11dd1d54de162ab9581a61197a1da4f563f73505&dn=Fight%20Club%201999%201080p%20BluRay%20x264-STRiT"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight.Club.1999.10th.Anniversary.Edition.Bluray.1080p.DTS-HD.x26 ...",
+      "infoHash": "742cdbcff90dae1b866477ca657c9cb70e77d1b6",
+      "fileIdx": 77,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 19359565087,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "knaben"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:742cdbcff90dae1b866477ca657c9cb70e77d1b6&dn=Fight.Club.1999.10th.Anniversary.Edition.Bluray.1080p.DTS-HD.x26%20..."
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Fight Club 1999 Blu-ray Remux 1080p x264 DTS-HD MA 5.1",
+      "infoHash": "07a4011dccd28512d85aca38c95fd85fc5f43459",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 47502338294,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:07a4011dccd28512d85aca38c95fd85fc5f43459&dn=Fight%20Club%201999%20Blu-ray%20Remux%201080p%20x264%20DTS-HD%20MA%205.1"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 720p",
+      "title": "Fight Club 1999 720p BluRay",
+      "infoHash": "0facfb2d11c9a8f15281a909b45084e6425ef2f0",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 100,
+      "sizeBytes": 1342177280,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "knaben",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:4af5b119660b0132c38506a40967568c95624db7&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:0FACFB2D11C9A8F15281A909B45084E6425EF2F0&dn=Fight%20Club%20(1999)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 720p",
+      "title": "Fight.Club.1999.REMASTERED.REPACK.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG ⭐",
+      "infoHash": "19eb684c1110109ac8893f4f818eca94110f267a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 48,
+      "sizeBytes": 1045126185,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "knaben",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.iamhansen.xyz:2000/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:19eb684c1110109ac8893f4f818eca94110f267a&dn=Fight.Club.1999.REMASTERED.REPACK.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG%20%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 720p",
+      "title": "Fight Club (1999) 720p BrRip x264 - YIFY",
+      "infoHash": "4b37249e7f82f60d94c7a15b743a6b624e640372",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 50,
+      "sizeBytes": 1073741824,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "knaben"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4b37249e7f82f60d94c7a15b743a6b624e640372&dn=Fight%20Club%20(1999)%20720p%20BrRip%20x264%20-%20YIFY"
     },
     {
       "name": "TorrentsDB 720p",
-      "title": "Fight Club (1999) [720p][Castellano+Subs]",
-      "infoHash": "b6761afad0056daecba2fdb6169a803c95394d32",
+      "title": "Fight.Club.1999.720p.BDRip.x264-SEPH1",
+      "infoHash": "c0d72bfbd23406d3b1f98fa9ed22fa18a431b52f",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 27,
+      "sizeBytes": 2297807503,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -237,24 +2439,298 @@
       "providerNames": [
         "TorrentsDB"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "knaben"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b6761afad0056daecba2fdb6169a803c95394d32&dn=Fight%20Club%20(1999)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c0d72bfbd23406d3b1f98fa9ed22fa18a431b52f&dn=Fight.Club.1999.720p.BDRip.x264-SEPH1"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Бойцовский клуб / Fight Club",
+      "infoHash": "12611691c73ab6c30d6972a2bc52c3f89630905a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 26,
+      "sizeBytes": 3113851290,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:12611691c73ab6c30d6972a2bc52c3f89630905a&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Бойцовский клуб / Fight Club",
+      "infoHash": "96b7fdb7f82535bd108659b02f6354895cb76ac8",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 7,
+      "sizeBytes": 1556925645,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt.new-team.org:2710/0000276a348fd7a3536b1c0bd85c9722/announce",
+        "http://retracker.local/announce",
+        "udp://tracker.publicbt.com:80",
+        "udp://tracker.istole.it:80",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:96b7fdb7f82535bd108659b02f6354895cb76ac8&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.new-team.org%3A2710%2F0000276a348fd7a3536b1c0bd85c9722%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80&tr=udp%3A%2F%2Ftracker.istole.it%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Fight Club",
+      "infoHash": "00d204e8e1b6cd5b1b419f600a8ed2f0dedfeac3",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 1675037245,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:00d204e8e1b6cd5b1b419f600a8ed2f0dedfeac3&dn=Fight%20Club&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Fight Club (1999) [Brad Pitt] BluRay H264 DolbyD 5.1 + nickarad",
+      "infoHash": "13bb7e1d86bb1dae1f04f745ac9eb93c38a4504c",
+      "fileIdx": 9,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 2566242959,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:13bb7e1d86bb1dae1f04f745ac9eb93c38a4504c&dn=Fight%20Club%20(1999)%20%5BBrad%20Pitt%5D%20BluRay%20H264%20DolbyD%205.1%20%2B%20nickarad"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Бойцовский клуб / Fight Club",
+      "infoHash": "e212f35c6c6ad8ea3b02c25954d07006193a48a4",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 790919905,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e212f35c6c6ad8ea3b02c25954d07006193a48a4&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Fight Club (1999) 4320p HDR Ai Upscale 5.1 MultiSubs MKV -Mesc",
+      "infoHash": "ad881f4cf5b1468b4eeec3d15a5bc7dc8813e877",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 46428596470,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ad881f4cf5b1468b4eeec3d15a5bc7dc8813e877&dn=Fight%20Club%20(1999)%204320p%20HDR%20Ai%20Upscale%205.1%20MultiSubs%20MKV%20-Mesc"
     },
     {
       "name": "Torrentio 4K",
-      "title": "Fight Club (1999) [4K][Castellano+Subs]",
-      "infoHash": "1bf0ef2cc4b8e8e6ed2cc2b4da357929d71c1781",
+      "title": "Fight Club 1999 REPACK 2160p UHD Blu-ray Remux HDR HEVC DTS-HD MA 5 1-CiNEPHiLES",
+      "infoHash": "b107f339c960a8185570a000f8ee2151a129a253",
       "fileIdx": 0,
-      "language": "es",
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 75,
+      "sizeBytes": 79918603960,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b107f339c960a8185570a000f8ee2151a129a253&dn=Fight%20Club%201999%20REPACK%202160p%20UHD%20Blu-ray%20Remux%20HDR%20HEVC%20DTS-HD%20MA%205%201-CiNEPHiLES"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight Club (1999) (2160p UHD BluRay x265 10bit DV HDR10 DTS-HD MA 6.1 r00t) [QxR]",
+      "infoHash": "9f86c8af5ea497d231cbb361e870902f6739dd0b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 34,
+      "sizeBytes": 35444217610,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9f86c8af5ea497d231cbb361e870902f6739dd0b&dn=Fight%20Club%20(1999)%20(2160p%20UHD%20BluRay%20x265%2010bit%20DV%20HDR10%20DTS-HD%20MA%206.1%20r00t)%20%5BQxR%5D"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight.Club.1999.2160p.UHD.Bluray.Remux.HDR.HEVC.DTS-HD.MA.5.1-CiNEPHiLES",
+      "infoHash": "f1676ef7d49884f119cbd5eaf1d3dd5494d6cb83",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 33,
+      "sizeBytes": 75902809539,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:f1676ef7d49884f119cbd5eaf1d3dd5494d6cb83&dn=Fight.Club.1999.2160p.UHD.Bluray.Remux.HDR.HEVC.DTS-HD.MA.5.1-CiNEPHiLES"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Бойцовский клуб / Fight Club [1999 BDRemux 2160p HDR10] Dub + 4x MVO + DVO + 11x AVO + Original Eng + Sub Rus",
+      "infoHash": "f1efcb6b7531df1dd9d75266f6ae01f513c137a8",
+      "fileIdx": 0,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en",
+        "ru"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 13,
+      "sizeBytes": 115470195753,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -263,25 +2739,120 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "torrentio"
+        "Rutracker"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "http://bt4.t-ru.org/ann?magnet",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce",
+        "udp://opentor.net:6969",
+        "http://bt.t-ru.org/ann?magnet",
+        "http://bt2.t-ru.org/ann?magnet",
+        "http://bt3.t-ru.org/ann?magnet"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:1bf0ef2cc4b8e8e6ed2cc2b4da357929d71c1781&dn=Fight%20Club%20(1999)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:f1efcb6b7531df1dd9d75266f6ae01f513c137a8&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club%20%5B1999%20BDRemux%202160p%20HDR10%5D%20Dub%20%2B%204x%20MVO%20%2B%20DVO%20%2B%2011x%20AVO%20%2B%20Original%20Eng%20%2B%20Sub%20Rus&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight.Club.1999.2160p.UHD.BluRay.Remux.HDR.MULTi.DTS-HD.MA.H265-BTM",
+      "infoHash": "8d9ed6e0aeeb5fc4accd7df92a82daf37ca9772e",
+      "fileIdx": 3,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 82366735319,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8d9ed6e0aeeb5fc4accd7df92a82daf37ca9772e&dn=Fight.Club.1999.2160p.UHD.BluRay.Remux.HDR.MULTi.DTS-HD.MA.H265-BTM"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight Club (1999) 4K Remastered 1080p 10bit Bluray x265 HEVC [Org DDP 2.0 Hindi DDP 5.1 English] MSubs ~ TombDoc",
+      "infoHash": "58aadc00607ec2ee8c62b2a106897a84d1d527e2",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 16,
+      "sizeBytes": 8461085573,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:58aadc00607ec2ee8c62b2a106897a84d1d527e2&dn=Fight%20Club%20(1999)%204K%20Remastered%201080p%2010bit%20Bluray%20x265%20HEVC%20%5BOrg%20DDP%202.0%20Hindi%20DDP%205.1%20English%5D%20MSubs%20~%20TombDoc"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight Club 1999 UHD BluRay 1080p DDP 5 1 HDR10 x265-SM737",
+      "infoHash": "8a377d65643b5917ff8b223811f6f90a56e7fc49",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 9,
+      "sizeBytes": 8944269394,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8a377d65643b5917ff8b223811f6f90a56e7fc49&dn=Fight%20Club%201999%20UHD%20BluRay%201080p%20DDP%205%201%20HDR10%20x265-SM737"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Fight Club (1999) [1080p][Castellano+Subs]",
-      "infoHash": "e13830f003ee2f0307cbac843939a089a83845bd",
-      "fileIdx": 0,
-      "language": "es",
+      "title": "Imdb top 263 movies hindi english gdrive",
+      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
+      "fileIdx": 65,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 2081,
+      "sizeBytes": 1986422374,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -290,25 +2861,92 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "1337x"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:e13830f003ee2f0307cbac843939a089a83845bd&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Fight Club (1999) [1080p][Ingles+Subs]",
-      "infoHash": "cad9d217e3f2011ad9f30eb2bc8746a0de3efda9",
+      "title": "Fight Club 1999 REMASTERED V2 1080p BluRay HEVC x265 5.1 BONE",
+      "infoHash": "ce15d6802e66964bcb0d86e7cab13e0733ecd572",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 81,
+      "sizeBytes": 3189013217,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ce15d6802e66964bcb0d86e7cab13e0733ecd572&dn=Fight%20Club%201999%20REMASTERED%20V2%201080p%20BluRay%20HEVC%20x265%205.1%20BONE"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe",
+      "infoHash": "6ec04ceaaa652e95475793d36042f332367fddfe",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 51,
+      "sizeBytes": 5368709120,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6ec04ceaaa652e95475793d36042f332367fddfe&dn=Fight.Club.1999.1080p.BluRay.x265.DTS.5.1-HDnMe"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Fight Club 1999 10TH ANNIVERSARY EDITION 1080p 10bit BluRay 6CH …",
+      "infoHash": "54202145f23bee7f0f9432b149bdd1bd6544bf9d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 26,
+      "sizeBytes": 1589137900,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:54202145f23bee7f0f9432b149bdd1bd6544bf9d&dn=Fight%20Club%201999%2010TH%20ANNIVERSARY%20EDITION%201080p%2010bit%20BluRay%206CH%20%E2%80%A6"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Fight Club (1999) (1080p YKW WEB-DL H265 SDR DDP 5 1 English - HONE)",
+      "infoHash": "11318a1e44f9b3f0dc8eb50e9ed4178f6e096fe1",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 18,
+      "sizeBytes": 8976481649,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -317,25 +2955,121 @@
         "Torrentio"
       ],
       "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:11318a1e44f9b3f0dc8eb50e9ed4178f6e096fe1&dn=Fight%20Club%20(1999)%20(1080p%20YKW%20WEB-DL%20H265%20SDR%20DDP%205%201%20English%20-%20HONE)"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ",
+      "infoHash": "71fee293dc117c48487029c6dcb5038d974a0295",
+      "fileIdx": 356,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 4305704714,
+      "sizeLabel": null,
+      "providers": [
         "torrentio"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "providerNames": [
+        "Torrentio"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:cad9d217e3f2011ad9f30eb2bc8746a0de3efda9&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:71fee293dc117c48487029c6dcb5038d974a0295&dn=IMDB%20Top%20250%20-%202024%20Edition%20-%201080p%20BluRay%20eSubs%20jZQ"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 69,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 8181912699,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9351bcf9e7437f706549f8b60314c39259c420b4&dn=IMDB%20TOP%20001-050%20BluRay%201080p%20x265%2010bit%20MNHD-FRDS"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Бойцовский клуб / Fight Club (1999) BDRip 1080p | 10th Anniversary Edition",
+      "infoHash": "2d00ced14796267c8441812adb5a3dd132288cef",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 8332236554,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Rutor"
+      ],
+      "trackers": [
+        "http://retracker.local/announce",
+        "udp://opentor.org:2710",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce",
+        "udp://opentor.net:6969",
+        "http://bt.t-ru.org/ann?magnet",
+        "http://bt2.t-ru.org/ann?magnet",
+        "http://bt3.t-ru.org/ann?magnet",
+        "http://bt4.t-ru.org/ann?magnet"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2d00ced14796267c8441812adb5a3dd132288cef&dn=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%2F%20Fight%20Club%20(1999)%20BDRip%201080p%20%7C%2010th%20Anniversary%20Edition&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
     },
     {
       "name": "Torrentio 720p",
-      "title": "Fight Club (1999) [720p][Castellano+Subs]",
-      "infoHash": "46ddf6e8f811d7e89f7a655ea9e85a76f67faf85",
+      "title": "Fight Club 1999 10TH ANNIVERSARY EDITION 720p 10bit BluRay 6CH x265 HEVC-PS",
+      "infoHash": "6170d37e7e422883a6bf06a2aeb79b67ae5cebd2",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 5,
+      "sizeBytes": 909157335,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -343,223 +3077,126 @@
       "providerNames": [
         "Torrentio"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "ThePirateBay"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:46ddf6e8f811d7e89f7a655ea9e85a76f67faf85&dn=Fight%20Club%20(1999)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6170d37e7e422883a6bf06a2aeb79b67ae5cebd2&dn=Fight%20Club%201999%2010TH%20ANNIVERSARY%20EDITION%20720p%2010bit%20BluRay%206CH%20x265%20HEVC-PS"
     },
     {
-      "name": "ThePirateBay+ 4K",
-      "title": "Fight Club (1999) [4K][Castellano+Subs]",
-      "infoHash": "8f9ebed450c64c36b158d256c95abc3f457f7971",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
+      "name": "Torrentio",
+      "title": "[ArabP2P][مكتبة الأفلام لـ شاديه Library_ Shadia][TVRip][#74 فلم]",
+      "infoHash": "ed845b7d00f41b613b59c780e661d3766b75a745",
+      "fileIdx": 29,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 19,
+      "sizeBytes": 942554481,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
       ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ed845b7d00f41b613b59c780e661d3766b75a745&dn=%5BArabP2P%5D%5B%D9%85%D9%83%D8%AA%D8%A8%D8%A9%20%D8%A7%D9%84%D8%A3%D9%81%D9%84%D8%A7%D9%85%20%D9%84%D9%80%20%D8%B4%D8%A7%D8%AF%D9%8A%D9%87%20Library_%20Shadia%5D%5BTVRip%5D%5B%2374%20%D9%81%D9%84%D9%85%5D"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Fanedit Collection",
+      "infoHash": "72809a85f76227b01ea5110a57d0225114bc53c5",
+      "fileIdx": 240,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 83,
+      "sizeBytes": 1084479242,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:72809a85f76227b01ea5110a57d0225114bc53c5&dn=Fanedit%20Collection"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Fight Club (1999) AI UHD - 10th Anniversary Edition + Extras",
+      "infoHash": "be9d793cd7bdfee3b0b60afb8aa372087b0c84f8",
+      "fileIdx": 24,
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 6,
+      "sizeBytes": 171284890,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "piratebay"
+        "TorrentGalaxy"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:8f9ebed450c64c36b158d256c95abc3f457f7971&dn=Fight%20Club%20(1999)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:be9d793cd7bdfee3b0b60afb8aa372087b0c84f8&dn=Fight%20Club%20(1999)%20AI%20UHD%20-%2010th%20Anniversary%20Edition%20%2B%20Extras"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Fight Club (1999) [1080p][Castellano+Subs]",
-      "infoHash": "af102d79fd545ce6afdc57c281a4af509d9a0b97",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "name": "Torrentio",
+      "title": "Official IMDb Top 250 Movies Collection 6/17/2011",
+      "infoHash": "4986ace2ee7a564508e0d5cfdde2d9018b8af942",
+      "fileIdx": 13,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 734055629,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:af102d79fd545ce6afdc57c281a4af509d9a0b97&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4986ace2ee7a564508e0d5cfdde2d9018b8af942&dn=Official%20IMDb%20Top%20250%20Movies%20Collection%206%2F17%2F2011"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Fight Club (1999) [1080p][Ingles+Subs]",
-      "infoHash": "c2d1cd8e976e77fe6ba2fdf6b798d8f83c7659db",
+      "name": "Torrentio 4K",
+      "title": "Fight Club (1999) AI UHD - 10th Anniversary Edition + Extras (PROPER) FIX",
+      "infoHash": "1a1e4f9fc4c81bebc199aa143fc5b161321ef9be",
       "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "piratebay"
-      ],
-      "providerNames": [
-        "ThePirateBay+"
-      ],
-      "externalProviders": [
-        "piratebay"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:c2d1cd8e976e77fe6ba2fdf6b798d8f83c7659db&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "ThePirateBay+ 720p",
-      "title": "Fight Club (1999) [720p][Castellano+Subs]",
-      "infoHash": "f091be022d6228ea6794c675141922d8380565d9",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "piratebay"
-      ],
-      "providerNames": [
-        "ThePirateBay+"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:f091be022d6228ea6794c675141922d8380565d9&dn=Fight%20Club%20(1999)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 4K",
-      "title": "Fight Club (1999) [4K][Castellano+Subs]",
-      "infoHash": "4f3098b0d8f062c341a57a7733964d42bdf07bfd",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 5,
+      "sizeBytes": 25157770936,
       "sizeLabel": null,
       "providers": [
-        "ytztvio"
+        "torrentio"
       ],
       "providerNames": [
-        "Ytztvio"
+        "Torrentio"
       ],
       "externalProviders": [
-        "ytztvio"
+        "TorrentGalaxy"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:4f3098b0d8f062c341a57a7733964d42bdf07bfd&dn=Fight%20Club%20(1999)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "Fight Club (1999) [1080p][Castellano+Subs]",
-      "infoHash": "d43fb7d57a65d057cd855c60a72483e4dc5b1148",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "YTS"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:d43fb7d57a65d057cd855c60a72483e4dc5b1148&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "Fight Club (1999) [1080p][Ingles+Subs]",
-      "infoHash": "ff3952697bf702b3ef84c3038b7786d10e1efbe7",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "ytztvio"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:ff3952697bf702b3ef84c3038b7786d10e1efbe7&dn=Fight%20Club%20(1999)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 720p",
-      "title": "Fight Club (1999) [720p][Castellano+Subs]",
-      "infoHash": "ed29d7382e19273f55268a4009b7c697ddce9a85",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:ed29d7382e19273f55268a4009b7c697ddce9a85&dn=Fight%20Club%20(1999)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:1a1e4f9fc4c81bebc199aa143fc5b161321ef9be&dn=Fight%20Club%20(1999)%20AI%20UHD%20-%2010th%20Anniversary%20Edition%20%2B%20Extras%20(PROPER)%20FIX"
     }
   ]
 }

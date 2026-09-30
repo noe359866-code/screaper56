@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-30T02:43:32.095Z",
-  "finishedAt": "2026-09-30T02:43:32.150Z",
+  "generatedAt": "2026-09-30T02:57:43.808Z",
+  "finishedAt": "2026-09-30T02:58:16.337Z",
   "providers": [
     {
       "slug": "peerflix",
@@ -102,12 +102,12 @@
       "note": "Manifest registrado; solo expone catálogos Porn y no streams IMDb movie/series."
     }
   ],
-  "fixture": true,
+  "fixture": false,
   "dryRunDb": true,
   "total": 24,
   "movies": 22,
   "episodes": 2,
-  "totalStreams": 480,
+  "totalStreams": 3044,
   "items": [
     {
       "id": "tt0111161",
@@ -117,22 +117,29 @@
       "episode": null,
       "label": "Cadena perpetua (1994)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0111161.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0111161.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0111161.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0111161.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0111161.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0111161.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0111161.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0111161.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 111,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -150,22 +157,31 @@
       "episode": null,
       "label": "Inception (2010)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt1375666.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1375666.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1375666.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1375666.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt1375666.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1375666.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1375666.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1375666.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 138,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -183,22 +199,29 @@
       "episode": null,
       "label": "El caballero oscuro (2008)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0468569.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0468569.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0468569.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0468569.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0468569.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0468569.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0468569.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0468569.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 107,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -216,22 +239,30 @@
       "episode": null,
       "label": "Matrix (1999)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0133093.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0133093.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0133093.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0133093.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0133093.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0133093.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0133093.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0133093.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 142,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -249,22 +280,28 @@
       "episode": null,
       "label": "El Señor de los Anillos: La Comunidad del Anillo (2001)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0120737.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120737.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120737.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120737.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0120737.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120737.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120737.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120737.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 167,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -282,22 +319,30 @@
       "episode": null,
       "label": "El Señor de los Anillos: El Retorno del Rey (2003)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0167260.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0167260.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0167260.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0167260.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0167260.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0167260.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0167260.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0167260.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 152,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -315,22 +360,31 @@
       "episode": null,
       "label": "El caballero oscuro: La leyenda renace (2012)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt1345836.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1345836.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1345836.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1345836.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt1345836.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1345836.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1345836.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1345836.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 98,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -348,22 +402,30 @@
       "episode": null,
       "label": "Interestelar (2014)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0816692.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0816692.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0816692.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0816692.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0816692.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0816692.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0816692.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0816692.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 218,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -381,14 +443,14 @@
       "episode": null,
       "label": "Forrest Gump (1994)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 93,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
@@ -396,7 +458,13 @@
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -414,22 +482,28 @@
       "episode": null,
       "label": "El Padrino (1972)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0068646.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0068646.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0068646.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0068646.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0068646.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0068646.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0068646.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0068646.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 84,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -447,22 +521,27 @@
       "episode": null,
       "label": "El silencio de los corderos (1991)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0102926.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0102926.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0102926.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0102926.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0102926.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0102926.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0102926.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0102926.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 84,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -480,22 +559,31 @@
       "episode": null,
       "label": "Pulp Fiction (1994)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0110912.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0110912.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0110912.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0110912.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0110912.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0110912.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0110912.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0110912.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 112,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -513,22 +601,28 @@
       "episode": null,
       "label": "El Padrino. Parte II (1974)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0253474.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0253474.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0253474.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0253474.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0253474.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0253474.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0253474.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0253474.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 81,
+      "bestSeeders": 254,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -546,22 +640,26 @@
       "episode": null,
       "label": "Fight Club (1999)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 93,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -579,22 +677,27 @@
       "episode": null,
       "label": "Salvar al soldado Ryan (1998)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt0120815.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120815.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120815.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt0120815.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120815.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120815.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 99,
+      "bestSeeders": 963,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -612,14 +715,14 @@
       "episode": null,
       "label": "Joker (2019)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 112,
+      "bestSeeders": 311,
       "qualities": [
         "1080p",
         "4K",
@@ -627,7 +730,11 @@
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -645,22 +752,28 @@
       "episode": null,
       "label": "Avengers: Endgame (2019)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt4154796.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt4154796.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt4154796.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt4154796.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt4154796.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt4154796.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt4154796.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt4154796.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 132,
+      "bestSeeders": 1262,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -678,22 +791,31 @@
       "episode": null,
       "label": "Top Gun: Maverick (2022)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt1745960.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1745960.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1745960.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1745960.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt1745960.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1745960.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1745960.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1745960.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 218,
+      "bestSeeders": 4618,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -711,22 +833,28 @@
       "episode": null,
       "label": "Oppenheimer (2023)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt15398776.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt15398776.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt15398776.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt15398776.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt15398776.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt15398776.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt15398776.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt15398776.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 189,
+      "bestSeeders": 6115,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -744,22 +872,31 @@
       "episode": null,
       "label": "Barbie (2023)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt1517268.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1517268.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1517268.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1517268.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt1517268.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1517268.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1517268.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1517268.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 140,
+      "bestSeeders": 3618,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -777,22 +914,29 @@
       "episode": null,
       "label": "Dune: Parte dos (2024)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt1160419.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1160419.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1160419.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1160419.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt1160419.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1160419.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt1160419.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1160419.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 168,
+      "bestSeeders": 800,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -810,22 +954,30 @@
       "episode": null,
       "label": "Spider-Man: Cruzando el Multiverso (2023)",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt9362722.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt9362722.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt9362722.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt9362722.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/movie/tt9362722.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt9362722.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt9362722.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt9362722.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 126,
+      "bestSeeders": 3660,
       "qualities": [
         "1080p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "ru",
+        "zh"
       ],
       "providers": [
         "peerflix",
@@ -843,22 +995,28 @@
       "episode": 1,
       "label": "Juego de Tronos S01E01",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0944947:1:1.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json",
+        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0944947:1:1.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 116,
+      "bestSeeders": 796,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
+        "de",
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
@@ -876,60 +1034,70 @@
       "episode": 1,
       "label": "Breaking Bad S01E01",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt0903747:1:1.json [fixture]",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt0903747:1:1.json [fixture]",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json [fixture]",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0903747:1:1.json [fixture]"
+        "peerflix": "https://peerflix.mov/stream/series/tt0903747:1:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0903747:1:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0903747:1:1.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json"
       },
-      "streamCount": 20,
-      "bestSeeders": 80,
+      "streamCount": 64,
+      "bestSeeders": 979,
       "qualities": [
         "1080p",
+        "480p",
         "4K",
         "720p"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "fr",
+        "it",
+        "pt",
+        "ru"
       ],
       "providers": [
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
       ]
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "id": "tt0903747:1:1",
+      "provider": "ytztvio",
+      "label": "Breaking Bad S01E01",
+      "error": "HTTP 403"
+    }
+  ],
   "perProviderStats": {
     "peerflix": {
-      "streams": 96,
+      "streams": 362,
       "errors": 0
     },
     "torrentsdb": {
-      "streams": 96,
+      "streams": 2314,
       "errors": 0
     },
     "torrentio": {
-      "streams": 96,
+      "streams": 1605,
       "errors": 0
     },
     "piratebay": {
-      "streams": 96,
+      "streams": 99,
       "errors": 0
     },
     "ytztvio": {
-      "streams": 96,
-      "errors": 0
+      "streams": 87,
+      "errors": 1
     }
   },
   "db": {
-    "inserted": 480,
+    "inserted": 2903,
     "rejected": 0,
     "failures": [],
     "dryRun": true
   },
-  "durationMs": 55
+  "durationMs": 32529
 }

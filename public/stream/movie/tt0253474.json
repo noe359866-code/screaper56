@@ -1,71 +1,68 @@
 {
   "streams": [
     {
-      "name": "Peerflix 4K",
-      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
-      "infoHash": "60eb584877a9ea9915a713640eb6f8a1e5f4be70",
-      "fileIdx": 0,
+      "name": "Peerflix+Torrentio 1080p",
+      "title": "El pianista (2002).BDrip 1080p (Spanish-English+Subt)",
+      "infoHash": "5bc7b3c4165a4eaa7d1f2fa19358202ef118143a",
+      "fileIdx": null,
       "language": "es",
       "audioLangs": [
-        "es"
-      ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
-      "sizeLabel": null,
-      "providers": [
-        "peerflix"
-      ],
-      "providerNames": [
-        "Peerflix"
-      ],
-      "externalProviders": [
-        "peerflix"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:60eb584877a9ea9915a713640eb6f8a1e5f4be70&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Peerflix 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
-      "infoHash": "f08f9fca6dad10513b4da7c27901a318e1323089",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
-      "sizeLabel": null,
-      "providers": [
-        "peerflix"
-      ],
-      "providerNames": [
-        "Peerflix"
-      ],
-      "externalProviders": [
-        "YTS"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:f08f9fca6dad10513b4da7c27901a318e1323089&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Peerflix 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
-      "infoHash": "2303a266bea671e163d75c2c820198a593b965cf",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
+        "es",
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 16,
+      "sizeBytes": 2480343613,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Sinsitio",
+        "EXT"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5bc7b3c4165a4eaa7d1f2fa19358202ef118143a&dn=El%20pianista%20(2002).BDrip%201080p%20(Spanish-English%2BSubt)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Pianista [BluRay 1080p][AC3 5.1 Castellano AC3 5.1 English+Subs.ES-ES.Forz][2002]",
+      "infoHash": "70a0c24200989ddccb0aee4654573c7cef9ce2df",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": null,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -74,25 +71,188 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "peerflix"
+        "Peerflix"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:2303a266bea671e163d75c2c820198a593b965cf&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:70a0c24200989ddccb0aee4654573c7cef9ce2df&dn=El%20Pianista%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20AC3%205.1%20English%2BSubs.ES-ES.Forz%5D%5B2002%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Pianista.1080p.DUAL.Eml HDTeam.mkv",
+      "infoHash": "aa516ee04eb86f84ae8740a3321ddb6f6d59a9f1",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 22387517030,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "PeerflixBot"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa516ee04eb86f84ae8740a3321ddb6f6d59a9f1&dn=El%20Pianista.1080p.DUAL.Eml%20HDTeam.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El Pianista [FullBluRay 1080p][Castellano AC3 5.1-DTS-HD 5.1-Ingles AC3 5.1+Subs][ES-EN]",
+      "infoHash": "defd98d7c4594045f46bd9c5a8a8ae3ef73dfcb2",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:defd98d7c4594045f46bd9c5a8a8ae3ef73dfcb2&dn=El%20Pianista%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-DTS-HD%205.1-Ingles%20AC3%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix+Torrentio 1080p",
+      "title": "El Pianista (2002) BD-Rip 1080p Castellano-Inglés por Egi",
+      "infoHash": "569a6e3d23690616dc17592c10235316c440e04b",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "pt"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 11768210391,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Peerflix",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:569a6e3d23690616dc17592c10235316c440e04b&dn=El%20Pianista%20(2002)%20BD-Rip%201080p%20Castellano-Ingl%C3%A9s%20por%20Egi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
-      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
-      "infoHash": "43cd6fd528c0a10ea0ce90be29f45392d34e0871",
-      "fileIdx": 0,
+      "title": "The Pianist (2002) [720P][Castellano][Ver-Peliculas-Online.Org].mp4",
+      "infoHash": "0f2522f966d92de4514d35fbc9793d40d915ca1c",
+      "fileIdx": null,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 0,
+      "sizeBytes": null,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -100,24 +260,197 @@
       "providerNames": [
         "Peerflix"
       ],
-      "externalProviders": [],
+      "externalProviders": [
+        "Peerflix"
+      ],
       "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0f2522f966d92de4514d35fbc9793d40d915ca1c&dn=The%20Pianist%20(2002)%20%5B720P%5D%5BCastellano%5D%5BVer-Peliculas-Online.Org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "El pianista [MicroHD][1080 px][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs-ES-EN]",
+      "infoHash": "ae5edcb188c2b43509763e52a3bb640cda03b1e8",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 4724464025,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ae5edcb188c2b43509763e52a3bb640cda03b1e8&dn=El%20pianista%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs-ES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 480p",
+      "title": "El pianista [DVDrip][Spanish]",
+      "infoHash": "f1d2fdac68ce1712f6a4ed7cd776c06370d2d4a6",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 2,
+      "sizeBytes": 737788559,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "MejorTorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f1d2fdac68ce1712f6a4ed7cd776c06370d2d4a6&dn=El%20pianista%20%5BDVDrip%5D%5BSpanish%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 4K",
+      "title": "The Pianist 2002 2160p BluRay",
+      "infoHash": "018db4f2b9483b8d0dd9e62bc7cd53481786167b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 80,
+      "sizeBytes": 7215545057,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:43cd6fd528c0a10ea0ce90be29f45392d34e0871&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:018DB4F2B9483B8D0DD9E62BC7CD53481786167B&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "The Pianist (2002) (Il Pianista) ENG-ITA 2160p SDR 4K 6GB (moviesbyrizzo)",
+      "infoHash": "addd1defdb475c525ab3720920def337eaf12f7f",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "4K",
+      "seeders": 53,
+      "sizeBytes": 6549825126,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:addd1defdb475c525ab3720920def337eaf12f7f&dn=The%20Pianist%20(2002)%20(Il%20Pianista)%20ENG-ITA%202160p%20SDR%204K%206GB%20(moviesbyrizzo)"
     },
     {
       "name": "TorrentsDB 4K",
-      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
-      "infoHash": "4eb4fd76f250ea9b0f7c5e5a125cdc21b2cfa16d",
+      "title": "Pianista / The Pianist (2002)(CZ/EN)[2160p][HDR/DV][HEVC] = CSFD 88%",
+      "infoHash": "7b5b5eaf8250ac73261e41874b0bc670f40a9125",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 44,
+      "sizeBytes": 7075958620,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -126,25 +459,606 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "sktorrent"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:4eb4fd76f250ea9b0f7c5e5a125cdc21b2cfa16d&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:7b5b5eaf8250ac73261e41874b0bc670f40a9125&dn=Pianista%20%2F%20The%20Pianist%20(2002)(CZ%2FEN)%5B2160p%5D%5BHDR%2FDV%5D%5BHEVC%5D%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
     },
     {
-      "name": "TorrentsDB 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
-      "infoHash": "a87cd14878ecc422ed7676d65638470085d565ec",
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "The Pianist (2002) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]",
+      "infoHash": "bfacb5fe680a6b891a55567a9c44489249b94767",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 42,
+      "sizeBytes": 22945862779,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
       ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bfacb5fe680a6b891a55567a9c44489249b94767&dn=The%20Pianist%20(2002)%20(2160p%20BluRay%20x265%20HEVC%2010bit%20HDR%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "The.Pianist.2002.PROPER.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR",
+      "infoHash": "3f2437c49f6489a5f6fe3fdc6ec78636afb84837",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 28,
+      "sizeBytes": 86500641341,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.birkenwald.de:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3f2437c49f6489a5f6fe3fdc6ec78636afb84837&dn=The.Pianist.2002.PROPER.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Пианист / The Pianist",
+      "infoHash": "0c1eecc2fb0654ca133b9c46026e41dd70e53d1f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 7,
+      "sizeBytes": 66239133123,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://tr0.torrent4me.com/ann?uk=40AOiu61QH",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0c1eecc2fb0654ca133b9c46026e41dd70e53d1f&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Ftr0.torrent4me.com%2Fann%3Fuk%3D40AOiu61QH&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "The Pianist (2002) 2160p MULTI DTS AC3 (moviesbyrizzo conv) subs",
+      "infoHash": "0cb263c7459a3b826702c86a8d28c5fd4350392a",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 13,
+      "sizeBytes": 13056700580,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0cb263c7459a3b826702c86a8d28c5fd4350392a&dn=The%20Pianist%20(2002)%202160p%20MULTI%20DTS%20AC3%20(moviesbyrizzo%20conv)%20subs&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "钢琴家",
+      "infoHash": "223b39b5c22c51749d6e84ced1e244385cc3ad9f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 28851442811,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1lou"
+      ],
+      "trackers": [
+        "http://tracker1.itzmx.com:8080/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:223b39b5c22c51749d6e84ced1e244385cc3ad9f&dn=%E9%92%A2%E7%90%B4%E5%AE%B6&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "钢琴家",
+      "infoHash": "4ceb0d94bae450e1ff38611f07eb0b3fc2939230",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 30408368456,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1lou"
+      ],
+      "trackers": [
+        "http://tracker1.itzmx.com:8080/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4ceb0d94bae450e1ff38611f07eb0b3fc2939230&dn=%E9%92%A2%E7%90%B4%E5%AE%B6&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 1080p",
+      "title": "The Pianist (2002) 1080p BrRip x264 - YIFY",
+      "infoHash": "3b66adb093195ae1bc5a832352f9e41dd77cf980",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 254,
+      "sizeBytes": 2147483648,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "kickasstorrents",
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.yify-torrents.com/announce",
+        "udp://twig.gs:6969",
+        "udp://tracker.publichd.eu/announce",
+        "http://tracker.publichd.eu/announce",
+        "udp://tracker.police.maori.nz/announce",
+        "udp://tracker.1337x.org:80/announce",
+        "udp://exodus.desync.com:6969",
+        "udp://tracker.istole.it:80",
+        "udp://tracker.ccc.de:80/announce",
+        "http://tracker.yify-torrents.com/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "http://fr33dom.h33t.com:3310/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3B66ADB093195AE1BC5A832352F9E41DD77CF980&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 1080p",
+      "title": "The Pianist 2002 1080p BluRay",
+      "infoHash": "ae2b2fac241f21c08e7bcd5bb2db23541b4e6f65",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 60,
+      "sizeBytes": 2684354560,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "TorrentGalaxy",
+        "x265"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:AE2B2FAC241F21C08E7BCD5BB2DB23541B4E6F65&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "The Pianist (2002) RM4K (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "infoHash": "84e50ef1f19ad2afb6ff8a83f932613255cecfcf",
+      "fileIdx": 8,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 90,
+      "sizeBytes": 10501195039,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:84e50ef1f19ad2afb6ff8a83f932613255cecfcf&dn=The%20Pianist%20(2002)%20RM4K%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 1080p",
+      "title": "The Pianist 2002 1080p BluRay",
+      "infoHash": "804edaef5e663a1421e7a514d28eb4a50c25a381",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 48,
+      "sizeBytes": 2963527434,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "TorrentGalaxy",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:804EDAEF5E663A1421E7A514D28EB4A50C25A381&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "The Pianist 2002 1080p AV1 10Bit DKong",
+      "infoHash": "562804b34f5a2204275dbefc550d1b141d869cda",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 37,
+      "sizeBytes": 1610612736,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:562804b34f5a2204275dbefc550d1b141d869cda&dn=The%20Pianist%202002%201080p%20AV1%2010Bit%20DKong&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "The.Pianist.2002.1080p.BluRay.x265-RBG",
+      "infoHash": "8ae12319bb7b03b5297d9dd32619dacf69bd5d40",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 36,
+      "sizeBytes": 2491081032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://9.rarbg.me:2970/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://opentor.org:2710/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://9.rarbg.me:2980/announce",
+        "udp://9.rarbg.to:2940/announce",
+        "udp://tracker.uw0.xyz:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8ae12319bb7b03b5297d9dd32619dacf69bd5d40&dn=The.Pianist.2002.1080p.BluRay.x265-RBG&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2970%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2980%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2940%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "The.Pianist.2002.1080p.BluRay.x265 [CheerfulTomato]",
+      "infoHash": "a153694fbc584bed99b3dde48c05ceafe743e64d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 34,
+      "sizeBytes": 2469606195,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a153694fbc584bed99b3dde48c05ceafe743e64d&dn=The.Pianist.2002.1080p.BluRay.x265%20%5BCheerfulTomato%5D"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "The Pianist (2002) (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]",
+      "infoHash": "54bca06b619f7d502017a8961a05aeb99502618f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 33,
+      "sizeBytes": 7247757312,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.ilibr.org:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:54bca06b619f7d502017a8961a05aeb99502618f&dn=The%20Pianist%20(2002)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Silence)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "The Pianist (2002) [1080p x265 HEVC 10bit BluRay AAC 5.1] [Prof]",
+      "infoHash": "3c5742f2bb5b349001faa9cfa2cd77bf798d4522",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 12820477379,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -153,25 +1067,132 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "YTS"
+        "rargb"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://denis.stalker.upeer.me:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:a87cd14878ecc422ed7676d65638470085d565ec&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:3c5742f2bb5b349001faa9cfa2cd77bf798d4522&dn=The%20Pianist%20(2002)%20%5B1080p%20x265%20HEVC%2010bit%20BluRay%20AAC%205.1%5D%20%5BProf%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
-      "infoHash": "8f1a51c46174d9f5b30a9ed0facd39b8e2b8ffe5",
+      "title": "The Pianist 2002 Bluray 1080p AV1 OPUS 5.1-UH",
+      "infoHash": "78105a6ca400f3f14657369cf5c9fc7b4b211b1d",
       "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 26,
+      "sizeBytes": 4864050463,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:78105a6ca400f3f14657369cf5c9fc7b4b211b1d&dn=The%20Pianist%202002%20Bluray%201080p%20AV1%20OPUS%205.1-UH&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "The Pianist 2002 JPN Bluray 1080p DTS-HD x264-Grym",
+      "infoHash": "3d9166873df83b9f4589a4db0106a1a6b9ed03ae",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 19316615414,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "kickasstorrents"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3d9166873df83b9f4589a4db0106a1a6b9ed03ae&dn=The%20Pianist%202002%20JPN%20Bluray%201080p%20DTS-HD%20x264-Grym"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Pianista / The Pianist (2002)(FHD)(1080p)(BluRay)(EN/CZ) = CSFD 88%",
+      "infoHash": "fcb892b9db67a802485920d4dda03c63fd16b769",
+      "fileIdx": 1,
       "language": "en",
       "audioLangs": [
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 18,
+      "sizeBytes": 2480343613,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "sktorrent",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://fasttracker.foreverpirates.co:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://code2chicken.nl:6969/announce",
+        "udp://tracker2.dler.com:80/announce",
+        "udp://vibe.sleepyinternetfun.xyz:1738/announce",
+        "https://announce1.sktorrent.eu/torrent/announce.php?pid=d16780feed392135d321b4564d46a8e4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fcb892b9db67a802485920d4dda03c63fd16b769&dn=Pianista%20%2F%20The%20Pianist%20(2002)(FHD)(1080p)(BluRay)(EN%2FCZ)%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ffasttracker.foreverpirates.co%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Fcode2chicken.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.com%3A80%2Fannounce&tr=udp%3A%2F%2Fvibe.sleepyinternetfun.xyz%3A1738%2Fannounce&tr=https%3A%2F%2Fannounce1.sktorrent.eu%2Ftorrent%2Fannounce.php%3Fpid%3Dd16780feed392135d321b4564d46a8e4"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "The Pianist 2002 1080p BluRay x264-nikt0",
+      "infoHash": "da749c47e3829dc8be06d686d871e56d795cd4b9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 13,
+      "sizeBytes": 6925634765,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -180,25 +1201,499 @@
         "TorrentsDB"
       ],
       "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:da749c47e3829dc8be06d686d871e56d795cd4b9&dn=The%20Pianist%202002%201080p%20BluRay%20x264-nikt0"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Пианист / The Pianist",
+      "infoHash": "d5538aafc38cf5d3a645928a3fcc6e9ab4bc24db",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 17169131766,
+      "sizeLabel": null,
+      "providers": [
         "torrentsdb"
       ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
       "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt.t-ru.org/ann?pk=f56f7d8865bfd3ff6cfad38220726f19",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d5538aafc38cf5d3a645928a3fcc6e9ab4bc24db&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fpk%3Df56f7d8865bfd3ff6cfad38220726f19&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Il pianista - The Pianist (2002) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew",
+      "infoHash": "c51da15d12d80a2a9cb96c1b34eb3ae0815d66e2",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 3833258312,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ilcorsaronero",
+        "ilCorSaRoNeRo"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c51da15d12d80a2a9cb96c1b34eb3ae0815d66e2&dn=Il%20pianista%20-%20The%20Pianist%20(2002)%20AC3%205.1%20ITA.ENG%201080p%20H265%20sub%20ita.eng%20Sp33dy94%20MIRCrew"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "The Pianist 2002 Remastered 1080p BluRay HEVC x265 5.1 BONE",
+      "infoHash": "8875f74c06a92045ecd617983e9b5fe8776103db",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 2297807503,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8875f74c06a92045ecd617983e9b5fe8776103db&dn=The%20Pianist%202002%20Remastered%201080p%20BluRay%20HEVC%20x265%205.1%20BONE"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "The Pianist (2002) 1080p BluRay 10bit HEVC 6CH 3.8GB - MkvCage",
+      "infoHash": "da920cab07dfa38dc535753c0d6b6fbb4d49ddb3",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 4080218931,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.ilibr.org:80/announce",
+        "udp://tracker.ilibr.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://p4p.arenabg.ch:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:da920cab07dfa38dc535753c0d6b6fbb4d49ddb3&dn=The%20Pianist%20(2002)%201080p%20BluRay%2010bit%20HEVC%206CH%203.8GB%20-%20MkvCage&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Amazing Films 6 - Mp4 x264 AC3 1080p",
+      "infoHash": "7ce45b28c6f09395dac9f63b23f3cfac5093f59e",
+      "fileIdx": 67,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 4498978243,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7ce45b28c6f09395dac9f63b23f3cfac5093f59e&dn=Amazing%20Films%206%20-%20Mp4%20x264%20AC3%201080p"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Пианист / The Pianist",
+      "infoHash": "67e5d19b93c98d1e7d854ec219b063c8206c9130",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 15483357102,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://korsar.tv/tracker/announce.php",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:67e5d19b93c98d1e7d854ec219b063c8206c9130&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fkorsar.tv%2Ftracker%2Fannounce.php&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Пианист / The Pianist",
+      "infoHash": "1925d7ff11414a57a7a3ddc38665236da6cbfd7e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 22795538924,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt01.nnm-club.cc:2710/ffffffff0a2a59c81c22f39fc6b70367/announce",
+        "http://bt01.nnm-club.info:2710/ffffffff0a2a59c81c22f39fc6b70367/announce",
+        "http://retracker.local/announce.php?size=22800576238&comment=http%3A%2F%2Fipv6.nnm-club.ws%2Fforum%2Fviewtopic.php%3Fp%3D10596395&name=%CF%E8%E0%ED%E8%F1%F2+%2F+The+Pianist+%282002%29+BDRip+%5BH.264%2F1080p%5D+%5BITA+Transfer%5D",
+        "http://bt01.ipv6.nnm-club.cc:2710/ffffffff0a2a59c81c22f39fc6b70367/announce",
+        "http://bt01.ipv6.nnm-club.info:2710/ffffffff0a2a59c81c22f39fc6b70367/announce",
+        "http://[2001:470:25:482::2]:2710/ffffffff0a2a59c81c22f39fc6b70367/announce",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1925d7ff11414a57a7a3ddc38665236da6cbfd7e&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt01.nnm-club.cc%3A2710%2Fffffffff0a2a59c81c22f39fc6b70367%2Fannounce&tr=http%3A%2F%2Fbt01.nnm-club.info%3A2710%2Fffffffff0a2a59c81c22f39fc6b70367%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce.php%3Fsize%3D22800576238%26comment%3Dhttp%253A%252F%252Fipv6.nnm-club.ws%252Fforum%252Fviewtopic.php%253Fp%253D10596395%26name%3D%25CF%25E8%25E0%25ED%25E8%25F1%25F2%2B%252F%2BThe%2BPianist%2B%25282002%2529%2BBDRip%2B%255BH.264%252F1080p%255D%2B%255BITA%2BTransfer%255D&tr=http%3A%2F%2Fbt01.ipv6.nnm-club.cc%3A2710%2Fffffffff0a2a59c81c22f39fc6b70367%2Fannounce&tr=http%3A%2F%2Fbt01.ipv6.nnm-club.info%3A2710%2Fffffffff0a2a59c81c22f39fc6b70367%2Fannounce&tr=http%3A%2F%2F%5B2001%3A470%3A25%3A482%3A%3A2%5D%3A2710%2Fffffffff0a2a59c81c22f39fc6b70367%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+ThePirateBay+ 1080p",
+      "title": "The Pianist 2002 Bluray 1080p AV1 OPUS 5.1-UH",
+      "infoHash": "7daee87ea3911ed7bdda822dcaf176799f638015",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 6206227743,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7daee87ea3911ed7bdda822dcaf176799f638015&dn=The%20Pianist%202002%20Bluray%201080p%20AV1%20OPUS%205.1-UH"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "The Pianist 2002 1080p NF WEB-DL Hindi-Eng DDP5.1 H.264-TombDoc",
+      "infoHash": "2ec14f65a785b4c79330e3901ab229c044e6792d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 8847632630,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://p4p.arenabg.com:1337/announce",
+        "udp://9.rarbg.com:2810/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://openbittorrent.com:80/announce",
+        "udp://www.torrent.eu.org:451/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://retracker.lanta-net.ru:2710/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.uw0.xyz:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2ec14f65a785b4c79330e3901ab229c044e6792d&dn=The%20Pianist%202002%201080p%20NF%20WEB-DL%20Hindi-Eng%20DDP5.1%20H.264-TombDoc&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Fopenbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Epic Films 5: MP4 X264 AC3 1080p",
+      "infoHash": "fa35bde078b04070bc2cdc3223f68d8c7da71559",
+      "fileIdx": 60,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 4498978243,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:fa35bde078b04070bc2cdc3223f68d8c7da71559&dn=Epic%20Films%205%3A%20MP4%20X264%20AC3%201080p"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "钢琴家",
+      "infoHash": "a790de63edd93a5932ef59c5ed2832a7a0c6998f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 8128225608,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1lou"
+      ],
+      "trackers": [
+        "http://tracker1.itzmx.com:8080/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a790de63edd93a5932ef59c5ed2832a7a0c6998f&dn=%E9%92%A2%E7%90%B4%E5%AE%B6&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "肖申克的救赎",
+      "infoHash": "3570cf3fc0642944070e821180ca5f5117e5882b",
+      "fileIdx": 290,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 8128225608,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1lou"
+      ],
+      "trackers": [
+        "http://tracker1.itzmx.com:8080/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3570cf3fc0642944070e821180ca5f5117e5882b&dn=%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "钢琴家",
+      "infoHash": "3110c4d03d637d3be844c0ac1fa053815c0e0bf7",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 13926431457,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1lou"
+      ],
+      "trackers": [
+        "http://tracker1.itzmx.com:8080/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3110c4d03d637d3be844c0ac1fa053815c0e0bf7&dn=%E9%92%A2%E7%90%B4%E5%AE%B6&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 720p",
+      "title": "The Pianist 2002 720p BrRip x264 YIFY",
+      "infoHash": "5b35b2c94b288dd9f8970a38410975467bf662ee",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 216,
+      "sizeBytes": 942900511,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "udp://open.demonii.com:1337",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.pomf.se:80",
+        "udp://tracker.publicbt.com:80",
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.istole.it:80",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5B35B2C94B288DD9F8970A38410975467BF662EE&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 720p",
+      "title": "The Pianist 2002 720p BluRay",
+      "infoHash": "d571e468f421800600b4c45ba0c526e86ddf31e8",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 26,
+      "sizeBytes": 1438814044,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "TorrentGalaxy",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:8f1a51c46174d9f5b30a9ed0facd39b8e2b8ffe5&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:D571E468F421800600B4C45BA0C526E86DDF31E8&dn=The%20Pianist%20(2002)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
     },
     {
       "name": "TorrentsDB 720p",
-      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
-      "infoHash": "408f0d65855c4374ab6a784d6816e5fc218ecaa8",
+      "title": "The Pianist 2002 720p BluRay x264 AC3 - Ozlem Hotpena-1337x",
+      "infoHash": "51b0424183b82cc1dbd390a90e3f248cc77fe989",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 7,
+      "sizeBytes": 1288490189,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -206,24 +1701,518 @@
       "providerNames": [
         "TorrentsDB"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "rargb"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:408f0d65855c4374ab6a784d6816e5fc218ecaa8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [
+        "http://94.228.192.98/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://10.rarbg.com/announce",
+        "udp://11.rarbg.me/announce",
+        "udp://tracker.prq.to/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://tracker.token.ro:80/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.istole.it:80/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:51b0424183b82cc1dbd390a90e3f248cc77fe989&dn=The%20Pianist%202002%20720p%20BluRay%20x264%20AC3%20-%20Ozlem%20Hotpena-1337x&tr=http%3A%2F%2F94.228.192.98%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2F10.rarbg.com%2Fannounce&tr=udp%3A%2F%2F11.rarbg.me%2Fannounce&tr=udp%3A%2F%2Ftracker.prq.to%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.token.ro%3A80%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.istole.it%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "The Pianist (2002) 720p.10bit.BluRay.x265-budgetbits",
+      "infoHash": "f214d4acb057a218aca7b4975b24c4234b2e4ad8",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 824191222,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f214d4acb057a218aca7b4975b24c4234b2e4ad8&dn=The%20Pianist%20(2002)%20720p.10bit.BluRay.x265-budgetbits&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 720p",
+      "title": "The.Pianist.2002.720p.BluRay.999MB.x265.10bit-GalaxyRG",
+      "infoHash": "e039dcf6f96dadfa5b05382ae5199c5106975534",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 1070512210,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e039dcf6f96dadfa5b05382ae5199c5106975534&dn=The.Pianist.2002.720p.BluRay.999MB.x265.10bit-GalaxyRG"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Пианист / The Pianist",
+      "infoHash": "c6297a372e6ec7bb5f8918e6405790119b9a80d5",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 7333656658,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c6297a372e6ec7bb5f8918e6405790119b9a80d5&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Пианист / The Pianist",
+      "infoHash": "873e3f7352fe64736e9edca6ec52e31fb226c0d2",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 8536247501,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://tracker.publicbt.com/announce",
+        "http://announce.opensharing.org:2710/announce",
+        "http://retracker.local/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:873e3f7352fe64736e9edca6ec52e31fb226c0d2&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Пианист / The Pianist",
+      "infoHash": "c74491b8bd7e7bcc6ac7960a107e87e4364f144e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 3,
+      "sizeBytes": 4831838208,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt.piratbit.club/000e774e826bc57dd5e98cb223c3129a/announce",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c74491b8bd7e7bcc6ac7960a107e87e4364f144e&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt.piratbit.club%2F000e774e826bc57dd5e98cb223c3129a%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio",
+      "title": "Official IMDb Top 250 Movies Collection 6/17/2011",
+      "infoHash": "4986ace2ee7a564508e0d5cfdde2d9018b8af942",
+      "fileIdx": 588,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 736635126,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4986ace2ee7a564508e0d5cfdde2d9018b8af942&dn=Official%20IMDb%20Top%20250%20Movies%20Collection%206%2F17%2F2011"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Пианист / The Pianist",
+      "infoHash": "dadb8488bceaa0649c3d9ba365a4e384106e6b7a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 2,
+      "sizeBytes": 3124588708,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://tracker.mg64.net:6881/announce",
+        "udp://megapeer.org:6969/announce",
+        "udp://glotorrents.com:6969/announce",
+        "udp://exodus.desync.com/announce",
+        "http://exodus.desync.com:6969/announce",
+        "http://announce.opensharing.org:2710/announce",
+        "http://tracker.ex.ua/announce",
+        "udp://tracker.ex.ua/announce",
+        "http://tracker.ex.ua:80/announce",
+        "udp://tracker.ex.ua:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.best-torrents.net:6969/announce",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:dadb8488bceaa0649c3d9ba365a4e384106e6b7a&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.mg64.net%3A6881%2Fannounce&tr=udp%3A%2F%2Fmegapeer.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fglotorrents.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%2Fannounce&tr=http%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%2Fannounce&tr=udp%3A%2F%2Ftracker.ex.ua%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.best-torrents.net%3A6969%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Пианист / The Pianist",
+      "infoHash": "388e5163e7b9dd861f26acaeeefe8da7a79b2b61",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 2,
+      "sizeBytes": 718945649,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:388e5163e7b9dd861f26acaeeefe8da7a79b2b61&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Пианист / The Pianist (Роман Полански / Roman Polanski)",
+      "infoHash": "14b2aebcd92ea2ceed4d73a20828f620135be50b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 3650722202,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutracker"
+      ],
+      "trackers": [
+        "http://bt2.t-ru.org/ann?magnet"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:14b2aebcd92ea2ceed4d73a20828f620135be50b&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist%20(%D0%A0%D0%BE%D0%BC%D0%B0%D0%BD%20%D0%9F%D0%BE%D0%BB%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%20%2F%20Roman%20Polanski)&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "The Pianist 2002",
+      "infoHash": "a926f2dfcb7857a558975d038fb70de3128cc9a9",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 730081526,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "limetorrent"
+      ],
+      "trackers": [
+        "http://tracker.nwps.ws:6969/announce",
+        "http://tracker.winglai.com/announce",
+        "http://fr33dom.h33t.com:3310/announce",
+        "http://exodus.desync.com:6969/announce",
+        "http://torrent.gresille.org/announce",
+        "http://tracker.trackerfix.com/announce",
+        "udp://tracker.btzoo.eu:80/announce",
+        "http://tracker.windsormetalbattery.com/announce",
+        "udp://10.rarbg.me:80/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.ilibr.org:6969/announce",
+        "udp://tracker.zond.org:80/announce",
+        "http://torrent-tracker.ru/announce.php",
+        "http://bigfoot1942.sektori.org:6969/announce",
+        "http://tracker.best-torrents.net:6969/announce",
+        "http://announce.torrentsmd.com:6969/announce",
+        "udp://tracker.token.ro:80/announce",
+        "udp://open.demonii.com:80",
+        "udp://tracker.coppersurfer.tk:80",
+        "http://tracker.thepiratebay.org/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.ccc.de:80/announce",
+        "udp://tracker.istole.it:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.torrentbox.com:2710/announce",
+        "http://tracker.torrentbox.com:2710/announce",
+        "http://tracker.istole.it/announce",
+        "http://tracker.publicbt.com/announce",
+        "udp://tracker.1337x.org:80/announce",
+        "udp://fr33domtracker.h33t.com:3310/announce",
+        "udp://tracker.coppersurfer.tk:80/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://9.rarbg.to:2730/announce",
+        "udp://9.rarbg.to:2740/announce",
+        "udp://9.rarbg.to:2720/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.me:2740/announce",
+        "udp://9.rarbg.me:2770/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://tracker.torrent.eu.org:451",
+        "udp://tracker.port443.xyz:6969/announce",
+        "udp://IPv6.open-internet.nl:6969/announce",
+        "udp://p4p.arenabg.ch:1337/announce",
+        "udp://denis.stalker.upeer.me:1337/announce",
+        "udp://shadowshq.yi.org:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://tracker.mg64.net:6969/announce",
+        "udp://inferno.demonoid.pw:3418/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://asnet.pw:2710/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://glotorrents.pw:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://tracker.qt.is:6969/announce",
+        "udp://9.rarbg.to:2770/announce",
+        "udp://9.rarbg.me:2730/announce",
+        "udp://tracker.ds.is:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.justseed.it:1337/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://thetracker.org:80/announce",
+        "udp://tracker.vanitycore.co:6969/announce",
+        "udp://tracker.cypherpunks.ru:6969/announce",
+        "udp://tracker.open-internet.nl:6969/announce",
+        "udp://public.popcorn-tracker.org:6969/announce",
+        "udp://tracker.0o.is:6969/announce",
+        "udp://tracker.trackerfix.com:80/announce",
+        "udp://bt.xxx-tracker.com:2710/announce",
+        "udp://open.stealth.si:80/announce",
+        "http://share.camoe.cn:8080/announce",
+        "https://open.acgnxtracker.com:443/announce",
+        "http://tracker.tfile.co:80/announce",
+        "http://retracker.spb.ru:80/announce",
+        "http://open.acgnxtracker.com/announce",
+        "http://bt.acg.gg:1578/announce",
+        "http://tracker3.itzmx.com:8080/announce",
+        "udp://tracker.acg.gg:2710/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a926f2dfcb7857a558975d038fb70de3128cc9a9&dn=The%20Pianist%202002&tr=http%3A%2F%2Ftracker.nwps.ws%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.winglai.com%2Fannounce&tr=http%3A%2F%2Ffr33dom.h33t.com%3A3310%2Fannounce&tr=http%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=http%3A%2F%2Ftracker.trackerfix.com%2Fannounce&tr=udp%3A%2F%2Ftracker.btzoo.eu%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.windsormetalbattery.com%2Fannounce&tr=udp%3A%2F%2F10.rarbg.me%3A80%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zond.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent-tracker.ru%2Fannounce.php&tr=http%3A%2F%2Fbigfoot1942.sektori.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.best-torrents.net%3A6969%2Fannounce&tr=http%3A%2F%2Fannounce.torrentsmd.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.token.ro%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A80&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80&tr=http%3A%2F%2Ftracker.thepiratebay.org%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ccc.de%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.istole.it%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrentbox.com%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.torrentbox.com%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.istole.it%2Fannounce&tr=http%3A%2F%2Ftracker.publicbt.com%2Fannounce&tr=udp%3A%2F%2Ftracker.1337x.org%3A80%2Fannounce&tr=udp%3A%2F%2Ffr33domtracker.h33t.com%3A3310%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2730%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2720%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2740%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2770%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451&tr=udp%3A%2F%2Ftracker.port443.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2FIPv6.open-internet.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A1337%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.mg64.net%3A6969%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3418%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fasnet.pw%3A2710%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qt.is%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2770%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2730%2Fannounce&tr=udp%3A%2F%2Ftracker.ds.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.justseed.it%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cypherpunks.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.open-internet.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.popcorn-tracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0o.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.trackerfix.com%3A80%2Fannounce&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce&tr=https%3A%2F%2Fopen.acgnxtracker.com%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.co%3A80%2Fannounce&tr=http%3A%2F%2Fretracker.spb.ru%3A80%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce&tr=http%3A%2F%2Fbt.acg.gg%3A1578%2Fannounce&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.acg.gg%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
     },
     {
       "name": "Torrentio 4K",
-      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
-      "infoHash": "a700a9daf54da82749646863496520b7430577ce",
+      "title": "The.Pianist.2002.MULTi.2160p.UHD.DV.x265-FLOP (The Pianist)",
+      "infoHash": "076d1b3047d3a52d64679ded114ae05b539518e0",
       "fileIdx": 0,
-      "language": "es",
+      "language": "fr",
       "audioLangs": [
-        "es"
+        "fr"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 5,
+      "sizeBytes": 28787018301,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -232,25 +2221,220 @@
         "Torrentio"
       ],
       "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:076d1b3047d3a52d64679ded114ae05b539518e0&dn=The.Pianist.2002.MULTi.2160p.UHD.DV.x265-FLOP%20(The%20Pianist)"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Пианист / The Pianist (2002) UHD BDRip 2160p | 4K | HDR | D P A",
+      "infoHash": "2c427311e298eb8e552924f26e38910d3da59cc0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": "4K",
+      "seeders": 4,
+      "sizeBytes": 26693221745,
+      "sizeLabel": null,
+      "providers": [
         "torrentio"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "providerNames": [
+        "Torrentio"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:a700a9daf54da82749646863496520b7430577ce&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "externalProviders": [
+        "Rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "http://bt.t-ru.org/ann?magnet",
+        "http://bt2.t-ru.org/ann?magnet",
+        "http://bt3.t-ru.org/ann?magnet",
+        "http://bt4.t-ru.org/ann?magnet"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2c427311e298eb8e552924f26e38910d3da59cc0&dn=%D0%9F%D0%B8%D0%B0%D0%BD%D0%B8%D1%81%D1%82%20%2F%20The%20Pianist%20(2002)%20UHD%20BDRip%202160p%20%7C%204K%20%7C%20HDR%20%7C%20D%20P%20A&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Il Pianista - The Pianist (2002) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv",
+      "infoHash": "36919796f972b12ef8e3aa42c3a838a6551e097b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "4K",
+      "seeders": 3,
+      "sizeBytes": 8214124954,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:36919796f972b12ef8e3aa42c3a838a6551e097b&dn=Il%20Pianista%20-%20The%20Pianist%20(2002)%202160p%20H265%2010%20bit%20DV%20HDR10%2B%20ita%20eng%20AC3%205.1%20sub%20ita%20eng%20Licdom.mkv"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "The Pianist (2002) 4K Remastered 1080p 10bit Bluray x265 HEVC [Org DD 2.0 Hindi DD 5.1 English] MSubs ~ TombDoc",
+      "infoHash": "62f788fb5f54d1da2fba15650138fe89e3227cb7",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 13,
+      "sizeBytes": 12476879995,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:62f788fb5f54d1da2fba15650138fe89e3227cb7&dn=The%20Pianist%20(2002)%204K%20Remastered%201080p%2010bit%20Bluray%20x265%20HEVC%20%5BOrg%20DD%202.0%20Hindi%20DD%205.1%20English%5D%20MSubs%20~%20TombDoc"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "The.Pianist.2002.2160p.4K.UHD.FULL.Blu-Ray.HEVC.DTS-HD-MassModz",
+      "infoHash": "e770fb0529da88bfa44cbecae1c020106d366714",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 86683177452,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e770fb0529da88bfa44cbecae1c020106d366714&dn=The.Pianist.2002.2160p.4K.UHD.FULL.Blu-Ray.HEVC.DTS-HD-MassModz"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Pianista / The Pianist *2002* [PROPER.UHD.2160p.BDRemux.HEVC.DoV…",
+      "infoHash": "4256ea4b20caf10f4db940cbc523026d4d39c020",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 2,
+      "sizeBytes": 86543591014,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4256ea4b20caf10f4db940cbc523026d4d39c020&dn=Pianista%20%2F%20The%20Pianist%20*2002*%20%5BPROPER.UHD.2160p.BDRemux.HEVC.DoV%E2%80%A6"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
-      "infoHash": "3c71fc4c7cf7cbb035b0a7700a884c3f62fa1ab8",
-      "fileIdx": 0,
-      "language": "es",
+      "title": "Pianista - The Pianist 2002 [HGL HDR SDR] [1080p.WEB-DL.H264-AS76-FT] Lektor PL] [Alusia]",
+      "infoHash": "4eef519335e488de9de19faf562d74c31f0f1dab",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 5905580032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4eef519335e488de9de19faf562d74c31f0f1dab&dn=Pianista%20-%20The%20Pianist%202002%20%5BHGL%20HDR%20SDR%5D%20%5B1080p.WEB-DL.H264-AS76-FT%5D%20Lektor%20PL%5D%20%5BAlusia%5D"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "moviesbyrizzo 650 top all-time movies collection 1080p 598GB",
+      "infoHash": "bfa94a1537928d36623ee307a766a226f09a6822",
+      "fileIdx": 638,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 132,
+      "sizeBytes": 1309965025,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:bfa94a1537928d36623ee307a766a226f09a6822&dn=moviesbyrizzo%20650%20top%20all-time%20movies%20collection%201080p%20598GB"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "More Great movies of all time 1080p MULTI 69GB pack (moviesbyrizzo upl)",
+      "infoHash": "e62122d5078380ac1d699bc9b011b9fac0677910",
+      "fileIdx": 5,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en",
+        "de"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 19,
+      "sizeBytes": 2738041651,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -259,25 +2443,207 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "1337x"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:3c71fc4c7cf7cbb035b0a7700a884c3f62fa1ab8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e62122d5078380ac1d699bc9b011b9fac0677910&dn=More%20Great%20movies%20of%20all%20time%201080p%20MULTI%2069GB%20pack%20(moviesbyrizzo%20upl)"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
-      "infoHash": "ad3926a2b44968d4b3272bdd9dc8be93c949e85e",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ",
+      "infoHash": "71fee293dc117c48487029c6dcb5038d974a0295",
+      "fileIdx": 416,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 2491081032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:71fee293dc117c48487029c6dcb5038d974a0295&dn=IMDB%20Top%20250%20-%202024%20Edition%20-%201080p%20BluRay%20eSubs%20jZQ"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "World War 2 On Film (New) : MP4 720p 1080p",
+      "infoHash": "8361f8b1f1140509b4f4d016bffb02f71896710e",
+      "fileIdx": 17,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 4445291151,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8361f8b1f1140509b4f4d016bffb02f71896710e&dn=World%20War%202%20On%20Film%20(New)%20%3A%20MP4%20720p%201080p"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The.Pianist.2002.1080p.BluRay.x265-RARBG",
+      "infoHash": "43a08b0fc8d496e0dcb83ed0cbd03716a01576f0",
+      "fileIdx": 4,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 2491081032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:43a08b0fc8d496e0dcb83ed0cbd03716a01576f0&dn=The.Pianist.2002.1080p.BluRay.x265-RARBG"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Essential Films 2: MP4 X264 AC3 1080p",
+      "infoHash": "bd15ea182a436a82cc37d2365b9cd5ac66fbf858",
+      "fileIdx": 32,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 4498978243,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:bd15ea182a436a82cc37d2365b9cd5ac66fbf858&dn=Essential%20Films%202%3A%20MP4%20X264%20AC3%201080p"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The Pianist 2002 1080p BluRay x264-OFT",
+      "infoHash": "483192e775031cd5ace0aaa911c769d2f07850f8",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 6925634765,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:483192e775031cd5ace0aaa911c769d2f07850f8&dn=The%20Pianist%202002%201080p%20BluRay%20x264-OFT"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "500 top all-time movies collection 1080p H.264 480GB (moviesbyrizzo upl)",
+      "infoHash": "3facf8e9f4f7c506a2330ac2ba33645aa6f12b81",
+      "fileIdx": 510,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 1309965025,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3facf8e9f4f7c506a2330ac2ba33645aa6f12b81&dn=500%20top%20all-time%20movies%20collection%201080p%20H.264%20480GB%20(moviesbyrizzo%20upl)"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 269,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 8128225608,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9351bcf9e7437f706549f8b60314c39259c420b4&dn=IMDB%20TOP%20001-050%20BluRay%201080p%20x265%2010bit%20MNHD-FRDS"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The Pianist (2002) [1080p]",
+      "infoHash": "7e5aca819d4546924cff08878b2dfd86b43c1068",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 3350074491,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7e5aca819d4546924cff08878b2dfd86b43c1068&dn=The%20Pianist%20(2002)%20%5B1080p%5D"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The Pianist (2002) 1080p BluRay x264 Dual Audio Hindi English AC3 - MeGUiL",
+      "infoHash": "9668b50e8c273cab70db576464a4c912bb7f9e9e",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 4,
+      "sizeBytes": 3543348019,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -286,25 +2652,117 @@
         "Torrentio"
       ],
       "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9668b50e8c273cab70db576464a4c912bb7f9e9e&dn=The%20Pianist%20(2002)%201080p%20BluRay%20x264%20Dual%20Audio%20Hindi%20English%20AC3%20-%20MeGUiL"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The (Der) Pianist (2002) ENG-GER-FRE 1080p H.264 multisubs (moviesbyrizzo)",
+      "infoHash": "e8336ad10a77715981e67dd09e90db568b3ca531",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "fr",
+        "de"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 4638564680,
+      "sizeLabel": null,
+      "providers": [
         "torrentio"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "providerNames": [
+        "Torrentio"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ad3926a2b44968d4b3272bdd9dc8be93c949e85e&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e8336ad10a77715981e67dd09e90db568b3ca531&dn=The%20(Der)%20Pianist%20(2002)%20ENG-GER-FRE%201080p%20H.264%20multisubs%20(moviesbyrizzo)"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The Pianist 2002 BDRip 1080p x264 DTS-HD MA 5.1-HighCode",
+      "infoHash": "ff77c6babbfc69b55941fea017046b800fa42360",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 21109764260,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ff77c6babbfc69b55941fea017046b800fa42360&dn=The%20Pianist%202002%20BDRip%201080p%20x264%20DTS-HD%20MA%205.1-HighCode"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "The Pianist 2002 1080p BluRay H264 AAC-RARBG",
+      "infoHash": "f2ea0f7ba3ba0cba684e65c1ef9bae5c630b4001",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": 3049426780,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:f2ea0f7ba3ba0cba684e65c1ef9bae5c630b4001&dn=The%20Pianist%202002%201080p%20BluRay%20H264%20AAC-RARBG"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "ALL Best Picture Nominees 1080p BluRay Part 1 of 3 1990-2004 75 Movies jZQ",
+      "infoHash": "f1b926b78ad393e2456a47d8e70dbdf24662573e",
+      "fileIdx": 389,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 2491081032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:f1b926b78ad393e2456a47d8e70dbdf24662573e&dn=ALL%20Best%20Picture%20Nominees%201080p%20BluRay%20Part%201%20of%203%201990-2004%2075%20Movies%20jZQ"
     },
     {
       "name": "Torrentio 720p",
-      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
-      "infoHash": "19258a83a6c2699995d6b0413808846e382f55ac",
+      "title": "The Pianist 2002 720p BluRay x264-GeneMige",
+      "infoHash": "60b6869c3e3b8d2082cf2be8bccea6d39295d55d",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 23,
+      "sizeBytes": 6571299963,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -312,223 +2770,59 @@
       "providerNames": [
         "Torrentio"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "ThePirateBay"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:19258a83a6c2699995d6b0413808846e382f55ac&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:60b6869c3e3b8d2082cf2be8bccea6d39295d55d&dn=The%20Pianist%202002%20720p%20BluRay%20x264-GeneMige"
     },
     {
-      "name": "ThePirateBay+ 4K",
-      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
-      "infoHash": "570f071c4a7741aaea0841eba49f4ed1e5ec4613",
-      "fileIdx": 0,
-      "language": "es",
+      "name": "Torrentio",
+      "title": "Le Pianiste FRENCH DVDRIP 2002",
+      "infoHash": "a9e77f855f70e301be6f2f6255b969645580955c",
+      "fileIdx": null,
+      "language": "fr",
       "audioLangs": [
-        "es"
+        "fr"
       ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "quality": null,
+      "seeders": 7,
+      "sizeBytes": 734003200,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "piratebay"
+        "Torrent9"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:570f071c4a7741aaea0841eba49f4ed1e5ec4613&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a9e77f855f70e301be6f2f6255b969645580955c&dn=Le%20Pianiste%20FRENCH%20DVDRIP%202002"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
-      "infoHash": "ba1957c68cda2976f7653c0c4c761bbe6f321bfe",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "name": "Torrentio",
+      "title": "The Pianist (2002).avi",
+      "infoHash": "9fc0c005675e6402c1c0095504266c6964dfa4ab",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 2952790016,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:ba1957c68cda2976f7653c0c4c761bbe6f321bfe&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "ThePirateBay+ 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
-      "infoHash": "56a51c635009d8170a6abfd2ef8af25a89fcbdfa",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "piratebay"
-      ],
-      "providerNames": [
-        "ThePirateBay+"
-      ],
-      "externalProviders": [
-        "piratebay"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:56a51c635009d8170a6abfd2ef8af25a89fcbdfa&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "ThePirateBay+ 720p",
-      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
-      "infoHash": "e9876160b0c715151ed618c7641c5220255c848c",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "piratebay"
-      ],
-      "providerNames": [
-        "ThePirateBay+"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:e9876160b0c715151ed618c7641c5220255c848c&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 4K",
-      "title": "El Padrino. Parte II (1974) [4K][Castellano+Subs]",
-      "infoHash": "eb7d22a9aa2c829d7598cbe2f0730f90a1a9ad50",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "ytztvio"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:eb7d22a9aa2c829d7598cbe2f0730f90a1a9ad50&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Castellano+Subs]",
-      "infoHash": "96d1ad34cd98ed6fd699cbd5138098a41217052e",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "YTS"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:96d1ad34cd98ed6fd699cbd5138098a41217052e&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "El Padrino. Parte II (1974) [1080p][Ingles+Subs]",
-      "infoHash": "1d8dba61f2f82f211492e14f5fdf8752498789c8",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "ytztvio"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:1d8dba61f2f82f211492e14f5fdf8752498789c8&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 720p",
-      "title": "El Padrino. Parte II (1974) [720p][Castellano+Subs]",
-      "infoHash": "3bb8eeeaead206d8eb23285c4b35064894720576",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:3bb8eeeaead206d8eb23285c4b35064894720576&dn=El%20Padrino.%20Parte%20II%20(1974)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9fc0c005675e6402c1c0095504266c6964dfa4ab&dn=The%20Pianist%20(2002).avi"
     }
   ]
 }

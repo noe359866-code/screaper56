@@ -6,14 +6,14 @@
   "episode": null,
   "label": "Joker (2019)",
   "providerUrls": {
-    "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json [fixture]",
-    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json [fixture]",
-    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json [fixture]",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json [fixture]",
-    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json [fixture]"
+    "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json"
   },
-  "streamCount": 20,
-  "bestSeeders": 80,
+  "streamCount": 112,
+  "bestSeeders": 311,
   "qualities": [
     "1080p",
     "4K",
@@ -21,7 +21,11 @@
   ],
   "languages": [
     "en",
-    "es"
+    "es",
+    "fr",
+    "it",
+    "pt",
+    "ru"
   ],
   "providers": [
     "peerflix",
@@ -33,16 +37,298 @@
   "streams": [
     {
       "name": "Peerflix 4K",
-      "title": "Joker (2019) [4K][Castellano+Subs]",
-      "infoHash": "f07c4e564f60e32d33a83f4fbc79688fbc70c75b",
-      "fileIdx": 0,
+      "title": "Joker [FULL UHD][2160p][Dolby Vision][HDR][AC3 5.1 Castellano True HD 7.1-Ingles+Subs][ES-EN]",
+      "infoHash": "ee7a8b312e9419e1aa7db59016af87a98203b1a3",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ee7a8b312e9419e1aa7db59016af87a98203b1a3&dn=Joker%20%5BFULL%20UHD%5D%5B2160p%5D%5BDolby%20Vision%5D%5BHDR%5D%5BAC3%205.1%20Castellano%20True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker [4K UHDremux][2160p][HDR][AC3 5.1 Castellano-TrueHD 7.1-Ingles+Subs][ES-EN]",
+      "infoHash": "aa74c814af15e08a7f0ae489db60c692383f64f2",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 50229642526,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa74c814af15e08a7f0ae489db60c692383f64f2&dn=Joker%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-TrueHD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker [4K UHDrip][2160p][HDR][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "537df65fadd0caee3301858927bd583dbe0abc8b",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 14237816586,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:537df65fadd0caee3301858927bd583dbe0abc8b&dn=Joker%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker [FullUHD 2160p][Castellano DTS-HD 7.1-Ingles True-HD 7.1+Subs][ES-EN]",
+      "infoHash": "27b2f262cc3622c5f83deda446816a7a1704eabe",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:27b2f262cc3622c5f83deda446816a7a1704eabe&dn=Joker%20%5BFullUHD%202160p%5D%5BCastellano%20DTS-HD%207.1-Ingles%20True-HD%207.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker [4K UHDrip][2160p][HDR][AC3 5.1-DTS-HD 7.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "f8c8c67407bb6502eea2a61c4ba5aaea43822b02",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 25200720609,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f8c8c67407bb6502eea2a61c4ba5aaea43822b02&dn=Joker%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1-DTS-HD%207.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker [4K UHDremux][2160p][HDR][AC3 5.1-DTS-HD 7.1 Castellano-True HD 7.1-Ingles+Subs][ES-EN]",
+      "infoHash": "10b012b6a8d34288339b6f31eebb420aa92d4ab9",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 55211804590,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:10b012b6a8d34288339b6f31eebb420aa92d4ab9&dn=Joker%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1-DTS-HD%207.1%20Castellano-True%20HD%207.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Joker.Folie.a.Deux.2024.2160p.WEB-DL.DDP5.1.DV.HDR.H.265-HDZ.mkv",
+      "infoHash": "873fd9ff0fd2790a970bfab7ddabf259d2243581",
+      "fileIdx": null,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 0,
+      "sizeBytes": 26521423053,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -51,25 +337,447 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "peerflix"
+        "PeerflixBot"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:f07c4e564f60e32d33a83f4fbc79688fbc70c75b&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:873fd9ff0fd2790a970bfab7ddabf259d2243581&dn=Joker.Folie.a.Deux.2024.2160p.WEB-DL.DDP5.1.DV.HDR.H.265-HDZ.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
-      "title": "Joker (2019) [1080p][Castellano+Subs]",
-      "infoHash": "aa19c23ad987a9b5ba92e24d3dbd15207c320f2c",
+      "title": "Joker [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "fbc594b0409fb6767d41240793228e652ce51c09",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 21,
+      "sizeBytes": 5894842613,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fbc594b0409fb6767d41240793228e652ce51c09&dn=Joker%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker [1080p][Castellano][wWw.EliteTorrent.LI]",
+      "infoHash": "f44271cdd5f583949f49b1b40988c5d8412e8ca4",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 13,
+      "sizeBytes": 5841155522,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f44271cdd5f583949f49b1b40988c5d8412e8ca4&dn=Joker%20%5B1080p%5D%5BCastellano%5D%5BwWw.EliteTorrent.LI%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker (2019) [BluRay RIP][AC3 5.1 Castellano][www.pctnew.ORG][www.descargas2020.ORG]",
+      "infoHash": "cb11456b392d6f0908323783bc6dd8888a724273",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:cb11456b392d6f0908323783bc6dd8888a724273&dn=Joker%20(2019)%20%5BBluRay%20RIP%5D%5BAC3%205.1%20Castellano%5D%5Bwww.pctnew.ORG%5D%5Bwww.descargas2020.ORG%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker [FullBluRay 1080p][Castellano AC3 5.1-Ingles TrueHD 7.1+Subs][ES-EN]",
+      "infoHash": "6232e9a826fe2c9048c7eb73203dda2b66f9e949",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6232e9a826fe2c9048c7eb73203dda2b66f9e949&dn=Joker%20%5BFullBluRay%201080p%5D%5BCastellano%20AC3%205.1-Ingles%20TrueHD%207.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "[Bitsearch.to] Joker (2019) BDrip XviD Castellano www.yadixv.com",
+      "infoHash": "0c11afdb48a71fa73cca7192263bdf3d520f2085",
+      "fileIdx": 2,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 2115271393,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.openbittorrent.com:80/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0c11afdb48a71fa73cca7192263bdf3d520f2085&dn=%5BBitsearch.to%5D%20Joker%20(2019)%20BDrip%20XviD%20Castellano%20www.yadixv.com&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker [BluRay 1080p][AC3 5.1 Castellano AC3 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "68e197aaa808f5cf09657e0269149773b5216009",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 14323715932,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:68e197aaa808f5cf09657e0269149773b5216009&dn=Joker%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker [BDremux 1080p][AC3 5.1 Castellano-TrueHD 7.1 Ingles+Subs][ES-EN]",
+      "infoHash": "15120548a4b4354bbda78c8f600c8c714b376884",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 22065394483,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:15120548a4b4354bbda78c8f600c8c714b376884&dn=Joker%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-TrueHD%207.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker (2019) [1080P][Castellano][VerPeliculasOnline.org].mp4",
+      "infoHash": "c47dcaf31df8e669afe63eea94768974dbba1f95",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 2244120412,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c47dcaf31df8e669afe63eea94768974dbba1f95&dn=Joker%20(2019)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Joker.Folie.a.Deux.2024.1080p.AMZN.WEB-DL.DDP5.1.H.264-HDZ.mkv",
+      "infoHash": "d0da089a97b9938a9a9f946c7a1610ce90dcaf8f",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 9814000271,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "PeerflixBot"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d0da089a97b9938a9a9f946c7a1610ce90dcaf8f&dn=Joker.Folie.a.Deux.2024.1080p.AMZN.WEB-DL.DDP5.1.H.264-HDZ.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "[Bitsearch.to] Joker (2019) 1080p Castellano (wWw.EsDivx.Com)",
+      "infoHash": "357da6d38ace174d1053ed5f894578ca3a1ddbb3",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 0,
+      "sizeBytes": 5894842613,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -78,52 +786,29 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "YTS"
+        "BitSearch"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:aa19c23ad987a9b5ba92e24d3dbd15207c320f2c&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Peerflix 1080p",
-      "title": "Joker (2019) [1080p][Ingles+Subs]",
-      "infoHash": "a6e9fbaeaa129b60d6a21c3f3193630de3af5374",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "peerflix"
-      ],
-      "providerNames": [
-        "Peerflix"
-      ],
-      "externalProviders": [
-        "peerflix"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:a6e9fbaeaa129b60d6a21c3f3193630de3af5374&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:357da6d38ace174d1053ed5f894578ca3a1ddbb3&dn=%5BBitsearch.to%5D%20Joker%20(2019)%201080p%20Castellano%20(wWw.EsDivx.Com)&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce"
     },
     {
       "name": "Peerflix 720p",
-      "title": "Joker (2019) [720p][Castellano+Subs]",
-      "infoHash": "e1218a9ede3676470f2d5938254b6c9d53c5f6d1",
-      "fileIdx": 0,
+      "title": "Joker (2019).avi",
+      "infoHash": "db9d635b715fadaae606492a292cbaec7a385a42",
+      "fileIdx": null,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 27,
+      "sizeBytes": 2115271393,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -131,24 +816,594 @@
       "providerNames": [
         "Peerflix"
       ],
-      "externalProviders": [],
+      "externalProviders": [
+        "GranTorrent"
+      ],
       "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:db9d635b715fadaae606492a292cbaec7a385a42&dn=Joker%20(2019).avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker (2019) V2 720p [Web Screener 720p][Castellano][www.descargas2020.ORG][www.pctnew.ORG]",
+      "infoHash": "8d9204f1e93d9bfa2e99c7c80571d6a733213fea",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8d9204f1e93d9bfa2e99c7c80571d6a733213fea&dn=Joker%20(2019)%20V2%20720p%20%5BWeb%20Screener%20720p%5D%5BCastellano%5D%5Bwww.descargas2020.ORG%5D%5Bwww.pctnew.ORG%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "[Bitsearch.to] Joker (2019) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.descargas2020.ORG]",
+      "infoHash": "7dee3c2a1e4a11b5f4630b0c5ad4741ab32108ce",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 3629247365,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7dee3c2a1e4a11b5f4630b0c5ad4741ab32108ce&dn=%5BBitsearch.to%5D%20Joker%20(2019)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.descargas2020.ORG%5D&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "[Bitsearch.to] Joker.2019.720p.HC.HDRip.Castellano.Mcreef.mkv",
+      "infoHash": "d6de4f35857fc23f2e15243b82a72cd52cc96125",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 2158221066,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.uw0.xyz:6969/announce",
+        "udp://tracker.moeking.me:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d6de4f35857fc23f2e15243b82a72cd52cc96125&dn=%5BBitsearch.to%5D%20Joker.2019.720p.HC.HDRip.Castellano.Mcreef.mkv&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker (2019) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.atomixHQ.ONE]",
+      "infoHash": "6c79f6b964ccdfdc98743aba974c34012a387fd3",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6c79f6b964ccdfdc98743aba974c34012a387fd3&dn=Joker%20(2019)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.atomixHQ.ONE%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "[Bitsearch.to] Joker.2019.720p.WEBDL.DD.Castellano.www.yadixv.com",
+      "infoHash": "b0eb4aee8b1fb96a66e17458c91a84b05d21d2e9",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 2512555868,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b0eb4aee8b1fb96a66e17458c91a84b05d21d2e9&dn=%5BBitsearch.to%5D%20Joker.2019.720p.WEBDL.DD.Castellano.www.yadixv.com&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "[Bitsearch.to] Joker 2019.720p.NEW.HD-TS.Castellano.Mcreef.mkv",
+      "infoHash": "3b674cd540893384dcd16b4d9db6f063620b07bf",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 2158221066,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.uw0.xyz:6969/announce",
+        "udp://tracker.openbittorrent.com:80/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3b674cd540893384dcd16b4d9db6f063620b07bf&dn=%5BBitsearch.to%5D%20Joker%202019.720p.NEW.HD-TS.Castellano.Mcreef.mkv&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "[Bitsearch.to] Joker.2019.720p.WEBDL.DD.Castellano.Mcreef.mkv",
+      "infoHash": "36d7b3c0b2c065b2d363c3acc70ad5b963781d3f",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 2695091978,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "trackers": [
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:36d7b3c0b2c065b2d363c3acc70ad5b963781d3f&dn=%5BBitsearch.to%5D%20Joker.2019.720p.WEBDL.DD.Castellano.Mcreef.mkv&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker (2019) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.descargas2020.ORG]",
+      "infoHash": "d44ffb97368c77469472e4801101294689281739",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d44ffb97368c77469472e4801101294689281739&dn=Joker%20(2019)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.descargas2020.ORG%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker (2019) 720p [Web Screener 720p ][Castellano][www.descargas2020.ORG][www.pctnew.ORG]",
+      "infoHash": "72ba7795dcac7eb8291239fd11cc3adc36cb7c64",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:72ba7795dcac7eb8291239fd11cc3adc36cb7c64&dn=Joker%20(2019)%20720p%20%5BWeb%20Screener%20720p%20%5D%5BCastellano%5D%5Bwww.descargas2020.ORG%5D%5Bwww.pctnew.ORG%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix",
+      "title": "Joker (2019) [Web Screener][Castellano][www.descargas2020.ORG][www.pctnew.ORG]",
+      "infoHash": "bf690fd84daa014e0ebc0855ae8d5f1c68b88d70",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bf690fd84daa014e0ebc0855ae8d5f1c68b88d70&dn=Joker%20(2019)%20%5BWeb%20Screener%5D%5BCastellano%5D%5Bwww.descargas2020.ORG%5D%5Bwww.pctnew.ORG%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 720p",
+      "title": "Joker [BRS][Castellano][wWw.EliteTorrent.IS]",
+      "infoHash": "ce6476708b18d6d38fd83f9903738ba34d2540a8",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 2888365506,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ce6476708b18d6d38fd83f9903738ba34d2540a8&dn=Joker%20%5BBRS%5D%5BCastellano%5D%5BwWw.EliteTorrent.IS%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix",
+      "title": "Joker [TS][Castellano][wWw.EliteTorrent.IO]",
+      "infoHash": "7682c006412e21412f50e1e66466464c9ddfd768",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 4,
+      "sizeBytes": 474417725,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7682c006412e21412f50e1e66466464c9ddfd768&dn=Joker%20%5BTS%5D%5BCastellano%5D%5BwWw.EliteTorrent.IO%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 4K",
+      "title": "Joker.2019.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1",
+      "infoHash": "42e92deaa863d1b6083bb159c14fa827ea8ef9b6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 108,
+      "sizeBytes": 6431713526,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "ThePirateBay",
+        "x265"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:e1218a9ede3676470f2d5938254b6c9d53c5f6d1&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:42E92DEAA863D1B6083BB159C14FA827EA8EF9B6&dn=Joker%20(2019)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Joker 2019 UHD 4K BluRay 2160p HDR10 TrueHD 7.1 Atmos H.265-MgB",
+      "infoHash": "194f75b5e0b7cdedb9e339a31fae153cd10fa3dc",
+      "fileIdx": 24,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 57,
+      "sizeBytes": 23429046600,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://explodie.org:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:194f75b5e0b7cdedb9e339a31fae153cd10fa3dc&dn=Joker%202019%20UHD%204K%20BluRay%202160p%20HDR10%20TrueHD%207.1%20Atmos%20H.265-MgB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
       "name": "TorrentsDB 4K",
-      "title": "Joker (2019) [4K][Castellano+Subs]",
-      "infoHash": "52da08a66a16e9615068cd7c712a5a7f76d14eed",
+      "title": "Joker 2019 2160p Bluray x265 DDP Atmos-KiNGDOM",
+      "infoHash": "4fd557ac16a25fb626e365bb7b835a67596b9028",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 46,
+      "sizeBytes": 10318658929,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -157,25 +1412,42 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "rargb"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.files.fm:6969/announce",
+        "udp://open.xxtor.com:3074/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://p2p.publictracker.xyz:6969/announce",
+        "udp://open.demonoid.ch:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "https://tracker1.ctix.cn:443/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "http://open.acgnxtracker.com:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:52da08a66a16e9615068cd7c712a5a7f76d14eed&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:4fd557ac16a25fb626e365bb7b835a67596b9028&dn=Joker%202019%202160p%20Bluray%20x265%20DDP%20Atmos-KiNGDOM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.files.fm%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.xxtor.com%3A3074%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp2p.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonoid.ch%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker1.ctix.cn%3A443%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
     },
     {
-      "name": "TorrentsDB 1080p",
-      "title": "Joker (2019) [1080p][Castellano+Subs]",
-      "infoHash": "944e73401eed9433211fe2c675aec0c51b70f5de",
+      "name": "TorrentsDB 4K",
+      "title": "Joker - Remastered 4K (2019 ITA/ENG) [1080p] [HollywoodMovie]",
+      "infoHash": "022ea295149a343cd36f8033a4a6e5b28639073e",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 35,
+      "sizeBytes": 12348030976,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -184,25 +1456,71 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "YTS"
+        "ilcorsaronero"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:944e73401eed9433211fe2c675aec0c51b70f5de&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:022ea295149a343cd36f8033a4a6e5b28639073e&dn=Joker%20-%20Remastered%204K%20(2019%20ITA%2FENG)%20%5B1080p%5D%20%5BHollywoodMovie%5D"
     },
     {
-      "name": "TorrentsDB 1080p",
-      "title": "Joker (2019) [1080p][Ingles+Subs]",
-      "infoHash": "7d2814cc8984c994067e782fe6046ed2101d7c9d",
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Joker (2019) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom",
+      "infoHash": "3ed8b5f10ad318ba65be406f03a96e8d8fc4f7c3",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
-        "en"
+        "en",
+        "it"
       ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "quality": "4K",
+      "seeders": 29,
+      "sizeBytes": 5046586573,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://fe.dealclub.de:6969/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://glotorrents.pw:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3ed8b5f10ad318ba65be406f03a96e8d8fc4f7c3&dn=Joker%20(2019)%202160p%20H265%20BluRay%20Rip%2010%20bit%20DV%20HDR10%2B%20ita%20eng%20AC3%205.1%20sub%20ita%20eng%20Licdom&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ffe.dealclub.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker.2019.2160p.MAX.WEB-DL.DDPA.5.1.DV.HDR.H.265-PiRaTeS[TGx]",
+      "infoHash": "662cae3762d926748c6ff250a48437aaf8c20057",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 17,
+      "sizeBytes": 19756849562,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -211,25 +1529,1069 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "rargb"
       ],
       "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.birkenwald.de:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://opentor.org:2710/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "https://tracker.foreverpirates.co:443/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:662cae3762d926748c6ff250a48437aaf8c20057&dn=Joker.2019.2160p.MAX.WEB-DL.DDPA.5.1.DV.HDR.H.265-PiRaTeS%5BTGx%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Joker (2019) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG AC3-SUBS] [M@HD]",
+      "infoHash": "1d3c4ea820e9bac8f3cd0fa393c2afe6fb81fcb6",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "4K",
+      "seeders": 20,
+      "sizeBytes": 17963700716,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ilcorsaronero",
+        "ilCorSaRoNeRo"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:1d3c4ea820e9bac8f3cd0fa393c2afe6fb81fcb6&dn=Joker%20(2019)%20%5BBluRay%20Rip%202160p%20HEVC%2010bit-HDR%20ITA-ENG%20AC3-SUBS%5D%20%5BM%40HD%5D"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker.2019.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM",
+      "infoHash": "d19c758223373af723dcd5d4e343005ae7086d48",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 11,
+      "sizeBytes": 9760313180,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ilcorsaronero"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d19c758223373af723dcd5d4e343005ae7086d48&dn=Joker.2019.4K.HDR.2160p.BDRip%20Ita%20Eng%20x265-NAHOM"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker",
+      "infoHash": "b430531c15ea5d91b2d3a63478b69372d12737ab",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 10,
+      "sizeBytes": 54116587930,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "udp://opentor.org:2710/announce/",
+        "udp://www.torrent.eu.org:451/announce/",
+        "udp://retracker.lanta-net.ru:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b430531c15ea5d91b2d3a63478b69372d12737ab&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker (2019) AC3 5.1 ITA.ENG 2160p H265 HDR10 Dolby Vision sub NUita.eng Sp33dy94 MIRCrew",
+      "infoHash": "71b75b68254445a52def14b588fc1d2c18afb81e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 8,
+      "sizeBytes": 4123168604,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ilcorsaronero"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:71b75b68254445a52def14b588fc1d2c18afb81e&dn=Joker%20(2019)%20AC3%205.1%20ITA.ENG%202160p%20H265%20HDR10%20Dolby%20Vision%20sub%20NUita.eng%20Sp33dy94%20MIRCrew"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 1080p",
+      "title": "Joker.2019.1080p.BluRay.x264",
+      "infoHash": "bfea2333b7a7959270b1fd296d7d9632d1af5713",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 262,
+      "sizeBytes": 2061584302,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "YTS",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7d2814cc8984c994067e782fe6046ed2101d7c9d&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:BFEA2333B7A7959270B1FD296D7D9632D1AF5713&dn=Joker%20(2019)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 1080p",
+      "title": "Joker.2019.1080p.WEBRip.x264-MP4",
+      "infoHash": "2b415a885a3e2210a6ef1d6c57eba325f20d8bc6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 142,
+      "sizeBytes": 2050846884,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2B415A885A3E2210A6EF1D6C57EBA325F20D8BC6&dn=Joker%20(2019)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker.2019.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265",
+      "infoHash": "e6e30f8fb3ba7e9d99436f026348aecc28ec3065",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 121,
+      "sizeBytes": 2662879724,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.birkenwald.de:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://opentor.org:2710/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "https://tracker.foreverpirates.co:443/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e6e30f8fb3ba7e9d99436f026348aecc28ec3065&dn=Joker.2019.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker 2019 1080p BluRay DD+ 7.1 x265-edge2020",
+      "infoHash": "21fc0eb57ba29e6bcc846036fc299afeed040d05",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 48,
+      "sizeBytes": 3425236419,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:6969",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:21fc0eb57ba29e6bcc846036fc299afeed040d05&dn=Joker%202019%201080p%20BluRay%20DD%2B%207.1%20x265-edge2020&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker",
+      "infoHash": "153af193e11d1e0094ac34bb498723d7dc7a3646",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 38,
+      "sizeBytes": 1868310774,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "extremlymtorrents"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.openbittorrent.com:1337/announce",
+        "wss://tracker.btorrent.xyz",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://retracker.lanta-net.ru:2710/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://fasttracker.foreverpirates.co:6969/announce",
+        "udp://9.rarbg.me:2820/announce",
+        "udp://9.rarbg.to:2940/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:153af193e11d1e0094ac34bb498723d7dc7a3646&dn=Joker&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A1337%2Fannounce&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ffasttracker.foreverpirates.co%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2820%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2940%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker 2019 UHD BluRay 1080p DDP 7 1 DoVi HDR x265-SM737",
+      "infoHash": "44af766f357d686797661d2f073ecf0186c35858",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 36,
+      "sizeBytes": 5916317450,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "limetorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:44af766f357d686797661d2f073ecf0186c35858&dn=Joker%202019%20UHD%20BluRay%201080p%20DDP%207%201%20DoVi%20HDR%20x265-SM737&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole) [QxR]",
+      "infoHash": "13c6f4c67fb5e15a1dabdace2a7124494ded4059",
+      "fileIdx": 4,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "pt",
+        "es",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 43,
+      "sizeBytes": 5379446538,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:13c6f4c67fb5e15a1dabdace2a7124494ded4059&dn=Joker%20(2019)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%207.1%20Tigole)%20%5BQxR%5D"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Джокер / Joker",
+      "infoHash": "3d5234901f8a8a231f508ba7b27de09816b28b2b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 9019431322,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt3.t-ru.org/ann?pk=2d3948b2c988034b44dd1e28bda82e49",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3d5234901f8a8a231f508ba7b27de09816b28b2b&dn=%D0%94%D0%B6%D0%BE%D0%BA%D0%B5%D1%80%20%2F%20Joker&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fpk%3D2d3948b2c988034b44dd1e28bda82e49&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker (2019) Blu Ray 1080p. H264 Ita Eng AC3 5.1 Sub Ita Eng MIRCrew",
+      "infoHash": "62edc2d53fdb0f8ad112d8f879db28144a9d5601",
+      "fileIdx": 6,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 24,
+      "sizeBytes": 3285649981,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ilcorsaronero",
+        "ilCorSaRoNeRo"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:62edc2d53fdb0f8ad112d8f879db28144a9d5601&dn=Joker%20(2019)%20Blu%20Ray%201080p.%20H264%20Ita%20Eng%20AC3%205.1%20Sub%20Ita%20Eng%20MIRCrew"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker.2019.HC.1080p.HDRip.X264.AC3-EVO[TGx]",
+      "infoHash": "ac568abfa75f6001c4fa24e7129d9af59055d3c2",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 4241280205,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ac568abfa75f6001c4fa24e7129d9af59055d3c2&dn=Joker.2019.HC.1080p.HDRip.X264.AC3-EVO%5BTGx%5D"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker.2019.1080p.BluRay.ENG.LATINO.ITA.HINDI.DD5.1.H264-BEN.THE.MEN",
+      "infoHash": "76bd651d73fac6596ae8b2bdbea322c543d679c5",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 11585674281,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:76bd651d73fac6596ae8b2bdbea322c543d679c5&dn=Joker.2019.1080p.BluRay.ENG.LATINO.ITA.HINDI.DD5.1.H264-BEN.THE.MEN"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker (2019)(CZ/EN)[1080p][HEVC] = CSFD 85%",
+      "infoHash": "1916751016823c572d535e500a4280a6c87bb67e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2448131359,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1916751016823c572d535e500a4280a6c87bb67e&dn=Joker%20(2019)(CZ%2FEN)%5B1080p%5D%5BHEVC%5D%20%3D%20CSFD%2085%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker.2019.BluRay.1080p.TrueHD7.1.x264-CHD",
+      "infoHash": "a974c7f8a3732d5e60b06d8c2c0778fe1a4f0792",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 13915694039,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a974c7f8a3732d5e60b06d8c2c0778fe1a4f0792&dn=Joker.2019.BluRay.1080p.TrueHD7.1.x264-CHD"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker 2019 1080p BluRay x264-OFT",
+      "infoHash": "5790a1d1086aea98724bfdf6d5b61be3323103d5",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 5669356831,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5790a1d1086aea98724bfdf6d5b61be3323103d5&dn=Joker%202019%201080p%20BluRay%20x264-OFT"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker 2019 1080p BluRayRip EAC3 5 1 x265-Lootera",
+      "infoHash": "c9e7ea1b63e0e9999d072ad4189800348e1eb45e",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 2856153252,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c9e7ea1b63e0e9999d072ad4189800348e1eb45e&dn=Joker%202019%201080p%20BluRayRip%20EAC3%205%201%20x265-Lootera"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker.2019.ITA.AC3.ENG.DTS.1080p.BluRay.x264.DTS-Speranzah.mkv",
+      "infoHash": "64653c1cec6967cf4c660e01dfcf570add258a59",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 11940009083,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ilcorsaronero"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:64653c1cec6967cf4c660e01dfcf570add258a59&dn=Joker.2019.ITA.AC3.ENG.DTS.1080p.BluRay.x264.DTS-Speranzah.mkv"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker",
+      "infoHash": "340914ee7c15075f58e116a48f4ad7b03cc89c2a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 9384503542,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:340914ee7c15075f58e116a48f4ad7b03cc89c2a&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Joker 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737",
+      "infoHash": "d69c5bc13c0e3be8f1d8df5c33b7fee437ad93cc",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 10,
+      "sizeBytes": 6184752906,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d69c5bc13c0e3be8f1d8df5c33b7fee437ad93cc&dn=Joker%202019%20UHD%20BluRay%201080p%20DD%20Atmos%205%201%20DoVi%20HDR10%20x265-SM737"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker.2019.1080p.WEB-DL.DD5.1.H264-CMRG[TGx]",
+      "infoHash": "0d785f04b54cb7570c0741e2833eee6322653517",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 5046586573,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:0d785f04b54cb7570c0741e2833eee6322653517&dn=Joker.2019.1080p.WEB-DL.DD5.1.H264-CMRG%5BTGx%5D"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker 2019 BluRay 1080p DDP 5 1 x264-hallowed",
+      "infoHash": "2feb758d1f1a743eee28f1dabd074e7084c40ca4",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 9738838344,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:2feb758d1f1a743eee28f1dabd074e7084c40ca4&dn=Joker%202019%20BluRay%201080p%20DDP%205%201%20x264-hallowed"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Joker 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737",
+      "infoHash": "9b333460899458362eeefaa34f707c308e7ab2f5",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 6184752906,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9b333460899458362eeefaa34f707c308e7ab2f5&dn=Joker%202019%20UHD%20BluRay%201080p%20DD%20Atmos%205%201%20DoVi%20HDR10%20x265-SM737"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker (2019) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew",
+      "infoHash": "bd341f8cf97e408016cca31a7022ff463385ab26",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 2802466161,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ilcorsaronero"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:bd341f8cf97e408016cca31a7022ff463385ab26&dn=Joker%20(2019)%20AC3%205.1%20ITA.ENG%201080p%20H265%20sub%20ita.eng%20Sp33dy94%20MIRCrew"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Amazing Films 9 - Mp4 x264 AC3 1080p",
+      "infoHash": "37f048a1d5cc62f11fbac81185168eeb9d9101bf",
+      "fileIdx": 33,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 3682934456,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:37f048a1d5cc62f11fbac81185168eeb9d9101bf&dn=Amazing%20Films%209%20-%20Mp4%20x264%20AC3%201080p"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker 2019 BluRay 1080p AAC x264-MPAD[EtHD]",
+      "infoHash": "f6fb87dec15d34eada2ebde3c4c63804f8ccaa7a",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 3006477107,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:f6fb87dec15d34eada2ebde3c4c63804f8ccaa7a&dn=Joker%202019%20BluRay%201080p%20AAC%20x264-MPAD%5BEtHD%5D"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Joker (2019)(CZ)[1080p] = CSFD 88%",
+      "infoHash": "1b681888a7b0b406493797a8cd2e85174713e84c",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 2695091978,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1b681888a7b0b406493797a8cd2e85174713e84c&dn=Joker%20(2019)(CZ)%5B1080p%5D%20%3D%20CSFD%2088%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker.2019.1080p.AMZN.WEBRip.DDP5.1.x264-NTG",
+      "infoHash": "ba0e1eb7806598733f2b3472e52f4091b5e361fb",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 8643621683,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ba0e1eb7806598733f2b3472e52f4091b5e361fb&dn=Joker.2019.1080p.AMZN.WEBRip.DDP5.1.x264-NTG"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK",
+      "infoHash": "78fd1a0aa2866080f280a21cc70728ed5e199a1e",
+      "fileIdx": 0,
+      "language": "fr",
+      "audioLangs": [
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 9384503542,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "udp://opentor.org:2710/announce/",
+        "udp://www.torrent.eu.org:451/announce/",
+        "udp://retracker.lanta-net.ru:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:78fd1a0aa2866080f280a21cc70728ed5e199a1e&dn=Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 720p",
+      "title": "Joker.2019.720p.BluRay.x264",
+      "infoHash": "ba693a610b43a3aa246d3382299775ebdf0fec34",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 85,
+      "sizeBytes": 1148903752,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.opentrackr.org:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:BA693A610B43A3AA246D3382299775EBDF0FEC34&dn=Joker%20(2019)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
     },
     {
       "name": "TorrentsDB 720p",
-      "title": "Joker (2019) [720p][Castellano+Subs]",
-      "infoHash": "7bbb70f4a11abee62e06b525ecef47f486297a7c",
+      "title": "Joker.2019.ENG.720p.HD.WEBRip.1.62GiB.AAC.x264-PortalGoods",
+      "infoHash": "d2aec79f47da33f053807a6579aeaa6fb92c0d56",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 20,
+      "sizeBytes": 1717986918,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -237,24 +2599,478 @@
       "providerNames": [
         "TorrentsDB"
       ],
-      "externalProviders": [],
+      "externalProviders": [
+        "rargb"
+      ],
       "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.birkenwald.de:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://d40969.acod.regrucolo.ru:6969/announce",
+        "udp://y.paranoid.agency:6969/announce",
+        "udp://ns1.monolithindustries.com:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://ttk2.nbaonlineservice.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d2aec79f47da33f053807a6579aeaa6fb92c0d56&dn=Joker.2019.ENG.720p.HD.WEBRip.1.62GiB.AAC.x264-PortalGoods&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fd40969.acod.regrucolo.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fy.paranoid.agency%3A6969%2Fannounce&tr=udp%3A%2F%2Fns1.monolithindustries.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fttk2.nbaonlineservice.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 720p",
+      "title": "Joker.2019.720p.WEBRip.x264-MP4",
+      "infoHash": "33435e0d8ee7311f5ac93531a402f7a002e4a750",
+      "fileIdx": 0,
+      "language": "pt",
+      "audioLangs": [
+        "pt"
+      ],
+      "quality": "720p",
+      "seeders": 18,
+      "sizeBytes": 1138166333,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "MicoLeaoDublado",
+        "x264"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7bbb70f4a11abee62e06b525ecef47f486297a7c&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:33435E0D8EE7311F5AC93531A402F7A002E4A750&dn=Joker%20(2019)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker",
+      "infoHash": "3bd4919824963161c3659e9042c1f57c934a6cac",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 14,
+      "sizeBytes": 4692251771,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "udp://opentor.org:2710/announce/",
+        "udp://www.torrent.eu.org:451/announce/",
+        "udp://retracker.lanta-net.ru:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3bd4919824963161c3659e9042c1f57c934a6cac&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker.2019.720p.HC.HDRip.800MB.x264-GalaxyRG",
+      "infoHash": "67c876fa3a565be72f35a6d4766d74ed88b9a435",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 11,
+      "sizeBytes": 837067735,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:67c876fa3a565be72f35a6d4766d74ed88b9a435&dn=Joker.2019.720p.HC.HDRip.800MB.x264-GalaxyRG"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker",
+      "infoHash": "e7a5267f1e1115f5deddffa7c4fcb790d45de34e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 7,
+      "sizeBytes": 4692251771,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e7a5267f1e1115f5deddffa7c4fcb790d45de34e&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker",
+      "infoHash": "4ee82a935c4a3e99f65558e3d28b527a6c2a4494",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 7,
+      "sizeBytes": 4015794422,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4ee82a935c4a3e99f65558e3d28b527a6c2a4494&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 720p",
+      "title": "Joker 2019 720p BluRay x264-GeneMige",
+      "infoHash": "711a7ff1d85cf1774189721da5d174c5c47bb062",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 9,
+      "sizeBytes": 5014374318,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:711a7ff1d85cf1774189721da5d174c5c47bb062&dn=Joker%202019%20720p%20BluRay%20x264-GeneMige"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Joker (2019).720p.H264.ita.eng.Ac3-5.1.sub.ita.eng-MIRCrew",
+      "infoHash": "cfa4af42fd73690537782f7d59723c2ef4f39901",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 4,
+      "sizeBytes": 2534030705,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ilcorsaronero"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:cfa4af42fd73690537782f7d59723c2ef4f39901&dn=Joker%20(2019).720p.H264.ita.eng.Ac3-5.1.sub.ita.eng-MIRCrew"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Джокер",
+      "infoHash": "a7a98909e7aec623f21dd5d2108676668db0b9b3",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 24,
+      "sizeBytes": 3103113871,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a7a98909e7aec623f21dd5d2108676668db0b9b3&dn=%D0%94%D0%B6%D0%BE%D0%BA%D0%B5%D1%80&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Joker",
+      "infoHash": "da7bbcd2df86db64d0354cac3e11b982a271448e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 17,
+      "sizeBytes": 1471026299,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:da7bbcd2df86db64d0354cac3e11b982a271448e&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Joker",
+      "infoHash": "a69847dbac9489bac12938e238c8cd7576718656",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 13,
+      "sizeBytes": 1471026299,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "udp://opentor.org:2710/announce/",
+        "udp://www.torrent.eu.org:451/announce/",
+        "udp://retracker.lanta-net.ru:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a69847dbac9489bac12938e238c8cd7576718656&dn=Joker&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fwww.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Джокер / Joker",
+      "infoHash": "46256d0b6d7e47517b74cca2b5d822c28f63ac06",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 10,
+      "sizeBytes": 2340757176,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://tracker.mg64.net:6881/announce",
+        "udp://megapeer.org:6969/announce",
+        "udp://glotorrents.com:6969/announce",
+        "udp://exodus.desync.com/announce",
+        "http://exodus.desync.com:6969/announce",
+        "http://announce.opensharing.org:2710/announce",
+        "http://tracker.ex.ua/announce",
+        "udp://tracker.ex.ua/announce",
+        "http://tracker.ex.ua:80/announce",
+        "udp://tracker.ex.ua:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.best-torrents.net:6969/announce",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:46256d0b6d7e47517b74cca2b5d822c28f63ac06&dn=%D0%94%D0%B6%D0%BE%D0%BA%D0%B5%D1%80%20%2F%20Joker&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.mg64.net%3A6881%2Fannounce&tr=udp%3A%2F%2Fmegapeer.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fglotorrents.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%2Fannounce&tr=http%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%2Fannounce&tr=udp%3A%2F%2Ftracker.ex.ua%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.best-torrents.net%3A6969%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
     },
     {
       "name": "Torrentio 4K",
-      "title": "Joker (2019) [4K][Castellano+Subs]",
-      "infoHash": "aa9c118f3d115ef9cf00c65e2ea6dadb4a45c485",
+      "title": "Joker.2019.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-AAAUHD",
+      "infoHash": "33b8d0a6f822e118bd20a5a592468f4a1ac86843",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 44,
+      "sizeBytes": 17416092385,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -263,25 +3079,21 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "torrentio"
+        "RARBG"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:aa9c118f3d115ef9cf00c65e2ea6dadb4a45c485&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:33b8d0a6f822e118bd20a5a592468f4a1ac86843&dn=Joker.2019.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-AAAUHD"
     },
     {
-      "name": "Torrentio 1080p",
-      "title": "Joker (2019) [1080p][Castellano+Subs]",
-      "infoHash": "042275b71802af5df0cc1c8918fda1c73467e305",
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.UHD.Bluray.HDR.TrueHD.Atmos.7.1.HEVC-DDR",
+      "infoHash": "3498dfbf930ee3f4f583a61b611552e7c133f987",
       "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 23,
+      "sizeBytes": 18511309046,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -290,25 +3102,76 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:042275b71802af5df0cc1c8918fda1c73467e305&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3498dfbf930ee3f4f583a61b611552e7c133f987&dn=Joker.2019.2160p.UHD.Bluray.HDR.TrueHD.Atmos.7.1.HEVC-DDR"
     },
     {
-      "name": "Torrentio 1080p",
-      "title": "Joker (2019) [1080p][Ingles+Subs]",
-      "infoHash": "61a3d36062340e679ceb6cfbdffafc618ea5171a",
+      "name": "Torrentio 4K",
+      "title": "Joker 2019 USA BluRay Remux UHD DoVi HDR10 2160p Atmos TrueHD7.1-DreamHD",
+      "infoHash": "121403258f9219e601c590d760ac8e68041f6ff7",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 17,
+      "sizeBytes": 51400021115,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:121403258f9219e601c590d760ac8e68041f6ff7&dn=Joker%202019%20USA%20BluRay%20Remux%20UHD%20DoVi%20HDR10%202160p%20Atmos%20TrueHD7.1-DreamHD"
+    },
+    {
+      "name": "Torrentio+ThePirateBay+ 4K",
+      "title": "Joker (2019) 2160p 4K UHD HDR10 DV Blu-ray REMUX Dual [Hindi+English] ~ RemuxDoc",
+      "infoHash": "de1d7bfbe75087b2982523a14079de45e308e9cd",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
         "en"
       ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "quality": "4K",
+      "seeders": 82,
+      "sizeBytes": 50734301184,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:de1d7bfbe75087b2982523a14079de45e308e9cd&dn=Joker%20(2019)%202160p%204K%20UHD%20HDR10%20DV%20Blu-ray%20REMUX%20Dual%20%5BHindi%2BEnglish%5D%20~%20RemuxDoc"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.ENG.RUS.ITA.LATINO.TrueHD.7.1.Atmos.DV.x265.MKV-BEN.THE.MEN",
+      "infoHash": "c627f7d47b733691e1b08c36578d3a42c9925a5b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru",
+        "it",
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 15,
+      "sizeBytes": 52999896433,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -317,25 +3180,549 @@
         "Torrentio"
       ],
       "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c627f7d47b733691e1b08c36578d3a42c9925a5b&dn=Joker.2019.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.ENG.RUS.ITA.LATINO.TrueHD.7.1.Atmos.DV.x265.MKV-BEN.THE.MEN"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker (2019) [MULTi] [2160p] [DV] [HDR10] [BluRay] [H.265-hallow…",
+      "infoHash": "7eb402a24997d299d0f4d10894e4740a7392458a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 13,
+      "sizeBytes": 17877801370,
+      "sizeLabel": null,
+      "providers": [
         "torrentio"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "providerNames": [
+        "Torrentio"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:61a3d36062340e679ceb6cfbdffafc618ea5171a&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7eb402a24997d299d0f4d10894e4740a7392458a&dn=Joker%20(2019)%20%5BMULTi%5D%20%5B2160p%5D%20%5BDV%5D%20%5BHDR10%5D%20%5BBluRay%5D%20%5BH.265-hallow%E2%80%A6"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.BluRay.DV.HDR10.PLUS.ENG.LATINO.ITA.HINDI.DDP5.1.H265.MP4-BTM",
+      "infoHash": "e82be3271b616246e945efda91be18855cbed6e5",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it",
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 9,
+      "sizeBytes": 20025285018,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e82be3271b616246e945efda91be18855cbed6e5&dn=Joker.2019.2160p.BluRay.DV.HDR10.PLUS.ENG.LATINO.ITA.HINDI.DDP5.1.H265.MP4-BTM"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker 2019 4K UHD 2160p REMUX DV TrueHD 7 1 Dual PTBR BrRemux",
+      "infoHash": "94a336965ffd435e2be6a7cdb296082dced0807b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "pt"
+      ],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 50476603146,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:94a336965ffd435e2be6a7cdb296082dced0807b&dn=Joker%202019%204K%20UHD%202160p%20REMUX%20DV%20TrueHD%207%201%20Dual%20PTBR%20BrRemux"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM",
+      "infoHash": "47daf069c12ca610e54636f57510d6820c26dca9",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "4K",
+      "seeders": 4,
+      "sizeBytes": 47266115092,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:47daf069c12ca610e54636f57510d6820c26dca9&dn=Joker.2019.4K.HDR.DV.2160p.BDRemux%20Ita%20Eng%20x265-NAHOM"
+    },
+    {
+      "name": "Torrentio+ThePirateBay+ 4K",
+      "title": "Joker.2019.2160p. Ai Enhanced BluRay.60FPSxH265.SDR.DTS-HD.MA.Tr…",
+      "infoHash": "b7da10d62bd5fb2d044c0d999b366c3828c40de0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "es",
+        "fr"
+      ],
+      "quality": "4K",
+      "seeders": 63,
+      "sizeBytes": 43486543872,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b7da10d62bd5fb2d044c0d999b366c3828c40de0&dn=Joker.2019.2160p.%20Ai%20Enhanced%20BluRay.60FPSxH265.SDR.DTS-HD.MA.Tr%E2%80%A6"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-JATO",
+      "infoHash": "8e991abb03f2d435a7d4530e9c1e334a282bda00",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 17,
+      "sizeBytes": 57208964383,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8e991abb03f2d435a7d4530e9c1e334a282bda00&dn=Joker.2019.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-JATO"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.MA.WEB-DL.H.265.DDP5.1.Atmos-PandaQT SDR 4k UHD [GoodFilms]",
+      "infoHash": "e6957ed6f617f41bf77b47fa10578f09f1fd30a6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 12,
+      "sizeBytes": 22978075034,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e6957ed6f617f41bf77b47fa10578f09f1fd30a6&dn=Joker.2019.2160p.MA.WEB-DL.H.265.DDP5.1.Atmos-PandaQT%20SDR%204k%20UHD%20%5BGoodFilms%5D"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "b566b878e4b9947755dc7ab63531c7889593e81d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 12,
+      "sizeBytes": 55437290373,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b566b878e4b9947755dc7ab63531c7889593e81d&dn=Joker.2019.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "543a5eb1e79098be38490dc20fb7854ce2ee8c91",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 12,
+      "sizeBytes": 55426552955,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:543a5eb1e79098be38490dc20fb7854ce2ee8c91&dn=Joker.2019.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.WEB-DL.H264.AC3-EVO[TGx]",
+      "infoHash": "7b9282ed1799b008aba2277955a1f8b2327f15b1",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 6,
+      "sizeBytes": 20486994002,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:7b9282ed1799b008aba2277955a1f8b2327f15b1&dn=Joker.2019.2160p.WEB-DL.H264.AC3-EVO%5BTGx%5D"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ",
+      "infoHash": "3a2e209d2ba308184d6a1fe3ea29636d1a330dd0",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 49875307725,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3a2e209d2ba308184d6a1fe3ea29636d1a330dd0&dn=Joker.2019.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Joker.2019.2160p.WEB-DL.DDP5.1.HEVC-BLUTONiUM",
+      "infoHash": "e1908b268c54d9e64a698b1019e7a6d1bf8b08ba",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 3,
+      "sizeBytes": 20261508219,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e1908b268c54d9e64a698b1019e7a6d1bf8b08ba&dn=Joker.2019.2160p.WEB-DL.DDP5.1.HEVC-BLUTONiUM"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker 2019 REPACK 1080p BluRay x265-YAWNTiC",
+      "infoHash": "8db1ab30f5f126c5d8007bf2ca70d8f73395adc2",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 77,
+      "sizeBytes": 6292127089,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:8db1ab30f5f126c5d8007bf2ca70d8f73395adc2&dn=Joker%202019%20REPACK%201080p%20BluRay%20x265-YAWNTiC"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ",
+      "infoHash": "71fee293dc117c48487029c6dcb5038d974a0295",
+      "fileIdx": 662,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 2491081032,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:71fee293dc117c48487029c6dcb5038d974a0295&dn=IMDB%20Top%20250%20-%202024%20Edition%20-%201080p%20BluRay%20eSubs%20jZQ"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker 2019 WEBRip 1080p x264 EAC3 ITA ENG SUB ITA ENG Lullozz",
+      "infoHash": "febb20e79563ca2f93c6dd58a6ec488521590271",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 6292127089,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:febb20e79563ca2f93c6dd58a6ec488521590271&dn=Joker%202019%20WEBRip%201080p%20x264%20EAC3%20ITA%20ENG%20SUB%20ITA%20ENG%20Lullozz"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker (2019) - 1080p - BD AV1 Opus MULTi4 [V2] [dAV1nci]",
+      "infoHash": "f9895b60edf42045fd4889703bf332303aa4849b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 2555505541,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:f9895b60edf42045fd4889703bf332303aa4849b&dn=Joker%20(2019)%20-%201080p%20-%20BD%20AV1%20Opus%20MULTi4%20%5BV2%5D%20%5BdAV1nci%5D"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker.2019.MULTi.Bluray.1080p.Atmos.7.1.En.Fr.Sp.Pt-DDR[EtHD]",
+      "infoHash": "ee0f25fdbb0cd1d49daf7f965245346a50b121c0",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 11585674281,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ee0f25fdbb0cd1d49daf7f965245346a50b121c0&dn=Joker.2019.MULTi.Bluray.1080p.Atmos.7.1.En.Fr.Sp.Pt-DDR%5BEtHD%5D"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker.2019.1080p.BluRay.x265-RARBG",
+      "infoHash": "44a9b29b9413f5023f059aff26663c37f50be0cb",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 2040109466,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:44a9b29b9413f5023f059aff26663c37f50be0cb&dn=Joker.2019.1080p.BluRay.x265-RARBG"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker.2019.1080p.10bit.BluRay.8CH.x265.HEVC-PSA",
+      "infoHash": "3c70b06a7e2858bb9ba959d09f995338e424e855",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 2050846884,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3c70b06a7e2858bb9ba959d09f995338e424e855&dn=Joker.2019.1080p.10bit.BluRay.8CH.x265.HEVC-PSA"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker.2019.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "e3a9734586b66ac82010ca21faa82c24062e4a3d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 28013924188,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e3a9734586b66ac82010ca21faa82c24062e4a3d&dn=Joker.2019.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker.2019.1080p.BluRay.x264-AAA",
+      "infoHash": "3859d782a73f0666096b7ff2a547d868bde24127",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 8203387535,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3859d782a73f0666096b7ff2a547d868bde24127&dn=Joker.2019.1080p.BluRay.x264-AAA"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Joker 2019 m1080p BluRay x264-GeneMige",
+      "infoHash": "9342293bd3a1855a1e18c7262c93f7b29b7c41a8",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 2834678415,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9342293bd3a1855a1e18c7262c93f7b29b7c41a8&dn=Joker%202019%20m1080p%20BluRay%20x264-GeneMige"
     },
     {
       "name": "Torrentio 720p",
-      "title": "Joker (2019) [720p][Castellano+Subs]",
-      "infoHash": "82beb44bd2c834505c099051ae736d50b8f89b3c",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "title": "Joker.2019.BluRay.720p.x264.DD5.1-HDChina",
+      "infoHash": "1304e4b058076786e7f3379d6583de6236ae83a0",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 3,
+      "sizeBytes": 5347234284,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -343,223 +3730,103 @@
       "providerNames": [
         "Torrentio"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "ThePirateBay"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:82beb44bd2c834505c099051ae736d50b8f89b3c&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:1304e4b058076786e7f3379d6583de6236ae83a0&dn=Joker.2019.BluRay.720p.x264.DD5.1-HDChina"
     },
     {
-      "name": "ThePirateBay+ 4K",
-      "title": "Joker (2019) [4K][Castellano+Subs]",
-      "infoHash": "2458c18ab15a687e76ef1cd43bcf1baecfec4993",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "name": "Torrentio",
+      "title": "Joker.2019.HC.HDRip.XviD.B4ND1T69",
+      "infoHash": "2087cddd0f23a3652a2eb9df61bfacf735bbc128",
+      "fileIdx": 3,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 45,
+      "sizeBytes": 1148903752,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "piratebay"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:2458c18ab15a687e76ef1cd43bcf1baecfec4993&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:2087cddd0f23a3652a2eb9df61bfacf735bbc128&dn=Joker.2019.HC.HDRip.XviD.B4ND1T69"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Joker (2019) [1080p][Castellano+Subs]",
-      "infoHash": "1a8f7fe15b178e58f147bdf6d9d6afca89d2d27d",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "name": "Torrentio",
+      "title": "Joker.2019.HC.HDRip.XViD.AC3-ETRG",
+      "infoHash": "95dbfc90c39f0dc75f24383147b1397ca1350293",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 1352914698,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:1a8f7fe15b178e58f147bdf6d9d6afca89d2d27d&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:95dbfc90c39f0dc75f24383147b1397ca1350293&dn=Joker.2019.HC.HDRip.XViD.AC3-ETRG"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Joker (2019) [1080p][Ingles+Subs]",
-      "infoHash": "6309371df8bc08e84d87b338c7fd37c84184ee0a",
+      "name": "Torrentio",
+      "title": "Joker (2019) [PL] [BDRip] [XviD-KiT] [Lektor PL]",
+      "infoHash": "52d33dc94fb1fb1859b737053ce3d9cfcbf53129",
       "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 4,
+      "sizeBytes": 1471026299,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "piratebay"
+        "BestTorrents"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:6309371df8bc08e84d87b338c7fd37c84184ee0a&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:52d33dc94fb1fb1859b737053ce3d9cfcbf53129&dn=Joker%20(2019)%20%5BPL%5D%20%5BBDRip%5D%20%5BXviD-KiT%5D%20%5BLektor%20PL%5D"
     },
     {
-      "name": "ThePirateBay+ 720p",
-      "title": "Joker (2019) [720p][Castellano+Subs]",
-      "infoHash": "b6aad1947f9cdcd864f275bb62e513b9d2d82df0",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "name": "Torrentio",
+      "title": "Coach Red Pill Video Pack",
+      "infoHash": "82bb704ccf947c3e5f7abb44fa83e3df4fe40418",
+      "fileIdx": 42,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 311,
+      "sizeBytes": 142857994,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:b6aad1947f9cdcd864f275bb62e513b9d2d82df0&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 4K",
-      "title": "Joker (2019) [4K][Castellano+Subs]",
-      "infoHash": "e2321e439ebff97e53913f76fb876c69d742aaec",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
+        "Torrentio"
       ],
       "externalProviders": [
-        "ytztvio"
+        "TorrentGalaxy"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:e2321e439ebff97e53913f76fb876c69d742aaec&dn=Joker%20(2019)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "Joker (2019) [1080p][Castellano+Subs]",
-      "infoHash": "05a8c822893c48f4047bd445a09a2cbc44b6197a",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "YTS"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:05a8c822893c48f4047bd445a09a2cbc44b6197a&dn=Joker%20(2019)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 1080p",
-      "title": "Joker (2019) [1080p][Ingles+Subs]",
-      "infoHash": "78e9a495c31f77a890a64afd66c1062186a5a143",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [
-        "ytztvio"
-      ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:78e9a495c31f77a890a64afd66c1062186a5a143&dn=Joker%20(2019)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 720p",
-      "title": "Joker (2019) [720p][Castellano+Subs]",
-      "infoHash": "8319838ede6b5d7a0d4cb498e020d797a09b153e",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:8319838ede6b5d7a0d4cb498e020d797a09b153e&dn=Joker%20(2019)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:82bb704ccf947c3e5f7abb44fa83e3df4fe40418&dn=Coach%20Red%20Pill%20Video%20Pack"
     }
   ]
 }

@@ -6,14 +6,14 @@
   "episode": null,
   "label": "Forrest Gump (1994)",
   "providerUrls": {
-    "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json [fixture]",
-    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json [fixture]",
-    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json [fixture]",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json [fixture]",
-    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json [fixture]"
+    "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json"
   },
-  "streamCount": 20,
-  "bestSeeders": 80,
+  "streamCount": 93,
+  "bestSeeders": 2081,
   "qualities": [
     "1080p",
     "4K",
@@ -21,7 +21,13 @@
   ],
   "languages": [
     "en",
-    "es"
+    "es",
+    "fr",
+    "it",
+    "ko",
+    "pt",
+    "ru",
+    "zh"
   ],
   "providers": [
     "peerflix",
@@ -33,16 +39,110 @@
   "streams": [
     {
       "name": "Peerflix 4K",
-      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
-      "infoHash": "0d284e6598796ef7015d50a4c27925003df39bec",
+      "title": "Forrest Gump [4K UHDrip][2160p][HDR][AC3 5.1-DTS 5.1 Castellano True HD 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "ebf0ae6e8cd226857b0c6d8942995750ea429a64",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 2,
+      "sizeBytes": 33661806182,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ebf0ae6e8cd226857b0c6d8942995750ea429a64&dn=Forrest%20Gump%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1-DTS%205.1%20Castellano%20True%20HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Forrest Gump [4K UHDremux][2160p][HDR10][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "5fdf6a9c20da9e3613ea45ec22510955c98d0424",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 80068927815,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5fdf6a9c20da9e3613ea45ec22510955c98d0424&dn=Forrest%20Gump%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Forrest Gump (1994) BDremux 2160p [Dolby Vision]",
+      "infoHash": "67fb3c0d45a558da55b89dd3b1a7a1655d85a9d8",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 0,
+      "sizeBytes": 84718229914,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -51,25 +151,45 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "peerflix"
+        "PeerflixBot"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:0d284e6598796ef7015d50a4c27925003df39bec&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:67fb3c0d45a558da55b89dd3b1a7a1655d85a9d8&dn=Forrest%20Gump%20(1994)%20BDremux%202160p%20%5BDolby%20Vision%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
-      "name": "Peerflix 1080p",
-      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
-      "infoHash": "cef2b1b2805307d0f5878704a987b357a242e881",
-      "fileIdx": 0,
+      "name": "Peerflix 4K",
+      "title": "Forrest Gump [4K UHD 2160p HEVC X265][10BITS][AC3 5.1 Castellano DTS-HD-5.1-Ingles+Subs][ES-EN]",
+      "infoHash": "d874feae3f2a5908864c0b1b39fe6ae1f72c1d0b",
+      "fileIdx": 1,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en"
       ],
-      "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 44957570170,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -78,25 +198,139 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "YTS"
+        "Peerflix"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:cef2b1b2805307d0f5878704a987b357a242e881&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:d874feae3f2a5908864c0b1b39fe6ae1f72c1d0b&dn=Forrest%20Gump%20%5B4K%20UHD%202160p%20HEVC%20X265%5D%5B10BITS%5D%5BAC3%205.1%20Castellano%20DTS-HD-5.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Forrest Gump [4KUHDmicro 2160p][HDR10][Castellano AC3 5.1-Ingles AC3 5.1+Subs][ES-EN]",
+      "infoHash": "51c51f55cf46cf2fcc873a4a98ca8a8b0e0821be",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 14345190768,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:51c51f55cf46cf2fcc873a4a98ca8a8b0e0821be&dn=Forrest%20Gump%20%5B4KUHDmicro%202160p%5D%5BHDR10%5D%5BCastellano%20AC3%205.1-Ingles%20AC3%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 4K",
+      "title": "Forrest Gump [4KUHDrip 2160p][HDR10][Castellano AC3 5.1-Ingles AC3 5.1+Subs][ES-EN]",
+      "infoHash": "a89e1bb3bec81234d9a99c7d0ead313b9c76d5c6",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 0,
+      "sizeBytes": 23021024706,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a89e1bb3bec81234d9a99c7d0ead313b9c76d5c6&dn=Forrest%20Gump%20%5B4KUHDrip%202160p%5D%5BHDR10%5D%5BCastellano%20AC3%205.1-Ingles%20AC3%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
       "name": "Peerflix 1080p",
-      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
-      "infoHash": "3e3a9781f59abd64e4fbe39f8981b4bb5dc7ed30",
-      "fileIdx": 0,
-      "language": "en",
+      "title": "Forrest Gump [BDremux 1080p][AC3 5.1 Castellano-DTS-MA 5.1 Ingles+Subs][ES-EN]",
+      "infoHash": "13e334879361008c81a4765c289402d807506d6f",
+      "fileIdx": 1,
+      "language": "es",
       "audioLangs": [
+        "es",
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 10,
+      "sizeBytes": 33382633308,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -105,25 +339,45 @@
         "Peerflix"
       ],
       "externalProviders": [
-        "peerflix"
+        "Peerflix"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:3e3a9781f59abd64e4fbe39f8981b4bb5dc7ed30&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:13e334879361008c81a4765c289402d807506d6f&dn=Forrest%20Gump%20%5BBDremux%201080p%5D%5BAC3%205.1%20Castellano-DTS-MA%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
-      "name": "Peerflix 720p",
-      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
-      "infoHash": "0ae2d95668ce07f2ae326eaa9f0cb47939f187b8",
+      "name": "Peerflix 1080p",
+      "title": "Forrest Gump [BluRay 1080p][DTS 5.1-AC3 5.1-Castellano-AC3 5.1-Ingles+Subs-ES-EN]",
+      "infoHash": "1adbaf3f59a5c9ad012ba25a2f6bcf93f6836e32",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en"
       ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 15268608737,
       "sizeLabel": null,
       "providers": [
         "peerflix"
@@ -131,24 +385,365 @@
       "providerNames": [
         "Peerflix"
       ],
-      "externalProviders": [],
+      "externalProviders": [
+        "Peerflix"
+      ],
       "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1adbaf3f59a5c9ad012ba25a2f6bcf93f6836e32&dn=Forrest%20Gump%20%5BBluRay%201080p%5D%5BDTS%205.1-AC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs-ES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Forrest Gump (1994).HEVC BDrip 1080p (Spanish-English+Subt).mkv",
+      "infoHash": "a4a09521ec7b458c17fe9acb7ea96216a898dff5",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Sinsitio"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a4a09521ec7b458c17fe9acb7ea96216a898dff5&dn=Forrest%20Gump%20(1994).HEVC%20BDrip%201080p%20(Spanish-English%2BSubt).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "Peerflix 1080p",
+      "title": "Forrest Gump (1994) (Remasterizada) BluRay 1080p Castellano 5.1",
+      "infoHash": "a70c4d750c4107de79fba9d68d7ee4f3fc0f559c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 6420976107,
+      "sizeLabel": null,
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "http://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://tracker.opentrackr.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a70c4d750c4107de79fba9d68d7ee4f3fc0f559c&dn=Forrest%20Gump%20(1994)%20(Remasterizada)%20BluRay%201080p%20Castellano%205.1&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump 1994 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E",
+      "infoHash": "060982d3384de3dbf75ba9a1a385360145365e85",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 110,
+      "sizeBytes": 27702539059,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:060982d3384de3dbf75ba9a1a385360145365e85&dn=Forrest%20Gump%201994%20UHD%20BluRay%202160p%20HDR10%20DV%20HEVC%20TrueHD%20Atmos%207.1%20x265-E"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+Ytztvio 4K",
+      "title": "Forrest Gump 1994 2160p BluRay",
+      "infoHash": "08c79ebf2ca84cbf00b217e8c93eb001a9bc6099",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 100,
+      "sizeBytes": 7247757312,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265"
+      ],
+      "trackers": [
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
         "udp://tracker.opentrackr.org:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:0ae2d95668ce07f2ae326eaa9f0cb47939f187b8&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:08C79EBF2CA84CBF00B217E8C93EB001A9BC6099&dn=Forrest%20Gump%20(1994)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump (1994) AC3 5.1 ITA.ENG 2160p H265 HDR10 Dolby Vision sub ita.eng MIRCrew",
+      "infoHash": "48237375bc45077f7157baeb8eb8ec624829945a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "4K",
+      "seeders": 99,
+      "sizeBytes": 4402341478,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x",
+        "ilCorSaRoNeRo"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:48237375bc45077f7157baeb8eb8ec624829945a&dn=Forrest%20Gump%20(1994)%20AC3%205.1%20ITA.ENG%202160p%20H265%20HDR10%20Dolby%20Vision%20sub%20ita.eng%20MIRCrew"
     },
     {
       "name": "TorrentsDB 4K",
-      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
-      "infoHash": "00291a564f1ab70726b124ba46ead08983842074",
+      "title": "Forrest Gump (1994)(CZ/EN)[2160p][HDR/DV][HEVC] = CSFD 94%",
+      "infoHash": "3740f492360c33d004711883cfc97709451923d4",
       "fileIdx": 0,
-      "language": "es",
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 68,
+      "sizeBytes": 6689411564,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3740f492360c33d004711883cfc97709451923d4&dn=Forrest%20Gump%20(1994)(CZ%2FEN)%5B2160p%5D%5BHDR%2FDV%5D%5BHEVC%5D%20%3D%20CSFD%2094%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest Gump (1994)(CZ/EN)[2160p][HDR10] = CSFD 94%",
+      "infoHash": "3e00530a0bf6b829ee367c3b5d81c73a336ee977",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 62,
+      "sizeBytes": 6624987054,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3e00530a0bf6b829ee367c3b5d81c73a336ee977&dn=Forrest%20Gump%20(1994)(CZ%2FEN)%5B2160p%5D%5BHDR10%5D%20%3D%20CSFD%2094%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest.Gump.1994.2160p.UHD.BluRay.x265.HDR.DD+7.1-Pahein",
+      "infoHash": "d455effa5d887467e3a0c49d219302b10ecfb110",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 45,
+      "sizeBytes": 9212704850,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://fe.dealclub.de:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://tracker.sigterm.xyz:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.altrosky.nl:6969/announce",
+        "udp://tracker.v6speed.org:6969/announce",
+        "udp://tracker.uw0.xyz:6969/announce",
+        "udp://tracker0.ufibox.com:6969/announce",
+        "udp://tracker.0x.tf:6969/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d455effa5d887467e3a0c49d219302b10ecfb110&dn=Forrest.Gump.1994.2160p.UHD.BluRay.x265.HDR.DD%2B7.1-Pahein&tr=udp%3A%2F%2Ffe.dealclub.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.sigterm.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.altrosky.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.v6speed.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.uw0.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker0.ufibox.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x.tf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump (1994) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom",
+      "infoHash": "8632092488b59a1ca7d37f87c83e8c7927667940",
+      "fileIdx": 0,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en",
+        "it"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 20,
+      "sizeBytes": 7365868913,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://fe.dealclub.de:6969/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://glotorrents.pw:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8632092488b59a1ca7d37f87c83e8c7927667940&dn=Forrest%20Gump%20(1994)%202160p%20H265%20BluRay%20Rip%2010%20bit%20DV%20HDR10%2B%20ita%20eng%20AC3%205.1%20sub%20ita%20eng%20Licdom&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ffe.dealclub.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest.Gump.(1994).UHD.BluRay.HDR.2160p.ITA.AC3.ENG.AC3.Subs.x265.[TbZ].mkv",
+      "infoHash": "2812b362a1dc0d61a54fb10237a339024f4f65e7",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 19,
+      "sizeBytes": 28872917647,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -157,25 +752,509 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "rargb"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://9.rarbg.me:2790/announce",
+        "udp://9.rarbg.to:2730/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://p4p.arenabg.com:1337/announceudp://tracker.coppersurfer.tk:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:00291a564f1ab70726b124ba46ead08983842074&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:2812b362a1dc0d61a54fb10237a339024f4f65e7&dn=Forrest.Gump.(1994).UHD.BluRay.HDR.2160p.ITA.AC3.ENG.AC3.Subs.x265.%5BTbZ%5D.mkv&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2790%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2730%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounceudp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
     },
     {
-      "name": "TorrentsDB 1080p",
-      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
-      "infoHash": "ef2bf50ba0d1640e064ca6e6c095da6e00dcd7c2",
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump (1994) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]",
+      "infoHash": "0714ab951c18fc35351e76e8bc44fc1ba5ee6e97",
       "fileIdx": 0,
-      "language": "es",
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 31,
+      "sizeBytes": 16965120819,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0714ab951c18fc35351e76e8bc44fc1ba5ee6e97&dn=Forrest%20Gump%20(1994)%20(2160p%20BluRay%20x265%20HEVC%2010bit%20HDR%20AAC%207.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest.Gump.2160p.iT.WEB-DL.DDP5.1.Atmos.DoVi.HDR.H.265-TURG",
+      "infoHash": "9fe95a28628a3debc7285101eaacb6331795924f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 12,
+      "sizeBytes": 27487790694,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9fe95a28628a3debc7285101eaacb6331795924f&dn=Forrest.Gump.2160p.iT.WEB-DL.DDP5.1.Atmos.DoVi.HDR.H.265-TURG"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest Gump (1994) (2160p BluRay x265 HEVC 10bit AAC 7.1 Joy) [UTR]",
+      "infoHash": "a1bb1dac4d428782c80b941f0a74a56738d4724b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 12,
+      "sizeBytes": 7000796692,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://mgtracker.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://tracker.mgtracker.org:2710/announce",
+        "udp://public.popcorn-tracker.org:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a1bb1dac4d428782c80b941f0a74a56738d4724b&dn=Forrest%20Gump%20(1994)%20(2160p%20BluRay%20x265%20HEVC%2010bit%20AAC%207.1%20Joy)%20%5BUTR%5D&tr=udp%3A%2F%2Fmgtracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.mgtracker.org%3A2710%2Fannounce&tr=udp%3A%2F%2Fpublic.popcorn-tracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump.1994.Multi.UHD.Bluray.2160p.x265.Atmos.7.1-DTOne",
+      "infoHash": "e9748a91dc46f2692758a1b4daaee9da81ac730f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 77,
+      "sizeBytes": 38386270208,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://9.rarbg.to:2740/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://shadowshq.yi.org:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://inferno.demonoid.pw:3391/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.vanitycore.co:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e9748a91dc46f2692758a1b4daaee9da81ac730f&dn=Forrest%20Gump.1994.Multi.UHD.Bluray.2160p.x265.Atmos.7.1-DTOne&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3391%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest Gump (1994) 2160p UHD HDR BluRay AV1 Opus Multi7 [Enrav1sh]",
+      "infoHash": "e9622957890da28e5e3b17fefbe9045a60c98ebb",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 10,
+      "sizeBytes": 14388140442,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e9622957890da28e5e3b17fefbe9045a60c98ebb&dn=Forrest%20Gump%20(1994)%202160p%20UHD%20HDR%20BluRay%20AV1%20Opus%20Multi7%20%5BEnrav1sh%5D&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 4K",
+      "title": "Forrest Gump (1994) x 1606 (2160p) HDR 5.1 x265 10bit Phun Psyz",
+      "infoHash": "f52ead2d5abeb83adc48c4c4223b2f3d5aeb126d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 6,
+      "sizeBytes": 5637144576,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://public.popcorn-tracker.org:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://inferno.demonoid.pw:3391/announce",
+        "http://explodie.org:6969/announce",
+        "http://mgtracker.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "http://tracker.opentrackr.org/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f52ead2d5abeb83adc48c4c4223b2f3d5aeb126d&dn=Forrest%20Gump%20(1994)%20x%201606%20(2160p)%20HDR%205.1%20x265%2010bit%20Phun%20Psyz&tr=udp%3A%2F%2Fpublic.popcorn-tracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3391%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Fmgtracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p MGMP WEB-DL DDP 5 1 H 264-PiRaTeS",
+      "infoHash": "dbe796a6d1bcb5b18397a74bf3279bed0c0d99dd",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 211,
+      "sizeBytes": 7892002406,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:dbe796a6d1bcb5b18397a74bf3279bed0c0d99dd&dn=Forrest%20Gump%201994%201080p%20MGMP%20WEB-DL%20DDP%205%201%20H%20264-PiRaTeS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "Forrest Gump 1994 REMASTERED 1080p BluRay HEVC x265 5.1 BONE",
+      "infoHash": "6fc86a3f021396e47fd389521d3c86c2a750e938",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 150,
+      "sizeBytes": 2136746230,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "rargb",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://opentracker.io:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://open.publictracker.xyz:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/",
+        "http://tracker.bt4g.com:2095/announce",
+        "udp://amigacity.xyz:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://retracker.lanta.me:2710/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://ttk2.nbaonlineservice.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6fc86a3f021396e47fd389521d3c86c2a750e938&dn=Forrest%20Gump%201994%20REMASTERED%201080p%20BluRay%20HEVC%20x265%205.1%20BONE&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fttk2.nbaonlineservice.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 1080p",
+      "title": "Forrest Gump (1994) 1080p BrRip x264 - 1.90GB - YIFY",
+      "infoHash": "fee625a78cb2057ce7845aa66e95f60d43ea8ab0",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 404,
+      "sizeBytes": 2040109466,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "http://inferno.demonoid.me:3414/announce",
+        "udp://tracker.yify-torrents.com/announce",
+        "udp://tracker.1337x.org:80/announce",
+        "udp://exodus.desync.com:6969",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://tracker.ccc.de:80/announce",
+        "http://tracker.yify-torrents.com/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:FEE625A78CB2057CE7845AA66E95F60D43EA8AB0&dn=Forrest%20Gump%20(1994)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump (1994) Bluray 1080p x264 [FLAC-7.1-English/AC3-5.1-English/French] [FrankVjecy]",
+      "infoHash": "02480e1bd28aa329ffa7a8ea7c9cbc15f3f45acf",
+      "fileIdx": 3,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en",
+        "fr"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 53,
+      "sizeBytes": 9384503542,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "http://tracker.gbitt.info:80/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://martin-gebhardt.eu:25/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "udp://tracker.darkness.services:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:02480e1bd28aa329ffa7a8ea7c9cbc15f3f45acf&dn=Forrest%20Gump%20(1994)%20Bluray%201080p%20x264%20%5BFLAC-7.1-English%2FAC3-5.1-English%2FFrench%5D%20%5BFrankVjecy%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fmartin-gebhardt.eu%3A25%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.darkness.services%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994)(CZ)[1080p][HDR10/DV] = CSFD 94%",
+      "infoHash": "421f4f427d5cf2cc3566c3dab1b8e04a0f18ebde",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 40,
+      "sizeBytes": 2512555868,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -184,25 +1263,99 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "YTS"
+        "sktorrent"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:ef2bf50ba0d1640e064ca6e6c095da6e00dcd7c2&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:421f4f427d5cf2cc3566c3dab1b8e04a0f18ebde&dn=Forrest%20Gump%20(1994)(CZ)%5B1080p%5D%5BHDR10%2FDV%5D%20%3D%20CSFD%2094%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
     },
     {
       "name": "TorrentsDB 1080p",
-      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
-      "infoHash": "e265a1d69db615d9beae51bfe7a8f593da47cade",
+      "title": "Forrest.Gump.1994.1080p.ATVP.WEB-DL.DD.5.1.H.264-PiRaTeS",
+      "infoHash": "bf411577bc136ac95f8afcdf53cd2be468b04055",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 37,
+      "sizeBytes": 10952166605,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:bf411577bc136ac95f8afcdf53cd2be468b04055&dn=Forrest.Gump.1994.1080p.ATVP.WEB-DL.DD.5.1.H.264-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump (1994) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom",
+      "infoHash": "577d3ca22980ca51626c0b5158d681a098eb6c48",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 36,
+      "sizeBytes": 3403761582,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "TorrentGalaxy"
+      ],
+      "trackers": [
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://fe.dealclub.de:6969/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://glotorrents.pw:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:577d3ca22980ca51626c0b5158d681a098eb6c48&dn=Forrest%20Gump%20(1994)%201080p%20H265%20BluRay%20Rip%20ita%20eng%20AC3%205.1%20sub%20ita%20eng%20Licdom&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ffe.dealclub.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) REMASTERED 1080p BDRip x264 Dual Audio Hindi English AC3 5.1 - MeGUiL",
+      "infoHash": "52b392bcb8ecaef433317e31e8fadb842cc376e0",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
         "en"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 34,
+      "sizeBytes": 3146063544,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -211,25 +1364,1136 @@
         "TorrentsDB"
       ],
       "externalProviders": [
-        "torrentsdb"
+        "rargb"
       ],
       "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.foreverpirates.co:80/announce",
+        "udp://46.148.18.250:2710",
+        "udp://opentor.org:2710",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://inferno.demonoid.is:3391/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:e265a1d69db615d9beae51bfe7a8f593da47cade&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "magnetUrl": "magnet:?xt=urn:btih:52b392bcb8ecaef433317e31e8fadb842cc376e0&dn=Forrest%20Gump%20(1994)%20REMASTERED%201080p%20BDRip%20x264%20Dual%20Audio%20Hindi%20English%20AC3%205.1%20-%20MeGUiL&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.foreverpirates.co%3A80%2Fannounce&tr=udp%3A%2F%2F46.148.18.250%3A2710&tr=udp%3A%2F%2Fopentor.org%3A2710&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.is%3A3391%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump 1994 1080p BluRay x264-OFT",
+      "infoHash": "565825daf644b39f9844ada496f32e9c3094625d",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 33,
+      "sizeBytes": 6614249636,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:565825daf644b39f9844ada496f32e9c3094625d&dn=Forrest%20Gump%201994%201080p%20BluRay%20x264-OFT"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994).1080p.H264.ita.eng.Ac3-5.1.sub.ita.eng-MIRCrew",
+      "infoHash": "41a9624b161ee63129365a0002ce8fd236bca604",
+      "fileIdx": 2,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 31,
+      "sizeBytes": 4069481513,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://9.rarbg.to:2730/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2780/announce",
+        "udp://tracker.coppersurfer.tk:80/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.eddie4.nl:6969/announce",
+        "udp://shadowshq.yi.org:6969/announce",
+        "udp://shadowshq.eddie4.nl:6969/announce",
+        "udp://inferno.demonoid.pw:3391/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:41a9624b161ee63129365a0002ce8fd236bca604&dn=Forrest%20Gump%20(1994).1080p.H264.ita.eng.Ac3-5.1.sub.ita.eng-MIRCrew&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2730%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2780%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.eddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.yi.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fshadowshq.eddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3391%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump 1994 1080p ATVP WEB-DL H264-PiRaTeS",
+      "infoHash": "51c1be138b762f12a0d6cb9497e32279763b4d48",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 2308544922,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:51c1be138b762f12a0d6cb9497e32279763b4d48&dn=Forrest%20Gump%201994%201080p%20ATVP%20WEB-DL%20H264-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p ATVP WEB-DL DD 5 1 H 264-PiRaTeS",
+      "infoHash": "52bc3d6912261598d42b3b6cefa51fbb2264ade2",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 10930691768,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:52bc3d6912261598d42b3b6cefa51fbb2264ade2&dn=Forrest%20Gump%201994%201080p%20ATVP%20WEB-DL%20DD%205%201%20H%20264-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest.Gump.1994.REMASTERED.1080p.V2.BrRip.x265.HEVCBay",
+      "infoHash": "6eb44279373db207d43c720c79113cc0adaf39ef",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 1642824991,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://retracker.lanta-net.ru:2710/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker3.itzmx.com:6961/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "http://tracker1.itzmx.com:8080/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6eb44279373db207d43c720c79113cc0adaf39ef&dn=Forrest.Gump.1994.REMASTERED.1080p.V2.BrRip.x265.HEVCBay&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=http%3A%2F%2Ftracker1.itzmx.com%3A8080%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest.Gump.1994.1080p.BluRay.x264.DTS-ETRG",
+      "infoHash": "3fc3d7579c16af1428784520bc2d319120de4177",
+      "fileIdx": 3,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 5218385265,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3fc3d7579c16af1428784520bc2d319120de4177&dn=Forrest.Gump.1994.1080p.BluRay.x264.DTS-ETRG"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump 1994 1080p BluRay DD+ 7.1 x265-edge2020",
+      "infoHash": "a323faf04dd328c652e6529005b4dc963ce27d1a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 28,
+      "sizeBytes": 5862630359,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:6969",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a323faf04dd328c652e6529005b4dc963ce27d1a&dn=Forrest%20Gump%201994%201080p%20BluRay%20DD%2B%207.1%20x265-edge2020&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) [1080p x265 HEVC 10bit BluRay Atmos TrueHD 7.1] [Prof]",
+      "infoHash": "ae229176074ff96ac7e4d764e6a0521307a966e3",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 25,
+      "sizeBytes": 15612206121,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://denis.stalker.upeer.me:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ae229176074ff96ac7e4d764e6a0521307a966e3&dn=Forrest%20Gump%20(1994)%20%5B1080p%20x265%20HEVC%2010bit%20BluRay%20Atmos%20TrueHD%207.1%5D%20%5BProf%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) BDRip.CZ.EN.1080p (Remastered) = CSFD 94%",
+      "infoHash": "46603450a95a2a4bcd437889e7d1cf1bc5b652fd",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 21,
+      "sizeBytes": 3908420239,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "sktorrent"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337",
+        "udp://ipv4announce.sktorrent.eu:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:46603450a95a2a4bcd437889e7d1cf1bc5b652fd&dn=Forrest%20Gump%20(1994)%20BDRip.CZ.EN.1080p%20(Remastered)%20%3D%20CSFD%2094%25&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fipv4announce.sktorrent.eu%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest.Gump.1994.REMASTERED.1080p.BluRay.x265-RARBM",
+      "infoHash": "48a130f8ffe7ceff740c0cfd7c770c60dbf45f08",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 2372969431,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:48a130f8ffe7ceff740c0cfd7c770c60dbf45f08&dn=Forrest.Gump.1994.REMASTERED.1080p.BluRay.x265-RARBM"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump (1994) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "infoHash": "2a2b342532b1b99422a3a228518779e57c3cf7e5",
+      "fileIdx": 14,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 5927054868,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2a2b342532b1b99422a3a228518779e57c3cf7e5&dn=Forrest%20Gump%20(1994)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest.Gump.1994.1080p.NF.WEB-DL.H264-ETRG[EtHD]",
+      "infoHash": "326825539ad815e6cf2153a584e44fdff524b9bb",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 8675833938,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://tracker.pirateparty.gr:6969/announce",
+        "udp://tracker.torrent.eu.org:451",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:326825539ad815e6cf2153a584e44fdff524b9bb&dn=Forrest.Gump.1994.1080p.NF.WEB-DL.H264-ETRG%5BEtHD%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay+ 1080p",
+      "title": "Forrest.Gump.1994.1080p.BluRay.10bit.HEVC.6CH-MkvCage [Forest]",
+      "infoHash": "692252836b392af07bb878cd8d0bee04cd24fba4",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 135,
+      "sizeBytes": 3554085437,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.ilibr.org:80/announce",
+        "udp://tracker.ilibr.org:6969/announce",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://p4p.arenabg.ch:1337/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://9.rarbg.to:2710/announce",
+        "udp://9.rarbg.com:2710/announce",
+        "udp://9.rarbg.me:2710/announce",
+        "udp://eddie4.nl:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:692252836b392af07bb878cd8d0bee04cd24fba4&dn=Forrest.Gump.1994.1080p.BluRay.10bit.HEVC.6CH-MkvCage%20%5BForest%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ilibr.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "96b06145327480d625c42a768fb217ff6ec25366",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 8332236554,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:96b06145327480d625c42a768fb217ff6ec25366&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump 1994 1080p ITV WEB-DL AAC 2 0 H 264-PiRaTeS",
+      "infoHash": "37a0e839f2262b5867518b7ac692bc2c2246c2b9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 7097433457,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:37a0e839f2262b5867518b7ac692bc2c2246c2b9&dn=Forrest%20Gump%201994%201080p%20ITV%20WEB-DL%20AAC%202%200%20H%20264-PiRaTeS"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) Bluray 1080p x264 [AC3-5.1-English/French] [FrankVjecy]",
+      "infoHash": "b2918f6746c515bb4db97ac497e1c5ef96a29012",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 6624987054,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "http://tracker.gbitt.info:80/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://martin-gebhardt.eu:25/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "udp://tracker.darkness.services:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b2918f6746c515bb4db97ac497e1c5ef96a29012&dn=Forrest%20Gump%20(1994)%20Bluray%201080p%20x264%20%5BAC3-5.1-English%2FFrench%5D%20%5BFrankVjecy%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fmartin-gebhardt.eu%3A25%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.darkness.services%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "bef5ef9c3e9e17a269b14d07ecf0e6c2cfe8e0a6",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 16299400888,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://announce.opensharing.org:2710/announce",
+        "http://retracker.local/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bef5ef9c3e9e17a269b14d07ecf0e6c2cfe8e0a6&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) (1080p BDRip x265 10bit TrueHD 7.1 Atmos - ArcX)[TAoE].mkv",
+      "infoHash": "d36af85dce7ab46d4223a14ced4e78d6b3bc3242",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 11650098790,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://denis.stalker.upeer.me:6969/announce",
+        "udp://tracker.internetwarriors.net:1337",
+        "udp://9.rarbg.me:2720/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://thetracker.org/announce",
+        "udp://open.demonii.si:1337/announce",
+        "udp://tracker.zer0day.to:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d36af85dce7ab46d4223a14ced4e78d6b3bc3242&dn=Forrest%20Gump%20(1994)%20(1080p%20BDRip%20x265%2010bit%20TrueHD%207.1%20Atmos%20-%20ArcX)%5BTAoE%5D.mkv&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2F9.rarbg.me%3A2720%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p NF WEB-DL DDP5 1 HDR AV1-Saon",
+      "infoHash": "73f04cfdfc29b00c720b6ec358c6d7746338f3d9",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 27,
+      "sizeBytes": 5239860101,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "EXT"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:73f04cfdfc29b00c720b6ec358c6d7746338f3d9&dn=Forrest%20Gump%201994%201080p%20NF%20WEB-DL%20DDP5%201%20HDR%20AV1-Saon&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p NF WEB-DL DDP5 1 HDR HEVC-Saon",
+      "infoHash": "614cc16ed19ea8186f8bbc354c68a68efa3f293d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 3135326126,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:614cc16ed19ea8186f8bbc354c68a68efa3f293d&dn=Forrest%20Gump%201994%201080p%20NF%20WEB-DL%20DDP5%201%20HDR%20HEVC-Saon&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p BluRay DoVi HDR10 TrueHD Atmos 7 1 x265-GeneMige",
+      "infoHash": "5f1dc637ff3580c997e5805ffdc475db2fc64c45",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 7977901752,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://movies.zsw.ca:6969/announce",
+        "udp://tracker.openbittorrent.com:6969/announce",
+        "udp://uploads.gamecoast.net:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://ipv6.tracker.harry.lu:80/announce",
+        "udp://tracker1.bt.moack.co.kr:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://eddie4.nl:6969/announce",
+        "udp://bt1.archive.org:6969/announce",
+        "udp://tracker.swateam.org.uk:2710/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "https://tracker1.520.jp:443/announce",
+        "https://tracker.tamersunion.org:443/announce",
+        "https://tracker.imgoingto.icu:443/announce",
+        "http://nyaa.tracker.wf:7777/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.dump.cl:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.4.babico.name.tr:3131/announce",
+        "udp://sanincode.com:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://private.anonseed.com:6969/announce",
+        "udp://open.free-tracker.ga:6969/announce",
+        "udp://isk.richardsw.club:6969/announce",
+        "udp://htz3.noho.st:6969/announce",
+        "udp://epider.me:6969/announce",
+        "udp://bt.ktrackers.com:6666/announce",
+        "udp://acxx.de:6969/announce",
+        "udp://aarsen.me:6969/announce",
+        "udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "udp://yahor.of.by:6969/announce",
+        "udp://v2.iperson.xyz:6969/announce",
+        "udp://tracker1.myporn.club:9337/announce",
+        "udp://tracker.therarbg.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.publictracker.xyz:6969/announce",
+        "udp://tracker.netmap.top:6969/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "udp://tracker.cubonegro.lol:6969/announce",
+        "udp://tracker.ccp.ovh:6969/announce",
+        "udp://tracker.0x7c0.com:6969/announce",
+        "udp://thouvenin.cloud:6969/announce",
+        "udp://thinking.duckdns.org:6969/announce",
+        "udp://tamas3.ynh.fr:6969/announce",
+        "udp://ryjer.com:6969/announce",
+        "udp://run.publictracker.xyz:6969/announce",
+        "udp://run-2.publictracker.xyz:6969/announce",
+        "udp://public.tracker.vraphim.com:6969/announce",
+        "udp://public.publictracker.xyz:6969/announce",
+        "udp://public-tracker.cf:6969/announce",
+        "udp://opentracker.io:6969/announce",
+        "udp://open.u-p.pw:6969/announce",
+        "udp://open.dstud.io:6969/announce",
+        "udp://oh.fuuuuuck.com:6969/announce",
+        "udp://new-line.net:6969/announce",
+        "udp://moonburrow.club:6969/announce",
+        "udp://mail.segso.net:6969/announce",
+        "udp://free.publictracker.xyz:6969/announce",
+        "udp://carr.codes:6969/announce",
+        "udp://bt2.archive.org:6969/announce",
+        "udp://6.pocketnet.app:6969/announce",
+        "udp://1c.premierzal.ru:6969/announce",
+        "udp://tracker.t-rb.org:6969/announce",
+        "udp://tracker.srv00.com:6969/announce",
+        "udp://tracker.artixlinux.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://torrents.artixlinux.org:6969/announce",
+        "udp://psyco.fr:6969/announce",
+        "udp://mail.artixlinux.org:6969/announce",
+        "udp://lloria.fr:6969/announce",
+        "udp://fh2.cmp-gaming.com:6969/announce",
+        "udp://concen.org:6969/announce",
+        "udp://boysbitte.be:6969/announce",
+        "udp://aegir.sexy:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5f1dc637ff3580c997e5805ffdc475db2fc64c45&dn=Forrest%20Gump%201994%201080p%20BluRay%20DoVi%20HDR10%20TrueHD%20Atmos%207%201%20x265-GeneMige&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fuploads.gamecoast.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fipv6.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Feddie4.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt1.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.swateam.org.uk%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker1.520.jp%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.tamersunion.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.imgoingto.icu%3A443%2Fannounce&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dump.cl%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.4.babico.name.tr%3A3131%2Fannounce&tr=udp%3A%2F%2Fsanincode.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fprivate.anonseed.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=udp%3A%2F%2Fisk.richardsw.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fhtz3.noho.st%3A6969%2Fannounce&tr=udp%3A%2F%2Fepider.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.ktrackers.com%3A6666%2Fannounce&tr=udp%3A%2F%2Facxx.de%3A6969%2Fannounce&tr=udp%3A%2F%2Faarsen.me%3A6969%2Fannounce&tr=udp%3A%2F%2F6ahddutb1ucc3cp.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Fyahor.of.by%3A6969%2Fannounce&tr=udp%3A%2F%2Fv2.iperson.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker1.myporn.club%3A9337%2Fannounce&tr=udp%3A%2F%2Ftracker.therarbg.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.netmap.top%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cubonegro.lol%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ccp.ovh%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.0x7c0.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fthouvenin.cloud%3A6969%2Fannounce&tr=udp%3A%2F%2Fthinking.duckdns.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftamas3.ynh.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fryjer.com%3A6969%2Fannounce&tr=udp%3A%2F%2Frun.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Frun-2.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic-tracker.cf%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.u-p.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.dstud.io%3A6969%2Fannounce&tr=udp%3A%2F%2Foh.fuuuuuck.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fnew-line.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fmoonburrow.club%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.segso.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ffree.publictracker.xyz%3A6969%2Fannounce&tr=udp%3A%2F%2Fcarr.codes%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt2.archive.org%3A6969%2Fannounce&tr=udp%3A%2F%2F6.pocketnet.app%3A6969%2Fannounce&tr=udp%3A%2F%2F1c.premierzal.ru%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.t-rb.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftorrents.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fpsyco.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Fmail.artixlinux.org%3A6969%2Fannounce&tr=udp%3A%2F%2Flloria.fr%3A6969%2Fannounce&tr=udp%3A%2F%2Ffh2.cmp-gaming.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fconcen.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fboysbitte.be%3A6969%2Fannounce&tr=udp%3A%2F%2Faegir.sexy%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio 4K",
+      "title": "Forrest Gump 1994 1080p UHD BluRay DD+7.1 DV HDR x265-HiDt",
+      "infoHash": "cee9042bace0c175036e39ec66060ba5a10e4ad9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 41,
+      "sizeBytes": 22119081574,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:cee9042bace0c175036e39ec66060ba5a10e4ad9&dn=Forrest%20Gump%201994%201080p%20UHD%20BluRay%20DD%2B7.1%20DV%20HDR%20x265-HiDt"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump (1994) AC3 5.1 ITA.ENG 1080p H265 sub.ita.eng Sp33dy94 MIRCrew",
+      "infoHash": "0b413e43cc113598a9a91ed518ff4cfc266d399b",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 3661459620,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://tracker.cyberia.is:6969/announce",
+        "udp://p4p.arenabg.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.tiny-vps.com:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://retracker.akado-ural.ru:80/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://ipv4.tracker.harry.lu:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://9.rarbg.to:2870/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0b413e43cc113598a9a91ed518ff4cfc266d399b&dn=Forrest%20Gump%20(1994)%20AC3%205.1%20ITA.ENG%201080p%20H265%20sub.ita.eng%20Sp33dy94%20MIRCrew&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.akado-ural.ru%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2870%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB 1080p",
+      "title": "Forrest Gump 1994 1080p Bluray x265 10Bit AAC 5.1 - GetSchwifty",
+      "infoHash": "1734657583447d2293313e43fd597300336b3d8a",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 4949949809,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "trackers": [
+        "udp://tracker.coppersurfer.tk:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "http://tracker.tfile.me:80/announce",
+        "http://t.nyaatracker.com:80/announce",
+        "http://retracker.mgts.by:80/announce",
+        "http://tracker.yoshi210.com:6969/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1734657583447d2293313e43fd597300336b3d8a&dn=Forrest%20Gump%201994%201080p%20Bluray%20x265%2010Bit%20AAC%205.1%20-%20GetSchwifty&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%3A80%2Fannounce&tr=http%3A%2F%2Ft.nyaatracker.com%3A80%2Fannounce&tr=http%3A%2F%2Fretracker.mgts.by%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB+Torrentio+ThePirateBay++Ytztvio 720p",
+      "title": "Forrest Gump 1994 720p BrRip x264 YIFY",
+      "infoHash": "9bfb78f3cdd5e7cfc3fd2a5cdddb1e86da43d345",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 309,
+      "sizeBytes": 893407724,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "piratebay",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "ThePirateBay+",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay",
+        "x264"
+      ],
+      "trackers": [
+        "udp://open.demonii.com:1337",
+        "udp://tracker.coppersurfer.tk:6969",
+        "udp://tracker.leechers-paradise.org:6969",
+        "udp://tracker.pomf.se:80",
+        "udp://tracker.publicbt.com:80",
+        "udp://tracker.openbittorrent.com:80",
+        "udp://tracker.istole.it:80",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "http://tracker.openbittorrent.com:80/announce",
+        "udp://opentracker.i2p.rocks:6969/announce",
+        "udp://tracker.internetwarriors.net:1337/announce",
+        "udp://tracker.leechers-paradise.org:6969/announce",
+        "udp://coppersurfer.tk:6969/announce",
+        "udp://tracker.zer0day.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9BFB78F3CDD5E7CFC3FD2A5CDDDB1E86DA43D345&dn=Forrest%20Gump%20(1994)&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337/announce"
     },
     {
       "name": "TorrentsDB 720p",
-      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
-      "infoHash": "2ab85f3f0aaa5d906217de9ca1465dbe34c4b006",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "title": "Forrest Gump: O Contador De Historias (1994) 720p Dublado Pt Br",
+      "infoHash": "ca2835dafd152b9880cc21bd9375d7a7db8d9518",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
       "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "seeders": 16,
+      "sizeBytes": 928964936,
       "sizeLabel": null,
       "providers": [
         "torrentsdb"
@@ -237,24 +2501,304 @@
       "providerNames": [
         "TorrentsDB"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "ThePirateBay"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:2ab85f3f0aaa5d906217de9ca1465dbe34c4b006&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ca2835dafd152b9880cc21bd9375d7a7db8d9518&dn=Forrest%20Gump%3A%20O%20Contador%20De%20Historias%20(1994)%20720p%20Dublado%20Pt%20Br"
+    },
+    {
+      "name": "TorrentsDB 720p",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "5a9f74862748e26e53a8df4fa70c9a3a75b07f01",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "720p",
+      "seeders": 6,
+      "sizeBytes": 7000796692,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://announce.opensharing.org:2710/announce",
+        "http://tracker.ex.ua:80/announce",
+        "http://tracker.publicbt.org/announce",
+        "http://tracker.torrentbay.to:6969/announce",
+        "http://tracker.prq.to/announce",
+        "http://retracker.local/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5a9f74862748e26e53a8df4fa70c9a3a75b07f01&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.publicbt.org%2Fannounce&tr=http%3A%2F%2Ftracker.torrentbay.to%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.prq.to%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Forrest Gump",
+      "infoHash": "2241ca105fe70b441e8db22a56673842539f6d8d",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 34,
+      "sizeBytes": 732314993,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "Torrent9"
+      ],
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce/",
+        "udp://9.rarbg.me:2710/announce/",
+        "udp://9.rarbg.to:2740/announce/",
+        "udp://9.rarbg.com:2770/announce/",
+        "udp://explodie.org:6969/announce/",
+        "udp://tracker.internetwarriors.net:1337/announce/",
+        "udp://ipv4.tracker.harry.lu:80/announce/",
+        "udp://tracker.tiny-vps.com:6969/announce/",
+        "http://servandroidkino.ru/announce/",
+        "http://1337.abcvg.info/announce/",
+        "udp://open.stealth.si:80/announce/",
+        "http://tracker.bittor.pw:1337/announce/",
+        "http://tracker3.itzmx.com:8080/announce/",
+        "http://open.acgnxtracker.com/announce/",
+        "http://share.camoe.cn:8080/announce/",
+        "udp://bt.xxx-tracker.com:2710/announce/",
+        "udp://exodus.desync.com:6969/announce/",
+        "udp://open.demonii.si:1337/announce/",
+        "udp://tracker.torrent.eu.org:451/announce/",
+        "udp://tracker.cyberia.is:6969/announce/",
+        "udp://151.80.120.114:2710/announce/",
+        "http://91.217.91.21:3218/announce/",
+        "http://tracker2.itzmx.com:6961/announce/",
+        "udp://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.yoshi210.com:6969/announce/",
+        "http://tracker.tvunderground.org.ru:3218/announce/",
+        "http://torrentsmd.com:8080/announce/",
+        "udp://amigacity.xyz:6969/announce/",
+        "udp://newtoncity.org:6969/announce/",
+        "udp://zephir.monocul.us:6969/announce/",
+        "udp://denis.stalker.upeer.me:6969/announce/",
+        "http://tracker.bt4g.com:2095/announce/",
+        "http://open.trackerlist.xyz:80/announce/",
+        "udp://opentor.org:2710/announce/"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2241ca105fe70b441e8db22a56673842539f6d8d&dn=Forrest%20Gump&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.to%3A2740%2Fannounce%2F&tr=udp%3A%2F%2F9.rarbg.com%3A2770%2Fannounce%2F&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Fservandroidkino.ru%2Fannounce%2F&tr=http%3A%2F%2F1337.abcvg.info%2Fannounce%2F&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce%2F&tr=http%3A%2F%2Ftracker3.itzmx.com%3A8080%2Fannounce%2F&tr=http%3A%2F%2Fopen.acgnxtracker.com%2Fannounce%2F&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce%2F&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce%2F&tr=udp%3A%2F%2F151.80.120.114%3A2710%2Fannounce%2F&tr=http%3A%2F%2F91.217.91.21%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftracker2.itzmx.com%3A6961%2Fannounce%2F&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.tvunderground.org.ru%3A3218%2Fannounce%2F&tr=http%3A%2F%2Ftorrentsmd.com%3A8080%2Fannounce%2F&tr=udp%3A%2F%2Famigacity.xyz%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fnewtoncity.org%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fzephir.monocul.us%3A6969%2Fannounce%2F&tr=udp%3A%2F%2Fdenis.stalker.upeer.me%3A6969%2Fannounce%2F&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce%2F&tr=http%3A%2F%2Fopen.trackerlist.xyz%3A80%2Fannounce%2F&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce%2F"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "e091659816127a6d14de51cef89c2e80e3a07966",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 14,
+      "sizeBytes": 9599251907,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://rips.club:2710/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.openbittorrent.com:1337/announce",
+        "udp://tracker.openbittorrent.com:6969",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e091659816127a6d14de51cef89c2e80e3a07966&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Frips.club%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Forest.Gump.1994.DVDRip",
+      "infoHash": "b46495432636e6b1dd00e7e495031a6115e94314",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 10,
+      "sizeBytes": 731234959,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b46495432636e6b1dd00e7e495031a6115e94314&dn=Forest.Gump.1994.DVDRip"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "68d07f42b0b6dfe09126ece1033af959e2e2f31c",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 7,
+      "sizeBytes": 2340757176,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://bt02.nnm-club.cc:2710/00d6dc7ee27ca2d887692ee79b73487d/announce",
+        "http://bt02.nnm-club.info:2710/00d6dc7ee27ca2d887692ee79b73487d/announce",
+        "http://[2a01:d0:a580:1::2]:2710/00d6dc7ee27ca2d887692ee79b73487d/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.moeking.me:6969/announce",
+        "udp://code2chicken.nl:6969/announce",
+        "udp://discord.heihachi.pw:6969/announce",
+        "http://vps02.net.orel.ru:80/announce",
+        "http://tracker.files.fm:6969/announce",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:68d07f42b0b6dfe09126ece1033af959e2e2f31c&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fbt02.nnm-club.cc%3A2710%2F00d6dc7ee27ca2d887692ee79b73487d%2Fannounce&tr=http%3A%2F%2Fbt02.nnm-club.info%3A2710%2F00d6dc7ee27ca2d887692ee79b73487d%2Fannounce&tr=http%3A%2F%2F%5B2a01%3Ad0%3Aa580%3A1%3A%3A2%5D%3A2710%2F00d6dc7ee27ca2d887692ee79b73487d%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fcode2chicken.nl%3A6969%2Fannounce&tr=udp%3A%2F%2Fdiscord.heihachi.pw%3A6969%2Fannounce&tr=http%3A%2F%2Fvps02.net.orel.ru%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.files.fm%3A6969%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "06c5dc477d72250e6512e11f693cab2a5aa80bf1",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 2340757176,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://announce.opensharing.org:2710/announce",
+        "http://tracker.ex.ua:80/announce",
+        "udp://open.demonii.com:1337",
+        "udp://tracker.pomf.se",
+        "http://retracker.local/announce",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:06c5dc477d72250e6512e11f693cab2a5aa80bf1&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fannounce.opensharing.org%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.ex.ua%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.pomf.se&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "name": "TorrentsDB",
+      "title": "Форрест Гамп / Forrest Gump",
+      "infoHash": "4595f428c23248764d4bacd04572d77bb857797e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 6324339343,
+      "sizeLabel": null,
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "udp://tracker.openbittorrent.com:80/announce",
+        "udp://tracker.publicbt.com:80/announce",
+        "udp://tracker.ccc.de:80/announce",
+        "http://retracker.local/announce",
+        "udp://open.demonii.com:1337",
+        "http://tracker.grepler.com:6969/announce",
+        "udp://tracker.dler.com:6969/announce",
+        "http://h4.trakx.nibba.trade:80/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.bitsearch.to:1337/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4595f428c23248764d4bacd04572d77bb857797e&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ccc.de%3A80%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
     },
     {
       "name": "Torrentio 4K",
-      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
-      "infoHash": "7cfa619629df87b2fc1ccfe6d9e79fd669b411d8",
-      "fileIdx": 0,
-      "language": "es",
+      "title": "Forrest.Gump.1994.2160p.BluRay.REMUX.DV.P7.HDR.MULTi.TrueHD.Atmos.7.1.H265-BTM",
+      "infoHash": "94467188b95161902bd930fd5e0885419373d9da",
+      "fileIdx": 3,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en",
+        "ru",
+        "it",
+        "pt",
+        "es",
+        "ko",
+        "zh",
+        "fr"
       ],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 56,
+      "sizeBytes": 91783451116,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -263,25 +2807,290 @@
         "Torrentio"
       ],
       "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:94467188b95161902bd930fd5e0885419373d9da&dn=Forrest.Gump.1994.2160p.BluRay.REMUX.DV.P7.HDR.MULTi.TrueHD.Atmos.7.1.H265-BTM"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest Gump.1994.2160p.HDR10.BRRip.OPUS7.1.AV1.BluBit",
+      "infoHash": "0b2f5bd2417d1dd403d6ad3f9808926c2da6dc25",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 38,
+      "sizeBytes": 5862630359,
+      "sizeLabel": null,
+      "providers": [
         "torrentio"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "providerNames": [
+        "Torrentio"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:7cfa619629df87b2fc1ccfe6d9e79fd669b411d8&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:0b2f5bd2417d1dd403d6ad3f9808926c2da6dc25&dn=Forrest%20Gump.1994.2160p.HDR10.BRRip.OPUS7.1.AV1.BluBit"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest.Gump.1994.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-IAMABLE",
+      "infoHash": "fc9ea1c2f6234464e0f4fbf6d4dbf3d5fa8ca358",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 10,
+      "sizeBytes": 34284576440,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:fc9ea1c2f6234464e0f4fbf6d4dbf3d5fa8ca358&dn=Forrest.Gump.1994.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-IAMABLE"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Форрест Гамп / Forrest Gump (1994) UHD BDRemux 2160p | 4K | HDR10 | Dolby Vision | D P P2 A",
+      "infoHash": "48172a6b4823bf90e1240d05c4ffe32568eb384d",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 158741991260,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "http://bt.t-ru.org/ann?magnet",
+        "http://bt2.t-ru.org/ann?magnet",
+        "http://bt3.t-ru.org/ann?magnet",
+        "http://bt4.t-ru.org/ann?magnet"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:48172a6b4823bf90e1240d05c4ffe32568eb384d&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump%20(1994)%20UHD%20BDRemux%202160p%20%7C%204K%20%7C%20HDR10%20%7C%20Dolby%20Vision%20%7C%20D%20P%20P2%20A&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Форрест Гамп / Forrest Gump (1994) UHD BDRip 2160p | 4K | HDR10 | Dolby Vision Profile 7 | D P P2 A",
+      "infoHash": "6563772994c5991189f7e3c033d212b0461057b4",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": "4K",
+      "seeders": 4,
+      "sizeBytes": 55856049684,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Rutor"
+      ],
+      "trackers": [
+        "udp://opentor.net:6969",
+        "http://retracker.local/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "http://tracker.dler.com:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
+        "http://bt.t-ru.org/ann?magnet",
+        "http://bt2.t-ru.org/ann?magnet",
+        "http://bt3.t-ru.org/ann?magnet",
+        "http://bt4.t-ru.org/ann?magnet"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6563772994c5991189f7e3c033d212b0461057b4&dn=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%2F%20Forrest%20Gump%20(1994)%20UHD%20BDRip%202160p%20%7C%204K%20%7C%20HDR10%20%7C%20Dolby%20Vision%20Profile%207%20%7C%20D%20P%20P2%20A&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest.Gump.1994.Remastered.2160P.BluRay.60FPS.H265.SDR.10BIT.DTS-HD.MA.TrueHD.7.1.Atmos_Marjenbo",
+      "infoHash": "3f4f8c53ae727f345388cdbb4e940ed377d1249f",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 63,
+      "sizeBytes": 43196633580,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:3f4f8c53ae727f345388cdbb4e940ed377d1249f&dn=Forrest.Gump.1994.Remastered.2160P.BluRay.60FPS.H265.SDR.10BIT.DTS-HD.MA.TrueHD.7.1.Atmos_Marjenbo"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest.Gump.1994.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-COASTER",
+      "infoHash": "b1f6f3982554e3d5b8ecad656f917f359ff71033",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 11,
+      "sizeBytes": 98311801405,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:b1f6f3982554e3d5b8ecad656f917f359ff71033&dn=Forrest.Gump.1994.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-COASTER"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest.Gump.1994.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "0294cf63daf781ec60c615bea8f5c66dde8c5c14",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 7,
+      "sizeBytes": 93748398653,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:0294cf63daf781ec60c615bea8f5c66dde8c5c14&dn=Forrest.Gump.1994.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest.Gump.1994.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "d75ad617a31cb6e15c766f8d694524502f47f43e",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 93748398653,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:d75ad617a31cb6e15c766f8d694524502f47f43e&dn=Forrest.Gump.1994.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest Gump 1994 1080p UHD BluRay DD 7 1 DV HDR x265-HiDt",
+      "infoHash": "e7dbf844f9c17dddd07fcde26912fb580079ee38",
+      "fileIdx": 1,
+      "language": null,
+      "audioLangs": [],
+      "quality": "4K",
+      "seeders": 4,
+      "sizeBytes": 22119081574,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e7dbf844f9c17dddd07fcde26912fb580079ee38&dn=Forrest%20Gump%201994%201080p%20UHD%20BluRay%20DD%207%201%20DV%20HDR%20x265-HiDt"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
-      "infoHash": "775989de8a2f370ff512cc683f6cdec73239ff3d",
-      "fileIdx": 0,
-      "language": "es",
+      "title": "Imdb top 263 movies hindi english gdrive",
+      "infoHash": "66672b822002b6f19af478fb7c886787afee5f9f",
+      "fileIdx": 68,
+      "language": "en",
       "audioLangs": [
-        "es"
+        "en"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 2081,
+      "sizeBytes": 3146063544,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -290,25 +3099,21 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "1337x"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:775989de8a2f370ff512cc683f6cdec73239ff3d&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:66672b822002b6f19af478fb7c886787afee5f9f&dn=Imdb%20top%20263%20movies%20hindi%20english%20gdrive"
     },
     {
       "name": "Torrentio 1080p",
-      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
-      "infoHash": "503f095293b72ad8ab6e246e9399a07f55546534",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
+      "title": "Grab a Tissue Pack - 30 Movies That Make Men Cry jZQ",
+      "infoHash": "6dd5c9c7f2fce717bf8e5eee056530fd2304e072",
+      "fileIdx": 50,
+      "language": null,
+      "audioLangs": [],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 963,
+      "sizeBytes": 2372969431,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -317,25 +3122,21 @@
         "Torrentio"
       ],
       "externalProviders": [
-        "torrentio"
+        "TorrentGalaxy"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:503f095293b72ad8ab6e246e9399a07f55546534&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6dd5c9c7f2fce717bf8e5eee056530fd2304e072&dn=Grab%20a%20Tissue%20Pack%20-%2030%20Movies%20That%20Make%20Men%20Cry%20jZQ"
     },
     {
-      "name": "Torrentio 720p",
-      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
-      "infoHash": "c03a0904a243f8a977807642504956262b38c760",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "name": "Torrentio 1080p",
+      "title": "Tom Hanks Movie Collection",
+      "infoHash": "6c7eabb814d4678e7174e71ac2bbf2b969d2c28f",
+      "fileIdx": 30,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 585,
+      "sizeBytes": 2040109466,
       "sizeLabel": null,
       "providers": [
         "torrentio"
@@ -343,223 +3144,361 @@
       "providerNames": [
         "Torrentio"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:c03a0904a243f8a977807642504956262b38c760&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "ThePirateBay+ 4K",
-      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
-      "infoHash": "b1157a51d5b5fabe36a3f62f44a0719c18e94e75",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
-      "sizeLabel": null,
-      "providers": [
-        "piratebay"
-      ],
-      "providerNames": [
-        "ThePirateBay+"
-      ],
       "externalProviders": [
-        "piratebay"
+        "MagnetDL"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:b1157a51d5b5fabe36a3f62f44a0719c18e94e75&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:6c7eabb814d4678e7174e71ac2bbf2b969d2c28f&dn=Tom%20Hanks%20Movie%20Collection"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
-      "infoHash": "aadaefb312b27085c8fd2454e285df8f77f67595",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump.1994.1080p.BluRay.x264-CiNEFiLE",
+      "infoHash": "c5e17ca9fc436ddf3ee157b7a9b4eb5b76241b37",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 34,
+      "sizeBytes": 11821897482,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:aadaefb312b27085c8fd2454e285df8f77f67595&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:c5e17ca9fc436ddf3ee157b7a9b4eb5b76241b37&dn=Forrest%20Gump.1994.1080p.BluRay.x264-CiNEFiLE"
     },
     {
-      "name": "ThePirateBay+ 1080p",
-      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
-      "infoHash": "c25027a91209fb9b822b29e605e4d7cd7cba3023",
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 REPACK 1080p MGMP WEB-DL DDP 5 1 H 264-PiRaTeS",
+      "infoHash": "fa25fa646824822bf710ca8c8bdec554ff2eb979",
       "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 7892002406,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:fa25fa646824822bf710ca8c8bdec554ff2eb979&dn=Forrest%20Gump%201994%20REPACK%201080p%20MGMP%20WEB-DL%20DDP%205%201%20H%20264-PiRaTeS"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 RERiP 1080p BluRay x264 DTS-WiKi [MovietaM]",
+      "infoHash": "68ba6760232b98354374585caafbf9ab6bd110c0",
+      "fileIdx": null,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 22763326669,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:68ba6760232b98354374585caafbf9ab6bd110c0&dn=Forrest%20Gump%201994%20RERiP%201080p%20BluRay%20x264%20DTS-WiKi%20%5BMovietaM%5D"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ",
+      "infoHash": "71fee293dc117c48487029c6dcb5038d974a0295",
+      "fileIdx": 350,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 2942052598,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:71fee293dc117c48487029c6dcb5038d974a0295&dn=IMDB%20Top%20250%20-%202024%20Edition%20-%201080p%20BluRay%20eSubs%20jZQ"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 REMASTERED 1080p BluRay x265-YAWNTiC",
+      "infoHash": "39fe5e9d06731be82bc264df05cf0302b003d582",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 8042326262,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:39fe5e9d06731be82bc264df05cf0302b003d582&dn=Forrest%20Gump%201994%20REMASTERED%201080p%20BluRay%20x265-YAWNTiC"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p BluRay H264 AAC-RARBG",
+      "infoHash": "bc7cde037de0046ce4d8d4210b4a24e70a577fa9",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2909840343,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:bc7cde037de0046ce4d8d4210b4a24e70a577fa9&dn=Forrest%20Gump%201994%201080p%20BluRay%20H264%20AAC-RARBG"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 1080p NF WEB-DL DDP2 0 H 264 DUAL-NoUs3r",
+      "infoHash": "5d4e4ad957f7c32ccb0723b89fabb83f3bbc6802",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 13,
+      "sizeBytes": 6152540652,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:5d4e4ad957f7c32ccb0723b89fabb83f3bbc6802&dn=Forrest%20Gump%201994%201080p%20NF%20WEB-DL%20DDP2%200%20H%20264%20DUAL-NoUs3r"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump (1994) 1080p MULTI VFF BluRay x264 AC3 5.1 Pop .mkv",
+      "infoHash": "97779a60846bf600751714ddb7b585b7dd27b597",
+      "fileIdx": null,
       "language": "en",
       "audioLangs": [
-        "en"
+        "en",
+        "fr"
       ],
       "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "seeders": 10,
+      "sizeBytes": 2448131359,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "piratebay"
+        "EXT"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:c25027a91209fb9b822b29e605e4d7cd7cba3023&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:97779a60846bf600751714ddb7b585b7dd27b597&dn=Forrest%20Gump%20(1994)%201080p%20MULTI%20VFF%20BluRay%20x264%20AC3%205.1%20Pop%20.mkv"
     },
     {
-      "name": "ThePirateBay+ 720p",
-      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
-      "infoHash": "9efa59dd6df3f49d7f6bf88d0f314eb0fa0ce5a3",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
+      "name": "Torrentio 1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 83,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 7795365642,
       "sizeLabel": null,
       "providers": [
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "ThePirateBay+"
+        "Torrentio"
       ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
+      "externalProviders": [
+        "EXT"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:9efa59dd6df3f49d7f6bf88d0f314eb0fa0ce5a3&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:9351bcf9e7437f706549f8b60314c39259c420b4&dn=IMDB%20TOP%20001-050%20BluRay%201080p%20x265%2010bit%20MNHD-FRDS"
     },
     {
-      "name": "Ytztvio 4K",
-      "title": "Forrest Gump (1994) [4K][Castellano+Subs]",
-      "infoHash": "15e225aa7bbeed2165495bac89a36af27b56490c",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
+      "name": "Torrentio 1080p",
+      "title": "Amazing Films 4 - Mp4 x264 AC3 1080p",
+      "infoHash": "4e20131a166cee7614ce583330e0c0d2405bbce7",
+      "fileIdx": 18,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 3393024164,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
       ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4e20131a166cee7614ce583330e0c0d2405bbce7&dn=Amazing%20Films%204%20-%20Mp4%20x264%20AC3%201080p"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest.Gump.1994.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT",
+      "infoHash": "cf659534b2e08ae1a20367192010fec5bc18aa33",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 41607495680,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:cf659534b2e08ae1a20367192010fec5bc18aa33&dn=Forrest.Gump.1994.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT"
+    },
+    {
+      "name": "Torrentio 4K",
+      "title": "Forrest Gump (1994) RM4K Extras (1080p BluRay x265 HEVC 10bit AAC 7.1 afm72) [QxR]",
+      "infoHash": "cce423a52156a9f5888f8e23d57eebbe3fa23496",
+      "fileIdx": 14,
+      "language": null,
+      "audioLangs": [],
       "quality": "4K",
-      "seeders": 40,
-      "sizeBytes": 12000000000,
+      "seeders": 5,
+      "sizeBytes": 7709466296,
       "sizeLabel": null,
       "providers": [
-        "ytztvio"
+        "torrentio"
       ],
       "providerNames": [
-        "Ytztvio"
+        "Torrentio"
       ],
       "externalProviders": [
-        "ytztvio"
+        "1337x"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:15e225aa7bbeed2165495bac89a36af27b56490c&dn=Forrest%20Gump%20(1994)%20%5B4K%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:cce423a52156a9f5888f8e23d57eebbe3fa23496&dn=Forrest%20Gump%20(1994)%20RM4K%20Extras%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%207.1%20afm72)%20%5BQxR%5D"
     },
     {
-      "name": "Ytztvio 1080p",
-      "title": "Forrest Gump (1994) [1080p][Castellano+Subs]",
-      "infoHash": "0503ec5569a772317bc329e1c11fd55e4d351804",
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump 1994 (1080p Bluray X265 HEVC 10bit AAC 5.1 Tigole)",
+      "infoHash": "a8443fa2d258947d01b44b805c5589ab35865643",
+      "fileIdx": 0,
+      "language": null,
+      "audioLangs": [],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 3199750636,
+      "sizeLabel": null,
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:a8443fa2d258947d01b44b805c5589ab35865643&dn=Forrest%20Gump%201994%20(1080p%20Bluray%20X265%20HEVC%2010bit%20AAC%205.1%20Tigole)"
+    },
+    {
+      "name": "Torrentio 1080p",
+      "title": "Forrest Gump (1994) 1080p Dual Audio Español Latino Ingl",
+      "infoHash": "ec4535df512599a5e0c7e0595b1691074a1b8c25",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
         "es"
       ],
       "quality": "1080p",
-      "seeders": 80,
-      "sizeBytes": 2800000000,
+      "seeders": 5,
+      "sizeBytes": 3768833802,
       "sizeLabel": null,
       "providers": [
-        "ytztvio"
+        "torrentio"
       ],
       "providerNames": [
-        "Ytztvio"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:0503ec5569a772317bc329e1c11fd55e4d351804&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:ec4535df512599a5e0c7e0595b1691074a1b8c25&dn=Forrest%20Gump%20(1994)%201080p%20Dual%20Audio%20Espa%C3%B1ol%20Latino%20Ingl"
     },
     {
-      "name": "Ytztvio 1080p",
-      "title": "Forrest Gump (1994) [1080p][Ingles+Subs]",
-      "infoHash": "3b4aa926a3a59c3114553020f87c48085ed36676",
-      "fileIdx": 0,
-      "language": "en",
-      "audioLangs": [
-        "en"
-      ],
-      "quality": "1080p",
-      "seeders": 30,
-      "sizeBytes": 1900000000,
+      "name": "Torrentio",
+      "title": "Official IMDb Top 250 Movies Collection 6/17/2011",
+      "infoHash": "4986ace2ee7a564508e0d5cfdde2d9018b8af942",
+      "fileIdx": 70,
+      "language": null,
+      "audioLangs": [],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 1267015352,
       "sizeLabel": null,
       "providers": [
-        "ytztvio"
+        "torrentio"
       ],
       "providerNames": [
-        "Ytztvio"
+        "Torrentio"
       ],
       "externalProviders": [
-        "ytztvio"
+        "ThePirateBay"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:3b4aa926a3a59c3114553020f87c48085ed36676&dn=Forrest%20Gump%20(1994)%20%5B1080p%5D%5BIngles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
-    },
-    {
-      "name": "Ytztvio 720p",
-      "title": "Forrest Gump (1994) [720p][Castellano+Subs]",
-      "infoHash": "fda699a5fcd7f36c55f43411bdb9c8ea103d9db8",
-      "fileIdx": 0,
-      "language": "es",
-      "audioLangs": [
-        "es"
-      ],
-      "quality": "720p",
-      "seeders": 10,
-      "sizeBytes": 950000000,
-      "sizeLabel": null,
-      "providers": [
-        "ytztvio"
-      ],
-      "providerNames": [
-        "Ytztvio"
-      ],
-      "externalProviders": [],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:fda699a5fcd7f36c55f43411bdb9c8ea103d9db8&dn=Forrest%20Gump%20(1994)%20%5B720p%5D%5BCastellano%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:4986ace2ee7a564508e0d5cfdde2d9018b8af942&dn=Official%20IMDb%20Top%20250%20Movies%20Collection%206%2F17%2F2011"
     }
   ]
 }
