@@ -95,20 +95,23 @@ export class YtsCrawler extends BaseCrawler {
 
   /**
    * Known YTS domains; extend with YTS_MIRRORS.
-   * Live check 2026-09-28: `yts.gg` serves the v2 API directly (and the API
-   * announces its official new base, movies-api.accel.li, which serves the
-   * identical payload). `yts.lt` and `yts.am` answer with a redirect to
-   * yts.gg, so their payloads publish absolute yts.gg URLs — the crawler
-   * adopts that published origin as the trust base instead of dropping every
-   * download URL. `yts.do`, `yts.rs` and `yts.pm` serve a 404 page or an
-   * internal error for the API; `yts.nz` and `yts.homes` did not answer.
-   * `yts.mx` stays: it is the canonical domain and commonly blocks
-   * datacenter IPs only, so the probe skips it when it is unreachable.
+   * Live check 2026-09-29: the migration sunset announced by the API itself
+   * (`@meta.migration`, sunset 2026-04-10) has passed and every yts.gg
+   * payload still publishes "Base URL moving to movies-api.accel.li", so the
+   * official new base leads the pool; it serves the identical catalogue
+   * today. `yts.gg` keeps serving the v2 API and stays as the first
+   * fallback. `yts.lt` and `yts.am` answer with a redirect to yts.gg, so
+   * their payloads publish absolute yts.gg URLs — the crawler adopts that
+   * published origin as the trust base instead of dropping every download
+   * URL. `yts.do`, `yts.rs` and `yts.pm` serve a 404 page or an internal
+   * error for the API; `yts.nz` and `yts.homes` did not answer. `yts.mx`
+   * stays: it is the canonical domain and commonly blocks datacenter IPs
+   * only, so the probe skips it when it is unreachable.
    */
   public static readonly DEFAULT_MIRRORS: readonly string[] = [
+    'https://movies-api.accel.li',
     'https://yts.gg',
     'https://yts.mx',
-    'https://movies-api.accel.li',
     'https://yts.lt',
     'https://yts.am'
   ];
@@ -304,13 +307,20 @@ export class YtsCrawler extends BaseCrawler {
       );
 
       const meta = parseTorrentTitle(torrentTitle, 'movie');
-      const langs = detectLanguages(torrentTitle, langHints);
 
+      // Two-pass language reading (2026-09-29): pass 1 honours only explicit
+      // Spanish/English evidence (title tags + the API language hints); the
+      // defaulting pass runs only when the API field is absent or pass 1
+      // already produced audio. Otherwise a language detectLanguages does not
+      // know — the live `language:"pt"` movies hinted as ["portuguese"] —
+      // fell through to the generic default and mislabelled the foreign
+      // release as English (which the later `nativeLanguage && !langHints`
+      // clearing could not catch, because the hints were non-empty).
+      const explicitLangs = detectLanguages(torrentTitle, langHints, false);
+      const langs = nativeLanguage && explicitLangs.audio.length === 0
+        ? explicitLangs
+        : detectLanguages(torrentTitle, langHints);
       const audioLangs = [...langs.audio];
-      // Do not turn a French/Japanese API release into English by default.
-      if (nativeLanguage && !langHints.length) {
-        audioLangs.length = 0;
-      }
 
       // YTS publishes `url` as a root-relative path; resolve it only when it
       // remains on the verified mirror, never to an off-site download host.

@@ -827,6 +827,9 @@ test('1337x: a published pager replaces the guessed /N/ URL', async () => {
       return listing('/torrent/1/sample/', '<div class="pagination"><a href="/sort-search/spanish/seeders/desc/2/">&#187;</a></div>');
     }
     if (/\/sort-search\/spanish\/seeders\/desc\/2\/$/.test(url)) return listing('/torrent/2/otra/');
+    // The probe hits "/" first: it must answer with a real listing (table +
+    // /torrent/ rows), exactly as the classic template's front page does.
+    if (url === 'https://1337x.la/') return listing('/torrent/1/probe/');
     return listing('');
   });
 

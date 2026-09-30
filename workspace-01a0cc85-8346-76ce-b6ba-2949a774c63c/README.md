@@ -51,7 +51,7 @@ dominio con `<FUENTE>_BASE_URL`.
 | `pelispanda` | `pelispanda.ts` | API WordPress wpreact; películas, temporadas y episodios; calidad/idioma por descarga. Acepta entradas `.torrent` (descargando el metainfo para obtener el hash real) además de magnets. Seeders no publicados = `null`. |
 | `leech1337x` | `leech1337x.ts` | Tablas `table-list`, ficha individual, etiquetas Category/Language con texto o elementos HTML; deduplicación de visitas entre búsquedas. |
 | `torrentgalaxy` | `torrentgalaxy.ts` | Filas `tgxtablerow`, título de ficha sin concatenar comentarios, magnet o hash de iTorrents, tamaño por celda, seeders/leechers por clase y `torrent_file_url` solo si el enlace iTorrents lleva el mismo hash. La búsqueda no prueba el idioma. |
-| `yts` | `yts.ts` | API v2 validada; torrents por calidad, idioma nativo (`es`, `es-419`, `es-ve`, `en-gb`, `pt-br`, …), canales de audio y hashes normalizados. No etiqueta francés como inglés. |
+| `yts` | `yts.ts` | API v2 validada; torrents por calidad, idioma nativo (`es`, `es-419`, `es-ve`, `en-gb`, `pt`, `pt-br`, …), canales de audio y hashes normalizados. No etiqueta francés ni portugués como inglés. |
 | `eztv` | `eztv.ts` | API `get-torrents` y fallback HTML `epinfo`, incluso si la API no está disponible al detectar el dominio. Temporada/episodio ausentes = `null`. |
 | `thepiratebay` | `thepiratebay.ts` | APiBay (solo categorías de vídeo), búsquedas JSON, tablas HTML y paginación desde cero; ignora resultados centinela. En la fase HTML el tipo sale de la categoría de la fila y la ficha aporta IMDb y enlace `.torrent` del propio dominio. |
 | `mejortorrent` | `mejortorrent.ts` | Detección de plantilla legacy/WordPress; descarga de metainfo con Referer y parser Bencode común. Sin contadores inventados. |
@@ -90,11 +90,11 @@ Con esa base se corrigieron, fuente por fuente:
 | `magnetdl` | El paginador solo reconocía «next»/números exactos: ahora sigue `rel=next`, flechas y la ruta numerada; la ficha `/single/:id` aporta el `.torrent` del propio sitio. |
 | `limetorrents` | Los catálogos dejaron de pedir `/browse-torrents/.../2/` a ciegas y la ficha aporta IMDb y `.torrent`. |
 | `thepiratebay` | La fase HTML deduce el tipo de la categoría de la fila (serie/anime/documental) y enriquece cada registro con la ficha. |
-| `leech1337x` | El paginador publicado sustituye al número adivinado y se guarda el `.torrent` de la ficha cuando existe. |
+| `leech1337x` | El paginador publicado sustituye al número adivinado y se guarda el `.torrent` de la ficha cuando existe; el probe exige ambos markers de listing (tabla + filas `/torrent/`) y un campo `Language` no inglés/español ya no inventa audio inglés. |
 | `nyaa` | Descarta audio, literatura, software e imágenes. |
 | `torrentgalaxy` | Seeders/leechers por clase (`[class*="seed"]`) y `torrent_file_url` solo con hash coincidente. |
 | `eztv` | El IMDb se lee de la fila, nunca de la página entera. |
-| `yts` | `es-419`, `es-ve`, `en-gb`, `pt-br`… conservan su etiqueta de audio en vez de caer en «desconocido». |
+| `yts` | `es-419`, `es-ve`, `en-gb`, `pt-br`… conservan su etiqueta de audio en vez de caer en «desconocido»; `language: "pt"` ya no se etiqueta como inglés y el pool arranca por la base oficial anunciada (accel.li). |
 | `mejortorrent` | El listado legacy recorre el paginador publicado y se detiene en la última página real. |
 | `pelispanda` | Una página repetida termina la categoría (antes seguía hasta `maxPages`) y se aceptan entradas `.torrent`. |
 | `grantorrent` | Tarjetas con o sin `www`, rutas `/pelicula/` de uno o dos segmentos, e IMDb de la ficha. |

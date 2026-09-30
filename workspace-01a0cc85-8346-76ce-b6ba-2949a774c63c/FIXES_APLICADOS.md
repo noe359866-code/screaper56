@@ -1248,3 +1248,77 @@ el pool correcto.
 - Aserción actualizada: el e2e previo «language from ficha» ahora espera
   `audio: ['Spanish']` (marcador) manteniendo `subtitles: ['Sub_ES']`
   («Subtítulos: Español» explícito sigue ganando el slot de subtítulos).
+
+## Profundización: YTS + 1337x — ronda 3 (2026-09-29)
+
+Verificación en vivo de la cadena completa, día de la ronda:
+
+- **YTS**: `yts.gg/api/v2/list_movies.json` 🟢 (`status: ok`, movie_count
+  77479; `@meta.migration` sigue anunciando el cambio de base con sunset
+  2026-04-10 — **ya vencido** — y todo payload publica «Base URL moving to
+  movies-api.accel.li»). `movies-api.accel.li` 🟢 con catálogo idéntico
+  (mismos ids y URLs absolutas de yts.gg → el fix-26 del origen del payload
+  lo absorbe). `query_term=cidade` devuelve películas `language: "pt"`
+  (p. ej. «Cidade dos Homens», id 55761).
+- **1337x**: la portada `/` sigue siendo un hub «1337x Domains» sin
+  `table-list` ni `/torrent/` (el probe la rechaza correctamente);
+  `/popular-movies` 🟢 con tabla real cuyas filas enlazan
+  `/torrent/<id>/<slug>/` — **ambos markers presentes**; ficha de
+  «The Rush» (torrent/6727753) con la anatomía conocida: magnet con
+  trackers, campo `Language` del sitio (`English`), infohash impreso,
+  «Torrent Download» = `#` + torrage/btcache third-party.
+
+### Fix 1 — YTS: el pool arranca por la base oficial anunciada
+
+- `@meta.migration` declara sunset **2026-04-10** (pasado) y gg sigue
+  publicando el anuncio en cada payload; accel.li servía catálogo idéntico
+  en vivo. `DEFAULT_MIRRORS` pasa a
+  `[movies-api.accel.li, yts.gg, yts.mx, yts.lt, yts.am]`. El probe decide:
+  si accel.li cae, se rotación a gg como hasta ahora.
+
+### Fix 2 — Idioma: dos pasadas explícito/por-defecto en ambos crawlers
+
+- **Fallo en vivo**: `ytsLanguageHints('pt') → ['portuguese']` no es una
+  etiqueta de audio conocida ni está en `REGEX_OTHER_FOREIGN` (solo
+  `french|german|hindi|…|mandarin`), así que el default inglés etiquetaba
+  las películas `language: "pt"` como inglesas; el clearing previo
+  (`nativeLanguage && !langHints.length`) no actuaba porque los hints eran
+  no vacíos. En 1337x, la ficha con campo `Language: Italian` (valor del
+  formulario de subida) caía en el mismo default.
+- **Fix (idéntico en `yts.ts` y `leech1337x.ts`)**: dos pasadas —
+  pass 1 con `detectLanguages(..., false)` (solo evidencia explícita:
+  etiquetas del título + hints del campo); el pass 2 con default corre
+  SOLO cuando el campo estructurado (`movie.language` / `Language:`) está
+  ausente o la pass 1 ya produjo audio. Un campo no inglés/español con
+  título sin etiquetas → `audio: []` → descartado en el registro.
+- **Por qué NO se amplió `REGEX_OTHER_FOREIGN`**: cada palabra añadida
+  también vive en títulos de películas ENGLISH reales («The Italian Job»,
+  «Dutch») y acabaría descartándolas. La evidencia estructurada (campo del
+  API/ficha) es precisa y con blast radius cero para otros crawlers.
+
+### Fix 3 — 1337x: el probe exige AMBOS markers de listing
+
+- Los probes declaraban `[table-list, href…/torrent/]`, pero
+  `htmlMarkerValidator` acepta con `.some()` (cualquiera basta): una
+  página con UN marker (tabla vacía o enlace suelto) se aceptaba y
+  congelaba la rotación en el dialecto equivocado. Precedente: fix idéntico
+  en rutracker (`97cda74`).
+- **Fix**: `looksLike1337xListing` local exportado (`.every()` + veto
+  `looksLikeBlockedPage`), como en rutracker. `htmlMarkerValidator` NO se
+  toca: lo comparten 6 crawlers más (fuera del foco de la ronda).
+- El mock de auditoría de paginación ahora responde a la portada con un
+  listing realista (tabla + fila `/torrent/`), como la plantilla clásica.
+
+### Tests nuevos (suite 488/488, tsc limpio)
+
+- `existing-crawlers.test.js`: YTS `language: "pt"` → `audio: []` y
+  `hasValidLanguageRelease` descarta (estaba en rojo con `['English']`).
+- `existing-crawlers.test.js`: YTS pool con `movies-api.accel.li` primero
+  (estaba en rojo con `yts.gg`).
+- `existing-crawlers.test.js`: `looksLike1337xListing` — ambos markers ✓,
+  solo tabla ✗, solo enlaces ✗, hub ✗ (estaba en rojo: no exportado).
+- `existing-crawlers.test.js`: 1337x `Language: Italian` + título plano →
+  `audio: []`; guardas: campo `English` → `['English']`; `DUAL` + campo
+  `English` → conserva ambos tracks (los 3 escenarios en rojo antes).
+- `crawler-audit.test.js`: mock del probe de portada ahora sirve un
+  listing con fila `/torrent/` (necesario bajo el validator estricto).

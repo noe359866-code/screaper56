@@ -4,7 +4,7 @@ import { ContentType, TorrentRecord } from '../types/torrent.js';
 import { buildMagnetUri, parseMagnetUri } from '../utils/magnet.js';
 import { detectLanguages } from '../utils/language.js';
 import { parseSizeToBytes, parseTorrentTitle } from '../utils/regex.js';
-import { htmlMarkerValidator } from './mirrors.js';
+import { looksLikeBlockedPage } from './mirrors.js';
 import {
   absoluteHttpUrl,
   buildTorrentRecord,
@@ -43,6 +43,21 @@ function sameListingRoute(a: string, b: string): boolean {
   } catch {
     return false;
   }
+}
+
+/**
+ * A probe page counts as a listing only when BOTH dialect markers appear:
+ * the table-list table AND real /torrent/ links. Live check 2026-09-29: the
+ * "/" hub (a domains list) shows neither marker, while /popular-movies
+ * shows both; the shared htmlMarkerValidator accepts on ANY marker, so a
+ * page carrying just one of them (an empty results table or a stray nav
+ * link) would be accepted and freeze the mirror rotation on the wrong
+ * dialect. Same shape as the rutracker local probe fix (97cda74).
+ */
+export function looksLike1337xListing(data: unknown): boolean {
+  if (typeof data !== 'string' || data.length < 16) return false;
+  if (looksLikeBlockedPage(data)) return false;
+  return [/table-list/, /href=["'][^"']*\/torrent\//].every(marker => marker.test(data));
 }
 
 export class Leech1337xCrawler extends BaseCrawler {
@@ -86,13 +101,13 @@ export class Leech1337xCrawler extends BaseCrawler {
           path: '/',
           label: 'portada',
           timeoutMs: 7000,
-          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
+          validate: looksLike1337xListing
         },
         {
           path: '/popular-movies',
           label: 'populares',
           timeoutMs: 7000,
-          validate: htmlMarkerValidator([/table-list/, /href=["'][^"']*\/torrent\//])
+          validate: looksLike1337xListing
         }
       ]
     });
@@ -289,7 +304,18 @@ export class Leech1337xCrawler extends BaseCrawler {
     }
 
     const meta = parseTorrentTitle(title, defaultType);
-    const langs = detectLanguages(title, [pageLanguage, pageCategory]);
+
+    // Two-pass language reading (2026-09-29): pass 1 honours only explicit
+    // Spanish/English evidence (title tags + the ficha's Language field); the
+    // defaulting pass runs only when the field is absent or pass 1 already
+    // produced audio. detectLanguages knows neither "Italian" nor
+    // "Portuguese" (not Spanish/English tags, not in the foreign-language
+    // list), so a non-English field with an untagged title used to fall
+    // through to the generic default and mislabel the release as English.
+    const explicitLangs = detectLanguages(title, [pageLanguage, pageCategory], false);
+    const langs = pageLanguage && explicitLangs.audio.length === 0
+      ? explicitLangs
+      : detectLanguages(title, [pageLanguage, pageCategory]);
 
     const imdbMatch = html.match(/imdb\.com\/title\/(tt\d{7,10})/i);
 
