@@ -2,28 +2,59 @@
 /**
  * peerflix-static – fetch.mjs
  *
- * Aggregates streams from multiple Stremio addons (see src/providers.mjs)
- * for every IMDb id listed in watchlist.txt, normalizes them into
- * TorrentRecord-shaped objects, writes per-item JSON files under public/data/
- * (plus the Stremio mirror /stream/ endpoints), and UPSERTs the resulting
- * records into the existing public.torrents table in Supabase.
+ * Aggregates streams from multiple Stremio addons (see public/lib/providers.js)
+ * for every IMDb id listed in watchlist.txt, keeps only 2 torrents per
+ * title/episode (the best with Spanish audio and the best with English audio,
+ * each with just the best public trackers), writes per-item JSON files under
+ * public/data/ (plus the Stremio mirror /stream/ and a watchlist catalog) and
+ * UPSERTs the picks into the existing public.torrents table in Supabase.
  *
- * Streams with the same infoHash across providers are merged (trackers
- * combined, providers listed, best seeders/title/quality kept).
+ * The processing core lives in public/lib/ and is shared with the static web
+ * app, which can run the very same pipeline in the browser without any token.
+ * No API key is needed: season expansion and titles come from Cinemeta
+ * (TMDB_API_KEY is only an optional fallback) and Supabase is optional.
+ *
+ * Modes:
+ *   default          query the addons live
+ *   FIXTURE_MODE=1   fake addon/Cinemeta responses (no network) to test the flow
+ *   REPROCESS=1      re-run the selection on the already published public/data
+ *                    files (no network): useful after changing the criteria
  */
 
 import { writeFile, mkdir, readFile, readdir, unlink } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRepository } from './db.mjs';
 import {
-  PROVIDERS,
   allProviderManifestMetadata,
   requestedProviderSlugs,
   resolveEnabledProviders,
   resolveManifestOnlyProviders,
 } from './providers.mjs';
+import {
+  buildMagnet,
+  dedupeQueries,
+  mergeStreams,
+  normalizeLanguage,
+  normalizeQuality,
+  parseSize,
+  parseStremioStream,
+  parseWatchlist,
+} from '../public/lib/parse.js';
+import { BEST_TRACKERS_URL, DEFAULT_MAX_TRACKERS, PICK_LANGUAGES } from '../public/lib/select.js';
+import { CINEMETA_URL, showLabel } from '../public/lib/meta.js';
+import {
+  PICK_META,
+  createJsonFetcher,
+  expandWatchlist,
+  loadBestTrackers,
+  candidateFromPublished,
+  loadMetadata,
+  runPipeline,
+  toOutputStream,
+} from '../public/lib/pipeline.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,324 +66,67 @@ const DATA_SERIES = join(DATA_DIR, 'series');
 const STREAM_DIR = join(PUBLIC, 'stream');
 const STREAM_MOVIES = join(STREAM_DIR, 'movie');
 const STREAM_SERIES = join(STREAM_DIR, 'series');
+const CATALOG_DIR = join(PUBLIC, 'catalog');
+const CATALOG_MOVIES = join(CATALOG_DIR, 'movie');
+const CATALOG_SERIES = join(CATALOG_DIR, 'series');
+const CATALOG_ID = 'peerflix-static-watchlist';
 
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 15000);
-const FETCH_CONCURRENCY = Number(process.env.FETCH_CONCURRENCY || 4);
+const FETCH_CONCURRENCY = Math.max(1, Number(process.env.FETCH_CONCURRENCY || 4));
 const TMDB_API_KEY = process.env.TMDB_API_KEY || '';
 const WATCHLIST_PATH = resolve(ROOT, process.env.WATCHLIST_PATH || 'watchlist.txt');
 const FIXTURE_MODE = process.env.FIXTURE_MODE === '1';
+const REPROCESS = process.env.REPROCESS === '1';
 const DRY_RUN_DB = process.env.DRY_RUN === '1' || process.env.DRY_RUN_DB === '1';
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const PEERFLIX_BASE_URL = (process.env.PEERFLIX_BASE_URL || 'https://peerflix.mov').replace(/\/+$/, '');
+// Trackers por magnet (solo los mejores). TRACKERS_URL vacío = usar la copia integrada.
+const MAX_TRACKERS = Math.min(50, Math.max(1, Number.parseInt(process.env.MAX_TRACKERS || '', 10) || DEFAULT_MAX_TRACKERS));
+const TRACKERS_URL = process.env.TRACKERS_URL ?? BEST_TRACKERS_URL;
+// Metadatos sin API key (Cinemeta). CINEMETA=0 los desactiva.
+const CINEMETA_ENABLED = process.env.CINEMETA !== '0';
+const CINEMETA_BASE_URL = (process.env.CINEMETA_URL || CINEMETA_URL).replace(/\/+$/, '');
+// Tras N errores seguidos de un addon para un tipo (movie/series) se deja de consultar.
+const BREAKER_THRESHOLD = Math.max(1, Number.parseInt(process.env.BREAKER_THRESHOLD || '', 10) || 3);
 const REQUESTED_PROVIDER_SLUGS = requestedProviderSlugs();
 const ENABLED_PROVIDERS = resolveEnabledProviders().map(provider =>
   provider.slug === 'peerflix' ? { ...provider, baseUrl: PEERFLIX_BASE_URL } : provider
 );
 const MANIFEST_ONLY_PROVIDERS = resolveManifestOnlyProviders();
 
-const IMDB_LINE_RE = /^(tt\d{7,10})(?::s(\d{1,2})(?::e(\d{1,3}))?)?(?:\s+(.*))?$/i;
+const USER_AGENTS = [
+  'peerflix-static-bot/2.0',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+];
 
-// ---------- helpers ----------
+const fetchJSON = createJsonFetcher({
+  timeoutMs: FETCH_TIMEOUT_MS,
+  retries: 2,
+  headers: attempt => ({
+    'user-agent': USER_AGENTS[attempt % USER_AGENTS.length],
+    accept: 'application/json,text/plain,*/*',
+    'accept-language': 'es-ES,es;q=0.9,en;q=0.8',
+  }),
+});
 
-function buildMagnet(infoHash, title, trackers = []) {
-  const params = [`xt=urn:btih:${infoHash}`];
-  if (title) params.push(`dn=${encodeURIComponent(title)}`);
-  const uniq = new Set();
-  for (const t of trackers) {
-    const clean = String(t).replace(/^tracker:/, '').trim();
-    if (clean && !uniq.has(clean)) { uniq.add(clean); params.push(`tr=${encodeURIComponent(clean)}`); }
-  }
-  return `magnet:?${params.join('&')}`;
-}
+// ---------- TMDB (opcional: respaldo si Cinemeta no tiene la temporada) ----------
 
-// Parse language flag emojis (🇪🇸 → es, 🇬🇧/🇺🇸 → en, etc.)
-const FLAG_REGIONS = {
-  ES: 'es', MX: 'es', AR: 'es', CL: 'es', CO: 'es', PE: 'es', VE: 'es',
-  GB: 'en', US: 'en', CA: 'en', AU: 'en', IE: 'en',
-  BR: 'pt', PT: 'pt',
-  FR: 'fr', DE: 'de', IT: 'it', JP: 'ja', RU: 'ru', KR: 'ko', CN: 'zh',
-};
-const FLAG_RE = /[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/g;
-function regionPairToLang(pair) {
-  // A flag is two regional indicator letters. Convert back to the ISO-3166 code.
-  const c1 = pair.codePointAt(0) - 0x1F1E6 + 0x41;
-  const c2 = pair.codePointAt(2) - 0x1F1E6 + 0x41;
-  const code = String.fromCharCode(c1) + String.fromCharCode(c2);
-  return FLAG_REGIONS[code] || null;
-}
-
-function normalizeLanguage(lang, extraText = '') {
-  const out = new Set();
-  const add = (raw) => {
-    if (!raw) return;
-    for (const tok of String(raw).split(/[,+\s/|]+/).filter(Boolean)) {
-      const l = tok.toLowerCase().trim();
-      if (['es','spa','castellano','latino','spanish'].includes(l)) out.add('es');
-      else if (['en','eng','english','ingles','inglés'].includes(l)) out.add('en');
-      else if (['pt','por','portuguese','português'].includes(l)) out.add('pt');
-      else if (['fr','fra','fre','french','français'].includes(l)) out.add('fr');
-      else if (['de','deu','ger','german'].includes(l)) out.add('de');
-      else if (['it','ita','italian','italiano'].includes(l)) out.add('it');
-      else if (['ja','jpn','japanese'].includes(l)) out.add('ja');
-      else if (['ru','rus','russian'].includes(l)) out.add('ru');
-      else if (['ko','kor','korean'].includes(l)) out.add('ko');
-      else if (['zh','chi','zho','chinese'].includes(l)) out.add('zh');
-      else if (l.length <= 3 && /^[a-z]{2,3}$/.test(l)) out.add(l);
-    }
-  };
-  add(lang);
-  // flag emojis in description / title / extraText
-  const hay = (extraText || '') + ' ' + (lang || '');
-  const flags = hay.match(FLAG_RE) || [];
-  for (const f of flags) {
-    const code = regionPairToLang(f);
-    if (code) out.add(code);
-  }
-  // text language names in parentheses
-  const textLangs = extraText.match(/(Spanish|English|French|German|Italian|Japanese|Russian|Portuguese|Castellano|Latino|Ingles|Inglés|Español|Frances|Francés|Aleman|Italiano|Japones|Portugu[ée]s)/gi);
-  if (textLangs) for (const t of textLangs) add(t);
-  return [...out];
-}
-
-function normalizeQuality(nameField, titleField, explicitQuality = null) {
-  const blob = `${explicitQuality || ''}\n${nameField || ''}\n${titleField || ''}`.toLowerCase();
-  // The database has four normalized buckets. Treat 1440p as the 4K bucket
-  // instead of dropping it, while never inventing a quality when none exists.
-  if (/(2160|4k|uhd|ultrahd)/.test(blob)) return '4K';
-  if (/(1440p)/.test(blob)) return '4K';
-  if (/(1080|fullhd|fhd|bluray-1080|bdrip-1080)/.test(blob)) return '1080p';
-  if (/720/.test(blob)) return '720p';
-  if (/480/.test(blob)) return '480p';
-  return null;
-}
-
-function trackersFromMagnet(magnet) {
-  if (typeof magnet !== 'string' || !magnet.toLowerCase().startsWith('magnet:?')) return [];
-  const trackers = [];
-  try {
-    const params = new URLSearchParams(magnet.slice(magnet.indexOf('?') + 1));
-    for (const tracker of params.getAll('tr')) {
-      const clean = tracker.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
-      if (clean) trackers.push(clean);
-    }
-  } catch {
-    // A malformed magnet must not make the whole provider response fail.
-  }
-  return trackers;
-}
-
-function parseStremioStream(rawStream, provider) {
-  if (!rawStream) return null;
-  const infoHash = String(rawStream.infoHash || '').toLowerCase();
-  if (!/^[a-f0-9]{40}$/.test(infoHash)) return null;
-
-  // Addons are not completely uniform: Peerflix uses `description`, while
-  // Torrentio/TorrentsDB/TPB+ normally use `title`.
-  const nameField = String(rawStream.name || '');
-  const titleField = String(rawStream.title || rawStream.description || '');
-  const metadataText = `${nameField}\n${titleField}`;
-  const lines = titleField.split('\n').map(s => s.trim()).filter(Boolean);
-  const releaseTitle = lines[0] || nameField.replace(/\n/g, ' ').trim() || infoHash;
-
-  // Seed/size may be proper JSON fields (Peerflix) or footer badges in title.
-  const seedMatch = metadataText.match(/👤\s*(\d+|\?)/);
-  const sizeMatch = metadataText.match(/💾\s*([0-9.,]+\s*(?:GB|MB|KB|B|GiB|MiB))/i);
-  const sourceMatch = metadataText.match(/(?:⚙️|🌐)\s*([^\s]+)/);
-  const explicitSeeders = rawStream.seed ?? rawStream.seeders;
-  const seeders = Number.isSafeInteger(explicitSeeders) && explicitSeeders >= 0
-    ? explicitSeeders
-    : seedMatch && /^\d+$/.test(seedMatch[1]) ? Number(seedMatch[1]) : null;
-  const explicitSize = rawStream.sizebytes ?? rawStream.sizeBytes;
-  const sizeBytes = Number.isSafeInteger(explicitSize) && explicitSize >= 0
-    ? explicitSize
-    : parseSize(sizeMatch ? sizeMatch[1] : null);
-
-  const sourceTrackers = Array.isArray(rawStream.sources)
-    ? rawStream.sources
-      .map(x => String(x).replace(/^tracker:/, '').replace(/[\u200B-\u200D\uFEFF]/g, '').trim())
-      .filter(x => x && !/^dht:/i.test(x))
-    : [];
-  const magnetUrl = rawStream.magnet || rawStream.magnetUrl || null;
-  const trackers = [...new Set([...sourceTrackers, ...trackersFromMagnet(magnetUrl)])];
-
-  const quality = normalizeQuality(nameField, titleField, rawStream.quality || rawStream.tag);
-  const languages = normalizeLanguage(rawStream.language, metadataText);
-  const externalProvider = sourceMatch
-    ? sourceMatch[1].replace(/[.,]+$/, '')
-    : provider.slug === 'ytztvio' && nameField && !/(?:4k|2160p|1440p|1080p|720p|480p)/i.test(nameField)
-      ? nameField.trim()
-      : null;
-
-  return {
-    infoHash,
-    title: releaseTitle,
-    quality,
-    seeders,
-    sizeBytes,
-    trackers,
-    magnetUrl,
-    languages,
-    fileIdx: rawStream.fileIdx ?? null,
-    provider: provider.slug,
-    providerName: provider.name,
-    externalProvider,
-  };
-}
-
-function parseSize(label) {
-  if (!label) return null;
-  const m = label.toLowerCase().replace(',', '.').match(/([0-9.]+)\s*(gb|mb|kb|b|gib|mib)/);
-  if (!m) return null;
-  const n = Number(m[1]);
-  if (!Number.isFinite(n)) return null;
-  const unit = m[2];
-  const mult = {
-    b: 1,
-    kb: 1024, kib: 1024,
-    mb: 1024 * 1024, mib: 1024 * 1024,
-    gb: 1024 * 1024 * 1024, gib: 1024 * 1024 * 1024,
-  }[unit];
-  if (!mult) return null;
-  return Math.round(n * mult);
-}
-
-// ---------- HTTP ----------
-
-async function fetchJSON(url, { timeout = FETCH_TIMEOUT_MS, retries = 2 } = {}) {
-  const userAgents = [
-    'peerflix-static-bot/2.0',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-  ];
-  let lastErr;
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), timeout);
-    try {
-      const res = await fetch(url, {
-        signal: ctrl.signal,
-        headers: {
-          'user-agent': userAgents[attempt % userAgents.length],
-          'accept': 'application/json,text/plain,*/*',
-          'accept-language': 'es-ES,es;q=0.9,en;q=0.8',
-        },
-      });
-      clearTimeout(t);
-      if (res.status === 404) return { streams: [] }; // provider doesn't have this title
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
-      return JSON.parse(text);
-    } catch (err) {
-      lastErr = err;
-      clearTimeout(t);
-      if (attempt < retries) await new Promise(r => setTimeout(r, 700 * Math.pow(2, attempt) + Math.random() * 300));
-    }
-  }
-  throw lastErr;
-}
-
-// ---------- watchlist ----------
-
-function parseWatchlist(text) {
-  const items = [];
-  const seen = new Map();
-  for (const rawLine of text.split(/\r?\n/)) {
-    const line = rawLine.replace(/#.*$/, '').trim();
-    if (!line) continue;
-    const m = line.match(IMDB_LINE_RE);
-    if (!m) { console.warn(`⚠️  Línea ignorada (no reconozco el ID): ${rawLine.trim()}`); continue; }
-    const imdbId = m[1].toLowerCase();
-    const season = m[2] !== undefined ? Number(m[2]) : null;
-    const episode = m[3] !== undefined ? Number(m[3]) : null;
-    const label = (m[4] || '').trim() || null;
-    const type = season !== null ? 'series' : 'movie';
-    const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
-              : season !== null ? `${imdbId}:s${season}`
-              : imdbId;
-    if (seen.has(key)) {
-      const existing = items[seen.get(key)];
-      if (!existing.label && label) existing.label = label;
-      continue;
-    }
-    seen.set(key, items.length);
-    items.push({ imdbId, type, season, episode, label, raw: rawLine.trim() });
-  }
-  return items;
-}
-
-// A season request expands into individual episode requests. Deduplicate after
-// expansion too, so an explicit episode plus a whole-season line is fetched
-// and reported only once (e.g. tt0944947:s1:e1 + tt0944947:s1).
-function dedupeQueries(queries) {
-  const unique = new Map();
-  for (const query of queries) {
-    const imdbId = String(query.imdbId || '').toLowerCase();
-    const key = query.kind === 'movie'
-      ? `movie:${imdbId}`
-      : `series:${imdbId}:s${Number(query.season)}:e${Number(query.episode)}`;
-    const existing = unique.get(key);
-    if (!existing) {
-      unique.set(key, query);
-    } else if ((!existing.label || existing.label === existing.imdbId) && query.label) {
-      // Keep a useful user-supplied/generated label when the first entry has none.
-      unique.set(key, { ...existing, label: query.label });
-    }
-  }
-  return [...unique.values()];
-}
-
-// ---------- TMDB ----------
-
-async function tmdbFindByImdb(imdbId) {
+async function tmdbEpisodes(item) {
   if (!TMDB_API_KEY) return null;
   try {
-    const url = `https://api.themoviedb.org/3/find/${imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id&language=es-ES`;
-    const data = await fetchJSON(url, { timeout: 10000, retries: 1 });
-    const movie = data.movie_results?.[0];
-    const tv = data.tv_results?.[0];
-    if (movie) return { kind: 'movie', title: movie.title, year: movie.release_date?.slice(0, 4), tmdbId: movie.id };
-    if (tv) return { kind: 'tv', title: tv.name, year: tv.first_air_date?.slice(0, 4), tmdbId: tv.id };
-    return null;
+    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
+    const tv = find.tv_results?.[0];
+    if (!tv?.id) return null;
+    const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${item.season}?api_key=${TMDB_API_KEY}&language=es-ES`, { timeout: 10000, retries: 1 });
+    return (season.episodes || []).map(e => ({ episode: e.episode_number, title: e.name || null, released: e.air_date || null }));
   } catch (err) {
-    console.warn(`⚠️  TMDB lookup falló para ${imdbId}: ${err.message}`);
+    console.warn(`⚠️  TMDB falló para ${item.imdbId}:s${item.season}: ${err.message}`);
     return null;
   }
 }
 
-async function tmdbEpisodesForSeason(tmdbId, seasonNumber) {
-  if (!TMDB_API_KEY || !tmdbId || !seasonNumber) return null;
-  try {
-    const url = `https://api.themoviedb.org/3/tv/${tmdbId}/season/${seasonNumber}?api_key=${TMDB_API_KEY}&language=es-ES`;
-    const data = await fetchJSON(url, { timeout: 10000, retries: 1 });
-    return (data.episodes || []).map(e => ({ episode: e.episode_number, title: e.name, airDate: e.air_date || null }));
-  } catch (err) {
-    console.warn(`⚠️  TMDB season fetch falló (tv=${tmdbId} s${seasonNumber}): ${err.message}`);
-    return null;
-  }
-}
-
-async function expandItems(items) {
-  const queries = [];
-  for (const it of items) {
-    if (it.type === 'movie') { queries.push({ kind: 'movie', imdbId: it.imdbId, label: it.label }); continue; }
-    if (it.episode !== null) { queries.push({ kind: 'series', imdbId: it.imdbId, season: it.season, episode: it.episode, label: it.label }); continue; }
-    const meta = await tmdbFindByImdb(it.imdbId);
-    const tmdbId = meta?.kind === 'tv' ? meta.tmdbId : null;
-    const tvTitle = (meta?.kind === 'tv' ? meta.title : null) || it.label || it.imdbId;
-    if (!tmdbId) { console.warn(`⚠️  No se puede expandir ${it.imdbId}:s${it.season} sin TMDB_API_KEY. Se omite.`); continue; }
-    const episodes = await tmdbEpisodesForSeason(tmdbId, it.season);
-    if (!episodes?.length) { console.warn(`⚠️  TMDB no devolvió episodios para ${it.imdbId} s${it.season}.`); continue; }
-    for (const ep of episodes) {
-      queries.push({
-        kind: 'series', imdbId: it.imdbId, season: it.season, episode: ep.episode,
-        label: `${tvTitle} S${String(it.season).padStart(2,'0')}E${String(ep.episode).padStart(2,'0')}${ep.title ? ' – ' + ep.title : ''}`.trim(),
-      });
-    }
-  }
-  return dedupeQueries(queries);
-}
-
-// ---------- multi-provider fetch ----------
+// ---------- FIXTURE_MODE: respuestas falsas, sin red ----------
 
 function fakeHash(seed) {
   // fnv-1a + mix → 40 hex; fixture only.
@@ -363,105 +137,73 @@ function fakeHash(seed) {
   return out.slice(0, 40);
 }
 
-function fixtureStream(item, providerSlug, q, i, seeds, size, lang, extProv) {
-  const id = stremioId(item);
-  const infoHash = fakeHash(id + '|' + providerSlug + '|' + q + '|' + i);
-  const title = `${item.label || id} [${q}][${lang === 'es' ? 'Castellano' : 'Ingles'}+Subs]`;
-  const trackers = ['udp://tracker.opentrackr.org:1337/announce'];
-  return {
-    infoHash, title, quality: q, seeders: seeds, sizeBytes: size,
-    trackers, languages: [lang], fileIdx: 0,
-    provider: providerSlug, providerName: PROVIDERS[providerSlug].name,
-    externalProvider: extProv,
+function createFixtureFetch(seriesIds, labelsById) {
+  const providerBySlug = new Map(ENABLED_PROVIDERS.map(p => [p.slug, p]));
+  return async function fixtureFetchJSON(url) {
+    const meta = url.match(/\/meta\/(movie|series)\/(tt\d+)\.json$/);
+    if (meta) {
+      const [, type, id] = meta;
+      if (type !== 'series' || !seriesIds.has(id)) return { meta: {} };
+      const videos = [1, 2].flatMap(season => [1, 2, 3].map(episode => ({
+        season, episode, name: `Episodio ficticio ${episode}`, released: '2011-04-17T00:00:00.000Z',
+      })));
+      return { meta: { id, imdb_id: id, type: 'series', name: 'Serie ficticia', year: '2011–2019', videos } };
+    }
+    const stream = url.match(/\/stream\/(movie|series)\/(tt\d+)(?::(\d+):(\d+))?\.json$/);
+    const provider = [...providerBySlug.values()].find(p => url.startsWith(p.baseUrl));
+    if (!stream || !provider) return { streams: [] };
+    const [, , imdbId, season, episode] = stream;
+    const id = season ? `${imdbId}:${season}:${episode}` : imdbId;
+    const label = labelsById.get(id) || id;
+    const base = [
+      ['4K', 40, '11.2 GB', 'es', provider.name],
+      ['1080p', 80, '2.6 GB', 'es', 'YTS'],
+      ['1080p', 30, '1.8 GB', 'en', provider.name],
+      ['720p', 10, '905 MB', 'es', null],
+    ];
+    return {
+      streams: base.map(([q, seeds, size, lang, ext], i) => ({
+        name: `${provider.name}\n${q}`,
+        title: `${label} [${q}][${lang === 'es' ? 'Castellano' : 'Ingles'}+Subs]\n👤 ${seeds} 💾 ${size}${ext ? ` ⚙️ ${ext}` : ''}`,
+        infoHash: fakeHash(`${id}|${provider.slug}|${q}|${i}`),
+        fileIdx: 0,
+        sources: ['tracker:udp://tracker.opentrackr.org:1337/announce'],
+      })),
+    };
   };
 }
 
-async function fetchFromProvider(provider, query) {
-  const stremioUrl = query.kind === 'movie'
-    ? `${provider.baseUrl}/stream/movie/${query.imdbId}.json`
-    : `${provider.baseUrl}/stream/series/${query.imdbId}:${query.season}:${query.episode}.json`;
-  if (FIXTURE_MODE) {
-    // Fake a few streams per provider
-    const base = [
-      ['4K', 40, 12_000_000_000, 'es', provider.slug],
-      ['1080p', 80, 2_800_000_000, 'es', 'YTS'],
-      ['1080p', 30, 1_900_000_000, 'en', provider.slug],
-      ['720p', 10, 950_000_000, 'es', null],
-    ];
-    const streams = base.map((b, i) => fixtureStream(query, provider.slug, b[0], i, b[1], b[2], b[3], b[4]));
-    return { provider, url: stremioUrl + ' [fixture]', streams };
+// ---------- REPROCESS=1: re-selección sobre los datos ya publicados ----------
+
+const PUBLISHED_PROVIDER = Object.freeze({ slug: 'published', name: 'Datos publicados', baseUrl: 'public/data' });
+
+async function loadPublishedSnapshot() {
+  const indexPath = join(DATA_DIR, 'index.json');
+  if (!existsSync(indexPath)) throw new Error('REPROCESS=1 necesita public/data/index.json');
+  const index = JSON.parse(await readFile(indexPath, 'utf8'));
+  const queries = [];
+  const streamsById = new Map();
+  for (const item of index.items || []) {
+    const isSeries = item.type === 'series';
+    const file = isSeries
+      ? join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`)
+      : join(DATA_MOVIES, `${item.imdbId}.json`);
+    const data = existsSync(file) ? JSON.parse(await readFile(file, 'utf8')) : { streams: [] };
+    streamsById.set(item.id, (data.streams || []).map(candidateFromPublished).filter(Boolean));
+    queries.push({
+      kind: isSeries ? 'series' : 'movie',
+      imdbId: item.imdbId,
+      season: isSeries ? item.season : undefined,
+      episode: isSeries ? item.episode : undefined,
+      label: item.label || null,
+      meta: item.name ? { name: item.name, year: item.year ?? null, yearEnd: null, type: item.type } : null,
+      warnings: item.warnings || [],
+    });
   }
-  const data = await fetchJSON(stremioUrl);
-  const streams = [];
-  for (const raw of Array.isArray(data.streams) ? data.streams : []) {
-    const s = parseStremioStream(raw, provider);
-    if (s) streams.push(s);
-  }
-  return { provider, url: stremioUrl, streams };
+  return { generatedAt: index.generatedAt || null, queries: dedupeQueries(queries), streamsById };
 }
 
-function mergeStreams(results) {
-  // Merge by infoHash: combine trackers + providers; keep highest seeders.
-  const map = new Map();
-  for (const r of results) {
-    for (const s of r.streams) {
-      const existing = map.get(s.infoHash);
-      if (!existing) {
-        map.set(s.infoHash, {
-          ...s,
-          providers: [s.provider],
-          providerNames: [s.providerName],
-          externalProviders: s.externalProvider ? [s.externalProvider] : [],
-          trackers: [...s.trackers],
-          magnetUrl: s.magnetUrl || null,
-        });
-        continue;
-      }
-      // merge trackers
-      const tset = new Set(existing.trackers);
-      for (const t of s.trackers) tset.add(t);
-      existing.trackers = [...tset];
-      if (!existing.magnetUrl && s.magnetUrl) existing.magnetUrl = s.magnetUrl;
-      // merge providers
-      if (!existing.providers.includes(s.provider)) { existing.providers.push(s.provider); existing.providerNames.push(s.providerName); }
-      if (s.externalProvider && !existing.externalProviders.includes(s.externalProvider)) existing.externalProviders.push(s.externalProvider);
-      // choose best seeders/title/quality
-      if ((s.seeders ?? -1) > (existing.seeders ?? -1)) {
-        existing.seeders = s.seeders;
-        existing.title = s.title;
-        existing.quality = s.quality || existing.quality;
-        existing.sizeBytes = s.sizeBytes ?? existing.sizeBytes;
-        existing.magnetUrl = s.magnetUrl || existing.magnetUrl;
-        existing.languages = [...new Set([...existing.languages, ...s.languages])];
-      } else if (s.quality && !existing.quality) {
-        existing.quality = s.quality;
-      } else {
-        existing.languages = [...new Set([...existing.languages, ...s.languages])];
-      }
-    }
-  }
-  return [...map.values()];
-}
-
-async function pool(tasks, concurrency) {
-  const results = new Array(tasks.length);
-  let next = 0;
-  const workers = Array.from({ length: Math.min(concurrency, tasks.length || 1) }, async () => {
-    while (true) {
-      const i = next++;
-      if (i >= tasks.length) return;
-      try { results[i] = { ok: true, value: await tasks[i]() }; }
-      catch (err) { results[i] = { ok: false, error: err }; }
-    }
-  });
-  await Promise.all(workers);
-  return results;
-}
-
-function stremioId(query) {
-  if (query.kind === 'movie') return query.imdbId;
-  return `${query.imdbId}:${query.season}:${query.episode}`;
-}
+// ---------- ficheros ----------
 
 async function writeJSON(path, value) {
   await mkdir(dirname(path), { recursive: true });
@@ -469,72 +211,164 @@ async function writeJSON(path, value) {
 }
 
 async function cleanDir(dir) {
-  if (!existsSync(dir)) return;
+  await mkdir(dir, { recursive: true });
   for (const e of await readdir(dir, { withFileTypes: true })) {
     if (e.isFile()) await unlink(join(dir, e.name));
   }
 }
 
+function git(args) {
+  try {
+    return execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() || null;
+  } catch {
+    return null;
+  }
+}
+
+// owner/repo y rama: la web los usa para funcionar sin configurar nada.
+function repositoryInfo() {
+  let slug = process.env.GITHUB_REPOSITORY || null;
+  if (!slug) {
+    const m = (git(['config', '--get', 'remote.origin.url']) || '').match(/github\.com[:/]([^/\s]+)\/([^/\s]+?)(?:\.git)?\/?$/i);
+    if (m) slug = `${m[1]}/${m[2]}`;
+  }
+  if (!slug || !/^[\w.-]+\/[\w.-]+$/.test(slug)) return null;
+  const [owner, name] = slug.split('/');
+  const branch = process.env.GITHUB_REF_NAME || git(['rev-parse', '--abbrev-ref', 'HEAD']) || 'main';
+  return {
+    slug,
+    owner,
+    name,
+    branch,
+    url: `https://github.com/${slug}`,
+    pagesUrl: process.env.PAGES_URL || `https://${owner.toLowerCase()}.github.io/${name}/`,
+  };
+}
+
+function formatPickForLog(stream) {
+  if (!stream) return '—'.padEnd(16);
+  return `${PICK_META[stream.pick].flag} ${(stream.quality || '?').padEnd(5)} 👤${String(stream.seeders ?? '?').padEnd(5)}`;
+}
+
+function catalogName(item) {
+  return item.type === 'series'
+    ? showLabel(item.label, { name: item.name }) || item.name || item.imdbId
+    : String(item.label || item.name || item.imdbId).replace(/\s*\(\s*\d{4}\s*\)\s*$/, '').trim();
+}
+
+function buildCatalogs(results) {
+  const movies = new Map();
+  const series = new Map();
+  for (const { item } of results) {
+    if (!item.streamCount) continue;
+    const target = item.type === 'series' ? series : movies;
+    if (target.has(item.imdbId)) continue;
+    target.set(item.imdbId, {
+      id: item.imdbId,
+      type: item.type,
+      name: catalogName(item),
+      poster: `https://images.metahub.space/poster/medium/${item.imdbId}/img`,
+      ...(item.year ? { releaseInfo: String(item.year) } : {}),
+    });
+  }
+  return { movies: [...movies.values()], series: [...series.values()] };
+}
+
 // ---------- main ----------
 
 async function main() {
-  console.log(`📂 peerflix-static – multi-provider fetch & ingest`);
-  console.log(`   watchlist   : ${WATCHLIST_PATH}`);
-  console.log(`   concurrency : ${FETCH_CONCURRENCY}`);
-  console.log(`   providers   : ${ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}${FIXTURE_MODE ? '  [FIXTURE]' : ''}`);
+  const mode = FIXTURE_MODE ? 'fixture' : REPROCESS ? 'reprocess' : 'live';
+  const repository = repositoryInfo();
+  console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
+  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : WATCHLIST_PATH}`);
+  console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
+  console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
     console.log(`   manifest    : ${MANIFEST_ONLY_PROVIDERS.map(p => `${p.name} (${p.manifestUrl})`).join(', ')} [solo catálogo, no compatible con IMDb]`);
   }
-  console.log(`   TMDB key    : ${TMDB_API_KEY ? 'configurada ✅' : 'no configurada'}`);
-  console.log(`   Supabase    : ${SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY ? (DRY_RUN_DB ? 'configurada (DRY RUN)' : 'configurada ✅') : 'sin credenciales (JSON local)'}`);
+  console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : CINEMETA_ENABLED ? `Cinemeta (sin API key)${TMDB_API_KEY ? ' + TMDB de respaldo' : ''}` : TMDB_API_KEY ? 'solo TMDB' : 'desactivados'}`);
+  console.log(`   Supabase    : ${SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY ? (DRY_RUN_DB ? 'configurada (DRY RUN)' : 'configurada ✅') : 'sin credenciales (solo JSON: no hace falta token)'}`);
+  console.log(`   selección   : 2 por título → 🇪🇸 mejor en español + 🇬🇧 mejor en inglés`);
+  const bestTrackers = FIXTURE_MODE || REPROCESS
+    ? await loadBestTrackers({ url: '' })
+    : await loadBestTrackers({ url: TRACKERS_URL, timeoutMs: Math.min(FETCH_TIMEOUT_MS, 10000), headers: { 'user-agent': USER_AGENTS[0] } });
+  if (bestTrackers.warning) console.warn(`⚠️  ${bestTrackers.warning}`);
+  console.log(`   trackers    : los ${Math.min(MAX_TRACKERS, bestTrackers.trackers.length)} mejores de ${bestTrackers.source}`);
   console.log();
 
-  await mkdir(DATA_MOVIES, { recursive: true });
-  await mkdir(DATA_SERIES, { recursive: true });
-  await mkdir(STREAM_MOVIES, { recursive: true });
-  await mkdir(STREAM_SERIES, { recursive: true });
-  await cleanDir(DATA_MOVIES);
-  await cleanDir(DATA_SERIES);
-  await cleanDir(STREAM_MOVIES);
-  await cleanDir(STREAM_SERIES);
+  const warnings = [];
+  const warn = message => { warnings.push(message); console.warn(`⚠️  ${message}`); };
+  if (bestTrackers.warning) warnings.push(bestTrackers.warning);
 
-  const watchText = await readFile(WATCHLIST_PATH, 'utf8');
-  const parsed = parseWatchlist(watchText);
-  console.log(`🔎 Watchlist: ${parsed.length} líneas.`);
-  const queries = await expandItems(parsed);
-  console.log(`📋 Consultas: ${queries.length} títulos/episodios × ${ENABLED_PROVIDERS.length} proveedores = ${queries.length * ENABLED_PROVIDERS.length} requests.`);
+  // 1. Consultas: del watchlist (con Cinemeta) o de los datos ya publicados.
+  let queries;
+  let providers = ENABLED_PROVIDERS;
+  let streamSource = null;
+  let pipelineFetch = fetchJSON;
+  let metaStats = { source: 'none', requested: 0, found: 0, failures: 0, disabled: true, lastError: null };
+  let reprocessedFrom = null;
+  if (REPROCESS) {
+    const snapshot = await loadPublishedSnapshot();
+    queries = snapshot.queries;
+    reprocessedFrom = snapshot.generatedAt;
+    providers = [PUBLISHED_PROVIDER];
+    streamSource = async (_provider, query) => ({
+      url: query.kind === 'movie' ? `data/movies/${query.imdbId}.json` : `data/series/${query.imdbId}-s${query.season}e${query.episode}.json`,
+      streams: snapshot.streamsById.get(query.kind === 'movie' ? query.imdbId : `${query.imdbId}:${query.season}:${query.episode}`) || [],
+    });
+    console.log(`♻️  Reprocesando ${queries.length} títulos publicados el ${reprocessedFrom || '?'} (sin red).`);
+  } else {
+    const watchText = await readFile(WATCHLIST_PATH, 'utf8');
+    const items = parseWatchlist(watchText, { onWarning: warn });
+    console.log(`🔎 Watchlist: ${items.length} líneas.`);
+    const labelsById = new Map();
+    if (FIXTURE_MODE) pipelineFetch = createFixtureFetch(new Set(items.filter(i => i.type === 'series').map(i => i.imdbId)), labelsById);
+    let metaById = new Map();
+    if (CINEMETA_ENABLED) {
+      const meta = await loadMetadata(items, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn });
+      metaById = meta.metaById;
+      metaStats = meta.stats;
+      console.log(`🎞️  Cinemeta: ${metaStats.found}/${metaStats.requested} fichas${metaStats.failures ? ` (${metaStats.failures} errores)` : ''}.`);
+    }
+    queries = await expandWatchlist(items, { metaById, seasonFallback: TMDB_API_KEY && !FIXTURE_MODE ? tmdbEpisodes : null, onWarning: warn });
+    for (const q of queries) labelsById.set(q.kind === 'movie' ? q.imdbId : `${q.imdbId}:${q.season}:${q.episode}`, q.label || q.imdbId);
+  }
+  console.log(`📋 Consultas: ${queries.length} títulos/episodios × ${providers.length} fuentes = ${queries.length * providers.length} requests.`);
   if (!queries.length) { console.error('❌ No hay nada que consultar.'); process.exitCode = 1; return; }
   console.log();
 
+  // 2. Salidas limpias (tras leer los datos publicados si se reprocesa).
+  for (const dir of [DATA_MOVIES, DATA_SERIES, STREAM_MOVIES, STREAM_SERIES, CATALOG_MOVIES, CATALOG_SERIES]) await cleanDir(dir);
+
   const startedAt = new Date().toISOString();
-  const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB });
+  const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
 
-  // Build one task per (query, provider) pair so we can run them concurrently.
-  const tasks = [];
-  const taskMeta = []; // {queryIdx, providerSlug}
-  for (let qi = 0; qi < queries.length; qi++) {
-    for (const provider of ENABLED_PROVIDERS) {
-      tasks.push(() => fetchFromProvider(provider, queries[qi]));
-      taskMeta.push({ qi, providerSlug: provider.slug });
-    }
-  }
-  const rawResults = await pool(tasks, FETCH_CONCURRENCY);
-
-  // Group results back per query
-  const perQuery = queries.map(q => ({ query: q, providerResults: [], errors: [] }));
-  for (let i = 0; i < rawResults.length; i++) {
-    const meta = taskMeta[i];
-    const r = rawResults[i];
-    const slot = perQuery[meta.qi];
-    if (!r.ok) { slot.errors.push({ provider: meta.providerSlug, error: String(r.error.message || r.error) }); continue; }
-    slot.providerResults.push(r.value);
-  }
+  // 3. Consultar, fusionar y elegir 2 por título (se loguea cada título al terminar).
+  const pipeline = await runPipeline(queries, {
+    providers,
+    fetchJSON: pipelineFetch,
+    streamSource,
+    concurrency: FETCH_CONCURRENCY,
+    breakerThreshold: BREAKER_THRESHOLD,
+    bestTrackers: bestTrackers.trackers,
+    maxTrackers: MAX_TRACKERS,
+    onItem: ({ item, streams }, { done, total }) => {
+      const icon = streams.length === PICK_LANGUAGES.length ? '✅' : streams.length ? '🟡' : '⚠️ ';
+      const es = streams.find(s => s.pick === 'es');
+      const en = streams.find(s => s.pick === 'en');
+      const progress = `[${String(done).padStart(String(total).length)}/${total}]`;
+      console.log(`  ${icon} ${progress} ${item.id.padEnd(22)} ${String(streams.length)}/${String(item.candidateCount).padEnd(4)} ${formatPickForLog(es)} ${formatPickForLog(en)} ${item.label}`);
+    },
+  });
 
   const index = {
     generatedAt: startedAt,
     finishedAt: null,
+    mode,
+    ...(reprocessedFrom ? { reprocessedFrom } : {}),
+    repository,
     providers: allProviderManifestMetadata(),
-    enabledProviders: ENABLED_PROVIDERS.map(p => p.slug),
+    enabledProviders: providers.map(p => p.slug),
     requestedProviders: REQUESTED_PROVIDER_SLUGS,
     manifestOnlyProviders: MANIFEST_ONLY_PROVIDERS.map(p => ({ slug: p.slug, name: p.name, manifestUrl: p.manifestUrl, note: p.note })),
     fixture: FIXTURE_MODE,
@@ -542,84 +376,48 @@ async function main() {
     total: queries.length,
     movies: 0,
     episodes: 0,
-    totalStreams: 0,
+    // Published streams (at most 2 per title) vs. everything the addons returned.
+    totalStreams: pipeline.totals.streams,
+    totalCandidates: pipeline.totals.candidates,
+    picks: pipeline.totals.picks,
+    missing: pipeline.totals.missing,
+    selection: {
+      perTitle: PICK_LANGUAGES.length,
+      languages: [...PICK_LANGUAGES],
+      maxTrackers: MAX_TRACKERS,
+      trackersSource: bestTrackers.source,
+      trackers: bestTrackers.trackers.slice(0, MAX_TRACKERS),
+    },
+    meta: metaStats,
     items: [],
-    errors: [],
-    perProviderStats: Object.fromEntries(ENABLED_PROVIDERS.map(p => [p.slug, { streams: 0, errors: 0 }])),
+    warnings,
+    errors: pipeline.errors,
+    perProviderStats: pipeline.perProvider,
     db: { inserted: 0, rejected: 0, failures: [] },
   };
 
+  // 4. Ficheros por título: data/ (web) + stream/ (addon Stremio).
   const dbCandidates = [];
-
-  for (const slot of perQuery) {
-    const q = slot.query;
-    const merged = mergeStreams(slot.providerResults);
-    for (const pr of slot.providerResults) {
-      index.perProviderStats[pr.provider.slug].streams += pr.streams.length;
-    }
-    for (const err of slot.errors) {
-      index.perProviderStats[err.provider].errors++;
-      index.errors.push({ id: stremioId(q), provider: err.provider, label: q.label || null, error: err.error });
-    }
-    const item = {
-      id: stremioId(q), imdbId: q.imdbId,
-      type: q.kind === 'movie' ? 'movie' : 'series',
-      season: q.kind === 'series' ? q.season : null,
-      episode: q.kind === 'series' ? q.episode : null,
-      label: q.label || q.imdbId,
-      providerUrls: Object.fromEntries(slot.providerResults.map(r => [r.provider.slug, r.url])),
-      streamCount: merged.length,
-      bestSeeders: merged.reduce((m,s)=>Math.max(m, s.seeders ?? -1), -1) === -1 ? null : merged.reduce((m,s)=>Math.max(m, s.seeders ?? -1), -1),
-      qualities: [...new Set(merged.map(s => s.quality).filter(Boolean))].sort(),
-      languages: [...new Set(merged.flatMap(s => s.languages))].sort(),
-      providers: [...new Set(merged.flatMap(s => s.providers))].sort(),
-    };
+  for (const { item, streams } of pipeline.results) {
     index.items.push(item);
-    index.totalStreams += merged.length;
-
-    // Build output streams (with magnetUrl) for JSON files
-    const outputStreams = merged.map(s => ({
-      name: s.providerNames.join('+') + (s.quality ? ' ' + s.quality : ''),
-      title: s.title,
-      infoHash: s.infoHash,
-      fileIdx: s.fileIdx,
-      language: s.languages[0] || null,
-      audioLangs: s.languages,
-      quality: s.quality,
-      seeders: s.seeders,
-      sizeBytes: s.sizeBytes,
-      sizeLabel: null,
-      providers: s.providers,
-      providerNames: s.providerNames,
-      externalProviders: s.externalProviders,
-      trackers: s.trackers,
-      magnetUrl: s.magnetUrl || buildMagnet(s.infoHash, s.title, s.trackers),
-    }));
-
-    if (q.kind === 'movie') {
+    if (item.type === 'movie') {
       index.movies++;
-      await writeJSON(join(DATA_MOVIES, `${q.imdbId}.json`), { ...item, streams: outputStreams });
-      await writeJSON(join(STREAM_MOVIES, `${q.imdbId}.json`), { streams: outputStreams });
+      await writeJSON(join(DATA_MOVIES, `${item.imdbId}.json`), { ...item, streams });
+      await writeJSON(join(STREAM_MOVIES, `${item.imdbId}.json`), { streams });
     } else {
       index.episodes++;
-      const fname = `${q.imdbId}-s${q.season}e${q.episode}.json`;
-      const sname = `${q.imdbId}:${q.season}:${q.episode}.json`;
-      await writeJSON(join(DATA_SERIES, fname), { ...item, streams: outputStreams });
-      await writeJSON(join(STREAM_SERIES, sname), { streams: outputStreams });
+      await writeJSON(join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`), { ...item, streams });
+      await writeJSON(join(STREAM_SERIES, `${item.imdbId}:${item.season}:${item.episode}.json`), { streams });
     }
-    for (const s of outputStreams) dbCandidates.push({ item, stream: s });
-
-    const icon = merged.length ? '✅' : '⚠️ ';
-    console.log(`  ${icon} ${item.id.padEnd(22)} ${String(merged.length).padStart(3)} streams  ${item.providers.join(',').padEnd(28)} ${item.label}`);
+    for (const stream of streams) dbCandidates.push({ item, stream });
   }
 
+  // 5. Supabase (opcional).
   if (dbCandidates.length) {
     try {
       const dbRes = await repo.upsert(dbCandidates);
-      index.db.inserted = dbRes.inserted;
-      index.db.rejected = dbRes.rejected;
-      index.db.dryRun = dbRes.dryRun;
-      console.log(`\n🗄  BD: ${dbRes.dryRun ? '[DRY RUN] ' : ''}${dbRes.inserted} registros (${dbRes.rejected} inválidos).`);
+      Object.assign(index.db, dbRes);
+      console.log(`\n🗄  BD: ${dbRes.dryRun ? '[DRY RUN] ' : ''}${dbRes.inserted} registros (${dbRes.rejected} inválidos)${dbRes.mode === 'insert+update' ? ' · insert+update (añade UNIQUE(info_hash) para usar UPSERT nativo)' : ''}.`);
     } catch (err) {
       index.db.failures.push(err.message || String(err));
       console.log(`\n🗄  BD: ERROR – ${err.message}`);
@@ -633,14 +431,22 @@ async function main() {
   await writeJSON(join(DATA_DIR, 'index.json'), index);
   await writeJSON(join(DATA_DIR, 'report.json'), index);
 
+  // 6. Addon Stremio: streams + catálogo "Mi watchlist" con pósters.
+  const catalogs = buildCatalogs(pipeline.results);
+  await writeJSON(join(CATALOG_MOVIES, `${CATALOG_ID}.json`), { metas: catalogs.movies });
+  await writeJSON(join(CATALOG_SERIES, `${CATALOG_ID}.json`), { metas: catalogs.series });
   const manifest = {
     id: 'com.example.peerflix-static',
-    version: '1.1.0',
+    version: '1.3.0',
     name: 'Peerflix Static (personal, aggregated)',
-    description: `Agregador personal con ${ENABLED_PROVIDERS.map(p=>p.name).join(', ')}. Responde solo a los IMDb IDs de tu watchlist.`,
-    catalogs: [],
-    resources: [{ name: 'stream', types: ['movie','series'], idPrefixes: ['tt'] }],
+    description: `Agregador personal con ${ENABLED_PROVIDERS.map(p=>p.name).join(', ')}. Solo 2 torrents por título: el mejor en español y el mejor en inglés. Responde solo a los IMDb IDs de tu watchlist.`,
+    catalogs: [
+      { type: 'movie', id: CATALOG_ID, name: 'Mi watchlist · ES + EN' },
+      { type: 'series', id: CATALOG_ID, name: 'Mi watchlist · ES + EN' },
+    ],
+    resources: ['catalog', { name: 'stream', types: ['movie','series'], idPrefixes: ['tt'] }],
     types: ['movie','series'],
+    idPrefixes: ['tt'],
     behaviorHints: { configurable: false, configurationRequired: false },
     // Informational metadata for the dashboard; Stremio ignores unknown keys.
     sourceManifests: allProviderManifestMetadata(),
@@ -650,13 +456,21 @@ async function main() {
   console.log(`\n📊 Resumen:`);
   console.log(`   películas : ${index.movies}`);
   console.log(`   episodios : ${index.episodes}`);
-  console.log(`   streams   : ${index.totalStreams} (fusionados de ${ENABLED_PROVIDERS.length} proveedores)`);
-  for (const p of ENABLED_PROVIDERS) console.log(`     · ${p.name.padEnd(14)} ${index.perProviderStats[p.slug].streams} streams, ${index.perProviderStats[p.slug].errors} errores`);
-  console.log(`   errores   : ${index.errors.length} (errores parciales por proveedor)`);
+  console.log(`   streams   : ${index.totalStreams} elegidos (🇪🇸 ${index.picks.es} · 🇬🇧 ${index.picks.en}) de ${index.totalCandidates} candidatos fusionados de ${providers.length} fuentes`);
+  for (const p of providers) {
+    const s = index.perProviderStats[p.slug];
+    console.log(`     · ${p.name.padEnd(16)} ${String(s.streams).padStart(5)} streams · ${s.ok} ok · ${s.errors} errores · ${s.skipped} omitidas${s.avgMs != null ? ` · ${s.avgMs} ms de media` : ''}`);
+  }
+  if (index.missing.es || index.missing.en) console.log(`   sin pick  : ${index.missing.es} sin español · ${index.missing.en} sin inglés`);
+  console.log(`   trackers  : ${index.selection.trackers.length} por magnet (${index.selection.trackersSource})`);
+  console.log(`   catálogo  : ${catalogs.movies.length} películas · ${catalogs.series.length} series (addon Stremio)`);
+  console.log(`   avisos    : ${warnings.length}`);
+  console.log(`   errores   : ${index.errors.length} (${index.errors.filter(e => e.skipped).length} omitidas por el corte de errores)`);
   console.log(`   duración  : ${(index.durationMs/1000).toFixed(1)}s`);
   console.log(`   salida    : ${PUBLIC}`);
 
-  if (index.totalStreams === 0 && index.errors.length > 0) process.exitCode = 2;
+  // Fail only when the addons returned nothing at all (not when no ES/EN pick exists).
+  if (index.totalCandidates === 0 && index.errors.length > 0) process.exitCode = 2;
 }
 
 const isCli = process.argv[1] && resolve(process.argv[1]) === resolve(__filename);
@@ -664,9 +478,13 @@ if (isCli) main().catch(err => { console.error('💥 Fatal:', err); process.exit
 
 export {
   buildMagnet,
+  candidateFromPublished,
   dedupeQueries,
+  mergeStreams,
+  normalizeLanguage,
   normalizeQuality,
   parseSize,
   parseStremioStream,
   parseWatchlist,
+  toOutputStream,
 };

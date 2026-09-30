@@ -1,11 +1,13 @@
 {
   "name": "peerflix-static",
-  "version": "2.1.0",
-  "description": "Static ingest UI + GitHub Action that aggregates Stremio addon streams and UPSERTs into the existing Supabase torrents table",
+  "version": "2.2.0",
+  "description": "Static ingest UI + GitHub Action that aggregates Stremio addon streams, keeps the best Spanish + English torrent per title and optionally UPSERTs into Supabase. Works without any token.",
   "type": "module",
   "private": true,
   "scripts": {
     "fetch": "node src/fetch.mjs",
+    "reprocess": "REPROCESS=1 node src/fetch.mjs",
+    "summary": "node src/summary.mjs",
     "serve": "python3 -m http.server 4173 --directory public --bind 0.0.0.0",
     "dev": "npm run serve",
     "test": "node --test tests/*.test.mjs"
