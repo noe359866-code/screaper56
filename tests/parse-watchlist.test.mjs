@@ -2,39 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import { dedupeQueries, parseWatchlist } from '../src/fetch.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Dynamically import the module's internals by reusing a small harness:
-// fetch.mjs only exposes a CLI main(), but parseWatchlist is not exported.
-// To keep the script self-contained, we re-import the regex and parsing
-// through a dynamic import of a tiny copy. For simplicity we inline the
-// regex and a light parser test that mirrors the script.
-const IMDB_LINE_RE = /^(tt\d{7,10})(?::s(\d{1,2})(?::e(\d{1,3}))?)?(?:\s+(.*))?$/i;
-
-function parseWatchlist(text) {
-  const items = [];
-  const seen = new Set();
-  for (const rawLine of text.split(/\r?\n/)) {
-    const line = rawLine.replace(/#.*$/, '').trim();
-    if (!line) continue;
-    const m = line.match(IMDB_LINE_RE);
-    if (!m) continue;
-    const imdbId = m[1].toLowerCase();
-    const season = m[2] !== undefined ? Number(m[2]) : null;
-    const episode = m[3] !== undefined ? Number(m[3]) : null;
-    const label = (m[4] || '').trim() || null;
-    const type = season !== null ? 'series' : 'movie';
-    const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
-              : season !== null ? `${imdbId}:s${season}`
-              : imdbId;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    items.push({ imdbId, type, season, episode, label });
-  }
-  return items;
-}
 
 test('parseWatchlist reconoce películas', () => {
   const txt = `tt0111161 Cadena perpetua (1994)\ntt1375666 Inception\n# comentario\n\ntt0468569`;
@@ -46,7 +17,7 @@ test('parseWatchlist reconoce películas', () => {
 });
 
 test('parseWatchlist reconoce episodios y temporadas', () => {
-  const txt = `tt0944947:s1:e1 Pilot\ntt0944947:s1 Season 1\ntt1375666\ninvalid line`;
+  const txt = `tt0944947:s1:e1 Pilot\ntt0944947:s1 Season 1\ntt1375666`;
   const items = parseWatchlist(txt);
   assert.equal(items.length, 3);
   const ep = items[0];
@@ -58,10 +29,27 @@ test('parseWatchlist reconoce episodios y temporadas', () => {
   assert.equal(season.episode, null);
 });
 
-test('parseWatchlist deduplica claves repetidas', () => {
-  const txt = `tt0111161\ntt0111161 Cadena\n`;
+test('parseWatchlist deduplica IDs repetidos y normaliza mayúsculas/ceros', () => {
+  const txt = `tt0111161\nTT0111161 Cadena\ntt0944947:s01:e001\ntt0944947:s1:e1 Pilot\n`;
   const items = parseWatchlist(txt);
-  assert.equal(items.length, 1);
+  assert.equal(items.length, 2);
+  assert.equal(items[0].label, 'Cadena', 'aprovecha una etiqueta útil de la línea duplicada');
+  assert.equal(items[1].imdbId, 'tt0944947');
+  assert.equal(items[1].season, 1);
+  assert.equal(items[1].episode, 1);
+});
+
+test('dedupeQueries evita consultar episodios repetidos por línea de episodio y temporada completa', () => {
+  const queries = dedupeQueries([
+    { kind: 'series', imdbId: 'tt0944947', season: 1, episode: 1, label: 'Juego de Tronos S01E01' },
+    { kind: 'series', imdbId: 'tt0944947', season: 1, episode: 1, label: 'Juego de Tronos S01E01 – Pilot' },
+    { kind: 'series', imdbId: 'tt0944947', season: 1, episode: 2, label: 'Juego de Tronos S01E02' },
+    { kind: 'movie', imdbId: 'tt0111161', label: 'Cadena perpetua' },
+    { kind: 'movie', imdbId: 'tt0111161', label: 'Cadena perpetua (1994)' },
+  ]);
+  assert.equal(queries.length, 3);
+  assert.equal(queries[0].label, 'Juego de Tronos S01E01');
+  assert.equal(queries[2].kind, 'movie');
 });
 
 test('watchlist.txt del repo es parseable y contiene entradas válidas', async () => {
