@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Peerflix Ingest</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>🎬 Peerflix Ingest</h1>
+    <p class="muted">Agregador de <b>5 manifests Stremio</b>: consulta Peerflix, TorrentsDB, Torrentio y ThePirateBay+ por IMDb; registra TPB Adult como catálogo separado porque no ofrece streams movie/series por IMDb. Fusiona por info_hash y hace UPSERT en la tabla <code>torrents</code> de tu Supabase. Tu web existente no necesita cambios.</p>
+    <nav>
+      <button data-tab="dashboard" class="active">Dashboard</button>
+      <button data-tab="ingest">Ingestar lista</button>
+      <button data-tab="history">Historial</button>
+      <button data-tab="settings">Ajustes</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- =============== SETTINGS =============== -->
+<section id="tab-settings" class="tab">
+  <h2>Ajustes</h2>
+  <p class="muted">Necesitas un <b>Personal Access Token (PAT)</b> de GitHub con permisos <code>repo</code> (contents + actions). El token solo se guarda en <code>localStorage</code> de tu navegador.</p>
+
+  <div class="grid">
+    <label>Owner / Usuario GitHub
+      <input id="gh-owner" type="text" placeholder="ej: noe359866" />
+    </label>
+    <label>Repo
+      <input id="gh-repo" type="text" placeholder="ej: screaper56" />
+    </label>
+    <label>Rama
+      <input id="gh-branch" type="text" placeholder="arena/01a0effc-screaper56" />
+    </label>
+    <label class="full">Personal Access Token
+      <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+    </label>
+    <label>Supabase URL (para el dashboard, clave pública anon)
+      <input id="sb-url" type="text" placeholder="https://xxxxx.supabase.co" />
+    </label>
+    <label>Supabase anon (public) key
+      <input id="sb-anon" type="text" placeholder="eyJhbGciOi..." />
+    </label>
+    <label>Tamaño de página
+      <input id="sb-page-size" type="number" min="20" max="500" value="50" />
+    </label>
+    <label class="full">Proveedores Stremio a consultar
+      <div class="provider-list" id="provider-list"></div>
+    </label>
+  </div>
+  <div class="row">
+    <button id="save-settings" class="primary">Guardar ajustes</button>
+    <button id="test-settings" class="ghost">Probar conexión</button>
+    <span id="settings-status" class="muted"></span>
+  </div>
+</section>
+
+<!-- =============== DASHBOARD =============== -->
+<section id="tab-dashboard" class="tab active">
+  <div class="summary" id="summary">
+    <div class="stat"><div class="num" id="stat-total">—</div><div class="lbl">total torrents</div></div>
+    <div class="stat"><div class="num" id="stat-movies">—</div><div class="lbl">películas</div></div>
+    <div class="stat"><div class="num" id="stat-series">—</div><div class="lbl">episodios</div></div>
+    <div class="stat"><div class="num" id="stat-spanish">—</div><div class="lbl">audio ES</div></div>
+    <div class="stat"><div class="num" id="stat-last">—</div><div class="lbl">último updated</div></div>
+  </div>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="Buscar por título o IMDb ID (tt…)…" autocomplete="off" />
+    <select id="quality">
+      <option value="">Calidad</option>
+      <option>4K</option><option>1080p</option><option>720p</option><option>480p</option>
+    </select>
+    <select id="lang">
+      <option value="">Idioma</option>
+      <option value="es">Español</option>
+      <option value="en">Inglés</option>
+    </select>
+    <select id="order">
+      <option value="updated_at">Más recientes</option>
+      <option value="seeders">Más seeds</option>
+      <option value="size_bytes">Mayor tamaño</option>
+      <option value="title">Título A–Z</option>
+    </select>
+    <button id="refresh" class="ghost">↻</button>
+  </div>
+
+  <div id="torrent-list" class="torrent-list"><div class="empty">Cargando…</div></div>
+  <div class="pager">
+    <button id="prev-page" class="ghost" disabled>← Anterior</button>
+    <span id="page-indicator" class="muted"></span>
+    <button id="next-page" class="ghost" disabled>Siguiente →</button>
+  </div>
+</section>
+
+<!-- =============== INGEST =============== -->
+<section id="tab-ingest" class="tab">
+  <h2>Ingestar lista de IMDb IDs</h2>
+  <p class="muted">Pega tu lista (una línea por título) o sube un <code>.txt</code>. Formatos:
+    <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code>, <code>tt0944947:s1 Temporada</code> (requiere TMDB key en secretos).</p>
+
+  <div class="row">
+    <input id="upload-file" type="file" accept=".txt,text/plain" />
+    <button id="load-current" class="ghost" title="Carga el watchlist.txt actual del repo">Cargar watchlist.txt del repo</button>
+    <button id="clear-wl" class="ghost">Limpiar</button>
+  </div>
+
+  <textarea id="watchlist" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
+
+  <div class="row">
+    <button id="ingest" class="primary">▶ Ingestar en la BD</button>
+    <label class="chk"><input type="checkbox" id="dryrun" /> Dry-run (no escribe, solo consulta)</label>
+    <span id="ingest-status" class="muted"></span>
+  </div>
+
+  <h3>Progreso</h3>
+  <div id="run-progress" class="progress-bar"><div id="run-progress-fill"></div></div>
+  <div id="run-meta" class="muted"></div>
+  <pre id="run-log" class="log"></pre>
+
+  <h3>Resultado</h3>
+  <div id="run-summary" class="summary"></div>
+  <div id="run-items"></div>
+</section>
+
+<!-- =============== HISTORY =============== -->
+<section id="tab-history" class="tab">
+  <h2>Historial de ejecuciones</h2>
+  <div class="row">
+    <button id="refresh-history" class="ghost">↻ Actualizar</button>
+    <span class="muted">Últimas 10 ejecuciones del workflow <code>static.yml</code>.</span>
+  </div>
+  <div id="history-list"></div>
+</section>
+
+</main>
+
+<footer>
+  <small class="muted">
+    Datos desde Supabase · Workflow: <code id="footer-repo">—</code> ·
+    <a href="manifest.json">Addon Stremio</a> ·
+    <a href="data/index.json">index.json</a>
+  </small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>
