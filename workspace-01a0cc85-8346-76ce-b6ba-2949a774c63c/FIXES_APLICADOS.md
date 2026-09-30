@@ -1171,3 +1171,80 @@ Sin cambios de composición: el orden ya arranca por el catálogo vivo.
   «Descargar torrent» sirve el `.torrent` desde un CDN de OTRO dominio
   (hoy `wolfDownloadUrl` lo rechazaría: sería el único caso que pierde
   descargas). Todo lo demás de la cadena quedó fijado por tests.
+
+# Profundización: SinSitio — ronda 2 (foco exclusivo)
+
+Fecha: 2026-09-29
+Segunda pasada sobre la cadena DLE de sinsitio con evidencia en vivo del día
+(portada, ambas secciones, ficha de película clásica y ficha de serie). La
+ronda anterior (2026-09-28) había verificado ddlUrl/Referer/pager; esta
+encontró el mismo fallo de idioma que wolftorrent, con su caso en vivo.
+
+## Estado real del pool (2026-09-29)
+
+| Dominio | Estado real |
+|---|---|
+| `www.sinsitio.site` | 🟢 DLE completo: portada con subidas del día, `/dvdrip-bdrip/` y `/series/` vivos con pager publicado (`/series/page/2/` + «Adelante») |
+| `sinsitio.site` | 🟢 301 → www (mismo sitio; el par www/apex sigue intacto) |
+| `www.sinsitio.info` | 🔴 sin respuesta — sigue fuera |
+| `sinsitio.online` | 🔴 sin respuesta — sigue fuera |
+
+Sin cambios de composición: `[www.sinsitio.site, sinsitio.site]` sigue siendo
+el pool correcto.
+
+## Cadena verificada hoy
+
+- **Portada**: posts `/N-slug.html` frescos ✓ (marcador del probe presente).
+  El bloque de comentarios de la portada enlaza posts reales de otras
+  categorías (`/bluray/`, `/cine-clsico-de-todos-los-tiempos/`,
+  `/series-que-ya-son-clasicos/`, `/estrenos/`) — todos vídeo (template
+  `flat-cinema`), así que el parseo amplio no mete basura no-vídeo.
+- **Ficha de serie** (`/series/34972-crookhaven-t1.html`): UN post con **un
+  `ddlUrl.php` POR EPISODIO** (7 enlaces 1x1…1x7), cada uno con su
+  `name=Crookhaven%201xN%20Hdtv%20Xvid%20Castellano`. El bucle del parser
+  ya los recoge todos; la ronda anterior solo había mirado posts de
+  película (1 ddlUrl).
+- **Ficha de película** (`/cine-clsico-.../35920-…`): `name=El Rostro
+  Impenetrable 1961marlon Brando Mkv` — ver abajo, el caso del bug.
+- **Descarga**: el base64 sigue decodificando a
+  `index.php?do=download&id=N` público (ids actuales 67974…69715) y el
+  ping-pong sin Referer de DLE no cambió (el adaptador ya envía el Referer
+  de la ficha, fijado con test).
+
+## El bug: posts SIN ninguna etiqueta de idioma morían en el filtro
+
+- Evidencia en vivo (2026-09-29): la ficha clásica publica
+  `name=El Rostro Impenetrable 1961marlon Brando Mkv` — **ni el `h1`, ni el
+  `name=`, ni el cuerpo llevan Castellano/Latino/Inglés** — y los títulos de
+  listado de `/series/` («Crookhaven T1», «Possession T1») tampoco. El
+  idioma del sitio REAL solo aparece cuando el uploader lo escribe en el
+  `name=` («…Hdtv Xvid Castellano»), que es costumbre suya, no una
+  garantía de la plantilla.
+- Cascada (idéntica a wolftorrent): `html-catalog` construye con
+  `detectLanguages(context, [], false)` → `audio: []` →
+  `filterSpanishReleases` (`index.ts`) descartaba esos records en
+  producción. `sinsitio` YA estaba en `REGEX_ES_TRACKERS`, pero el
+  marcador no estaba en el contexto de ningún record.
+- **Fix**: `parseDetail` inyecta el marcador `sinsitio` en los hints
+  (`dedupeStrings([...spanishReleaseHints($), 'sinsitio'])`). Gracias al
+  hoist de la ronda wolftorrent, el marcador aplica también en modo
+  explícito y SOLO cuando no hay evidencia: un `name=` con «Castellano» o
+  «Latino» sigue mandando (la evidencia explícita gana, sin dual-tag).
+
+## Ruido observado (sin código a propósito)
+
+- El post-hilo «Haz Tu Pedido Aquí» (`/estrenos/19619-…`) se enlaza desde
+  la portada y los comentarios: cuesta UN fetch y no produce record (sin
+  ddlUrl). Filtrarlo exigiría reglas por slug — no vale la fragilidad.
+
+## Tests nuevos (suite 485/485)
+
+- `spanish-catalog.test.js`: e2e con la anatomía REAL de la ficha clásica
+  (h1 + `name=` sin idioma en ningún sitio) → `audio: ['Spanish']` y
+  `filterSpanishReleases` acepta (estaba en rojo: `audio: []`).
+- `spanish-catalog.test.js`: e2e de la ficha de serie en vivo — UN post, 2
+  episodios con sus propios `ddlUrl`/`name=` → 2 records, `season: [1,1]`,
+  `episode: [1,2]`, tipo `series`, audio Spanish.
+- Aserción actualizada: el e2e previo «language from ficha» ahora espera
+  `audio: ['Spanish']` (marcador) manteniendo `subtitles: ['Sub_ES']`
+  («Subtítulos: Español» explícito sigue ganando el slot de subtítulos).

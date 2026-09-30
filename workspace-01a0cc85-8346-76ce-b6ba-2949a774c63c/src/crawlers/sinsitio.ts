@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { MirrorSetup } from './base.js';
 import { CatalogDetail, HtmlCatalogCrawler, httpUrl } from './html-catalog.js';
 import { htmlMarkerValidator } from './mirrors.js';
-import { cleanText, nextPaginationLink, sameSite as sharedSameSite } from './support.js';
+import { cleanText, dedupeStrings, nextPaginationLink, sameSite as sharedSameSite } from './support.js';
 import { parseMagnetUri } from '../utils/magnet.js';
 
 function sameSite(a: string, b: string): boolean {
@@ -97,7 +97,14 @@ export class SinsitioCrawler extends HtmlCatalogCrawler {
     $('.comments, #dle-comments-list, .related, .related-torrents, .recommendations, .recomendados, .sidebar, header, nav, footer').remove();
 
     // Hoisted: the hints are document-wide, not per-download.
-    const releaseHints = spanishReleaseHints($);
+    // The site marker matters: live posts publish their language ONLY inside
+    // the ddlUrl name= («…Castellano») — and some don't even do that (the
+    // classic-cinema post 35920 is «El Rostro Impenetrable 1961marlon Brando
+    // Mkv» with no language anywhere, /series/ titles are «Crookhaven T1»).
+    // `sinsitio` ∈ REGEX_ES_TRACKERS maps the marker to Spanish in explicit
+    // mode too, so those records survive filterSpanishReleases instead of
+    // being discarded with audio=[].
+    const releaseHints = dedupeStrings([...spanishReleaseHints($), 'sinsitio']);
 
     $(DOWNLOAD_NODES).each((_, el) => {
       for (const href of literalDownloadCandidates($(el))) {
