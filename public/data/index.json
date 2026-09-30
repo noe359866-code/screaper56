@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-30T02:57:43.808Z",
-  "finishedAt": "2026-09-30T02:58:16.337Z",
+  "generatedAt": "2026-09-30T03:03:41.388Z",
+  "finishedAt": "2026-09-30T03:04:15.506Z",
   "providers": [
     {
       "slug": "peerflix",
@@ -107,7 +107,7 @@
   "total": 24,
   "movies": 22,
   "episodes": 2,
-  "totalStreams": 3044,
+  "totalStreams": 3041,
   "items": [
     {
       "id": "tt0111161",
@@ -683,8 +683,8 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json"
       },
-      "streamCount": 99,
-      "bestSeeders": 963,
+      "streamCount": 96,
+      "bestSeeders": 2081,
       "qualities": [
         "1080p",
         "4K",
@@ -998,8 +998,7 @@
         "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json",
         "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json",
         "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0944947:1:1.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json"
       },
       "streamCount": 116,
       "bestSeeders": 796,
@@ -1022,8 +1021,7 @@
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
       ]
     },
     {
@@ -1065,6 +1063,12 @@
   ],
   "errors": [
     {
+      "id": "tt0944947:1:1",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E01",
+      "error": "HTTP 403"
+    },
+    {
       "id": "tt0903747:1:1",
       "provider": "ytztvio",
       "label": "Breaking Bad S01E01",
@@ -1081,7 +1085,7 @@
       "errors": 0
     },
     "torrentio": {
-      "streams": 1605,
+      "streams": 1602,
       "errors": 0
     },
     "piratebay": {
@@ -1089,15 +1093,15 @@
       "errors": 0
     },
     "ytztvio": {
-      "streams": 87,
-      "errors": 1
+      "streams": 86,
+      "errors": 2
     }
   },
   "db": {
-    "inserted": 2903,
+    "inserted": 2900,
     "rejected": 0,
     "failures": [],
     "dryRun": true
   },
-  "durationMs": 32529
+  "durationMs": 34118
 }

@@ -9,8 +9,7 @@
     "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json",
     "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json",
     "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json",
-    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json",
-    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/series/tt0944947:1:1.json"
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json"
   },
   "streamCount": 116,
   "bestSeeders": 796,
@@ -33,8 +32,7 @@
     "peerflix",
     "piratebay",
     "torrentio",
-    "torrentsdb",
-    "ytztvio"
+    "torrentsdb"
   ],
   "streams": [
     {
@@ -607,7 +605,7 @@
       "magnetUrl": "magnet:?xt=urn:btih:4ff4c8563ce3fe38df5ddef6ac75ad078741b4a5&dn=Juego%20de%20Tronos%20-%20Temporada%201%20-%202%20COMPLETAS%20%5BDVDrip%5D%5B20%20Cap.%5D%5BEspa%C3%B1ol%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.com%3A6969%2Fannounce"
     },
     {
-      "name": "TorrentsDB+Ytztvio 4K",
+      "name": "TorrentsDB 4K",
       "title": "Game of Thrones S01E01 2160p UHD BluRay x265-SCOTLUHD",
       "infoHash": "e4aae367b822794d37d8cafd5a628db985d65fb4",
       "fileIdx": 0,
@@ -618,26 +616,16 @@
       "sizeBytes": 12605729014,
       "sizeLabel": null,
       "providers": [
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
       ],
       "providerNames": [
-        "TorrentsDB",
-        "Ytztvio"
+        "TorrentsDB"
       ],
       "externalProviders": [
         "EZTV"
       ],
-      "trackers": [
-        "udp://tracker.opentrackr.org:1337/announce",
-        "udp://open.stealth.si:80/announce",
-        "udp://tracker.torrent.eu.org:451/announce",
-        "udp://tracker.dler.org:6969/announce",
-        "https://tracker.moeblog.cn:443/announce",
-        "https://tracker.zhuqiy.com:443/announce",
-        "udp://open.dstud.io:6969/announce"
-      ],
-      "magnetUrl": "magnet:?xt=urn:btih:e4aae367b822794d37d8cafd5a628db985d65fb4&dn=Game.of.Thrones.S01E01.2160p.UHD.BluRay.x265-SCOTLUHD%5Beztvx.to%5D&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://tracker.dler.org:6969/announce&tr=https://tracker.moeblog.cn:443/announce&tr=https://tracker.zhuqiy.com:443/announce&tr=udp://open.dstud.io:6969/announce"
+      "trackers": [],
+      "magnetUrl": "magnet:?xt=urn:btih:e4aae367b822794d37d8cafd5a628db985d65fb4&dn=Game%20of%20Thrones%20S01E01%202160p%20UHD%20BluRay%20x265-SCOTLUHD"
     },
     {
       "name": "TorrentsDB 4K",
@@ -836,26 +824,26 @@
         "udp://open.demonii.com:1337/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
-        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
-        "udp://t.overflow.biz:6969/announce",
-        "udp://tracker.peerfect.org:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
         "http://bt.t-ru.org/ann?magnet",
         "http://bt2.t-ru.org/ann?magnet",
         "http://bt3.t-ru.org/ann?magnet",
         "http://bt4.t-ru.org/ann?magnet"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:65c4655f4fc35a3d1338f60f90c51c01a6b12a4d&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BF%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20of%20Thrones%20%5BS01-08%5D&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Frips.club%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Fbittorrent-tracker.e-n-c-r-y-p-t.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+      "magnetUrl": "magnet:?xt=urn:btih:65c4655f4fc35a3d1338f60f90c51c01a6b12a4d&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BF%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20of%20Thrones%20%5BS01-08%5D&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Frips.club%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Fh4.trakx.nibba.trade%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bitsearch.to%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
     },
     {
       "name": "TorrentsDB 1080p",
@@ -2245,29 +2233,29 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
-        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
-        "udp://t.overflow.biz:6969/announce",
-        "udp://tracker.peerfect.org:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
         "http://bt.t-ru.org/ann?magnet",
         "http://bt2.t-ru.org/ann?magnet",
         "http://bt3.t-ru.org/ann?magnet",
         "http://bt4.t-ru.org/ann?magnet"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:b137ef3090ee66b0af83f4120a08fe509cd6f5ed&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%9F%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20Of%20Thrones%20%5BS01-08%5D%20(2011-2019)%20UHD%20BDRemux%202160p%20%7C%204K%20%7C%20HDR%20%7C%20D&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Fbittorrent-tracker.e-n-c-r-y-p-t.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+      "magnetUrl": "magnet:?xt=urn:btih:b137ef3090ee66b0af83f4120a08fe509cd6f5ed&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%9F%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20Of%20Thrones%20%5BS01-08%5D%20(2011-2019)%20UHD%20BDRemux%202160p%20%7C%204K%20%7C%20HDR%20%7C%20D&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
     },
     {
       "name": "Torrentio+ThePirateBay+ 4K",
@@ -3521,29 +3509,29 @@
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://exodus.desync.com:6969/announce",
-        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
         "udp://explodie.org:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
         "udp://tracker.bittor.pw:1337/announce",
-        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
         "udp://tracker-udp.gbitt.info:80/announce",
-        "http://tracker2.dler.org:80/announce",
-        "http://tracker.dler.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
         "http://tracker.dler.com:6969/announce",
-        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "http://tracker.dler.org:6969/announce",
         "udp://retracker01-msk-virt.corbina.net:80/announce",
-        "http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
-        "udp://t.overflow.biz:6969/announce",
-        "udp://tracker.peerfect.org:6969/announce",
+        "http://tracker.renfei.net:8080/announce",
+        "udp://tracker.farted.net:6969/announce",
         "http://bt.t-ru.org/ann?magnet",
         "http://bt2.t-ru.org/ann?magnet",
         "http://bt3.t-ru.org/ann?magnet",
         "http://bt4.t-ru.org/ann?magnet"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:6cff160786197acf2eabe98fab2d9ca54cd98008&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BF%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20of%20Thrones%20%5BS01-08%5D%20(2011-2019)%20BDRip-AVC%20%D0%BE%D1%82%20DZgas%20%7C%20%D0%9A%D0%9F%D0%9A%20%7C%20LostFilm&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Fbittorrent-tracker.e-n-c-r-y-p-t.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
+      "magnetUrl": "magnet:?xt=urn:btih:6cff160786197acf2eabe98fab2d9ca54cd98008&dn=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BF%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%20%2F%20Game%20of%20Thrones%20%5BS01-08%5D%20(2011-2019)%20BDRip-AVC%20%D0%BE%D1%82%20DZgas%20%7C%20%D0%9A%D0%9F%D0%9A%20%7C%20LostFilm&tr=udp%3A%2F%2Fopentor.net%3A6969&tr=http%3A%2F%2Fretracker.local%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.farted.net%3A6969%2Fannounce&tr=http%3A%2F%2Fbt.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt2.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&tr=http%3A%2F%2Fbt4.t-ru.org%2Fann%3Fmagnet"
     },
     {
       "name": "Torrentio",
