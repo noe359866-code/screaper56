@@ -1,0 +1,99 @@
+name: "Ingesta desde Issue (sin token)"
+
+# La web (☁️ Guardar en el repo, sin token) abre un Issue "[ingest] …" ya
+# relleno con el watchlist. Si lo abre el dueño o un colaborador, este
+# workflow reemplaza watchlist.txt y lanza static.yml con el GITHUB_TOKEN
+# automático (workflow_dispatch sí puede lanzarse con él). No hace falta PAT.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write   # commit de watchlist.txt
+  actions: write    # gh workflow run static.yml
+  issues: write     # responder / cerrar el Issue
+
+concurrency:
+  group: peerflix-issue-ingest
+  cancel-in-progress: false
+
+jobs:
+  bridge:
+    name: "Issue → watchlist.txt → ingesta"
+    # Nunca con Issues de desconocidos: solo dueño, miembros o colaboradores.
+    if: >-
+      startsWith(github.event.issue.title, '[ingest]') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # El cuerpo del Issue se lee desde GITHUB_EVENT_PATH dentro del script:
+      # no se interpola en la shell. Solo pasan líneas IMDb canónicas.
+      - id: plan
+        name: "Leer el Issue"
+        env:
+          COMMENT_PATH: ${{ runner.temp }}/issue-comment.md
+        run: node src/issue-bridge.mjs
+
+      - name: "Commit watchlist.txt"
+        if: steps.plan.outputs.ok == '1'
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add watchlist.txt
+          if git diff --cached --quiet; then
+            echo "watchlist.txt no cambia."
+            exit 0
+          fi
+          git commit -m "chore(watchlist): actualizado desde el Issue #${ISSUE_NUMBER}"
+          for attempt in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "Push rechazado (intento ${attempt}); rebase y reintento…"
+            git pull --rebase
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: "Lanzar la ingesta (static.yml)"
+        if: steps.plan.outputs.ok == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF: ${{ github.event.repository.default_branch }}
+          DRY_RUN: ${{ steps.plan.outputs.dry_run }}
+          PROVIDERS: ${{ steps.plan.outputs.providers }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh workflow run static.yml --repo "$GITHUB_REPOSITORY" --ref "$REF" \
+            -f dry_run="$DRY_RUN" -f providers="$PROVIDERS" -f issue="$ISSUE_NUMBER"
+
+      - name: "Responder en el Issue"
+        if: always() && steps.plan.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OK: ${{ steps.plan.outputs.ok }}
+          JOB_STATUS: ${{ job.status }}
+          COMMENT_PATH: ${{ runner.temp }}/issue-comment.md
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [[ "$ISSUE_NUMBER" =~ ^[0-9]+$ ]] || exit 1
+          if [[ "$OK" != "1" ]]; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$COMMENT_PATH"
+            gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason "not planned"
+          elif [[ "$JOB_STATUS" == "success" ]]; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$COMMENT_PATH"
+          else
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" \
+              --body "❌ No pude actualizar watchlist.txt o lanzar la ingesta. Detalle: ${RUN_URL}"
+          fi
