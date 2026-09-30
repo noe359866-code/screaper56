@@ -56,7 +56,18 @@ el reporte, pero **no se importan resultados adultos aleatorios** en la tabla
 4. Abre Pages y en **Ajustes** guarda owner, repo, PAT, rama, URL Supabase y
    clave pública anon. La clave anon se usa solamente para leer el dashboard;
    el service-role key se queda en el secret de Actions.
-5. En **Ingestar lista** pega o sube el TXT y pulsa **Ingestar en la BD**.
+5. En **Subir TXT / Ingestar** elige tu `.txt` o pega los IDs y pulsa
+   **Ingestar en la BD**. Usa una línea por IMDb ID; puedes dejar el ID solo o
+   añadir el título. Esta carga **reemplaza por completo** `watchlist.txt` (no
+   se añade a los ejemplos) y las líneas duplicadas se consultan una sola vez.
+   También se deduplican episodios que se solapen entre una línea de episodio
+   concreto y una temporada completa.
+
+La carga no borra filas anteriores de `public.torrents`: Supabase conserva los
+resultados previos y el Dashboard seguirá mostrándolos. Cada fila del Dashboard
+es un torrent/hash, no una película única; puede haber varias versiones o
+calidades del mismo título. El mismo `info_hash` se fusiona, pero hashes
+distintos se mantienen como torrents distintos.
 
 La pestaña Ajustes permite activar/desactivar los cinco providers consultables.
 El workflow también admite manualmente:

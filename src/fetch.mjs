@@ -255,7 +255,7 @@ async function fetchJSON(url, { timeout = FETCH_TIMEOUT_MS, retries = 2 } = {}) 
 
 function parseWatchlist(text) {
   const items = [];
-  const seen = new Set();
+  const seen = new Map();
   for (const rawLine of text.split(/\r?\n/)) {
     const line = rawLine.replace(/#.*$/, '').trim();
     if (!line) continue;
@@ -269,11 +269,36 @@ function parseWatchlist(text) {
     const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
               : season !== null ? `${imdbId}:s${season}`
               : imdbId;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    if (seen.has(key)) {
+      const existing = items[seen.get(key)];
+      if (!existing.label && label) existing.label = label;
+      continue;
+    }
+    seen.set(key, items.length);
     items.push({ imdbId, type, season, episode, label, raw: rawLine.trim() });
   }
   return items;
+}
+
+// A season request expands into individual episode requests. Deduplicate after
+// expansion too, so an explicit episode plus a whole-season line is fetched
+// and reported only once (e.g. tt0944947:s1:e1 + tt0944947:s1).
+function dedupeQueries(queries) {
+  const unique = new Map();
+  for (const query of queries) {
+    const imdbId = String(query.imdbId || '').toLowerCase();
+    const key = query.kind === 'movie'
+      ? `movie:${imdbId}`
+      : `series:${imdbId}:s${Number(query.season)}:e${Number(query.episode)}`;
+    const existing = unique.get(key);
+    if (!existing) {
+      unique.set(key, query);
+    } else if ((!existing.label || existing.label === existing.imdbId) && query.label) {
+      // Keep a useful user-supplied/generated label when the first entry has none.
+      unique.set(key, { ...existing, label: query.label });
+    }
+  }
+  return [...unique.values()];
 }
 
 // ---------- TMDB ----------
@@ -324,7 +349,7 @@ async function expandItems(items) {
       });
     }
   }
-  return queries;
+  return dedupeQueries(queries);
 }
 
 // ---------- multi-provider fetch ----------
@@ -639,7 +664,9 @@ if (isCli) main().catch(err => { console.error('💥 Fatal:', err); process.exit
 
 export {
   buildMagnet,
+  dedupeQueries,
   normalizeQuality,
   parseSize,
   parseStremioStream,
+  parseWatchlist,
 };

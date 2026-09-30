@@ -13,7 +13,7 @@
     <p class="muted">Agregador de <b>6 manifests Stremio</b>: consulta Peerflix, TorrentsDB, Torrentio, ThePirateBay+ y Ytztvio por IMDb; registra TPB Adult como catálogo separado porque no ofrece streams movie/series por IMDb. Fusiona por info_hash y hace UPSERT en la tabla <code>torrents</code> de tu Supabase. Tu web existente no necesita cambios.</p>
     <nav>
       <button data-tab="dashboard" class="active">Dashboard</button>
-      <button data-tab="ingest">Ingestar lista</button>
+      <button data-tab="ingest">Subir TXT / Ingestar</button>
       <button data-tab="history">Historial</button>
       <button data-tab="settings">Ajustes</button>
     </nav>
@@ -35,7 +35,7 @@
       <input id="gh-repo" type="text" placeholder="ej: screaper56" />
     </label>
     <label>Rama
-      <input id="gh-branch" type="text" placeholder="arena/01a0effc-screaper56" />
+      <input id="gh-branch" type="text" placeholder="main" />
     </label>
     <label class="full">Personal Access Token
       <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
@@ -70,6 +70,8 @@
     <div class="stat"><div class="num" id="stat-last">—</div><div class="lbl">último updated</div></div>
   </div>
 
+  <p class="muted dashboard-note">Cada fila representa un torrent/hash, no una película única: una misma película o episodio puede tener varias versiones o calidades. Los resultados con el mismo hash se fusionan; hashes distintos son torrents distintos.</p>
+
   <div class="controls">
     <input id="q" type="search" placeholder="Buscar por título o IMDb ID (tt…)…" autocomplete="off" />
     <select id="quality">
@@ -100,17 +102,21 @@
 
 <!-- =============== INGEST =============== -->
 <section id="tab-ingest" class="tab">
-  <h2>Ingestar lista de IMDb IDs</h2>
-  <p class="muted">Pega tu lista (una línea por título) o sube un <code>.txt</code>. Formatos:
-    <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code>, <code>tt0944947:s1 Temporada</code> (requiere TMDB key en secretos).</p>
+  <h2>Sube tu lista de IMDb IDs</h2>
+  <p class="muted">Sí: puedes subir aquí tu propio archivo <code>.txt</code> o pegar la lista. Usa una línea por ID. Al pulsar <b>Ingestar en la BD</b>, tu lista reemplaza por completo el <code>watchlist.txt</code> del repositorio (no se añade a los ejemplos); los IDs duplicados se consultan una sola vez. Los registros antiguos de Supabase no se borran y seguirán apareciendo en el Dashboard.</p>
+  <p class="muted">Formatos: <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code> o <code>tt0944947:s1 Temporada</code> (temporada completa requiere <code>TMDB_API_KEY</code>).</p>
 
-  <div class="row">
-    <input id="upload-file" type="file" accept=".txt,text/plain" />
+  <div class="row upload-row">
+    <label class="file-picker">📄 Elegir archivo TXT
+      <input id="upload-file" type="file" accept=".txt,text/plain" />
+    </label>
+    <span id="upload-name" class="muted">Ningún archivo seleccionado</span>
     <button id="load-current" class="ghost" title="Carga el watchlist.txt actual del repo">Cargar watchlist.txt del repo</button>
     <button id="clear-wl" class="ghost">Limpiar</button>
   </div>
+  <div id="watchlist-preview" class="watchlist-preview muted" aria-live="polite">Aún no has añadido IDs.</div>
 
-  <textarea id="watchlist" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
+  <textarea id="watchlist" aria-label="Lista de IMDb IDs, uno por línea" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
 
   <div class="row">
     <button id="ingest" class="primary">▶ Ingestar en la BD</button>

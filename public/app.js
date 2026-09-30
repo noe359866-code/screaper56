@@ -9,6 +9,7 @@
 
 const LS_KEY = 'peerflix-static.settings.v2';
 const WORKFLOW_ID = 'static.yml'; // file name under .github/workflows/
+const WATCHLIST_LINE_RE = /^(tt\d{7,10})(?::s(\d{1,2})(?::e(\d{1,3}))?)?(?:\s+(.*))?$/i;
 
 const ALL_PROVIDERS = [
   { slug: 'peerflix',   name: 'Peerflix',        adult: false, default: true,  manifestUrl: 'https://peerflix.mov/manifest.json', note: 'Fuente principal' },
@@ -64,7 +65,7 @@ function applySettingsToUI() {
   $('#gh-owner').value = state.settings.ghOwner || '';
   $('#gh-repo').value  = state.settings.ghRepo  || '';
   $('#gh-token').value = state.settings.ghToken || '';
-  $('#gh-branch').value = state.settings.ghBranch || 'arena/01a0effc-screaper56';
+  $('#gh-branch').value = state.settings.ghBranch || 'main';
   $('#sb-url').value   = state.settings.sbUrl   || '';
   $('#sb-anon').value  = state.settings.sbAnon  || '';
   $('#sb-page-size').value = state.settings.pageSize || 50;
@@ -96,6 +97,10 @@ function ghApi(path, opts = {}) {
     return r.status === 204 ? null : r.json();
   });
 }
+function decodeBase64Utf8(value) {
+  const binary = atob(String(value || '').replace(/\s/g, ''));
+  return new TextDecoder('utf-8').decode(Uint8Array.from(binary, char => char.charCodeAt(0)));
+}
 function fmtBytes(b) {
   if (b == null) return '';
   const u = ['B','KB','MB','GB','TB']; let i=0,v=b;
@@ -115,6 +120,40 @@ function seedsClass(n) {
   if (n >= 10) return 'badge good';
   if (n >= 1) return 'badge warn';
   return 'badge bad';
+}
+
+function inspectWatchlist(text) {
+  const seen = new Set();
+  let valid = 0;
+  let duplicates = 0;
+  let invalid = 0;
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.replace(/#.*$/, '').trim();
+    if (!line) continue;
+    const match = line.match(WATCHLIST_LINE_RE);
+    if (!match) { invalid++; continue; }
+    const imdbId = match[1].toLowerCase();
+    const season = match[2] !== undefined ? Number(match[2]) : null;
+    const episode = match[3] !== undefined ? Number(match[3]) : null;
+    const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
+      : season !== null ? `${imdbId}:s${season}`
+      : imdbId;
+    if (seen.has(key)) duplicates++;
+    else { seen.add(key); valid++; }
+  }
+  return { valid, duplicates, invalid };
+}
+
+function updateWatchlistPreview() {
+  const preview = $('#watchlist-preview');
+  const stats = inspectWatchlist($('#watchlist').value);
+  if (!stats.valid && !stats.duplicates && !stats.invalid) {
+    preview.textContent = 'Aún no has añadido IDs.';
+  } else {
+    preview.textContent = `IDs válidos únicos: ${stats.valid} · repetidos exactos (se omiten): ${stats.duplicates} · líneas no reconocidas (se ignoran): ${stats.invalid}`;
+  }
+  preview.classList.toggle('warning', stats.invalid > 0);
+  return stats;
 }
 
 // ---------- tabs ----------
@@ -297,19 +336,36 @@ $('#torrent-list').addEventListener('click', async (e) => {
 });
 
 // ---------- ingest ----------
-$('#clear-wl').addEventListener('click', () => { $('#watchlist').value = ''; });
+$('#watchlist').addEventListener('input', updateWatchlistPreview);
+$('#clear-wl').addEventListener('click', () => {
+  $('#watchlist').value = '';
+  $('#upload-file').value = '';
+  $('#upload-name').textContent = 'Ningún archivo seleccionado';
+  updateWatchlistPreview();
+});
 $('#upload-file').addEventListener('change', async (e) => {
   const f = e.target.files[0]; if (!f) return;
-  const text = await f.text();
-  $('#watchlist').value = text;
+  try {
+    $('#watchlist').value = await f.text();
+    $('#upload-name').textContent = f.name;
+    $('#ingest-status').textContent = `✅ ${f.name} cargado; revisa la lista antes de ingestar.`;
+    updateWatchlistPreview();
+  } catch (err) {
+    $('#ingest-status').textContent = `❌ No se pudo leer el archivo: ${err.message}`;
+  } finally {
+    // Allows choosing the same file again after editing/clearing the text.
+    e.target.value = '';
+  }
 });
 $('#load-current').addEventListener('click', async () => {
   if (!settingsValid(true, false)) { alert('Configura GitHub en Ajustes primero.'); return; }
   $('#ingest-status').textContent = 'Cargando watchlist.txt del repo…';
   try {
     const data = await ghApi(`/repos/${state.settings.ghOwner}/${state.settings.ghRepo}/contents/watchlist.txt`);
-    const content = atob(data.content);
+    const content = decodeBase64Utf8(data.content);
     $('#watchlist').value = content;
+    $('#upload-name').textContent = 'watchlist.txt del repositorio';
+    updateWatchlistPreview();
     $('#ingest-status').textContent = '✅ Watchlist cargado';
   } catch (err) {
     $('#ingest-status').textContent = '❌ ' + err.message;
@@ -319,12 +375,16 @@ $('#load-current').addEventListener('click', async () => {
 $('#ingest').addEventListener('click', runIngest);
 
 async function runIngest() {
+  const text = $('#watchlist').value;
+  const listStats = updateWatchlistPreview();
+  if (!listStats.valid) {
+    $('#ingest-status').textContent = '❌ Añade al menos un IMDb ID válido antes de ingestar.';
+    return;
+  }
   if (!settingsValid(true, false)) {
     alert('Configura GitHub (owner/repo/token) en la pestaña Ajustes primero.');
     return;
   }
-  const text = $('#watchlist').value;
-  if (!text.trim()) { alert('La lista está vacía.'); return; }
   const dryRun = $('#dryrun').checked;
   const btn = $('#ingest');
   btn.disabled = true;
@@ -529,6 +589,7 @@ async function loadHistory() {
 
 // ---------- boot ----------
 applySettingsToUI();
+updateWatchlistPreview();
 initSupabase();
 if (settingsValid(false, true)) refreshDashboard();
 else $('#torrent-list').innerHTML = '<div class="empty">Configura Supabase en la pestaña "Ajustes" para ver el dashboard.</div>';
