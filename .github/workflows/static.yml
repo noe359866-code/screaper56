@@ -1,4 +1,8 @@
 name: "Peerflix Ingest – fetch & upsert"
+run-name: >-
+  ${{ github.event_name == 'schedule' && 'Ingesta programada' ||
+      (inputs.issue != '' && format('Ingesta del Issue #{0}', inputs.issue)) ||
+      'Ingesta manual' }}
 
 on:
   schedule:
@@ -18,10 +22,16 @@ on:
         required: false
         default: "peerflix,torrentsdb,torrentio,piratebay,ytztvio"
         type: string
+      issue:
+        description: "Nº del Issue que pidió la ingesta (lo rellena issue-ingest.yml; vacío = ninguno)"
+        required: false
+        default: ""
+        type: string
 permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write     # responder en el Issue de ingesta (ingesta sin token)
 
 concurrency:
   group: peerflix-static
@@ -31,7 +41,7 @@ jobs:
   ingest:
     name: "Fetch Stremio streams & UPSERT Supabase"
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -41,6 +51,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: "Marca de inicio"
+        run: echo "JOB_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -49,17 +62,35 @@ jobs:
       - name: "Install dependencies"
         run: npm ci
 
+      # Antes de la ingesta: así el report sabe la URL pública del dashboard.
+      - id: pages
+        name: "Setup Pages"
+        uses: actions/configure-pages@v5
+        continue-on-error: true   # la ingesta no depende de Pages
+
       - name: "Run fetch & upsert"
         env:
           FETCH_CONCURRENCY: "4"
           FETCH_TIMEOUT_MS: "20000"
+          # Trackers por magnet (solo los mejores de ngosang/trackerslist)
+          MAX_TRACKERS: "10"
           PEERFLIX_BASE_URL: "https://peerflix.mov"
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+          # Opcionales: sin ellos todo funciona (Cinemeta no necesita API key;
+          # sin Supabase solo se publican los JSON).
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
           PROVIDERS: ${{ github.event.inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
         run: node src/fetch.mjs
+
+      - name: "Resumen de la ejecución"
+        if: always()
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+        run: node src/summary.mjs >> "$GITHUB_STEP_SUMMARY"
 
       - name: "Commit generated public/ back to repo"
         run: |
@@ -68,13 +99,17 @@ jobs:
           git add public/
           if git diff --cached --quiet; then
             echo "No hay cambios en public/."
-          else
-            git commit -m "chore(data): refresh $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            exit 0
           fi
-
-      - name: "Setup Pages"
-        uses: actions/configure-pages@v5
+          git commit -m "chore(data): refresh $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          # Otro commit (p. ej. watchlist.txt desde un Issue) puede haber llegado mientras tanto.
+          for attempt in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "Push rechazado (intento ${attempt}); rebase y reintento…"
+            git pull --rebase
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: "Upload Pages artifact"
         uses: actions/upload-pages-artifact@v3
@@ -84,3 +119,20 @@ jobs:
       - id: deployment
         name: "Deploy to GitHub Pages"
         uses: actions/deploy-pages@v4
+
+      - name: "Responder en el Issue de ingesta"
+        if: always() && inputs.issue != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ inputs.issue }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PAGES_URL: ${{ steps.deployment.outputs.page_url || steps.pages.outputs.base_url }}
+          SUMMARY_PATH: ${{ runner.temp }}/issue-summary.md
+        run: |
+          [[ "$ISSUE_NUMBER" =~ ^[0-9]+$ ]] || { echo "issue no numérico: se ignora"; exit 0; }
+          MAX_ROWS=60 node src/summary.mjs > "$SUMMARY_PATH"
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$SUMMARY_PATH"
+          if [[ "$JOB_STATUS" == "success" ]]; then
+            gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason completed
+          fi

@@ -1,83 +1,191 @@
 # 🎬 Peerflix Ingest
 
-Web estática + GitHub Action para pegar una lista de IDs de IMDb, consultar
-addons Stremio públicos y hacer **UPSERT en la tabla `public.torrents` existente
-de Supabase**. La web que ya consume esa tabla no necesita cambios.
+Web estática + GitHub Action que toman una lista de IDs de IMDb, consultan
+addons Stremio públicos y se quedan con **solo 2 torrents por película o
+episodio**: 🇪🇸 el mejor en español y 🇬🇧 el mejor en inglés, cada uno con los
+mejores trackers. **Funciona sin ningún token ni clave.** Supabase, TMDB y el
+token de GitHub son extras opcionales.
 
-El crawler TypeScript/Playwright anterior y sus fuentes HTML fueron eliminados.
-El único código de consulta es ahora este agregador de endpoints JSON Stremio:
+Addons consultados por IMDb:
 
 - **Peerflix** — https://peerflix.mov/manifest.json
 - **TorrentsDB** — https://torrentsdb.com/manifest.json
 - **Torrentio** — https://torrentio.strem.fun/manifest.json
 - **ThePirateBay+** — https://thepiratebay-plus.strem.fun/manifest.json
 - **Ytztvio** — https://ytztvio.galacticcapsule.workers.dev/manifest.json
-- **TPB Adult** — https://tpb-adult-addon.click/manifest.json (registrado como fuente de catálogo; ver la nota más abajo)
+- **TPB Adult** — https://tpb-adult-addon.click/manifest.json (solo registrado; ver la nota más abajo)
+
+## Tres formas de usarlo, ninguna necesita token
+
+| | Qué hace | Necesita |
+|---|---|---|
+| ⚡ **Procesar aquí** | Tu navegador consulta los addons y Cinemeta directamente (todos permiten CORS) con **el mismo código que la Action** (`public/lib/`). En 1–2 minutos tienes los 2 torrents de cada título, guardados en este navegador. | Nada |
+| ☁️ **Guardar en el repo / BD** | Sin token, la web abre un **Issue ya relleno** (`[ingest] …`). Al enviarlo, `issue-ingest.yml` reemplaza `watchlist.txt` y lanza la Action con el `GITHUB_TOKEN` automático. La Action publica los JSON y el addon Stremio, escribe en Supabase si está configurado y **responde en el Issue** con el resumen. | Ser el dueño o un colaborador del repo (sesión normal de GitHub) |
+| ⏰ **Programado** | La Action corre cada día a las 04:00 UTC con el `watchlist.txt` del repo. | Nada |
+
+Con un token opcional (fine-grained, solo este repo, *Contents* + *Actions* en
+lectura/escritura), ☁️ actualiza `watchlist.txt` y lanza la Action
+directamente, sin pasar por el Issue.
+
+El resto también funciona sin token:
+- **Dashboard**:
+  - 📦 lo publicado (`data/index.json` de la propia web);
+  - 💻 lo procesado en este navegador;
+  - 🗄 Supabase (solo si pones URL + anon key).
+
+  Por cada título muestra su póster y los 2 torrents con su magnet. Se puede filtrar por texto, tipo, calidad o idioma, y exportar a magnets `.txt`, CSV o JSON, o copiar todos los magnets.
+- **Cargar `watchlist.txt` del repo**: lo lee de `raw.githubusercontent.com`.
+- **Historial**: API pública de GitHub (límite de 60 peticiones/hora sin token).
+- **Repo**: se detecta solo, desde `data/index.json` o desde la URL `usuario.github.io/repo`.
 
 ## Flujo
 
 ```text
-web estática
-  └─ PUT watchlist.txt + workflow_dispatch vía GitHub API
-       └─ GitHub Actions: node src/fetch.mjs
-            ├─ consulta /stream/movie|series/...json en los 5 addons IMDb
-            ├─ normaliza Peerflix, Torrentio, TorrentsDB, TPB+ y Ytztvio
-            ├─ fusiona streams repetidos por info_hash
-            ├─ UPSERT public.torrents usando onConflict=info_hash
-            └─ publica JSON del último resultado + GitHub Pages
+watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
+  └─ public/lib/pipeline.js  (mismo código en el navegador y en la Action)
+       ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada
+       ├─ /stream/movie|series/…json en los 5 addons IMDb
+       │    · reintentos con backoff (red, 429, 5xx; respeta Retry-After)
+       │    · si un addon falla 3 veces seguidas para un tipo, se deja de consultar
+       ├─ fusión por info_hash (trackers, addons, idiomas, seeds, tamaño…)
+       ├─ 2 picks por título: 🇪🇸 mejor en español + 🇬🇧 mejor en inglés
+       └─ magnets con los 10 mejores trackers
+  Action (src/fetch.mjs):
+       ├─ public/data/{movies,series}, index.json, report.json
+       ├─ addon Stremio: manifest.json + /stream + catálogo “Mi watchlist”
+       ├─ Supabase (opcional): UPSERT por info_hash
+       ├─ resumen en el job y respuesta en el Issue
+       └─ commit de public/ + GitHub Pages
 ```
 
-Los providers que devuelven el mismo `info_hash` se fusionan en un solo
-registro. Se combinan los trackers y se conservan todos los addons que lo
-publicaron; los seeds, tamaño, título y calidad disponibles se eligen sin
-inventar datos desconocidos.
+## Solo 2 torrents por título: el mejor en español y el mejor en inglés
+
+Los addons devuelven entre 60 y 220 torrents por película: packs de "IMDb Top
+250", versiones en ruso o checo, CAMs, remux de 60 GB… Algunos traen hasta 160
+trackers, muchos muertos. `public/lib/select.js` se queda, por cada película o
+episodio, con **2 torrents distintos**:
+
+| Hueco | Cuenta como candidato |
+|---|---|
+| 🇪🇸 **Español** (castellano o latino, da igual) | Peerflix, o `Castellano`/`Latino`/`Español`/`ESP`/`Dual-Lat`/🇪🇸/🇲🇽 como audio. `Sub Español`, `Spanish Subs` o `VOSE` son subtítulos y **no** cuentan. |
+| 🇬🇧 **Inglés** | `English`/`ENG`/🇬🇧, o un release sin idioma y sin marcas extranjeras (Torrentio y TorrentsDB no ponen bandera al inglés). |
+
+Dentro de cada hueco gana la mayor puntuación:
+
+- **Calidad**: 4K ≈ 1080p > 720p > 480p.
+  - La resolución escrita en el release manda: `RM4K (1080p…)` cuenta como 1080p.
+  - También manda sobre lo que declara el addon: Peerflix marca "4K" releases de `wolfmax4k.com` que son `[Bluray 1080p]`.
+  - Un **4K reescalado** (`4Kreescalado`, `upscaled`) puntúa por debajo de un 1080p.
+- **Salud**: seeders en escala logarítmica, con tope en 100 (a partir de ahí ya
+  va fluido). Con 0 seeders, fuerte penalización.
+- **Contenido equivocado** (fuerte penalización):
+  - **Otra película homónima**: el año del release no cuadra (±1) con el de Cinemeta o, si no se conoce, con el año que repite la mayoría de candidatos. Se ignoran los números que forman parte del título, como `Blade Runner 2049` o `1917`.
+  - **Otro episodio o temporada**: se comprueban `S01E02`, `1x01`, `Cap.101`, `T4`, `Season 1-5`, `Temporada 1`… primero en el nombre del archivo y después en el título.
+- **Otras penalizaciones**:
+  - CAM/TS/screener;
+  - packs y colecciones, o títulos que no tienen nada que ver (`IMDb Top 250`, `0peliculas series`…);
+  - 3D;
+  - subtítulos incrustados (HC);
+  - archivos de más de 25 GB, y más aún si pasan de 40 GB.
+- **Idioma**:
+  - En español, un release en español (solo o dual con inglés) gana a un remux multi-idioma con pista española, y ambos a una 🇪🇸 perdida entre muchas banderas (suelen ser subtítulos).
+  - En inglés, la versión original gana a los releases mezclados (MULTi, ITA-ENG, dual español-inglés…).
+
+El pick en inglés nunca repite el torrent elegido en español. Si no hay
+candidato para un idioma, ese hueco queda vacío: no se rellena con otro idioma
+(el reporte lo marca como `missing`). En series no se penalizan los packs de
+temporada porque `fileIdx` apunta al episodio.
+
+Cada pick lleva además su **ficha técnica**, sacada del nombre:
+- origen (BluRay, WEB-DL, REMUX…);
+- códec (HEVC, AVC, AV1);
+- HDR (DV, HDR10, HDR10+);
+- audio (Atmos, TrueHD, DTS-HD, DD+, AC3…) y canales.
+
+**Trackers**: cada magnet (y `sources` en el addon Stremio) lleva solo los
+mejores trackers públicos de
+[ngosang/trackerslist](https://github.com/ngosang/trackerslist) (`trackers_best.txt`).
+Van primero los que el torrent ya anunciaba y luego el resto de la lista, hasta
+`MAX_TRACKERS` (10 por defecto). Se descarga la lista del día; si falla, se usa
+la copia integrada.
+
+## Metadatos sin API key: Cinemeta
+
+`https://v3-cinemeta.strem.io/meta/{movie|series}/{imdbId}.json` es el addon
+oficial de metadatos de Stremio y no necesita clave. Se usa para:
+
+- **Expandir temporadas completas** (`tt0944947:s1`): da todos los episodios ya
+  emitidos. Antes esto exigía `TMDB_API_KEY`, que ahora solo es un respaldo opcional.
+- **Nombrar los episodios**: `Juego de Tronos S01E02 – The Kingsroad`.
+- **Avisar de etiquetas equivocadas en el watchlist**, por ejemplo:
+  > `tt0253474: la etiqueta “El Padrino. Parte II (1974)” no cuadra: en IMDb es “The Pianist (2003)”`
+- **Avisar si un ID es una serie** escrita como película, o al revés.
+- **Mejorar la selección**: con el título original de IMDb (mejor detección de packs y títulos ajenos) y con el año (películas homónimas).
+
+Si Cinemeta no responde (3 fallos seguidos), se sigue sin metadatos. `CINEMETA=0`
+lo desactiva.
+
+## Addon Stremio personal
+
+Instala `https://<usuario>.github.io/<repo>/manifest.json` en Stremio y verás:
+
+- el **catálogo “Mi watchlist · ES + EN”** (películas y series, con pósters);
+- en cada título de tu watchlist, **solo 2 streams**: `🇪🇸 Español 1080p` y
+  `🇬🇧 Inglés 4K`, con su ficha técnica, seeders y tamaño.
+
+Además, `behaviorHints.bingeGroup` hace que el siguiente episodio siga en el mismo idioma.
 
 ## TPB Adult: por qué aparece como “manifest-only”
 
 `tpb-adult-addon.click/manifest.json` no declara streams `movie`/`series` con
 IDs IMDb. Declara catálogos de tipo `Porn`, con búsquedas que devuelven IDs
-internos `jstrm:*`; una consulta `stream/Porn/tt...` no es una correspondencia
-válida con una lista IMDb y puede devolver contenido no relacionado. Por eso
-la URL queda registrada en `src/providers.mjs`, en `public/manifest.json` y en
-el reporte, pero **no se importan resultados adultos aleatorios** en la tabla
-`movie/series`. Los otros cinco addons sí se consultan por cada IMDb ID.
+internos `jstrm:*`. Una consulta `stream/Porn/tt...` no es una correspondencia
+válida con una lista IMDb y puede devolver contenido no relacionado. Por eso la
+URL queda registrada en `public/lib/providers.js`, en `public/manifest.json` y
+en el reporte, pero **no se importan resultados adultos aleatorios**. Los otros
+cinco addons sí se consultan por cada IMDb ID.
 
 ## Puesta en marcha
 
-1. En Settings → Pages selecciona **Source: GitHub Actions**.
-2. En Settings → Secrets → Actions añade:
-   - `SUPABASE_URL`
-   - `SUPABASE_SERVICE_ROLE_KEY` (solo Action, nunca en la web)
-   - `TMDB_API_KEY` opcional, para expandir `tt…:sN` a todos los episodios.
-3. Crea un PAT de GitHub limitado a este repo con:
-   - Contents: Read & write
-   - Actions: Read & write
-   - Metadata: Read
-4. Abre Pages y en **Ajustes** guarda owner, repo, PAT, rama, URL Supabase y
-   clave pública anon. La clave anon se usa solamente para leer el dashboard;
-   el service-role key se queda en el secret de Actions.
-5. En **Subir TXT / Ingestar** elige tu `.txt` o pega los IDs y pulsa
-   **Ingestar en la BD**. Usa una línea por IMDb ID; puedes dejar el ID solo o
-   añadir el título. Esta carga **reemplaza por completo** `watchlist.txt` (no
-   se añade a los ejemplos) y las líneas duplicadas se consultan una sola vez.
-   También se deduplican episodios que se solapen entre una línea de episodio
-   concreto y una temporada completa.
+1. **Settings → Pages → Source: GitHub Actions.** Es imprescindible: hoy el repo
+   tiene configurado el modo antiguo (“Deploy from a branch” sobre `/docs`, que
+   no existe) y cada push lanza un “pages build and deployment” que falla.
+2. Haz merge de esta rama en `main`. Los workflows de Issues solo se disparan
+   desde la rama por defecto.
+3. Opcional, en **Settings → Secrets → Actions**:
+   - `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY`, para escribir en la tabla
+     `torrents`. El service-role key nunca va a la web.
+   - `TMDB_API_KEY`: respaldo para expandir temporadas si Cinemeta falla.
 
-La carga no borra filas anteriores de `public.torrents`: Supabase conserva los
-resultados previos y el Dashboard seguirá mostrándolos. Cada fila del Dashboard
-es un torrent/hash, no una película única; puede haber varias versiones o
-calidades del mismo título. El mismo `info_hash` se fusiona, pero hashes
-distintos se mantienen como torrents distintos.
+Ya está: abre `https://<usuario>.github.io/<repo>/`. En **Ajustes** todo es
+opcional (repo autodetectado, token, Supabase, proveedores, Cinemeta y
+concurrencia).
 
-La pestaña Ajustes permite activar/desactivar los cinco providers consultables.
-El workflow también admite manualmente:
+### Supabase (opcional)
 
-```text
-PROVIDERS=peerflix,torrentsdb,torrentio,piratebay,ytztvio
+La última ejecución falló con `42P10`: la tabla no tiene una restricción UNIQUE
+en `info_hash`, así que `ON CONFLICT` es imposible. Ahora la Action lo detecta y
+cambia sola a **select + insert de los nuevos + update de los existentes**. Aun
+así conviene añadir la restricción para volver al UPSERT nativo:
+
+```sql
+ALTER TABLE public.torrents ADD CONSTRAINT torrents_info_hash_key UNIQUE (info_hash);
 ```
 
-La UI envía ese valor como input `providers`. El default incluye los cinco.
-El input `dry_run=1` consulta y genera reportes, pero no escribe en Supabase.
+Si la tabla no tiene las columnas `codec`, `hdr_format` o `channels` (o rechaza
+sus valores), se reintenta sin ellas. La carga no borra filas anteriores: el
+origen 🗄 Supabase del Dashboard muestra también las de ingestas antiguas.
+
+### Seguridad del modo Issue
+
+- Solo actúa si el título empieza por `[ingest]` y el autor es `OWNER`, `MEMBER` o
+  `COLLABORATOR`. Los Issues de desconocidos se ignoran.
+- El cuerpo del Issue se lee desde `GITHUB_EVENT_PATH` en `src/issue-bridge.mjs`
+  y nunca se interpola en la shell.
+- Solo pasan líneas IMDb canónicas: `tt1234567[:sN[:eN]] etiqueta`, con la etiqueta
+  sin backticks ni caracteres de control y de 200 caracteres como máximo.
+- `dry_run` solo acepta 0/1, `providers` solo slugs conocidos y el número de Issue
+  se valida como numérico.
 
 ## Formato de `watchlist.txt`
 
@@ -85,11 +193,33 @@ El input `dry_run=1` consulta y genera reportes, pero no escribe en Supabase.
 tt0111161 Cadena perpetua (1994)
 tt1375666 Inception (2010)
 tt0944947:s1:e1 Juego de Tronos S01E01
-tt0944947:s1 Juego de Tronos – Temporada 1 completa  # requiere TMDB_API_KEY
+tt0944947:s1 Juego de Tronos – Temporada 1 completa   # sin API key (Cinemeta)
 ```
 
-Se acepta un comentario después de `#`, el texto tras el ID es opcional y las
-líneas de episodio concreto funcionan sin TMDB.
+Se acepta un comentario después de `#` y el texto tras el ID es opcional. Las
+líneas repetidas, y los episodios que se solapan con una temporada completa, se
+consultan una sola vez. Cargar una lista desde la web **reemplaza por completo**
+`watchlist.txt`.
+
+## Variables
+
+| Variable | Default | Uso |
+|---|---|---|
+| `PROVIDERS` | los 5 consultables | Addons a consultar (slugs separados por comas) |
+| `DRY_RUN` | `0` | `1` = no escribe en Supabase |
+| `CINEMETA` | `1` | `0` = sin metadatos |
+| `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
+| `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
+| `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
+| `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas / timeout |
+| `BREAKER_THRESHOLD` | `3` | Errores seguidos de un addon antes de dejar de consultarlo |
+| `REPROCESS` | `0` | `1` = vuelve a elegir sobre `public/data` ya publicado, sin red |
+| `FIXTURE_MODE` | `0` | `1` = respuestas falsas, sin red (sobrescribe `public/`) |
+
+`report.json` e `index.json` incluyen:
+- por título: `candidateCount`, `streamCount` (máx. 2), `picks` (con magnet y ficha), `missing`, `warnings` y `errors`;
+- a nivel global: `totalCandidates`, `totalStreams`, `picks`, `warnings`, `perProviderStats` (respuestas, errores, omitidas, streams y latencia media), `meta` (Cinemeta), `db` (modo usado) y `repository`.
 
 ## Mapeo a `public.torrents`
 
@@ -102,44 +232,51 @@ líneas de episodio concreto funcionan sin TMDB.
 | `season`, `episode` | partes `:sN:eN` |
 | `file_index` | `fileIdx` |
 | `quality` | `4K`, `1080p`, `720p` o `480p` cuando aparece |
-| `audio` | `language` y banderas/texto normalizados a ISO 639-1 |
+| `codec`, `hdr_format`, `channels` | ficha técnica del release (si la tabla tiene esas columnas) |
+| `audio` | `language` y banderas/texto normalizados a ISO 639-1; el idioma del pick va primero |
 | `subtitles` | tags `[ES-EN]`/`[Subs]` cuando aparecen |
 | `size_bytes` | `sizebytes` o footer `💾` |
 | `seeders` | `seed` o footer `👤`; si no aparece, queda desconocido |
 | `release_group` | provider secundario que el addon muestra en el footer |
 | `source_tracker` | slugs de addons que publicaron el hash |
-| `magnet` en los JSON | se conserva cuando el addon (incluido Ytztvio) lo entrega; sus trackers se reutilizan |
 
-No se envían columnas fuera del esquema existente. El magnet se construye para
-la UI y los JSON Stremio con el hash y los trackers disponibles; no se escribe
-una columna `magnet_url` porque la tabla existente no la necesita. El UPSERT
-agrupa registros por conjunto de columnas y usa `defaultToNull: false`, por lo
-que metadata desconocida no borra valores más ricos ya presentes.
+El magnet (con los mejores trackers) se construye para la web y el addon
+Stremio. No se escribe una columna `magnet_url`. Los registros se agrupan por
+conjunto de columnas y se usa `defaultToNull: false`, por lo que la metadata
+desconocida no borra valores más ricos ya presentes.
 
 ## Estructura
 
 | Ruta | Función |
 |---|---|
-| `src/providers.mjs` | Registro de las seis URLs de manifest y cinco providers consultables |
-| `src/fetch.mjs` | Fetch JSON Stremio, normalización, merge, JSONs y reporte |
-| `src/db.mjs` | Sanitización y UPSERT Supabase sobre `info_hash` |
-| `public/index.html` / `public/app.js` / `public/styles.css` | Consola estática en español |
-| `public/data/report.json` | Último reporte, providers, errores y estadísticas |
-| `public/data/{movies,series}` | Streams agregados por título |
-| `public/manifest.json` / `public/stream` | Addon Stremio personal del watchlist |
-| `.github/workflows/static.yml` | Ejecución diaria y manual desde la consola |
+| `public/lib/providers.js` | Registro de addons (compartido web/Action) |
+| `public/lib/parse.js` | Watchlist, normalización de streams, idiomas, calidad, ficha técnica, fusión |
+| `public/lib/select.js` | Elige el mejor en español y en inglés; año/episodio; trackers |
+| `public/lib/meta.js` | Cinemeta: metadatos y episodios sin API key |
+| `public/lib/pipeline.js` | HTTP con reintentos, cortocircuito por addon, orquestación, streams publicables |
+| `public/lib/issue.js` | Construye e interpreta el Issue de ingesta |
+| `public/lib/format.js` | CSV, lista de magnets y resumen Markdown |
+| `src/fetch.mjs` | CLI de la Action: escribe `public/`, addon Stremio y Supabase |
+| `src/db.mjs` | Sanitización y UPSERT Supabase (con alternativa si falta UNIQUE) |
+| `src/issue-bridge.mjs` | Issue → `watchlist.txt` (modo sin token) |
+| `src/summary.mjs` | Resumen para el job y para responder en el Issue |
+| `public/index.html` / `public/app.js` / `public/styles.css` | Web estática en español (módulo ES, sin build) |
+| `public/data/…` | Último reporte y los 2 picks por título |
+| `public/manifest.json` / `public/stream` / `public/catalog` | Addon Stremio personal |
+| `.github/workflows/static.yml` | Ingesta diaria, manual o pedida por Issue; responde en el Issue |
+| `.github/workflows/issue-ingest.yml` | Puente Issue → `watchlist.txt` → ingesta |
 
 ## Comandos locales
 
 ```bash
 npm install
 npm test
-npm run dev
-FIXTURE_MODE=1 DRY_RUN=1 node src/fetch.mjs
-SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... node src/fetch.mjs
+npm run dev                  # http://localhost:4173 (⚡ Procesar aquí funciona desde el navegador)
+npm run fetch                # ingesta real (Supabase solo si hay credenciales)
+npm run reprocess            # re-elige sobre public/data sin red (tras cambiar criterios)
+FIXTURE_MODE=1 DRY_RUN=1 node src/fetch.mjs   # sin red; ¡sobrescribe public/ con datos falsos!
 ```
 
-`FIXTURE_MODE=1` no llama a Internet y sirve para validar la UI y el flujo de
-merge. La Action real usa concurrencia baja, reintentos con backoff y solo
-consume JSON público de los addons; no scrapea HTML ni arranca crawlers
-adicionales.
+La web entiende también los `public/data` del formato antiguo (todos los
+streams, sin picks): calcula los 2 picks en el navegador hasta que la Action
+vuelva a publicar.
