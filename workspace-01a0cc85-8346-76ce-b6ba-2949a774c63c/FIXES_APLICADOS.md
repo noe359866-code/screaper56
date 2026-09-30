@@ -1322,3 +1322,59 @@ Verificación en vivo de la cadena completa, día de la ronda:
   `English` → conserva ambos tracks (los 3 escenarios en rojo antes).
 - `crawler-audit.test.js`: mock del probe de portada ahora sirve un
   listing con fila `/torrent/` (necesario bajo el validator estricto).
+
+## Profundización: 1337x — ronda 4 (2026-09-30)
+
+Verificación en vivo de la cadena completa (solo 1337x):
+
+- **`1337x.la` 🟢 end-to-end**: `/sort-search/spanish/seeders/desc/1/`
+  (20 filas reales + paginador `>>` → `/desc/2/` misma ruta),
+  `/sort-search/dual%20audio/…` 🟢, `/popular-tv` 🟢, fichas de detalle
+  con la anatomía conocida (magnet con trackers, `Language` del sitio,
+  infohash impreso, «Torrent Download» = `#` + torrage/btcache).
+- **Exclusión XXX verificada en vivo**: la ficha de «Spanish Senoritas…
+  XXX» publica `Category: XXX` → `EXCLUDED_CATEGORY` la descarta antes de
+  cualquier otro análisis ✓ (no entró nada al índice).
+- **Pool (7 dominios)**: todos los mirrors canónicos sirven hoy una landing
+  de búsqueda o hub de dominios en `/` — sin markers —, así que **probe1
+  rechaza siempre y probe2 (`/popular-movies`) decide**: `1337xx.to`,
+  `1337x.st` (clásica con tamaño pegado `1.9 GB2376`), `x1337x.ws`,
+  `1337xxx.to` y `1337x.to` responden. **`1337x.to` se RECUPERÓ** del
+  «Bad category.» del 28: sus popular routes sirven listado real hoy.
+  `1337xto.to` — anunciado en los hubs como «newest alternative domain» —
+  sigue 404 (Apache) → la poda se mantiene. `1377x.to` sigue inalcanzable.
+  El anuncio del header de `.la` («1337x» → `www.13377x.com`) es una
+  landing SEO sin tabla ni `/torrent/` → el probe la rechaza, no entra.
+- **Paginación**: el paginador publicado de `dual audio`/`spanish` apunta
+  a `/sort-search/<término>/seeders/desc/<N>/` (misma ruta → gana sobre el
+  guess, como ya cubre el test del pager).
+
+### Fix — el badge ⭐ final no ensucia el título
+
+- **Fallo en vivo (2 instancias)**: filas y h1 imprimen
+  `Money.Heist.S04.COMPLETE.SPANISH.720p.NF.WEBRip.x264-GalaxyTV ⭐`
+  (el `dn=` del magnet lo arrastra), mientras el slug de la URL
+  (`…-x264-GalaxyTV/`) y la lista de archivos del propio torrent imprimen
+  el nombre sin estrella; segunda instancia `…Dual.YG⭐` con slug `…-YG/`.
+  Es un badge decorativo de 1337x, no parte del release: guardarlo ensuciaba
+  `title` y rompía el cruce de títulos con otras fuentes. Al final del
+  nombre también interfería con la detección de truncado (`...⭐` no
+  terminaba en `...`).
+- **Fix**: `stripDecoration()` quita `⭐`/`🌟` finales y se aplica en tres
+  puntos: título de fila (antes de `isBlockedTitle` y de la lógica de
+  truncado), heading de la ficha y el título final (cubre el fallback por
+  `displayName` del magnet).
+
+### Doc de pool (sin cambios de composición)
+
+- JSDoc de `DEFAULT_MIRRORS` y comentario del test de pool actualizados con
+  el estado del 2026-09-30 (recuperación de `.to`, 404 de `1337xto.to`,
+  comportamiento probe1-hub/probe2-decide).
+
+### Tests nuevos (suite 489/489, tsc limpio)
+
+- `existing-crawlers.test.js`: fila con `⭐` → `title` sin estrella; fila
+  truncada (`…GalaxyTV ...`) + h1 con estrella → resuelve al nombre completo
+  sin estrella (estaba en rojo: ambos conservaban `⭐`).
+- Test de pool re-titulado con la fecha de verificación de hoy; asserts de
+  membresía sin cambios.

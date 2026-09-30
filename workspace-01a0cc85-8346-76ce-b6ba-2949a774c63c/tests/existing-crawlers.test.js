@@ -1126,7 +1126,11 @@ test('1337x: the classic template of 1337x.st / x1337x.ws concatenates size and 
   }
 });
 
-test('1337x: the live pool keeps the five domains that served real listings on 2026-09-28', () => {
+test('1337x: the live pool keeps the domains verified through 2026-09-30', () => {
+  // Live 2026-09-30:1337x.la end to end;1337xx.to,1337x.st and
+  // 1337x.to answer /popular-movies with real listings (1337x.to recovered
+  // from "Bad category."); x1337x.ws and1337xxx.to still serve their
+  // landing pages; 1337xto.to (the hubs' "newest alternative") is 404.
   assert.equal(Leech1337xCrawler.DEFAULT_MIRRORS[0], 'https://1337x.la');
   for (const verified of ['1337xx.to', '1337x.st', 'x1337x.ws', '1337xxx.to', '1337x.to', '1377x.to']) {
     assert.ok(
@@ -1207,6 +1211,56 @@ test('1337x: a foreign Language field with a plain title invents no English audi
 
     const dual = await crawlWith('Sample 2026 1080p WEB-DL DUAL', 'English');
     assert.ok(dual.audio.includes('English') && dual.audio.includes('Spanish'), 'DUAL keeps both tracks when field evidence exists');
+  } finally {
+    if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
+    else process.env.LEECH1337X_BASE_URL = previousBase;
+    clearMirrorCache('leech1337x');
+  }
+});
+
+test('1337x: the trailing star badge is decoration, not part of the release name', async () => {
+  const previousBase = process.env.LEECH1337X_BASE_URL;
+  const mirror = 'https://leet-star.test';
+  process.env.LEECH1337X_BASE_URL = mirror;
+  clearMirrorCache('leech1337x');
+  try {
+    // Live 2026-09-30: rows of /sort-search/spanish/... print
+    // "Money.Heist.S04...-GalaxyTV ⭐" and the ficha h1 repeats the star (the
+    // magnet dn carries it too), while the URL slug and the file list print
+    // the bare name — the star is a 1337x display badge, not release content
+    // (second sighting: "Avatar.The.Way.Of.Water...YG⭐" with slug ...-YG/).
+    const bare = 'Money.Heist.S04.COMPLETE.SPANISH.720p.NF.WEBRip.x264-GalaxyTV';
+    const detail = `<div class="box-info-heading"><h1>${bare} ⭐</h1></div>
+      <div class="torrent-category-detail"><ul>
+      <li><strong>Category:</strong> <span>TV</span></li>
+      <li><strong>Language:</strong> <span>Spanish</span></li>
+      <li><strong>Seeders:</strong> <span>454</span></li>
+      <li><strong>Leechers:</strong> <span>296</span></li>
+      </ul></div>
+      <a href="magnet:?xt=urn:btih:${HASH}&dn=${encodeURIComponent(`${bare} ⭐`)}">Magnet Download</a>`;
+    const row = title => `<table class="table-list"><tbody>
+      <tr><td class="coll-1 name"><a href="/torrent/4389694/Money-Heist-S04-COMPLETE-SPANISH-720p-NF-WEBRip-x264-GalaxyTV/">${title}</a></td>
+      <td class="coll-2 seeds">454</td><td class="coll-3 leeches">296</td>
+      <td class="coll-date">Apr. 04th '20</td>
+      <td class="coll-4 size mob-up-size">2.4 GB</td>
+      <td class="coll-5"><a href="/user/m/">m</a></td></tr></tbody></table>`;
+
+    const crawlWithRowTitle = async rowTitle => {
+      const crawler = new Leech1337xCrawler();
+      mockHttp(crawler, url => {
+        if (url === `${mirror}/` || url.includes('sort-search/spanish')) return row(rowTitle);
+        if (url.includes('/torrent/')) return detail;
+        return '<table class="table-list"><tbody></tbody></table>';
+      });
+      const records = await crawler.crawl(1);
+      return records[0];
+    };
+
+    const starred = await crawlWithRowTitle(`${bare} ⭐`);
+    assert.equal(starred.title, bare, 'the trailing star is stripped from the row title');
+
+    const truncated = await crawlWithRowTitle(`${bare.slice(0, 40)}...`);
+    assert.equal(truncated.title, bare, 'a truncated row still resolves to the starless full heading');
   } finally {
     if (previousBase === undefined) delete process.env.LEECH1337X_BASE_URL;
     else process.env.LEECH1337X_BASE_URL = previousBase;

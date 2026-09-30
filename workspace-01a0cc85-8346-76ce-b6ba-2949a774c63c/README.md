@@ -90,7 +90,7 @@ Con esa base se corrigieron, fuente por fuente:
 | `magnetdl` | El paginador solo reconocía «next»/números exactos: ahora sigue `rel=next`, flechas y la ruta numerada; la ficha `/single/:id` aporta el `.torrent` del propio sitio. |
 | `limetorrents` | Los catálogos dejaron de pedir `/browse-torrents/.../2/` a ciegas y la ficha aporta IMDb y `.torrent`. |
 | `thepiratebay` | La fase HTML deduce el tipo de la categoría de la fila (serie/anime/documental) y enriquece cada registro con la ficha. |
-| `leech1337x` | El paginador publicado sustituye al número adivinado y se guarda el `.torrent` de la ficha cuando existe; el probe exige ambos markers de listing (tabla + filas `/torrent/`) y un campo `Language` no inglés/español ya no inventa audio inglés. |
+| `leech1337x` | El paginador publicado sustituye al número adivinado y se guarda el `.torrent` de la ficha cuando existe; el probe exige ambos markers de listing (tabla + filas `/torrent/`), un campo `Language` no inglés/español ya no inventa audio inglés y el badge ⭐ final no ensucia el título. |
 | `nyaa` | Descarta audio, literatura, software e imágenes. |
 | `torrentgalaxy` | Seeders/leechers por clase (`[class*="seed"]`) y `torrent_file_url` solo con hash coincidente. |
 | `eztv` | El IMDb se lee de la fila, nunca de la página entera. |
