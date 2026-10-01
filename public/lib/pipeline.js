@@ -476,7 +476,7 @@ export function buildItem(query, providerResults, errors = [], { bestTrackers = 
     warnings: query.warnings || [],
     errors: errors.map(({ provider, error }) => ({ provider, error })),
   };
-  return { item, streams, errors };
+  return { item, streams, candidates: merged, errors };
 }
 
 /**

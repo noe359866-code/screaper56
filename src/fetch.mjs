@@ -406,7 +406,7 @@ async function main() {
 
   // 4. Ficheros por título: data/ (web) + stream/ (addon Stremio).
   const dbCandidates = [];
-  for (const { item, streams } of pipeline.results) {
+  for (const { item, streams, candidates = [] } of pipeline.results) {
     index.items.push(item);
     if (item.type === 'movie') {
       index.movies++;
@@ -417,7 +417,9 @@ async function main() {
       await writeJSON(join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`), { ...item, streams });
       await writeJSON(join(STREAM_SERIES, `${item.imdbId}:${item.season}:${item.episode}.json`), { streams });
     }
-    for (const stream of streams) dbCandidates.push({ item, stream });
+    // Publicamos solo los picks, pero persistimos TODOS los candidatos válidos para
+    // poder re-ranquear en el futuro sin volver a consultar los proveedores.
+    for (const stream of candidates) dbCandidates.push({ item, stream });
   }
 
   // 5. Supabase (opcional).

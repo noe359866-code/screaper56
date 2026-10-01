@@ -93,6 +93,8 @@ test('runPipeline: 2 picks por título, estadísticas por addon y corte tras err
   assert.deepEqual(seen, [1, 2, 3, 4, 5, 6]);
   for (const { item, streams } of result.results) {
     assert.equal(streams.length, 2);
+    assert.ok(result.results.find(r => r.item === item));
+    assert.ok(result.results.find(r => r.item === item).candidates.length >= streams.length);
     assert.deepEqual(streams.map(s => s.pick), ['es', 'en']);
     assert.equal(item.picks.length, 2);
     assert.ok(item.picks[0].magnetUrl.startsWith('magnet:?xt=urn:btih:'));
