@@ -81,8 +81,8 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
-          PROVIDERS: ${{ github.event.inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
+          DRY_RUN: ${{ inputs.dry_run || '0' }}
+          PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
         run: node src/fetch.mjs
 
       - name: "Resumen de la ejecución"
