@@ -1,6 +1,28 @@
 # Peerflix Static – Watchlist
-# Actualizado desde el Issue #20 de @noe359866-code el 2026-10-01 (ingesta sin token).
-# Formatos: tt1234567 · tt1234567:s1:e1 · tt1234567:s1 (temporada completa, sin API key)
+# -----------------------------------------------------------
+# Una línea por título. La Action consultará peerflix.mov por cada una
+# y publicará los streams en public/data/.
+#
+# Formatos soportados:
+#   tt1234567          -> película (IMDb)
+#   tt1234567:s3:e4    -> episodio concreto (serie, temporada 3, ep. 4)
+#   tt1234567:s3       -> todos los episodios conocidos de la temporada 3
+#                         (necesita TMDB_API_KEY para expandir; si no hay clave,
+#                          se ignora la línea con aviso)
+#
+# Líneas que empiezan por '#' son comentarios. Se ignoran líneas vacías.
+# Puedes añadir un nombre humano tras un espacio para que la web lo muestre:
+#   tt0111161 Cadena perpetua (1994)
+#   tt1375666 Inception (2010)
+#   tt0944947:s1:e1 Game of Thrones S01E01
+#
+# Si defines TMDB_API_KEY en secrets (opcional), el script puede expandir
+# temporadas automáticamente y enriquecer metadatos (título, año, póster).
+# Si no, usa el nombre que pongas en esta misma línea.
+# -----------------------------------------------------------
 
 tt6933238
 tt22526100
+tt26657236
+tt29355505
+tt11561116
