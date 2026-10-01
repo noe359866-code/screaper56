@@ -1,0 +1,35 @@
+{
+  "id": "tt31154571",
+  "imdbId": "tt31154571",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "tt31154571",
+  "name": null,
+  "year": null,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt31154571.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt31154571.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt31154571.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt31154571.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
