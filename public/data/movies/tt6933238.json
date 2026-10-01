@@ -14,87 +14,90 @@
     "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt6933238.json"
   },
   "streamCount": 2,
-  "candidateCount": 112,
+  "candidateCount": 113,
   "picks": [
     {
       "pick": "es",
-      "name": "🇪🇸 Español 4K",
-      "title": "Unabomber (2026) [4k 2160p][Esp]",
-      "quality": "4K",
-      "seeders": 83,
-      "sizeBytes": 11617886536,
-      "sizeLabel": "10.8 GB",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Unabomber Castellano-Ingles-Subt-Castellano-Forz-Comp H264 E-AC3 5.1 BDRip HD 1080p",
+      "quality": "1080p",
+      "seeders": 34,
+      "sizeBytes": 2469606195,
+      "sizeLabel": "2.3 GB",
       "audioLangs": [
         "es",
         "en"
       ],
       "release": {
-        "source": null,
-        "codec": null,
-        "hdr": [],
-        "audio": [],
-        "channels": null
-      },
-      "providers": [
-        "peerflix",
-        "torrentio"
-      ],
-      "providerNames": [
-        "Peerflix",
-        "Torrentio"
-      ],
-      "infoHash": "77fc1e27a48e62f155a6180581279a120c156e12",
-      "fileIdx": 0,
-      "score": 16.14,
-      "magnetUrl": "magnet:?xt=urn:btih:77fc1e27a48e62f155a6180581279a120c156e12&dn=Unabomber%20(2026)%20%5B4k%202160p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
-    },
-    {
-      "pick": "en",
-      "name": "🇬🇧 Inglés 4K",
-      "title": "Unabomber (2026) [2160p] [WEBRip] [x265] [10bit] [5.1]",
-      "quality": "4K",
-      "seeders": 322,
-      "sizeBytes": 4799625953,
-      "sizeLabel": "4.5 GB",
-      "audioLangs": [
-        "en"
-      ],
-      "release": {
-        "source": "WEBRip",
-        "codec": "HEVC",
+        "source": "BluRay",
+        "codec": "AVC",
         "hdr": [],
         "audio": [
-          "AAC"
+          "DD+"
         ],
         "channels": "5.1"
       },
       "providers": [
-        "torrentsdb",
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "d1ec31173215024842af8b73bf18c8c7a0e2ec5d",
+      "fileIdx": 0,
+      "score": 22.17,
+      "magnetUrl": "magnet:?xt=urn:btih:d1ec31173215024842af8b73bf18c8c7a0e2ec5d&dn=Unabomber%20Castellano-Ingles-Subt-Castellano-Forz-Comp%20H264%20E-AC3%205.1%20BDRip%20HD%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Унабомбер / Unabomber [2026 WEB-DL 2160p HDR10 Dolby Vision] Dub (Movie Dubbing) + Dub (Ukr) + Original Eng + Sub (Rus Eng Ukr)",
+      "quality": "4K",
+      "seeders": 158,
+      "sizeBytes": 11714523300,
+      "sizeLabel": "10.9 GB",
+      "audioLangs": [
+        "en",
+        "ru",
+        "uk"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
         "torrentio"
       ],
       "providerNames": [
-        "TorrentsDB",
         "Torrentio"
       ],
-      "infoHash": "82e10006c4ac150c38f485edaa9a21aa7a48aac8",
+      "infoHash": "fb0cdf43dcf81e997c862afa8175031398aa1d31",
       "fileIdx": 0,
-      "score": 8.26,
-      "magnetUrl": "magnet:?xt=urn:btih:82e10006c4ac150c38f485edaa9a21aa7a48aac8&dn=Unabomber%20(2026)%20%5B2160p%5D%20%5BWEBRip%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+      "score": 14.51,
+      "magnetUrl": "magnet:?xt=urn:btih:fb0cdf43dcf81e997c862afa8175031398aa1d31&dn=%D0%A3%D0%BD%D0%B0%D0%B1%D0%BE%D0%BC%D0%B1%D0%B5%D1%80%20%2F%20Unabomber%20%5B2026%20WEB-DL%202160p%20HDR10%20Dolby%20Vision%5D%20Dub%20(Movie%20Dubbing)%20%2B%20Dub%20(Ukr)%20%2B%20Original%20Eng%20%2B%20Sub%20(Rus%20Eng%20Ukr)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
     }
   ],
   "missing": [],
-  "bestSeeders": 322,
+  "bestSeeders": 158,
   "qualities": [
+    "1080p",
     "4K"
   ],
   "languages": [
     "en",
-    "es"
+    "es",
+    "ru",
+    "uk"
   ],
   "providers": [
     "peerflix",
-    "torrentio",
-    "torrentsdb"
+    "torrentio"
   ],
   "warnings": [],
   "errors": [
@@ -105,42 +108,41 @@
   ],
   "streams": [
     {
-      "name": "🇪🇸 Español 4K",
-      "title": "Unabomber (2026) [4k 2160p][Esp]",
-      "description": "Unabomber (2026) [4k 2160p][Esp]\n👤 83 💾 10.8 GB ⚙️ Peerflix+Torrentio",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Unabomber Castellano-Ingles-Subt-Castellano-Forz-Comp H264 E-AC3 5.1 BDRip HD 1080p",
+      "description": "Unabomber Castellano-Ingles-Subt-Castellano-Forz-Comp H264 E-AC3 5.1 BDRip HD 1080p\n🎞️ BluRay · AVC · DD+ 5.1\n👤 34 💾 2.3 GB ⚙️ Peerflix",
       "pick": "es",
-      "score": 16.14,
-      "infoHash": "77fc1e27a48e62f155a6180581279a120c156e12",
+      "score": 22.17,
+      "infoHash": "d1ec31173215024842af8b73bf18c8c7a0e2ec5d",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
         "es",
         "en"
       ],
-      "quality": "4K",
-      "seeders": 83,
-      "sizeBytes": 11617886536,
-      "sizeLabel": "10.8 GB",
+      "quality": "1080p",
+      "seeders": 34,
+      "sizeBytes": 2469606195,
+      "sizeLabel": "2.3 GB",
       "release": {
-        "source": null,
-        "codec": null,
+        "source": "BluRay",
+        "codec": "AVC",
         "hdr": [],
-        "audio": [],
-        "channels": null
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
       },
       "providers": [
-        "peerflix",
-        "torrentio"
+        "peerflix"
       ],
       "providerNames": [
-        "Peerflix",
-        "Torrentio"
+        "Peerflix"
       ],
       "externalProviders": [
-        "PeerflixBot",
-        "EXT"
+        "Sinsitio"
       ],
-      "filename": "Unabomber (2026) [4k 2160p][Esp].mkv",
+      "filename": null,
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
@@ -164,81 +166,80 @@
         "tracker:udp://tracker.theoks.net:6969/announce",
         "tracker:udp://tracker.corpscorp.online:80/announce",
         "tracker:udp://tracker.bittor.pw:1337/announce",
-        "dht:77fc1e27a48e62f155a6180581279a120c156e12"
+        "dht:d1ec31173215024842af8b73bf18c8c7a0e2ec5d"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:77fc1e27a48e62f155a6180581279a120c156e12&dn=Unabomber%20(2026)%20%5B4k%202160p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:d1ec31173215024842af8b73bf18c8c7a0e2ec5d&dn=Unabomber%20Castellano-Ingles-Subt-Castellano-Forz-Comp%20H264%20E-AC3%205.1%20BDRip%20HD%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
       "behaviorHints": {
-        "bingeGroup": "peerflix-static-es",
-        "filename": "Unabomber (2026) [4k 2160p][Esp].mkv"
+        "bingeGroup": "peerflix-static-es"
       }
     },
     {
       "name": "🇬🇧 Inglés 4K",
-      "title": "Unabomber (2026) [2160p] [WEBRip] [x265] [10bit] [5.1]",
-      "description": "Unabomber (2026) [2160p] [WEBRip] [x265] [10bit] [5.1]\n🎞️ WEBRip · HEVC · AAC 5.1\n👤 322 💾 4.5 GB ⚙️ TorrentsDB+Torrentio",
+      "title": "Унабомбер / Unabomber [2026 WEB-DL 2160p HDR10 Dolby Vision] Dub (Movie Dubbing) + Dub (Ukr) + Original Eng + Sub (Rus Eng Ukr)",
+      "description": "Унабомбер / Unabomber [2026 WEB-DL 2160p HDR10 Dolby Vision] Dub (Movie Dubbing) + Dub (Ukr) + Original Eng + Sub (Rus Eng Ukr)\n🎞️ WEB-DL · HEVC · DV · HDR10\n👤 158 💾 10.9 GB ⚙️ Torrentio",
       "pick": "en",
-      "score": 8.26,
-      "infoHash": "82e10006c4ac150c38f485edaa9a21aa7a48aac8",
+      "score": 14.51,
+      "infoHash": "fb0cdf43dcf81e997c862afa8175031398aa1d31",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
-        "en"
+        "en",
+        "ru",
+        "uk"
       ],
       "quality": "4K",
-      "seeders": 322,
-      "sizeBytes": 4799625953,
-      "sizeLabel": "4.5 GB",
+      "seeders": 158,
+      "sizeBytes": 11714523300,
+      "sizeLabel": "10.9 GB",
       "release": {
-        "source": "WEBRip",
+        "source": "WEB-DL",
         "codec": "HEVC",
-        "hdr": [],
-        "audio": [
-          "AAC"
+        "hdr": [
+          "DV",
+          "HDR10"
         ],
-        "channels": "5.1"
+        "audio": [],
+        "channels": null
       },
       "providers": [
-        "torrentsdb",
         "torrentio"
       ],
       "providerNames": [
-        "TorrentsDB",
         "Torrentio"
       ],
       "externalProviders": [
-        "limetorrent",
-        "EXT"
+        "Rutracker"
       ],
-      "filename": "Unabomber.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mkv",
+      "filename": "UNABOMBER.2026.2160p.NF.WEB-DL.DV.HDR.H.265.mkv",
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
         "udp://tracker.torrent.eu.org:451/announce",
         "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
         "udp://tracker.theoks.net:6969/announce",
-        "udp://tracker.bittor.pw:1337/announce",
-        "udp://explodie.org:6969/announce",
-        "udp://tracker-udp.gbitt.info:80/announce",
-        "udp://retracker01-msk-virt.corbina.net:80/announce"
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
       ],
       "sources": [
         "tracker:udp://tracker.opentrackr.org:1337/announce",
         "tracker:udp://open.stealth.si:80/announce",
         "tracker:udp://tracker.torrent.eu.org:451/announce",
         "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
         "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
         "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
         "tracker:udp://tracker.bittor.pw:1337/announce",
-        "tracker:udp://explodie.org:6969/announce",
-        "tracker:udp://tracker-udp.gbitt.info:80/announce",
-        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
-        "dht:82e10006c4ac150c38f485edaa9a21aa7a48aac8"
+        "dht:fb0cdf43dcf81e997c862afa8175031398aa1d31"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:82e10006c4ac150c38f485edaa9a21aa7a48aac8&dn=Unabomber%20(2026)%20%5B2160p%5D%20%5BWEBRip%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:fb0cdf43dcf81e997c862afa8175031398aa1d31&dn=%D0%A3%D0%BD%D0%B0%D0%B1%D0%BE%D0%BC%D0%B1%D0%B5%D1%80%20%2F%20Unabomber%20%5B2026%20WEB-DL%202160p%20HDR10%20Dolby%20Vision%5D%20Dub%20(Movie%20Dubbing)%20%2B%20Dub%20(Ukr)%20%2B%20Original%20Eng%20%2B%20Sub%20(Rus%20Eng%20Ukr)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
       "behaviorHints": {
         "bingeGroup": "peerflix-static-en",
-        "filename": "Unabomber.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mkv"
+        "filename": "UNABOMBER.2026.2160p.NF.WEB-DL.DV.HDR.H.265.mkv"
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T10:45:26.099Z",
-  "finishedAt": "2026-10-01T10:45:36.379Z",
+  "generatedAt": "2026-10-01T18:02:42.974Z",
+  "finishedAt": "2026-10-01T18:02:58.774Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -117,7 +117,7 @@
   "movies": 5,
   "episodes": 0,
   "totalStreams": 10,
-  "totalCandidates": 663,
+  "totalCandidates": 664,
   "picks": {
     "es": 5,
     "en": 5
@@ -172,87 +172,90 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt6933238.json"
       },
       "streamCount": 2,
-      "candidateCount": 112,
+      "candidateCount": 113,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 4K",
-          "title": "Unabomber (2026) [4k 2160p][Esp]",
-          "quality": "4K",
-          "seeders": 83,
-          "sizeBytes": 11617886536,
-          "sizeLabel": "10.8 GB",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Unabomber Castellano-Ingles-Subt-Castellano-Forz-Comp H264 E-AC3 5.1 BDRip HD 1080p",
+          "quality": "1080p",
+          "seeders": 34,
+          "sizeBytes": 2469606195,
+          "sizeLabel": "2.3 GB",
           "audioLangs": [
             "es",
             "en"
           ],
           "release": {
-            "source": null,
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "77fc1e27a48e62f155a6180581279a120c156e12",
-          "fileIdx": 0,
-          "score": 16.14,
-          "magnetUrl": "magnet:?xt=urn:btih:77fc1e27a48e62f155a6180581279a120c156e12&dn=Unabomber%20(2026)%20%5B4k%202160p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 4K",
-          "title": "Unabomber (2026) [2160p] [WEBRip] [x265] [10bit] [5.1]",
-          "quality": "4K",
-          "seeders": 322,
-          "sizeBytes": 4799625953,
-          "sizeLabel": "4.5 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEBRip",
-            "codec": "HEVC",
+            "source": "BluRay",
+            "codec": "AVC",
             "hdr": [],
             "audio": [
-              "AAC"
+              "DD+"
             ],
             "channels": "5.1"
           },
           "providers": [
-            "torrentsdb",
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "d1ec31173215024842af8b73bf18c8c7a0e2ec5d",
+          "fileIdx": 0,
+          "score": 22.17,
+          "magnetUrl": "magnet:?xt=urn:btih:d1ec31173215024842af8b73bf18c8c7a0e2ec5d&dn=Unabomber%20Castellano-Ingles-Subt-Castellano-Forz-Comp%20H264%20E-AC3%205.1%20BDRip%20HD%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Унабомбер / Unabomber [2026 WEB-DL 2160p HDR10 Dolby Vision] Dub (Movie Dubbing) + Dub (Ukr) + Original Eng + Sub (Rus Eng Ukr)",
+          "quality": "4K",
+          "seeders": 158,
+          "sizeBytes": 11714523300,
+          "sizeLabel": "10.9 GB",
+          "audioLangs": [
+            "en",
+            "ru",
+            "uk"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [
+              "DV",
+              "HDR10"
+            ],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
             "torrentio"
           ],
           "providerNames": [
-            "TorrentsDB",
             "Torrentio"
           ],
-          "infoHash": "82e10006c4ac150c38f485edaa9a21aa7a48aac8",
+          "infoHash": "fb0cdf43dcf81e997c862afa8175031398aa1d31",
           "fileIdx": 0,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:82e10006c4ac150c38f485edaa9a21aa7a48aac8&dn=Unabomber%20(2026)%20%5B2160p%5D%20%5BWEBRip%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+          "score": 14.51,
+          "magnetUrl": "magnet:?xt=urn:btih:fb0cdf43dcf81e997c862afa8175031398aa1d31&dn=%D0%A3%D0%BD%D0%B0%D0%B1%D0%BE%D0%BC%D0%B1%D0%B5%D1%80%20%2F%20Unabomber%20%5B2026%20WEB-DL%202160p%20HDR10%20Dolby%20Vision%5D%20Dub%20(Movie%20Dubbing)%20%2B%20Dub%20(Ukr)%20%2B%20Original%20Eng%20%2B%20Sub%20(Rus%20Eng%20Ukr)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 322,
+      "bestSeeders": 158,
       "qualities": [
+        "1080p",
         "4K"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "ru",
+        "uk"
       ],
       "providers": [
         "peerflix",
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
       ],
       "warnings": [],
       "errors": [
@@ -308,7 +311,7 @@
           ],
           "infoHash": "937cbd8651b1af15179e61b9e84e84b46d99c311",
           "fileIdx": 0,
-          "score": 15.22,
+          "score": 22.32,
           "magnetUrl": "magnet:?xt=urn:btih:937cbd8651b1af15179e61b9e84e84b46d99c311&dn=La%20hipotesis%20del%20amor%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
@@ -316,7 +319,7 @@
           "name": "🇬🇧 Inglés 1080p",
           "title": "The Love Hypothesis (2026) [1080p] [BluRay] [5.1]",
           "quality": "1080p",
-          "seeders": 451,
+          "seeders": 822,
           "sizeBytes": 2222645576,
           "sizeLabel": "2.1 GB",
           "audioLangs": [
@@ -341,12 +344,12 @@
           ],
           "infoHash": "948e3baa685137616649ccffc34bb6e3a95c2082",
           "fileIdx": 0,
-          "score": 8.01,
+          "score": 14.91,
           "magnetUrl": "magnet:?xt=urn:btih:948e3baa685137616649ccffc34bb6e3a95c2082&dn=The%20Love%20Hypothesis%20(2026)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 451,
+      "bestSeeders": 822,
       "qualities": [
         "1080p"
       ],
@@ -413,22 +416,22 @@
           ],
           "infoHash": "78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f",
           "fileIdx": 0,
-          "score": 16.01,
+          "score": 23.71,
           "magnetUrl": "magnet:?xt=urn:btih:78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f&dn=Backrooms%20(2026)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
           "pick": "en",
-          "name": "🇬🇧 Inglés 4K",
-          "title": "Backrooms 2026 2160p iT WEB-DL DDP5 1 Atmos H 265-RDNYB",
-          "quality": "4K",
-          "seeders": 3130,
-          "sizeBytes": 10479720202,
-          "sizeLabel": "9.8 GB",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Backrooms 2026 1080p AMZN Webrip x265 10bit DDP Atmos 5 1 English --H4XO",
+          "quality": "1080p",
+          "seeders": 53,
+          "sizeBytes": 5604932321,
+          "sizeLabel": "5.2 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEB-DL",
+            "source": "WEBRip",
             "codec": "HEVC",
             "hdr": [],
             "audio": [
@@ -439,25 +442,22 @@
           },
           "providers": [
             "torrentsdb",
-            "torrentio",
-            "piratebay"
+            "torrentio"
           ],
           "providerNames": [
             "TorrentsDB",
-            "Torrentio",
-            "ThePirateBay+"
+            "Torrentio"
           ],
-          "infoHash": "3b1244529e5b2a6ead07233738cbbef06ebebb84",
+          "infoHash": "0eb4337892055b57d5d225440f49e2061663acb3",
           "fileIdx": 0,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:3b1244529e5b2a6ead07233738cbbef06ebebb84&dn=Backrooms%202026%202160p%20iT%20WEB-DL%20DDP5%201%20Atmos%20H%20265-RDNYB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+          "score": 15.8,
+          "magnetUrl": "magnet:?xt=urn:btih:0eb4337892055b57d5d225440f49e2061663acb3&dn=Backrooms%202026%201080p%20AMZN%20Webrip%20x265%2010bit%20DDP%20Atmos%205%201%20English%20--H4XO&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 3130,
+      "bestSeeders": 168,
       "qualities": [
-        "1080p",
-        "4K"
+        "1080p"
       ],
       "languages": [
         "en",
@@ -465,7 +465,6 @@
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
         "torrentsdb"
       ],
@@ -497,90 +496,83 @@
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 4K",
-          "title": "Toy Story 5 (2026) [4K UHD DoVi HDR10+ HEVC] [EAC3 Castellano EAC3 Ingles] [SUBS] byAleKik",
-          "quality": "4K",
-          "seeders": 85,
-          "sizeBytes": 19316615414,
-          "sizeLabel": "18.0 GB",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Toy.Story.5.(2026)[DUAL ESP-ENG][HDR10 HEVC][WEB-DL DS4K 1080p]-Mang0z4",
+          "quality": "1080p",
+          "seeders": 29,
+          "sizeBytes": 3940632494,
+          "sizeLabel": "3.7 GB",
           "audioLangs": [
             "es",
-            "en"
-          ],
-          "release": {
-            "source": null,
-            "codec": "HEVC",
-            "hdr": [
-              "DV",
-              "HDR10+"
-            ],
-            "audio": [
-              "DD+"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "6c626bde1fcb8ec3c6e8691e77286f0d0e3ef919",
-          "fileIdx": 0,
-          "score": 16.15,
-          "magnetUrl": "magnet:?xt=urn:btih:6c626bde1fcb8ec3c6e8691e77286f0d0e3ef919&dn=Toy%20Story%205%20(2026)%20%5B4K%20UHD%20DoVi%20HDR10%2B%20HEVC%5D%20%5BEAC3%20Castellano%20EAC3%20Ingles%5D%20%5BSUBS%5D%20byAleKik&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 4K",
-          "title": "Toy.Story.5.2026.2160p.iT.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM",
-          "quality": "4K",
-          "seeders": 537,
-          "sizeBytes": 19660212797,
-          "sizeLabel": "18.3 GB",
-          "audioLangs": [
             "en"
           ],
           "release": {
             "source": "WEB-DL",
             "codec": "HEVC",
             "hdr": [
-              "DV",
-              "HDR10+"
+              "HDR10"
             ],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "16e8a13948a3f3843571b0b5b62d03616e03e842",
+          "fileIdx": 0,
+          "score": 23.27,
+          "magnetUrl": "magnet:?xt=urn:btih:16e8a13948a3f3843571b0b5b62d03616e03e842&dn=Toy.Story.5.(2026)%5BDUAL%20ESP-ENG%5D%5BHDR10%20HEVC%5D%5BWEB-DL%20DS4K%201080p%5D-Mang0z4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Toy Story 5 2026 1080p BluRay x265 SDR DDP Atmos 7 1 English - DarQ-HONE",
+          "quality": "1080p",
+          "seeders": 15,
+          "sizeBytes": 6592774799,
+          "sizeLabel": "6.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
             "audio": [
               "Atmos",
               "DD+"
             ],
-            "channels": "5.1"
+            "channels": "7.1"
           },
           "providers": [
-            "piratebay"
+            "torrentsdb",
+            "torrentio"
           ],
           "providerNames": [
-            "ThePirateBay+"
+            "TorrentsDB",
+            "Torrentio"
           ],
-          "infoHash": "37fb4306f63d790af520a5a25c227b1520225085",
-          "fileIdx": null,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:37fb4306f63d790af520a5a25c227b1520225085&dn=Toy.Story.5.2026.2160p.iT.WEB-DL.DV.HDR10%2B.DDP5.1.Atmos.H265.MP4-BTM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "infoHash": "89a760ffbdcab03e8129f0b5c9dec8ab1d30307d",
+          "fileIdx": 1,
+          "score": 16.26,
+          "magnetUrl": "magnet:?xt=urn:btih:89a760ffbdcab03e8129f0b5c9dec8ab1d30307d&dn=Toy%20Story%205%202026%201080p%20BluRay%20x265%20SDR%20DDP%20Atmos%207%201%20English%20-%20DarQ-HONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 537,
+      "bestSeeders": 29,
       "qualities": [
-        "4K"
+        "1080p"
       ],
       "languages": [
         "en",
         "es"
       ],
       "providers": [
-        "peerflix",
-        "piratebay",
-        "torrentio"
+        "torrentio",
+        "torrentsdb"
       ],
       "warnings": [],
       "errors": [
@@ -636,26 +628,30 @@
           ],
           "infoHash": "c8cc245279ee7e391ad366c5fcade7414336ae9b",
           "fileIdx": 0,
-          "score": 15.42,
+          "score": 23.72,
           "magnetUrl": "magnet:?xt=urn:btih:c8cc245279ee7e391ad366c5fcade7414336ae9b&dn=Susurran%20tu%20nombre%20(The%20Whisper%20Man)%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
           "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Whisper Man (2026) [1080p] [WEBRip] [5.1]",
-          "quality": "1080p",
-          "seeders": 784,
-          "sizeBytes": 2254857830,
-          "sizeLabel": "2.1 GB",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Whisper Man 2026 2160p NF WEB-DL DDP5 1 Atmos DV HDR H 265",
+          "quality": "4K",
+          "seeders": 28,
+          "sizeBytes": 16975858237,
+          "sizeLabel": "15.8 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEBRip",
-            "codec": "AVC",
-            "hdr": [],
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [
+              "DV",
+              "HDR"
+            ],
             "audio": [
-              "AAC"
+              "Atmos",
+              "DD+"
             ],
             "channels": "5.1"
           },
@@ -667,16 +663,17 @@
             "TorrentsDB",
             "Torrentio"
           ],
-          "infoHash": "7de61f3c36ded64bcdc937fd0ab673a7f81d2f34",
-          "fileIdx": 3,
-          "score": 8.01,
-          "magnetUrl": "magnet:?xt=urn:btih:7de61f3c36ded64bcdc937fd0ab673a7f81d2f34&dn=The%20Whisper%20Man%20(2026)%20%5B1080p%5D%20%5BWEBRip%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "infoHash": "3f3e54941cdf5e635fb426e939a2ec12f1fdece5",
+          "fileIdx": 0,
+          "score": 15.24,
+          "magnetUrl": "magnet:?xt=urn:btih:3f3e54941cdf5e635fb426e939a2ec12f1fdece5&dn=The%20Whisper%20Man%202026%202160p%20NF%20WEB-DL%20DDP5%201%20Atmos%20DV%20HDR%20H%20265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 784,
+      "bestSeeders": 40,
       "qualities": [
-        "1080p"
+        "1080p",
+        "4K"
       ],
       "languages": [
         "en",
@@ -738,7 +735,7 @@
       "errors": 0,
       "skipped": 0,
       "streams": 34,
-      "avgMs": 123
+      "avgMs": 229
     },
     "torrentsdb": {
       "requests": 5,
@@ -746,7 +743,7 @@
       "errors": 0,
       "skipped": 0,
       "streams": 175,
-      "avgMs": 522
+      "avgMs": 963
     },
     "torrentio": {
       "requests": 5,
@@ -754,7 +751,7 @@
       "errors": 0,
       "skipped": 0,
       "streams": 594,
-      "avgMs": 156
+      "avgMs": 76
     },
     "piratebay": {
       "requests": 5,
@@ -762,7 +759,7 @@
       "errors": 0,
       "skipped": 0,
       "streams": 20,
-      "avgMs": 652
+      "avgMs": 125
     },
     "ytztvio": {
       "requests": 3,
@@ -770,18 +767,18 @@
       "errors": 3,
       "skipped": 2,
       "streams": 0,
-      "avgMs": 40
+      "avgMs": 96
     }
   },
   "db": {
-    "inserted": 10,
-    "prepared": 10,
+    "inserted": 664,
+    "prepared": 664,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 4,
-    "updated": 6
+    "created": 640,
+    "updated": 24
   },
-  "durationMs": 10280
+  "durationMs": 15800
 }
