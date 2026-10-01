@@ -2,40 +2,40 @@
   "streams": [
     {
       "name": "🇪🇸 Español 1080p",
-      "title": "La.hipotesis.del.amor.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264.EAC3",
-      "description": "La.hipotesis.del.amor.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264.EAC3\n🎞️ WEB-DL · AVC · DD+\n👤 46 💾 2.5 GB ⚙️ Torrentio",
+      "title": "La hipotesis del amor (2026) [Bluray][Esp]",
+      "description": "La hipotesis del amor (2026) [Bluray][Esp]\n🎞️ BluRay\n👤 29 💾 1.3 GB ⚙️ Peerflix+Torrentio",
       "pick": "es",
-      "score": 15.51,
-      "infoHash": "a14941d345946c1b25171fa7e04c126f17d18d54",
-      "fileIdx": null,
+      "score": 15.22,
+      "infoHash": "937cbd8651b1af15179e61b9e84e84b46d99c311",
+      "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es",
-        "en"
+        "es"
       ],
       "quality": "1080p",
-      "seeders": 46,
-      "sizeBytes": 2695091978,
-      "sizeLabel": "2.5 GB",
+      "seeders": 29,
+      "sizeBytes": 1449551462,
+      "sizeLabel": "1.3 GB",
       "release": {
-        "source": "WEB-DL",
-        "codec": "AVC",
+        "source": "BluRay",
+        "codec": null,
         "hdr": [],
-        "audio": [
-          "DD+"
-        ],
+        "audio": [],
         "channels": null
       },
       "providers": [
+        "peerflix",
         "torrentio"
       ],
       "providerNames": [
+        "Peerflix",
         "Torrentio"
       ],
       "externalProviders": [
-        "EXT"
+        "PeerflixBot",
+        "Wolfmax4k"
       ],
-      "filename": null,
+      "filename": "La hipotesis del amor (2026) [Bluray][Esp].avi",
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
@@ -59,11 +59,12 @@
         "tracker:udp://tracker.theoks.net:6969/announce",
         "tracker:udp://tracker.corpscorp.online:80/announce",
         "tracker:udp://tracker.bittor.pw:1337/announce",
-        "dht:a14941d345946c1b25171fa7e04c126f17d18d54"
+        "dht:937cbd8651b1af15179e61b9e84e84b46d99c311"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:a14941d345946c1b25171fa7e04c126f17d18d54&dn=La.hipotesis.del.amor.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264.EAC3&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:937cbd8651b1af15179e61b9e84e84b46d99c311&dn=La%20hipotesis%20del%20amor%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
       "behaviorHints": {
-        "bingeGroup": "peerflix-static-es"
+        "bingeGroup": "peerflix-static-es",
+        "filename": "La hipotesis del amor (2026) [Bluray][Esp].avi"
       }
     },
     {
