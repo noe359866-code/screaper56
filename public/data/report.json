@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T02:36:04.946Z",
-  "finishedAt": "2026-10-01T02:36:09.911Z",
+  "generatedAt": "2026-10-01T02:41:54.067Z",
+  "finishedAt": "2026-10-01T02:42:00.596Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -113,14 +113,14 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 2,
-  "movies": 2,
+  "total": 5,
+  "movies": 5,
   "episodes": 0,
-  "totalStreams": 4,
-  "totalCandidates": 200,
+  "totalStreams": 10,
+  "totalCandidates": 666,
   "picks": {
-    "es": 2,
-    "en": 2
+    "es": 5,
+    "en": 5
   },
   "missing": {
     "es": 0,
@@ -149,8 +149,8 @@
   },
   "meta": {
     "source": "cinemeta",
-    "requested": 2,
-    "found": 2,
+    "requested": 5,
+    "found": 5,
     "failures": 0,
     "disabled": false,
     "lastError": null
@@ -366,6 +366,334 @@
           "error": "HTTP 403"
         }
       ]
+    },
+    {
+      "id": "tt26657236",
+      "imdbId": "tt26657236",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Backrooms (2026)",
+      "name": "Backrooms",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt26657236.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt26657236.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt26657236.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt26657236.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 183,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Backrooms (2026) [Bluray 1080p][Esp]",
+          "quality": "1080p",
+          "seeders": 168,
+          "sizeBytes": 14978698445,
+          "sizeLabel": "14.0 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f",
+          "fileIdx": 0,
+          "score": 16.01,
+          "magnetUrl": "magnet:?xt=urn:btih:78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f&dn=Backrooms%20(2026)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Backrooms 2026 2160p iT WEB-DL DDP5 1 Atmos H 265-RDNYB",
+          "quality": "4K",
+          "seeders": 3130,
+          "sizeBytes": 10479720202,
+          "sizeLabel": "9.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "Atmos",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "3b1244529e5b2a6ead07233738cbbef06ebebb84",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:3b1244529e5b2a6ead07233738cbbef06ebebb84&dn=Backrooms%202026%202160p%20iT%20WEB-DL%20DDP5%201%20Atmos%20H%20265-RDNYB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 3130,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
+      ]
+    },
+    {
+      "id": "tt29355505",
+      "imdbId": "tt29355505",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Toy Story 5 (2026)",
+      "name": "Toy Story 5",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt29355505.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt29355505.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt29355505.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt29355505.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 177,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 4K",
+          "title": "Toy Story 5 (2026) [4K UHD DoVi HDR10+ HEVC] [EAC3 Castellano EAC3 Ingles] [SUBS] byAleKik",
+          "quality": "4K",
+          "seeders": 85,
+          "sizeBytes": 19316615414,
+          "sizeLabel": "18.0 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": null,
+            "codec": "HEVC",
+            "hdr": [
+              "DV",
+              "HDR10+"
+            ],
+            "audio": [
+              "DD+"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "6c626bde1fcb8ec3c6e8691e77286f0d0e3ef919",
+          "fileIdx": 0,
+          "score": 16.15,
+          "magnetUrl": "magnet:?xt=urn:btih:6c626bde1fcb8ec3c6e8691e77286f0d0e3ef919&dn=Toy%20Story%205%20(2026)%20%5B4K%20UHD%20DoVi%20HDR10%2B%20HEVC%5D%20%5BEAC3%20Castellano%20EAC3%20Ingles%5D%20%5BSUBS%5D%20byAleKik&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Toy.Story.5.2026.2160p.iT.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM",
+          "quality": "4K",
+          "seeders": 537,
+          "sizeBytes": 19660212797,
+          "sizeLabel": "18.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [
+              "DV",
+              "HDR10+"
+            ],
+            "audio": [
+              "Atmos",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "piratebay"
+          ],
+          "providerNames": [
+            "ThePirateBay+"
+          ],
+          "infoHash": "37fb4306f63d790af520a5a25c227b1520225085",
+          "fileIdx": null,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:37fb4306f63d790af520a5a25c227b1520225085&dn=Toy.Story.5.2026.2160p.iT.WEB-DL.DV.HDR10%2B.DDP5.1.Atmos.H265.MP4-BTM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 537,
+      "qualities": [
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt11561116",
+      "imdbId": "tt11561116",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "The Whisper Man (2026)",
+      "name": "The Whisper Man",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt11561116.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt11561116.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt11561116.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt11561116.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 106,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Susurran tu nombre (The Whisper Man) (2026) [Bluray][Esp]",
+          "quality": "1080p",
+          "seeders": 40,
+          "sizeBytes": 1299227607,
+          "sizeLabel": "1.2 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "c8cc245279ee7e391ad366c5fcade7414336ae9b",
+          "fileIdx": 0,
+          "score": 15.42,
+          "magnetUrl": "magnet:?xt=urn:btih:c8cc245279ee7e391ad366c5fcade7414336ae9b&dn=Susurran%20tu%20nombre%20(The%20Whisper%20Man)%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The Whisper Man (2026) [1080p] [WEBRip] [5.1]",
+          "quality": "1080p",
+          "seeders": 753,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "7de61f3c36ded64bcdc937fd0ab673a7f81d2f34",
+          "fileIdx": 3,
+          "score": 8.01,
+          "magnetUrl": "magnet:?xt=urn:btih:7de61f3c36ded64bcdc937fd0ab673a7f81d2f34&dn=The%20Whisper%20Man%20(2026)%20%5B1080p%5D%20%5BWEBRip%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 753,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
     }
   ],
   "warnings": [],
@@ -381,59 +709,79 @@
       "provider": "ytztvio",
       "label": "The Love Hypothesis (2026)",
       "error": "HTTP 403"
+    },
+    {
+      "id": "tt26657236",
+      "provider": "ytztvio",
+      "label": "Backrooms (2026)",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt29355505",
+      "provider": "ytztvio",
+      "label": "Toy Story 5 (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt11561116",
+      "provider": "ytztvio",
+      "label": "The Whisper Man (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 2,
-      "ok": 2,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
-      "streams": 11,
-      "avgMs": 148
+      "streams": 34,
+      "avgMs": 312
     },
     "torrentsdb": {
-      "requests": 2,
-      "ok": 2,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
-      "streams": 38,
-      "avgMs": 322
+      "streams": 175,
+      "avgMs": 281
     },
     "torrentio": {
-      "requests": 2,
-      "ok": 2,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
-      "streams": 193,
-      "avgMs": 70
+      "streams": 597,
+      "avgMs": 30
     },
     "piratebay": {
-      "requests": 2,
-      "ok": 2,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
-      "streams": 8,
-      "avgMs": 107
+      "streams": 20,
+      "avgMs": 72
     },
     "ytztvio": {
-      "requests": 2,
+      "requests": 3,
       "ok": 0,
-      "errors": 2,
-      "skipped": 0,
+      "errors": 3,
+      "skipped": 2,
       "streams": 0,
-      "avgMs": 36
+      "avgMs": 33
     }
   },
   "db": {
-    "inserted": 4,
-    "prepared": 4,
+    "inserted": 10,
+    "prepared": 10,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 4,
-    "updated": 0
+    "created": 5,
+    "updated": 5
   },
-  "durationMs": 4965
+  "durationMs": 6529
 }
