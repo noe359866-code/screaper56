@@ -343,6 +343,7 @@ export function scoreStream(stream, { type = 'movie', offTitle = false, wrongCon
   let score = QUALITY_POINTS[stream?.quality] ?? UNKNOWN_QUALITY_POINTS;
   if (stream?.quality === '4K' && UPSCALED_RE.test(text)) score = UPSCALED_4K_POINTS;
   score += seedersPoints(stream?.seeders);
+  score += technicalPoints(stream);
   if (CAM_RE.test(text)) score -= 4;
   // En series los packs de temporada son normales (fileIdx apunta al episodio).
   const moviePack = type === 'movie' && (PACK_RE.test(stream?.title || '') || (stream?.fileIdx ?? 0) >= PACK_FILE_INDEX);
@@ -354,6 +355,74 @@ export function scoreStream(stream, { type = 'movie', offTitle = false, wrongCon
   if (stream?.sizeBytes > 40 * GIB) score -= 2.5;
   else if (stream?.sizeBytes > 25 * GIB) score -= 1;
   return Math.round(score * 100) / 100;
+}
+
+// ---------- señales de calidad / confianza ----------
+
+const SOURCE_POINTS = [
+  [/\\bremux\\b/i, 4.0],
+  [/\\b(?:bluray|blu-?ray)\\b/i, 3.5],
+  [/\\bweb-?dl\\b/i, 3.25],
+  [/\\bweb(?:rip)?\\b/i, 2.5],
+  [/\\bhdtv\\b/i, 1.5],
+  [/\\b(?:brrip|bdrip)\\b/i, 1.5],
+];
+
+const BAD_SOURCE_RE = /\\b(?:cam|ts|telesync|telecine|scr|screener|hdcam|hdts|workprint)\\b/i;
+const AUDIO_QUALITY_RE = /\\b(?:truehd|atmos|dts-?hd|dts|ddp|eac3|ac3|aac|opus|flac)\\b/i;
+const LOSSLESS_AUDIO_RE = /\\b(?:truehd|dts-?hd|flac)\\b/i;
+
+function technicalPoints(stream) {
+  const text = streamText(stream);
+  let points = 0;
+  for (const [re, value] of SOURCE_POINTS) {
+    if (re.test(text)) { points += value; break; }
+  }
+  if (AUDIO_QUALITY_RE.test(text)) points += 0.75;
+  if (LOSSLESS_AUDIO_RE.test(text)) points += 0.5;
+  if (/\\b(?:10bit|10-bit)\\b/i.test(text)) points += 0.35;
+  if (/\\b(?:hdr10\\+?|dolby[ ._-]?vision|dv)\\b/i.test(text)) points += 0.4;
+  if (BAD_SOURCE_RE.test(text)) points -= 5;
+  return points;
+}
+
+/**
+ * Confianza del idioma. Las banderas del parser son útiles, pero una marca
+ * textual explícita es más fiable que asumir idioma por ausencia de marcas.
+ */
+export function languageConfidence(stream, lang) {
+  const text = streamText(stream);
+  const clean = stripSubtitleMentions(text);
+  const languages = Array.isArray(stream?.languages) ? stream.languages : [];
+
+  if (lang === 'es') {
+    if (SPANISH_SUBS_ONLY_RE.test(text)) return 0;
+    if (/\\b(?:castellano|espa[ñn]ol|spanish|latino|latam|es-?la|es-?mx|es-?es)\\b/i.test(clean)) return 1;
+    if (languages.includes('es')) return spanishTier(stream) >= 2 ? 0.9 : 0.55;
+    if (streamProviders(stream).includes('peerflix')) return 0.8;
+    return 0;
+  }
+
+  if (lang === 'en') {
+    if (FOREIGN_MARKERS_RE.test(clean) && !/\\b(?:eng|english|en)\\b/i.test(clean)) return 0.1;
+    if (/\\b(?:english|eng|en-?us|en-?gb)\\b/i.test(clean)) return 1;
+    if (languages.includes('en')) return englishTier(stream) >= 2 ? 0.95 : 0.75;
+    // Sin idioma explícito: solo confianza media, nunca la tratamos como certeza.
+    return languages.length === 0 && !NON_LATIN_RE.test(clean) ? 0.55 : 0;
+  }
+
+  return 0;
+}
+
+function titleSimilarity(stream, knownTitles) {
+  const expected = new Set();
+  for (const title of knownTitles) for (const word of significantWords(title)) expected.add(word);
+  if (!expected.size) return 0;
+  const actual = significantWords(stream?.title);
+  if (!actual.size) return 0;
+  let hits = 0;
+  for (const word of actual) if (expected.has(word)) hits++;
+  return Math.min(3, hits * 0.6);
 }
 
 // ---------- selección ----------
@@ -381,15 +450,21 @@ export function selectBestStreams(streams, { type = 'movie', label = '', titles 
     const wrongContent = type === 'movie'
       ? isWrongYear(stream, expectedYear, knownTitles)
       : episodeMatch(stream, season, episode) === 'mismatch';
-    const score = scoreStream(stream, { type, offTitle: isOffTitle(stream), wrongContent });
+    let score = scoreStream(stream, { type, offTitle: isOffTitle(stream), wrongContent });
+    score += titleSimilarity(stream, knownTitles);
     const tiers = { es: spanishTier(stream), en: englishTier(stream) };
-    return { stream, score, tiers };
+    const confidence = { es: languageConfidence(stream, 'es'), en: languageConfidence(stream, 'en') };
+    return { stream, score: Math.round(score * 100) / 100, tiers, confidence };
   });
 
   const best = (lang, excludeHash = null) => {
     const candidates = ranked
-      .filter(c => c.tiers[lang] > 0 && c.stream.infoHash !== excludeHash)
-      .map(c => ({ ...c, rank: Math.round((c.score + TIER_BONUS[lang][c.tiers[lang]]) * 100) / 100 }));
+      .filter(c => c.tiers[lang] > 0 && c.confidence[lang] >= (lang === 'es' ? 0.55 : 0.55) && c.stream.infoHash !== excludeHash)
+      .map(c => {
+        const confidenceBonus = c.confidence[lang] * 4;
+        const tierBonus = TIER_BONUS[lang][c.tiers[lang]];
+        return { ...c, rank: Math.round((c.score + tierBonus + confidenceBonus) * 100) / 100 };
+      });
     candidates.sort((a, b) =>
       b.rank - a.rank ||
       (b.stream.seeders ?? -1) - (a.stream.seeders ?? -1) ||
