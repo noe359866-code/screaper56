@@ -1,64 +1,6 @@
 # Peerflix Static – Watchlist
-# -----------------------------------------------------------
-# Una línea por título. La Action consultará peerflix.mov por cada una
-# y publicará los streams en public/data/.
-#
-# Formatos soportados:
-#   tt1234567                   -> película (IMDb)
-#   tt1234567:s3:e4             -> episodio concreto (serie, temporada 3, ep. 4)
-#   tt1234567:s3                -> todos los episodios conocidos de la temporada 3
-#                                 (necesita TMDB_API_KEY para expandir; si no hay clave,
-#                                 se ignora la línea con aviso)
-#
-# Líneas que empiezan por '#' son comentarios. Se ignoran líneas vacías.
-# Puedes añadir un nombre humano tras un espacio para que la web lo muestre:
-#   tt0111161 Cadena perpetua (1994)
-#   tt1375666 Inception (2010)
-#   tt0944947:s1:e1 Game of Thrones S01E01
-#
-# Si defines TMDB_API_KEY en secrets (opcional), el script puede expandir
-# temporadas automáticamente y enriquecer metadatos (título, año, póster).
-# Si no, usa el nombre que pongas en esta misma línea.
+# Actualizado desde el Issue #20 de @noe359866-code el 2026-10-01 (ingesta sin token).
+# Formatos: tt1234567 · tt1234567:s1:e1 · tt1234567:s1 (temporada completa, sin API key)
 
-# --- Películas del Año 2026 ---
-tt31154564
-tt13401562
-tt31057416
-tt28236166
-tt26432470
-tt33120150
-tt28494056
-tt30324831
-tt32321456
-tt27736410
-tt23561236
-tt31697223
-tt31154571
-tt30441999
-tt33158021
-tt28236162
-tt21233068
-tt28236184
-tt32525791
-tt31046166
-
-# --- Series del Año 2026 (Temporada 1 Completa) ---
-tt27940176:s1
-tt21447082:s1
-tt31260481:s1
-tt33568779:s1
-tt30442010:s1
-tt21389814:s1
-tt26732386:s1
-tt31046114:s1
-tt33041926:s1
-tt31580220:s1
-tt28236192:s1
-tt33158044:s1
-tt31046188:s1
-tt32525802:s1
-tt21233114:s1
-tt27736450:s1
-tt26432512:s1
-tt28494110:s1
-tt33120194:s1
+tt6933238
+tt22526100
