@@ -26,6 +26,7 @@ import {
 } from './lib/pipeline.js';
 import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/issue.js';
 import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
+import { describeDatabaseWrite } from './lib/persistence.js';
 
 const LS_KEY = 'peerflix-static.settings.v2';
 const LOCAL_KEY = 'peerflix-static.local.v1';
@@ -236,6 +237,7 @@ function updateIngestHint() {
   hint.innerHTML = token
     ? 'Con tu token: actualiza <code>watchlist.txt</code> y lanza la Action directamente. Publica los JSON y el addon Stremio en GitHub Pages y, si hay credenciales, hace UPSERT en Supabase.'
     : 'Sin token: abre un <b>Issue ya relleno</b> en GitHub. Pulsa “Submit new issue” (tienes que ser el dueño o un colaborador del repo) y la Action actualiza <code>watchlist.txt</code>, publica los resultados y te responde en el Issue.';
+  hint.innerHTML += ' <b>La BD solo se guarda si la Action tiene los Secrets <code>SUPABASE_URL</code> y <code>SUPABASE_SERVICE_ROLE_KEY</code> y Dry-run está desactivado.</b> La anon key de Ajustes no habilita la escritura.';
 }
 
 $('#save-settings').addEventListener('click', () => {
@@ -457,7 +459,7 @@ function renderDashboard() {
   renderStats(all, local ? local.updatedAt : index?.finishedAt || index?.generatedAt);
   $('#source-info').textContent = local
     ? (all.length ? `${plural(all.length, 'título')} procesado${all.length === 1 ? '' : 's'} en este navegador (no se suben a ningún sitio).` : '')
-    : index ? `Publicado por la Action${MODE_LABELS[index.mode] ? ` (${MODE_LABELS[index.mode]})` : ''} · ${fmtDate(index.finishedAt || index.generatedAt)}${state.published.legacy ? ' · formato antiguo: picks calculados en el navegador' : ''}` : '';
+    : index ? `Publicado por la Action${MODE_LABELS[index.mode] ? ` (${MODE_LABELS[index.mode]})` : ''} · ${fmtDate(index.finishedAt || index.generatedAt)}${state.published.legacy ? ' · formato antiguo: picks calculados en el navegador' : ''} · ${describeDatabaseWrite(index).message}` : '';
 
   const items = filterItems(all);
   state.lastExportItems = items;
@@ -1024,7 +1026,7 @@ async function watchRemoteRun(repo, since) {
       if (report) {
         showRunReport(report, run);
         setProgress(100);
-        setStatus(`✅ Terminado: ${plural(report.items?.length ?? 0, 'título')} publicado${(report.items?.length ?? 0) === 1 ? '' : 's'}${report.db?.dryRun ? ' (dry-run en la BD)' : ''}.`);
+        setStatus(`Terminado: ${plural(report.items?.length ?? 0, 'título')} publicado${(report.items?.length ?? 0) === 1 ? '' : 's'} · ${describeDatabaseWrite(report).message}`);
         return;
       }
       if (Date.now() - lastApi >= apiEvery) {
@@ -1071,14 +1073,20 @@ async function watchRemoteRun(repo, since) {
 
 function showRunReport(report, run) {
   const items = report.items || [];
-  const db = report.db || {};
+  const dbStatus = describeDatabaseWrite(report);
   renderResultSummary({
     items,
     candidates: report.totalCandidates,
-    errors: (report.errors || []).filter(e => !e.skipped).length,
+    errors: (report.errors || []).filter(e => !e.skipped).length + (report.db?.failures?.length || 0),
     durationMs: report.durationMs,
-    extra: [statCard(db.inserted ?? '—', db.dryRun ? 'BD (dry-run)' : 'en la BD')],
+    extra: [
+      statCard(dbStatus.saved ?? '—', 'guardados en Supabase'),
+      ...(dbStatus.state !== 'saved' && dbStatus.prepared != null ? [statCard(dbStatus.prepared, 'preparados para la BD')] : []),
+    ],
   });
+  const dbLogLevel = dbStatus.state === 'error' ? 'err' : dbStatus.state === 'saved' || dbStatus.state === 'empty' ? 'ok' : 'warn';
+  log(dbStatus.message, dbLogLevel);
+  if (dbStatus.detail) log(dbStatus.detail, dbLogLevel);
   for (const w of report.warnings || []) log(`⚠️ ${w}`, 'warn');
   logErrorSummary(report.errors || []);
   if (run) log(`🔗 ${run.html_url}`);

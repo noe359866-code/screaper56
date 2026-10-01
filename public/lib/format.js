@@ -5,6 +5,7 @@
  */
 
 import { releaseTags } from './parse.js';
+import { describeDatabaseWrite } from './persistence.js';
 
 const FLAGS = { es: '🇪🇸', en: '🇬🇧' };
 const LANGUAGE_NAMES = { es: 'Español', en: 'Inglés' };
@@ -94,11 +95,9 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   lines.push('');
   lines.push(`**${items.length} títulos** (${report.movies ?? 0} películas · ${report.episodes ?? 0} episodios) · ` +
     `**${report.totalStreams ?? 0} elegidos** (🇪🇸 ${picks.es ?? 0} · 🇬🇧 ${picks.en ?? 0}) de ${report.totalCandidates ?? '?'} candidatos · ${seconds(report.durationMs)}`);
-  const db = report.db || {};
-  const dbText = db.failures?.length
-    ? `❌ ${md(db.failures[0]).slice(0, 300)}`
-    : db.dryRun ? `dry-run (${db.inserted ?? 0} registros sin escribir)` : `✅ ${db.inserted ?? 0} registros${db.mode === 'insert+update' ? ' (insert + update: la tabla no tiene UNIQUE en info_hash)' : ''}`;
-  lines.push(`Supabase: ${dbText}`);
+  const dbStatus = describeDatabaseWrite(report);
+  lines.push(`Supabase: ${md(dbStatus.message)}`);
+  if (dbStatus.detail) lines.push(md(dbStatus.detail).slice(0, 600));
   lines.push('');
   if (items.length) {
     lines.push('| | Título | 🇪🇸 Español | 🇬🇧 Inglés |');

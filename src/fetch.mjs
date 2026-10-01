@@ -27,6 +27,7 @@ import { execFileSync } from 'node:child_process';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRepository } from './db.mjs';
+import { describeDatabaseWrite } from '../public/lib/persistence.js';
 import {
   allProviderManifestMetadata,
   requestedProviderSlugs,
@@ -279,6 +280,7 @@ function buildCatalogs(results) {
 async function main() {
   const mode = FIXTURE_MODE ? 'fixture' : REPROCESS ? 'reprocess' : 'live';
   const repository = repositoryInfo();
+  const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
   console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : WATCHLIST_PATH}`);
   console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
@@ -287,7 +289,7 @@ async function main() {
     console.log(`   manifest    : ${MANIFEST_ONLY_PROVIDERS.map(p => `${p.name} (${p.manifestUrl})`).join(', ')} [solo catálogo, no compatible con IMDb]`);
   }
   console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : CINEMETA_ENABLED ? `Cinemeta (sin API key)${TMDB_API_KEY ? ' + TMDB de respaldo' : ''}` : TMDB_API_KEY ? 'solo TMDB' : 'desactivados'}`);
-  console.log(`   Supabase    : ${SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY ? (DRY_RUN_DB ? 'configurada (DRY RUN)' : 'configurada ✅') : 'sin credenciales (solo JSON: no hace falta token)'}`);
+  console.log(`   Supabase    : ${repo.enabled ? 'configurada ✅' : repo.skipReason === 'missing-credentials' ? `sin credenciales (faltan ${repo.missingCredentials.join(' y ')}; solo JSON)` : 'DRY RUN (solo JSON; no escribe en la BD)'}`);
   console.log(`   selección   : 2 por título → 🇪🇸 mejor en español + 🇬🇧 mejor en inglés`);
   const bestTrackers = FIXTURE_MODE || REPROCESS
     ? await loadBestTrackers({ url: '' })
@@ -299,6 +301,9 @@ async function main() {
   const warnings = [];
   const warn = message => { warnings.push(message); console.warn(`⚠️  ${message}`); };
   if (bestTrackers.warning) warnings.push(bestTrackers.warning);
+  if (repo.skipReason === 'missing-credentials') {
+    warn(`No se guardará en Supabase: faltan ${repo.missingCredentials.join(' y ')} en los Secrets de GitHub Actions. Solo se publicarán los JSON.`);
+  }
 
   // 1. Consultas: del watchlist (con Cinemeta) o de los datos ya publicados.
   let queries;
@@ -341,7 +346,6 @@ async function main() {
   for (const dir of [DATA_MOVIES, DATA_SERIES, STREAM_MOVIES, STREAM_SERIES, CATALOG_MOVIES, CATALOG_SERIES]) await cleanDir(dir);
 
   const startedAt = new Date().toISOString();
-  const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
 
   // 3. Consultar, fusionar y elegir 2 por título (se loguea cada título al terminar).
   const pipeline = await runPipeline(queries, {
@@ -393,7 +397,11 @@ async function main() {
     warnings,
     errors: pipeline.errors,
     perProviderStats: pipeline.perProvider,
-    db: { inserted: 0, rejected: 0, failures: [] },
+    db: {
+      inserted: 0, prepared: 0, rejected: 0, failures: [], dryRun: repo.dryRun,
+      ...(repo.skipReason ? { skipReason: repo.skipReason } : {}),
+      ...(repo.skipReason === 'missing-credentials' ? { missingCredentials: repo.missingCredentials } : {}),
+    },
   };
 
   // 4. Ficheros por título: data/ (web) + stream/ (addon Stremio).
@@ -417,8 +425,9 @@ async function main() {
     try {
       const dbRes = await repo.upsert(dbCandidates);
       Object.assign(index.db, dbRes);
-      console.log(`\n🗄  BD: ${dbRes.dryRun ? '[DRY RUN] ' : ''}${dbRes.inserted} registros (${dbRes.rejected} inválidos)${dbRes.mode === 'insert+update' ? ' · insert+update (añade UNIQUE(info_hash) para usar UPSERT nativo)' : ''}.`);
+      console.log(`\n🗄  BD: ${describeDatabaseWrite(index).message} (${dbRes.rejected} inválidos)`);
     } catch (err) {
+      if (err.result) Object.assign(index.db, err.result);
       index.db.failures.push(err.message || String(err));
       console.log(`\n🗄  BD: ERROR – ${err.message}`);
     }

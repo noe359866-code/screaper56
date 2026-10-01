@@ -46,11 +46,11 @@ test('dry-run deduplica por info_hash y cuenta rechazos', async () => {
     candidate({ title: 'same hash, richer title' }),
     { item: candidate().item, stream: { ...candidate().stream, infoHash: 'bad' } },
   ]);
-  assert.deepEqual(result, { inserted: 1, rejected: 1, dryRun: true });
+  assert.deepEqual(result, { inserted: 0, prepared: 1, rejected: 1, dryRun: true, skipReason: 'dry-run' });
 });
 
 // Cliente Supabase simulado: registra las llamadas y contesta como PostgREST.
-function fakeSupabase({ upsertError = null, insertError = null, existing = [] } = {}) {
+function fakeSupabase({ upsertError = null, insertError = null, updateError = null, existing = [] } = {}) {
   const calls = [];
   const table = new Map(existing.map(hash => [hash, { info_hash: hash }]));
   const reply = (result) => ({ abortSignal: async () => result });
@@ -87,6 +87,8 @@ function fakeSupabase({ upsertError = null, insertError = null, existing = [] } 
           return {
             eq(column, value) {
               calls.push({ op: 'update', changes, column, value });
+              const error = typeof updateError === 'function' ? updateError(value) : updateError;
+              if (error) return reply({ error, status: 403 });
               table.set(value, { ...table.get(value), ...changes });
               return reply({ error: null, status: 204 });
             },
@@ -107,7 +109,7 @@ test('sin UNIQUE(info_hash) (error 42P10) cambia a insert + update y no pierde r
   const repo = createRepository({ client, sleep: async () => {} });
   // Mismas columnas → un solo grupo (PostgREST exige las mismas claves en cada petición).
   const result = await repo.upsert([candidate(), candidate({ infoHash: HASH2, title: 'Otro 720p [ES-EN]' })]);
-  assert.deepEqual(result, { inserted: 2, rejected: 0, dryRun: false, mode: 'insert+update', created: 1, updated: 1 });
+  assert.deepEqual(result, { inserted: 2, prepared: 2, rejected: 0, dryRun: false, mode: 'insert+update', created: 1, updated: 1 });
   assert.deepEqual(client.calls.map(c => c.op), ['upsert', 'select', 'insert', 'update']);
   assert.deepEqual(client.calls[2].rows.map(r => r.info_hash), [HASH2]);
   assert.equal(client.calls[3].value, HASH);
@@ -119,7 +121,7 @@ test('UPSERT nativo cuando la tabla sí tiene la restricción', async () => {
   const client = fakeSupabase();
   const repo = createRepository({ client, sleep: async () => {} });
   const result = await repo.upsert([candidate()]);
-  assert.deepEqual(result, { inserted: 1, rejected: 0, dryRun: false, mode: 'upsert' });
+  assert.deepEqual(result, { inserted: 1, prepared: 1, rejected: 0, dryRun: false, mode: 'upsert' });
   assert.equal(client.calls[0].options.onConflict, 'info_hash');
 });
 
@@ -142,4 +144,98 @@ test('errores persistentes: 3 intentos y error con el detalle', async () => {
   const repo = createRepository({ client, sleep: async () => {} });
   await assert.rejects(repo.upsert([candidate()]), /57014.*persisted=0\/1/);
   assert.equal(client.calls.length, 3);
+});
+
+
+test('sin credenciales no simula inserciones y explica qué Secrets faltan', async () => {
+  const repo = createRepository();
+  assert.equal(repo.enabled, false);
+  assert.equal(repo.skipReason, 'missing-credentials');
+  assert.deepEqual(await repo.upsert([candidate(), candidate()]), {
+    inserted: 0, prepared: 1, rejected: 0, dryRun: true,
+    skipReason: 'missing-credentials',
+    missingCredentials: ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY'],
+  });
+});
+
+test('credenciales incompletas o en blanco: identifica solo las que faltan', async () => {
+  for (const config of [
+    { supabaseUrl: 'https://example.supabase.co', supabaseServiceRoleKey: '   ', missing: ['SUPABASE_SERVICE_ROLE_KEY'] },
+    { supabaseUrl: '   ', supabaseServiceRoleKey: 'test-key', missing: ['SUPABASE_URL'] },
+  ]) {
+    const repo = createRepository(config);
+    const result = await repo.upsert([]);
+    assert.deepEqual(result.missingCredentials, config.missing);
+    assert.equal(result.inserted, 0);
+    assert.equal(result.prepared, 0);
+    assert.equal(result.skipReason, 'missing-credentials');
+  }
+});
+
+test('dry-run explícito no llama a Supabase aunque haya un cliente configurado', async () => {
+  const client = fakeSupabase();
+  const repo = createRepository({ client, dryRun: true });
+  assert.equal(repo.enabled, false);
+  assert.deepEqual(await repo.upsert([candidate()]), {
+    inserted: 0, prepared: 1, rejected: 0, dryRun: true, skipReason: 'dry-run',
+  });
+  assert.deepEqual(client.calls, []);
+});
+
+test('sin candidatos válidos también devuelve el estado real de escritura', async () => {
+  const client = fakeSupabase();
+  const repo = createRepository({ client });
+  assert.deepEqual(await repo.upsert([candidate({ infoHash: 'bad' })]), {
+    inserted: 0, prepared: 0, rejected: 1, dryRun: false, mode: 'upsert',
+  });
+  assert.deepEqual(client.calls, []);
+});
+
+test('un fallo parcial conserva el número de filas realmente escritas', async () => {
+  const client = fakeSupabase({
+    upsertError: rows => rows.some(r => r.info_hash === HASH2)
+      ? { code: '42501', message: 'permission denied for table torrents' } : null,
+  });
+  const repo = createRepository({ client, sleep: async () => {} });
+  // Sin seeders → otro grupo de columnas; el primero se guarda y el segundo falla.
+  await assert.rejects(repo.upsert([candidate(), candidate({ infoHash: HASH2, seeders: null })]), error => {
+    assert.match(error.message, /persisted=1\/2/);
+    assert.deepEqual(error.result, { inserted: 1, prepared: 2, rejected: 0, dryRun: false, mode: 'upsert' });
+    return true;
+  });
+  assert.equal(client.table.has(HASH), true);
+  assert.equal(client.table.has(HASH2), false);
+});
+
+
+test('fallback: cuenta los inserts confirmados aunque después falle un update', async () => {
+  const client = fakeSupabase({
+    upsertError: { code: '42P10', message: 'no unique constraint' },
+    updateError: { code: '42501', message: 'update denied' },
+    existing: [HASH],
+  });
+  const repo = createRepository({ client, sleep: async () => {} });
+  await assert.rejects(repo.upsert([candidate(), candidate({ infoHash: HASH2 })]), error => {
+    assert.deepEqual(error.result, {
+      inserted: 1, prepared: 2, rejected: 0, dryRun: false,
+      mode: 'insert+update', created: 1, updated: 0,
+    });
+    return true;
+  });
+  assert.equal(client.table.has(HASH2), true);
+  assert.equal(client.calls.filter(c => c.op === 'insert').length, 1);
+});
+
+test('fallback: los reintentos no duplican el conteo ni convierten inserts en updates', async () => {
+  let failuresLeft = 1;
+  const client = fakeSupabase({
+    upsertError: { code: '42P10', message: 'no unique constraint' },
+    updateError: () => failuresLeft-- > 0 ? { code: '57014', message: 'statement timeout' } : null,
+    existing: [HASH],
+  });
+  const repo = createRepository({ client, sleep: async () => {} });
+  assert.deepEqual(await repo.upsert([candidate(), candidate({ infoHash: HASH2 })]), {
+    inserted: 2, prepared: 2, rejected: 0, dryRun: false,
+    mode: 'insert+update', created: 1, updated: 1,
+  });
 });

@@ -57,7 +57,7 @@
       <input id="sb-page-size" type="number" min="20" max="500" value="50" />
     </label>
   </div>
-  <p class="muted small">Solo sirve para la fuente “Supabase” del Dashboard (histórico de la tabla <code>torrents</code>). Las fuentes “Publicado” y “Este navegador” no lo necesitan.</p>
+  <p class="muted small"><b>Solo lectura:</b> estos ajustes sirven para ver la tabla <code>torrents</code> en el Dashboard, no para guardar. Para escribir, configura <code>SUPABASE_URL</code> y <code>SUPABASE_SERVICE_ROLE_KEY</code> en <b>Settings → Secrets and variables → Actions</b> del repositorio y usa “☁️ Guardar en el repo / BD” sin Dry-run. <b>Nunca pongas la service-role key en esta web.</b></p>
 
   <h3>Procesamiento</h3>
   <div class="grid">
@@ -161,7 +161,7 @@
   <div class="modes">
     <div class="mode">
       <button id="process-local" class="primary">⚡ Procesar aquí (sin token)</button>
-      <p class="muted small">Tu navegador consulta los addons y Cinemeta directamente y en 1–2 minutos tienes los 2 torrents de cada título. Se guardan en este navegador (Dashboard → 💻 Este navegador). No toca el repositorio.</p>
+      <p class="muted small">Tu navegador consulta los addons y Cinemeta directamente y en 1–2 minutos tienes los 2 torrents de cada título. Se guardan solo en este navegador (Dashboard → 💻 Este navegador). No escribe en el repositorio ni en Supabase.</p>
     </div>
     <div class="mode">
       <button id="ingest" class="ghost strong">☁️ Guardar en el repo / BD</button>

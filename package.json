@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "fetch": "node src/fetch.mjs",
+    "fetch": "node src/fetch.mjs && node src/check-db.mjs",
     "reprocess": "REPROCESS=1 node src/fetch.mjs",
     "summary": "node src/summary.mjs",
     "serve": "python3 -m http.server 4173 --directory public --bind 0.0.0.0",

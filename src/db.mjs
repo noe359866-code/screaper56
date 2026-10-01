@@ -152,8 +152,14 @@ export function createRepository({
   client: injectedClient = null,
   sleep = ms => new Promise(r => setTimeout(r, ms)),
 } = {}) {
+  supabaseUrl = typeof supabaseUrl === 'string' ? supabaseUrl.trim() : '';
+  supabaseServiceRoleKey = typeof supabaseServiceRoleKey === 'string' ? supabaseServiceRoleKey.trim() : '';
   let client = injectedClient;
-  const hasCreds = !!supabaseUrl && !!supabaseServiceRoleKey;
+  const missingCredentials = [
+    ...(!supabaseUrl ? ['SUPABASE_URL'] : []),
+    ...(!supabaseServiceRoleKey ? ['SUPABASE_SERVICE_ROLE_KEY'] : []),
+  ];
+  const hasCreds = missingCredentials.length === 0;
   if (!client && !dryRun && hasCreds) {
     client = createClient(supabaseUrl, supabaseServiceRoleKey, {
       auth: { persistSession: false, autoRefreshToken: false },
@@ -163,12 +169,12 @@ export function createRepository({
   let mode = 'upsert';           // → 'insert+update' after 42P10
   let releaseFields = true;       // → false if the table lacks codec/hdr_format/channels
 
-  async function upsertNative(group) {
+  async function upsertNative(group, progress) {
     await run(client.from(TABLE).upsert(group, { onConflict: 'info_hash', ignoreDuplicates: false, defaultToNull: false }));
-    return { created: null, updated: null };
+    for (const rec of group) progress.persisted.add(rec.info_hash);
   }
 
-  async function insertOrUpdate(group) {
+  async function insertOrUpdate(group, progress) {
     const existing = new Set();
     for (const part of chunks(group.map(r => r.info_hash), SELECT_CHUNK)) {
       const rows = await run(client.from(TABLE).select('info_hash').in('info_hash', part));
@@ -176,22 +182,32 @@ export function createRepository({
     }
     const fresh = group.filter(r => !existing.has(r.info_hash));
     const stale = group.filter(r => existing.has(r.info_hash));
-    if (fresh.length) await run(client.from(TABLE).insert(fresh, { defaultToNull: false }));
-    for (const part of chunks(stale, UPDATE_CONCURRENCY)) {
-      await Promise.all(part.map(rec => {
-        const { info_hash: hash, ...changes } = rec;
-        return run(client.from(TABLE).update(changes).eq('info_hash', hash));
-      }));
+    if (fresh.length) {
+      await run(client.from(TABLE).insert(fresh, { defaultToNull: false }));
+      for (const rec of fresh) {
+        progress.persisted.add(rec.info_hash);
+        progress.created.add(rec.info_hash);
+      }
     }
-    return { created: fresh.length, updated: stale.length };
+    for (const part of chunks(stale, UPDATE_CONCURRENCY)) {
+      // Wait for every update before retrying/reporting; some may have succeeded.
+      const results = await Promise.allSettled(part.map(async rec => {
+        const { info_hash: hash, ...changes } = rec;
+        await run(client.from(TABLE).update(changes).eq('info_hash', hash));
+        progress.persisted.add(hash);
+        if (!progress.created.has(hash)) progress.updated.add(hash);
+      }));
+      const failure = results.find(result => result.status === 'rejected');
+      if (failure) throw failure.reason;
+    }
   }
 
-  async function writeGroup(group) {
+  async function writeGroup(group, progress) {
     let lastErr = null;
     for (let attempt = 0; attempt < 3; attempt++) {
       const records = releaseFields ? group : group.map(withoutReleaseFields);
       try {
-        return mode === 'upsert' ? await upsertNative(records) : await insertOrUpdate(records);
+        return mode === 'upsert' ? await upsertNative(records, progress) : await insertOrUpdate(records, progress);
       } catch (err) {
         lastErr = err;
         if (err.code === NO_UNIQUE_CONSTRAINT && mode === 'upsert') {
@@ -213,6 +229,8 @@ export function createRepository({
   return {
     get enabled() { return !dryRun && !!client; },
     get dryRun() { return dryRun || !client; },
+    get skipReason() { return dryRun ? 'dry-run' : client ? null : 'missing-credentials'; },
+    get missingCredentials() { return client ? [] : [...missingCredentials]; },
     get mode() { return mode; },
     async upsert(records) {
       const unique = new Map();
@@ -224,8 +242,13 @@ export function createRepository({
         if (!unique.has(key)) unique.set(key, clean);
       }
       const valid = [...unique.values()].map(pruneUnknown);
-      if (!valid.length) return { inserted: 0, rejected, dryRun: this.dryRun };
-      if (this.dryRun || !client) return { inserted: valid.length, rejected, dryRun: true };
+      const result = { inserted: 0, prepared: valid.length, rejected, dryRun: this.dryRun };
+      if (this.dryRun) {
+        result.skipReason = this.skipReason;
+        if (this.skipReason === 'missing-credentials') result.missingCredentials = this.missingCredentials;
+        return result;
+      }
+      if (!valid.length) return { ...result, mode };
 
       // PostgREST bulk writes need the same keys in every row of a request.
       const groups = new Map();
@@ -234,31 +257,28 @@ export function createRepository({
         if (!groups.has(k)) groups.set(k, []);
         groups.get(k).push(rec);
       }
-      let persisted = 0;
-      let created = 0;
-      let updated = 0;
+      const progress = { persisted: new Set(), created: new Set(), updated: new Set() };
       const failures = [];
       for (const group of groups.values()) {
         try {
-          const res = await writeGroup(group);
-          persisted += group.length;
-          created += res.created ?? 0;
-          updated += res.updated ?? 0;
+          await writeGroup(group, progress);
         } catch (err) {
           failures.push(err.message || String(err));
         }
       }
-      if (failures.length) {
-        throw new Error(`Supabase upsert failed: ${failures.join('; ')} (persisted=${persisted}/${valid.length}, mode=${mode})`);
-      }
-      return {
+      const persisted = progress.persisted.size;
+      Object.assign(result, {
         inserted: persisted,
-        rejected,
-        dryRun: false,
         mode,
-        ...(mode === 'insert+update' ? { created, updated } : {}),
+        ...(mode === 'insert+update' ? { created: progress.created.size, updated: progress.updated.size } : {}),
         ...(releaseFields ? {} : { skippedColumns: RELEASE_FIELDS }),
-      };
+      });
+      if (failures.length) {
+        const error = new Error(`Supabase upsert failed: ${failures.join('; ')} (persisted=${persisted}/${valid.length}, mode=${mode})`);
+        error.result = result; // Preserve partial writes in report.json instead of reporting zero.
+        throw error;
+      }
+      return result;
     },
   };
 }

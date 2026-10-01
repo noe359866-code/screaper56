@@ -163,10 +163,36 @@ concurrencia).
 
 ### Supabase (opcional)
 
-La última ejecución falló con `42P10`: la tabla no tiene una restricción UNIQUE
-en `info_hash`, así que `ON CONFLICT` es imposible. Ahora la Action lo detecta y
-cambia sola a **select + insert de los nuevos + update de los existentes**. Aun
-así conviene añadir la restricción para volver al UPSERT nativo:
+**Ver títulos en la web no significa que estén guardados en la BD:**
+
+- **⚡ Procesar aquí** guarda solo en el `localStorage` del navegador.
+- **📦 Publicado** lee los JSON de GitHub Pages, no la tabla de Supabase.
+- La URL + **anon key de Ajustes solo sirven para leer** la tabla en el
+  Dashboard. Para escribir, configura `SUPABASE_URL` y
+  `SUPABASE_SERVICE_ROLE_KEY` en **Settings → Secrets and variables → Actions**
+  del repositorio. Nunca pongas la service-role key en la web ni en el chat.
+- Usa **☁️ Guardar en el repo / BD** con **Dry-run desactivado** (`dry_run=0`).
+  `DRY_RUN=1`, `DRY_RUN_DB=1`, `FIXTURE_MODE=1` y `REPROCESS=1` no escriben.
+
+El Dashboard, el resumen de la Action y el Issue distinguen **guardados** de
+**preparados sin escribir**. En `report.json`, `db.inserted` cuenta solo hashes
+cuya escritura fue confirmada (nuevos o actualizados); `db.prepared` cuenta
+candidatos válidos únicos. Si se omite la escritura, `db.skipReason` distingue
+`dry-run` de `missing-credentials` y `db.missingCredentials` enumera únicamente
+los nombres de los Secrets que faltan, nunca sus valores. Los reportes antiguos
+con `db.dryRun: true` usaban `inserted` para una simulación: **esas filas no se
+guardaron**.
+
+Si Supabase rechaza la escritura, los JSON y el reporte se publican igualmente,
+pero el paso final `Verificar resultado de Supabase` marca la Action como
+**fallida** y no cierra el Issue como completado. `npm run fetch` también valida
+el resultado. Supabase sin configurar sigue siendo un modo válido de solo JSON,
+con una advertencia explícita.
+
+Si Supabase devuelve `42P10`, la tabla no tiene una restricción UNIQUE en
+`info_hash`, así que `ON CONFLICT` es imposible. La Action lo detecta y cambia
+sola a **select + insert de los nuevos + update de los existentes**. Aun así
+conviene añadir la restricción para volver al UPSERT nativo:
 
 ```sql
 ALTER TABLE public.torrents ADD CONSTRAINT torrents_info_hash_key UNIQUE (info_hash);
@@ -256,6 +282,8 @@ desconocida no borra valores más ricos ya presentes.
 | `public/lib/pipeline.js` | HTTP con reintentos, cortocircuito por addon, orquestación, streams publicables |
 | `public/lib/issue.js` | Construye e interpreta el Issue de ingesta |
 | `public/lib/format.js` | CSV, lista de magnets y resumen Markdown |
+| `public/lib/persistence.js` | Estado de escritura de BD compartido por web y Action |
+| `src/check-db.mjs` | Hace fallar la ejecución si Supabase rechazó la escritura |
 | `src/fetch.mjs` | CLI de la Action: escribe `public/`, addon Stremio y Supabase |
 | `src/db.mjs` | Sanitización y UPSERT Supabase (con alternativa si falta UNIQUE) |
 | `src/issue-bridge.mjs` | Issue → `watchlist.txt` (modo sin token) |
