@@ -1,0 +1,35 @@
+{
+  "id": "tt11611190",
+  "imdbId": "tt11611190",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Star Wars: The Mandalorian and Grogu (2026)",
+  "name": null,
+  "year": null,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt11611190.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt11611190.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt11611190.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt11611190.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

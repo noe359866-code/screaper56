@@ -1,6 +1,15 @@
 {
-  "generatedAt": "2026-09-30T10:19:12.038Z",
-  "finishedAt": "2026-09-30T10:22:34.744Z",
+  "generatedAt": "2026-10-01T01:18:34.452Z",
+  "finishedAt": "2026-10-01T01:18:44.710Z",
+  "mode": "live",
+  "repository": {
+    "slug": "noe359866-code/screaper56",
+    "owner": "noe359866-code",
+    "name": "screaper56",
+    "branch": "main",
+    "url": "https://github.com/noe359866-code/screaper56",
+    "pagesUrl": "https://noe359866-code.github.io/screaper56"
+  },
   "providers": [
     {
       "slug": "peerflix",
@@ -103,11 +112,49 @@
     }
   ],
   "fixture": false,
-  "dryRunDb": false,
-  "total": 24,
-  "movies": 22,
-  "episodes": 2,
-  "totalStreams": 3050,
+  "dryRunDb": true,
+  "total": 41,
+  "movies": 30,
+  "episodes": 11,
+  "totalStreams": 70,
+  "totalCandidates": 4215,
+  "picks": {
+    "es": 35,
+    "en": 35
+  },
+  "missing": {
+    "es": 6,
+    "en": 6
+  },
+  "selection": {
+    "perTitle": 2,
+    "languages": [
+      "es",
+      "en"
+    ],
+    "maxTrackers": 10,
+    "trackersSource": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt",
+    "trackers": [
+      "udp://tracker.opentrackr.org:1337/announce",
+      "udp://open.stealth.si:80/announce",
+      "udp://tracker.torrent.eu.org:451/announce",
+      "udp://open.demonii.com:1337/announce",
+      "udp://tracker.skynetcloud.site:6969/announce",
+      "udp://tracker.qu.ax:6969/announce",
+      "udp://tracker.gmi.gd:6969/announce",
+      "udp://tracker.theoks.net:6969/announce",
+      "udp://tracker.corpscorp.online:80/announce",
+      "udp://tracker.bittor.pw:1337/announce"
+    ]
+  },
+  "meta": {
+    "source": "cinemeta",
+    "requested": 32,
+    "found": 26,
+    "failures": 0,
+    "disabled": false,
+    "lastError": null
+  },
   "items": [
     {
       "id": "tt0111161",
@@ -116,37 +163,106 @@
       "season": null,
       "episode": null,
       "label": "Cadena perpetua (1994)",
+      "name": "The Shawshank Redemption",
+      "year": 1994,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0111161.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0111161.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0111161.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0111161.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0111161.json"
       },
-      "streamCount": 111,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 111,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Cadena Perpetua [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]",
+          "quality": "1080p",
+          "seeders": 9,
+          "sizeBytes": 5390183956,
+          "sizeLabel": "5.0 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "818a06d899a73ce1694d2760673c3c8f9c9d7208",
+          "fileIdx": 1,
+          "score": 14.5,
+          "magnetUrl": "magnet:?xt=urn:btih:818a06d899a73ce1694d2760673c3c8f9c9d7208&dn=Cadena%20Perpetua%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Shawshank Redemption (1994) 2160p BRRip 5.1 10Bit x265 -YTS",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 7419556004,
+          "sizeLabel": "6.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6&dn=The%20Shawshank%20Redemption%20(1994)%202160p%20BRRip%205.1%2010Bit%20x265%20-YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
       ]
     },
     {
@@ -156,39 +272,105 @@
       "season": null,
       "episode": null,
       "label": "Inception (2010)",
+      "name": "Inception",
+      "year": 2010,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1375666.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1375666.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1375666.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1375666.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1375666.json"
       },
-      "streamCount": 138,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 137,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Origen [BluRay 1080px][AC3 5.1-DTS Castellano-Ingles+Subs][2010]",
+          "quality": "1080p",
+          "seeders": 6,
+          "sizeBytes": null,
+          "sizeLabel": null,
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "DTS",
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "68b383571adafdc4e11bb508231d9107d893dec4",
+          "fileIdx": null,
+          "score": 14.27,
+          "magnetUrl": "magnet:?xt=urn:btih:68b383571adafdc4e11bb508231d9107d893dec4&dn=Origen%20%5BBluRay%201080px%5D%5BAC3%205.1-DTS%20Castellano-Ingles%2BSubs%5D%5B2010%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Inception (2010) 2160p BRRip 5.1 10Bit x265 -YTS",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 7129645711,
+          "sizeLabel": "6.6 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "43e3691dc6f4172841e32b25b349e2b7a980b9c5",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:43e3691dc6f4172841e32b25b349e2b7a980b9c5&dn=Inception%20(2010)%202160p%20BRRip%205.1%2010Bit%20x265%20-YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
       ]
     },
     {
@@ -198,37 +380,111 @@
       "season": null,
       "episode": null,
       "label": "El caballero oscuro (2008)",
+      "name": "The Dark Knight",
+      "year": 2008,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0468569.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0468569.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0468569.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0468569.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0468569.json"
       },
-      "streamCount": 107,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 105,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Batman.The.Dark.Knight.2008.1080p.REMUX.ENG.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN",
+          "quality": "1080p",
+          "seeders": 86,
+          "sizeBytes": 32115617956,
+          "sizeLabel": "29.9 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "REMUX",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "DTS-HD",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "abbd90e582410f505140952373e0f148ba304f52",
+          "fileIdx": 0,
+          "score": 14.91,
+          "magnetUrl": "magnet:?xt=urn:btih:abbd90e582410f505140952373e0f148ba304f52&dn=Batman.The.Dark.Knight.2008.1080p.REMUX.ENG.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The.Dark.Knight.2008.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5",
+          "quality": "4K",
+          "seeders": 101,
+          "sizeBytes": 23160611144,
+          "sizeLabel": "21.6 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "DTS-HD"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "a5fc2e0ac62e290c9c62fbd47a2462e96a84f52c",
+          "fileIdx": 2,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:a5fc2e0ac62e290c9c62fbd47a2462e96a84f52c&dn=The.Dark.Knight.2008.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 101,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
-        "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
       ]
     },
     {
@@ -238,38 +494,105 @@
       "season": null,
       "episode": null,
       "label": "Matrix (1999)",
+      "name": "The Matrix",
+      "year": 1999,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0133093.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0133093.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0133093.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0133093.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0133093.json"
       },
-      "streamCount": 142,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 142,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Matrix [BDremux 1080 px][AC3 5.1-Castellano-AC3 5.1-DTS Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 11,
+          "sizeBytes": 19896435998,
+          "sizeLabel": "18.5 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "REMUX",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "DTS",
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c",
+          "fileIdx": 1,
+          "score": 14.62,
+          "magnetUrl": "magnet:?xt=urn:btih:f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c&dn=Matrix%20%5BBDremux%201080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-DTS%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Matrix 1999 2160p BluRay",
+          "quality": "4K",
+          "seeders": 241,
+          "sizeBytes": 6968584438,
+          "sizeLabel": "6.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "28dec3ac8cc8c5758730a334d98705dd698f7bc1",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:28dec3ac8cc8c5758730a334d98705dd698f7bc1&dn=The%20Matrix%201999%202160p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 241,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -279,36 +602,106 @@
       "season": null,
       "episode": null,
       "label": "El Señor de los Anillos: La Comunidad del Anillo (2001)",
+      "name": "The Lord of the Rings: The Fellowship of the Ring",
+      "year": 2001,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0120737.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120737.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120737.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120737.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120737.json"
       },
-      "streamCount": 167,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 167,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The Lord of the Rings: The Fellowship of the Ring (2001) 1080p",
+          "quality": "1080p",
+          "seeders": 7,
+          "sizeBytes": 4520453079,
+          "sizeLabel": "4.2 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "5b65ab6f2b125d660f7de961659d566464d7158c",
+          "fileIdx": 0,
+          "score": 14.35,
+          "magnetUrl": "magnet:?xt=urn:btih:5b65ab6f2b125d660f7de961659d566464d7158c&dn=The%20Lord%20of%20the%20Rings%3A%20The%20Fellowship%20of%20the%20Ring%20(2001)%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The.Lord.of.the.Rings.The.Fellowship.of.the.Ring.2001.Extended.2160p.UHD.HDR.BluRay.x265.10bit.TRUEHD.ATMOS.[WMAN-LorD]",
+          "quality": "4K",
+          "seeders": 157,
+          "sizeBytes": 15794742231,
+          "sizeLabel": "14.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "Atmos",
+              "TrueHD"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "997eb763b0c51b09eca3ecbd5d2c27e95772f254",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:997eb763b0c51b09eca3ecbd5d2c27e95772f254&dn=The.Lord.of.the.Rings.The.Fellowship.of.the.Ring.2001.Extended.2160p.UHD.HDR.BluRay.x265.10bit.TRUEHD.ATMOS.%5BWMAN-LorD%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 157,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
-        "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -318,38 +711,104 @@
       "season": null,
       "episode": null,
       "label": "El Señor de los Anillos: El Retorno del Rey (2003)",
+      "name": "The Lord of the Rings: The Return of the King",
+      "year": 2003,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0167260.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0167260.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0167260.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0167260.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0167260.json"
       },
-      "streamCount": 152,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 152,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "El señor de los anillos El retorno del rey (2003) BluRay 1080p Castellano 5.1",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": 11789685227,
+          "sizeLabel": "11.0 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "8686bb7ebcea23dd289cc6d85a968361063df5df",
+          "fileIdx": 0,
+          "score": 14.17,
+          "magnetUrl": "magnet:?xt=urn:btih:8686bb7ebcea23dd289cc6d85a968361063df5df&dn=El%20se%C3%B1or%20de%20los%20anillos%20El%20retorno%20del%20rey%20(2003)%20BluRay%201080p%20Castellano%205.1&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The.Lord.of.the.Rings.The.Return.of.the.King.2003.Extended.2160p.UHD.HDR.BluRay.x265.10bit.TRUEHD.ATMOS.[WMAN-LorD]",
+          "quality": "4K",
+          "seeders": 107,
+          "sizeBytes": 19026705121,
+          "sizeLabel": "17.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "Atmos",
+              "TrueHD"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "71684047147cf609445a55fb6a424d35a0e4137a",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:71684047147cf609445a55fb6a424d35a0e4137a&dn=The.Lord.of.the.Rings.The.Return.of.the.King.2003.Extended.2160p.UHD.HDR.BluRay.x265.10bit.TRUEHD.ATMOS.%5BWMAN-LorD%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -359,39 +818,104 @@
       "season": null,
       "episode": null,
       "label": "El caballero oscuro: La leyenda renace (2012)",
+      "name": "The Dark Knight Rises",
+      "year": 2012,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1345836.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1345836.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1345836.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1345836.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1345836.json"
       },
-      "streamCount": 98,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 98,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "El Caballero Oscuro La Leyenda Renace [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs][2012]",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": null,
+          "sizeLabel": null,
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "994365bc1d80139798b436c0fe88ce370066f999",
+          "fileIdx": null,
+          "score": 14.17,
+          "magnetUrl": "magnet:?xt=urn:btih:994365bc1d80139798b436c0fe88ce370066f999&dn=El%20Caballero%20Oscuro%20La%20Leyenda%20Renace%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D%5B2012%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Dark Knight Rises (2012) [2160p] [4K] [BluRay] [5.1] [YTS] [YIFY]",
+          "quality": "4K",
+          "seeders": 199,
+          "sizeBytes": 8879844884,
+          "sizeLabel": "8.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "c4d1406cc831868a18ecb19755f1d32ec6cf6ee8",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:c4d1406cc831868a18ecb19755f1d32ec6cf6ee8&dn=The%20Dark%20Knight%20Rises%20(2012)%20%5B2160p%5D%20%5B4K%5D%20%5BBluRay%5D%20%5B5.1%5D%20%5BYTS%5D%20%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 199,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -401,38 +925,107 @@
       "season": null,
       "episode": null,
       "label": "Interestelar (2014)",
+      "name": "Interstellar",
+      "year": 2014,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0816692.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0816692.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0816692.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0816692.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0816692.json"
       },
-      "streamCount": 221,
-      "bestSeeders": 1202,
+      "streamCount": 2,
+      "candidateCount": 221,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Interstellar [BluRay 1080p][AC3 5.1 Spanish DTS 5.1-English+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 63,
+          "sizeBytes": 14345190769,
+          "sizeLabel": "13.4 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "DTS",
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentsdb"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "TorrentsDB"
+          ],
+          "infoHash": "078553e766d08d2667dbb3d86d4c5d346770e7b5",
+          "fileIdx": 1,
+          "score": 15.71,
+          "magnetUrl": "magnet:?xt=urn:btih:078553e766d08d2667dbb3d86d4c5d346770e7b5&dn=Interstellar%20%5BBluRay%201080p%5D%5BAC3%205.1%20Spanish%20DTS%205.1-English%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Interstellar.2014.IMAX.2160p.10bit.HDR.BluRay.6CH.2CH.x265.HEVC-PSA",
+          "quality": "4K",
+          "seeders": 110,
+          "sizeBytes": 6174015488,
+          "sizeLabel": "5.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "163d2082453d037f3bec8bb77ddce782797a7fc3",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:163d2082453d037f3bec8bb77ddce782797a7fc3&dn=Interstellar.2014.IMAX.2160p.10bit.HDR.BluRay.6CH.2CH.x265.HEVC-PSA&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 110,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -442,36 +1035,100 @@
       "season": null,
       "episode": null,
       "label": "Forrest Gump (1994)",
+      "name": "Forrest Gump",
+      "year": 1994,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0109830.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109830.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109830.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0109830.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109830.json"
       },
-      "streamCount": 93,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 92,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Forrest Gump (1994) 1080p Dual Audio Español Latino Ingl",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": 3768833802,
+          "sizeLabel": "3.5 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "ec4535df512599a5e0c7e0595b1691074a1b8c25",
+          "fileIdx": 0,
+          "score": 14.17,
+          "magnetUrl": "magnet:?xt=urn:btih:ec4535df512599a5e0c7e0595b1691074a1b8c25&dn=Forrest%20Gump%20(1994)%201080p%20Dual%20Audio%20Espa%C3%B1ol%20Latino%20Ingl&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Forrest Gump 1994 2160p BluRay",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 7247757312,
+          "sizeLabel": "6.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "08c79ebf2ca84cbf00b217e8c93eb001a9bc6099",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:08c79ebf2ca84cbf00b217e8c93eb001a9bc6099&dn=Forrest%20Gump%201994%202160p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
-        "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -481,36 +1138,101 @@
       "season": null,
       "episode": null,
       "label": "El Padrino (1972)",
+      "name": "The Godfather",
+      "year": 1972,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0068646.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0068646.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0068646.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0068646.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0068646.json"
       },
-      "streamCount": 84,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 83,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The Godfather (1972) [1080P][Castellano][VerPeliculasOnline.org].mp4",
+          "quality": "1080p",
+          "seeders": 1,
+          "sizeBytes": null,
+          "sizeLabel": null,
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "04e9c9a20f1b818bd85d9c9d4b115a22ff5023f6",
+          "fileIdx": null,
+          "score": 13.45,
+          "magnetUrl": "magnet:?xt=urn:btih:04e9c9a20f1b818bd85d9c9d4b115a22ff5023f6&dn=The%20Godfather%20(1972)%20%5B1080P%5D%5BCastellano%5D%5BVerPeliculasOnline.org%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Godfather (1972) 2160p WEBRip 5.1 10Bit x265 -YTS",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 8482560410,
+          "sizeLabel": "7.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "eaefb74b7736d4579cc3da91457da7a755babc3a",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:eaefb74b7736d4579cc3da91457da7a755babc3a&dn=The%20Godfather%20(1972)%202160p%20WEBRip%205.1%2010Bit%20x265%20-YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -520,35 +1242,104 @@
       "season": null,
       "episode": null,
       "label": "El silencio de los corderos (1991)",
+      "name": "The Silence of the Lambs",
+      "year": 1991,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0102926.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0102926.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0102926.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0102926.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0102926.json"
       },
-      "streamCount": 84,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 84,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "El Silencio de los Corderos [FullBluRay 1080p][Castellano DTS 5.1-Ingles DTS-HD 5.1+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 2,
+          "sizeBytes": null,
+          "sizeLabel": null,
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "DTS-HD"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "3aca724aa0962de89c729072b5ddf572785ea328",
+          "fileIdx": null,
+          "score": 13.72,
+          "magnetUrl": "magnet:?xt=urn:btih:3aca724aa0962de89c729072b5ddf572785ea328&dn=El%20Silencio%20de%20los%20Corderos%20%5BFullBluRay%201080p%5D%5BCastellano%20DTS%205.1-Ingles%20DTS-HD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Silence of the Lambs (1991) 2160p WEBRip 5.1 10Bit x265 -YTS",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 5680094249,
+          "sizeLabel": "5.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "21822b498c798ef83454f6e3a5cf1b98ab73f672",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:21822b498c798ef83454f6e3a5cf1b98ab73f672&dn=The%20Silence%20of%20the%20Lambs%20(1991)%202160p%20WEBRip%205.1%2010Bit%20x265%20-YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -558,39 +1349,106 @@
       "season": null,
       "episode": null,
       "label": "Pulp Fiction (1994)",
+      "name": "Pulp Fiction",
+      "year": 1994,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0110912.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0110912.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0110912.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0110912.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110912.json"
       },
-      "streamCount": 112,
-      "bestSeeders": 2081,
+      "streamCount": 2,
+      "candidateCount": 112,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Pulp Fiction [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]",
+          "quality": "1080p",
+          "seeders": 17,
+          "sizeBytes": null,
+          "sizeLabel": null,
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "07f4dbe5174ac00a8ea9a0803e325048b2ec831a",
+          "fileIdx": null,
+          "score": 14.88,
+          "magnetUrl": "magnet:?xt=urn:btih:07f4dbe5174ac00a8ea9a0803e325048b2ec831a&dn=Pulp%20Fiction%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Pulp.Fiction.1994.UHD.Blu-ray.2160p.DTS-HD.MA.5.1.DV.HEVC.x265-E",
+          "quality": "4K",
+          "seeders": 206,
+          "sizeBytes": 18758269665,
+          "sizeLabel": "17.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "DV"
+            ],
+            "audio": [
+              "DTS-HD"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "4ac506e1dbe05b837495c90269649784b0c13f16",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:4ac506e1dbe05b837495c90269649784b0c13f16&dn=Pulp.Fiction.1994.UHD.Blu-ray.2160p.DTS-HD.MA.5.1.DV.HEVC.x265-E&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 206,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -600,36 +1458,106 @@
       "season": null,
       "episode": null,
       "label": "El Padrino. Parte II (1974)",
+      "name": "The Pianist",
+      "year": 2003,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0253474.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0253474.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0253474.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0253474.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0253474.json"
       },
-      "streamCount": 81,
-      "bestSeeders": 254,
+      "streamCount": 2,
+      "candidateCount": 81,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "El pianista (2002).BDrip 1080p (Spanish-English+Subt)",
+          "quality": "1080p",
+          "seeders": 16,
+          "sizeBytes": 2480343613,
+          "sizeLabel": "2.3 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "5bc7b3c4165a4eaa7d1f2fa19358202ef118143a",
+          "fileIdx": 0,
+          "score": 14.85,
+          "magnetUrl": "magnet:?xt=urn:btih:5bc7b3c4165a4eaa7d1f2fa19358202ef118143a&dn=El%20pianista%20(2002).BDrip%201080p%20(Spanish-English%2BSubt)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "The Pianist 2002 2160p BluRay",
+          "quality": "4K",
+          "seeders": 80,
+          "sizeBytes": 7215545057,
+          "sizeLabel": "6.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "018db4f2b9483b8d0dd9e62bc7cd53481786167b",
+          "fileIdx": 0,
+          "score": 8.11,
+          "magnetUrl": "magnet:?xt=urn:btih:018db4f2b9483b8d0dd9e62bc7cd53481786167b&dn=The%20Pianist%202002%202160p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 80,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [
+        "la etiqueta “El Padrino. Parte II (1974)” no cuadra: en IMDb es “The Pianist (2003)”"
+      ],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -639,34 +1567,110 @@
       "season": null,
       "episode": null,
       "label": "Fight Club (1999)",
+      "name": "Fight Club",
+      "year": 1999,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0137523.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0137523.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0137523.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0137523.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0137523.json"
       },
-      "streamCount": 96,
+      "streamCount": 2,
+      "candidateCount": 96,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 4K",
+          "title": "El club de la Lucha [4K UHDreescaldo][2160p][HDR10][AC3 5.1-DTS 5.1 Castellano-DTS-HD 5.1-Ingles+Subs][ES-EN]",
+          "quality": "4K",
+          "seeders": 11,
+          "sizeBytes": 18930068357,
+          "sizeLabel": "17.6 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [
+              "HDR10"
+            ],
+            "audio": [
+              "DTS-HD",
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "ce71e481b9dd1822433726c6ec018368333b25c6",
+          "fileIdx": 0,
+          "score": 14.37,
+          "magnetUrl": "magnet:?xt=urn:btih:ce71e481b9dd1822433726c6ec018368333b25c6&dn=El%20club%20de%20la%20Lucha%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Fight Club (1999) 1080p BrRip x264 - YIFY",
+          "quality": "1080p",
+          "seeders": 676,
+          "sizeBytes": 1986422374,
+          "sizeLabel": "1.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "a086ce4afabbd8ab949662e30134a49e22d1f0c7",
+          "fileIdx": 0,
+          "score": 8.01,
+          "magnetUrl": "magnet:?xt=urn:btih:a086ce4afabbd8ab949662e30134a49e22d1f0c7&dn=Fight%20Club%20(1999)%201080p%20BrRip%20x264%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
       "bestSeeders": 676,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -676,35 +1680,104 @@
       "season": null,
       "episode": null,
       "label": "Salvar al soldado Ryan (1998)",
+      "name": "Saving Private Ryan",
+      "year": 1998,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0120815.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120815.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120815.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120815.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120815.json"
       },
-      "streamCount": 99,
-      "bestSeeders": 963,
+      "streamCount": 2,
+      "candidateCount": 99,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Salvar al soldado Ryan [MicroHD][1080 px][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs]",
+          "quality": "1080p",
+          "seeders": 7,
+          "sizeBytes": 7290706984,
+          "sizeLabel": "6.8 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "ca7fd47ea96645a0824dae3e90b2b3cd4b86916b",
+          "fileIdx": 1,
+          "score": 14.35,
+          "magnetUrl": "magnet:?xt=urn:btih:ca7fd47ea96645a0824dae3e90b2b3cd4b86916b&dn=Salvar%20al%20soldado%20Ryan%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Saving Private Ryan 1998 2160p BluRay",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 8579197174,
+          "sizeLabel": "8.0 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "11c30b38f20a62210f8cf462b421a2e6e6a7a509",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:11c30b38f20a62210f8cf462b421a2e6e6a7a509&dn=Saving%20Private%20Ryan%201998%202160p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -714,34 +1787,109 @@
       "season": null,
       "episode": null,
       "label": "Joker (2019)",
+      "name": "Joker",
+      "year": 2019,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt7286456.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt7286456.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt7286456.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7286456.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7286456.json"
       },
-      "streamCount": 112,
-      "bestSeeders": 311,
+      "streamCount": 2,
+      "candidateCount": 112,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Joker [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 21,
+          "sizeBytes": 5894842613,
+          "sizeLabel": "5.5 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "fbc594b0409fb6767d41240793228e652ce51c09",
+          "fileIdx": 3,
+          "score": 15.01,
+          "magnetUrl": "magnet:?xt=urn:btih:fbc594b0409fb6767d41240793228e652ce51c09&dn=Joker%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Joker.2019.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1",
+          "quality": "4K",
+          "seeders": 108,
+          "sizeBytes": 6431713526,
+          "sizeLabel": "6.0 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "42e92deaa863d1b6083bb159c14fa827ea8ef9b6",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:42e92deaa863d1b6083bb159c14fa827ea8ef9b6&dn=Joker.2019.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 108,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -751,36 +1899,103 @@
       "season": null,
       "episode": null,
       "label": "Avengers: Endgame (2019)",
+      "name": "Avengers: Endgame",
+      "year": 2019,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt4154796.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt4154796.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt4154796.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt4154796.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt4154796.json"
       },
-      "streamCount": 132,
-      "bestSeeders": 1262,
+      "streamCount": 2,
+      "candidateCount": 132,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Avengers Endgame [1080p][Castellano][wWw.EliteTorrent.IO]",
+          "quality": "1080p",
+          "seeders": 43,
+          "sizeBytes": 8665096519,
+          "sizeLabel": "8.1 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "cfe85cace4a894e11ee9863be6644bce43b47460",
+          "fileIdx": 1,
+          "score": 15.47,
+          "magnetUrl": "magnet:?xt=urn:btih:cfe85cace4a894e11ee9863be6644bce43b47460&dn=Avengers%20Endgame%20%5B1080p%5D%5BCastellano%5D%5BwWw.EliteTorrent.IO%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Avengers Endgame (2019) 2160p BRRip 5.1 10Bit x265 -YTS",
+          "quality": "4K",
+          "seeders": 100,
+          "sizeBytes": 5647881994,
+          "sizeLabel": "5.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "709fbd48374d2ae13c11b07a26b5e7ddc727d720",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:709fbd48374d2ae13c11b07a26b5e7ddc727d720&dn=Avengers%20Endgame%20(2019)%202160p%20BRRip%205.1%2010Bit%20x265%20-YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 100,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -790,39 +2005,110 @@
       "season": null,
       "episode": null,
       "label": "Top Gun: Maverick (2022)",
+      "name": "Top Gun: Maverick",
+      "year": 2022,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1745960.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1745960.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1745960.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1745960.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1745960.json"
       },
-      "streamCount": 218,
-      "bestSeeders": 4618,
+      "streamCount": 2,
+      "candidateCount": 218,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Top Gun Maverick [BluRay 1080p][AC3 5.1 Castellano AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 16,
+          "sizeBytes": 9674413834,
+          "sizeLabel": "9.0 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "ac6170330af95b0a19b10d18c14598cd898c3d91",
+          "fileIdx": 0,
+          "score": 14.85,
+          "magnetUrl": "magnet:?xt=urn:btih:ac6170330af95b0a19b10d18c14598cd898c3d91&dn=Top%20Gun%20Maverick%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Top.Gun.Maverick.2022.2160p.WEB-DL.DDP5.1.Atmos.HDR.H.265-EVO[TGx]",
+          "quality": "4K",
+          "seeders": 538,
+          "sizeBytes": 24588687770,
+          "sizeLabel": "22.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "Atmos",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "2c6d8b3cb7539dffc30c86dc43231ff9209af976",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:2c6d8b3cb7539dffc30c86dc43231ff9209af976&dn=Top.Gun.Maverick.2022.2160p.WEB-DL.DDP5.1.Atmos.HDR.H.265-EVO%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 538,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -832,36 +2118,104 @@
       "season": null,
       "episode": null,
       "label": "Oppenheimer (2023)",
+      "name": "Oppenheimer",
+      "year": 2023,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt15398776.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt15398776.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt15398776.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt15398776.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15398776.json"
       },
-      "streamCount": 189,
-      "bestSeeders": 6115,
+      "streamCount": 2,
+      "candidateCount": 189,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Oppenheimer (2023) [Bluray 1080p][Esp]",
+          "quality": "1080p",
+          "seeders": 85,
+          "sizeBytes": 13239236690,
+          "sizeLabel": "12.3 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "6ca54f1a562fd6fddcad99abcc3e762b5bbc2018",
+          "fileIdx": 0,
+          "score": 15.9,
+          "magnetUrl": "magnet:?xt=urn:btih:6ca54f1a562fd6fddcad99abcc3e762b5bbc2018&dn=Oppenheimer%20(2023)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Oppenheimer",
+          "quality": "4K",
+          "seeders": 704,
+          "sizeBytes": 23117661471,
+          "sizeLabel": "21.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [
+              "DV",
+              "HDR10+"
+            ],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb"
+          ],
+          "providerNames": [
+            "TorrentsDB"
+          ],
+          "infoHash": "eec77ef78463451033f59a28052d4b76b9509efc",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:eec77ef78463451033f59a28052d4b76b9509efc&dn=Oppenheimer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 704,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -871,39 +2225,101 @@
       "season": null,
       "episode": null,
       "label": "Barbie (2023)",
+      "name": "Barbie",
+      "year": 2023,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1517268.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1517268.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1517268.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1517268.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1517268.json"
       },
-      "streamCount": 140,
-      "bestSeeders": 3618,
+      "streamCount": 2,
+      "candidateCount": 139,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Barbie (2023) [Bluray 1080p][Esp](wolfmax4k.com)",
+          "quality": "1080p",
+          "seeders": 27,
+          "sizeBytes": 8407398481,
+          "sizeLabel": "7.8 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "7705efd01bfdff77367aa1a7c4463c78c3049c9d",
+          "fileIdx": 0,
+          "score": 15.17,
+          "magnetUrl": "magnet:?xt=urn:btih:7705efd01bfdff77367aa1a7c4463c78c3049c9d&dn=Barbie%20(2023)%20%5BBluray%201080p%5D%5BEsp%5D(wolfmax4k.com)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Barbie.2023.REPACK.HDR.2160p.WEB.h265-ETHEL[TGx]",
+          "quality": "4K",
+          "seeders": 724,
+          "sizeBytes": 21303037788,
+          "sizeLabel": "19.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "f948332ee739545c80ee9b106c22f97a3c0edef8",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:f948332ee739545c80ee9b106c22f97a3c0edef8&dn=Barbie.2023.REPACK.HDR.2160p.WEB.h265-ETHEL%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 724,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -913,37 +2329,111 @@
       "season": null,
       "episode": null,
       "label": "Dune: Parte dos (2024)",
+      "name": "Dune: Part One",
+      "year": 2021,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1160419.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt1160419.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1160419.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1160419.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1160419.json"
       },
-      "streamCount": 168,
-      "bestSeeders": 800,
+      "streamCount": 2,
+      "candidateCount": 168,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Dune [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 50,
+          "sizeBytes": 5937792286,
+          "sizeLabel": "5.5 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "a675fd9b36e92e4eef563d787c90507fe8c2d5ea",
+          "fileIdx": 2,
+          "score": 15.56,
+          "magnetUrl": "magnet:?xt=urn:btih:a675fd9b36e92e4eef563d787c90507fe8c2d5ea&dn=Dune%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Dune.2021.2160p.HMAX.WEB-DL.DDP5.1.Atmos.HDR.HEVC-EVO[TGx]",
+          "quality": "4K",
+          "seeders": 265,
+          "sizeBytes": 21818433864,
+          "sizeLabel": "20.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [
+              "Atmos",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "799dbc6af33a8f32bf1406dc2ec68bbb6864affb",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:799dbc6af33a8f32bf1406dc2ec68bbb6864affb&dn=Dune.2021.2160p.HMAX.WEB-DL.DDP5.1.Atmos.HDR.HEVC-EVO%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 265,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
-        "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentio"
+      ],
+      "warnings": [
+        "la etiqueta “Dune: Parte dos (2024)” no cuadra: en IMDb es “Dune: Part One (2021)”"
+      ],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -953,38 +2443,524 @@
       "season": null,
       "episode": null,
       "label": "Spider-Man: Cruzando el Multiverso (2023)",
+      "name": "Spider-Man: Across the Spider-Verse",
+      "year": 2023,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt9362722.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt9362722.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt9362722.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json",
-        "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt9362722.json"
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt9362722.json"
       },
-      "streamCount": 126,
-      "bestSeeders": 3660,
+      "streamCount": 2,
+      "candidateCount": 126,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Spider-Man Cruzando el Multiverso (2023) [Bluray 1080p][Esp](wolfamax4k,com)",
+          "quality": "1080p",
+          "seeders": 51,
+          "sizeBytes": 11521249771,
+          "sizeLabel": "10.7 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "dc67bc9342036732c211140f60ecc2c95b3e9dcf",
+          "fileIdx": 0,
+          "score": 15.57,
+          "magnetUrl": "magnet:?xt=urn:btih:dc67bc9342036732c211140f60ecc2c95b3e9dcf&dn=Spider-Man%20Cruzando%20el%20Multiverso%20(2023)%20%5BBluray%201080p%5D%5BEsp%5D(wolfamax4k%2Ccom)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Spider-Man.Across.The.Spider-Verse.2023.REAL.HDR.2160p.WEB.h265-ETHEL[TGx]",
+          "quality": "4K",
+          "seeders": 1902,
+          "sizeBytes": 25479893484,
+          "sizeLabel": "23.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB",
+            "codec": "HEVC",
+            "hdr": [
+              "HDR"
+            ],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "73d7e10b9d8ec652b0a880756358b0889fa06b7d",
+          "fileIdx": 1,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:73d7e10b9d8ec652b0a880756358b0889fa06b7d&dn=Spider-Man.Across.The.Spider-Verse.2023.REAL.HDR.2160p.WEB.h265-ETHEL%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 1902,
       "qualities": [
         "1080p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "ja",
-        "ko",
-        "pt",
-        "ru",
-        "zh"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
         "torrentio",
-        "torrentsdb",
-        "ytztvio"
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt14234558",
+      "imdbId": "tt14234558",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "The Odyssey (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt14234558.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt14234558.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt14234558.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt14234558.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt16277242",
+      "imdbId": "tt16277242",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Avengers: Doomsday (2026)",
+      "name": "Society of the Snow",
+      "year": 2023,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt16277242.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt16277242.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt16277242.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt16277242.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 53,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Society.of.the.Snow.2023.DUAL-AUDIO.SPA-ENG.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA",
+          "quality": "1080p",
+          "seeders": 1083,
+          "sizeBytes": 2265595249,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "a788a64b1162ac57a209be5d92d177aa63899f66",
+          "fileIdx": 0,
+          "score": 16.01,
+          "magnetUrl": "magnet:?xt=urn:btih:a788a64b1162ac57a209be5d92d177aa63899f66&dn=Society.of.the.Snow.2023.DUAL-AUDIO.SPA-ENG.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Society of the Snow",
+          "quality": "1080p",
+          "seeders": 59,
+          "sizeBytes": 3435973837,
+          "sizeLabel": "3.2 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "3e8c3b6b161dd70ebe333d111d8d0a29daf59a40",
+          "fileIdx": 1,
+          "score": 7.67,
+          "magnetUrl": "magnet:?xt=urn:btih:3e8c3b6b161dd70ebe333d111d8d0a29daf59a40&dn=Society%20of%20the%20Snow&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 1083,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [
+        "la etiqueta “Avengers: Doomsday (2026)” no cuadra: en IMDb es “Society of the Snow (2023)”"
+      ],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt16362992",
+      "imdbId": "tt16362992",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Spider-Man: Brand New Day (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt16362992.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt16362992.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt16362992.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt16362992.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt20112374",
+      "imdbId": "tt20112374",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Dune: Part Three (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt20112374.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt20112374.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt20112374.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt20112374.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt13523880",
+      "imdbId": "tt13523880",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Project Hail Mary (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt13523880.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt13523880.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt13523880.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt13523880.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt11611190",
+      "imdbId": "tt11611190",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Star Wars: The Mandalorian and Grogu (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt11611190.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt11611190.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt11611190.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt11611190.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt13287846",
+      "imdbId": "tt13287846",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Toy Story 5 (2026)",
+      "name": "Napoleon",
+      "year": 2023,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt13287846.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt13287846.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt13287846.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt13287846.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 98,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Napoleon (2023) [Bluray 1080p][Esp]",
+          "quality": "1080p",
+          "seeders": 15,
+          "sizeBytes": 10887742095,
+          "sizeLabel": "10.1 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "886ecd1ea519a5bbf127e40b867464450229a958",
+          "fileIdx": 0,
+          "score": 14.81,
+          "magnetUrl": "magnet:?xt=urn:btih:886ecd1ea519a5bbf127e40b867464450229a958&dn=Napoleon%20(2023)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Napoleon.2023.2160p.WEB-DL.DDP5.1.Atmos.H.265-FLUX[TGx]",
+          "quality": "4K",
+          "seeders": 323,
+          "sizeBytes": 24288040059,
+          "sizeLabel": "22.6 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "Atmos",
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio"
+          ],
+          "infoHash": "99920f416c8aab50462ad8796114d4ac21c6d96c",
+          "fileIdx": 1,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:99920f416c8aab50462ad8796114d4ac21c6d96c&dn=Napoleon.2023.2160p.WEB-DL.DDP5.1.Atmos.H.265-FLUX%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 323,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [
+        "la etiqueta “Toy Story 5 (2026)” no cuadra: en IMDb es “Napoleon (2023)”"
+      ],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt15855736",
+      "imdbId": "tt15855736",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "The Super Mario Galaxy Movie (2026)",
+      "name": null,
+      "year": null,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt15855736.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt15855736.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt15855736.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15855736.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     },
     {
@@ -994,34 +2970,104 @@
       "season": 1,
       "episode": 1,
       "label": "Juego de Tronos S01E01",
+      "name": "Game of Thrones",
+      "year": 2011,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:1.json",
         "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:1.json",
         "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:1.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:1.json"
       },
-      "streamCount": 116,
-      "bestSeeders": 796,
+      "streamCount": 2,
+      "candidateCount": 116,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 34,
+          "sizeBytes": 2415919104,
+          "sizeLabel": "2.3 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 14,
+          "score": 15.32,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 12605729014,
+          "sizeLabel": "11.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 0,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
-        "de",
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
       ]
     },
     {
@@ -1031,37 +3077,1278 @@
       "season": 1,
       "episode": 1,
       "label": "Breaking Bad S01E01",
+      "name": "Breaking Bad",
+      "year": 2008,
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/series/tt0903747:1:1.json",
         "torrentsdb": "https://torrentsdb.com/stream/series/tt0903747:1:1.json",
         "torrentio": "https://torrentio.strem.fun/stream/series/tt0903747:1:1.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0903747:1:1.json"
       },
-      "streamCount": 64,
-      "bestSeeders": 979,
+      "streamCount": 2,
+      "candidateCount": 65,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Breaking Bad (S01)(2008)(1080p)(VP9)(WebDL)( EN 5.1+SPA 2.0)(Complete) PHDTeam",
+          "quality": "1080p",
+          "seeders": 17,
+          "sizeBytes": 1385126953,
+          "sizeLabel": "1.3 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "e81e125021b52d5ecd34249a356574eae14b23ed",
+          "fileIdx": 26,
+          "score": 14.88,
+          "magnetUrl": "magnet:?xt=urn:btih:e81e125021b52d5ecd34249a356574eae14b23ed&dn=Breaking%20Bad%20(S01)(2008)(1080p)(VP9)(WebDL)(%20EN%205.1%2BSPA%202.0)(Complete)%20PHDTeam&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Breaking Bad (2008) S01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE)",
+          "quality": "4K",
+          "seeders": 83,
+          "sizeBytes": 6732361236,
+          "sizeLabel": "6.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "f0fd1cad0e24b69ff6aaadb9df40c50286327188",
+          "fileIdx": 0,
+          "score": 8.14,
+          "magnetUrl": "magnet:?xt=urn:btih:f0fd1cad0e24b69ff6aaadb9df40c50286327188&dn=Breaking%20Bad%20(2008)%20S01%20(2160p%20AMZN%20WEB-DL%20H265%20SDR%20DDP%205.1%20English%20-%20HONE)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 83,
       "qualities": [
         "1080p",
-        "480p",
-        "4K",
-        "720p"
+        "4K"
       ],
       "languages": [
         "en",
-        "es",
-        "fr",
-        "it",
-        "pt",
-        "ru"
+        "es"
+      ],
+      "providers": [
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:2",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 2,
+      "label": "Juego de Tronos S01E02 – The Kingsroad",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:2.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:2.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:2.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:2.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 117,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2168958484,
+          "sizeLabel": "2.0 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 9,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 12466142577,
+          "sizeLabel": "11.6 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 1,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
       ],
       "providers": [
         "peerflix",
         "piratebay",
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:3",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 3,
+      "label": "Juego de Tronos S01E03 – Lord Snow",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:3.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:3.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 114,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2244120412,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 11,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 12852689633,
+          "sizeLabel": "12.0 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 2,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:4",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 4,
+      "label": "Juego de Tronos S01E04 – Cripples, Bastards, and Broken Things",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:4.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:4.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 115,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 1599875318,
+          "sizeLabel": "1.5 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 5,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 10458245366,
+          "sizeLabel": "9.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 3,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:5",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 5,
+      "label": "Juego de Tronos S01E05 – The Wolf and the Lion",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:5.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:5.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 114,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2126008812,
+          "sizeLabel": "2.0 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 8,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 9545564815,
+          "sizeLabel": "8.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 4,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:6",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 6,
+      "label": "Juego de Tronos S01E06 – A Golden Crown",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:6.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:6.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 113,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2061584302,
+          "sizeLabel": "1.9 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 6,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 13400297964,
+          "sizeLabel": "12.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 5,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:7",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 7,
+      "label": "Juego de Tronos S01E07 – You Win or You Die",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:7.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:7.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:7.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:7.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 112,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2265595249,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 12,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 14012330803,
+          "sizeLabel": "13.0 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 6,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:8",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 8,
+      "label": "Juego de Tronos S01E08 – The Pointy End",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:8.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:8.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:8.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:8.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 111,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2276332667,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 13,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 15171971973,
+          "sizeLabel": "14.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 7,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:9",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 9,
+      "label": "Juego de Tronos S01E09 – Baelor",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:9.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:9.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:9.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:9.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 112,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 34,
+          "sizeBytes": 2211908157,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 10,
+          "score": 15.32,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 11252814316,
+          "sizeLabel": "10.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 8,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt0944947:1:10",
+      "imdbId": "tt0944947",
+      "type": "series",
+      "season": 1,
+      "episode": 10,
+      "label": "Juego de Tronos S01E10 – Fire and Blood",
+      "name": "Game of Thrones",
+      "year": 2011,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt0944947:1:10.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt0944947:1:10.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt0944947:1:10.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:10.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 111,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+          "quality": "1080p",
+          "seeders": 18,
+          "sizeBytes": 2061584302,
+          "sizeLabel": "1.9 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": null,
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
+          "fileIdx": 7,
+          "score": 14.92,
+          "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 4K",
+          "title": "Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD",
+          "quality": "4K",
+          "seeders": 69,
+          "sizeBytes": 10383083438,
+          "sizeLabel": "9.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "1873026cfdb096563d5a7871af5de8230895bc1b",
+          "fileIdx": 9,
+          "score": 8.02,
+          "magnetUrl": "magnet:?xt=urn:btih:1873026cfdb096563d5a7871af5de8230895bc1b&dn=Game.of.Thrones.S01.2160p.UHD.BluRay.x265-SCOTLUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 69,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
       ]
     }
   ],
+  "warnings": [
+    "tt0253474: la etiqueta “El Padrino. Parte II (1974)” no cuadra: en IMDb es “The Pianist (2003)”.",
+    "tt1160419: la etiqueta “Dune: Parte dos (2024)” no cuadra: en IMDb es “Dune: Part One (2021)”.",
+    "tt16277242: la etiqueta “Avengers: Doomsday (2026)” no cuadra: en IMDb es “Society of the Snow (2023)”.",
+    "tt13287846: la etiqueta “Toy Story 5 (2026)” no cuadra: en IMDb es “Napoleon (2023)”."
+  ],
   "errors": [
+    {
+      "id": "tt0111161",
+      "provider": "ytztvio",
+      "label": "Cadena perpetua (1994)",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt1375666",
+      "provider": "ytztvio",
+      "label": "Inception (2010)",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt0468569",
+      "provider": "ytztvio",
+      "label": "El caballero oscuro (2008)",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt0133093",
+      "provider": "ytztvio",
+      "label": "Matrix (1999)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0120737",
+      "provider": "ytztvio",
+      "label": "El Señor de los Anillos: La Comunidad del Anillo (2001)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0167260",
+      "provider": "ytztvio",
+      "label": "El Señor de los Anillos: El Retorno del Rey (2003)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt1345836",
+      "provider": "ytztvio",
+      "label": "El caballero oscuro: La leyenda renace (2012)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0816692",
+      "provider": "ytztvio",
+      "label": "Interestelar (2014)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0109830",
+      "provider": "ytztvio",
+      "label": "Forrest Gump (1994)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0068646",
+      "provider": "ytztvio",
+      "label": "El Padrino (1972)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0102926",
+      "provider": "ytztvio",
+      "label": "El silencio de los corderos (1991)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0110912",
+      "provider": "ytztvio",
+      "label": "Pulp Fiction (1994)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0253474",
+      "provider": "ytztvio",
+      "label": "El Padrino. Parte II (1974)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0137523",
+      "provider": "ytztvio",
+      "label": "Fight Club (1999)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0120815",
+      "provider": "ytztvio",
+      "label": "Salvar al soldado Ryan (1998)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt7286456",
+      "provider": "ytztvio",
+      "label": "Joker (2019)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt4154796",
+      "provider": "ytztvio",
+      "label": "Avengers: Endgame (2019)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt1745960",
+      "provider": "ytztvio",
+      "label": "Top Gun: Maverick (2022)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt15398776",
+      "provider": "ytztvio",
+      "label": "Oppenheimer (2023)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt1517268",
+      "provider": "ytztvio",
+      "label": "Barbie (2023)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt1160419",
+      "provider": "ytztvio",
+      "label": "Dune: Parte dos (2024)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt9362722",
+      "provider": "ytztvio",
+      "label": "Spider-Man: Cruzando el Multiverso (2023)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14234558",
+      "provider": "ytztvio",
+      "label": "The Odyssey (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt16277242",
+      "provider": "ytztvio",
+      "label": "Avengers: Doomsday (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt16362992",
+      "provider": "ytztvio",
+      "label": "Spider-Man: Brand New Day (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt20112374",
+      "provider": "ytztvio",
+      "label": "Dune: Part Three (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt13523880",
+      "provider": "ytztvio",
+      "label": "Project Hail Mary (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt11611190",
+      "provider": "ytztvio",
+      "label": "Star Wars: The Mandalorian and Grogu (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt13287846",
+      "provider": "ytztvio",
+      "label": "Toy Story 5 (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt15855736",
+      "provider": "ytztvio",
+      "label": "The Super Mario Galaxy Movie (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
     {
       "id": "tt0944947:1:1",
       "provider": "ytztvio",
@@ -1073,36 +4360,117 @@
       "provider": "ytztvio",
       "label": "Breaking Bad S01E01",
       "error": "HTTP 403"
+    },
+    {
+      "id": "tt0944947:1:2",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E02 – The Kingsroad",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt0944947:1:3",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E03 – Lord Snow",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:4",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E04 – Cripples, Bastards, and Broken Things",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:5",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E05 – The Wolf and the Lion",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:6",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E06 – A Golden Crown",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:7",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E07 – You Win or You Die",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:8",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E08 – The Pointy End",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:9",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E09 – Baelor",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt0944947:1:10",
+      "provider": "ytztvio",
+      "label": "Juego de Tronos S01E10 – Fire and Blood",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "streams": 361,
-      "errors": 0
+      "requests": 41,
+      "ok": 41,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 493,
+      "avgMs": 250
     },
     "torrentsdb": {
-      "streams": 2315,
-      "errors": 0
+      "requests": 41,
+      "ok": 41,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 2785,
+      "avgMs": 203
     },
     "torrentio": {
-      "streams": 1610,
-      "errors": 0
+      "requests": 41,
+      "ok": 41,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 2299,
+      "avgMs": 378
     },
     "piratebay": {
-      "streams": 99,
-      "errors": 0
+      "requests": 41,
+      "ok": 41,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 193,
+      "avgMs": 149
     },
     "ytztvio": {
-      "streams": 87,
-      "errors": 2
+      "requests": 6,
+      "ok": 0,
+      "errors": 6,
+      "skipped": 35,
+      "streams": 0,
+      "avgMs": 66
     }
   },
   "db": {
-    "inserted": 0,
+    "inserted": 52,
     "rejected": 0,
-    "failures": [
-      "Supabase upsert failed: status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification; status=400 code=42P10 there is no unique or exclusion constraint matching the ON CONFLICT specification (persisted=0/2908)"
-    ]
+    "failures": [],
+    "dryRun": true
   },
-  "durationMs": 202706
+  "durationMs": 10258
 }
