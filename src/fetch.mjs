@@ -47,6 +47,12 @@ import {
 import { BEST_TRACKERS_URL, DEFAULT_MAX_TRACKERS, PICK_LANGUAGES } from '../public/lib/select.js';
 import { CINEMETA_URL, showLabel } from '../public/lib/meta.js';
 import {
+  DEFAULT_BATCH_SIZE,
+  createSeenStore,
+  rotateWatchlist,
+  selectUniqueDbCandidates,
+} from '../public/lib/watchlist.js';
+import {
   PICK_META,
   createJsonFetcher,
   expandWatchlist,
@@ -76,8 +82,14 @@ const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 15000);
 const FETCH_CONCURRENCY = Math.max(1, Number(process.env.FETCH_CONCURRENCY || 4));
 const TMDB_API_KEY = process.env.TMDB_API_KEY || '';
 const WATCHLIST_PATH = resolve(ROOT, process.env.WATCHLIST_PATH || 'watchlist.txt');
+const SEEN_PATH = resolve(ROOT, process.env.SEEN_PATH || join(DATA_DIR, 'seen.json'));
 const FIXTURE_MODE = process.env.FIXTURE_MODE === '1';
 const REPROCESS = process.env.REPROCESS === '1';
+const AUTO_WATCHLIST = process.env.AUTO_WATCHLIST === '1';
+const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
+  ? process.env.REPLACE_WATCHLIST === '1'
+  : AUTO_WATCHLIST;
+const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
 const DRY_RUN_DB = process.env.DRY_RUN === '1' || process.env.DRY_RUN_DB === '1';
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -277,12 +289,29 @@ function buildCatalogs(results) {
 
 // ---------- main ----------
 
+async function loadSeenStore(repo, { queryDb = false } = {}) {
+  let initial = {};
+  if (existsSync(SEEN_PATH)) {
+    try { initial = JSON.parse(await readFile(SEEN_PATH, 'utf8')); } catch { /* ignore */ }
+  }
+  const seen = createSeenStore(initial);
+  const indexPath = join(DATA_DIR, 'index.json');
+  if (existsSync(indexPath)) {
+    try { seen.addFromIndex(JSON.parse(await readFile(indexPath, 'utf8'))); } catch { /* ignore */ }
+  }
+  if (queryDb && repo.enabled) {
+    const dbRows = await repo.fetchSeen();
+    seen.addFromDatabaseRows(dbRows);
+  }
+  return seen;
+}
+
 async function main() {
   const mode = FIXTURE_MODE ? 'fixture' : REPROCESS ? 'reprocess' : 'live';
   const repository = repositoryInfo();
   const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
-  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : WATCHLIST_PATH}`);
+  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, elimina anteriores)` : ''}`}`);
   console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
   console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
@@ -305,6 +334,10 @@ async function main() {
     warn(`No se guardará en Supabase: faltan ${repo.missingCredentials.join(' y ')} en los Secrets de GitHub Actions. Solo se publicarán los JSON.`);
   }
 
+  const seen = await loadSeenStore(repo, { queryDb: AUTO_WATCHLIST });
+  let watchlistRotation = null;
+  let loadedItems = [];
+
   // 1. Consultas: del watchlist (con Cinemeta) o de los datos ya publicados.
   let queries;
   let providers = ENABLED_PROVIDERS;
@@ -323,8 +356,31 @@ async function main() {
     });
     console.log(`♻️  Reprocesando ${queries.length} títulos publicados el ${reprocessedFrom || '?'} (sin red).`);
   } else {
-    const watchText = await readFile(WATCHLIST_PATH, 'utf8');
+    let watchText = existsSync(WATCHLIST_PATH) ? await readFile(WATCHLIST_PATH, 'utf8') : '';
+    if (AUTO_WATCHLIST) {
+      const rotation = await rotateWatchlist(watchText, {
+        seen,
+        fetchJSON: CINEMETA_ENABLED && !FIXTURE_MODE ? pipelineFetch : null,
+        autoDiscover: true,
+        replaceAll: REPLACE_WATCHLIST,
+        batchSize: WATCHLIST_BATCH_SIZE,
+        baseUrl: CINEMETA_BASE_URL,
+        onWarning: warn,
+      });
+      watchText = rotation.text;
+      await writeFile(WATCHLIST_PATH, watchText, 'utf8');
+      watchlistRotation = {
+        autoUpdated: true,
+        batchSize: WATCHLIST_BATCH_SIZE,
+        removedCount: rotation.removedCount,
+        keptCount: rotation.keptCount,
+        addedCount: rotation.addedCount,
+        totalSeenBefore: seen.imdbIds.size,
+      };
+      console.log(`🔄 Watchlist actualizado: ${rotation.items.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados · ${seen.imdbIds.size} en historial sin repetir).`);
+    }
     const items = parseWatchlist(watchText, { onWarning: warn });
+    loadedItems = items;
     console.log(`🔎 Watchlist: ${items.length} líneas.`);
     const labelsById = new Map();
     if (FIXTURE_MODE) pipelineFetch = createFixtureFetch(new Set(items.filter(i => i.type === 'series').map(i => i.imdbId)), labelsById);
@@ -392,6 +448,7 @@ async function main() {
       trackersSource: bestTrackers.source,
       trackers: bestTrackers.trackers.slice(0, MAX_TRACKERS),
     },
+    ...(watchlistRotation ? { watchlist: watchlistRotation } : {}),
     meta: metaStats,
     items: [],
     warnings,
@@ -405,8 +462,7 @@ async function main() {
   };
 
   // 4. Ficheros por título: data/ (web) + stream/ (addon Stremio).
-  const dbCandidates = [];
-  for (const { item, streams, candidates = [] } of pipeline.results) {
+  for (const { item, streams } of pipeline.results) {
     index.items.push(item);
     if (item.type === 'movie') {
       index.movies++;
@@ -417,10 +473,11 @@ async function main() {
       await writeJSON(join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`), { ...item, streams });
       await writeJSON(join(STREAM_SERIES, `${item.imdbId}:${item.season}:${item.episode}.json`), { streams });
     }
-    // Publicamos solo los picks, pero persistimos TODOS los candidatos válidos para
-    // poder re-ranquear en el futuro sin volver a consultar los proveedores.
-    for (const stream of candidates) dbCandidates.push({ item, stream });
   }
+
+  // Persistimos SOLO los 2 mejores torrents elegidos por título (1 🇪🇸 + 1 🇬🇧),
+  // sin repetir info_hash ni nombres de torrents ya vistos.
+  const { dbCandidates } = selectUniqueDbCandidates(pipeline.results, { seen: AUTO_WATCHLIST ? seen : null });
 
   // 5. Supabase (opcional).
   if (dbCandidates.length) {
@@ -434,6 +491,12 @@ async function main() {
       console.log(`\n🗄  BD: ERROR – ${err.message}`);
     }
   }
+
+  // 5b. Guardar historial de títulos y torrents procesados para no repetirlos en la siguiente corrida.
+  for (const it of loadedItems) seen.addItem(it);
+  seen.addFromResults(pipeline.results);
+  if (watchlistRotation) watchlistRotation.totalSeen = seen.imdbIds.size;
+  await writeJSON(SEEN_PATH, seen.toJSON());
 
   const finishedAt = new Date().toISOString();
   index.finishedAt = finishedAt;

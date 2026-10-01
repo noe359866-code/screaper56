@@ -98,6 +98,10 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   const dbStatus = describeDatabaseWrite(report);
   lines.push(`Supabase: ${md(dbStatus.message)}`);
   if (dbStatus.detail) lines.push(md(dbStatus.detail).slice(0, 600));
+  if (report.watchlist?.autoUpdated) {
+    const wl = report.watchlist;
+    lines.push(`Watchlist: 🔄 actualizado automáticamente (**${wl.addedCount ?? 0} nuevos** · ${wl.removedCount ?? 0} anteriores eliminados · ${wl.totalSeen ?? wl.totalSeenBefore ?? 0} en historial sin repetir)`);
+  }
   lines.push('');
   if (items.length) {
     lines.push('| | Título | 🇪🇸 Español | 🇬🇧 Inglés |');

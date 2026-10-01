@@ -17,10 +17,13 @@ import { toOutputStream } from '../src/fetch.mjs';
 
 const GB = 1024 ** 3;
 let counter = 0;
+function hash(n) {
+  return n.toString(16).padStart(40, '0');
+}
 function candidate(title, extra = {}) {
   counter++;
   return {
-    infoHash: counter.toString(16).padStart(40, '0'),
+    infoHash: hash(counter),
     title,
     filename: null,
     quality: null,

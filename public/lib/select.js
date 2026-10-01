@@ -360,15 +360,14 @@ export function scoreStream(stream, { type = 'movie', offTitle = false, wrongCon
 // ---------- señales de calidad / confianza ----------
 
 const SOURCE_POINTS = [
-  [/\bremux\b/i, 4.0],
-  [/\b(?:bluray|blu-?ray)\b/i, 3.5],
-  [/\bweb-?dl\b/i, 3.25],
-  [/\bweb(?:rip)?\b/i, 2.5],
-  [/\bhdtv\b/i, 1.5],
-  [/\b(?:brrip|bdrip)\b/i, 1.5],
+  [/\b(?:bluray|blu-?ray)\b/i, 0.12],
+  [/\bweb-?dl\b/i, 0.10],
+  [/\bremux\b/i, 0.08],
+  [/\bweb(?:rip)?\b/i, 0.06],
+  [/\b(?:brrip|bdrip)\b/i, 0.05],
+  [/\bhdtv\b/i, 0.03],
 ];
 
-const BAD_SOURCE_RE = /\b(?:cam|ts|telesync|telecine|scr|screener|hdcam|hdts|workprint)\b/i;
 const AUDIO_QUALITY_RE = /\b(?:truehd|atmos|dts-?hd|dts|ddp|eac3|ac3|aac|opus|flac)\b/i;
 const LOSSLESS_AUDIO_RE = /\b(?:truehd|dts-?hd|flac)\b/i;
 
@@ -378,11 +377,10 @@ function technicalPoints(stream) {
   for (const [re, value] of SOURCE_POINTS) {
     if (re.test(text)) { points += value; break; }
   }
-  if (AUDIO_QUALITY_RE.test(text)) points += 0.75;
-  if (LOSSLESS_AUDIO_RE.test(text)) points += 0.5;
-  if (/\b(?:10bit|10-bit)\b/i.test(text)) points += 0.35;
-  if (/\b(?:hdr10\\+?|dolby[ ._-]?vision|dv)\b/i.test(text)) points += 0.4;
-  if (BAD_SOURCE_RE.test(text)) points -= 5;
+  if (AUDIO_QUALITY_RE.test(text)) points += 0.04;
+  if (LOSSLESS_AUDIO_RE.test(text)) points += 0.03;
+  if (/\b(?:10bit|10-bit)\b/i.test(text)) points += 0.02;
+  if (/\b(?:hdr10\+?|dolby[ ._-]?vision|dv)\b/i.test(text)) points += 0.03;
   return points;
 }
 
@@ -422,7 +420,7 @@ function titleSimilarity(stream, knownTitles) {
   if (!actual.size) return 0;
   let hits = 0;
   for (const word of actual) if (expected.has(word)) hits++;
-  return Math.min(3, hits * 0.6);
+  return Math.min(0.15, hits * 0.03);
 }
 
 // ---------- selección ----------
@@ -459,9 +457,9 @@ export function selectBestStreams(streams, { type = 'movie', label = '', titles 
 
   const best = (lang, excludeHash = null) => {
     const candidates = ranked
-      .filter(c => c.tiers[lang] > 0 && c.confidence[lang] >= (lang === 'es' ? 0.55 : 0.55) && c.stream.infoHash !== excludeHash)
+      .filter(c => c.tiers[lang] > 0 && c.confidence[lang] >= 0.55 && c.stream.infoHash !== excludeHash)
       .map(c => {
-        const confidenceBonus = c.confidence[lang] * 4;
+        const confidenceBonus = c.confidence[lang] * 0.2;
         const tierBonus = TIER_BONUS[lang][c.tiers[lang]];
         return { ...c, rank: Math.round((c.score + tierBonus + confidenceBonus) * 100) / 100 };
       });
