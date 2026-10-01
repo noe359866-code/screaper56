@@ -360,17 +360,17 @@ export function scoreStream(stream, { type = 'movie', offTitle = false, wrongCon
 // ---------- señales de calidad / confianza ----------
 
 const SOURCE_POINTS = [
-  [/\\bremux\\b/i, 4.0],
-  [/\\b(?:bluray|blu-?ray)\\b/i, 3.5],
-  [/\\bweb-?dl\\b/i, 3.25],
-  [/\\bweb(?:rip)?\\b/i, 2.5],
-  [/\\bhdtv\\b/i, 1.5],
-  [/\\b(?:brrip|bdrip)\\b/i, 1.5],
+  [/\bremux\b/i, 4.0],
+  [/\b(?:bluray|blu-?ray)\b/i, 3.5],
+  [/\bweb-?dl\b/i, 3.25],
+  [/\bweb(?:rip)?\b/i, 2.5],
+  [/\bhdtv\b/i, 1.5],
+  [/\b(?:brrip|bdrip)\b/i, 1.5],
 ];
 
-const BAD_SOURCE_RE = /\\b(?:cam|ts|telesync|telecine|scr|screener|hdcam|hdts|workprint)\\b/i;
-const AUDIO_QUALITY_RE = /\\b(?:truehd|atmos|dts-?hd|dts|ddp|eac3|ac3|aac|opus|flac)\\b/i;
-const LOSSLESS_AUDIO_RE = /\\b(?:truehd|dts-?hd|flac)\\b/i;
+const BAD_SOURCE_RE = /\b(?:cam|ts|telesync|telecine|scr|screener|hdcam|hdts|workprint)\b/i;
+const AUDIO_QUALITY_RE = /\b(?:truehd|atmos|dts-?hd|dts|ddp|eac3|ac3|aac|opus|flac)\b/i;
+const LOSSLESS_AUDIO_RE = /\b(?:truehd|dts-?hd|flac)\b/i;
 
 function technicalPoints(stream) {
   const text = streamText(stream);
@@ -380,8 +380,8 @@ function technicalPoints(stream) {
   }
   if (AUDIO_QUALITY_RE.test(text)) points += 0.75;
   if (LOSSLESS_AUDIO_RE.test(text)) points += 0.5;
-  if (/\\b(?:10bit|10-bit)\\b/i.test(text)) points += 0.35;
-  if (/\\b(?:hdr10\\+?|dolby[ ._-]?vision|dv)\\b/i.test(text)) points += 0.4;
+  if (/\b(?:10bit|10-bit)\b/i.test(text)) points += 0.35;
+  if (/\b(?:hdr10\\+?|dolby[ ._-]?vision|dv)\b/i.test(text)) points += 0.4;
   if (BAD_SOURCE_RE.test(text)) points -= 5;
   return points;
 }
@@ -397,15 +397,15 @@ export function languageConfidence(stream, lang) {
 
   if (lang === 'es') {
     if (SPANISH_SUBS_ONLY_RE.test(text)) return 0;
-    if (/\\b(?:castellano|espa[ñn]ol|spanish|latino|latam|es-?la|es-?mx|es-?es)\\b/i.test(clean)) return 1;
+    if (/\b(?:castellano|espa[ñn]ol|spanish|latino|latam|es-?la|es-?mx|es-?es)\b/i.test(clean)) return 1;
     if (languages.includes('es')) return spanishTier(stream) >= 2 ? 0.9 : 0.55;
     if (streamProviders(stream).includes('peerflix')) return 0.8;
     return 0;
   }
 
   if (lang === 'en') {
-    if (FOREIGN_MARKERS_RE.test(clean) && !/\\b(?:eng|english|en)\\b/i.test(clean)) return 0.1;
-    if (/\\b(?:english|eng|en-?us|en-?gb)\\b/i.test(clean)) return 1;
+    if (FOREIGN_MARKERS_RE.test(clean) && !/\b(?:eng|english|en)\b/i.test(clean)) return 0.1;
+    if (/\b(?:english|eng|en-?us|en-?gb)\b/i.test(clean)) return 1;
     if (languages.includes('en')) return englishTier(stream) >= 2 ? 0.95 : 0.75;
     // Sin idioma explícito: solo confianza media, nunca la tratamos como certeza.
     return languages.length === 0 && !NON_LATIN_RE.test(clean) ? 0.55 : 0;
