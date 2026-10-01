@@ -48,6 +48,8 @@ import { BEST_TRACKERS_URL, DEFAULT_MAX_TRACKERS, PICK_LANGUAGES } from '../publ
 import { CINEMETA_URL, showLabel } from '../public/lib/meta.js';
 import {
   DEFAULT_BATCH_SIZE,
+  MAX_SEARCH_YEAR,
+  MIN_SEARCH_YEAR,
   createSeenStore,
   formatWatchlistFile,
   rotateWatchlist,
@@ -101,6 +103,8 @@ const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
   ? process.env.REPLACE_WATCHLIST === '1'
   : AUTO_WATCHLIST;
 const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
+const SEARCH_MIN_YEAR = Number.parseInt(process.env.MIN_YEAR || '', 10) || MIN_SEARCH_YEAR;
+const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_SEARCH_YEAR;
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
 const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
@@ -414,7 +418,7 @@ async function main() {
   const repository = repositoryInfo();
   const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
-  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, elimina anteriores)` : ''}`}`);
+  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, elimina anteriores)` : ''}`}`);
   console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
   console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
@@ -502,6 +506,8 @@ async function main() {
         batchSize: WATCHLIST_BATCH_SIZE,
         tmdbApiKey: !FIXTURE_MODE ? TMDB_API_KEY : '',
         baseUrl: CINEMETA_BASE_URL,
+        minYear: SEARCH_MIN_YEAR,
+        maxYear: SEARCH_MAX_YEAR,
         onWarning: warn,
       });
       const resumed = FIXTURE_MODE ? [] : resumeMissingItems(progress, rotation.items, { pendingById: pendingBySeries });
@@ -513,6 +519,7 @@ async function main() {
       watchlistRotation = {
         autoUpdated: true,
         batchSize: WATCHLIST_BATCH_SIZE,
+        yearRange: { min: SEARCH_MIN_YEAR, max: SEARCH_MAX_YEAR },
         removedCount: rotation.removedCount,
         keptCount: rotation.keptCount + resumed.length,
         addedCount: rotation.addedCount,
