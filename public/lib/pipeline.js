@@ -33,6 +33,7 @@ import {
 import {
   CINEMETA_URL,
   episodesForSeason,
+  episodesForSeries,
   fetchCinemeta,
   labelMismatch,
   metaLabel,
@@ -330,6 +331,27 @@ function episodeLabel(show, season, episode, title) {
 }
 
 /**
+ * Serie completa: TODAS las temporadas con todos sus episodios ya emitidos,
+ * de una sola vez (sin tener que ir pidiendo episodios sueltos). Los episodios
+ * salen de Cinemeta y, si este falla, de `seriesFallback` (TMDB en la Action).
+ */
+async function expandWholeSeries(it, meta, { seriesFallback = null, now = Date.now() } = {}) {
+  let episodes = episodesForSeries(meta, { now });
+  if (!episodes?.length && seriesFallback) {
+    const fallback = await seriesFallback({ ...it, season: null, episode: null });
+    if (fallback?.length) episodes = fallback;
+  }
+  if (!episodes?.length) return null;
+  const show = showLabel(it.label, meta) || meta?.name || it.imdbId;
+  return episodes.map(ep => ({
+    kind: 'series', imdbId: it.imdbId, season: ep.season, episode: ep.episode,
+    label: episodeLabel(show, ep.season, ep.episode, ep.title),
+    meta: slimMeta(meta),
+    warnings: [],
+  }));
+}
+
+/**
  * Metadatos de Cinemeta para cada IMDb ID distinto del watchlist (sin API key).
  * Si Cinemeta falla 3 veces seguidas se deja de consultar y se sigue sin él.
  */
@@ -365,18 +387,38 @@ export async function loadMetadata(items, { fetchJSON, baseUrl = CINEMETA_URL, c
 /**
  * Líneas del watchlist → consultas (película o episodio). Las temporadas
  * `tt…:sN` se expanden con Cinemeta (sin API key) y, si falla, con
- * `seasonFallback` (TMDB en la Action cuando hay TMDB_API_KEY).
+ * `seasonFallback` (TMDB en la Action cuando hay TMDB_API_KEY). Una serie
+ * escrita SIN temporada (`tt…` a secas) se expande a TODAS las temporadas y
+ * episodios emitidos de una sola vez.
  */
 export async function expandWatchlist(items, { metaById = new Map(), seasonFallback = null, now = Date.now(), onWarning = null } = {}) {
   const warn = message => onWarning?.(message);
   const queries = [];
   for (const it of items) {
     const meta = metaById.get(it.imdbId) || null;
-    if (it.type === 'movie') {
-      if (meta?.type === 'series') {
-        warn(`${it.imdbId} es una serie (“${meta.name}”): escribe ${it.imdbId}:s1 para la temporada 1 o ${it.imdbId}:s1:e1 para un episodio. Se omite.`);
+    const isWholeSeries = it.type === 'series'
+      ? it.season === null
+      : meta?.type === 'series';
+    if (isWholeSeries) {
+      if (it.type === 'series' && meta?.type === 'movie') {
+        const suffix = it.season != null ? `:s${it.season}${it.episode !== null ? ':e' + it.episode : ''}` : '';
+        warn(`${it.imdbId} es una película (“${metaLabel(meta)}”), no una serie: quita “${suffix}”. Se omite.`);
         continue;
       }
+      const expanded = await expandWholeSeries(it, meta, { seriesFallback: seasonFallback, now });
+      if (!expanded) {
+        warn(`No se pudo expandir ${it.imdbId} a serie completa${meta?.name ? ` (“${meta.name}”)` : ''}: ${meta ? 'Cinemeta no tiene episodios emitidos' : 'sin metadatos (Cinemeta no respondió)'}. Se omite.`);
+        continue;
+      }
+      // Aviso informativo solo cuando el usuario escribió el ID como película.
+      if (it.type !== 'series') {
+        const seasons = new Set(expanded.map(q => q.season)).size;
+        warn(`${it.imdbId} es una serie (“${meta?.name}”): se expande a serie completa (${seasons} temporada${seasons === 1 ? '' : 's'}, ${expanded.length} episodios). Para un episodio concreto usa ${it.imdbId}:s1:e1.`);
+      }
+      queries.push(...expanded);
+      continue;
+    }
+    if (it.type === 'movie') {
       const mismatch = labelMismatch(it.label, meta);
       if (mismatch) warn(`${it.imdbId}: ${mismatch}.`);
       queries.push({
@@ -413,7 +455,7 @@ export async function expandWatchlist(items, { metaById = new Map(), seasonFallb
     }
     for (const ep of episodes) {
       queries.push({
-        kind: 'series', imdbId: it.imdbId, season: it.season, episode: ep.episode,
+        kind: 'series', imdbId: it.imdbId, season: ep.season ?? it.season, episode: ep.episode,
         label: episodeLabel(show, it.season, ep.episode, ep.title),
         meta: slimMeta(meta),
         warnings: [],

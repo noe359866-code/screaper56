@@ -126,16 +126,38 @@ const fetchJSON = createJsonFetcher({
 
 // ---------- TMDB & OMDb (descubrimiento, tmdb_id para Supabase y respaldo de metadatos) ----------
 
+/**
+ * Respaldo de la expansión de episodios cuando Cinemeta falla. Con
+ * `item.season` devuelve esa temporada; sin temporada (serie completa)
+ * recorre TODAS las temporadas numeradas de la serie.
+ */
 async function tmdbEpisodes(item) {
   if (!TMDB_API_KEY) return null;
+  const tmdbOpts = { timeout: 10000, retries: 1 };
+  const key = `api_key=${encodeURIComponent(TMDB_API_KEY)}&language=es-ES`;
   try {
-    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?api_key=${encodeURIComponent(TMDB_API_KEY)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
+    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?${key}&external_source=imdb_id`, tmdbOpts);
     const tv = find.tv_results?.[0];
     if (!tv?.id) return null;
-    const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${item.season}?api_key=${encodeURIComponent(TMDB_API_KEY)}&language=es-ES`, { timeout: 10000, retries: 1 });
-    return (season.episodes || []).map(e => ({ episode: e.episode_number, title: e.name || null, released: e.air_date || null }));
+    let seasonNumbers;
+    if (item.season != null) {
+      seasonNumbers = [Number(item.season)];
+    } else {
+      const details = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}?${key}`, tmdbOpts);
+      seasonNumbers = (details.seasons || [])
+        .map(s => Number(s?.season_number))
+        .filter(n => Number.isInteger(n) && n >= 1);
+    }
+    const episodes = [];
+    for (const seasonNumber of seasonNumbers) {
+      const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${seasonNumber}?${key}`, tmdbOpts);
+      for (const e of season.episodes || []) {
+        episodes.push({ season: seasonNumber, episode: e.episode_number, title: e.name || null, released: e.air_date || null });
+      }
+    }
+    return episodes.length ? episodes : null;
   } catch (err) {
-    console.warn(`⚠️  TMDB falló para ${item.imdbId}:s${item.season}: ${err.message}`);
+    console.warn(`⚠️  TMDB falló para ${item.imdbId}${item.season != null ? ':s' + item.season : ''}: ${err.message}`);
     return null;
   }
 }

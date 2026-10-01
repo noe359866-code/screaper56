@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   episodesForSeason,
+  episodesForSeries,
   fetchCinemeta,
   labelMismatch,
   labelYear,
@@ -55,6 +56,28 @@ test('episodesForSeason: ordena, deduplica y descarta los episodios aún no emit
   ] } });
   assert.deepEqual(episodesForSeason(future, 1, { now: Date.parse('2026-09-30') }).map(e => e.episode), [1, 3]);
   assert.equal(episodesForSeason({ videos: null }, 1), null);
+});
+
+test('episodesForSeries: todas las temporadas de una vez, sin especiales ni episodios futuros', () => {
+  const meta = normalizeMeta(BREAKING_BAD);
+  // S01E1 (duplicado descartado), S01E2, S01E6, S01E7 y S02E1; el especial de
+  // la temporada 0 queda fuera.
+  assert.deepEqual(
+    episodesForSeries(meta).map(e => `${e.season}x${e.episode}`),
+    ['1x1', '1x2', '1x6', '1x7', '2x1'],
+  );
+  assert.equal(episodesForSeries(meta)[0].title, 'Pilot');
+  const future = normalizeMeta({ meta: { type: 'series', name: 'X', videos: [
+    { season: 1, episode: 1, released: '2026-01-01T00:00:00Z' },
+    { season: 1, episode: 2, released: '2099-01-01T00:00:00Z' },
+    { season: 2, episode: 1 },
+  ] } });
+  assert.deepEqual(
+    episodesForSeries(future, { now: Date.parse('2026-09-30') }).map(e => `${e.season}x${e.episode}`),
+    ['1x1', '2x1'],
+  );
+  assert.equal(episodesForSeries({ videos: null }), null);
+  assert.deepEqual(episodesForSeries({ videos: [{ season: 0, episode: 1, released: '2020-01-01' }] }), []);
 });
 
 test('labelMismatch avisa cuando la etiqueta del watchlist no es la película del ID', () => {

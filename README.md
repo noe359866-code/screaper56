@@ -43,7 +43,7 @@ El resto también funciona sin token:
 ```text
 watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
   └─ public/lib/pipeline.js  (mismo código en el navegador y en la Action)
-       ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada
+       ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada (o de la serie completa)
        ├─ /stream/movie|series/…json en los 5 addons IMDb
        │    · reintentos con backoff (red, 429, 5xx; respeta Retry-After)
        │    · si un addon falla 3 veces seguidas para un tipo, se deja de consultar
@@ -114,6 +114,10 @@ la copia integrada.
 `https://v3-cinemeta.strem.io/meta/{movie|series}/{imdbId}.json` es el addon
 oficial de metadatos de Stremio y no necesita clave. Se usa para:
 
+- **Expandir series completas** (`tt0944947` sin `:sN`): si el ID es una serie,
+  se ingesta de una sola vez con **todas las temporadas y episodios ya
+  emitidos** (sin tener que ir añadiendo episodios sueltos). Los especiales
+  (temporada 0) y los episodios futuros se descartan.
 - **Expandir temporadas completas** (`tt0944947:s1`): da todos los episodios ya
   emitidos. Antes esto exigía `TMDB_API_KEY`, que ahora solo es un respaldo opcional.
 - **Nombrar los episodios**: `Juego de Tronos S01E02 – The Kingsroad`.
@@ -218,14 +222,17 @@ origen 🗄 Supabase del Dashboard muestra también las de ingestas antiguas.
 ```text
 tt0111161 Cadena perpetua (1994)
 tt1375666 Inception (2010)
+tt0944947 Juego de Tronos                          # serie completa: todas las temporadas y episodios
 tt0944947:s1:e1 Juego de Tronos S01E01
 tt0944947:s1 Juego de Tronos – Temporada 1 completa   # sin API key (Cinemeta)
 ```
 
-Se acepta un comentario después de `#` y el texto tras el ID es opcional. Las
-líneas repetidas, y los episodios que se solapan con una temporada completa, se
-consultan una sola vez. Cargar una lista desde la web **reemplaza por completo**
-`watchlist.txt`.
+Un ID de serie escrito sin `:sN` se expande a **todas las temporadas y
+episodios ya emitidos de una sola vez** (Cinemeta, sin API key): ya no hace
+falta ir poniendo los episodios uno a uno. Se acepta un comentario después de
+`#` y el texto tras el ID es opcional. Las líneas repetidas, y los episodios
+que se solapan con una temporada o serie completa, se consultan una sola vez.
+Cargar una lista desde la web **reemplaza por completo** `watchlist.txt`.
 
 ## Variables
 
