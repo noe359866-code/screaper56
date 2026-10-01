@@ -66,6 +66,27 @@ test('reportToMarkdown: tabla por título, avisos y errores agrupados', () => {
   assert.match(short, /… y 1 títulos más/);
 });
 
+test('reportToMarkdown: historial de progreso de series (dónde quedó cada una)', () => {
+  const withProgress = {
+    ...REPORT,
+    watchlist: { autoUpdated: true, addedCount: 2, removedCount: 3, resumedCount: 1, totalSeen: 40 },
+    progress: {
+      version: 1,
+      series: {
+        tt7777777: { name: 'Serie Larga', status: 'in-progress', done: 4, total: 6, lastSeason: 2, lastEpisode: 1, nextSeason: 2, nextEpisode: 2 },
+        tt8888888: { name: 'Serie Corta', status: 'complete', done: 3, total: 3, lastSeason: 1, lastEpisode: 3, nextSeason: null, nextEpisode: null },
+      },
+    },
+  };
+  const md = reportToMarkdown(withProgress);
+  assert.match(md, /1 serie\(s\) en progreso continúan/);
+  assert.match(md, /### 📺 Progreso de series/);
+  assert.match(md, /⏳ \*\*Serie Larga\*\*: 4\/6 episodios · último S02E01 · sigue en \*\*S02E02\*\*/);
+  assert.match(md, /✅ \*\*Serie Corta\*\*: completa \(3 episodios\)/);
+  // Sin historial no aparece la sección.
+  assert.doesNotMatch(reportToMarkdown(REPORT), /Progreso de series/);
+});
+
 test('renderSummary no reutiliza un report.json viejo si esta ejecución falló', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'summary-'));
   const reportPath = join(dir, 'report.json');

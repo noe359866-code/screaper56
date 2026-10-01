@@ -589,7 +589,9 @@ export async function discoverCatalogItems(fetchJSON, {
 /**
  * Actualiza el texto de `watchlist.txt`:
  *  1) Elimina todas las entradas que ya estén en `seen` (anteriores o ya en BD)
- *     y elimina cualquier ID o nombre duplicado.
+ *     y elimina cualquier ID o nombre duplicado. Con `keep(item)` (p. ej. una
+ *     serie a la que aún le faltan episodios) la entrada se conserva aunque
+ *     ya esté en el historial: así las series en progreso no se pierden.
  *  2) Si `autoDiscover` está activo (o si tras limpiar anteriores la lista
  *     queda con menos de `batchSize` títulos), rellena con títulos nuevos de
  *     Cinemeta / respaldo asegurando variedad (películas + series) sin repetir.
@@ -599,6 +601,7 @@ export async function rotateWatchlist(currentText, {
   fetchJSON = null,
   autoDiscover = true,
   replaceAll = false,
+  keep = null,
   batchSize = DEFAULT_BATCH_SIZE,
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
@@ -616,7 +619,8 @@ export async function rotateWatchlist(currentText, {
     const id = item.imdbId.toLowerCase();
     const normTitle = normalizeTitleKey(item.label || item.name);
     const isDuplicateInBatch = batchIds.has(id) || (normTitle && batchTitles.has(normTitle));
-    if (replaceAll || isDuplicateInBatch || seen.hasItem(item)) {
+    const mustKeep = !isDuplicateInBatch && typeof keep === 'function' && keep({ ...item, imdbId: id });
+    if (!mustKeep && (replaceAll || isDuplicateInBatch || seen.hasItem(item))) {
       seen.addItem(item);
       removedItems.push(item);
       continue;

@@ -100,9 +100,24 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   if (dbStatus.detail) lines.push(md(dbStatus.detail).slice(0, 600));
   if (report.watchlist?.autoUpdated) {
     const wl = report.watchlist;
-    lines.push(`Watchlist: 🔄 actualizado automáticamente (**${wl.addedCount ?? 0} nuevos** · ${wl.removedCount ?? 0} anteriores eliminados · ${wl.totalSeen ?? wl.totalSeenBefore ?? 0} en historial sin repetir)`);
+    lines.push(`Watchlist: 🔄 actualizado automáticamente (**${wl.addedCount ?? 0} nuevos** · ${wl.removedCount ?? 0} anteriores eliminados${wl.resumedCount ? ` · ${wl.resumedCount} serie(s) en progreso continúan` : ''} · ${wl.totalSeen ?? wl.totalSeenBefore ?? 0} en historial sin repetir)`);
   }
   lines.push('');
+  const progressSeries = Object.entries(report.progress?.series || {});
+  const inProgress = progressSeries.filter(([, r]) => r.status === 'in-progress');
+  const completed = progressSeries.filter(([, r]) => r.status === 'complete');
+  if (inProgress.length || completed.length) {
+    const tag = (s, e) => `S${String(s ?? 0).padStart(2, '0')}E${String(e ?? 0).padStart(2, '0')}`;
+    lines.push('### 📺 Progreso de series (dónde quedó cada una)');
+    for (const [, r] of inProgress) {
+      lines.push(`- ⏳ **${md(r.name)}**: ${r.done}/${r.total} episodios · último ${tag(r.lastSeason, r.lastEpisode)} · sigue en **${tag(r.nextSeason, r.nextEpisode)}** en la próxima ejecución`);
+    }
+    for (const [, r] of completed.slice(0, 10)) {
+      lines.push(`- ✅ **${md(r.name)}**: completa (${r.total} episodios)`);
+    }
+    if (completed.length > 10) lines.push(`- … y ${completed.length - 10} series completas más en el historial.`);
+    lines.push('');
+  }
   if (items.length) {
     lines.push('| | Título | 🇪🇸 Español | 🇬🇧 Inglés |');
     lines.push('|---|---|---|---|');

@@ -51,7 +51,8 @@ watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
        ├─ 2 picks por título: 🇪🇸 mejor en español + 🇬🇧 mejor en inglés
        └─ magnets con los 10 mejores trackers
   Action (src/fetch.mjs):
-       ├─ public/data/{movies,series}, index.json, report.json
+       ├─ public/data/{movies,series}, index.json, report.json, progress.json
+       │    · series largas: reanuda donde quedó (máx. MAX_EPISODES_PER_RUN)
        ├─ addon Stremio: manifest.json + /stream + catálogo “Mi watchlist”
        ├─ Supabase (opcional): UPSERT por info_hash
        ├─ resumen en el job y respuesta en el Issue
@@ -234,6 +235,29 @@ falta ir poniendo los episodios uno a uno. Se acepta un comentario después de
 que se solapan con una temporada o serie completa, se consultan una sola vez.
 Cargar una lista desde la web **reemplaza por completo** `watchlist.txt`.
 
+## Series largas: historial de progreso y reanudación
+
+Las series con muchos episodios no caben en una sola ejecución, así que la
+ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
+
+- `public/data/progress.json` guarda, por serie: episodios hechos
+  (`done/total`), **última temporada y episodio ingeridos** (`lastSeason` /
+  `lastEpisode`) y por dónde sigue (`nextSeason` / `nextEpisode`). El
+  dashboard lo muestra en el panel “📺 Por dónde van las series” y el resumen
+  de la Action (y del Issue) incluye la misma tabla.
+- Cada ejecución expande como máximo `MAX_EPISODES_PER_RUN` episodios
+  (60 por defecto), repartidos entre las series en progreso para que todas
+  avancen. Los episodios ya ingeridos (claves `tt…:sN:eN` de `seen.json`)
+  nunca se vuelven a consultar.
+- **El watchlist conserva solo lo que falta**: la rotación diaria elimina
+  películas y series ya completas, pero **conserva las series a las que aún
+  les faltan episodios** (y las reinyecta si algún Issue reemplazó el
+  `watchlist.txt`). Cuando una serie termina, se elimina sola en la siguiente
+  corrida. Si salen episodios nuevos de una serie en emisión, se detectan y se
+  ingieren automáticamente.
+- Los episodios pedidos a mano (`tt…:s1:e1`) nunca se omiten, aunque ya estén
+  en el historial.
+
 ## Variables
 
 | Variable | Default | Uso |
@@ -244,6 +268,7 @@ Cargar una lista desde la web **reemplaza por completo** `watchlist.txt`.
 | `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
 | `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
+| `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
 | `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas / timeout |
 | `BREAKER_THRESHOLD` | `3` | Errores seguidos de un addon antes de dejar de consultarlo |
@@ -286,6 +311,8 @@ desconocida no borra valores más ricos ya presentes.
 | `public/lib/parse.js` | Watchlist, normalización de streams, idiomas, calidad, ficha técnica, fusión |
 | `public/lib/select.js` | Elige el mejor en español y en inglés; año/episodio; trackers |
 | `public/lib/meta.js` | Cinemeta: metadatos y episodios sin API key |
+| `public/lib/watchlist.js` | Rotación del watchlist, historial `seen`, descubrimiento de títulos |
+| `public/lib/progress.js` | Historial por serie (última temporada/episodio) y reanudación |
 | `public/lib/pipeline.js` | HTTP con reintentos, cortocircuito por addon, orquestación, streams publicables |
 | `public/lib/issue.js` | Construye e interpreta el Issue de ingesta |
 | `public/lib/format.js` | CSV, lista de magnets y resumen Markdown |
@@ -296,7 +323,7 @@ desconocida no borra valores más ricos ya presentes.
 | `src/issue-bridge.mjs` | Issue → `watchlist.txt` (modo sin token) |
 | `src/summary.mjs` | Resumen para el job y para responder en el Issue |
 | `public/index.html` / `public/app.js` / `public/styles.css` | Web estática en español (módulo ES, sin build) |
-| `public/data/…` | Último reporte y los 2 picks por título |
+| `public/data/…` | Último reporte, los 2 picks por título y `progress.json` (por dónde va cada serie) |
 | `public/manifest.json` / `public/stream` / `public/catalog` | Addon Stremio personal |
 | `.github/workflows/static.yml` | Ingesta diaria, manual o pedida por Issue; responde en el Issue |
 | `.github/workflows/issue-ingest.yml` | Puente Issue → `watchlist.txt` → ingesta |

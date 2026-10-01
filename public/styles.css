@@ -206,3 +206,16 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   .pick-row { grid-template-columns: 1fr; }
   .torrent { grid-template-columns: 1fr; }
 }
+
+/* Panel 📺: por dónde van las series (progreso publicado por la Action). */
+.series-progress { margin: 0 0 12px; }
+.series-progress details { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+.series-progress summary { cursor: pointer; font-size: 13px; color: #c9d1e3; }
+.sp-list { display: grid; gap: 8px; margin-top: 10px; }
+.sp-row { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center; }
+.sp-poster { width: 34px; height: 50px; object-fit: cover; border-radius: 5px; border: 1px solid var(--border); background: var(--pill-bg); }
+.sp-main { min-width: 0; }
+.sp-title { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-bar { height: 6px; border-radius: 999px; background: var(--pill-bg); overflow: hidden; margin: 5px 0 4px; }
+.sp-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #5b8cff, #48d597); }
+@media (max-width: 720px) { .sp-row { grid-template-columns: 28px 1fr; } .sp-poster { width: 28px; height: 41px; } }
