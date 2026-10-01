@@ -4,10 +4,13 @@ import assert from 'node:assert/strict';
 import {
   createSeenStore,
   discoverCatalogItems,
+  discoverFromTmdb,
   normalizeTitleKey,
   rotateWatchlist,
   selectUniqueDbCandidates,
 } from '../public/lib/watchlist.js';
+import { enrichWithTmdbAndOmdb } from '../src/fetch.mjs';
+import { streamToTorrentRecord } from '../src/db.mjs';
 import { parseWatchlist } from '../public/lib/parse.js';
 
 function hash(n) {
@@ -159,4 +162,61 @@ test('selectUniqueDbCandidates guarda solo los 2 picks por título y no repite h
   assert.equal(skippedSeen, 1);
   assert.equal(skippedDuplicates, 2);
   assert.deepEqual(dbCandidates.map(c => c.stream.infoHash), [hash(11), hash(12)]);
+});
+
+test('discoverFromTmdb y enrichWithTmdbAndOmdb usan TMDB_API_KEY y OMDB_API_KEY y rellenan tmdb_id para Supabase', async () => {
+  const seen = createSeenStore();
+  const fakeFetch = async url => {
+    if (url.includes('/trending/movie/week')) {
+      return { results: [{ id: 872585, title: 'Oppenheimer', release_date: '2023-07-19' }] };
+    }
+    if (url.includes('/movie/872585/external_ids')) {
+      return { imdb_id: 'tt15398776' };
+    }
+    if (url.includes('/trending/tv/week')) {
+      return { results: [{ id: 100088, name: 'The Last of Us', first_air_date: '2023-01-15' }] };
+    }
+    if (url.includes('/tv/100088/external_ids')) {
+      return { imdb_id: 'tt3581920' };
+    }
+    if (url.includes('/find/tt15398776')) {
+      return { movie_results: [{ id: 872585, title: 'Oppenheimer', release_date: '2023-07-19' }], tv_results: [] };
+    }
+    if (url.includes('omdbapi.com') && url.includes('tt15398776')) {
+      return { Response: 'True', Title: 'Oppenheimer', Year: '2023', Type: 'movie', imdbRating: '8.3' };
+    }
+    return {};
+  };
+
+  const tmdbFound = await discoverFromTmdb(fakeFetch, {
+    apiKey: 'tmdb-test-key',
+    seen,
+    movieCount: 1,
+    seriesCount: 1,
+    now: Date.parse('2026-10-01T00:00:00Z'),
+  });
+  assert.equal(tmdbFound.movies.length, 1);
+  assert.equal(tmdbFound.movies[0].imdbId, 'tt15398776');
+  assert.equal(tmdbFound.movies[0].tmdbId, 872585);
+  assert.equal(tmdbFound.series.length, 1);
+  assert.equal(tmdbFound.series[0].imdbId, 'tt3581920');
+  assert.equal(tmdbFound.series[0].tmdbId, 100088);
+
+  const metaById = new Map();
+  const stats = await enrichWithTmdbAndOmdb([{ imdbId: 'tt15398776', type: 'movie' }], metaById, {
+    fetchImpl: fakeFetch,
+    tmdbApiKey: 'tmdb-test-key',
+    omdbApiKey: 'omdb-test-key',
+  });
+  assert.equal(stats.tmdb.found, 1);
+  assert.equal(stats.omdb.found, 1);
+  const enriched = metaById.get('tt15398776');
+  assert.equal(enriched.tmdbId, 872585);
+  assert.equal(enriched.imdbRating, '8.3');
+
+  const record = streamToTorrentRecord(
+    { imdbId: 'tt15398776', tmdbId: enriched.tmdbId, type: 'movie' },
+    { infoHash: hash(99), title: 'Oppenheimer 2023 1080p Castellano', quality: '1080p', audioLangs: ['es'] }
+  );
+  assert.equal(record.tmdb_id, 872585);
 });

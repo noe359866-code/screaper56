@@ -81,7 +81,7 @@ export function streamToTorrentRecord(item, stream) {
     title: title.substring(0, MAX_TITLE_LENGTH),
     type,
     imdb_id: imdbId,
-    tmdb_id: null,
+    tmdb_id: parseNonNegativeInt(item.tmdbId ?? item.tmdb_id),
     kitsu_id: null,
     anilist_id: null,
     mal_id: null,

@@ -358,6 +358,7 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
   if (type === 'series') {
     return {
       imdbId,
+      ...(raw.tmdbId != null ? { tmdbId: Number(raw.tmdbId) } : {}),
       type: 'series',
       season: 1,
       episode: 1,
@@ -368,6 +369,7 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
   }
   return {
     imdbId,
+    ...(raw.tmdbId != null ? { tmdbId: Number(raw.tmdbId) } : {}),
     type: 'movie',
     season: null,
     episode: null,
@@ -377,16 +379,101 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
   };
 }
 
+const TMDB_MOVIE_FEEDS = Object.freeze([
+  '/trending/movie/week',
+  '/movie/popular',
+  '/movie/now_playing',
+  '/movie/top_rated',
+]);
+
+const TMDB_SERIES_FEEDS = Object.freeze([
+  '/trending/tv/week',
+  '/tv/popular',
+  '/tv/top_rated',
+]);
+
+/**
+ * Descubre películas y series desde TMDB (cuando hay TMDB_API_KEY) y resuelve
+ * su IMDb ID (`tt...`) mediante `/external_ids`.
+ */
+export async function discoverFromTmdb(fetchJSON, {
+  apiKey = '',
+  seen = createSeenStore(),
+  movieCount = 8,
+  seriesCount = 2,
+  cursor = 0,
+  now = Date.now(),
+  onWarning = null,
+} = {}) {
+  const key = String(apiKey || '').trim();
+  if (!key || typeof fetchJSON !== 'function') return { movies: [], series: [] };
+
+  const movies = [];
+  const series = [];
+  const batchIds = new Set();
+  const batchTitles = new Set();
+  const page = (cursor % 5) + 1;
+
+  const tryFeed = async (kind, feeds, target, bucket) => {
+    for (let i = 0; i < feeds.length && bucket.length < target; i++) {
+      const feed = feeds[(cursor + i) % feeds.length];
+      const url = `https://api.themoviedb.org/3${feed}?api_key=${encodeURIComponent(key)}&language=es-ES&page=${page}`;
+      let list;
+      try {
+        const data = await fetchJSON(url, { timeout: 10000, retries: 1 });
+        list = data?.results || [];
+      } catch (err) {
+        onWarning?.(`TMDB (${feed}): ${err.message || err}`);
+        continue;
+      }
+      for (const entry of list) {
+        if (bucket.length >= target) break;
+        if (!entry?.id) continue;
+        const rawTitle = entry.title || entry.name || entry.original_title || entry.original_name || '';
+        const normTitle = normalizeTitleKey(rawTitle);
+        if (!normTitle || batchTitles.has(normTitle) || seen.titles.has(normTitle)) continue;
+        const releaseDate = entry.release_date || entry.first_air_date || null;
+        if (releaseDate && Date.parse(releaseDate) > now + DAY_MS) continue;
+        try {
+          const extUrl = `https://api.themoviedb.org/3/${kind}/${entry.id}/external_ids?api_key=${encodeURIComponent(key)}`;
+          const ext = await fetchJSON(extUrl, { timeout: 8000, retries: 1 });
+          const imdbId = String(ext?.imdb_id || '').toLowerCase().trim();
+          if (!IMDB_ID_RE.test(imdbId) || batchIds.has(imdbId)) continue;
+          const item = normalizeCatalogMeta({
+            imdb_id: imdbId,
+            tmdbId: entry.id,
+            name: rawTitle,
+            type: kind === 'tv' ? 'series' : 'movie',
+            year: releaseDate ? releaseDate.slice(0, 4) : null,
+            released: releaseDate,
+          }, kind === 'tv' ? 'series' : 'movie', { now });
+          if (!item || seen.hasItem(item)) continue;
+          batchIds.add(item.imdbId);
+          batchTitles.add(normTitle);
+          bucket.push(item);
+        } catch {
+          // Si un ID de TMDB no tiene external_ids, pasamos al siguiente.
+        }
+      }
+    }
+  };
+
+  if (movieCount > 0) await tryFeed('movie', TMDB_MOVIE_FEEDS, movieCount, movies);
+  if (seriesCount > 0) await tryFeed('tv', TMDB_SERIES_FEEDS, seriesCount, series);
+  return { movies, series };
+}
+
 /**
  * Descubre títulos nuevos (películas y series) que NO estén en `seen`.
- * Consulta los catálogos públicos de Cinemeta rotando según `seen.cursor` y
- * usa `FALLBACK_DISCOVERY_POOL` si faltan resultados o no hay red.
+ * Si hay `tmdbApiKey` consulta primero TMDB; después los catálogos públicos de
+ * Cinemeta rotando según `seen.cursor` y por último `FALLBACK_DISCOVERY_POOL`.
  */
 export async function discoverCatalogItems(fetchJSON, {
   seen = createSeenStore(),
   count = DEFAULT_BATCH_SIZE,
   movieCount = null,
   seriesCount = null,
+  tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
   onWarning = null,
@@ -422,6 +509,20 @@ export async function discoverCatalogItems(fetchJSON, {
 
   const root = String(baseUrl || CINEMETA_URL).replace(/\/+$/, '');
   const cursor = seen.cursor || 0;
+
+  if (tmdbApiKey && typeof fetchJSON === 'function') {
+    const fromTmdb = await discoverFromTmdb(fetchJSON, {
+      apiKey: tmdbApiKey,
+      seen,
+      movieCount: targetMovies,
+      seriesCount: targetSeries,
+      cursor,
+      now,
+      onWarning,
+    });
+    for (const m of fromTmdb.movies) if (canPick(m) && pickedMovies.length < targetMovies) recordPick(m, pickedMovies);
+    for (const s of fromTmdb.series) if (canPick(s) && pickedSeries.length < targetSeries) recordPick(s, pickedSeries);
+  }
 
   if (typeof fetchJSON === 'function') {
     // Películas desde catálogos rotativos
@@ -489,6 +590,7 @@ export async function rotateWatchlist(currentText, {
   autoDiscover = true,
   replaceAll = false,
   batchSize = DEFAULT_BATCH_SIZE,
+  tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
   onWarning = null,
@@ -534,6 +636,7 @@ export async function rotateWatchlist(currentText, {
       count: needed,
       movieCount,
       seriesCount,
+      tmdbApiKey,
       baseUrl,
       now,
       onWarning,

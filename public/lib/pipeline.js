@@ -310,7 +310,15 @@ export function picksFromPublishedItem(item, data, { bestTrackers = BEST_TRACKER
 // ---------- metadatos + expansión del watchlist ----------
 
 function slimMeta(meta) {
-  return meta ? { name: meta.name, year: meta.year, yearEnd: meta.yearEnd, type: meta.type } : null;
+  if (!meta) return null;
+  return {
+    name: meta.name,
+    year: meta.year,
+    yearEnd: meta.yearEnd,
+    type: meta.type,
+    ...(meta.tmdbId != null ? { tmdbId: meta.tmdbId } : {}),
+    ...(meta.imdbRating != null ? { imdbRating: meta.imdbRating } : {}),
+  };
 }
 
 function pad2(n) {
@@ -463,6 +471,8 @@ export function buildItem(query, providerResults, errors = [], { bestTrackers = 
     label: query.label || query.imdbId,
     name: query.meta?.name ?? null,
     year: query.meta?.year ?? null,
+    ...(query.meta?.tmdbId != null ? { tmdbId: query.meta.tmdbId } : {}),
+    ...(query.meta?.imdbRating != null ? { imdbRating: query.meta.imdbRating } : {}),
     providerUrls: Object.fromEntries(providerResults.map(r => [r.provider.slug, r.url])),
     // Publicados (máx. 2) frente a todo lo que devolvieron los addons.
     streamCount: streams.length,

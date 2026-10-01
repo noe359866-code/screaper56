@@ -90,8 +90,10 @@ jobs:
           PEERFLIX_BASE_URL: "https://peerflix.mov"
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
           # Opcionales: sin ellos todo funciona (Cinemeta no necesita API key;
-          # sin Supabase solo se publican los JSON).
+          # con TMDB_API_KEY y OMDB_API_KEY se descubren títulos en TMDB, se
+          # guarda tmdb_id en Supabase y se enriquecen metadatos con OMDb).
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ inputs.dry_run || '0' }}

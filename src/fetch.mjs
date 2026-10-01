@@ -80,7 +80,8 @@ const CATALOG_ID = 'peerflix-static-watchlist';
 
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 15000);
 const FETCH_CONCURRENCY = Math.max(1, Number(process.env.FETCH_CONCURRENCY || 4));
-const TMDB_API_KEY = process.env.TMDB_API_KEY || '';
+const TMDB_API_KEY = (process.env.TMDB_API_KEY || '').trim();
+const OMDB_API_KEY = (process.env.OMDB_API_KEY || '').trim();
 const WATCHLIST_PATH = resolve(ROOT, process.env.WATCHLIST_PATH || 'watchlist.txt');
 const SEEN_PATH = resolve(ROOT, process.env.SEEN_PATH || join(DATA_DIR, 'seen.json'));
 const FIXTURE_MODE = process.env.FIXTURE_MODE === '1';
@@ -123,20 +124,87 @@ const fetchJSON = createJsonFetcher({
   }),
 });
 
-// ---------- TMDB (opcional: respaldo si Cinemeta no tiene la temporada) ----------
+// ---------- TMDB & OMDb (descubrimiento, tmdb_id para Supabase y respaldo de metadatos) ----------
 
 async function tmdbEpisodes(item) {
   if (!TMDB_API_KEY) return null;
   try {
-    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?api_key=${TMDB_API_KEY}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
+    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?api_key=${encodeURIComponent(TMDB_API_KEY)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
     const tv = find.tv_results?.[0];
     if (!tv?.id) return null;
-    const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${item.season}?api_key=${TMDB_API_KEY}&language=es-ES`, { timeout: 10000, retries: 1 });
+    const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${item.season}?api_key=${encodeURIComponent(TMDB_API_KEY)}&language=es-ES`, { timeout: 10000, retries: 1 });
     return (season.episodes || []).map(e => ({ episode: e.episode_number, title: e.name || null, released: e.air_date || null }));
   } catch (err) {
     console.warn(`⚠️  TMDB falló para ${item.imdbId}:s${item.season}: ${err.message}`);
     return null;
   }
+}
+
+export async function enrichWithTmdbAndOmdb(items, metaById, {
+  fetchImpl = fetchJSON,
+  tmdbApiKey = TMDB_API_KEY,
+  omdbApiKey = OMDB_API_KEY,
+  onWarning = null,
+} = {}) {
+  const uniqueIds = [...new Set((items || []).map(i => i.imdbId).filter(Boolean))];
+  const stats = {
+    tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0 },
+    omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0 },
+  };
+  if (!uniqueIds.length || (!tmdbApiKey && !omdbApiKey)) return stats;
+
+  for (const imdbId of uniqueIds) {
+    const current = metaById.get(imdbId) || { imdbId, type: null, name: null, year: null, yearEnd: null, videos: null };
+
+    if (tmdbApiKey) {
+      try {
+        const find = await fetchImpl(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${encodeURIComponent(tmdbApiKey)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
+        const movie = find?.movie_results?.[0];
+        const tv = find?.tv_results?.[0];
+        const hit = movie || tv;
+        if (hit) {
+          stats.tmdb.found++;
+          current.tmdbId = hit.id ?? current.tmdbId ?? null;
+          current.type = current.type || (tv ? 'series' : 'movie');
+          current.name = current.name || hit.title || hit.name || hit.original_title || hit.original_name || null;
+          const dateStr = hit.release_date || hit.first_air_date || '';
+          const y = Number.parseInt(dateStr.slice(0, 4), 10);
+          if (!current.year && Number.isInteger(y)) {
+            current.year = y;
+            if (current.type === 'movie') current.yearEnd = y;
+          }
+          metaById.set(imdbId, current);
+        }
+      } catch (err) {
+        stats.tmdb.failures++;
+        onWarning?.(`TMDB (${imdbId}): ${err.message || err}`);
+      }
+    }
+
+    if (omdbApiKey) {
+      try {
+        const omdb = await fetchImpl(`https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&apikey=${encodeURIComponent(omdbApiKey)}`, { timeout: 10000, retries: 1 });
+        if (omdb && omdb.Response !== 'False' && omdb.Title) {
+          stats.omdb.found++;
+          current.type = current.type || (omdb.Type === 'series' ? 'series' : 'movie');
+          current.name = current.name || omdb.Title.trim();
+          const years = (String(omdb.Year || '').match(/\d{4}/g) || []).map(Number);
+          if (!current.year && years[0]) {
+            current.year = years[0];
+            current.yearEnd = years[1] ?? (current.type === 'series' ? null : years[0]);
+          }
+          if (omdb.imdbRating && omdb.imdbRating !== 'N/A') {
+            current.imdbRating = omdb.imdbRating;
+          }
+          metaById.set(imdbId, current);
+        }
+      } catch (err) {
+        stats.omdb.failures++;
+        onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
+      }
+    }
+  }
+  return stats;
 }
 
 // ---------- FIXTURE_MODE: respuestas falsas, sin red ----------
@@ -317,7 +385,12 @@ async function main() {
   if (MANIFEST_ONLY_PROVIDERS.length) {
     console.log(`   manifest    : ${MANIFEST_ONLY_PROVIDERS.map(p => `${p.name} (${p.manifestUrl})`).join(', ')} [solo catálogo, no compatible con IMDb]`);
   }
-  console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : CINEMETA_ENABLED ? `Cinemeta (sin API key)${TMDB_API_KEY ? ' + TMDB de respaldo' : ''}` : TMDB_API_KEY ? 'solo TMDB' : 'desactivados'}`);
+  const metaSources = [
+    CINEMETA_ENABLED && 'Cinemeta (sin API key)',
+    TMDB_API_KEY && 'TMDB API ✅',
+    OMDB_API_KEY && 'OMDb API ✅',
+  ].filter(Boolean);
+  console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : metaSources.length ? metaSources.join(' + ') : 'desactivados'}`);
   console.log(`   Supabase    : ${repo.enabled ? 'configurada ✅' : repo.skipReason === 'missing-credentials' ? `sin credenciales (faltan ${repo.missingCredentials.join(' y ')}; solo JSON)` : 'DRY RUN (solo JSON; no escribe en la BD)'}`);
   console.log(`   selección   : 2 por título → 🇪🇸 mejor en español + 🇬🇧 mejor en inglés`);
   const bestTrackers = FIXTURE_MODE || REPROCESS
@@ -360,10 +433,11 @@ async function main() {
     if (AUTO_WATCHLIST) {
       const rotation = await rotateWatchlist(watchText, {
         seen,
-        fetchJSON: CINEMETA_ENABLED && !FIXTURE_MODE ? pipelineFetch : null,
+        fetchJSON: (CINEMETA_ENABLED || TMDB_API_KEY) && !FIXTURE_MODE ? pipelineFetch : null,
         autoDiscover: true,
         replaceAll: REPLACE_WATCHLIST,
         batchSize: WATCHLIST_BATCH_SIZE,
+        tmdbApiKey: !FIXTURE_MODE ? TMDB_API_KEY : '',
         baseUrl: CINEMETA_BASE_URL,
         onWarning: warn,
       });
@@ -390,6 +464,12 @@ async function main() {
       metaById = meta.metaById;
       metaStats = meta.stats;
       console.log(`🎞️  Cinemeta: ${metaStats.found}/${metaStats.requested} fichas${metaStats.failures ? ` (${metaStats.failures} errores)` : ''}.`);
+    }
+    if ((TMDB_API_KEY || OMDB_API_KEY) && !FIXTURE_MODE) {
+      const extraMeta = await enrichWithTmdbAndOmdb(items, metaById, { fetchImpl: pipelineFetch, onWarning: warn });
+      metaStats = { ...metaStats, ...extraMeta };
+      if (TMDB_API_KEY) console.log(`🎬 TMDB: ${extraMeta.tmdb.found}/${items.length} fichas enriquecidas (con tmdb_id para Supabase).`);
+      if (OMDB_API_KEY) console.log(`🎞️  OMDb: ${extraMeta.omdb.found}/${items.length} fichas verificadas.`);
     }
     queries = await expandWatchlist(items, { metaById, seasonFallback: TMDB_API_KEY && !FIXTURE_MODE ? tmdbEpisodes : null, onWarning: warn });
     for (const q of queries) labelsById.set(q.kind === 'movie' ? q.imdbId : `${q.imdbId}:${q.season}:${q.episode}`, q.label || q.imdbId);
