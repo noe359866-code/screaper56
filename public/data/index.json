@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T18:02:42.974Z",
-  "finishedAt": "2026-10-01T18:02:58.774Z",
+  "generatedAt": "2026-10-01T18:48:31.077Z",
+  "finishedAt": "2026-10-01T18:48:42.488Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -113,18 +113,18 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 5,
-  "movies": 5,
-  "episodes": 0,
-  "totalStreams": 10,
-  "totalCandidates": 664,
+  "total": 10,
+  "movies": 8,
+  "episodes": 2,
+  "totalStreams": 16,
+  "totalCandidates": 202,
   "picks": {
-    "es": 5,
-    "en": 5
+    "es": 7,
+    "en": 9
   },
   "missing": {
-    "es": 0,
-    "en": 0
+    "es": 3,
+    "en": 1
   },
   "selection": {
     "perTitle": 2,
@@ -147,85 +147,69 @@
       "udp://tracker.bittor.pw:1337/announce"
     ]
   },
+  "watchlist": {
+    "autoUpdated": true,
+    "batchSize": 10,
+    "removedCount": 10,
+    "keptCount": 0,
+    "addedCount": 10,
+    "totalSeenBefore": 524,
+    "totalSeen": 534
+  },
   "meta": {
     "source": "cinemeta",
-    "requested": 5,
-    "found": 5,
+    "requested": 10,
+    "found": 10,
     "failures": 0,
     "disabled": false,
-    "lastError": null
+    "lastError": null,
+    "tmdb": {
+      "enabled": false,
+      "found": 0,
+      "failures": 0
+    },
+    "omdb": {
+      "enabled": true,
+      "found": 9,
+      "failures": 0
+    }
   },
   "items": [
     {
-      "id": "tt6933238",
-      "imdbId": "tt6933238",
+      "id": "tt7526136",
+      "imdbId": "tt7526136",
       "type": "movie",
       "season": null,
       "episode": null,
-      "label": "Unabomber (2026)",
-      "name": "Unabomber",
+      "label": "Heart of the Beast (2026)",
+      "name": "Heart of the Beast",
       "year": 2026,
+      "imdbRating": "7.5",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt6933238.json",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt6933238.json",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt6933238.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt6933238.json"
+        "peerflix": "https://peerflix.mov/stream/movie/tt7526136.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt7526136.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt7526136.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt7526136.json"
       },
       "streamCount": 2,
-      "candidateCount": 113,
+      "candidateCount": 16,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
-          "title": "Unabomber Castellano-Ingles-Subt-Castellano-Forz-Comp H264 E-AC3 5.1 BDRip HD 1080p",
+          "title": "La bestia en la jungla (2026) [Bluray 1080p][Esp]",
           "quality": "1080p",
-          "seeders": 34,
-          "sizeBytes": 2469606195,
-          "sizeLabel": "2.3 GB",
+          "seeders": 21,
+          "sizeBytes": 11188389806,
+          "sizeLabel": "10.4 GB",
           "audioLangs": [
             "es",
             "en"
           ],
           "release": {
             "source": "BluRay",
-            "codec": "AVC",
+            "codec": null,
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "peerflix"
-          ],
-          "providerNames": [
-            "Peerflix"
-          ],
-          "infoHash": "d1ec31173215024842af8b73bf18c8c7a0e2ec5d",
-          "fileIdx": 0,
-          "score": 22.17,
-          "magnetUrl": "magnet:?xt=urn:btih:d1ec31173215024842af8b73bf18c8c7a0e2ec5d&dn=Unabomber%20Castellano-Ingles-Subt-Castellano-Forz-Comp%20H264%20E-AC3%205.1%20BDRip%20HD%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 4K",
-          "title": "Унабомбер / Unabomber [2026 WEB-DL 2160p HDR10 Dolby Vision] Dub (Movie Dubbing) + Dub (Ukr) + Original Eng + Sub (Rus Eng Ukr)",
-          "quality": "4K",
-          "seeders": 158,
-          "sizeBytes": 11714523300,
-          "sizeLabel": "10.9 GB",
-          "audioLangs": [
-            "en",
-            "ru",
-            "uk"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "HEVC",
-            "hdr": [
-              "DV",
-              "HDR10"
-            ],
             "audio": [],
             "channels": null
           },
@@ -235,26 +219,51 @@
           "providerNames": [
             "Torrentio"
           ],
-          "infoHash": "fb0cdf43dcf81e997c862afa8175031398aa1d31",
+          "infoHash": "6b45fa255c04a240fc1aa68b95dd281337a627aa",
           "fileIdx": 0,
-          "score": 14.51,
-          "magnetUrl": "magnet:?xt=urn:btih:fb0cdf43dcf81e997c862afa8175031398aa1d31&dn=%D0%A3%D0%BD%D0%B0%D0%B1%D0%BE%D0%BC%D0%B1%D0%B5%D1%80%20%2F%20Unabomber%20%5B2026%20WEB-DL%202160p%20HDR10%20Dolby%20Vision%5D%20Dub%20(Movie%20Dubbing)%20%2B%20Dub%20(Ukr)%20%2B%20Original%20Eng%20%2B%20Sub%20(Rus%20Eng%20Ukr)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "score": 15.31,
+          "magnetUrl": "magnet:?xt=urn:btih:6b45fa255c04a240fc1aa68b95dd281337a627aa&dn=La%20bestia%20en%20la%20jungla%20(2026)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Heart.of.the.Beast.2026.D.TS.1080p",
+          "quality": "1080p",
+          "seeders": 33,
+          "sizeBytes": 3693671875,
+          "sizeLabel": "3.4 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "CAM",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "491cb07da3a3ab782aa5efd06a65a499457862e7",
+          "fileIdx": 0,
+          "score": 3.47,
+          "magnetUrl": "magnet:?xt=urn:btih:491cb07da3a3ab782aa5efd06a65a499457862e7&dn=Heart.of.the.Beast.2026.D.TS.1080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 158,
+      "bestSeeders": 33,
       "qualities": [
-        "1080p",
-        "4K"
+        "1080p"
       ],
       "languages": [
         "en",
-        "es",
-        "ru",
-        "uk"
+        "es"
       ],
       "providers": [
-        "peerflix",
         "torrentio"
       ],
       "warnings": [],
@@ -266,36 +275,36 @@
       ]
     },
     {
-      "id": "tt22526100",
-      "imdbId": "tt22526100",
+      "id": "tt16478058",
+      "imdbId": "tt16478058",
       "type": "movie",
       "season": null,
       "episode": null,
-      "label": "The Love Hypothesis (2026)",
-      "name": "The Love Hypothesis",
+      "label": "Best of the Best (2026)",
+      "name": "Best of the Best",
       "year": 2026,
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt22526100.json",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt22526100.json",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt22526100.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt22526100.json"
+        "peerflix": "https://peerflix.mov/stream/movie/tt16478058.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt16478058.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt16478058.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt16478058.json"
       },
       "streamCount": 2,
-      "candidateCount": 85,
+      "candidateCount": 53,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "La hipotesis del amor (2026) [Bluray][Esp]",
-          "quality": "1080p",
-          "seeders": 29,
-          "sizeBytes": 1449551462,
-          "sizeLabel": "1.3 GB",
+          "name": "🇪🇸 Español 4K",
+          "title": "Las mejores (Best of the Best) (2026) [4K 2160p][Esp]",
+          "quality": "4K",
+          "seeders": 15,
+          "sizeBytes": 7548405023,
+          "sizeLabel": "7.0 GB",
           "audioLangs": [
             "es"
           ],
           "release": {
-            "source": "BluRay",
+            "source": null,
             "codec": null,
             "hdr": [],
             "audio": [],
@@ -309,24 +318,24 @@
             "Peerflix",
             "Torrentio"
           ],
-          "infoHash": "937cbd8651b1af15179e61b9e84e84b46d99c311",
+          "infoHash": "46305b5cd1b9fd52bf6f927dc2bbb594ffc6b1ac",
           "fileIdx": 0,
-          "score": 22.32,
-          "magnetUrl": "magnet:?xt=urn:btih:937cbd8651b1af15179e61b9e84e84b46d99c311&dn=La%20hipotesis%20del%20amor%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "score": 15.24,
+          "magnetUrl": "magnet:?xt=urn:btih:46305b5cd1b9fd52bf6f927dc2bbb594ffc6b1ac&dn=Las%20mejores%20(Best%20of%20the%20Best)%20(2026)%20%5B4K%202160p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "The Love Hypothesis (2026) [1080p] [BluRay] [5.1]",
+          "title": "Best of the Best 2026 1080p WEBRip",
           "quality": "1080p",
-          "seeders": 822,
+          "seeders": 100,
           "sizeBytes": 2222645576,
           "sizeLabel": "2.1 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "BluRay",
+            "source": "WEBRip",
             "codec": "AVC",
             "hdr": [],
             "audio": [
@@ -335,23 +344,22 @@
             "channels": "5.1"
           },
           "providers": [
-            "torrentio",
-            "piratebay"
+            "torrentio"
           ],
           "providerNames": [
-            "Torrentio",
-            "ThePirateBay+"
+            "Torrentio"
           ],
-          "infoHash": "948e3baa685137616649ccffc34bb6e3a95c2082",
+          "infoHash": "89fd6c0689cfd32a32b20b98b2165f1c6097d716",
           "fileIdx": 0,
-          "score": 14.91,
-          "magnetUrl": "magnet:?xt=urn:btih:948e3baa685137616649ccffc34bb6e3a95c2082&dn=The%20Love%20Hypothesis%20(2026)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "score": 8.18,
+          "magnetUrl": "magnet:?xt=urn:btih:89fd6c0689cfd32a32b20b98b2165f1c6097d716&dn=Best%20of%20the%20Best%202026%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 822,
+      "bestSeeders": 100,
       "qualities": [
-        "1080p"
+        "1080p",
+        "4K"
       ],
       "languages": [
         "en",
@@ -359,7 +367,6 @@
       ],
       "providers": [
         "peerflix",
-        "piratebay",
         "torrentio"
       ],
       "warnings": [],
@@ -371,103 +378,31 @@
       ]
     },
     {
-      "id": "tt26657236",
-      "imdbId": "tt26657236",
+      "id": "tt44535674",
+      "imdbId": "tt44535674",
       "type": "movie",
       "season": null,
       "episode": null,
-      "label": "Backrooms (2026)",
-      "name": "Backrooms",
+      "label": "Manjar (2026)",
+      "name": "MANJAR",
       "year": 2026,
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt26657236.json",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt26657236.json",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt26657236.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt26657236.json"
+        "peerflix": "https://peerflix.mov/stream/movie/tt44535674.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt44535674.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt44535674.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt44535674.json"
       },
-      "streamCount": 2,
-      "candidateCount": 183,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "Backrooms (2026) [Bluray 1080p][Esp]",
-          "quality": "1080p",
-          "seeders": 168,
-          "sizeBytes": 14978698445,
-          "sizeLabel": "14.0 GB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "BluRay",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f",
-          "fileIdx": 0,
-          "score": 23.71,
-          "magnetUrl": "magnet:?xt=urn:btih:78a3da6155d103dc88ab2dbf4cf7aed1f7206a9f&dn=Backrooms%20(2026)%20%5BBluray%201080p%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Backrooms 2026 1080p AMZN Webrip x265 10bit DDP Atmos 5 1 English --H4XO",
-          "quality": "1080p",
-          "seeders": 53,
-          "sizeBytes": 5604932321,
-          "sizeLabel": "5.2 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEBRip",
-            "codec": "HEVC",
-            "hdr": [],
-            "audio": [
-              "Atmos",
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio"
-          ],
-          "infoHash": "0eb4337892055b57d5d225440f49e2061663acb3",
-          "fileIdx": 0,
-          "score": 15.8,
-          "magnetUrl": "magnet:?xt=urn:btih:0eb4337892055b57d5d225440f49e2061663acb3&dn=Backrooms%202026%201080p%20AMZN%20Webrip%20x265%2010bit%20DDP%20Atmos%205%201%20English%20--H4XO&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
-        }
+      "streamCount": 0,
+      "candidateCount": 0,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
       ],
-      "missing": [],
-      "bestSeeders": 168,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "torrentio",
-        "torrentsdb"
-      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
       "warnings": [],
       "errors": [
         {
@@ -477,41 +412,38 @@
       ]
     },
     {
-      "id": "tt29355505",
-      "imdbId": "tt29355505",
+      "id": "tt35538033",
+      "imdbId": "tt35538033",
       "type": "movie",
       "season": null,
       "episode": null,
-      "label": "Toy Story 5 (2026)",
-      "name": "Toy Story 5",
+      "label": "Resident Evil (2026)",
+      "name": "Resident Evil",
       "year": 2026,
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt29355505.json",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt29355505.json",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt29355505.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt29355505.json"
+        "peerflix": "https://peerflix.mov/stream/movie/tt35538033.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt35538033.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt35538033.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt35538033.json"
       },
       "streamCount": 2,
-      "candidateCount": 177,
+      "candidateCount": 33,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
-          "title": "Toy.Story.5.(2026)[DUAL ESP-ENG][HDR10 HEVC][WEB-DL DS4K 1080p]-Mang0z4",
+          "title": "Resident Evil - Noche Cero (2026)1080p Latino [CLYON]",
           "quality": "1080p",
-          "seeders": 29,
-          "sizeBytes": 3940632494,
-          "sizeLabel": "3.7 GB",
+          "seeders": 34,
+          "sizeBytes": 1685774664,
+          "sizeLabel": "1.6 GB",
           "audioLangs": [
-            "es",
-            "en"
+            "es"
           ],
           "release": {
-            "source": "WEB-DL",
-            "codec": "HEVC",
-            "hdr": [
-              "HDR10"
-            ],
+            "source": null,
+            "codec": null,
+            "hdr": [],
             "audio": [],
             "channels": null
           },
@@ -521,58 +453,54 @@
           "providerNames": [
             "Torrentio"
           ],
-          "infoHash": "16e8a13948a3f3843571b0b5b62d03616e03e842",
+          "infoHash": "1f578812fd05b6dcbbc3565a879c20f16b207776",
           "fileIdx": 0,
-          "score": 23.27,
-          "magnetUrl": "magnet:?xt=urn:btih:16e8a13948a3f3843571b0b5b62d03616e03e842&dn=Toy.Story.5.(2026)%5BDUAL%20ESP-ENG%5D%5BHDR10%20HEVC%5D%5BWEB-DL%20DS4K%201080p%5D-Mang0z4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "score": 15.58,
+          "magnetUrl": "magnet:?xt=urn:btih:1f578812fd05b6dcbbc3565a879c20f16b207776&dn=Resident%20Evil%20-%20Noche%20Cero%20(2026)1080p%20Latino%20%5BCLYON%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "Toy Story 5 2026 1080p BluRay x265 SDR DDP Atmos 7 1 English - DarQ-HONE",
+          "title": "Resident Evil (2026) HQ PreDVD - 1080p - x264 - [Tam + Hin + Eng] - HQ Clean - 1.8GB",
           "quality": "1080p",
-          "seeders": 15,
-          "sizeBytes": 6592774799,
-          "sizeLabel": "6.1 GB",
+          "seeders": 198,
+          "sizeBytes": 2072321720,
+          "sizeLabel": "1.9 GB",
           "audioLangs": [
-            "en"
+            "en",
+            "hi"
           ],
           "release": {
-            "source": "BluRay",
-            "codec": "HEVC",
+            "source": null,
+            "codec": "AVC",
             "hdr": [],
-            "audio": [
-              "Atmos",
-              "DD+"
-            ],
-            "channels": "7.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
-            "torrentsdb",
             "torrentio"
           ],
           "providerNames": [
-            "TorrentsDB",
             "Torrentio"
           ],
-          "infoHash": "89a760ffbdcab03e8129f0b5c9dec8ab1d30307d",
-          "fileIdx": 1,
-          "score": 16.26,
-          "magnetUrl": "magnet:?xt=urn:btih:89a760ffbdcab03e8129f0b5c9dec8ab1d30307d&dn=Toy%20Story%205%202026%201080p%20BluRay%20x265%20SDR%20DDP%20Atmos%207%201%20English%20-%20DarQ-HONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+          "infoHash": "2c6d6b44b994a01f0eee42c902ea9857a099490a",
+          "fileIdx": 0,
+          "score": 6.27,
+          "magnetUrl": "magnet:?xt=urn:btih:2c6d6b44b994a01f0eee42c902ea9857a099490a&dn=Resident%20Evil%20(2026)%20HQ%20PreDVD%20-%201080p%20-%20x264%20-%20%5BTam%20%2B%20Hin%20%2B%20Eng%5D%20-%20HQ%20Clean%20-%201.8GB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 29,
+      "bestSeeders": 198,
       "qualities": [
         "1080p"
       ],
       "languages": [
         "en",
-        "es"
+        "es",
+        "hi"
       ],
       "providers": [
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
       ],
       "warnings": [],
       "errors": [
@@ -583,62 +511,206 @@
       ]
     },
     {
-      "id": "tt11561116",
-      "imdbId": "tt11561116",
+      "id": "tt10794054",
+      "imdbId": "tt10794054",
       "type": "movie",
       "season": null,
       "episode": null,
-      "label": "The Whisper Man (2026)",
-      "name": "The Whisper Man",
-      "year": 2026,
+      "label": "The Weight (2020)",
+      "name": "The Weight",
+      "year": 2020,
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/movie/tt11561116.json",
-        "torrentsdb": "https://torrentsdb.com/stream/movie/tt11561116.json",
-        "torrentio": "https://torrentio.strem.fun/stream/movie/tt11561116.json",
-        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt11561116.json"
+        "peerflix": "https://peerflix.mov/stream/movie/tt10794054.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt10794054.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt10794054.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt10794054.json"
       },
-      "streamCount": 2,
-      "candidateCount": 106,
+      "streamCount": 1,
+      "candidateCount": 9,
       "picks": [
         {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "Susurran tu nombre (The Whisper Man) (2026) [Bluray][Esp]",
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The.Weight.2026.D.WEB-DL.1080p",
           "quality": "1080p",
-          "seeders": 40,
-          "sizeBytes": 1299227607,
-          "sizeLabel": "1.2 GB",
+          "seeders": 25,
+          "sizeBytes": 7226282476,
+          "sizeLabel": "6.7 GB",
           "audioLangs": [
-            "es"
+            "en"
           ],
           "release": {
-            "source": "BluRay",
+            "source": "WEB-DL",
             "codec": null,
             "hdr": [],
             "audio": [],
             "channels": null
           },
           "providers": [
-            "peerflix",
             "torrentio"
           ],
           "providerNames": [
-            "Peerflix",
             "Torrentio"
           ],
-          "infoHash": "c8cc245279ee7e391ad366c5fcade7414336ae9b",
+          "infoHash": "ee55b970904a07e0ee996c62ab880864b49f6da4",
           "fileIdx": 0,
-          "score": 23.72,
-          "magnetUrl": "magnet:?xt=urn:btih:c8cc245279ee7e391ad366c5fcade7414336ae9b&dn=Susurran%20tu%20nombre%20(The%20Whisper%20Man)%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+          "score": 2.36,
+          "magnetUrl": "magnet:?xt=urn:btih:ee55b970904a07e0ee996c62ab880864b49f6da4&dn=The.Weight.2026.D.WEB-DL.1080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 25,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt40231163",
+      "imdbId": "tt40231163",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Run Hide Fight: Infidels (2026)",
+      "name": "Run Hide Fight: Infidels",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt40231163.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt40231163.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt40231163.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt40231163.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 13,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Run Hide Fight Infidels 2026 1080p DLWP WEB-DL H264-ARCHIVED",
+          "quality": "1080p",
+          "seeders": 656,
+          "sizeBytes": 3704409293,
+          "sizeLabel": "3.5 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "5777c6f68aa9a3b665395b1d2cf52d02fd80c607",
+          "fileIdx": 0,
+          "score": 8.38,
+          "magnetUrl": "magnet:?xt=urn:btih:5777c6f68aa9a3b665395b1d2cf52d02fd80c607&dn=Run%20Hide%20Fight%20Infidels%202026%201080p%20DLWP%20WEB-DL%20H264-ARCHIVED&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 656,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "piratebay",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt36983905",
+      "imdbId": "tt36983905",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "The Uprising (2026)",
+      "name": "The Uprising",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt36983905.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt36983905.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt36983905.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt36983905.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 42,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "El hombre que desafió al rey Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p",
+          "quality": "1080p",
+          "seeders": 8,
+          "sizeBytes": 4477503406,
+          "sizeLabel": "4.2 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "BluRay",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "474bf97ef53f6e20b8df7550d88fc8193797d6dc",
+          "fileIdx": null,
+          "score": 11.7,
+          "magnetUrl": "magnet:?xt=urn:btih:474bf97ef53f6e20b8df7550d88fc8193797d6dc&dn=El%20hombre%20que%20desafi%C3%B3%20al%20rey%20Lat-Ing%20Subt%20Esp-Ing%20H264%20AC3%205.1%20BDRip%20Hd%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 4K",
-          "title": "The Whisper Man 2026 2160p NF WEB-DL DDP5 1 Atmos DV HDR H 265",
+          "title": "The.Uprising.2026.2160p.MA.WEB-DL.DV.HDR.DDP5.1.Atmos.H265.MP4-BTM",
           "quality": "4K",
-          "seeders": 28,
-          "sizeBytes": 16975858237,
-          "sizeLabel": "15.8 GB",
+          "seeders": 532,
+          "sizeBytes": 25222195446,
+          "sizeLabel": "23.5 GB",
           "audioLangs": [
             "en"
           ],
@@ -656,21 +728,21 @@
             "channels": "5.1"
           },
           "providers": [
-            "torrentsdb",
-            "torrentio"
+            "torrentio",
+            "piratebay"
           ],
           "providerNames": [
-            "TorrentsDB",
-            "Torrentio"
+            "Torrentio",
+            "ThePirateBay+"
           ],
-          "infoHash": "3f3e54941cdf5e635fb426e939a2ec12f1fdece5",
+          "infoHash": "d75cf099f550152928636255f9848f2d16534582",
           "fileIdx": 0,
-          "score": 15.24,
-          "magnetUrl": "magnet:?xt=urn:btih:3f3e54941cdf5e635fb426e939a2ec12f1fdece5&dn=The%20Whisper%20Man%202026%202160p%20NF%20WEB-DL%20DDP5%201%20Atmos%20DV%20HDR%20H%20265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+          "score": 8.57,
+          "magnetUrl": "magnet:?xt=urn:btih:d75cf099f550152928636255f9848f2d16534582&dn=The.Uprising.2026.2160p.MA.WEB-DL.DV.HDR.DDP5.1.Atmos.H265.MP4-BTM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 40,
+      "bestSeeders": 532,
       "qualities": [
         "1080p",
         "4K"
@@ -680,9 +752,8 @@
         "es"
       ],
       "providers": [
-        "peerflix",
-        "torrentio",
-        "torrentsdb"
+        "piratebay",
+        "torrentio"
       ],
       "warnings": [],
       "errors": [
@@ -691,94 +762,429 @@
           "error": "omitido tras 3 errores seguidos (HTTP 403)"
         }
       ]
+    },
+    {
+      "id": "tt36583977",
+      "imdbId": "tt36583977",
+      "type": "movie",
+      "season": null,
+      "episode": null,
+      "label": "Forgotten Island (2026)",
+      "name": "Forgotten Island",
+      "year": 2026,
+      "imdbRating": "7.7",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/movie/tt36583977.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt36583977.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt36583977.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt36583977.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 4,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "FORGOTTEN ISLAND (2026) camrip 1080p ENG audio + Spanish OnlyFlix",
+          "quality": "1080p",
+          "seeders": 88,
+          "sizeBytes": 4928474972,
+          "sizeLabel": "4.6 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "CAM",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "d1af898f694822e4e23e88c2b1b6ff235c001e5b",
+          "fileIdx": 0,
+          "score": 12.18,
+          "magnetUrl": "magnet:?xt=urn:btih:d1af898f694822e4e23e88c2b1b6ff235c001e5b&dn=FORGOTTEN%20ISLAND%20(2026)%20camrip%201080p%20ENG%20audio%20%2B%20Spanish%20OnlyFlix&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Forgotten Island 2026 1080p TELESYNC MULTi x264-DKS",
+          "quality": "1080p",
+          "seeders": 27,
+          "sizeBytes": 6410238689,
+          "sizeLabel": "6.0 GB",
+          "audioLangs": [
+            "en",
+            "es"
+          ],
+          "release": {
+            "source": "CAM",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "905def2749aa4378502587ee5336be6e3aa7482c",
+          "fileIdx": 0,
+          "score": 1.38,
+          "magnetUrl": "magnet:?xt=urn:btih:905def2749aa4378502587ee5336be6e3aa7482c&dn=Forgotten%20Island%202026%201080p%20TELESYNC%20MULTi%20x264-DKS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 88,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        }
+      ]
+    },
+    {
+      "id": "tt38268282:1:1",
+      "imdbId": "tt38268282",
+      "type": "series",
+      "season": 1,
+      "episode": 1,
+      "label": "Steel Ball Run: JoJo's Bizarre Adventure S01E01",
+      "name": "Steel Ball Run: JoJo's Bizarre Adventure",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt38268282:1:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt38268282:1:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt38268282:1:1.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt38268282:1:1.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 6,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Steel.Ball.Run.S01E01.2026.WEB-DL.1080p-Dual-Lat",
+          "quality": "1080p",
+          "seeders": 0,
+          "sizeBytes": 931051602,
+          "sizeLabel": "888 MB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio"
+          ],
+          "providerNames": [
+            "Torrentio"
+          ],
+          "infoHash": "e7dd107a96df932b938a6753ddfeacf149684697",
+          "fileIdx": 4,
+          "score": 10.37,
+          "magnetUrl": "magnet:?xt=urn:btih:e7dd107a96df932b938a6753ddfeacf149684697&dn=Steel.Ball.Run.S01E01.2026.WEB-DL.1080p-Dual-Lat&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "[Some-Stuffs] Steel Ball Run - JoJo's Bizarre Adventure 01 (1080p) [180C75E0]",
+          "quality": "1080p",
+          "seeders": 72,
+          "sizeBytes": 1814623683,
+          "sizeLabel": "1.7 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb"
+          ],
+          "providerNames": [
+            "TorrentsDB"
+          ],
+          "infoHash": "0fcd00bd21ab5900a036f07124071468710769e0",
+          "fileIdx": 0,
+          "score": 8.05,
+          "magnetUrl": "magnet:?xt=urn:btih:0fcd00bd21ab5900a036f07124071468710769e0&dn=%5BSome-Stuffs%5D%20Steel%20Ball%20Run%20-%20JoJo's%20Bizarre%20Adventure%2001%20(1080p)%20%5B180C75E0%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 72,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
+      ]
+    },
+    {
+      "id": "tt38218082:1:1",
+      "imdbId": "tt38218082",
+      "type": "series",
+      "season": 1,
+      "episode": 1,
+      "label": "Crew Girl S01E01",
+      "name": "Crew Girl",
+      "year": 2026,
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt38218082:1:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt38218082:1:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt38218082:1:1.json",
+        "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt38218082:1:1.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 26,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "La Timonel [HDTV 1080p][Cap.101]",
+          "quality": "1080p",
+          "seeders": 4,
+          "sizeBytes": 2576980377,
+          "sizeLabel": "2.4 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix"
+          ],
+          "providerNames": [
+            "Peerflix"
+          ],
+          "infoHash": "62b29f8a1cf11ac684555f0f5b855abc0a502c25",
+          "fileIdx": 0,
+          "score": 14.26,
+          "magnetUrl": "magnet:?xt=urn:btih:62b29f8a1cf11ac684555f0f5b855abc0a502c25&dn=La%20Timonel%20%5BHDTV%201080p%5D%5BCap.101%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Crew Girl S01 1080p 10bit WEBRip 6CH x265 HEVC-PSA",
+          "quality": "1080p",
+          "seeders": 126,
+          "sizeBytes": 946832671,
+          "sizeLabel": "903 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "piratebay"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "ThePirateBay+"
+          ],
+          "infoHash": "866a22284e1c35872c8451ba6bbbe78a3f195eb9",
+          "fileIdx": 0,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:866a22284e1c35872c8451ba6bbbe78a3f195eb9&dn=Crew%20Girl%20S01%201080p%2010bit%20WEBRip%206CH%20x265%20HEVC-PSA&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 126,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "piratebay",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        }
+      ]
     }
   ],
   "warnings": [],
   "errors": [
     {
-      "id": "tt6933238",
+      "id": "tt7526136",
       "provider": "ytztvio",
-      "label": "Unabomber (2026)",
+      "label": "Heart of the Beast (2026)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt22526100",
+      "id": "tt16478058",
       "provider": "ytztvio",
-      "label": "The Love Hypothesis (2026)",
+      "label": "Best of the Best (2026)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt26657236",
+      "id": "tt44535674",
       "provider": "ytztvio",
-      "label": "Backrooms (2026)",
+      "label": "Manjar (2026)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt29355505",
+      "id": "tt35538033",
       "provider": "ytztvio",
-      "label": "Toy Story 5 (2026)",
+      "label": "Resident Evil (2026)",
       "error": "omitido tras 3 errores seguidos (HTTP 403)",
       "skipped": true
     },
     {
-      "id": "tt11561116",
+      "id": "tt10794054",
       "provider": "ytztvio",
-      "label": "The Whisper Man (2026)",
+      "label": "The Weight (2020)",
       "error": "omitido tras 3 errores seguidos (HTTP 403)",
       "skipped": true
+    },
+    {
+      "id": "tt40231163",
+      "provider": "ytztvio",
+      "label": "Run Hide Fight: Infidels (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt36983905",
+      "provider": "ytztvio",
+      "label": "The Uprising (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt36583977",
+      "provider": "ytztvio",
+      "label": "Forgotten Island (2026)",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt38268282:1:1",
+      "provider": "ytztvio",
+      "label": "Steel Ball Run: JoJo's Bizarre Adventure S01E01",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt38218082:1:1",
+      "provider": "ytztvio",
+      "label": "Crew Girl S01E01",
+      "error": "HTTP 403"
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 5,
-      "ok": 5,
+      "requests": 10,
+      "ok": 10,
       "errors": 0,
       "skipped": 0,
-      "streams": 34,
-      "avgMs": 229
+      "streams": 10,
+      "avgMs": 189
     },
     "torrentsdb": {
-      "requests": 5,
-      "ok": 5,
+      "requests": 10,
+      "ok": 10,
       "errors": 0,
       "skipped": 0,
-      "streams": 175,
-      "avgMs": 963
+      "streams": 31,
+      "avgMs": 211
     },
     "torrentio": {
-      "requests": 5,
-      "ok": 5,
+      "requests": 10,
+      "ok": 10,
       "errors": 0,
       "skipped": 0,
-      "streams": 594,
-      "avgMs": 76
+      "streams": 195,
+      "avgMs": 123
     },
     "piratebay": {
-      "requests": 5,
-      "ok": 5,
+      "requests": 10,
+      "ok": 10,
       "errors": 0,
       "skipped": 0,
-      "streams": 20,
-      "avgMs": 125
+      "streams": 23,
+      "avgMs": 375
     },
     "ytztvio": {
-      "requests": 3,
+      "requests": 5,
       "ok": 0,
-      "errors": 3,
-      "skipped": 2,
+      "errors": 5,
+      "skipped": 5,
       "streams": 0,
-      "avgMs": 96
+      "avgMs": 39
     }
   },
   "db": {
-    "inserted": 664,
-    "prepared": 664,
+    "inserted": 16,
+    "prepared": 16,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 640,
-    "updated": 24
+    "created": 13,
+    "updated": 3
   },
-  "durationMs": 15800
+  "durationMs": 11411
 }

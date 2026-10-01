@@ -2,40 +2,38 @@
   "streams": [
     {
       "name": "🇪🇸 Español 1080p",
-      "title": "La hipotesis del amor (2026) [Bluray][Esp]",
-      "description": "La hipotesis del amor (2026) [Bluray][Esp]\n🎞️ BluRay\n👤 29 💾 1.3 GB ⚙️ Peerflix+Torrentio",
+      "title": "FORGOTTEN ISLAND (2026) camrip 1080p ENG audio + Spanish OnlyFlix",
+      "description": "FORGOTTEN ISLAND (2026) camrip 1080p ENG audio + Spanish OnlyFlix\n🎞️ CAM\n👤 88 💾 4.6 GB ⚙️ Torrentio",
       "pick": "es",
-      "score": 22.32,
-      "infoHash": "937cbd8651b1af15179e61b9e84e84b46d99c311",
+      "score": 12.18,
+      "infoHash": "d1af898f694822e4e23e88c2b1b6ff235c001e5b",
       "fileIdx": 0,
       "language": "es",
       "audioLangs": [
-        "es"
+        "es",
+        "en"
       ],
       "quality": "1080p",
-      "seeders": 29,
-      "sizeBytes": 1449551462,
-      "sizeLabel": "1.3 GB",
+      "seeders": 88,
+      "sizeBytes": 4928474972,
+      "sizeLabel": "4.6 GB",
       "release": {
-        "source": "BluRay",
+        "source": "CAM",
         "codec": null,
         "hdr": [],
         "audio": [],
         "channels": null
       },
       "providers": [
-        "peerflix",
         "torrentio"
       ],
       "providerNames": [
-        "Peerflix",
         "Torrentio"
       ],
       "externalProviders": [
-        "PeerflixBot",
-        "Wolfmax4k"
+        "ThePirateBay"
       ],
-      "filename": "La hipotesis del amor (2026) [Bluray][Esp].avi",
+      "filename": "Forgotten.Island.2026.camrip.1080p.mkv",
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
@@ -59,51 +57,48 @@
         "tracker:udp://tracker.theoks.net:6969/announce",
         "tracker:udp://tracker.corpscorp.online:80/announce",
         "tracker:udp://tracker.bittor.pw:1337/announce",
-        "dht:937cbd8651b1af15179e61b9e84e84b46d99c311"
+        "dht:d1af898f694822e4e23e88c2b1b6ff235c001e5b"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:937cbd8651b1af15179e61b9e84e84b46d99c311&dn=La%20hipotesis%20del%20amor%20(2026)%20%5BBluray%5D%5BEsp%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:d1af898f694822e4e23e88c2b1b6ff235c001e5b&dn=FORGOTTEN%20ISLAND%20(2026)%20camrip%201080p%20ENG%20audio%20%2B%20Spanish%20OnlyFlix&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
       "behaviorHints": {
         "bingeGroup": "peerflix-static-es",
-        "filename": "La hipotesis del amor (2026) [Bluray][Esp].avi"
+        "filename": "Forgotten.Island.2026.camrip.1080p.mkv"
       }
     },
     {
       "name": "🇬🇧 Inglés 1080p",
-      "title": "The Love Hypothesis (2026) [1080p] [BluRay] [5.1]",
-      "description": "The Love Hypothesis (2026) [1080p] [BluRay] [5.1]\n🎞️ BluRay · AVC · AAC 5.1\n👤 822 💾 2.1 GB ⚙️ Torrentio+ThePirateBay+",
+      "title": "Forgotten Island 2026 1080p TELESYNC MULTi x264-DKS",
+      "description": "Forgotten Island 2026 1080p TELESYNC MULTi x264-DKS\n🎞️ CAM · AVC\n👤 27 💾 6.0 GB ⚙️ Torrentio",
       "pick": "en",
-      "score": 14.91,
-      "infoHash": "948e3baa685137616649ccffc34bb6e3a95c2082",
+      "score": 1.38,
+      "infoHash": "905def2749aa4378502587ee5336be6e3aa7482c",
       "fileIdx": 0,
       "language": "en",
       "audioLangs": [
-        "en"
+        "en",
+        "es"
       ],
       "quality": "1080p",
-      "seeders": 822,
-      "sizeBytes": 2222645576,
-      "sizeLabel": "2.1 GB",
+      "seeders": 27,
+      "sizeBytes": 6410238689,
+      "sizeLabel": "6.0 GB",
       "release": {
-        "source": "BluRay",
+        "source": "CAM",
         "codec": "AVC",
         "hdr": [],
-        "audio": [
-          "AAC"
-        ],
-        "channels": "5.1"
+        "audio": [],
+        "channels": null
       },
       "providers": [
-        "torrentio",
-        "piratebay"
+        "torrentio"
       ],
       "providerNames": [
-        "Torrentio",
-        "ThePirateBay+"
+        "Torrentio"
       ],
       "externalProviders": [
-        "YTS"
+        "EXT"
       ],
-      "filename": "The.Love.Hypothesis.2026.1080p.BluRay.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "filename": "Forgotten.Island.2026.1080p.TELESYNC.MULTi.x264-DKS.mkv",
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
@@ -127,12 +122,12 @@
         "tracker:udp://tracker.theoks.net:6969/announce",
         "tracker:udp://tracker.corpscorp.online:80/announce",
         "tracker:udp://tracker.bittor.pw:1337/announce",
-        "dht:948e3baa685137616649ccffc34bb6e3a95c2082"
+        "dht:905def2749aa4378502587ee5336be6e3aa7482c"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:948e3baa685137616649ccffc34bb6e3a95c2082&dn=The%20Love%20Hypothesis%20(2026)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:905def2749aa4378502587ee5336be6e3aa7482c&dn=Forgotten%20Island%202026%201080p%20TELESYNC%20MULTi%20x264-DKS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
       "behaviorHints": {
         "bingeGroup": "peerflix-static-en",
-        "filename": "The.Love.Hypothesis.2026.1080p.BluRay.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+        "filename": "Forgotten.Island.2026.1080p.TELESYNC.MULTi.x264-DKS.mkv"
       }
     }
   ]
