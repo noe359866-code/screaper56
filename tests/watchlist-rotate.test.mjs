@@ -5,6 +5,8 @@ import {
   createSeenStore,
   discoverCatalogItems,
   discoverFromTmdb,
+  formatWatchlistFile,
+  formatWatchlistLine,
   normalizeTitleKey,
   rotateWatchlist,
   selectUniqueDbCandidates,
@@ -134,6 +136,57 @@ test('discoverCatalogItems consulta Cinemeta, descarta estrenos futuros y títul
     discovered.map(d => `${d.imdbId}:${d.type}`),
     ['tt0000003:movie', 'tt0000005:movie', 'tt0000010:series']
   );
+  // Las series descubiertas representan la serie COMPLETA (sin temporada ni
+  // episodio): la ingesta expande todas las temporadas y episodios de una vez.
+  const serie = discovered.find(d => d.type === 'series');
+  assert.equal(serie.season, null);
+  assert.equal(serie.episode, null);
+  assert.equal(serie.label, 'Fresh Series One');
+});
+
+test('rotateWatchlist con keep: las series en progreso se conservan aunque estén en el historial', async () => {
+  const seen = createSeenStore();
+  // La serie ya fue procesada en corridas anteriores (está en el historial).
+  seen.addKey('tt7777777');
+  seen.addKey('tt7777777:s1:e1');
+  seen.addImdbId('tt7777777');
+  const text = ['tt7777777 Serie Larga', 'tt0111161 Película Vieja'].join('\n');
+
+  // Sin keep: todo lo visto se elimina (comportamiento clásico).
+  const classic = await rotateWatchlist(text, {
+    seen: createSeenStore(seen.toJSON()), fetchJSON: null, autoDiscover: false, replaceAll: true, batchSize: 4,
+  });
+  assert.equal(classic.keptCount, 0);
+
+  // Con keep (serie con episodios pendientes): se conserva y cuenta en el lote.
+  const keep = item => item.imdbId === 'tt7777777' && item.season == null;
+  const rotated = await rotateWatchlist(text, {
+    seen: createSeenStore(seen.toJSON()), fetchJSON: null, autoDiscover: false, replaceAll: true, keep, batchSize: 4,
+  });
+  assert.equal(rotated.keptCount, 1);
+  assert.equal(rotated.removedCount, 1);
+  const items = parseWatchlist(rotated.text);
+  assert.ok(items.some(i => i.imdbId === 'tt7777777'), 'la serie en progreso sigue en el watchlist');
+  assert.ok(!items.some(i => i.imdbId === 'tt0111161'), 'la película completada se elimina');
+});
+
+test('formatWatchlistLine/File: las series completas se escriben sin :s1:e1', () => {
+  assert.equal(
+    formatWatchlistLine({ imdbId: 'tt0944947', type: 'series', season: null, episode: null, name: 'Game of Thrones', year: 2011 }),
+    'tt0944947 Game of Thrones',
+  );
+  // Las temporadas y episodios explícitos se conservan igual que antes.
+  assert.equal(
+    formatWatchlistLine({ imdbId: 'tt0944947', type: 'series', season: 1, episode: 1, name: 'Game of Thrones' }),
+    'tt0944947:s1:e1 Game of Thrones S01E01',
+  );
+  const text = formatWatchlistFile([
+    { imdbId: 'tt0111161', type: 'movie', name: 'The Shawshank Redemption', year: 1994, label: 'The Shawshank Redemption (1994)' },
+    { imdbId: 'tt0944947', type: 'series', season: null, episode: null, name: 'Game of Thrones', label: 'Game of Thrones' },
+  ], { date: new Date('2026-10-01T00:00:00Z') });
+  assert.match(text, /^tt0944947 Game of Thrones$/m);
+  assert.ok(!/tt0944947:s1/.test(text), 'la serie completa no lleva :s1:e1');
+  assert.match(text, /si el ID resulta ser una serie/);
 });
 
 test('selectUniqueDbCandidates guarda solo los 2 picks por título y no repite hashes ni nombres', () => {

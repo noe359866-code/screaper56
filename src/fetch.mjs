@@ -49,9 +49,18 @@ import { CINEMETA_URL, showLabel } from '../public/lib/meta.js';
 import {
   DEFAULT_BATCH_SIZE,
   createSeenStore,
+  formatWatchlistFile,
   rotateWatchlist,
   selectUniqueDbCandidates,
 } from '../public/lib/watchlist.js';
+import {
+  advanceProgress,
+  countInProgress,
+  normalizeProgress,
+  pendingEpisodes,
+  resumeKeepPredicate,
+  resumeMissingItems,
+} from '../public/lib/progress.js';
 import {
   PICK_META,
   createJsonFetcher,
@@ -84,6 +93,7 @@ const TMDB_API_KEY = (process.env.TMDB_API_KEY || '').trim();
 const OMDB_API_KEY = (process.env.OMDB_API_KEY || '').trim();
 const WATCHLIST_PATH = resolve(ROOT, process.env.WATCHLIST_PATH || 'watchlist.txt');
 const SEEN_PATH = resolve(ROOT, process.env.SEEN_PATH || join(DATA_DIR, 'seen.json'));
+const PROGRESS_PATH = resolve(ROOT, process.env.PROGRESS_PATH || join(DATA_DIR, 'progress.json'));
 const FIXTURE_MODE = process.env.FIXTURE_MODE === '1';
 const REPROCESS = process.env.REPROCESS === '1';
 const AUTO_WATCHLIST = process.env.AUTO_WATCHLIST === '1';
@@ -91,6 +101,9 @@ const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
   ? process.env.REPLACE_WATCHLIST === '1'
   : AUTO_WATCHLIST;
 const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
+// Episodios expandidos como máximo por ejecución (las series largas reanudan
+// donde quedaron en la siguiente corrida). 0 = sin límite.
+const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
 const DRY_RUN_DB = process.env.DRY_RUN === '1' || process.env.DRY_RUN_DB === '1';
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -126,16 +139,38 @@ const fetchJSON = createJsonFetcher({
 
 // ---------- TMDB & OMDb (descubrimiento, tmdb_id para Supabase y respaldo de metadatos) ----------
 
+/**
+ * Respaldo de la expansión de episodios cuando Cinemeta falla. Con
+ * `item.season` devuelve esa temporada; sin temporada (serie completa)
+ * recorre TODAS las temporadas numeradas de la serie.
+ */
 async function tmdbEpisodes(item) {
   if (!TMDB_API_KEY) return null;
+  const tmdbOpts = { timeout: 10000, retries: 1 };
+  const key = `api_key=${encodeURIComponent(TMDB_API_KEY)}&language=es-ES`;
   try {
-    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?api_key=${encodeURIComponent(TMDB_API_KEY)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
+    const find = await fetchJSON(`https://api.themoviedb.org/3/find/${item.imdbId}?${key}&external_source=imdb_id`, tmdbOpts);
     const tv = find.tv_results?.[0];
     if (!tv?.id) return null;
-    const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${item.season}?api_key=${encodeURIComponent(TMDB_API_KEY)}&language=es-ES`, { timeout: 10000, retries: 1 });
-    return (season.episodes || []).map(e => ({ episode: e.episode_number, title: e.name || null, released: e.air_date || null }));
+    let seasonNumbers;
+    if (item.season != null) {
+      seasonNumbers = [Number(item.season)];
+    } else {
+      const details = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}?${key}`, tmdbOpts);
+      seasonNumbers = (details.seasons || [])
+        .map(s => Number(s?.season_number))
+        .filter(n => Number.isInteger(n) && n >= 1);
+    }
+    const episodes = [];
+    for (const seasonNumber of seasonNumbers) {
+      const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${seasonNumber}?${key}`, tmdbOpts);
+      for (const e of season.episodes || []) {
+        episodes.push({ season: seasonNumber, episode: e.episode_number, title: e.name || null, released: e.air_date || null });
+      }
+    }
+    return episodes.length ? episodes : null;
   } catch (err) {
-    console.warn(`⚠️  TMDB falló para ${item.imdbId}:s${item.season}: ${err.message}`);
+    console.warn(`⚠️  TMDB falló para ${item.imdbId}${item.season != null ? ':s' + item.season : ''}: ${err.message}`);
     return null;
   }
 }
@@ -393,6 +428,7 @@ async function main() {
   console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : metaSources.length ? metaSources.join(' + ') : 'desactivados'}`);
   console.log(`   Supabase    : ${repo.enabled ? 'configurada ✅' : repo.skipReason === 'missing-credentials' ? `sin credenciales (faltan ${repo.missingCredentials.join(' y ')}; solo JSON)` : 'DRY RUN (solo JSON; no escribe en la BD)'}`);
   console.log(`   selección   : 2 por título → 🇪🇸 mejor en español + 🇬🇧 mejor en inglés`);
+  console.log(`   series      : las series en progreso reanudan donde quedaron (progress.json)${MAX_EPISODES_PER_RUN ? ` · máx. ${MAX_EPISODES_PER_RUN} episodios expandidos por corrida` : ''}`);
   const bestTrackers = FIXTURE_MODE || REPROCESS
     ? await loadBestTrackers({ url: '' })
     : await loadBestTrackers({ url: TRACKERS_URL, timeoutMs: Math.min(FETCH_TIMEOUT_MS, 10000), headers: { 'user-agent': USER_AGENTS[0] } });
@@ -410,6 +446,8 @@ async function main() {
   const seen = await loadSeenStore(repo, { queryDb: AUTO_WATCHLIST });
   let watchlistRotation = null;
   let loadedItems = [];
+  let progress = normalizeProgress(null);
+  let metaById = new Map();
 
   // 1. Consultas: del watchlist (con Cinemeta) o de los datos ya publicados.
   let queries;
@@ -430,39 +468,78 @@ async function main() {
     console.log(`♻️  Reprocesando ${queries.length} títulos publicados el ${reprocessedFrom || '?'} (sin red).`);
   } else {
     let watchText = existsSync(WATCHLIST_PATH) ? await readFile(WATCHLIST_PATH, 'utf8') : '';
+    if (existsSync(PROGRESS_PATH)) {
+      try { progress = normalizeProgress(JSON.parse(await readFile(PROGRESS_PATH, 'utf8'))); } catch { /* historial corrupto: se empieza de cero */ }
+    }
+    let preMetaById = new Map();
+    let preMetaStats = null;
     if (AUTO_WATCHLIST) {
+      // Antes de rotar: ¿a qué series completas aún les faltan episodios?
+      // Esas se conservan en el watchlist (aunque ya estén en el historial)
+      // y se reinyectan las que un Issue haya podido borrar.
+      const preItems = parseWatchlist(watchText, { onWarning: warn });
+      const resumeItems = FIXTURE_MODE ? [] : resumeMissingItems(progress, preItems);
+      const preAll = [...preItems, ...resumeItems];
+      let pendingBySeries = null;
+      if (!FIXTURE_MODE && CINEMETA_ENABLED && preAll.length) {
+        const prepass = await loadMetadata(preAll, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn });
+        preMetaById = prepass.metaById;
+        preMetaStats = prepass.stats;
+        pendingBySeries = new Map();
+        for (const it of preAll) {
+          if (it.season != null) continue;
+          const meta = preMetaById.get(it.imdbId);
+          if (meta?.type !== 'series') continue;
+          pendingBySeries.set(it.imdbId, pendingEpisodes(it.imdbId, meta, seen.keys).length);
+        }
+      }
       const rotation = await rotateWatchlist(watchText, {
         seen,
         fetchJSON: (CINEMETA_ENABLED || TMDB_API_KEY) && !FIXTURE_MODE ? pipelineFetch : null,
         autoDiscover: true,
         replaceAll: REPLACE_WATCHLIST,
+        keep: FIXTURE_MODE ? null : resumeKeepPredicate(progress, { pendingById: pendingBySeries }),
         batchSize: WATCHLIST_BATCH_SIZE,
         tmdbApiKey: !FIXTURE_MODE ? TMDB_API_KEY : '',
         baseUrl: CINEMETA_BASE_URL,
         onWarning: warn,
       });
-      watchText = rotation.text;
+      const resumed = FIXTURE_MODE ? [] : resumeMissingItems(progress, rotation.items, { pendingById: pendingBySeries });
+      const finalItems = [...rotation.items, ...resumed];
+      watchText = resumed.length
+        ? formatWatchlistFile(finalItems, { date: new Date(), removedCount: rotation.removedCount, addedCount: rotation.addedCount })
+        : rotation.text;
       await writeFile(WATCHLIST_PATH, watchText, 'utf8');
       watchlistRotation = {
         autoUpdated: true,
         batchSize: WATCHLIST_BATCH_SIZE,
         removedCount: rotation.removedCount,
-        keptCount: rotation.keptCount,
+        keptCount: rotation.keptCount + resumed.length,
         addedCount: rotation.addedCount,
+        resumedCount: resumed.length,
         totalSeenBefore: seen.imdbIds.size,
       };
-      console.log(`🔄 Watchlist actualizado: ${rotation.items.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados · ${seen.imdbIds.size} en historial sin repetir).`);
+      console.log(`🔄 Watchlist actualizado: ${finalItems.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) en progreso continúan` : ''} · ${seen.imdbIds.size} en historial sin repetir).`);
     }
     const items = parseWatchlist(watchText, { onWarning: warn });
     loadedItems = items;
     console.log(`🔎 Watchlist: ${items.length} líneas.`);
     const labelsById = new Map();
     if (FIXTURE_MODE) pipelineFetch = createFixtureFetch(new Set(items.filter(i => i.type === 'series').map(i => i.imdbId)), labelsById);
-    let metaById = new Map();
     if (CINEMETA_ENABLED) {
-      const meta = await loadMetadata(items, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn });
-      metaById = meta.metaById;
-      metaStats = meta.stats;
+      const missingMeta = items.filter(i => !preMetaById.has(i.imdbId));
+      const meta = missingMeta.length
+        ? await loadMetadata(missingMeta, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn })
+        : { metaById: new Map(), stats: { source: 'cinemeta', requested: 0, found: 0, failures: 0, disabled: false, lastError: null } };
+      metaById = new Map([...preMetaById, ...meta.metaById]);
+      metaStats = {
+        source: 'cinemeta',
+        requested: (preMetaStats?.requested ?? 0) + meta.stats.requested,
+        found: (preMetaStats?.found ?? 0) + meta.stats.found,
+        failures: (preMetaStats?.failures ?? 0) + meta.stats.failures,
+        disabled: Boolean(preMetaStats?.disabled) || meta.stats.disabled,
+        lastError: meta.stats.lastError || preMetaStats?.lastError || null,
+      };
       console.log(`🎞️  Cinemeta: ${metaStats.found}/${metaStats.requested} fichas${metaStats.failures ? ` (${metaStats.failures} errores)` : ''}.`);
     }
     if ((TMDB_API_KEY || OMDB_API_KEY) && !FIXTURE_MODE) {
@@ -471,7 +548,15 @@ async function main() {
       if (TMDB_API_KEY) console.log(`🎬 TMDB: ${extraMeta.tmdb.found}/${items.length} fichas enriquecidas (con tmdb_id para Supabase).`);
       if (OMDB_API_KEY) console.log(`🎞️  OMDb: ${extraMeta.omdb.found}/${items.length} fichas verificadas.`);
     }
-    queries = await expandWatchlist(items, { metaById, seasonFallback: TMDB_API_KEY && !FIXTURE_MODE ? tmdbEpisodes : null, onWarning: warn });
+    queries = await expandWatchlist(items, {
+      metaById,
+      seasonFallback: TMDB_API_KEY && !FIXTURE_MODE ? tmdbEpisodes : null,
+      // Reanudar series largas: no repetir episodios ya ingeridos y limitar
+      // los episodios expandidos de cada ejecución (el resto queda pendiente).
+      doneKeys: FIXTURE_MODE ? null : seen.keys,
+      maxEpisodeQueries: REPROCESS ? null : (MAX_EPISODES_PER_RUN || null),
+      onWarning: warn,
+    });
     for (const q of queries) labelsById.set(q.kind === 'movie' ? q.imdbId : `${q.imdbId}:${q.season}:${q.episode}`, q.label || q.imdbId);
   }
   console.log(`📋 Consultas: ${queries.length} títulos/episodios × ${providers.length} fuentes = ${queries.length * providers.length} requests.`);
@@ -577,6 +662,20 @@ async function main() {
   seen.addFromResults(pipeline.results);
   if (watchlistRotation) watchlistRotation.totalSeen = seen.imdbIds.size;
   await writeJSON(SEEN_PATH, seen.toJSON());
+
+  // 5c. Progreso de series: dónde quedó cada una (última temporada y episodio)
+  // para reanudarlas en la próxima ejecución y conservar en el watchlist solo
+  // las series a las que todavía les faltan episodios.
+  if (mode === 'live') {
+    const seriesIds = pipeline.results.filter(r => r.item.type === 'series').map(r => r.item.imdbId);
+    progress = advanceProgress(progress, { metaById, doneKeys: seen.keys, imdbIds: seriesIds });
+    await writeJSON(PROGRESS_PATH, progress);
+    if (Object.keys(progress.series).length) {
+      const pendientes = countInProgress(progress);
+      console.log(`⏪ Progreso de series: ${pendientes} en progreso${pendientes ? ' (la próxima ejecución sigue donde quedó' + (MAX_EPISODES_PER_RUN ? `, máx. ${MAX_EPISODES_PER_RUN} episodios por corrida` : '') + ')' : ''} · historial en public/data/progress.json`);
+      index.progress = progress;
+    }
+  }
 
   const finishedAt = new Date().toISOString();
   index.finishedAt = finishedAt;

@@ -5,7 +5,9 @@
 # y se cargan películas y series nuevas para no repetir torrents ni nombres.
 #
 # Formatos soportados:
-#   tt1234567          -> película (IMDb)
+#   tt1234567          -> película (IMDb); si el ID resulta ser una serie,
+#                         se ingesta COMPLETA: todas las temporadas y
+#                         episodios ya emitidos, de una sola vez
 #   tt1234567:s3:e4    -> episodio concreto (serie, temporada 3, ep. 4)
 #   tt1234567:s3       -> todos los episodios emitidos de la temporada 3
 # -----------------------------------------------------------
@@ -21,5 +23,5 @@ tt36983905 The Uprising (2026)
 tt36583977 Forgotten Island (2026)
 
 # --- Series ---
-tt38268282:s1:e1 Steel Ball Run: JoJo's Bizarre Adventure S01E01
-tt38218082:s1:e1 Crew Girl S01E01
+tt38268282 Steel Ball Run: JoJo's Bizarre Adventure (serie completa)
+tt38218082 Crew Girl (serie completa)

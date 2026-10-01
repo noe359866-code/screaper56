@@ -27,7 +27,8 @@ import {
 import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/issue.js';
 import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
 import { describeDatabaseWrite } from './lib/persistence.js';
-import { createSeenStore, rotateWatchlist } from './lib/watchlist.js';
+import { createSeenStore, formatWatchlistFile, rotateWatchlist } from './lib/watchlist.js';
+import { normalizeProgress, resumeKeepPredicate, resumeMissingItems } from './lib/progress.js';
 
 const LS_KEY = 'peerflix-static.settings.v2';
 const LOCAL_KEY = 'peerflix-static.local.v1';
@@ -352,7 +353,10 @@ async function refreshDashboard(force = false) {
   $$('.segmented button').forEach(b => b.classList.toggle('active', b.dataset.source === state.source));
   $('#clear-local').classList.toggle('hidden', state.source !== 'local');
   $('#export-bar').classList.toggle('hidden', state.source === 'supabase');
-  if (state.source === 'supabase') return refreshSupabase();
+  if (state.source === 'supabase') {
+    $('#series-progress')?.classList.add('hidden');
+    return refreshSupabase();
+  }
   if (state.source === 'published') {
     $('#torrent-list').innerHTML = '<div class="empty">Cargando lo publicado…</div>';
     try {
@@ -362,6 +366,7 @@ async function refreshDashboard(force = false) {
       $('#source-info').textContent = '';
       $('#torrent-list').innerHTML = `<div class="empty">${escapeHtml(err.message)}<br/>Prueba <b>⚡ Procesar aquí</b> en la pestaña “Subir TXT / Ingestar”: no necesita token.</div>`;
       renderStats([], null);
+      renderSeriesProgress();
       return;
     }
   }
@@ -380,7 +385,13 @@ async function loadPublished(force = false) {
   let items = Array.isArray(index.items) ? index.items : [];
   const legacy = items.some(it => !Array.isArray(it.picks));
   if (legacy) items = await upgradeLegacyItems(items);
-  state.published = { index, items, legacy };
+  // Historial de progreso de series (dónde quedó cada una); opcional.
+  let progress = index.progress || null;
+  try {
+    const progRes = await fetch(`data/progress.json?t=${Date.now()}`, { cache: 'no-store' });
+    if (progRes.ok) progress = normalizeProgress(await progRes.json());
+  } catch { /* sin historial aún */ }
+  state.published = { index, items, legacy, progress: progress ? normalizeProgress(progress) : null };
   return state.published;
 }
 
@@ -452,12 +463,43 @@ function renderStats(items, updatedAt) {
   $('#stat-last').textContent = updatedAt ? fmtDate(updatedAt) : '—';
 }
 
+/** Panel 📺: dónde quedó cada serie (progreso publicado por la Action). */
+function renderSeriesProgress() {
+  const el = $('#series-progress');
+  if (!el) return;
+  const progress = state.source === 'published' ? state.published?.progress : null;
+  const records = Object.entries(progress?.series || {});
+  const pending = records.filter(([, r]) => r.status === 'in-progress');
+  const complete = records.filter(([, r]) => r.status === 'complete').slice(0, 8);
+  if (!pending.length && !complete.length) { el.classList.add('hidden'); el.innerHTML = ''; return; }
+  const tag = (s, e) => `S${String(s ?? 0).padStart(2, '0')}E${String(e ?? 0).padStart(2, '0')}`;
+  const row = ([id, r]) => {
+    const pct = r.total ? Math.min(100, Math.round(100 * r.done / r.total)) : 0;
+    const poster = posterUrl(id, 'small');
+    const stateTxt = r.status === 'complete'
+      ? '✅ completa'
+      : `⏳ sigue en ${tag(r.nextSeason, r.nextEpisode)} la próxima ejecución`;
+    return `<div class="sp-row">
+      ${poster ? `<img class="sp-poster" src="${escapeHtml(poster)}" alt="" loading="lazy"/>` : ''}
+      <div class="sp-main">
+        <div class="sp-title">${escapeHtml(r.name)} <span class="muted small">${stateTxt}</span></div>
+        <div class="sp-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><div class="sp-fill" style="width:${pct}%"></div></div>
+        <div class="muted small">${r.done}/${r.total} episodios${r.lastSeason != null ? ` · último ingerido ${tag(r.lastSeason, r.lastEpisode)}` : ''}</div>
+      </div>
+    </div>`;
+  };
+  el.innerHTML = `<details${pending.length ? ' open' : ''}><summary>📺 Por dónde van las series (${pending.length} en progreso${complete.length ? ` · ${complete.length} completada${complete.length === 1 ? '' : 's'} hace poco` : ''})</summary>
+    <div class="sp-list">${[...pending, ...complete].map(row).join('')}</div></details>`;
+  el.classList.remove('hidden');
+}
+
 function renderDashboard() {
   if (state.source === 'supabase') return loadTorrents();
   const all = currentCardItems();
   const local = state.source === 'local' ? loadLocal() : null;
   const index = state.published?.index;
   renderStats(all, local ? local.updatedAt : index?.finishedAt || index?.generatedAt);
+  renderSeriesProgress();
   $('#source-info').textContent = local
     ? (all.length ? `${plural(all.length, 'título')} procesado${all.length === 1 ? '' : 's'} en este navegador (no se suben a ningún sitio).` : '')
     : index ? `Publicado por la Action${MODE_LABELS[index.mode] ? ` (${MODE_LABELS[index.mode]})` : ''} · ${fmtDate(index.finishedAt || index.generatedAt)}${state.published.legacy ? ' · formato antiguo: picks calculados en el navegador' : ''} · ${describeDatabaseWrite(index).message}` : '';
@@ -770,17 +812,24 @@ $('#auto-rotate-wl').addEventListener('click', async () => {
     if (state.published?.index) seen.addFromIndex(state.published.index);
     for (const item of loadLocal().items) seen.addItem(item);
     const fetchJSON = createJsonFetcher({ timeoutMs: 10000, retries: 1 });
+    // Las series a las que aún les faltan episodios se conservan (y se
+    // reinyectan si no estaban) para seguir donde se quedó la ingesta.
+    const progress = state.published?.progress || normalizeProgress(null);
     const rotation = await rotateWatchlist($('#watchlist').value, {
       seen,
       fetchJSON: state.settings.cinemeta !== false ? fetchJSON : null,
       autoDiscover: true,
       replaceAll: true,
+      keep: resumeKeepPredicate(progress),
       batchSize: 10,
     });
-    $('#watchlist').value = rotation.text;
-    $('#upload-name').textContent = `Lote nuevo (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados)`;
+    const resumed = resumeMissingItems(progress, rotation.items);
+    $('#watchlist').value = resumed.length
+      ? formatWatchlistFile([...rotation.items, ...resumed], { removedCount: rotation.removedCount, addedCount: rotation.addedCount })
+      : rotation.text;
+    $('#upload-name').textContent = `Lote nuevo (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) continúan` : ''})`;
     updateWatchlistPreview();
-    setStatus(`✅ Watchlist actualizado: ${rotation.addedCount} títulos nuevos (${rotation.removedCount} anteriores eliminados).`);
+    setStatus(`✅ Watchlist actualizado: ${rotation.addedCount} títulos nuevos (${rotation.removedCount} anteriores eliminados${resumed.length ? `; ${resumed.length} serie(s) en progreso continúan donde quedaron` : ''}).`);
   } catch (err) {
     setStatus(`❌ No se pudo autogenerar el watchlist: ${err.message}`);
   }

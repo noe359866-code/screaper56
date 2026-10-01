@@ -166,3 +166,76 @@ test('CLI con AUTO_WATCHLIST=1 reemplaza watchlist.txt en cada corrida y no repi
     assert.equal(run1Ids.includes(id), false, `No debe repetir ${id} en la segunda corrida`);
   }
 });
+
+test('CLI reanuda series largas donde quedaron (progress.json) y las conserva en watchlist.txt', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'peerflix-resume-'));
+  let seq = 0;
+  // Cinemeta local: serie de 2 temporadas × 3 episodios (ya emitidos).
+  const videos = [1, 2].flatMap(season => [1, 2, 3].map(episode => ({
+    season, episode, name: `Ep ${season}x${episode}`, released: '2020-01-01T00:00:00Z',
+  })));
+  const server = createServer(async (request, response) => {
+    response.setHeader('content-type', 'application/json');
+    if (request.url === '/meta/series/tt7777777.json') {
+      response.end(JSON.stringify({ meta: { id: 'tt7777777', imdb_id: 'tt7777777', type: 'series', name: 'Serie Larga', year: '2020', videos } }));
+    } else if (request.url === '/meta/movie/tt7777777.json') {
+      response.end(JSON.stringify({ meta: {} }));
+    } else if (request.url.startsWith('/stream/')) {
+      seq++;
+      response.end(JSON.stringify({ streams: [{
+        name: 'Peerflix\n1080p',
+        title: `Serie Larga ${request.url} [1080p][Castellano]\n👤 40 💾 2.0 GB`,
+        infoHash: seq.toString(16).padStart(40, '0'), fileIdx: 0,
+      }] }));
+    } else {
+      response.statusCode = 404;
+      response.end('{}');
+    }
+  });
+  t.after(async () => {
+    if (server.listening) await new Promise(resolve => server.close(resolve));
+    await rm(dir, { recursive: true, force: true });
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  await cp(join(ROOT, 'src'), join(dir, 'src'), { recursive: true });
+  await cp(join(ROOT, 'public/lib'), join(dir, 'public/lib'), { recursive: true });
+  await cp(join(ROOT, 'package.json'), join(dir, 'package.json'));
+  await symlink(join(ROOT, 'node_modules'), join(dir, 'node_modules'), 'dir');
+  await writeFile(join(dir, 'watchlist.txt'), 'tt7777777 Serie Larga\n');
+
+  const env = {
+    ...process.env,
+    WATCHLIST_PATH: 'watchlist.txt', PROVIDERS: 'peerflix', PEERFLIX_BASE_URL: baseUrl,
+    CINEMETA: '1', CINEMETA_URL: baseUrl, TMDB_API_KEY: '', OMDB_API_KEY: '', TRACKERS_URL: '',
+    FETCH_CONCURRENCY: '2', DRY_RUN: '1', FIXTURE_MODE: '0', REPROCESS: '0',
+    AUTO_WATCHLIST: '1', WATCHLIST_BATCH_SIZE: '1', MAX_EPISODES_PER_RUN: '4',
+  };
+
+  // Corrida 1: de los 6 episodios emitidos solo expande 4 (tope por corrida).
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report1 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.equal(report1.items.length, 4, 'tope de 4 episodios expandidos en la corrida 1');
+  const wl1 = await readFile(join(dir, 'watchlist.txt'), 'utf8');
+  assert.match(wl1, /tt7777777/, 'la serie en progreso se conserva en el watchlist');
+  const progress1 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
+  const rec1 = progress1.series.tt7777777;
+  assert.deepEqual([rec1.status, rec1.done, rec1.total], ['in-progress', 4, 6]);
+  assert.deepEqual([rec1.lastSeason, rec1.lastEpisode], [2, 1], 'recuerda dónde quedó');
+  assert.deepEqual([rec1.nextSeason, rec1.nextEpisode], [2, 2], 'sabe por dónde seguir');
+
+  // Corrida 2: sigue donde quedó (solo los 2 episodios restantes).
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report2 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.deepEqual(
+    report2.items.map(i => `${i.imdbId}:${i.season}:${i.episode}`).sort(),
+    ['tt7777777:2:2', 'tt7777777:2:3'],
+    'no repite los episodios ya ingeridos',
+  );
+  const progress2 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
+  const rec2 = progress2.series.tt7777777;
+  assert.equal(rec2.status, 'complete');
+  assert.equal(rec2.done, 6);
+  assert.equal(rec2.nextSeason, null);
+  assert.ok(rec2.startedAt, 'conserva cuándo empezó la serie');
+});

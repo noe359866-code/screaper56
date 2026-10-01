@@ -64,7 +64,7 @@
     <label class="full">Proveedores Stremio a consultar
       <div class="provider-list" id="provider-list"></div>
     </label>
-    <label class="chk"><input type="checkbox" id="use-cinemeta" checked /> Usar Cinemeta (títulos, años y temporadas completas, sin API key)</label>
+    <label class="chk"><input type="checkbox" id="use-cinemeta" checked /> Usar Cinemeta (títulos, años, temporadas y series completas, sin API key)</label>
     <label>Consultas simultáneas (navegador)
       <input id="concurrency" type="number" min="1" max="8" value="4" />
     </label>
@@ -96,6 +96,8 @@
     <div class="stat"><div class="num" id="stat-english">—</div><div class="lbl" id="stat-english-lbl">con 🇬🇧</div></div>
     <div class="stat"><div class="num" id="stat-last">—</div><div class="lbl">actualizado</div></div>
   </div>
+
+  <div id="series-progress" class="series-progress hidden"></div>
 
   <div class="controls">
     <input id="q" type="search" placeholder="Buscar por título, release o IMDb ID (tt…)…" autocomplete="off" />
@@ -144,7 +146,7 @@
 <section id="tab-ingest" class="tab">
   <h2>Sube tu lista de IMDb IDs</h2>
   <p class="muted">Sube un <code>.txt</code> o pega la lista, una línea por ID. De cada película o episodio se quedan solo 2 torrents: el mejor en español y el mejor en inglés.</p>
-  <p class="muted">Formatos: <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947:s1:e1 Episodio</code> o <code>tt0944947:s1 Temporada</code> (la temporada completa sale de Cinemeta, sin API key).</p>
+  <p class="muted">Formatos: <code>tt0111161</code>, <code>tt0111161 Título (año)</code>, <code>tt0944947</code> (si es una serie: <strong>todas las temporadas y episodios de una vez</strong>), <code>tt0944947:s1:e1 Episodio</code> o <code>tt0944947:s1 Temporada</code> (la expansión sale de Cinemeta, sin API key).</p>
 
   <div class="row upload-row">
     <label class="file-picker">📄 Elegir archivo TXT
@@ -157,7 +159,7 @@
   </div>
   <div id="watchlist-preview" class="watchlist-preview muted" aria-live="polite">Aún no has añadido IDs.</div>
 
-  <textarea id="watchlist" aria-label="Lista de IMDb IDs, uno por línea" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
+  <textarea id="watchlist" aria-label="Lista de IMDb IDs, uno por línea" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947 Juego de Tronos (serie completa)&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
 
   <div class="modes">
     <div class="mode">

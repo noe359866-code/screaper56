@@ -59,7 +59,13 @@ export function formatWatchlistLine(item) {
     .trim();
 
   if (item.type === 'series' || season != null) {
-    const s = Number.isInteger(season) ? season : 1;
+    // Serie sin temporada: el ID solo basta; la ingesta la expande a TODAS
+    // las temporadas y episodios emitidos de una sola vez.
+    if (!Number.isInteger(season)) {
+      const label = baseName || item.label || '';
+      return `${id}${label ? ' ' + label : ''}`;
+    }
+    const s = season;
     const ep = Number.isInteger(episode) ? episode : 1;
     const tag = `S${pad2(s)}E${pad2(ep)}`;
     const label = baseName ? `${baseName} ${tag}` : (item.label || '');
@@ -87,7 +93,9 @@ export function formatWatchlistFile(items, { date = new Date(), removedCount = 0
     '# y se cargan películas y series nuevas para no repetir torrents ni nombres.',
     '#',
     '# Formatos soportados:',
-    '#   tt1234567          -> película (IMDb)',
+    '#   tt1234567          -> película (IMDb); si el ID resulta ser una serie,',
+    '#                         se ingesta COMPLETA: todas las temporadas y',
+    '#                         episodios ya emitidos, de una sola vez',
     '#   tt1234567:s3:e4    -> episodio concreto (serie, temporada 3, ep. 4)',
     '#   tt1234567:s3       -> todos los episodios emitidos de la temporada 3',
     '# -----------------------------------------------------------',
@@ -323,21 +331,21 @@ export const FALLBACK_DISCOVERY_POOL = Object.freeze([
   { imdbId: 'tt1517268', type: 'movie', name: 'Barbie', year: 2023 },
   { imdbId: 'tt12037194', type: 'movie', name: 'Furiosa: A Mad Max Saga', year: 2024 },
   { imdbId: 'tt6263850', type: 'movie', name: 'Deadpool & Wolverine', year: 2024 },
-  // Series populares (S01E01)
-  { imdbId: 'tt33539520', type: 'series', season: 1, episode: 1, name: 'Neagley', year: 2026 },
-  { imdbId: 'tt26545992', type: 'series', season: 1, episode: 1, name: 'Lanterns', year: 2026 },
-  { imdbId: 'tt0944947', type: 'series', season: 1, episode: 1, name: 'Game of Thrones', year: 2011 },
-  { imdbId: 'tt0903747', type: 'series', season: 1, episode: 1, name: 'Breaking Bad', year: 2008 },
-  { imdbId: 'tt4574334', type: 'series', season: 1, episode: 1, name: 'Stranger Things', year: 2016 },
-  { imdbId: 'tt7366338', type: 'series', season: 1, episode: 1, name: 'Chernobyl', year: 2019 },
-  { imdbId: 'tt3581920', type: 'series', season: 1, episode: 1, name: 'The Last of Us', year: 2023 },
-  { imdbId: 'tt11198330', type: 'series', season: 1, episode: 1, name: 'House of the Dragon', year: 2022 },
-  { imdbId: 'tt12637874', type: 'series', season: 1, episode: 1, name: 'Fallout', year: 2024 },
-  { imdbId: 'tt2788316', type: 'series', season: 1, episode: 1, name: 'Shogun', year: 2024 },
-  { imdbId: 'tt1190634', type: 'series', season: 1, episode: 1, name: 'The Boys', year: 2019 },
-  { imdbId: 'tt8111088', type: 'series', season: 1, episode: 1, name: 'The Mandalorian', year: 2019 },
-  { imdbId: 'tt3032476', type: 'series', season: 1, episode: 1, name: 'Better Call Saul', year: 2015 },
-  { imdbId: 'tt2861424', type: 'series', season: 1, episode: 1, name: 'Rick and Morty', year: 2013 },
+  // Series populares (serie completa: todas las temporadas y episodios)
+  { imdbId: 'tt33539520', type: 'series', name: 'Neagley', year: 2026 },
+  { imdbId: 'tt26545992', type: 'series', name: 'Lanterns', year: 2026 },
+  { imdbId: 'tt0944947', type: 'series', name: 'Game of Thrones', year: 2011 },
+  { imdbId: 'tt0903747', type: 'series', name: 'Breaking Bad', year: 2008 },
+  { imdbId: 'tt4574334', type: 'series', name: 'Stranger Things', year: 2016 },
+  { imdbId: 'tt7366338', type: 'series', name: 'Chernobyl', year: 2019 },
+  { imdbId: 'tt3581920', type: 'series', name: 'The Last of Us', year: 2023 },
+  { imdbId: 'tt11198330', type: 'series', name: 'House of the Dragon', year: 2022 },
+  { imdbId: 'tt12637874', type: 'series', name: 'Fallout', year: 2024 },
+  { imdbId: 'tt2788316', type: 'series', name: 'Shogun', year: 2024 },
+  { imdbId: 'tt1190634', type: 'series', name: 'The Boys', year: 2019 },
+  { imdbId: 'tt8111088', type: 'series', name: 'The Mandalorian', year: 2019 },
+  { imdbId: 'tt3032476', type: 'series', name: 'Better Call Saul', year: 2015 },
+  { imdbId: 'tt2861424', type: 'series', name: 'Rick and Morty', year: 2013 },
 ]);
 
 function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } = {}) {
@@ -356,15 +364,17 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
     if (Number.isFinite(releasedMs) && releasedMs > now + DAY_MS) return null;
   }
   if (type === 'series') {
+    // Serie completa: sin temporada ni episodio, la ingesta expande TODAS
+    // las temporadas y episodios emitidos de una sola vez (Cinemeta).
     return {
       imdbId,
       ...(raw.tmdbId != null ? { tmdbId: Number(raw.tmdbId) } : {}),
       type: 'series',
-      season: 1,
-      episode: 1,
+      season: null,
+      episode: null,
       name,
       year,
-      label: `${name} S01E01`,
+      label: name,
     };
   }
   return {
@@ -579,7 +589,9 @@ export async function discoverCatalogItems(fetchJSON, {
 /**
  * Actualiza el texto de `watchlist.txt`:
  *  1) Elimina todas las entradas que ya estén en `seen` (anteriores o ya en BD)
- *     y elimina cualquier ID o nombre duplicado.
+ *     y elimina cualquier ID o nombre duplicado. Con `keep(item)` (p. ej. una
+ *     serie a la que aún le faltan episodios) la entrada se conserva aunque
+ *     ya esté en el historial: así las series en progreso no se pierden.
  *  2) Si `autoDiscover` está activo (o si tras limpiar anteriores la lista
  *     queda con menos de `batchSize` títulos), rellena con títulos nuevos de
  *     Cinemeta / respaldo asegurando variedad (películas + series) sin repetir.
@@ -589,6 +601,7 @@ export async function rotateWatchlist(currentText, {
   fetchJSON = null,
   autoDiscover = true,
   replaceAll = false,
+  keep = null,
   batchSize = DEFAULT_BATCH_SIZE,
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
@@ -606,7 +619,8 @@ export async function rotateWatchlist(currentText, {
     const id = item.imdbId.toLowerCase();
     const normTitle = normalizeTitleKey(item.label || item.name);
     const isDuplicateInBatch = batchIds.has(id) || (normTitle && batchTitles.has(normTitle));
-    if (replaceAll || isDuplicateInBatch || seen.hasItem(item)) {
+    const mustKeep = !isDuplicateInBatch && typeof keep === 'function' && keep({ ...item, imdbId: id });
+    if (!mustKeep && (replaceAll || isDuplicateInBatch || seen.hasItem(item))) {
       seen.addItem(item);
       removedItems.push(item);
       continue;

@@ -89,7 +89,7 @@ export function watchlistFromIssue(parsed, { issueNumber = null, author = null, 
   return [
     '# Peerflix Static – Watchlist',
     `# Actualizado desde el Issue${issueNumber ? ` #${issueNumber}` : ''}${author ? ` de @${author}` : ''} el ${date.toISOString().slice(0, 10)} (ingesta sin token).`,
-    '# Formatos: tt1234567 · tt1234567:s1:e1 · tt1234567:s1 (temporada completa, sin API key)',
+    '# Formatos: tt1234567 (si es serie: todas las temporadas y episodios) · tt1234567:s1:e1 · tt1234567:s1 (temporada completa, sin API key)',
     '',
     ...parsed.lines,
     '',

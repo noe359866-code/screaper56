@@ -28,9 +28,10 @@ const FORMAT_HELP = [
   '',
   '````',
   '```watchlist',
-  'tt0111161 Cadena perpetua (1994)',
-  'tt0944947:s1:e1 Juego de Tronos S01E01',
-  'tt0944947:s1 Juego de Tronos (temporada completa)',
+'tt0111161 Cadena perpetua (1994)',
+'tt0944947 Juego de Tronos (serie completa: todas las temporadas y episodios)',
+'tt0944947:s1:e1 Juego de Tronos S01E01',
+'tt0944947:s1 Juego de Tronos (temporada completa)',
   '```',
   '````',
 ].join('\n');

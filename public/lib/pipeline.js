@@ -33,11 +33,13 @@ import {
 import {
   CINEMETA_URL,
   episodesForSeason,
+  episodesForSeries,
   fetchCinemeta,
   labelMismatch,
   metaLabel,
   showLabel,
 } from './meta.js';
+import { episodeKey } from './progress.js';
 
 // ---------- HTTP ----------
 
@@ -330,6 +332,59 @@ function episodeLabel(show, season, episode, title) {
 }
 
 /**
+ * Serie completa: TODAS las temporadas con todos sus episodios ya emitidos,
+ * de una sola vez (sin tener que ir pidiendo episodios sueltos). Los episodios
+ * salen de Cinemeta y, si este falla, de `seriesFallback` (TMDB en la Action).
+ * Con `doneKeys` se omiten los episodios ya ingeridos (reanudar donde quedó).
+ */
+async function expandWholeSeries(it, meta, { seriesFallback = null, doneKeys = null, now = Date.now() } = {}) {
+  let episodes = episodesForSeries(meta, { now });
+  if (!episodes?.length && seriesFallback) {
+    const fallback = await seriesFallback({ ...it, season: null, episode: null });
+    if (fallback?.length) episodes = fallback;
+  }
+  if (!episodes?.length) return null;
+  const show = showLabel(it.label, meta) || meta?.name || it.imdbId;
+  const pending = doneKeys
+    ? episodes.filter(ep => !doneKeys.has(episodeKey(it.imdbId, ep.season, ep.episode)))
+    : episodes;
+  return {
+    skipped: episodes.length - pending.length,
+    queries: pending.map(ep => ({
+      kind: 'series', imdbId: it.imdbId, season: ep.season, episode: ep.episode,
+      label: episodeLabel(show, ep.season, ep.episode, ep.title),
+      meta: slimMeta(meta),
+      warnings: [],
+    })),
+  };
+}
+
+/**
+ * Reparte `max` consultas de episodios entre varias series en progreso
+ * (una de cada serie por ronda) para que todas avancen en cada ejecución.
+ */
+function capEpisodeQueries(expanded, max) {
+  if (!Number.isInteger(max) || max <= 0 || expanded.length <= max) return expanded;
+  const bySeries = new Map();
+  for (const query of expanded) {
+    if (!bySeries.has(query.imdbId)) bySeries.set(query.imdbId, []);
+    bySeries.get(query.imdbId).push(query);
+  }
+  const queues = [...bySeries.values()];
+  const picked = [];
+  while (picked.length < max) {
+    let added = false;
+    for (const queue of queues) {
+      if (picked.length >= max) break;
+      const query = queue.shift();
+      if (query) { picked.push(query); added = true; }
+    }
+    if (!added) break;
+  }
+  return picked;
+}
+
+/**
  * Metadatos de Cinemeta para cada IMDb ID distinto del watchlist (sin API key).
  * Si Cinemeta falla 3 veces seguidas se deja de consultar y se sigue sin él.
  */
@@ -365,18 +420,62 @@ export async function loadMetadata(items, { fetchJSON, baseUrl = CINEMETA_URL, c
 /**
  * Líneas del watchlist → consultas (película o episodio). Las temporadas
  * `tt…:sN` se expanden con Cinemeta (sin API key) y, si falla, con
- * `seasonFallback` (TMDB en la Action cuando hay TMDB_API_KEY).
+ * `seasonFallback` (TMDB en la Action cuando hay TMDB_API_KEY). Una serie
+ * escrita SIN temporada (`tt…` a secas) se expande a TODAS las temporadas y
+ * episodios emitidos de una sola vez.
+ *
+ * Reanudación de series largas:
+ *  - `doneKeys` (claves `tt…:sN:eN`, p. ej. las de seen.json): los episodios
+ *    ya ingeridos se omiten en las expansiones (serie o temporada completas),
+ *    así cada ejecución sigue donde quedó la anterior. Los episodios escritos
+ *    a mano (`:sN:eN`) nunca se omiten.
+ *  - `maxEpisodeQueries`: tope de episodios expandidos por ejecución,
+ *    repartidos entre las series en progreso (todas avanzan cada vez).
  */
-export async function expandWatchlist(items, { metaById = new Map(), seasonFallback = null, now = Date.now(), onWarning = null } = {}) {
+export async function expandWatchlist(items, {
+  metaById = new Map(),
+  seasonFallback = null,
+  doneKeys = null,
+  maxEpisodeQueries = null,
+  now = Date.now(),
+  onWarning = null,
+} = {}) {
   const warn = message => onWarning?.(message);
   const queries = [];
+  const expanded = [];
+  let itemIndex = 0;
   for (const it of items) {
     const meta = metaById.get(it.imdbId) || null;
-    if (it.type === 'movie') {
-      if (meta?.type === 'series') {
-        warn(`${it.imdbId} es una serie (“${meta.name}”): escribe ${it.imdbId}:s1 para la temporada 1 o ${it.imdbId}:s1:e1 para un episodio. Se omite.`);
+    const isWholeSeries = it.type === 'series'
+      ? it.season === null
+      : meta?.type === 'series';
+    if (isWholeSeries) {
+      if (it.type === 'series' && meta?.type === 'movie') {
+        const suffix = it.season != null ? `:s${it.season}${it.episode !== null ? ':e' + it.episode : ''}` : '';
+        warn(`${it.imdbId} es una película (“${metaLabel(meta)}”), no una serie: quita “${suffix}”. Se omite.`);
         continue;
       }
+      const expansion = await expandWholeSeries(it, meta, { seriesFallback: seasonFallback, doneKeys, now });
+      if (!expansion) {
+        warn(`No se pudo expandir ${it.imdbId} a serie completa${meta?.name ? ` (“${meta.name}”)` : ''}: ${meta ? 'Cinemeta no tiene episodios emitidos' : 'sin metadatos (Cinemeta no respondió)'}. Se omite.`);
+        continue;
+      }
+      if (!expansion.queries.length) {
+        warn(`${it.imdbId}${meta?.name ? ` (“${meta.name}”)` : ''} ya tiene todos sus episodios emitidos ingeridos: no queda nada por consultar.`);
+        continue;
+      }
+      // Aviso informativo solo la primera vez (no en cada reanudación) y solo
+      // cuando el usuario escribió el ID como película.
+      if (it.type !== 'series' && !expansion.skipped) {
+        const seasons = new Set(expansion.queries.map(q => q.season)).size;
+        warn(`${it.imdbId} es una serie (“${meta?.name}”): se expande a serie completa (${seasons} temporada${seasons === 1 ? '' : 's'}, ${expansion.queries.length} episodio${expansion.queries.length === 1 ? '' : 's'}). Para un episodio concreto usa ${it.imdbId}:s1:e1.`);
+      }
+      for (const q of expansion.queries) q.__order = itemIndex;
+      itemIndex += 1;
+      expanded.push(...expansion.queries);
+      continue;
+    }
+    if (it.type === 'movie') {
       const mismatch = labelMismatch(it.label, meta);
       if (mismatch) warn(`${it.imdbId}: ${mismatch}.`);
       queries.push({
@@ -384,7 +483,9 @@ export async function expandWatchlist(items, { metaById = new Map(), seasonFallb
         label: it.label || metaLabel(meta) || null,
         meta: slimMeta(meta),
         warnings: mismatch ? [mismatch] : [],
+        __order: itemIndex,
       });
+      itemIndex += 1;
       continue;
     }
     if (meta?.type === 'movie') {
@@ -399,7 +500,9 @@ export async function expandWatchlist(items, { metaById = new Map(), seasonFallb
         label: it.label || episodeLabel(show, it.season, it.episode, known?.title),
         meta: slimMeta(meta),
         warnings: [],
+        __order: itemIndex,
       });
+      itemIndex += 1;
       continue;
     }
     let episodes = episodesForSeason(meta, it.season, { now });
@@ -411,16 +514,27 @@ export async function expandWatchlist(items, { metaById = new Map(), seasonFallb
       warn(`No se pudo expandir ${it.imdbId}:s${it.season}: ${meta ? `Cinemeta no tiene episodios emitidos de la temporada ${it.season}` : 'sin metadatos (Cinemeta no respondió)'}. Se omite.`);
       continue;
     }
+    if (doneKeys) episodes = episodes.filter(ep => !doneKeys.has(episodeKey(it.imdbId, ep.season ?? it.season, ep.episode)));
+    if (!episodes.length) {
+      warn(`${it.imdbId}:s${it.season} ya tiene todos sus episodios emitidos ingeridos: no queda nada por consultar.`);
+      continue;
+    }
     for (const ep of episodes) {
-      queries.push({
-        kind: 'series', imdbId: it.imdbId, season: it.season, episode: ep.episode,
+      expanded.push({
+        kind: 'series', imdbId: it.imdbId, season: ep.season ?? it.season, episode: ep.episode,
         label: episodeLabel(show, it.season, ep.episode, ep.title),
         meta: slimMeta(meta),
         warnings: [],
+        __order: itemIndex,
       });
     }
+    itemIndex += 1;
   }
-  return dedupeQueries(queries);
+  // Orden del watchlist: cada expansión queda donde estaba su línea.
+  const all = [...queries, ...capEpisodeQueries(expanded, maxEpisodeQueries)]
+    .sort((a, b) => a.__order - b.__order)
+    .map(({ __order, ...query }) => query);
+  return dedupeQueries(all);
 }
 
 // ---------- consultas a los addons ----------
@@ -586,6 +700,8 @@ export async function processWatchlist(text, {
   metadata = true,
   cinemetaUrl = CINEMETA_URL,
   seasonFallback = null,
+  doneKeys = null,
+  maxEpisodeQueries = null,
   onWarning = null,
   onQueries = null,
   ...runOptions
@@ -596,7 +712,7 @@ export async function processWatchlist(text, {
   const { metaById, stats: metaStats } = metadata
     ? await loadMetadata(items, { fetchJSON, baseUrl: cinemetaUrl, onWarning: warn })
     : { metaById: new Map(), stats: { source: 'none', requested: 0, found: 0, failures: 0, disabled: true, lastError: null } };
-  const queries = await expandWatchlist(items, { metaById, seasonFallback, onWarning: warn });
+  const queries = await expandWatchlist(items, { metaById, seasonFallback, doneKeys, maxEpisodeQueries, onWarning: warn });
   onQueries?.(queries);
   const result = await runPipeline(queries, { providers, fetchJSON, ...runOptions });
   return { ...result, items, queries, warnings, metaStats };

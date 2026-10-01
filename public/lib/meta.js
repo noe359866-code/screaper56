@@ -5,6 +5,7 @@
  *
  * Sustituye a TMDB (que exigía TMDB_API_KEY) para:
  *  - expandir `tt…:s1` a todos los episodios emitidos de la temporada,
+ *  - expandir un ID de serie sin temporada a TODAS las temporadas y episodios,
  *  - conocer el título original y el año (mejor detección de packs y de
  *    películas homónimas de otro año),
  *  - avisar cuando la etiqueta del watchlist no cuadra con el ID de IMDb.
@@ -77,6 +78,27 @@ export function episodesForSeason(meta, season, { now = Date.now() } = {}) {
     if (!byEpisode.has(video.episode)) byEpisode.set(video.episode, video);
   }
   return [...byEpisode.values()].sort((a, b) => a.episode - b.episode);
+}
+
+/**
+ * Todos los episodios ya emitidos de una serie (TODAS las temporadas, de una
+ * sola vez), ordenados por temporada y episodio. Los especiales (temporada 0)
+ * y los episodios aún no emitidos se descartan: no suelen tener torrents.
+ */
+export function episodesForSeries(meta, { now = Date.now() } = {}) {
+  if (!Array.isArray(meta?.videos)) return null;
+  const seen = new Set();
+  const episodes = [];
+  for (const video of meta.videos) {
+    if (!Number.isInteger(video.season) || video.season < 1) continue;
+    const released = video.released ? Date.parse(video.released) : NaN;
+    if (Number.isFinite(released) && released > now + DAY_MS) continue;
+    const key = `${video.season}:${video.episode}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    episodes.push(video);
+  }
+  return episodes.sort((a, b) => a.season - b.season || a.episode - b.episode);
 }
 
 /** Año escrito en la etiqueta del watchlist: "Cadena perpetua (1994)" → 1994. */

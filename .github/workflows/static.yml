@@ -99,6 +99,9 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run || '0' }}
           AUTO_WATCHLIST: ${{ inputs.issue != '' && '0' || inputs.rotate_watchlist || '1' }}
           WATCHLIST_BATCH_SIZE: ${{ inputs.batch_size || '10' }}
+          # Serie larga: máx. episodios expandidos por corrida; la próxima
+          # ejecución reanuda donde quedó (0 = sin límite).
+          MAX_EPISODES_PER_RUN: "60"
           PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
         run: node src/fetch.mjs
 
