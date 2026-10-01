@@ -120,6 +120,11 @@ jobs:
         name: "Deploy to GitHub Pages"
         uses: actions/deploy-pages@v4
 
+      # Publicamos el report aunque falle Supabase, pero el job no debe quedar
+      # en verde ni cerrar el Issue como completado si la escritura falló.
+      - name: "Verificar resultado de Supabase"
+        run: node src/check-db.mjs
+
       - name: "Responder en el Issue de ingesta"
         if: always() && inputs.issue != ''
         env:
