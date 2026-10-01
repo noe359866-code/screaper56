@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T01:51:03.344Z",
-  "finishedAt": "2026-10-01T01:51:31.943Z",
+  "generatedAt": "2026-10-01T02:05:51.462Z",
+  "finishedAt": "2026-10-01T02:06:26.306Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -117,7 +117,7 @@
   "movies": 30,
   "episodes": 11,
   "totalStreams": 70,
-  "totalCandidates": 4193,
+  "totalCandidates": 4216,
   "picks": {
     "es": 35,
     "en": 35
@@ -2766,6 +2766,7 @@
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt13523880.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt13523880.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt13523880.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt13523880.json"
       },
       "streamCount": 0,
@@ -2781,10 +2782,6 @@
       "providers": [],
       "warnings": [],
       "errors": [
-        {
-          "provider": "torrentio",
-          "error": "HTTP 429"
-        },
         {
           "provider": "ytztvio",
           "error": "omitido tras 3 errores seguidos (HTTP 403)"
@@ -2803,6 +2800,7 @@
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt11611190.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt11611190.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt11611190.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt11611190.json"
       },
       "streamCount": 0,
@@ -2818,10 +2816,6 @@
       "providers": [],
       "warnings": [],
       "errors": [
-        {
-          "provider": "torrentio",
-          "error": "HTTP 429"
-        },
         {
           "provider": "ytztvio",
           "error": "omitido tras 3 errores seguidos (HTTP 403)"
@@ -2840,10 +2834,11 @@
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt13287846.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt13287846.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt13287846.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt13287846.json"
       },
       "streamCount": 2,
-      "candidateCount": 76,
+      "candidateCount": 98,
       "picks": [
         {
           "pick": "es",
@@ -2896,10 +2891,12 @@
             "channels": "5.1"
           },
           "providers": [
-            "torrentsdb"
+            "torrentsdb",
+            "torrentio"
           ],
           "providerNames": [
-            "TorrentsDB"
+            "TorrentsDB",
+            "Torrentio"
           ],
           "infoHash": "99920f416c8aab50462ad8796114d4ac21c6d96c",
           "fileIdx": 1,
@@ -2919,16 +2916,13 @@
       ],
       "providers": [
         "peerflix",
+        "torrentio",
         "torrentsdb"
       ],
       "warnings": [
         "la etiqueta “Toy Story 5 (2026)” no cuadra: en IMDb es “Napoleon (2023)”"
       ],
       "errors": [
-        {
-          "provider": "torrentio",
-          "error": "HTTP 429"
-        },
         {
           "provider": "ytztvio",
           "error": "omitido tras 3 errores seguidos (HTTP 403)"
@@ -2947,6 +2941,7 @@
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt15855736.json",
         "torrentsdb": "https://torrentsdb.com/stream/movie/tt15855736.json",
+        "torrentio": "https://torrentio.strem.fun/stream/movie/tt15855736.json",
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15855736.json"
       },
       "streamCount": 0,
@@ -2962,10 +2957,6 @@
       "providers": [],
       "warnings": [],
       "errors": [
-        {
-          "provider": "torrentio",
-          "error": "omitido tras 3 errores seguidos (HTTP 429)"
-        },
         {
           "provider": "ytztvio",
           "error": "omitido tras 3 errores seguidos (HTTP 403)"
@@ -3945,14 +3936,14 @@
         "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0944947:1:9.json"
       },
       "streamCount": 2,
-      "candidateCount": 112,
+      "candidateCount": 113,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
           "title": "Juego de Tronos temporada 1 [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
           "quality": "1080p",
-          "seeders": 34,
+          "seeders": 18,
           "sizeBytes": 2211908157,
           "sizeLabel": "2.1 GB",
           "audioLangs": [
@@ -3978,7 +3969,7 @@
           ],
           "infoHash": "363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e",
           "fileIdx": 10,
-          "score": 15.32,
+          "score": 14.92,
           "magnetUrl": "magnet:?xt=urn:btih:363dd8b0bbcd68822ae8bce0ea8f71641a7f9e5e&dn=Juego%20de%20Tronos%20temporada%201%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
         },
         {
@@ -4332,22 +4323,10 @@
     },
     {
       "id": "tt13523880",
-      "provider": "torrentio",
-      "label": "Project Hail Mary (2026)",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt13523880",
       "provider": "ytztvio",
       "label": "Project Hail Mary (2026)",
       "error": "omitido tras 3 errores seguidos (HTTP 403)",
       "skipped": true
-    },
-    {
-      "id": "tt11611190",
-      "provider": "torrentio",
-      "label": "Star Wars: The Mandalorian and Grogu (2026)",
-      "error": "HTTP 429"
     },
     {
       "id": "tt11611190",
@@ -4358,22 +4337,9 @@
     },
     {
       "id": "tt13287846",
-      "provider": "torrentio",
-      "label": "Toy Story 5 (2026)",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt13287846",
       "provider": "ytztvio",
       "label": "Toy Story 5 (2026)",
       "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt15855736",
-      "provider": "torrentio",
-      "label": "The Super Mario Galaxy Movie (2026)",
-      "error": "omitido tras 3 errores seguidos (HTTP 429)",
       "skipped": true
     },
     {
@@ -4465,7 +4431,7 @@
       "errors": 0,
       "skipped": 0,
       "streams": 493,
-      "avgMs": 194
+      "avgMs": 148
     },
     "torrentsdb": {
       "requests": 41,
@@ -4473,23 +4439,23 @@
       "errors": 0,
       "skipped": 0,
       "streams": 2785,
-      "avgMs": 173
+      "avgMs": 345
     },
     "torrentio": {
-      "requests": 40,
-      "ok": 37,
-      "errors": 3,
-      "skipped": 1,
-      "streams": 2249,
-      "avgMs": 557
+      "requests": 41,
+      "ok": 41,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 2300,
+      "avgMs": 583
     },
     "piratebay": {
       "requests": 41,
       "ok": 41,
       "errors": 0,
       "skipped": 0,
-      "streams": 193,
-      "avgMs": 612
+      "streams": 189,
+      "avgMs": 666
     },
     "ytztvio": {
       "requests": 6,
@@ -4497,7 +4463,7 @@
       "errors": 6,
       "skipped": 35,
       "streams": 0,
-      "avgMs": 19
+      "avgMs": 49
     }
   },
   "db": {
@@ -4507,8 +4473,8 @@
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 50,
-    "updated": 2
+    "created": 0,
+    "updated": 52
   },
-  "durationMs": 28599
+  "durationMs": 34844
 }
