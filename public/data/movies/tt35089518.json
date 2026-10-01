@@ -1,0 +1,145 @@
+{
+  "id": "tt35089518",
+  "imdbId": "tt35089518",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Vendetta of An",
+  "name": "The Vendetta of An",
+  "year": 2025,
+  "imdbRating": "5.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt35089518.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt35089518.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt35089518.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt35089518.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 10,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Vendetta of An S01E27 2025 1080p WEB-DL H 264 AAC-ADWeb",
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 397253018,
+      "sizeLabel": "379 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "93485eb88fbc7541b3294cae80bfb502bd9550fd",
+      "fileIdx": 0,
+      "score": 6.63,
+      "magnetUrl": "magnet:?xt=urn:btih:93485eb88fbc7541b3294cae80bfb502bd9550fd&dn=The%20Vendetta%20of%20An%20S01E27%202025%201080p%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 7,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Vendetta of An S01E27 2025 1080p WEB-DL H 264 AAC-ADWeb",
+      "description": "The Vendetta of An S01E27 2025 1080p WEB-DL H 264 AAC-ADWeb\n🎞️ WEB-DL · AVC · AAC\n👤 7 💾 379 MB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 6.63,
+      "infoHash": "93485eb88fbc7541b3294cae80bfb502bd9550fd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 397253018,
+      "sizeLabel": "379 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EZTV"
+      ],
+      "filename": "The Vendetta of An S01E27 2025 1080p WEB-DL H 264 AAC-ADWeb[EZTVx.to].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:93485eb88fbc7541b3294cae80bfb502bd9550fd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:93485eb88fbc7541b3294cae80bfb502bd9550fd&dn=The%20Vendetta%20of%20An%20S01E27%202025%201080p%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Vendetta of An S01E27 2025 1080p WEB-DL H 264 AAC-ADWeb[EZTVx.to].mp4"
+      }
+    }
+  ]
+}
