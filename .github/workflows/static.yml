@@ -17,6 +17,19 @@ on:
         options:
           - "0"
           - "1"
+      rotate_watchlist:
+        description: "Actualizar watchlist.txt con títulos nuevos y eliminar los anteriores"
+        required: false
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "0"
+      batch_size:
+        description: "Cantidad de títulos nuevos a cargar en watchlist.txt"
+        required: false
+        default: "10"
+        type: string
       providers:
         description: "Addons Stremio (slugs separados por comas)"
         required: false
@@ -77,11 +90,15 @@ jobs:
           PEERFLIX_BASE_URL: "https://peerflix.mov"
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
           # Opcionales: sin ellos todo funciona (Cinemeta no necesita API key;
-          # sin Supabase solo se publican los JSON).
+          # con TMDB_API_KEY y OMDB_API_KEY se descubren títulos en TMDB, se
+          # guarda tmdb_id en Supabase y se enriquecen metadatos con OMDb).
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ inputs.dry_run || '0' }}
+          AUTO_WATCHLIST: ${{ inputs.issue != '' && '0' || inputs.rotate_watchlist || '1' }}
+          WATCHLIST_BATCH_SIZE: ${{ inputs.batch_size || '10' }}
           PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
         run: node src/fetch.mjs
 
@@ -92,16 +109,16 @@ jobs:
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
         run: node src/summary.mjs >> "$GITHUB_STEP_SUMMARY"
 
-      - name: "Commit generated public/ back to repo"
+      - name: "Commit generated watchlist.txt & public/ back to repo"
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/
+          git add watchlist.txt public/
           if git diff --cached --quiet; then
-            echo "No hay cambios en public/."
+            echo "No hay cambios en watchlist.txt ni en public/."
             exit 0
           fi
-          git commit -m "chore(data): refresh $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git commit -m "chore(data): refresh watchlist & streams $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           # Otro commit (p. ej. watchlist.txt desde un Issue) puede haber llegado mientras tanto.
           for attempt in 1 2 3 4 5; do
             if git push; then exit 0; fi

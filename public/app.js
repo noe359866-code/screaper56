@@ -27,6 +27,7 @@ import {
 import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/issue.js';
 import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
 import { describeDatabaseWrite } from './lib/persistence.js';
+import { createSeenStore, rotateWatchlist } from './lib/watchlist.js';
 
 const LS_KEY = 'peerflix-static.settings.v2';
 const LOCAL_KEY = 'peerflix-static.local.v1';
@@ -757,6 +758,34 @@ $('#load-current').addEventListener('click', async () => {
   }
 });
 
+$('#auto-rotate-wl').addEventListener('click', async () => {
+  setStatus('🔄 Buscando títulos nuevos y eliminando los anteriores…');
+  try {
+    let initial = {};
+    try {
+      const res = await fetch(`data/seen.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok) initial = await res.json();
+    } catch { /* ignore */ }
+    const seen = createSeenStore(initial);
+    if (state.published?.index) seen.addFromIndex(state.published.index);
+    for (const item of loadLocal().items) seen.addItem(item);
+    const fetchJSON = createJsonFetcher({ timeoutMs: 10000, retries: 1 });
+    const rotation = await rotateWatchlist($('#watchlist').value, {
+      seen,
+      fetchJSON: state.settings.cinemeta !== false ? fetchJSON : null,
+      autoDiscover: true,
+      replaceAll: true,
+      batchSize: 10,
+    });
+    $('#watchlist').value = rotation.text;
+    $('#upload-name').textContent = `Lote nuevo (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados)`;
+    updateWatchlistPreview();
+    setStatus(`✅ Watchlist actualizado: ${rotation.addedCount} títulos nuevos (${rotation.removedCount} anteriores eliminados).`);
+  } catch (err) {
+    setStatus(`❌ No se pudo autogenerar el watchlist: ${err.message}`);
+  }
+});
+
 // ---------- ingest: progreso ----------
 
 function log(text, cls = '') {
@@ -966,7 +995,7 @@ async function dispatchWithToken(repo, text, { dryRun, providers }) {
     const since = Date.now();
     await gh(`/repos/${repo.owner}/${repo.repo}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
       method: 'POST',
-      body: { ref: repo.branch, inputs: { dry_run: dryRun ? '1' : '0', providers: providers.join(',') } },
+      body: { ref: repo.branch, inputs: { dry_run: dryRun ? '1' : '0', rotate_watchlist: '0', providers: providers.join(',') } },
     });
     log('🚀 Action lanzada.', 'ok');
     endRun();

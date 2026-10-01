@@ -106,3 +106,63 @@ test('CLI con error Supabase conserva el reporte publicado y termina con error',
   assert.equal(context.writes.length, 3);
   assert.equal((await context.readStreams()).streams.length, 1);
 });
+
+test('CLI con AUTO_WATCHLIST=1 reemplaza watchlist.txt en cada corrida y no repite títulos ni torrents', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'peerflix-autorotate-'));
+  let seq = 0;
+  const server = createServer(async (request, response) => {
+    response.setHeader('content-type', 'application/json');
+    if (request.url.startsWith('/stream/')) {
+      seq++;
+      const h = seq.toString(16).padStart(40, '0');
+      response.end(JSON.stringify({ streams: [{
+        name: 'Peerflix\n1080p',
+        title: `Release ${seq} [1080p][Castellano]\n👤 40 💾 2.0 GB`,
+        infoHash: h, fileIdx: 0,
+      }] }));
+    } else {
+      response.statusCode = 404;
+      response.end('{}');
+    }
+  });
+  t.after(async () => {
+    if (server.listening) await new Promise(resolve => server.close(resolve));
+    await rm(dir, { recursive: true, force: true });
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  await cp(join(ROOT, 'src'), join(dir, 'src'), { recursive: true });
+  await cp(join(ROOT, 'public/lib'), join(dir, 'public/lib'), { recursive: true });
+  await cp(join(ROOT, 'package.json'), join(dir, 'package.json'));
+  await symlink(join(ROOT, 'node_modules'), join(dir, 'node_modules'), 'dir');
+  await writeFile(join(dir, 'watchlist.txt'), 'tt6933238 Unabomber (2026)\n');
+
+  const env = {
+    ...process.env,
+    WATCHLIST_PATH: 'watchlist.txt', PROVIDERS: 'peerflix', PEERFLIX_BASE_URL: baseUrl,
+    CINEMETA: '0', TMDB_API_KEY: '', TRACKERS_URL: '', FETCH_CONCURRENCY: '2',
+    DRY_RUN: '1', FIXTURE_MODE: '0', REPROCESS: '0',
+    AUTO_WATCHLIST: '1', WATCHLIST_BATCH_SIZE: '3',
+  };
+
+  // Corrida 1: elimina tt6933238 y carga 3 títulos nuevos
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const wl1 = await readFile(join(dir, 'watchlist.txt'), 'utf8');
+  assert.doesNotMatch(wl1, /tt6933238/);
+  const report1 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.equal(report1.watchlist.autoUpdated, true);
+  assert.equal(report1.watchlist.removedCount, 1);
+  assert.equal(report1.watchlist.addedCount, 3);
+  const run1Ids = report1.items.map(i => i.imdbId);
+  assert.equal(run1Ids.length, 3);
+
+  // Corrida 2: elimina los 3 títulos de la corrida 1 y carga 3 nuevos distintos
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report2 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.equal(report2.watchlist.removedCount, 3);
+  assert.equal(report2.watchlist.addedCount, 3);
+  const run2Ids = report2.items.map(i => i.imdbId);
+  for (const id of run2Ids) {
+    assert.equal(run1Ids.includes(id), false, `No debe repetir ${id} en la segunda corrida`);
+  }
+});

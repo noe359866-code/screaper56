@@ -1,28 +1,25 @@
 # Peerflix Static – Watchlist
 # -----------------------------------------------------------
-# Una línea por título. La Action consultará peerflix.mov por cada una
-# y publicará los streams en public/data/.
+# Actualizado automáticamente el 2026-10-01 18:26:01 UTC (10 nuevos · 5 anteriores eliminados).
+# En cada ejecución de la Action se eliminan los títulos ya procesados
+# y se cargan películas y series nuevas para no repetir torrents ni nombres.
 #
 # Formatos soportados:
 #   tt1234567          -> película (IMDb)
 #   tt1234567:s3:e4    -> episodio concreto (serie, temporada 3, ep. 4)
-#   tt1234567:s3       -> todos los episodios conocidos de la temporada 3
-#                         (necesita TMDB_API_KEY para expandir; si no hay clave,
-#                          se ignora la línea con aviso)
-#
-# Líneas que empiezan por '#' son comentarios. Se ignoran líneas vacías.
-# Puedes añadir un nombre humano tras un espacio para que la web lo muestre:
-#   tt0111161 Cadena perpetua (1994)
-#   tt1375666 Inception (2010)
-#   tt0944947:s1:e1 Game of Thrones S01E01
-#
-# Si defines TMDB_API_KEY en secrets (opcional), el script puede expandir
-# temporadas automáticamente y enriquecer metadatos (título, año, póster).
-# Si no, usa el nombre que pongas en esta misma línea.
+#   tt1234567:s3       -> todos los episodios emitidos de la temporada 3
 # -----------------------------------------------------------
 
-tt6933238
-tt22526100
-tt26657236
-tt29355505
-tt11561116
+# --- Películas ---
+tt27165187 The End of Oak Street (2026)
+tt37287335 Obsession (2026)
+tt28014327 Mayday (2026)
+tt34206385 Primetime (2026)
+tt35298123 Teenage Sex and Death at Camp Miasma (2026)
+tt15398776 Oppenheimer (2023)
+tt15239678 Dune: Part Two (2024)
+tt1745960 Top Gun: Maverick (2022)
+
+# --- Series ---
+tt33539520:s1:e1 Neagley S01E01
+tt26545992:s1:e1 Lanterns S01E01

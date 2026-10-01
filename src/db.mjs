@@ -81,7 +81,7 @@ export function streamToTorrentRecord(item, stream) {
     title: title.substring(0, MAX_TITLE_LENGTH),
     type,
     imdb_id: imdbId,
-    tmdb_id: null,
+    tmdb_id: parseNonNegativeInt(item.tmdbId ?? item.tmdb_id),
     kitsu_id: null,
     anilist_id: null,
     mal_id: null,
@@ -232,6 +232,17 @@ export function createRepository({
     get skipReason() { return dryRun ? 'dry-run' : client ? null : 'missing-credentials'; },
     get missingCredentials() { return client ? [] : [...missingCredentials]; },
     get mode() { return mode; },
+    async fetchSeen({ limit = 5000 } = {}) {
+      if (this.dryRun || !client) return [];
+      try {
+        const query = client.from(TABLE).select('imdb_id, type, season, episode, info_hash, title');
+        const bounded = typeof query?.limit === 'function' ? query.limit(limit) : query;
+        const rows = typeof bounded?.abortSignal === 'function' ? await run(bounded) : (await bounded)?.data;
+        return Array.isArray(rows) ? rows : [];
+      } catch {
+        return [];
+      }
+    },
     async upsert(records) {
       const unique = new Map();
       let rejected = 0;
