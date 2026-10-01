@@ -274,3 +274,32 @@ test('buildTitleMatcher acepta varios títulos (etiqueta + título original de I
   assert.equal(offByBoth(streams[0]), false);
   assert.equal(typeof offByLabel(streams[0]), 'boolean');
 });
+
+
+test('selección mejorada: prioriza release técnico correcto sobre CAM/TS con muchos seeders', () => {
+  const streams = [
+    { infoHash: hash(91), title: 'Movie 2020 CAM 4K English', quality: '4K', seeders: 500, languages: ['en'], providers: ['torrentio'] },
+    { infoHash: hash(92), title: 'Movie 2020 1080p WEB-DL English', quality: '1080p', seeders: 40, languages: ['en'], providers: ['torrentio'] },
+  ];
+  const picks = selectBestStreams(streams, { type: 'movie', label: 'Movie', year: 2020 });
+  assert.equal(picks.find(p => p.pick === 'en')?.infoHash, hash(92));
+});
+
+test('selección mejorada: no inventa español por ausencia de idioma', () => {
+  const streams = [
+    { infoHash: hash(93), title: 'Movie 2020 1080p WEB-DL', quality: '1080p', seeders: 100, languages: [], providers: ['torrentio'] },
+    { infoHash: hash(94), title: 'Movie 2020 1080p WEB-DL Castellano', quality: '1080p', seeders: 15, languages: ['es'], providers: ['torrentio'] },
+  ];
+  const picks = selectBestStreams(streams, { type: 'movie', label: 'Movie', year: 2020 });
+  assert.equal(picks.find(p => p.pick === 'es')?.infoHash, hash(94));
+});
+
+test('selección mejorada: conserva ES y EN como releases distintos cuando existe alternativa', () => {
+  const streams = [
+    { infoHash: hash(95), title: 'Movie 2020 1080p WEB-DL Castellano English', quality: '1080p', seeders: 80, languages: ['es', 'en'], providers: ['torrentio'] },
+    { infoHash: hash(96), title: 'Movie 2020 1080p WEB-DL English', quality: '1080p', seeders: 70, languages: ['en'], providers: ['torrentio'] },
+  ];
+  const picks = selectBestStreams(streams, { type: 'movie', label: 'Movie', year: 2020 });
+  assert.equal(picks.find(p => p.pick === 'es')?.infoHash, hash(95));
+  assert.equal(picks.find(p => p.pick === 'en')?.infoHash, hash(96));
+});
