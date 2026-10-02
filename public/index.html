@@ -7,20 +7,28 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
 <header>
   <div class="wrap">
-    <h1>🎬 Peerflix Ingest</h1>
+    <div class="brand-row">
+      <div class="brand-mark" aria-hidden="true">PF</div>
+      <div class="brand-copy">
+        <div class="eyebrow">STREMIO INGEST · LOCAL-FIRST</div>
+        <h1>Peerflix Ingest</h1>
+      </div>
+      <span class="header-badge">SIN TOKEN</span>
+    </div>
     <p class="muted">Busca tus películas y series en <b>5 addons Stremio</b> (Peerflix, TorrentsDB, Torrentio, ThePirateBay+ y Ytztvio), fusiona por info_hash y se queda con <b>solo 2 torrents por título</b>: 🇪🇸 el mejor en español (castellano o latino) y 🇬🇧 el mejor en inglés, cada uno con los mejores trackers. <b>Funciona sin token</b>: procesa la lista en tu navegador o pide la ingesta con un Issue de GitHub.</p>
-    <nav>
-      <button data-tab="dashboard" class="active">Dashboard</button>
-      <button data-tab="ingest">Subir TXT / Ingestar</button>
-      <button data-tab="history">Historial</button>
-      <button data-tab="settings">Ajustes</button>
+    <nav aria-label="Secciones principales">
+      <button data-tab="dashboard" class="active" aria-pressed="true" aria-controls="tab-dashboard">Dashboard</button>
+      <button data-tab="ingest" aria-pressed="false" aria-controls="tab-ingest">Subir TXT / Ingestar</button>
+      <button data-tab="history" aria-pressed="false" aria-controls="tab-history">Historial</button>
+      <button data-tab="settings" aria-pressed="false" aria-controls="tab-settings">Ajustes</button>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main-content" class="wrap" tabindex="-1">
 
 <!-- =============== SETTINGS =============== -->
 <section id="tab-settings" class="tab">
@@ -73,19 +81,19 @@
   <div class="row">
     <button id="save-settings" class="primary">Guardar ajustes</button>
     <button id="test-settings" class="ghost">Probar conexión</button>
-    <span id="settings-status" class="muted"></span>
+    <span id="settings-status" class="muted" aria-live="polite"></span>
   </div>
 </section>
 
 <!-- =============== DASHBOARD =============== -->
 <section id="tab-dashboard" class="tab active">
   <div class="source-bar">
-    <div class="segmented" role="tablist" aria-label="Origen de los datos">
-      <button data-source="published" class="active" title="data/index.json de esta web (lo que publicó la última Action)">📦 Publicado</button>
-      <button data-source="local" title="Resultados de ⚡ Procesar aquí, guardados en este navegador">💻 Este navegador</button>
-      <button data-source="supabase" title="Tabla torrents de tu Supabase (necesita URL + anon key)">🗄 Supabase</button>
+    <div class="segmented" role="group" aria-label="Origen de los datos">
+      <button data-source="published" class="active" aria-pressed="true" title="data/index.json de esta web (lo que publicó la última Action)">📦 Publicado</button>
+      <button data-source="local" aria-pressed="false" title="Resultados de ⚡ Procesar aquí, guardados en este navegador">💻 Este navegador</button>
+      <button data-source="supabase" aria-pressed="false" title="Tabla torrents de tu Supabase (necesita URL + anon key)">🗄 Supabase</button>
     </div>
-    <span id="source-info" class="muted small"></span>
+    <span id="source-info" class="muted small" aria-live="polite"></span>
   </div>
 
   <div class="summary" id="summary">
@@ -100,7 +108,7 @@
   <div id="series-progress" class="series-progress hidden"></div>
 
   <div class="controls">
-    <input id="q" type="search" placeholder="Buscar por título, release o IMDb ID (tt…)…" autocomplete="off" />
+    <input id="q" type="search" placeholder="Buscar título, release o IMDb ID (tt…) · / para enfocar" autocomplete="off" aria-label="Buscar en los resultados" />
     <select id="type-filter" aria-label="Tipo">
       <option value="">Todo</option>
       <option value="movie">Películas</option>
@@ -122,7 +130,7 @@
       <option value="seeders">Más seeds</option>
       <option value="size_bytes">Mayor tamaño</option>
     </select>
-    <button id="refresh" class="ghost" title="Recargar">↻</button>
+    <button id="refresh" class="ghost" title="Recargar resultados" aria-label="Recargar resultados">↻</button>
   </div>
 
   <div class="export-bar" id="export-bar">
@@ -136,9 +144,9 @@
 
   <div id="torrent-list" class="torrent-list"><div class="empty">Cargando…</div></div>
   <div class="pager">
-    <button id="prev-page" class="ghost" disabled>← Anterior</button>
-    <span id="page-indicator" class="muted"></span>
-    <button id="next-page" class="ghost" disabled>Siguiente →</button>
+    <button id="prev-page" class="ghost" disabled aria-label="Página anterior">← Anterior</button>
+    <span id="page-indicator" class="muted" aria-live="polite"></span>
+    <button id="next-page" class="ghost" disabled aria-label="Página siguiente">Siguiente →</button>
   </div>
 </section>
 
@@ -174,12 +182,12 @@
   </div>
   <div class="row">
     <button id="cancel-run" class="ghost danger hidden">✖ Cancelar</button>
-    <span id="ingest-status" class="muted"></span>
+    <span id="ingest-status" class="muted" aria-live="polite"></span>
   </div>
 
   <h3>Progreso</h3>
   <div id="run-progress" class="progress-bar"><div id="run-progress-fill"></div></div>
-  <div id="run-meta" class="muted"></div>
+  <div id="run-meta" class="muted" aria-live="polite"></div>
   <div id="run-steps" class="steps"></div>
   <pre id="run-log" class="log"></pre>
 
