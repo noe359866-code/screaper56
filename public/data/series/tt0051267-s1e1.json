@@ -1,0 +1,137 @@
+{
+  "id": "tt0051267:1:1",
+  "imdbId": "tt0051267",
+  "type": "series",
+  "season": 1,
+  "episode": 1,
+  "label": "The Donna Reed Show S01E01 – Weekend Trip",
+  "name": "The Donna Reed Show",
+  "year": 1958,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0051267:1:1.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0051267:1:1.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0051267:1:1.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 1,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "The Donna Reed Show 1958 Season 1 DVDRip Xvid x264 [i_c]",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 146936955,
+      "sizeLabel": "140 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "b0d8c1082e26a7007f934ea14c903199a31b83c3",
+      "fileIdx": 3,
+      "score": 0.2,
+      "magnetUrl": "magnet:?xt=urn:btih:b0d8c1082e26a7007f934ea14c903199a31b83c3&dn=The%20Donna%20Reed%20Show%201958%20Season%201%20DVDRip%20Xvid%20x264%20%5Bi_c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "The Donna Reed Show 1958 Season 1 DVDRip Xvid x264 [i_c]",
+      "description": "The Donna Reed Show 1958 Season 1 DVDRip Xvid x264 [i_c]\n🎞️ DVD · AVC\n👤 0 💾 140 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.2,
+      "infoHash": "b0d8c1082e26a7007f934ea14c903199a31b83c3",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 146936955,
+      "sizeLabel": "140 MB",
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "The Donna Reed Show S01E01 Weekend Trip.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:b0d8c1082e26a7007f934ea14c903199a31b83c3"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b0d8c1082e26a7007f934ea14c903199a31b83c3&dn=The%20Donna%20Reed%20Show%201958%20Season%201%20DVDRip%20Xvid%20x264%20%5Bi_c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Donna Reed Show S01E01 Weekend Trip.mkv"
+      }
+    }
+  ]
+}

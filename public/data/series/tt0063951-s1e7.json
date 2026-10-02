@@ -1,0 +1,36 @@
+{
+  "id": "tt0063951:1:7",
+  "imdbId": "tt0063951",
+  "type": "series",
+  "season": 1,
+  "episode": 7,
+  "label": "Sesame Street S01E07 – Oscar's Birthday / Mr. Hooper Counts Jelly Beans",
+  "name": "Sesame Street",
+  "year": 1969,
+  "imdbRating": "8.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0063951:1:7.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0063951:1:7.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0063951:1:7.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0063951:1:7.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

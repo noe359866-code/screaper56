@@ -1,0 +1,73 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Monty Python's Flying Circus S01E07 You're No Fun Anymore 1080i FLAC 2 0 AVC REMUX-FraMeSToR",
+      "description": "Monty Python's Flying Circus S01E07 You're No Fun Anymore 1080i FLAC 2 0 AVC REMUX-FraMeSToR\n🎞️ REMUX · AVC · FLAC 2.0\n👤 55 💾 5.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.03,
+      "infoHash": "de3b4286d32eef8f9a2918fc57a5406481dd8042",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 55,
+      "sizeBytes": 5905580032,
+      "sizeLabel": "5.5 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "EZTV"
+      ],
+      "filename": "Monty Python's Flying Circus S01E07 You're No Fun Anymore 1080i FLAC 2 0 AVC REMUX-FraMeSToR[EZTVx.to].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:de3b4286d32eef8f9a2918fc57a5406481dd8042"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:de3b4286d32eef8f9a2918fc57a5406481dd8042&dn=Monty%20Python's%20Flying%20Circus%20S01E07%20You're%20No%20Fun%20Anymore%201080i%20FLAC%202%200%20AVC%20REMUX-FraMeSToR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Monty Python's Flying Circus S01E07 You're No Fun Anymore 1080i FLAC 2 0 AVC REMUX-FraMeSToR[EZTVx.to].mkv"
+      }
+    }
+  ]
+}

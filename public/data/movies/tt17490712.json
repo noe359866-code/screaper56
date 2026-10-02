@@ -1,0 +1,235 @@
+{
+  "id": "tt17490712",
+  "imdbId": "tt17490712",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Mortal Kombat II (2026)",
+  "name": "Mortal Kombat II",
+  "year": 2026,
+  "imdbRating": "6.3",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt17490712.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt17490712.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt17490712.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt17490712.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 167,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv",
+      "quality": "1080p",
+      "seeders": 81,
+      "sizeBytes": 2770253906,
+      "sizeLabel": "2.6 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "a5dec44d1942a68d090d1487f58a1a17f778ffd0",
+      "fileIdx": 0,
+      "score": 16.11,
+      "magnetUrl": "magnet:?xt=urn:btih:a5dec44d1942a68d090d1487f58a1a17f778ffd0&dn=Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir",
+      "quality": "4K",
+      "seeders": 111,
+      "sizeBytes": 8750995866,
+      "sizeLabel": "8.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "7d101646ec044b458971a6b7a93df150c10fce44",
+      "fileIdx": 0,
+      "score": 8.55,
+      "magnetUrl": "magnet:?xt=urn:btih:7d101646ec044b458971a6b7a93df150c10fce44&dn=Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 111,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv",
+      "description": "Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv\n👤 81 💾 2.6 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 16.11,
+      "infoHash": "a5dec44d1942a68d090d1487f58a1a17f778ffd0",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 81,
+      "sizeBytes": 2770253906,
+      "sizeLabel": "2.6 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:a5dec44d1942a68d090d1487f58a1a17f778ffd0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a5dec44d1942a68d090d1487f58a1a17f778ffd0&dn=Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Mortal.Kombat.II.2026.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir",
+      "description": "Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir\n🎞️ WEBRip · HEVC · Atmos/DD+ 5.1\n👤 111 💾 8.2 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 8.55,
+      "infoHash": "7d101646ec044b458971a6b7a93df150c10fce44",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 111,
+      "sizeBytes": 8750995866,
+      "sizeLabel": "8.2 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:7d101646ec044b458971a6b7a93df150c10fce44"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7d101646ec044b458971a6b7a93df150c10fce44&dn=Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Mortal.Kombat.II.2026.2160p.MA.WEBRip.10Bit.DDP5.1.Atmos.x265-NeoNoir.mkv"
+      }
+    }
+  ]
+}
