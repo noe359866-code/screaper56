@@ -1,0 +1,243 @@
+{
+  "id": "tt0094715",
+  "imdbId": "tt0094715",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Beaches (1988)",
+  "name": "Beaches",
+  "year": 1988,
+  "imdbRating": "7.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0094715.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0094715.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0094715.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0094715.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "[Bitsearch.to] Eternamente amigas (1988) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.maxitorrent.com]",
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 7934952079,
+      "sizeLabel": "7.4 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "af5518e723b2f9997f2eb123dd615ce0df0202ba",
+      "fileIdx": null,
+      "score": 10.03,
+      "magnetUrl": "magnet:?xt=urn:btih:af5518e723b2f9997f2eb123dd615ce0df0202ba&dn=%5BBitsearch.to%5D%20Eternamente%20amigas%20(1988)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beaches 1988 1080p Blu-ray x264 DD5.1-HighCode",
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 6764573491,
+      "sizeLabel": "6.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "5231f8557cdfdcd21ad189b7144b053d22b69079",
+      "fileIdx": 0,
+      "score": 7.11,
+      "magnetUrl": "magnet:?xt=urn:btih:5231f8557cdfdcd21ad189b7144b053d22b69079&dn=Beaches%201988%201080p%20Blu-ray%20x264%20DD5.1-HighCode&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 16,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "[Bitsearch.to] Eternamente amigas (1988) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.maxitorrent.com]",
+      "description": "[Bitsearch.to] Eternamente amigas (1988) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.maxitorrent.com]\n🎞️ BluRay · AVC · AC3 5.1\n👤 5 💾 7.4 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 10.03,
+      "infoHash": "af5518e723b2f9997f2eb123dd615ce0df0202ba",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 7934952079,
+      "sizeLabel": "7.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:af5518e723b2f9997f2eb123dd615ce0df0202ba"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:af5518e723b2f9997f2eb123dd615ce0df0202ba&dn=%5BBitsearch.to%5D%20Eternamente%20amigas%20(1988)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beaches 1988 1080p Blu-ray x264 DD5.1-HighCode",
+      "description": "Beaches 1988 1080p Blu-ray x264 DD5.1-HighCode\n🎞️ BluRay · AVC · AC3 5.1\n👤 16 💾 6.3 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.11,
+      "infoHash": "5231f8557cdfdcd21ad189b7144b053d22b69079",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 6764573491,
+      "sizeLabel": "6.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "filename": "Beaches 1988 BluRay 1080p x264 DD 5.1-HighCode.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:5231f8557cdfdcd21ad189b7144b053d22b69079"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5231f8557cdfdcd21ad189b7144b053d22b69079&dn=Beaches%201988%201080p%20Blu-ray%20x264%20DD5.1-HighCode&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Beaches 1988 BluRay 1080p x264 DD 5.1-HighCode.mkv"
+      }
+    }
+  ]
+}

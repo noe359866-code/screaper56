@@ -1,0 +1,134 @@
+{
+  "id": "tt0063951:1:5",
+  "imdbId": "tt0063951",
+  "type": "series",
+  "season": 1,
+  "episode": 5,
+  "label": "Sesame Street S01E05 – Sing-Along in Ernie and Bert's Bathroom",
+  "name": "Sesame Street",
+  "year": 1969,
+  "imdbRating": "8.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0063951:1:5.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0063951:1:5.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0063951:1:5.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0063951:1:5.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 3,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Sesame.Street.Old.School.Volume.2.dvdrip.x264-MCH",
+      "quality": null,
+      "seeders": 25,
+      "sizeBytes": 581687050,
+      "sizeLabel": "555 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "d02ab659e171e1770176b540d96894e6b630e02a",
+      "fileIdx": 15,
+      "score": 5.29,
+      "magnetUrl": "magnet:?xt=urn:btih:d02ab659e171e1770176b540d96894e6b630e02a&dn=Sesame.Street.Old.School.Volume.2.dvdrip.x264-MCH&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 25,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Sesame.Street.Old.School.Volume.2.dvdrip.x264-MCH",
+      "description": "Sesame.Street.Old.School.Volume.2.dvdrip.x264-MCH\n🎞️ DVD · AVC\n👤 25 💾 555 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 5.29,
+      "infoHash": "d02ab659e171e1770176b540d96894e6b630e02a",
+      "fileIdx": 15,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 25,
+      "sizeBytes": 581687050,
+      "sizeLabel": "555 MB",
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Old.School-v02e05-part.1.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:d02ab659e171e1770176b540d96894e6b630e02a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d02ab659e171e1770176b540d96894e6b630e02a&dn=Sesame.Street.Old.School.Volume.2.dvdrip.x264-MCH&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Old.School-v02e05-part.1.mkv"
+      }
+    }
+  ]
+}

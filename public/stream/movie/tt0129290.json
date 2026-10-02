@@ -1,0 +1,133 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Patch Adams (1998).HEVC BDrip 1080p (Spanish-English+Subt)",
+      "description": "Patch Adams (1998).HEVC BDrip 1080p (Spanish-English+Subt)\n🎞️ BluRay · HEVC\n👤 7 💾 2.2 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.66,
+      "infoHash": "8ce1477b274d5957693ae1c9f1d22d21019914d5",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 2383706849,
+      "sizeLabel": "2.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Patch Adams (1998).HEVC BDrip 1080p (Spanish-English+Subt).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:8ce1477b274d5957693ae1c9f1d22d21019914d5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8ce1477b274d5957693ae1c9f1d22d21019914d5&dn=Patch%20Adams%20(1998).HEVC%20BDrip%201080p%20(Spanish-English%2BSubt)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Patch Adams (1998).HEVC BDrip 1080p (Spanish-English+Subt).mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Patch Adams 1998 1080p BluRay",
+      "description": "Patch Adams 1998 1080p BluRay\n🎞️ BluRay · AVC\n👤 83 💾 1.8 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 8.18,
+      "infoHash": "8651c756e057dd9e8eca69f868c2e091895270b7",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 83,
+      "sizeBytes": 1964947538,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "filename": "Patch.Adams.1998.1080p.BluRay.x264-[YTS.AM].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:8651c756e057dd9e8eca69f868c2e091895270b7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8651c756e057dd9e8eca69f868c2e091895270b7&dn=Patch%20Adams%201998%201080p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Patch.Adams.1998.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    }
+  ]
+}

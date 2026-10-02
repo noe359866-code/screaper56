@@ -1,0 +1,241 @@
+{
+  "id": "tt0985699",
+  "imdbId": "tt0985699",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Valkyrie (2008)",
+  "name": "Valkyrie",
+  "year": 2008,
+  "imdbRating": "7.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0985699.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0985699.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0985699.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0985699.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 70,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 9287866778,
+      "sizeLabel": "8.7 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "infoHash": "1131a6d005bef6b2416aca8d7d59b47c1afa3af7",
+      "fileIdx": 3,
+      "score": 14.42,
+      "magnetUrl": "magnet:?xt=urn:btih:1131a6d005bef6b2416aca8d7d59b47c1afa3af7&dn=Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Valkyrie (2008) 1080p BrRip x264 - 1.70GB - YIFY",
+      "quality": "1080p",
+      "seeders": 73,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "968a74e96752636ca336283ec9e42b8f5c26ea36",
+      "fileIdx": 0,
+      "score": 7.99,
+      "magnetUrl": "magnet:?xt=urn:btih:968a74e96752636ca336283ec9e42b8f5c26ea36&dn=Valkyrie%20(2008)%201080p%20BrRip%20x264%20-%201.70GB%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 73,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN",
+      "description": "Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN\n🎞️ WEB-DL · AVC · DD+\n👤 4 💾 8.7 GB ⚙️ TorrentsDB",
+      "pick": "es",
+      "score": 14.42,
+      "infoHash": "1131a6d005bef6b2416aca8d7d59b47c1afa3af7",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 9287866778,
+      "sizeLabel": "8.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:1131a6d005bef6b2416aca8d7d59b47c1afa3af7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1131a6d005bef6b2416aca8d7d59b47c1afa3af7&dn=Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Valkyrie.2008.1080p.WEB-DL.ENG.LATINO.DDP.5.1.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Valkyrie (2008) 1080p BrRip x264 - 1.70GB - YIFY",
+      "description": "Valkyrie (2008) 1080p BrRip x264 - 1.70GB - YIFY\n🎞️ BluRay · AVC\n👤 73 💾 1.7 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.99,
+      "infoHash": "968a74e96752636ca336283ec9e42b8f5c26ea36",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 73,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "kickasstorrents",
+        "ThePirateBay"
+      ],
+      "filename": "Valkyrie.2008.1080p.BrRip.x264.YIFY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:968a74e96752636ca336283ec9e42b8f5c26ea36"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:968a74e96752636ca336283ec9e42b8f5c26ea36&dn=Valkyrie%20(2008)%201080p%20BrRip%20x264%20-%201.70GB%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Valkyrie.2008.1080p.BrRip.x264.YIFY.mp4"
+      }
+    }
+  ]
+}

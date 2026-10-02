@@ -1,0 +1,238 @@
+{
+  "id": "tt1046947",
+  "imdbId": "tt1046947",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Last Chance Harvey (2008)",
+  "name": "Last Chance Harvey",
+  "year": 2008,
+  "imdbRating": "6.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1046947.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1046947.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1046947.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1046947.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "Nunca es tarde para enamorarse.DVDrip Xvid Spanish TDT",
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 735712378,
+      "sizeLabel": "702 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "44c3d4b1e37390bec53c7e9f4dedc24bd0e7e47c",
+      "fileIdx": null,
+      "score": 4.7,
+      "magnetUrl": "magnet:?xt=urn:btih:44c3d4b1e37390bec53c7e9f4dedc24bd0e7e47c&dn=Nunca%20es%20tarde%20para%20enamorarse.DVDrip%20Xvid%20Spanish%20TDT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Last Chance Harvey 2008 720p BluRay",
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 894466785,
+      "sizeLabel": "853 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "67db6efee31605786c4e0fa13d223b2ae736c337",
+      "fileIdx": 0,
+      "score": 5.29,
+      "magnetUrl": "magnet:?xt=urn:btih:67db6efee31605786c4e0fa13d223b2ae736c337&dn=Last%20Chance%20Harvey%202008%20720p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 8,
+  "qualities": [
+    "480p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Nunca es tarde para enamorarse.DVDrip Xvid Spanish TDT",
+      "description": "Nunca es tarde para enamorarse.DVDrip Xvid Spanish TDT\n🎞️ DVD · XviD\n👤 0 💾 702 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 4.7,
+      "infoHash": "44c3d4b1e37390bec53c7e9f4dedc24bd0e7e47c",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 735712378,
+      "sizeLabel": "702 MB",
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "GranTorrent"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:44c3d4b1e37390bec53c7e9f4dedc24bd0e7e47c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:44c3d4b1e37390bec53c7e9f4dedc24bd0e7e47c&dn=Nunca%20es%20tarde%20para%20enamorarse.DVDrip%20Xvid%20Spanish%20TDT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Last Chance Harvey 2008 720p BluRay",
+      "description": "Last Chance Harvey 2008 720p BluRay\n🎞️ BluRay · AVC · AAC\n👤 8 💾 853 MB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 5.29,
+      "infoHash": "67db6efee31605786c4e0fa13d223b2ae736c337",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 894466785,
+      "sizeLabel": "853 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "filename": "Last.Chance.Harvey.2008.720p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:67db6efee31605786c4e0fa13d223b2ae736c337"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:67db6efee31605786c4e0fa13d223b2ae736c337&dn=Last%20Chance%20Harvey%202008%20720p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Last.Chance.Harvey.2008.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

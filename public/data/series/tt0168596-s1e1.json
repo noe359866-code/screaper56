@@ -1,0 +1,136 @@
+{
+  "id": "tt0168596:1:1",
+  "imdbId": "tt0168596",
+  "type": "series",
+  "season": 1,
+  "episode": 1,
+  "label": "Cold Feet S01E01 – Episode 1",
+  "name": "Cold Feet",
+  "year": 1997,
+  "imdbRating": "8.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0168596:1:1.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0168596:1:1.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0168596:1:1.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 2,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Cold.Feet.S01E01.INTERNAL.WEB.x264-spamTV",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 579107553,
+      "sizeLabel": "552 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "e41c65eea9131a9b9525fad1c354e2bd46a1db74",
+      "fileIdx": null,
+      "score": 0.23,
+      "magnetUrl": "magnet:?xt=urn:btih:e41c65eea9131a9b9525fad1c354e2bd46a1db74&dn=Cold.Feet.S01E01.INTERNAL.WEB.x264-spamTV&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Cold.Feet.S01E01.INTERNAL.WEB.x264-spamTV",
+      "description": "Cold.Feet.S01E01.INTERNAL.WEB.x264-spamTV\n🎞️ WEB · AVC\n👤 0 💾 552 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.23,
+      "infoHash": "e41c65eea9131a9b9525fad1c354e2bd46a1db74",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 579107553,
+      "sizeLabel": "552 MB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:e41c65eea9131a9b9525fad1c354e2bd46a1db74"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e41c65eea9131a9b9525fad1c354e2bd46a1db74&dn=Cold.Feet.S01E01.INTERNAL.WEB.x264-spamTV&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

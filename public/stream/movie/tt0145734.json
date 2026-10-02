@@ -1,0 +1,72 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Playing by Heart (1998) 1080p BrRip x264 - YIFY",
+      "description": "Playing by Heart (1998) 1080p BrRip x264 - YIFY\n🎞️ BluRay · AVC\n👤 23 💾 1.8 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.36,
+      "infoHash": "caeb1bb13b964533ad3a815c5099851cf7f08554",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 1986422374,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "YTS",
+        "1337x"
+      ],
+      "filename": "Playing.by.Heart.1998.1080p.BluRay.x264.YIFY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:caeb1bb13b964533ad3a815c5099851cf7f08554"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:caeb1bb13b964533ad3a815c5099851cf7f08554&dn=Playing%20by%20Heart%20(1998)%201080p%20BrRip%20x264%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Playing.by.Heart.1998.1080p.BluRay.x264.YIFY.mp4"
+      }
+    }
+  ]
+}

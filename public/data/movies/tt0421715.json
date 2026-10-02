@@ -1,0 +1,244 @@
+{
+  "id": "tt0421715",
+  "imdbId": "tt0421715",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Curious Case of Benjamin Button (2008)",
+  "name": "The Curious Case of Benjamin Button",
+  "year": 2008,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0421715.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0421715.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0421715.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0421715.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 71,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "El Curioso Caso de Benjamin Button [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "7c4a63aef9ed27e2cbb427729e44a9dffdf548da",
+      "fileIdx": null,
+      "score": 14.57,
+      "magnetUrl": "magnet:?xt=urn:btih:7c4a63aef9ed27e2cbb427729e44a9dffdf548da&dn=El%20Curioso%20Caso%20de%20Benjamin%20Button%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265",
+      "quality": "1080p",
+      "seeders": 106,
+      "sizeBytes": 3135326126,
+      "sizeLabel": "2.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "927856eb9d7f70d76ed897c3498bb3a462c4ad45",
+      "fileIdx": 1,
+      "score": 8.38,
+      "magnetUrl": "magnet:?xt=urn:btih:927856eb9d7f70d76ed897c3498bb3a462c4ad45&dn=The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 106,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "El Curioso Caso de Benjamin Button [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]",
+      "description": "El Curioso Caso de Benjamin Button [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]\n🎞️ BluRay · AC3 5.1\n👤 6 ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.57,
+      "infoHash": "7c4a63aef9ed27e2cbb427729e44a9dffdf548da",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:7c4a63aef9ed27e2cbb427729e44a9dffdf548da"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7c4a63aef9ed27e2cbb427729e44a9dffdf548da&dn=El%20Curioso%20Caso%20de%20Benjamin%20Button%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-Ingles%2BSubs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265",
+      "description": "The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n🎞️ BluRay · HEVC · DD+ 5.1\n👤 106 💾 2.9 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.38,
+      "infoHash": "927856eb9d7f70d76ed897c3498bb3a462c4ad45",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 106,
+      "sizeBytes": 3135326126,
+      "sizeLabel": "2.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay"
+      ],
+      "filename": "The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:927856eb9d7f70d76ed897c3498bb3a462c4ad45"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:927856eb9d7f70d76ed897c3498bb3a462c4ad45&dn=The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Curious.Case.of.Benjamin.Button.2008.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    }
+  ]
+}

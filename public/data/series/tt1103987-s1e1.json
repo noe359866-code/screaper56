@@ -1,0 +1,240 @@
+{
+  "id": "tt1103987:1:1",
+  "imdbId": "tt1103987",
+  "type": "series",
+  "season": 1,
+  "episode": 1,
+  "label": "Leverage S01E01 – The Nigerian Job",
+  "name": "Leverage",
+  "year": 2008,
+  "imdbRating": "7.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt1103987:1:1.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt1103987:1:1.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt1103987:1:1.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Las Reglas del Juego - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_113][AC3 2.0 Castellano-AC3 5.1 English-Subs]",
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 1234803097,
+      "sizeLabel": "1.1 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "35d14d44755ca1800244d127d6df8d68cf92a6ef",
+      "fileIdx": 4,
+      "score": 8.86,
+      "magnetUrl": "magnet:?xt=urn:btih:35d14d44755ca1800244d127d6df8d68cf92a6ef&dn=Las%20Reglas%20del%20Juego%20-%20Temporada%201%20Completa%20%5BBluRay%20Rip%20720p%5D%5BCap.%20101_113%5D%5BAC3%202.0%20Castellano-AC3%205.1%20English-Subs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Leverage (2008) S01 1080p Web AV1 Opus [GRAV1TY]",
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 903945912,
+      "sizeLabel": "862 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AV1",
+        "hdr": [],
+        "audio": [
+          "Opus"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "4ee79e925b449ab0144282e4391beac02d1ae9d4",
+      "fileIdx": 11,
+      "score": 7.05,
+      "magnetUrl": "magnet:?xt=urn:btih:4ee79e925b449ab0144282e4391beac02d1ae9d4&dn=Leverage%20(2008)%20S01%201080p%20Web%20AV1%20Opus%20%5BGRAV1TY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 15,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Las Reglas del Juego - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_113][AC3 2.0 Castellano-AC3 5.1 English-Subs]",
+      "description": "Las Reglas del Juego - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_113][AC3 2.0 Castellano-AC3 5.1 English-Subs]\n🎞️ BluRay · AC3 2.0\n👤 0 💾 1.1 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 8.86,
+      "infoHash": "35d14d44755ca1800244d127d6df8d68cf92a6ef",
+      "fileIdx": 4,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 1234803097,
+      "sizeLabel": "1.1 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "GranTorrent"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:35d14d44755ca1800244d127d6df8d68cf92a6ef"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:35d14d44755ca1800244d127d6df8d68cf92a6ef&dn=Las%20Reglas%20del%20Juego%20-%20Temporada%201%20Completa%20%5BBluRay%20Rip%20720p%5D%5BCap.%20101_113%5D%5BAC3%202.0%20Castellano-AC3%205.1%20English-Subs%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Leverage (2008) S01 1080p Web AV1 Opus [GRAV1TY]",
+      "description": "Leverage (2008) S01 1080p Web AV1 Opus [GRAV1TY]\n🎞️ WEB · AV1 · Opus\n👤 15 💾 862 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.05,
+      "infoHash": "4ee79e925b449ab0144282e4391beac02d1ae9d4",
+      "fileIdx": 11,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 903945912,
+      "sizeLabel": "862 MB",
+      "release": {
+        "source": "WEB",
+        "codec": "AV1",
+        "hdr": [],
+        "audio": [
+          "Opus"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "S01E01 The Nigerian Job.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:4ee79e925b449ab0144282e4391beac02d1ae9d4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4ee79e925b449ab0144282e4391beac02d1ae9d4&dn=Leverage%20(2008)%20S01%201080p%20Web%20AV1%20Opus%20%5BGRAV1TY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "S01E01 The Nigerian Job.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "tt0078655:1:5",
+  "imdbId": "tt0078655",
+  "type": "series",
+  "season": 1,
+  "episode": 5,
+  "label": "The Meeting Place Cannot Be Changed S01E05",
+  "name": "The Meeting Place Cannot Be Changed",
+  "year": 1979,
+  "imdbRating": "8.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0078655:1:5.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0078655:1:5.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0078655:1:5.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0078655:1:5.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 14,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

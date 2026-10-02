@@ -1,0 +1,142 @@
+{
+  "id": "tt0127722",
+  "imdbId": "tt0127722",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Another Day in Paradise (1998)",
+  "name": "Another Day in Paradise",
+  "year": 1998,
+  "imdbRating": "6.5",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0127722.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0127722.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0127722.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0127722.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 7,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Another Day in Paradise 1998 1080p WEB-DL HEVC x265 BONE",
+      "quality": "1080p",
+      "seeders": 36,
+      "sizeBytes": 1524713390,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "29a9e3088ecaae655d8b087518cd233fc0723fce",
+      "fileIdx": 0,
+      "score": 7.65,
+      "magnetUrl": "magnet:?xt=urn:btih:29a9e3088ecaae655d8b087518cd233fc0723fce&dn=Another%20Day%20in%20Paradise%201998%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 36,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Another Day in Paradise 1998 1080p WEB-DL HEVC x265 BONE",
+      "description": "Another Day in Paradise 1998 1080p WEB-DL HEVC x265 BONE\n🎞️ WEB-DL · HEVC\n👤 36 💾 1.4 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.65,
+      "infoHash": "29a9e3088ecaae655d8b087518cd233fc0723fce",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 36,
+      "sizeBytes": 1524713390,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "filename": "Another Day in Paradise 1998 1080p WEB-DL HEVC x265 BONE.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:29a9e3088ecaae655d8b087518cd233fc0723fce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:29a9e3088ecaae655d8b087518cd233fc0723fce&dn=Another%20Day%20in%20Paradise%201998%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Another Day in Paradise 1998 1080p WEB-DL HEVC x265 BONE.mkv"
+      }
+    }
+  ]
+}

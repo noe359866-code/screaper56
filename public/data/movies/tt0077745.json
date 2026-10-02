@@ -1,0 +1,240 @@
+{
+  "id": "tt0077745",
+  "imdbId": "tt0077745",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Invasion of the Body Snatchers (1978)",
+  "name": "Invasion of the Body Snatchers",
+  "year": 1978,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0077745.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0077745.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0077745.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0077745.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 65,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "La invasion de los ultracuerpos [BDremux 1080p][DTS-HD 2.0 Castellano-DTS-HD 2.0 Ingles+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 22033182228,
+      "sizeLabel": "20.5 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "5a0cf618a821c28666669055db94f3897599250c",
+      "fileIdx": 5,
+      "score": 14.47,
+      "magnetUrl": "magnet:?xt=urn:btih:5a0cf618a821c28666669055db94f3897599250c&dn=La%20invasion%20de%20los%20ultracuerpos%20%5BBDremux%201080p%5D%5BDTS-HD%202.0%20Castellano-DTS-HD%202.0%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Invasion Of The Body Snatchers 1978 REMASTERED 1080p BluRay HEVC x265 5.1 BONE",
+      "quality": "1080p",
+      "seeders": 140,
+      "sizeBytes": 2147483648,
+      "sizeLabel": "2.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "f5f7573d0492433287b17c2ba8be1a928d202873",
+      "fileIdx": 0,
+      "score": 8.33,
+      "magnetUrl": "magnet:?xt=urn:btih:f5f7573d0492433287b17c2ba8be1a928d202873&dn=Invasion%20Of%20The%20Body%20Snatchers%201978%20REMASTERED%201080p%20BluRay%20HEVC%20x265%205.1%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 140,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "La invasion de los ultracuerpos [BDremux 1080p][DTS-HD 2.0 Castellano-DTS-HD 2.0 Ingles+Subs][ES-EN]",
+      "description": "La invasion de los ultracuerpos [BDremux 1080p][DTS-HD 2.0 Castellano-DTS-HD 2.0 Ingles+Subs][ES-EN]\n🎞️ REMUX · DTS-HD 2.0\n👤 5 💾 20.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.47,
+      "infoHash": "5a0cf618a821c28666669055db94f3897599250c",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 22033182228,
+      "sizeLabel": "20.5 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:5a0cf618a821c28666669055db94f3897599250c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5a0cf618a821c28666669055db94f3897599250c&dn=La%20invasion%20de%20los%20ultracuerpos%20%5BBDremux%201080p%5D%5BDTS-HD%202.0%20Castellano-DTS-HD%202.0%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Invasion Of The Body Snatchers 1978 REMASTERED 1080p BluRay HEVC x265 5.1 BONE",
+      "description": "Invasion Of The Body Snatchers 1978 REMASTERED 1080p BluRay HEVC x265 5.1 BONE\n🎞️ BluRay · HEVC · 5.1\n👤 140 💾 2.0 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.33,
+      "infoHash": "f5f7573d0492433287b17c2ba8be1a928d202873",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 140,
+      "sizeBytes": 2147483648,
+      "sizeLabel": "2.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxy"
+      ],
+      "filename": "Invasion Of The Body Snatchers 1978 REMASTERED 1080p BluRay HEVC x265 5.1 BONE.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:f5f7573d0492433287b17c2ba8be1a928d202873"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f5f7573d0492433287b17c2ba8be1a928d202873&dn=Invasion%20Of%20The%20Body%20Snatchers%201978%20REMASTERED%201080p%20BluRay%20HEVC%20x265%205.1%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Invasion Of The Body Snatchers 1978 REMASTERED 1080p BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    }
+  ]
+}

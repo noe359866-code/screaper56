@@ -1,0 +1,135 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Causa Abierta [HDTV 1080p][Cap.101]",
+      "description": "Causa Abierta [HDTV 1080p][Cap.101]\n🎞️ HDTV\n👤 82 💾 4.1 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 16.09,
+      "infoHash": "4ce828220410655e35dfb5f72f17552ff9bd1791",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 82,
+      "sizeBytes": 4413078896,
+      "sizeLabel": "4.1 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Wolfmax4k"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:4ce828220410655e35dfb5f72f17552ff9bd1791"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4ce828220410655e35dfb5f72f17552ff9bd1791&dn=Causa%20Abierta%20%5BHDTV%201080p%5D%5BCap.101%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Last.Seen.S01E01.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+      "description": "Last.Seen.S01E01.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\n🎞️ WEBRip · HEVC · DD+ 5.1\n👤 116 💾 796 MB ⚙️ Torrentio+ThePirateBay+",
+      "pick": "en",
+      "score": 8.26,
+      "infoHash": "4763d7aeb05f9e48684f86aa70327a8ab747db4d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 116,
+      "sizeBytes": 835106898,
+      "sizeLabel": "796 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Last.Seen.S01E01.The.Dispatcher.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:4763d7aeb05f9e48684f86aa70327a8ab747db4d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4763d7aeb05f9e48684f86aa70327a8ab747db4d&dn=Last.Seen.S01E01.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Last.Seen.S01E01.The.Dispatcher.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    }
+  ]
+}
