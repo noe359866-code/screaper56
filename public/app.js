@@ -292,12 +292,34 @@ $('#test-settings').addEventListener('click', async () => {
 
 // ---------- tabs ----------
 function showTab(tab) {
-  $$('nav button').forEach(x => x.classList.toggle('active', x.dataset.tab === tab));
-  $$('.tab').forEach(x => x.classList.toggle('active', x.id === `tab-${tab}`));
+  $('nav button').forEach(x => {
+    const active = x.dataset.tab === tab;
+    x.classList.toggle('active', active);
+    x.setAttribute('aria-pressed', String(active));
+  });
+  $('.tab').forEach(x => x.classList.toggle('active', x.id === `tab-${tab}`));
   if (tab === 'dashboard') refreshDashboard();
   if (tab === 'history') loadHistory();
+  if (tab !== 'dashboard' && tab !== 'history') $('#main-content')?.focus({ preventScroll: true });
 }
-$$('nav button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+$('nav button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+document.addEventListener('keydown', e => {
+  if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+  const active = document.activeElement;
+  const editing = active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName);
+  if (e.key === '/' && !editing) {
+    e.preventDefault();
+    $('#q')?.focus();
+    $('#q')?.select();
+    return;
+  }
+  if (e.key === 'Escape' && active === $('#q') && $('#q').value) {
+    $('#q').value = '';
+    state.page = 0;
+    renderDashboard();
+  }
+});
 
 // ---------- almacén local (resultados de ⚡ Procesar aquí) ----------
 
@@ -327,7 +349,7 @@ function saveLocal(newItems) {
 
 // ---------- dashboard ----------
 
-$$('.segmented button').forEach(b => b.addEventListener('click', () => setSource(b.dataset.source)));
+$('.segmented button').forEach(b => b.addEventListener('click', () => setSource(b.dataset.source)));
 $('#q').addEventListener('input', debounce(() => { state.page = 0; renderDashboard(); }, 200));
 for (const id of ['#type-filter', '#quality', '#lang', '#order']) {
   $(id).addEventListener('change', () => { state.page = 0; renderDashboard(); });
@@ -344,13 +366,18 @@ $('#clear-local').addEventListener('click', () => {
 function setSource(source) {
   state.source = source;
   state.page = 0;
+  $('.segmented button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.source === source)));
   state.settings.dashboardSource = source;
   saveSettings();
   refreshDashboard();
 }
 
 async function refreshDashboard(force = false) {
-  $$('.segmented button').forEach(b => b.classList.toggle('active', b.dataset.source === state.source));
+  $('.segmented button').forEach(b => {
+    const active = b.dataset.source === state.source;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
   $('#clear-local').classList.toggle('hidden', state.source !== 'local');
   $('#export-bar').classList.toggle('hidden', state.source === 'supabase');
   if (state.source === 'supabase') {
@@ -555,8 +582,8 @@ function renderPickRow(item, lang) {
       </div>
     </div>
     <div class="pick-actions">${magnet ? `
-      <a class="ghost" href="${escapeHtml(magnet)}" title="Abrir en tu cliente torrent">🧲</a>
-      <button class="ghost copy-btn" data-magnet="${encodeURIComponent(magnet)}">Copiar</button>` : ''}
+      <a class="ghost" href="${escapeHtml(magnet)}" title="Abrir en tu cliente torrent" aria-label="Abrir magnet en el cliente torrent">🧲</a>
+      <button class="ghost copy-btn" data-magnet="${encodeURIComponent(magnet)}" aria-label="Copiar magnet">Copiar</button>` : ''}
     </div>
   </div>`;
 }
@@ -574,7 +601,7 @@ function renderCard(item) {
     : '';
   const cls = picks.length >= 2 ? '' : picks.length ? 'incomplete' : 'empty-card';
   return `<article class="title-card ${cls}">
-    <div class="poster">${poster ? `<img loading="lazy" src="${escapeHtml(poster)}" alt="" />` : '🎬'}</div>
+    <div class="poster">${poster ? `<img loading="lazy" decoding="async" src="${escapeHtml(poster)}" alt="Póster de ${escapeHtml(label)}" />` : '🎬'}</div>
     <div class="card-body">
       <div class="card-head">
         <div class="card-title">${escapeHtml(label)}</div>
@@ -582,7 +609,7 @@ function renderCard(item) {
       <div class="card-sub">
         ${typeBadge}
         ${item.name && item.name !== item.label ? `<span>${escapeHtml(item.name)}${item.year ? ` (${item.year})` : ''}</span>` : ''}
-        <a href="https://www.imdb.com/title/${escapeHtml(item.imdbId)}/" target="_blank" rel="noopener">${escapeHtml(item.imdbId)}</a>
+        <a href="https://www.imdb.com/title/${escapeHtml(item.imdbId)}/" target="_blank" rel="noopener" title="Abrir ${escapeHtml(item.imdbId)} en IMDb">${escapeHtml(item.imdbId)}</a>
         ${item.candidateCount != null ? `<span class="badge" title="Torrents distintos que devolvieron los addons">${picks.length} de ${item.candidateCount}</span>` : ''}
         ${errors}
       </div>
