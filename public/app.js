@@ -292,17 +292,17 @@ $('#test-settings').addEventListener('click', async () => {
 
 // ---------- tabs ----------
 function showTab(tab) {
-  $('nav button').forEach(x => {
+  $$('nav button').forEach(x => {
     const active = x.dataset.tab === tab;
     x.classList.toggle('active', active);
     x.setAttribute('aria-pressed', String(active));
   });
-  $('.tab').forEach(x => x.classList.toggle('active', x.id === `tab-${tab}`));
+  $$('.tab').forEach(x => x.classList.toggle('active', x.id === `tab-${tab}`));
   if (tab === 'dashboard') refreshDashboard();
   if (tab === 'history') loadHistory();
   if (tab !== 'dashboard' && tab !== 'history') $('#main-content')?.focus({ preventScroll: true });
 }
-$('nav button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+$$('nav button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 
 document.addEventListener('keydown', e => {
   if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
@@ -349,7 +349,7 @@ function saveLocal(newItems) {
 
 // ---------- dashboard ----------
 
-$('.segmented button').forEach(b => b.addEventListener('click', () => setSource(b.dataset.source)));
+$$('.segmented button').forEach(b => b.addEventListener('click', () => setSource(b.dataset.source)));
 $('#q').addEventListener('input', debounce(() => { state.page = 0; renderDashboard(); }, 200));
 for (const id of ['#type-filter', '#quality', '#lang', '#order']) {
   $(id).addEventListener('change', () => { state.page = 0; renderDashboard(); });
@@ -366,14 +366,14 @@ $('#clear-local').addEventListener('click', () => {
 function setSource(source) {
   state.source = source;
   state.page = 0;
-  $('.segmented button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.source === source)));
+  $$('.segmented button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.source === source)));
   state.settings.dashboardSource = source;
   saveSettings();
   refreshDashboard();
 }
 
 async function refreshDashboard(force = false) {
-  $('.segmented button').forEach(b => {
+  $$('.segmented button').forEach(b => {
     const active = b.dataset.source === state.source;
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', String(active));
