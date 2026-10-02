@@ -232,10 +232,13 @@ test('película: penaliza otra película homónima de otro año (±1 de toleranc
   assert.equal(byPick(selectBestStreams([pianist, noYear], { type: 'movie', year: 2003 })).en.infoHash, pianist.infoHash);
 });
 
-test('los números del propio título no cuentan como año ("Blade Runner 2049", "1917")', async () => {
+test('los números del propio título no cuentan como año ("Blade Runner 2049", "1917") y el rango es 1935–2099', async () => {
   const { releaseYears } = await import('../public/lib/select.js');
   assert.deepEqual(releaseYears('Blade.Runner.2049.2017.2160p', ['Blade Runner 2049']), [2017]);
   assert.deepEqual(releaseYears('1917 (2019) 1080p', ['1917 (2019)']), [2019]);
+  assert.deepEqual(releaseYears('The 39 Steps (1935) 1080p BluRay', ['The 39 Steps']), [1935]);
+  assert.deepEqual(releaseYears('Future Film (2099) 1080p WEB-DL', ['Future Film']), [2099]);
+  assert.deepEqual(releaseYears('Movie 1934 1080p', []), []); // antes de 1935
   assert.deepEqual(releaseYears('Movie 2150 1080p', []), []); // años imposibles
 });
 

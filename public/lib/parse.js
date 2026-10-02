@@ -11,12 +11,17 @@ export const IMDB_LINE_RE = /^(tt\d{7,10})(?::s(\d{1,2})(?::e(\d{1,3}))?)?(?:\s+
 
 /**
  * Lee watchlist.txt: una línea por título (`tt0111161 Título`, `tt0944947:s1:e1`,
- * `tt0944947:s1`). Ignora comentarios `#` y deduplica IDs/episodios repetidos.
+ * `tt0944947:s1`). Ignora comentarios `#` (reconociendo las cabeceras de sección
+ * `# --- Películas ---` y `# --- Series ---`) y deduplica IDs/episodios repetidos.
  */
 export function parseWatchlist(text, { onWarning = null } = {}) {
   const items = [];
   const seen = new Map();
+  let sectionType = null;
   for (const rawLine of String(text ?? '').split(/\r?\n/)) {
+    const trimmed = rawLine.trim();
+    if (/^#\s*[-–—]+\s*series\b/i.test(trimmed)) { sectionType = 'series'; continue; }
+    if (/^#\s*[-–—]+\s*(?:pel[ií]culas|movies)\b/i.test(trimmed)) { sectionType = 'movie'; continue; }
     const line = rawLine.replace(/#.*$/, '').trim();
     if (!line) continue;
     const m = line.match(IMDB_LINE_RE);
@@ -26,16 +31,18 @@ export function parseWatchlist(text, { onWarning = null } = {}) {
     const episode = m[3] !== undefined ? Number(m[3]) : null;
     const label = (m[4] || '').trim() || null;
     const type = season !== null ? 'series' : 'movie';
+    const typeHint = season !== null ? 'series' : sectionType;
     const key = episode !== null ? `${imdbId}:s${season}:e${episode}`
       : season !== null ? `${imdbId}:s${season}`
       : imdbId;
     if (seen.has(key)) {
       const existing = items[seen.get(key)];
       if (!existing.label && label) existing.label = label;
+      if (typeHint === 'series' && !existing.typeHint) existing.typeHint = 'series';
       continue;
     }
     seen.set(key, items.length);
-    items.push({ imdbId, type, season, episode, label, raw: rawLine.trim() });
+    items.push({ imdbId, type, ...(typeHint ? { typeHint } : {}), season, episode, label, raw: rawLine.trim() });
   }
   return items;
 }

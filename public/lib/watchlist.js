@@ -82,15 +82,16 @@ export function formatWatchlistLine(item) {
 /** Genera el contenido completo de `watchlist.txt` con cabecera informativa. */
 export function formatWatchlistFile(items, { date = new Date(), removedCount = 0, addedCount = 0 } = {}) {
   const stamp = (date instanceof Date ? date : new Date(date)).toISOString().slice(0, 19).replace('T', ' ') + ' UTC';
-  const movies = items.filter(i => i.type !== 'series' && i.season == null);
-  const series = items.filter(i => i.type === 'series' || i.season != null);
+  const isSeriesItem = i => i.type === 'series' || i.typeHint === 'series' || i.season != null;
+  const movies = items.filter(i => !isSeriesItem(i));
+  const series = items.filter(isSeriesItem);
   const lines = [
     '# Peerflix Static – Watchlist',
     '# -----------------------------------------------------------',
     `# Actualizado automáticamente el ${stamp}` +
       (removedCount || addedCount ? ` (${addedCount} nuevos · ${removedCount} anteriores eliminados).` : '.'),
     '# En cada ejecución de la Action se eliminan los títulos ya procesados',
-    '# y se cargan películas y series nuevas para no repetir torrents ni nombres.',
+    '# y se cargan películas y series nuevas (1935–2099) para no repetir torrents ni nombres.',
     '#',
     '# Formatos soportados:',
     '#   tt1234567          -> película (IMDb); si el ID resulta ser una serie,',
@@ -259,83 +260,154 @@ export function createSeenStore(initial = {}) {
   };
 }
 
-// ---------- Descubrimiento automático desde catálogos de Cinemeta ----------
+// ---------- Descubrimiento automático desde catálogos de Cinemeta (1935–2099) ----------
 
-export const MOVIE_CATALOG_PATHS = Object.freeze([
-  '/catalog/movie/top.json',
-  '/catalog/movie/year/genre=2026.json',
-  '/catalog/movie/year/genre=2025.json',
-  '/catalog/movie/imdbRating.json',
-  '/catalog/movie/top/skip=100.json',
-  '/catalog/movie/year/genre=2024.json',
-  '/catalog/movie/imdbRating/skip=100.json',
-  '/catalog/movie/top/skip=200.json',
-  '/catalog/movie/imdbRating/skip=200.json',
-  '/catalog/movie/top/skip=300.json',
-]);
-
-export const SERIES_CATALOG_PATHS = Object.freeze([
-  '/catalog/series/top.json',
-  '/catalog/series/year/genre=2026.json',
-  '/catalog/series/year/genre=2025.json',
-  '/catalog/series/imdbRating.json',
-  '/catalog/series/top/skip=100.json',
-  '/catalog/series/year/genre=2024.json',
-  '/catalog/series/imdbRating/skip=100.json',
-  '/catalog/series/top/skip=200.json',
-]);
+export const MIN_SEARCH_YEAR = 1935;
+export const MAX_SEARCH_YEAR = 2099;
+export const SEARCH_YEAR_RANGE = Object.freeze({ min: MIN_SEARCH_YEAR, max: MAX_SEARCH_YEAR });
 
 /**
- * Pool integrado de respaldo (películas y series reales con torrents activos)
- * por si Cinemeta no responde o se ejecuta sin red hacia el catálogo.
+ * Construye la lista completa de años de búsqueda entre `minYear` (1935) y
+ * `maxYear` (2099), intercalando décadas desde 1935 hasta `pivotYear` para que
+ * cada lote combine cine clásico, moderno y estrenos recientes en lugar de
+ * concentrarse solo en 2026/2025, seguido de los años futuros hasta 2099.
+ */
+export function buildSearchYears({
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
+  pivotYear = 2026,
+} = {}) {
+  const clampPivot = Math.min(maxYear, Math.max(minYear, pivotYear));
+  const decades = new Map();
+  for (let y = clampPivot; y >= minYear; y--) {
+    const decade = Math.floor(y / 10) * 10;
+    if (!decades.has(decade)) decades.set(decade, []);
+    decades.get(decade).push(y);
+  }
+  const buckets = [...decades.values()];
+  const interleaved = [];
+  let added = true;
+  while (added) {
+    added = false;
+    for (const bucket of buckets) {
+      if (bucket.length) {
+        interleaved.push(bucket.shift());
+        added = true;
+      }
+    }
+  }
+  for (let y = clampPivot + 1; y <= maxYear; y++) {
+    interleaved.push(y);
+  }
+  return interleaved;
+}
+
+export const SEARCH_YEARS = Object.freeze(buildSearchYears());
+
+/**
+ * Genera las rutas de catálogo de Cinemeta para `movie` o `series` cubriendo
+ * todos los años de 1935 a 2099 (`/catalog/{kind}/year/genre={año}.json`)
+ * junto con los listados `top` e `imdbRating` paginados.
+ */
+export function buildCatalogPaths(kind = 'movie', {
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
+  pivotYear = 2026,
+} = {}) {
+  const years = buildSearchYears({ minYear, maxYear, pivotYear });
+  const general = [
+    `/catalog/${kind}/top.json`,
+    `/catalog/${kind}/imdbRating.json`,
+    `/catalog/${kind}/top/skip=100.json`,
+    `/catalog/${kind}/imdbRating/skip=100.json`,
+    `/catalog/${kind}/top/skip=200.json`,
+    `/catalog/${kind}/imdbRating/skip=200.json`,
+    `/catalog/${kind}/top/skip=300.json`,
+    `/catalog/${kind}/imdbRating/skip=300.json`,
+    `/catalog/${kind}/top/skip=400.json`,
+    `/catalog/${kind}/imdbRating/skip=400.json`,
+    `/catalog/${kind}/top/skip=500.json`,
+  ];
+  const paths = [];
+  let gIdx = 0;
+  for (let i = 0; i < years.length; i++) {
+    if (i % 10 === 0 && gIdx < general.length) {
+      paths.push(general[gIdx++]);
+    }
+    paths.push(`/catalog/${kind}/year/genre=${years[i]}.json`);
+  }
+  while (gIdx < general.length) paths.push(general[gIdx++]);
+  return Object.freeze(paths);
+}
+
+export const MOVIE_CATALOG_PATHS = buildCatalogPaths('movie');
+export const SERIES_CATALOG_PATHS = buildCatalogPaths('series');
+
+/**
+ * Pool integrado de respaldo (películas y series reales de 1935 en adelante con
+ * torrents activos) por si Cinemeta no responde o se ejecuta sin red.
  */
 export const FALLBACK_DISCOVERY_POOL = Object.freeze([
-  // Películas recientes y populares
-  { imdbId: 'tt27165187', type: 'movie', name: 'The End of Oak Street', year: 2026 },
-  { imdbId: 'tt37287335', type: 'movie', name: 'Obsession', year: 2026 },
-  { imdbId: 'tt28014327', type: 'movie', name: 'Mayday', year: 2026 },
-  { imdbId: 'tt34206385', type: 'movie', name: 'Primetime', year: 2026 },
-  { imdbId: 'tt35298123', type: 'movie', name: 'Teenage Sex and Death at Camp Miasma', year: 2026 },
+  // Intercalado por décadas desde 1935 hasta la actualidad
   { imdbId: 'tt15398776', type: 'movie', name: 'Oppenheimer', year: 2023 },
-  { imdbId: 'tt15239678', type: 'movie', name: 'Dune: Part Two', year: 2024 },
-  { imdbId: 'tt1745960', type: 'movie', name: 'Top Gun: Maverick', year: 2022 },
-  { imdbId: 'tt1877830', type: 'movie', name: 'The Batman', year: 2022 },
-  { imdbId: 'tt9362722', type: 'movie', name: 'Spider-Man: Across the Spider-Verse', year: 2023 },
-  { imdbId: 'tt4154796', type: 'movie', name: 'Avengers: Endgame', year: 2019 },
-  { imdbId: 'tt4154756', type: 'movie', name: 'Avengers: Infinity War', year: 2018 },
-  { imdbId: 'tt7286456', type: 'movie', name: 'Joker', year: 2019 },
-  { imdbId: 'tt6751668', type: 'movie', name: 'Parasite', year: 2019 },
-  { imdbId: 'tt8579674', type: 'movie', name: '1917', year: 2019 },
-  { imdbId: 'tt1856101', type: 'movie', name: 'Blade Runner 2049', year: 2017 },
-  { imdbId: 'tt1392190', type: 'movie', name: 'Mad Max: Fury Road', year: 2015 },
-  { imdbId: 'tt0816692', type: 'movie', name: 'Interstellar', year: 2014 },
-  { imdbId: 'tt1375666', type: 'movie', name: 'Inception', year: 2010 },
-  { imdbId: 'tt0468569', type: 'movie', name: 'The Dark Knight', year: 2008 },
-  { imdbId: 'tt0133093', type: 'movie', name: 'The Matrix', year: 1999 },
   { imdbId: 'tt0111161', type: 'movie', name: 'The Shawshank Redemption', year: 1994 },
+  { imdbId: 'tt0068646', type: 'movie', name: 'The Godfather', year: 1972 },
+  { imdbId: 'tt0026029', type: 'movie', name: 'The 39 Steps', year: 1935 },
+  { imdbId: 'tt1375666', type: 'movie', name: 'Inception', year: 2010 },
+  { imdbId: 'tt0034583', type: 'movie', name: 'Casablanca', year: 1942 },
+  { imdbId: 'tt0088763', type: 'movie', name: 'Back to the Future', year: 1985 },
+  { imdbId: 'tt0050083', type: 'movie', name: '12 Angry Men', year: 1957 },
+  { imdbId: 'tt0468569', type: 'movie', name: 'The Dark Knight', year: 2008 },
+  { imdbId: 'tt0060196', type: 'movie', name: 'The Good, the Bad and the Ugly', year: 1966 },
+  { imdbId: 'tt15239678', type: 'movie', name: 'Dune: Part Two', year: 2024 },
+  { imdbId: 'tt0026138', type: 'movie', name: 'Bride of Frankenstein', year: 1935 },
+  { imdbId: 'tt0133093', type: 'movie', name: 'The Matrix', year: 1999 },
+  { imdbId: 'tt0047478', type: 'movie', name: 'Seven Samurai', year: 1954 },
+  { imdbId: 'tt0816692', type: 'movie', name: 'Interstellar', year: 2014 },
+  { imdbId: 'tt0032138', type: 'movie', name: 'The Wizard of Oz', year: 1939 },
+  { imdbId: 'tt0078748', type: 'movie', name: 'Alien', year: 1979 },
+  { imdbId: 'tt0120737', type: 'movie', name: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
+  { imdbId: 'tt0054215', type: 'movie', name: 'Psycho', year: 1960 },
+  { imdbId: 'tt0081505', type: 'movie', name: 'The Shining', year: 1980 },
+  { imdbId: 'tt0033467', type: 'movie', name: 'Citizen Kane', year: 1941 },
+  { imdbId: 'tt6751668', type: 'movie', name: 'Parasite', year: 2019 },
   { imdbId: 'tt0110912', type: 'movie', name: 'Pulp Fiction', year: 1994 },
+  { imdbId: 'tt0047396', type: 'movie', name: 'Rear Window', year: 1954 },
+  { imdbId: 'tt1745960', type: 'movie', name: 'Top Gun: Maverick', year: 2022 },
   { imdbId: 'tt0109830', type: 'movie', name: 'Forrest Gump', year: 1994 },
   { imdbId: 'tt0137523', type: 'movie', name: 'Fight Club', year: 1999 },
-  { imdbId: 'tt0120737', type: 'movie', name: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
   { imdbId: 'tt0167260', type: 'movie', name: 'The Lord of the Rings: The Return of the King', year: 2003 },
-  { imdbId: 'tt0068646', type: 'movie', name: 'The Godfather', year: 1972 },
   { imdbId: 'tt0099685', type: 'movie', name: 'GoodFellas', year: 1990 },
   { imdbId: 'tt0114369', type: 'movie', name: 'Se7en', year: 1995 },
   { imdbId: 'tt0172495', type: 'movie', name: 'Gladiator', year: 2000 },
   { imdbId: 'tt0407887', type: 'movie', name: 'The Departed', year: 2006 },
   { imdbId: 'tt0482571', type: 'movie', name: 'The Prestige', year: 2006 },
   { imdbId: 'tt2582802', type: 'movie', name: 'Whiplash', year: 2014 },
+  { imdbId: 'tt1392190', type: 'movie', name: 'Mad Max: Fury Road', year: 2015 },
+  { imdbId: 'tt1856101', type: 'movie', name: 'Blade Runner 2049', year: 2017 },
   { imdbId: 'tt4633694', type: 'movie', name: 'Spider-Man: Into the Spider-Verse', year: 2018 },
+  { imdbId: 'tt4154756', type: 'movie', name: 'Avengers: Infinity War', year: 2018 },
+  { imdbId: 'tt4154796', type: 'movie', name: 'Avengers: Endgame', year: 2019 },
+  { imdbId: 'tt7286456', type: 'movie', name: 'Joker', year: 2019 },
+  { imdbId: 'tt8579674', type: 'movie', name: '1917', year: 2019 },
   { imdbId: 'tt1160419', type: 'movie', name: 'Dune', year: 2021 },
+  { imdbId: 'tt1877830', type: 'movie', name: 'The Batman', year: 2022 },
   { imdbId: 'tt6710474', type: 'movie', name: 'Everything Everywhere All at Once', year: 2022 },
+  { imdbId: 'tt9362722', type: 'movie', name: 'Spider-Man: Across the Spider-Verse', year: 2023 },
   { imdbId: 'tt1517268', type: 'movie', name: 'Barbie', year: 2023 },
   { imdbId: 'tt12037194', type: 'movie', name: 'Furiosa: A Mad Max Saga', year: 2024 },
   { imdbId: 'tt6263850', type: 'movie', name: 'Deadpool & Wolverine', year: 2024 },
-  // Series populares (serie completa: todas las temporadas y episodios)
-  { imdbId: 'tt33539520', type: 'series', name: 'Neagley', year: 2026 },
-  { imdbId: 'tt26545992', type: 'series', name: 'Lanterns', year: 2026 },
+  { imdbId: 'tt27165187', type: 'movie', name: 'The End of Oak Street', year: 2026 },
+  { imdbId: 'tt37287335', type: 'movie', name: 'Obsession', year: 2026 },
+  { imdbId: 'tt28014327', type: 'movie', name: 'Mayday', year: 2026 },
+  { imdbId: 'tt34206385', type: 'movie', name: 'Primetime', year: 2026 },
+  { imdbId: 'tt35298123', type: 'movie', name: 'Teenage Sex and Death at Camp Miasma', year: 2026 },
+  // Series populares de distintas décadas (serie completa: todas las temporadas y episodios)
   { imdbId: 'tt0944947', type: 'series', name: 'Game of Thrones', year: 2011 },
   { imdbId: 'tt0903747', type: 'series', name: 'Breaking Bad', year: 2008 },
+  { imdbId: 'tt0108778', type: 'series', name: 'Friends', year: 1994 },
+  { imdbId: 'tt0141842', type: 'series', name: 'The Sopranos', year: 1999 },
+  { imdbId: 'tt0052520', type: 'series', name: 'The Twilight Zone', year: 1959 },
   { imdbId: 'tt4574334', type: 'series', name: 'Stranger Things', year: 2016 },
   { imdbId: 'tt7366338', type: 'series', name: 'Chernobyl', year: 2019 },
   { imdbId: 'tt3581920', type: 'series', name: 'The Last of Us', year: 2023 },
@@ -346,9 +418,15 @@ export const FALLBACK_DISCOVERY_POOL = Object.freeze([
   { imdbId: 'tt8111088', type: 'series', name: 'The Mandalorian', year: 2019 },
   { imdbId: 'tt3032476', type: 'series', name: 'Better Call Saul', year: 2015 },
   { imdbId: 'tt2861424', type: 'series', name: 'Rick and Morty', year: 2013 },
+  { imdbId: 'tt33539520', type: 'series', name: 'Neagley', year: 2026 },
+  { imdbId: 'tt26545992', type: 'series', name: 'Lanterns', year: 2026 },
 ]);
 
-function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } = {}) {
+function normalizeCatalogMeta(raw, fallbackType = 'movie', {
+  now = Date.now(),
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
+} = {}) {
   if (!raw || typeof raw !== 'object') return null;
   const imdbId = String(raw.imdb_id || raw.id || '').toLowerCase().trim();
   if (!IMDB_ID_RE.test(imdbId)) return null;
@@ -357,8 +435,7 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
   const type = raw.type === 'series' || fallbackType === 'series' ? 'series' : 'movie';
   const yearMatch = String(raw.year || raw.releaseInfo || '').match(/\b(19\d{2}|20\d{2})\b/);
   const year = yearMatch ? Number(yearMatch[1]) : null;
-  const currentYear = new Date(now).getUTCFullYear();
-  if (year && year > currentYear) return null;
+  if (year != null && (year < minYear || year > maxYear)) return null;
   if (raw.released) {
     const releasedMs = Date.parse(raw.released);
     if (Number.isFinite(releasedMs) && releasedMs > now + DAY_MS) return null;
@@ -391,20 +468,22 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', { now = Date.now() } 
 
 const TMDB_MOVIE_FEEDS = Object.freeze([
   '/trending/movie/week',
+  '/movie/top_rated',
   '/movie/popular',
   '/movie/now_playing',
-  '/movie/top_rated',
+  ...SEARCH_YEARS.map(y => `/discover/movie?sort_by=popularity.desc&primary_release_date.gte=${MIN_SEARCH_YEAR}-01-01&primary_release_date.lte=${MAX_SEARCH_YEAR}-12-31&primary_release_year=${y}`),
 ]);
 
 const TMDB_SERIES_FEEDS = Object.freeze([
   '/trending/tv/week',
-  '/tv/popular',
   '/tv/top_rated',
+  '/tv/popular',
+  ...SEARCH_YEARS.map(y => `/discover/tv?sort_by=popularity.desc&first_air_date.gte=${MIN_SEARCH_YEAR}-01-01&first_air_date.lte=${MAX_SEARCH_YEAR}-12-31&first_air_date_year=${y}`),
 ]);
 
 /**
- * Descubre películas y series desde TMDB (cuando hay TMDB_API_KEY) y resuelve
- * su IMDb ID (`tt...`) mediante `/external_ids`.
+ * Descubre películas y series desde TMDB (cuando hay TMDB_API_KEY) entre 1935
+ * y 2099 y resuelve su IMDb ID (`tt...`) mediante `/external_ids`.
  */
 export async function discoverFromTmdb(fetchJSON, {
   apiKey = '',
@@ -413,6 +492,8 @@ export async function discoverFromTmdb(fetchJSON, {
   seriesCount = 2,
   cursor = 0,
   now = Date.now(),
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
   onWarning = null,
 } = {}) {
   const key = String(apiKey || '').trim();
@@ -427,7 +508,8 @@ export async function discoverFromTmdb(fetchJSON, {
   const tryFeed = async (kind, feeds, target, bucket) => {
     for (let i = 0; i < feeds.length && bucket.length < target; i++) {
       const feed = feeds[(cursor + i) % feeds.length];
-      const url = `https://api.themoviedb.org/3${feed}?api_key=${encodeURIComponent(key)}&language=es-ES&page=${page}`;
+      const sep = feed.includes('?') ? '&' : '?';
+      const url = `https://api.themoviedb.org/3${feed}${sep}api_key=${encodeURIComponent(key)}&language=es-ES&page=${page}`;
       let list;
       try {
         const data = await fetchJSON(url, { timeout: 10000, retries: 1 });
@@ -456,7 +538,7 @@ export async function discoverFromTmdb(fetchJSON, {
             type: kind === 'tv' ? 'series' : 'movie',
             year: releaseDate ? releaseDate.slice(0, 4) : null,
             released: releaseDate,
-          }, kind === 'tv' ? 'series' : 'movie', { now });
+          }, kind === 'tv' ? 'series' : 'movie', { now, minYear, maxYear });
           if (!item || seen.hasItem(item)) continue;
           batchIds.add(item.imdbId);
           batchTitles.add(normTitle);
@@ -473,10 +555,32 @@ export async function discoverFromTmdb(fetchJSON, {
   return { movies, series };
 }
 
+function orderCatalogPathsForCursor(paths, cursor, { now = Date.now(), minYear = MIN_SEARCH_YEAR, maxYear = MAX_SEARCH_YEAR } = {}) {
+  const currentYear = new Date(now).getUTCFullYear();
+  const activeMax = Math.min(maxYear, Math.max(minYear, currentYear + 1));
+  const primary = [];
+  const future = [];
+  for (const path of paths) {
+    const m = path.match(/genre=(\d{4})\.json$/);
+    if (!m) {
+      primary.push(path);
+      continue;
+    }
+    const y = Number(m[1]);
+    if (y < minYear || y > maxYear) continue;
+    if (y <= activeMax) primary.push(path);
+    else future.push(path);
+  }
+  const rotatedPrimary = primary.map((_, i) => primary[(cursor + i) % primary.length]);
+  const rotatedFuture = future.map((_, i) => future[(cursor + i) % future.length]);
+  return [...rotatedPrimary, ...rotatedFuture];
+}
+
 /**
- * Descubre títulos nuevos (películas y series) que NO estén en `seen`.
+ * Descubre títulos nuevos (películas y series entre 1935 y 2099) que NO estén en `seen`.
  * Si hay `tmdbApiKey` consulta primero TMDB; después los catálogos públicos de
- * Cinemeta rotando según `seen.cursor` y por último `FALLBACK_DISCOVERY_POOL`.
+ * Cinemeta rotando según `seen.cursor` (repartiendo entre varios años/décadas)
+ * y por último `FALLBACK_DISCOVERY_POOL`.
  */
 export async function discoverCatalogItems(fetchJSON, {
   seen = createSeenStore(),
@@ -486,6 +590,8 @@ export async function discoverCatalogItems(fetchJSON, {
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
   onWarning = null,
 } = {}) {
   const total = Math.max(1, Number(count) || DEFAULT_BATCH_SIZE);
@@ -528,42 +634,60 @@ export async function discoverCatalogItems(fetchJSON, {
       seriesCount: targetSeries,
       cursor,
       now,
+      minYear,
+      maxYear,
       onWarning,
     });
     for (const m of fromTmdb.movies) if (canPick(m) && pickedMovies.length < targetMovies) recordPick(m, pickedMovies);
     for (const s of fromTmdb.series) if (canPick(s) && pickedSeries.length < targetSeries) recordPick(s, pickedSeries);
   }
 
+  let visitedPaths = 0;
   if (typeof fetchJSON === 'function') {
-    // Películas desde catálogos rotativos
-    for (let i = 0; i < MOVIE_CATALOG_PATHS.length && pickedMovies.length < targetMovies; i++) {
-      const path = MOVIE_CATALOG_PATHS[(cursor + i) % MOVIE_CATALOG_PATHS.length];
-      try {
-        const data = await fetchJSON(`${root}${path}`, { timeout: 10000, retries: 1 });
-        for (const raw of data?.metas || []) {
-          if (pickedMovies.length >= targetMovies) break;
-          const item = normalizeCatalogMeta(raw, 'movie', { now });
-          if (canPick(item)) recordPick(item, pickedMovies);
-        }
-      } catch (err) {
-        onWarning?.(`Catálogo Cinemeta (${path}): ${err.message || err}`);
-      }
-    }
+    const collectFromCatalog = async (catalogPaths, kind, target, bucket) => {
+      const needed = target - bucket.length;
+      if (needed <= 0) return 0;
+      const ordered = orderCatalogPathsForCursor(catalogPaths, cursor, { now, minYear, maxYear });
+      // Cuando se piden más de 3 títulos, repartimos entre varios catálogos/años
+      // (1935–2099) para no llenar todo el lote con un único año (p. ej. 2025/2026).
+      const perCatalogCap = needed <= 3 ? needed : Math.max(2, Math.ceil(needed / 6));
+      const maxRequests = needed <= 3
+        ? ordered.length
+        : Math.min(ordered.length, Math.max(10, Math.ceil(needed / perCatalogCap) + 4));
+      const reserve = [];
+      let requests = 0;
 
-    // Series desde catálogos rotativos
-    for (let i = 0; i < SERIES_CATALOG_PATHS.length && pickedSeries.length < targetSeries; i++) {
-      const path = SERIES_CATALOG_PATHS[(cursor + i) % SERIES_CATALOG_PATHS.length];
-      try {
-        const data = await fetchJSON(`${root}${path}`, { timeout: 10000, retries: 1 });
-        for (const raw of data?.metas || []) {
-          if (pickedSeries.length >= targetSeries) break;
-          const item = normalizeCatalogMeta(raw, 'series', { now });
-          if (canPick(item)) recordPick(item, pickedSeries);
+      for (let i = 0; i < ordered.length && bucket.length < target && requests < maxRequests; i++) {
+        const path = ordered[i];
+        requests++;
+        try {
+          const data = await fetchJSON(`${root}${path}`, { timeout: 10000, retries: 1 });
+          let takenHere = 0;
+          for (const raw of data?.metas || []) {
+            const item = normalizeCatalogMeta(raw, kind, { now, minYear, maxYear });
+            if (!canPick(item)) continue;
+            if (takenHere < perCatalogCap && bucket.length < target) {
+              recordPick(item, bucket);
+              takenHere++;
+            } else {
+              reserve.push(item);
+            }
+          }
+        } catch (err) {
+          onWarning?.(`Catálogo Cinemeta (${path}): ${err.message || err}`);
         }
-      } catch (err) {
-        onWarning?.(`Catálogo Cinemeta (${path}): ${err.message || err}`);
       }
-    }
+
+      for (const item of reserve) {
+        if (bucket.length >= target) break;
+        if (canPick(item)) recordPick(item, bucket);
+      }
+      return requests;
+    };
+
+    const movieReqs = await collectFromCatalog(MOVIE_CATALOG_PATHS, 'movie', targetMovies, pickedMovies);
+    const seriesReqs = await collectFromCatalog(SERIES_CATALOG_PATHS, 'series', targetSeries, pickedSeries);
+    visitedPaths = Math.max(movieReqs, seriesReqs);
   }
 
   // Respaldo con el pool integrado si Cinemeta no devolvió suficientes títulos nuevos.
@@ -571,7 +695,7 @@ export async function discoverCatalogItems(fetchJSON, {
     const poolLen = FALLBACK_DISCOVERY_POOL.length;
     for (let i = 0; i < poolLen; i++) {
       const raw = FALLBACK_DISCOVERY_POOL[(cursor + i) % poolLen];
-      const item = normalizeCatalogMeta({ ...raw, imdb_id: raw.imdbId }, raw.type, { now });
+      const item = normalizeCatalogMeta({ ...raw, imdb_id: raw.imdbId }, raw.type, { now, minYear, maxYear });
       if (!canPick(item)) continue;
       if (item.type === 'movie' && pickedMovies.length < targetMovies) {
         recordPick(item, pickedMovies);
@@ -582,7 +706,7 @@ export async function discoverCatalogItems(fetchJSON, {
     }
   }
 
-  seen.cursor = cursor + 1;
+  seen.cursor = cursor + Math.max(1, visitedPaths);
   return [...pickedMovies, ...pickedSeries];
 }
 
@@ -606,6 +730,8 @@ export async function rotateWatchlist(currentText, {
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
+  minYear = MIN_SEARCH_YEAR,
+  maxYear = MAX_SEARCH_YEAR,
   onWarning = null,
 } = {}) {
   const targetSize = Math.max(1, Number(batchSize) || DEFAULT_BATCH_SIZE);
@@ -653,6 +779,8 @@ export async function rotateWatchlist(currentText, {
       tmdbApiKey,
       baseUrl,
       now,
+      minYear,
+      maxYear,
       onWarning,
     });
     seen.cursor = tempSeen.cursor;

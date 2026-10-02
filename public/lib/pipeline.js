@@ -391,7 +391,7 @@ function capEpisodeQueries(expanded, max) {
 export async function loadMetadata(items, { fetchJSON, baseUrl = CINEMETA_URL, concurrency = 4, onWarning = null } = {}) {
   const typeById = new Map();
   for (const item of items) {
-    if (item.type === 'series') typeById.set(item.imdbId, 'series');
+    if (item.type === 'series' || item.typeHint === 'series') typeById.set(item.imdbId, 'series');
     else if (!typeById.has(item.imdbId)) typeById.set(item.imdbId, 'movie');
   }
   const metaById = new Map();

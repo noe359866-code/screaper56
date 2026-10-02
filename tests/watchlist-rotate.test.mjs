@@ -2,6 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  MAX_SEARCH_YEAR,
+  MIN_SEARCH_YEAR,
+  MOVIE_CATALOG_PATHS,
+  SEARCH_YEARS,
+  SERIES_CATALOG_PATHS,
   createSeenStore,
   discoverCatalogItems,
   discoverFromTmdb,
@@ -273,3 +278,61 @@ test('discoverFromTmdb y enrichWithTmdbAndOmdb usan TMDB_API_KEY y OMDB_API_KEY 
   );
   assert.equal(record.tmdb_id, 872585);
 });
+
+test('los catálogos y el descubrimiento cubren todos los años de 1935 a 2099 (no solo 2026/2025)', async () => {
+  assert.equal(MIN_SEARCH_YEAR, 1935);
+  assert.equal(MAX_SEARCH_YEAR, 2099);
+  assert.equal(SEARCH_YEARS.length, 2099 - 1935 + 1);
+  for (let year = 1935; year <= 2099; year++) {
+    assert.ok(SEARCH_YEARS.includes(year), `SEARCH_YEARS debe incluir ${year}`);
+    assert.ok(
+      MOVIE_CATALOG_PATHS.includes(`/catalog/movie/year/genre=${year}.json`),
+      `MOVIE_CATALOG_PATHS debe incluir ${year}`,
+    );
+    assert.ok(
+      SERIES_CATALOG_PATHS.includes(`/catalog/series/year/genre=${year}.json`),
+      `SERIES_CATALOG_PATHS debe incluir ${year}`,
+    );
+  }
+
+  // Simula catálogos por año: debe repartir entre varias décadas (1935–2099)
+  // y descartar años fuera de 1935–2099 (p. ej. 1920).
+  const fetchJSON = async url => {
+    const yearMatch = url.match(/genre=(\d{4})\.json$/);
+    const kind = url.includes('/series/') ? 'series' : 'movie';
+    if (yearMatch) {
+      const y = Number(yearMatch[1]);
+      return {
+        metas: Array.from({ length: 10 }, (_, idx) => ({
+          imdb_id: `tt${String(y * 1000 + idx + (kind === 'series' ? 500 : 1)).padStart(7, '0')}`,
+          name: `${kind === 'series' ? 'Serie' : 'Película'} ${y} #${idx + 1}`,
+          type: kind,
+          year: String(y),
+        })),
+      };
+    }
+    return {
+      metas: [
+        { imdb_id: 'tt0010001', name: 'Silent Era Film', type: kind, year: '1920' }, // < 1935: fuera
+        { imdb_id: 'tt0026029', name: 'The 39 Steps', type: kind, year: '1935' },
+        { imdb_id: 'tt9999099', name: 'Future Sci-Fi', type: kind, year: '2099' },
+      ],
+    };
+  };
+
+  const discovered = await discoverCatalogItems(fetchJSON, {
+    seen: createSeenStore(),
+    count: 10,
+    movieCount: 8,
+    seriesCount: 2,
+    now: Date.parse('2026-10-01T00:00:00Z'),
+  });
+
+  assert.equal(discovered.length, 10);
+  assert.equal(discovered.some(d => d.imdbId === 'tt0010001'), false, 'descarta años anteriores a 1935');
+  assert.ok(discovered.some(d => d.year === 1935), 'incluye títulos de 1935');
+  assert.ok(discovered.some(d => d.year === 2099), 'admite años hasta 2099');
+  const movieYears = new Set(discovered.filter(d => d.type === 'movie').map(d => d.year));
+  assert.ok(movieYears.size >= 4, 'reparte las películas entre varios años/décadas en vez de un único año');
+});
+

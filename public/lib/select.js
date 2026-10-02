@@ -153,8 +153,11 @@ export function englishTier(stream) {
 
 // ---------- ¿es la película / el episodio pedido? ----------
 
-// Años de estreno escritos en el release ("Dune 1984", "(2021)").
-const YEAR_RE = /(?<![0-9])(19[2-9][0-9]|20[0-9]{2})(?![0-9])/g;
+export const MIN_RELEASE_YEAR = 1935;
+export const MAX_RELEASE_YEAR = 2099;
+
+// Años de estreno escritos en el release ("The 39 Steps 1935", "Dune 1984", "(2021)").
+const YEAR_RE = /(?<![0-9])(19(?:3[5-9]|[4-9][0-9])|20[0-9]{2})(?![0-9])/g;
 
 function numbersIn(texts) {
   const out = new Set();
@@ -163,17 +166,16 @@ function numbersIn(texts) {
 }
 
 /**
- * Años que menciona el título del torrent, sin contar números que forman parte
- * del propio título de la película ("1917", "Blade Runner 2049", "2001: Odisea…")
- * ni años futuros.
+ * Años que menciona el título del torrent (1935–2099), sin contar números que
+ * forman parte del propio título de la película ("1917", "Blade Runner 2049", "2001: Odisea…").
  */
-export function releaseYears(title, knownTitles = [], { maxYear = new Date().getFullYear() + 1 } = {}) {
+export function releaseYears(title, knownTitles = [], { minYear = MIN_RELEASE_YEAR, maxYear = MAX_RELEASE_YEAR } = {}) {
   // "(1994)" de la etiqueta del watchlist es el año, no parte del título.
   const titleNumbers = numbersIn(knownTitles.map(t => String(t ?? '').replace(/\(\s*\d{4}\s*\)/g, ' ')));
   const years = new Set();
   for (const y of String(title ?? '').match(YEAR_RE) || []) {
     const year = Number(y);
-    if (year <= maxYear && !titleNumbers.has(year)) years.add(year);
+    if (year >= minYear && year <= maxYear && !titleNumbers.has(year)) years.add(year);
   }
   return [...years];
 }
