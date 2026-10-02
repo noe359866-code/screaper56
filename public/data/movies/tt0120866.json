@@ -1,0 +1,146 @@
+{
+  "id": "tt0120866",
+  "imdbId": "tt0120866",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Titus (1999)",
+  "name": "Titus",
+  "year": 1999,
+  "imdbRating": "7.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0120866.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0120866.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120866.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0120866.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 17,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Titus (1999) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 8772470702,
+      "sizeLabel": "8.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "9a2ebea7ce3b8221b62d72fba6117bc7235f2fcf",
+      "fileIdx": 6,
+      "score": 7.36,
+      "magnetUrl": "magnet:?xt=urn:btih:9a2ebea7ce3b8221b62d72fba6117bc7235f2fcf&dn=Titus%20(1999)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 22,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Titus (1999) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "description": "Titus (1999) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\n🎞️ BluRay · HEVC · AAC 5.1\n👤 22 💾 8.2 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.36,
+      "infoHash": "9a2ebea7ce3b8221b62d72fba6117bc7235f2fcf",
+      "fileIdx": 6,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 8772470702,
+      "sizeLabel": "8.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "filename": "Titus (1999) (1080p BluRay x265 10bit Tigole).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:9a2ebea7ce3b8221b62d72fba6117bc7235f2fcf"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9a2ebea7ce3b8221b62d72fba6117bc7235f2fcf&dn=Titus%20(1999)%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Titus (1999) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    }
+  ]
+}

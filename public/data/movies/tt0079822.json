@@ -1,0 +1,141 @@
+{
+  "id": "tt0079822",
+  "imdbId": "tt0079822",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Roller Boogie (1979)",
+  "name": "Roller Boogie",
+  "year": 1979,
+  "imdbRating": "4.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0079822.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0079822.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0079822.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0079822.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 8,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Roller Boogie 1979 1080p BluRay HEVC x265 BONE",
+      "quality": "1080p",
+      "seeders": 63,
+      "sizeBytes": 1395864371,
+      "sizeLabel": "1.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "45a78329a4efd36d1509c9fac5db23b7b5277fbe",
+      "fileIdx": 0,
+      "score": 8,
+      "magnetUrl": "magnet:?xt=urn:btih:45a78329a4efd36d1509c9fac5db23b7b5277fbe&dn=Roller%20Boogie%201979%201080p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 63,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Roller Boogie 1979 1080p BluRay HEVC x265 BONE",
+      "description": "Roller Boogie 1979 1080p BluRay HEVC x265 BONE\n🎞️ BluRay · HEVC\n👤 63 💾 1.3 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8,
+      "infoHash": "45a78329a4efd36d1509c9fac5db23b7b5277fbe",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 63,
+      "sizeBytes": 1395864371,
+      "sizeLabel": "1.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "Roller Boogie 1979 1080p BluRay HEVC x265 BONE.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:45a78329a4efd36d1509c9fac5db23b7b5277fbe"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:45a78329a4efd36d1509c9fac5db23b7b5277fbe&dn=Roller%20Boogie%201979%201080p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Roller Boogie 1979 1080p BluRay HEVC x265 BONE.mkv"
+      }
+    }
+  ]
+}

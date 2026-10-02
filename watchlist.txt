@@ -1,8 +1,8 @@
 # Peerflix Static – Watchlist
 # -----------------------------------------------------------
-# Actualizado automáticamente el 2026-10-02 10:20:56 UTC (10 nuevos · 100 anteriores eliminados).
+# Actualizado automáticamente el 2026-10-02 20:51:52 UTC (98 nuevos · 8 anteriores eliminados).
 # En cada ejecución de la Action se eliminan los títulos ya procesados
-# y se cargan películas y series nuevas para no repetir torrents ni nombres.
+# y se cargan películas y series nuevas (1935–2099) para no repetir torrents ni nombres.
 #
 # Formatos soportados:
 #   tt1234567          -> película (IMDb); si el ID resulta ser una serie,
@@ -13,15 +13,105 @@
 # -----------------------------------------------------------
 
 # --- Películas ---
-tt27706593 The Rivals of Amziah King (2026)
-tt41791573 Dear You (2026)
-tt35674521 Rose of Nevada (2026)
-tt15284556 Marama (2026)
-tt33301434 Mile End Kicks (2026)
-tt33071426 The Drama (2026)
-tt34966562 The Christophers (2026)
-tt32252801 Blue Heron (2026)
+tt0129023 Dark Harbor (1998)
+tt0192335 Mr. Death: The Rise and Fall of Fred A. Leuchter, Jr. (1999)
+tt0192701 Turbulence 2: Fear of Flying (1999)
+tt0177789 Galaxy Quest (1999)
+tt0134119 The Talented Mr. Ripley (1999)
+tt0145653 Angela's Ashes (1999)
+tt0120866 Titus (1999)
+tt0196857 Play It to the Bone (1999)
+tt0166653 The Health Journey (1999)
+tt0266075 Memento Mori (1999)
+tt0146838 Any Given Sunday (1999)
+tt0119079 Onegin (1999)
+tt0185708 Street Fighter Alpha (1999)
+tt0097015 Miss Marple: A Caribbean Mystery (1989)
+tt0098672 The Woman in Black (1989)
+tt0098439 Tango & Cash (1989)
+tt0096794 Always (1989)
+tt0100934 Wild Orchid (1989)
+tt0100211 Music Box (1989)
+tt0096969 Born on the Fourth of July (1989)
+tt0097444 Godzilla vs. Biollante (1989)
+tt0097441 Glory (1989)
+tt0096943 Blaze (1989)
+tt0098663 The Wizard (1989)
+tt0097244 God of Gamblers (1989)
+tt0097276 Enemies, A Love Story (1989)
+tt0080037 The Very Same Munchhausen (1980)
+tt0079219 Going in Style (1979)
+tt0210804 Letuchiy korabl (1979)
+tt0079013 Cuba (1979)
+tt0079858 Scavenger Hunt (1979)
+tt0079100 The Electric Horseman (1979)
+tt0078869 The Black Hole (1979)
+tt0078913 Buffet Froid (1979)
+tt0079322 I... For Icarus (1979)
+tt0079472 The Magnificent Butcher (1979)
+tt0079822 Roller Boogie (1979)
+tt0078841 Being There (1979)
+tt0078754 All That Jazz (1979)
+tt0064368 Gheisar (1969)
+tt0146970 Krokodil Gena (1969)
+tt0065566 The Computer Wore Tennis Shoes (1969)
+tt0066065 Medea (1969)
+tt0067315 The Red Tent (1969)
+tt0064866 Burn! (1969)
+tt0064175 Boot Hill (1969)
+tt0064886 The Reivers (1969)
+tt0064030 Anne of the Thousand Days (1969)
+tt0064757 On Her Majesty's Secret Service (1969)
+tt0065112 Topaz (1969)
+tt0064117 Cactus Flower (1969)
+tt0066565 White Sun of the Desert (1970)
+tt0053318 Suddenly, Last Summer (1959)
+tt0052837 The Gazebo (1959)
+tt0053137 On the Beach (1959)
+tt0053168 Pickpocket (1959)
+tt0052948 Journey to the Center of the Earth (1959)
+tt0053108 Never So Few (1959)
+tt0053143 Operation Petticoat (1959)
+tt0052600 Ballad of a Soldier (1959)
+tt0052587 The Atomic Submarine (1959)
+tt0052564 The Angry Red Planet (1959)
+tt0053115 The Human Condition II: Road to Eternity (1959)
+tt0053320 A Summer Place (1959)
+tt0052618 Ben-Hur (1959)
+tt0041509 The Inspector General (1949)
+tt0041779 Rabbit Hood (1949)
+tt0042369 D.O.A. (1949)
+tt0041327 East Side, West Side (1949)
+tt0041996 Twelve O'Clock High (1949)
+tt0041838 Samson and Delilah (1949)
+tt0041473 Holiday Affair (1949)
+tt0041786 The Reckless Moment (1949)
+tt0041716 On the Town (1949)
+tt0040866 La Terra Trema (1948)
+tt0041954 Tension (1949)
+tt0041513 Intruder in the Dust (1949)
+tt0041090 Adam's Rib (1949)
 
 # --- Series ---
 tt40197357 Scrubs
 tt10986410 Ted Lasso
+tt0167872 David Copperfield
+tt0907683 Beck
+tt0199232 Jesus
+tt0215364 Wives and Daughters
+tt0096697 The Simpsons
+tt0092337 Dekalog
+tt0098740 America's Funniest Home Videos
+tt0094517 Mystery Science Theater 3000
+tt0078638 Knots Landing
+tt0076998 D'artagnan and Three Musketeers
+tt0079844 Salem's Lot
+tt0078655 The Meeting Place Cannot Be Changed
+tt0063869 The Benny Hill Show
+tt0063951 Sesame Street
+tt0063929 Monty Python's Flying Circus
+tt0063925 Love, American Style
+tt0052507 The Bullwinkle Show
+tt0052522 The Untouchables
+tt0052461 Dennis the Menace
+tt0052520 The Twilight Zone

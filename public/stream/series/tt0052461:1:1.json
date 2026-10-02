@@ -1,0 +1,131 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "[Bitsearch.to] Daniel El Travieso - Temporada 1 [HDTV][Cap.101_113][Castellano][www.descargas2020.org][www.pctnew.org]",
+      "description": "[Bitsearch.to] Daniel El Travieso - Temporada 1 [HDTV][Cap.101_113][Castellano][www.descargas2020.org][www.pctnew.org]\n🎞️ HDTV\n👤 0 💾 1.2 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 5.23,
+      "infoHash": "647d37144c1638cc8e2ff724aa16a2062917d6a4",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1288490189,
+      "sizeLabel": "1.2 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:647d37144c1638cc8e2ff724aa16a2062917d6a4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:647d37144c1638cc8e2ff724aa16a2062917d6a4&dn=%5BBitsearch.to%5D%20Daniel%20El%20Travieso%20-%20Temporada%201%20%5BHDTV%5D%5BCap.101_113%5D%5BCastellano%5D%5Bwww.descargas2020.org%5D%5Bwww.pctnew.org%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Dennis the Menace.S01-S04.1959.480p.H265-Zero00",
+      "description": "Dennis the Menace.S01-S04.1959.480p.H265-Zero00\n🎞️ HEVC\n👤 0 💾 56.6 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": -0.33,
+      "infoHash": "53288b590b0bf3253e37e8f099e41cba2115e5b7",
+      "fileIdx": 105,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 59391345,
+      "sizeLabel": "56.6 MB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "Dennis the Menace.S01E01.Dennis Goes to the Movies.480p.H265-Zero00.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:53288b590b0bf3253e37e8f099e41cba2115e5b7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:53288b590b0bf3253e37e8f099e41cba2115e5b7&dn=Dennis%20the%20Menace.S01-S04.1959.480p.H265-Zero00&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Dennis the Menace.S01E01.Dennis Goes to the Movies.480p.H265-Zero00.mkv"
+      }
+    }
+  ]
+}

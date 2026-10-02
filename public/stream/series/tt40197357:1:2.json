@@ -1,0 +1,138 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Scrubs (2026) [HDTV 1080p][Cap.102]",
+      "description": "Scrubs (2026) [HDTV 1080p][Cap.102]\n🎞️ HDTV\n👤 6 💾 973 MB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 14.51,
+      "infoHash": "709c7a14bebfde7bccefefefc9d8a6ab12649826",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 1019928904,
+      "sizeLabel": "973 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Wolfmax4k"
+      ],
+      "filename": "Scrubs (2026) [HDTV 1080p][Cap.102].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.dler.org:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:709c7a14bebfde7bccefefefc9d8a6ab12649826"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:709c7a14bebfde7bccefefefc9d8a6ab12649826&dn=Scrubs%20(2026)%20%5BHDTV%201080p%5D%5BCap.102%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Scrubs (2026) [HDTV 1080p][Cap.102].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Scrubs.2026.S01.1080p.AMZN.WEBRip.DDP5.1.HEVC.x265-Vyndros",
+      "description": "Scrubs.2026.S01.1080p.AMZN.WEBRip.DDP5.1.HEVC.x265-Vyndros\n🎞️ WEB-DL · HEVC · DD+ 5.1\n👤 147 💾 440 MB ⚙️ Torrentio+ThePirateBay+",
+      "pick": "en",
+      "score": 8.27,
+      "infoHash": "074d9e2829714ceabf6fe86a109d973379f06213",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 147,
+      "sizeBytes": 461016924,
+      "sizeLabel": "440 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Scrubs.(2026).S01E02.My.2nd.First.Day.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:074d9e2829714ceabf6fe86a109d973379f06213"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:074d9e2829714ceabf6fe86a109d973379f06213&dn=Scrubs.2026.S01.1080p.AMZN.WEBRip.DDP5.1.HEVC.x265-Vyndros&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Scrubs.(2026).S01E02.My.2nd.First.Day.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv"
+      }
+    }
+  ]
+}

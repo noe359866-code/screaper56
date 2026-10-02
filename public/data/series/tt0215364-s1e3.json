@@ -1,0 +1,140 @@
+{
+  "id": "tt0215364:1:3",
+  "imdbId": "tt0215364",
+  "type": "series",
+  "season": 1,
+  "episode": 3,
+  "label": "Wives and Daughters S01E03 – Episode 3",
+  "name": "Wives and Daughters",
+  "year": 1999,
+  "imdbRating": "8.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0215364:1:3.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0215364:1:3.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0215364:1:3.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0215364:1:3.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 5,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Wives and Daughters (1999)",
+      "quality": null,
+      "seeders": 8,
+      "sizeBytes": 912208691,
+      "sizeLabel": "870 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "a46fe8b03e75fdeb90d68e7111927863f51fbb8c",
+      "fileIdx": 3,
+      "score": 4.6,
+      "magnetUrl": "magnet:?xt=urn:btih:a46fe8b03e75fdeb90d68e7111927863f51fbb8c&dn=Wives%20and%20Daughters%20(1999)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 8,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Wives and Daughters (1999)",
+      "description": "Wives and Daughters (1999)\n👤 8 💾 870 MB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 4.6,
+      "infoHash": "a46fe8b03e75fdeb90d68e7111927863f51fbb8c",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 8,
+      "sizeBytes": 912208691,
+      "sizeLabel": "870 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "knaben",
+        "ThePirateBay"
+      ],
+      "filename": "Wives and Daughters (1999) 3.avi",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:a46fe8b03e75fdeb90d68e7111927863f51fbb8c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a46fe8b03e75fdeb90d68e7111927863f51fbb8c&dn=Wives%20and%20Daughters%20(1999)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Wives and Daughters (1999) 3.avi"
+      }
+    }
+  ]
+}
