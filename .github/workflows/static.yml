@@ -40,9 +40,9 @@ on:
         default: ""
         type: string
       batch_size:
-        description: "Cantidad de títulos nuevos a cargar en watchlist.txt"
+        description: "Cantidad de entradas del watchlist por lote (máximo 1000)"
         required: false
-        default: "10"
+        default: "1000"
         type: string
       genres:
         description: "Géneros con hueco reservado en cada lote (anime, documentales, terror, Sci-Fi…; 0 = ninguno)"
@@ -73,7 +73,7 @@ jobs:
   ingest:
     name: "Fetch Stremio streams & UPSERT Supabase"
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -117,7 +117,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ inputs.dry_run || '0' }}
           AUTO_WATCHLIST: ${{ inputs.issue != '' && '0' || inputs.rotate_watchlist || '1' }}
-          WATCHLIST_BATCH_SIZE: ${{ inputs.batch_size || '10' }}
+          WATCHLIST_BATCH_SIZE: ${{ inputs.batch_size || '1000' }}
           FOLLOW_SERIES: ${{ inputs.issue != '' && '0' || inputs.follow_series || '1' }}
           SERIES_ID: ${{ inputs.series_id || '' }}
           # Serie larga: máx. episodios expandidos por corrida; la próxima

@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 
 import {
   CINEMETA_GENRES,
+  DEFAULT_BATCH_SIZE,
+  MAX_BATCH_SIZE,
   MAX_SEARCH_YEAR,
   MIN_SEARCH_YEAR,
   MOVIE_CATALOG_PATHS,
@@ -33,6 +35,24 @@ test('normalizeTitleKey normaliza acentos, años y etiquetas de episodio para no
   assert.equal(normalizeTitleKey('Juego de Tronos S01E01 – Pilot'), 'juego de tronos');
   assert.equal(normalizeTitleKey('Juego de Tronos - Temporada 1'), 'juego de tronos');
   assert.equal(normalizeTitleKey('tt0111161'), null);
+});
+
+test('el lote automático predeterminado es de 1000 títulos y no supera el máximo', async () => {
+  assert.equal(DEFAULT_BATCH_SIZE, 1000);
+  assert.equal(MAX_BATCH_SIZE, 1000);
+  const metas = Array.from({ length: 1000 }, (_, i) => ({
+    imdb_id: `tt${String(1_000_000 + i)}`,
+    name: `Película de prueba ${i}`,
+    type: 'movie',
+    year: '2024',
+  }));
+  const discovered = await discoverCatalogItems(async () => ({ metas }), {
+    count: MAX_BATCH_SIZE + 1,
+    movieCount: MAX_BATCH_SIZE + 1,
+    seriesCount: 0,
+    focusGenres: '0',
+  });
+  assert.equal(discovered.length, 1000);
 });
 
 test('createSeenStore recuerda IDs, nombres y hashes de index.json y de Supabase', () => {

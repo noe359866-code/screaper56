@@ -9,10 +9,11 @@
 
 import { IMDB_LINE_RE } from './parse.js';
 import { resolveProviderSlugs } from './providers.js';
+import { MAX_BATCH_SIZE } from './watchlist.js';
 
 export const ISSUE_TITLE_PREFIX = '[ingest]';
 export const ISSUE_MARKER = '<!-- peerflix-static:ingest -->';
-const MAX_LINES = 500;
+const MAX_LINES = MAX_BATCH_SIZE;
 const MAX_LABEL = 200;
 
 function cleanLabel(label) {

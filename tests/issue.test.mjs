@@ -44,6 +44,13 @@ test('solo pasan líneas IMDb canónicas: sin backticks ni caracteres de control
   assert.equal(lines.find(l => l.startsWith('tt7654321')), 'tt7654321 a b c');
 });
 
+test('Issue admite hasta 1000 títulos para un lote grande', () => {
+  const list = Array.from({ length: 1001 }, (_, i) => `tt${String(1_000_000 + i).padStart(7, '0')}`).join('\n');
+  const { lines } = sanitizeWatchlistLines(list);
+  assert.equal(lines.length, 1000);
+  assert.equal(parseIssueBody(buildIssueBody(list)).count, 1000);
+});
+
 test('parseIssueBody acepta listas pegadas a mano (sin bloque) y opciones por defecto', () => {
   const parsed = parseIssueBody('tt0111161\r\ntt1375666 Inception');
   assert.equal(parsed.count, 2);
