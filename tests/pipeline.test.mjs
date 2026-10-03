@@ -9,6 +9,7 @@ import {
   loadMetadata,
   picksFromPublishedItem,
   processWatchlist,
+  rateLimitPauseMs,
   runPipeline,
   toOutputStream,
 } from '../public/lib/pipeline.js';
@@ -317,4 +318,125 @@ test('picksFromPublishedItem convierte datos del formato antiguo (todos los stre
   // "RM4K (1080p …)" se recalcula como 1080p: gana el 2160p real.
   assert.equal(upgraded.picks[1].infoHash, hash(3));
   assert.equal(upgraded.candidateCount, 3);
+});
+
+test('createJsonFetcher: ante un 403 prueba una vez con el siguiente User-Agent', async () => {
+  const agents = [];
+  const fetcher = createJsonFetcher({
+    retries: 2,
+    sleep: noSleep,
+    headers: attempt => ({ 'user-agent': attempt === 0 ? 'browser' : 'bot' }),
+    fetchImpl: async (_url, init) => {
+      agents.push(init.headers['user-agent']);
+      return init.headers['user-agent'] === 'browser' ? response(403, 'no') : response(200, { streams: [] });
+    },
+  });
+  assert.deepEqual(await fetcher('https://ytz.test/stream/movie/tt1.json'), { streams: [] });
+  assert.deepEqual(agents, ['browser', 'bot']);
+
+  // Si el siguiente también da 403, no insiste más.
+  let calls = 0;
+  const blocked = createJsonFetcher({ retries: 2, sleep: noSleep, headers: () => ({ 'user-agent': 'x' }), fetchImpl: async () => { calls++; return response(403, 'no'); } });
+  await assert.rejects(blocked('https://x'), err => err.status === 403);
+  assert.equal(calls, 2);
+});
+
+const tinyStream = (provider, n) => ({
+  infoHash: hash(n), title: `Movie 2020 1080p WEB-DL`, quality: '1080p', seeders: 10, sizeBytes: 2e9,
+  trackers: [], languages: [], provider: provider.slug, providerName: provider.name,
+});
+
+test('runPipeline: cada addon tiene su propia cola (uno lento no frena al resto)', async () => {
+  const providers = [
+    { slug: 'slow', name: 'Slow', baseUrl: 'https://slow.test', concurrency: 1 },
+    { slug: 'fast', name: 'Fast', baseUrl: 'https://fast.test' },
+  ];
+  const queries = [1, 2, 3, 4].map(n => ({ kind: 'movie', imdbId: `tt000000${n}`, label: `Movie ${n}` }));
+  let fastActive = 0;
+  let fastPeak = 0;
+  let slowActive = 0;
+  let slowPeak = 0;
+  const releaseSlow = [];
+  const streamSource = async (provider, query) => {
+    if (provider.slug === 'slow') {
+      slowPeak = Math.max(slowPeak, ++slowActive);
+      await new Promise(resolve => releaseSlow.push(resolve));
+      slowActive--;
+    } else {
+      fastPeak = Math.max(fastPeak, ++fastActive);
+      await new Promise(resolve => setTimeout(resolve, 5));
+      fastActive--;
+    }
+    return { url: provider.baseUrl, streams: [tinyStream(provider, Number(query.imdbId.slice(2)))] };
+  };
+  const run = runPipeline(queries, { providers, streamSource, concurrency: 4 });
+  // Mientras "slow" sigue bloqueado en su 1.ª consulta, "fast" ya terminó las 4.
+  await new Promise(resolve => setTimeout(resolve, 60));
+  assert.equal(fastPeak, 4);
+  assert.equal(slowPeak, 1);
+  const pump = setInterval(() => releaseSlow.shift()?.(), 1);
+  const result = await run;
+  clearInterval(pump);
+  assert.equal(result.perProvider.fast.ok, 4);
+  assert.equal(result.perProvider.slow.ok, 4);
+  assert.equal(slowPeak, 1);
+});
+
+test('runPipeline: un HTTP 429 pausa el addon y reintenta en vez de cortarlo enseguida', async () => {
+  const providers = [{ slug: 'torrentsdb', name: 'TorrentsDB', baseUrl: 'https://tdb.test', concurrency: 1 }];
+  const queries = [1, 2, 3, 4, 5, 6].map(n => ({ kind: 'movie', imdbId: `tt000000${n}`, label: `Movie ${n}` }));
+  let clock = 0;
+  const pauses = [];
+  let calls = 0;
+  const streamSource = async (provider, query) => {
+    calls++;
+    if (calls <= 4) { // 4 avisos seguidos: más que breakerThreshold (3), menos que 3×3
+      const err = new HttpError(429, 'x');
+      if (calls === 1) err.retryAfterMs = 8000;
+      throw err;
+    }
+    return { url: provider.baseUrl, streams: [tinyStream(provider, Number(query.imdbId.slice(2)))] };
+  };
+  const result = await runPipeline(queries, {
+    providers, streamSource, breakerThreshold: 3,
+    now: () => clock,
+    sleep: async ms => { pauses.push(ms); clock += ms; },
+  });
+  const stats = result.perProvider.torrentsdb;
+  assert.equal(stats.rateLimited, 4);
+  assert.equal(stats.skipped, 0, 'no se corta por 429 con solo 4 avisos');
+  assert.equal(stats.ok, 2);
+  // Retry-After (8 s) y luego backoff 10 s, 20 s, 40 s.
+  assert.deepEqual(pauses, [8000, 10000, 20000, 40000]);
+  assert.deepEqual([1, 2, 3, 4].map(n => rateLimitPauseMs(n)), [5000, 10000, 20000, 40000]);
+  assert.equal(rateLimitPauseMs(10), 60000);
+
+  // Con 429 sin fin, sí se acaba cortando tras 3×3 avisos.
+  let clock2 = 0;
+  const always = await runPipeline(
+    [...Array(12)].map((_, n) => ({ kind: 'movie', imdbId: `tt00000${10 + n}`, label: `M${n}` })),
+    { providers, streamSource: async () => { throw new HttpError(429, 'x'); }, breakerThreshold: 3, now: () => clock2, sleep: async ms => { clock2 += ms; } },
+  );
+  assert.equal(always.perProvider.torrentsdb.rateLimited, 9);
+  assert.equal(always.perProvider.torrentsdb.skipped, 3);
+  assert.match(always.errors.find(e => e.skipped).error, /9 avisos seguidos de límite de peticiones \(HTTP 429\)/);
+});
+
+test('runPipeline cuenta los picks que aporta cada addon y los que solo él encontró', async () => {
+  const providers = [
+    { slug: 'a', name: 'A', baseUrl: 'https://a.test' },
+    { slug: 'b', name: 'B', baseUrl: 'https://b.test' },
+  ];
+  const streamSource = async provider => ({
+    url: provider.baseUrl,
+    streams: provider.slug === 'a'
+      ? [
+        { ...tinyStream(provider, 1), title: 'Movie 2020 1080p Castellano', languages: ['es'] },
+        { ...tinyStream(provider, 2), title: 'Movie 2020 2160p WEB-DL English', quality: '4K', seeders: 50, languages: ['en'] },
+      ]
+      : [{ ...tinyStream(provider, 2), title: 'Movie 2020 2160p WEB-DL English', quality: '4K', seeders: 50, languages: ['en'] }],
+  });
+  const result = await runPipeline([{ kind: 'movie', imdbId: 'tt0000001', label: 'Movie (2020)' }], { providers, streamSource });
+  assert.deepEqual([result.perProvider.a.picks, result.perProvider.a.uniquePicks], [2, 1]);
+  assert.deepEqual([result.perProvider.b.picks, result.perProvider.b.uniquePicks], [1, 0]);
 });

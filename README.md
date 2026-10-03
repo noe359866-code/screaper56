@@ -11,8 +11,12 @@ Addons consultados por IMDb:
 - **Peerflix** — https://peerflix.mov/manifest.json
 - **TorrentsDB** — https://torrentsdb.com/manifest.json
 - **Torrentio** — https://torrentio.strem.fun/manifest.json
-- **ThePirateBay+** — https://thepiratebay-plus.strem.fun/manifest.json
 - **Ytztvio** — https://ytztvio.galacticcapsule.workers.dev/manifest.json
+- **TorrentClaw** — https://torrentclaw.com/api/stremio/manifest.json
+- **AniScraper** — https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json (solo anime; para lo demás responde vacío)
+- **StremThru Torz** — https://stremthru.13377001.xyz/stremio/torz/manifest.json (se consulta en modo P2P, sin debrid)
+- **Brazuca Torrents** — https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json (doblado al portugués y anime)
+- **ThePirateBay+** — https://thepiratebay-plus.strem.fun/manifest.json (**opcional**, desactivado por defecto; ver “Mejoras basadas en la última ingesta”)
 - **TPB Adult** — https://tpb-adult-addon.click/manifest.json (solo registrado; ver la nota más abajo)
 
 ## Tres formas de usarlo, ninguna necesita token
@@ -44,8 +48,10 @@ El resto también funciona sin token:
 watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
   └─ public/lib/pipeline.js  (mismo código en el navegador y en la Action)
        ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada (o de la serie completa)
-       ├─ /stream/movie|series/…json en los 5 addons IMDb
-       │    · reintentos con backoff (red, 429, 5xx; respeta Retry-After)
+       ├─ /stream/movie|series/…json en los 8 addons IMDb por defecto
+       │    · una cola por addon: uno lento no frena a los demás
+       │    · reintentos con backoff (red, 5xx; respeta Retry-After); 403 → otro User-Agent
+       │    · HTTP 429: pausa ese addon (5 s, 10 s, 20 s… máx. 60 s) en vez de cortarlo
        │    · si un addon falla 3 veces seguidas para un tipo, se deja de consultar
        ├─ fusión por info_hash (trackers, addons, idiomas, seeds, tamaño…)
        ├─ 2 picks por título: 🇪🇸 mejor en español + 🇬🇧 mejor en inglés
@@ -110,6 +116,39 @@ Van primero los que el torrent ya anunciaba y luego el resto de la lista, hasta
 `MAX_TRACKERS` (10 por defecto). Se descarga la lista del día; si falla, se usa
 la copia integrada.
 
+## Mejoras basadas en la última ingesta
+
+Se revisó `public/data/report.json` de la última ejecución (159 consultas) y
+se corrigió lo que fallaba de verdad:
+
+| Problema observado | Cambio |
+|---|---|
+| **Ytztvio**: HTTP 403 en todas las consultas (6 errores y 153 omitidas), pero responde bien desde un navegador | El User-Agent de navegador va primero y, si un addon da 403, se reintenta **una vez** con el siguiente User-Agent |
+| **TorrentsDB**: 3 × HTTP 429 y después 56 consultas omitidas por el cortocircuito | Un 429 ya no cuenta como fallo: pausa solo ese addon (Retry-After o 5 s → 10 s → 20 s…, máx. 60 s) y sigue. Solo se corta tras 9 avisos seguidos. Además, TorrentsDB usa 2 consultas a la vez como máximo |
+| **ThePirateBay+**: ~6 s por consulta y 14 streams en 159 consultas; aparecía en 4 de 254 picks y **ninguno era solo suyo** (Torrentio y TorrentsDB ya indexan TPB) | Desactivado por defecto, con timeout de 10 s. Se puede activar en ⚙️ Ajustes o con `PROVIDERS=…,piratebay` |
+| Una cola común de 4 consultas para todos los addons: el más lento frenaba al resto | Cada addon tiene su propia cola (`concurrency` en `providers.js`, o `FETCH_CONCURRENCY`) |
+| AniScraper a veces tarda hasta el 504 de Cloudflare | Timeout propio de 12 s |
+| **OMDb**: HTTP 401 en los 100 títulos (100 avisos que tapaban todo lo demás) | Con una API key inválida (401/403) se avisa **una vez** (“revisa el Secret `OMDB_API_KEY`”) y se sigue sin OMDb. Lo mismo con TMDB. Los avisos repetidos se agrupan en el resumen (`… (×100)`) |
+
+`perProviderStats` incluye ahora `picks` (torrents publicados en los que aparece
+cada addon), `uniquePicks` (los que **solo** él encontró: si es 0, quitarlo no
+cambiaría el resultado) y `rateLimited` (avisos 429). El resumen del job los
+muestra en la tabla “Addons consultados”.
+
+### Salud de los addons
+
+```bash
+npm run check-providers                       # todos los addons registrados
+PROVIDERS=torrentio,brazuca npm run check-providers
+STRICT=1 npm run check-providers              # sale con error si cae uno por defecto
+```
+
+Prueba cada addon con *Cadena perpetua* (`tt0111161`) y *Juego de Tronos*
+S01E01 (`tt0944947:1:1`) con el mismo cliente y parser que la ingesta, y muestra
+manifest, latencia y torrents válidos (✅ ok · 🟡 en parte · ⚪ vacío · ❌ caído).
+El workflow **Salud de los addons** (`providers-health.yml`) lo ejecuta a mano o
+cada lunes y deja la tabla en el resumen del job; solo lee, no hace commits.
+
 ## Metadatos sin API key: Cinemeta
 
 `https://v3-cinemeta.strem.io/meta/{movie|series}/{imdbId}.json` es el addon
@@ -147,8 +186,86 @@ IDs IMDb. Declara catálogos de tipo `Porn`, con búsquedas que devuelven IDs
 internos `jstrm:*`. Una consulta `stream/Porn/tt...` no es una correspondencia
 válida con una lista IMDb y puede devolver contenido no relacionado. Por eso la
 URL queda registrada en `public/lib/providers.js`, en `public/manifest.json` y
-en el reporte, pero **no se importan resultados adultos aleatorios**. Los otros
-cinco addons sí se consultan por cada IMDb ID.
+en el reporte, pero **no se importan resultados adultos aleatorios**. Los nueve
+addons consultables sí se piden por cada IMDb ID.
+
+## Formatos de TorrentClaw, StremThru Torz y AniScraper
+
+Estos tres addons no siguen el formato de Torrentio. Por eso tienen dos opciones
+en `public/lib/providers.js`, que `parseStremioStream` respeta:
+
+- `titleFromFilename`: el release se lee de `behaviorHints.filename`, porque la
+  primera línea del título son badges. TorrentClaw empieza con la puntuación
+  (`🔵 65/100 · 👤 579`) y Torz con `💿 BluRay REMUX`. Así un `👤 720` no se toma
+  por una resolución.
+- `sourceBadge`: indica qué badge marca la fuente. En TorrentClaw es `🏷️`
+  (`🌐 1080p` es la calidad), en Torz `🔍` (`⚙️` es el grupo y `🌐` los
+  idiomas) y en AniScraper `⚙️`.
+
+Además, para todos los addons:
+
+- **Tamaño**: `💾`/`📏` (archivo), luego `behaviorHints.videoSize` y, por
+  último, `📦` (pack de Torz).
+- **Seeders**: `👤` o `🌱`.
+- **Idiomas**: las líneas `💬 …` son subtítulos y no cuentan como audio.
+
+StremThru Torz exige configuración (`configurationRequired`). Se consulta con
+la configuración pública P2P `{"stores":[{"c":"p2p","t":""}]}` en base64, que
+ya va incluida en su `baseUrl`. No hace falta token ni debrid.
+
+## Solo addons sin registro
+
+Todos los addons consultados funcionan **sin cuenta, sin debrid y sin token**.
+Se descartaron los que exigen registrarse:
+
+- **MediaFusion** y **Comet** (ElfHosted): sin debrid no devuelven torrents.
+  Comet responde “Non-debrid searches disabled on ElfHosted” y MediaFusion
+  `{"streams":[]}`.
+- **Intelligent Debrid Search** (`intell-debridsearch.nepiraw.com`): solo busca
+  en *tu* nube de debrid y exige la API key de RealDebrid, AllDebrid, TorBox,
+  etc. Sin ella responde `{"streams":[]}`.
+
+**Brazuca Torrents** es P2P y no necesita cuenta. Su primera línea es el
+título traducido (“Um Sonho de Liberdade”), así que el release se lee del
+archivo. Todo lo que no viene de sus fuentes de anime (EraiRaws, NyaaSi) está
+doblado al portugués y se marca con `pt` (`defaultLanguages`). Así un “Dual
+Audio” PT + original nunca ocupa el hueco 🇬🇧.
+
+## Descubrimiento: anime, documentales y más
+
+Con la rotación automática del watchlist, cada lote **reserva huecos para
+géneros prioritarios**, por defecto anime y documentales:
+
+- **La mitad del lote**, con 1 título por género. En un lote de 8 películas
+  entran 1 película de anime y 1 documental. Si el lote es de 1 (la serie que
+  se sigue hasta terminarla), se alterna entre anime, documental y una serie
+  general.
+- **Anime** = catálogo `Animation` de Cinemeta con país **Japón**. Cinemeta no
+  tiene género “Anime”, y así no entran los dibujos occidentales.
+- **Documentales** = catálogo `Documentary`.
+- Se recorren los listados Popular y Featured del género, paginados hasta 500,
+  y la página cambia en cada ejecución para no repetir títulos.
+- En `watchlist.txt` se marcan con un comentario:
+  `tt0245429 Spirited Away (2001)  # Anime`.
+- **“Y más”**: el resto del lote sale de los años (1935–2099) y de los rankings,
+  que ahora incluyen **todos los géneros de Cinemeta**: acción, comedia,
+  terror, ciencia ficción, familia, historia, deporte, western, reality… Se
+  omiten Talk-Show y Game-Show, que tienen miles de episodios.
+- Con `TMDB_API_KEY`, TMDB también consulta primero anime
+  (`with_genres=16&with_original_language=ja`) y documentales
+  (`with_genres=99`).
+- Para encontrar los streams de anime ya están AniScraper (Nyaa, AnimeTosho…)
+  y las fuentes EraiRaws/NyaaSi de Brazuca.
+
+Los géneros prioritarios se cambian con `DISCOVERY_GENRES`, o con el campo
+**genres** de *Run workflow*:
+
+- `anime,documentales` *(por defecto)*;
+- `anime,documentales,terror,ciencia-ficcion`;
+- `0` para ninguno.
+
+Acepta los nombres de Cinemeta (`Horror`, `Sci-Fi`, `Family`…) o alias en
+español (`terror`, `familia`, `infantil`, `comedia`…).
 
 ## Puesta en marcha
 
@@ -270,24 +387,26 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 
 | Variable | Default | Uso |
 |---|---|---|
-| `PROVIDERS` | los 5 consultables | Addons a consultar (slugs separados por comas) |
+| `PROVIDERS` | los 8 por defecto (todos menos `piratebay`) | Addons a consultar (slugs separados por comas) |
 | `DRY_RUN` | `0` | `1` = no escribe en Supabase |
 | `CINEMETA` | `1` | `0` = sin metadatos |
 | `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |
+| `OMDB_API_KEY` | — | Opcional: verifica título/año y añade la nota IMDb (si es inválida, se avisa una vez y se ignora) |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
 | `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
 | `FOLLOW_SERIES` | `1` | `1` = seguir 1 sola serie a la vez hasta terminarla (+ películas); `only` = solo continuar esa serie; `0` = varias series a la vez |
+| `DISCOVERY_GENRES` | `anime,documentales` | Géneros con hueco reservado en cada lote del watchlist automático (`0` = ninguno) |
 | `SERIES_ID` | — | Opcional: IMDb ID (`tt…`) de la serie a seguir hasta terminarla |
 | `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
-| `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas / timeout |
+| `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas **por addon** / timeout (algunos addons tienen su propio límite en `providers.js`) |
 | `BREAKER_THRESHOLD` | `3` | Errores seguidos de un addon antes de dejar de consultarlo |
 | `REPROCESS` | `0` | `1` = vuelve a elegir sobre `public/data` ya publicado, sin red |
 | `FIXTURE_MODE` | `0` | `1` = respuestas falsas, sin red (sobrescribe `public/`) |
 
 `report.json` e `index.json` incluyen:
 - por título: `candidateCount`, `streamCount` (máx. 2), `picks` (con magnet y ficha), `missing`, `warnings` y `errors`;
-- a nivel global: `totalCandidates`, `totalStreams`, `picks`, `warnings`, `perProviderStats` (respuestas, errores, omitidas, streams y latencia media), `meta` (Cinemeta), `db` (modo usado) y `repository`.
+- a nivel global: `totalCandidates`, `totalStreams`, `picks`, `warnings`, `perProviderStats` (respuestas, errores, avisos 429, omitidas, streams, picks aportados, picks únicos y latencia media), `meta` (Cinemeta), `db` (modo usado) y `repository`.
 
 ## Mapeo a `public.torrents`
 
@@ -332,11 +451,13 @@ desconocida no borra valores más ricos ya presentes.
 | `src/db.mjs` | Sanitización y UPSERT Supabase (con alternativa si falta UNIQUE) |
 | `src/issue-bridge.mjs` | Issue → `watchlist.txt` (modo sin token) |
 | `src/summary.mjs` | Resumen para el job y para responder en el Issue |
+| `src/check-providers.mjs` | Chequeo de salud de los addons (`npm run check-providers`) |
 | `public/index.html` / `public/app.js` / `public/styles.css` | Web estática en español (módulo ES, sin build) |
 | `public/data/…` | Último reporte, los 2 picks por título y `progress.json` (por dónde va cada serie) |
 | `public/manifest.json` / `public/stream` / `public/catalog` | Addon Stremio personal |
 | `.github/workflows/static.yml` | Ingesta diaria, manual o pedida por Issue; responde en el Issue |
 | `.github/workflows/issue-ingest.yml` | Puente Issue → `watchlist.txt` → ingesta |
+| `.github/workflows/providers-health.yml` | Chequeo de salud de los addons (manual o semanal, solo lectura) |
 
 ## Comandos locales
 
@@ -346,6 +467,7 @@ npm test
 npm run dev                  # http://localhost:4173 (⚡ Procesar aquí funciona desde el navegador)
 npm run fetch                # ingesta real (Supabase solo si hay credenciales)
 npm run reprocess            # re-elige sobre public/data sin red (tras cambiar criterios)
+npm run check-providers      # ¿qué addons responden ahora mismo?
 FIXTURE_MODE=1 DRY_RUN=1 node src/fetch.mjs   # sin red; ¡sobrescribe public/ con datos falsos!
 ```
 

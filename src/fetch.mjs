@@ -52,6 +52,7 @@ import {
   MIN_SEARCH_YEAR,
   createSeenStore,
   formatWatchlistFile,
+  resolveFocusGenres,
   rotateWatchlist,
   selectUniqueDbCandidates,
 } from '../public/lib/watchlist.js';
@@ -109,6 +110,9 @@ const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
 const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
 const SEARCH_MIN_YEAR = Number.parseInt(process.env.MIN_YEAR || '', 10) || MIN_SEARCH_YEAR;
 const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_SEARCH_YEAR;
+// Géneros con hueco reservado en cada lote (anime y documentales por defecto;
+// "0" = ninguno). Acepta géneros de Cinemeta y alias en español.
+const DISCOVERY_GENRES = resolveFocusGenres(process.env.DISCOVERY_GENRES);
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
 const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
@@ -138,9 +142,11 @@ const ENABLED_PROVIDERS = resolveEnabledProviders().map(provider =>
 );
 const MANIFEST_ONLY_PROVIDERS = resolveManifestOnlyProviders();
 
+// Primero un navegador: Ytztvio (Cloudflare Workers) respondía 403 en todas
+// las consultas al bot. Ante un 403 se reintenta una vez con el siguiente.
 const USER_AGENTS = [
-  'peerflix-static-bot/2.0',
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'peerflix-static-bot/2.0',
 ];
 
 const fetchJSON = createJsonFetcher({
@@ -199,15 +205,25 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
 } = {}) {
   const uniqueIds = [...new Set((items || []).map(i => i.imdbId).filter(Boolean))];
   const stats = {
-    tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0 },
-    omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0 },
+    tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0, invalidKey: false },
+    omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0, invalidKey: false },
   };
   if (!uniqueIds.length || (!tmdbApiKey && !omdbApiKey)) return stats;
+
+  // Una API key inválida (401) o sin permiso (403) no se arregla reintentando
+  // con otro título: se avisa UNA vez y se deja de usar ese servicio.
+  const giveUpOnKey = (service, secret, err) => {
+    const status = err?.status;
+    if (status !== 401 && status !== 403) return false;
+    stats[service].invalidKey = true;
+    onWarning?.(`${service === 'tmdb' ? 'TMDB' : 'OMDb'}: la API key no es válida (HTTP ${status}); revisa el Secret ${secret}. Se sigue sin ${service === 'tmdb' ? 'TMDB' : 'OMDb'} en esta ejecución.`);
+    return true;
+  };
 
   for (const imdbId of uniqueIds) {
     const current = metaById.get(imdbId) || { imdbId, type: null, name: null, year: null, yearEnd: null, videos: null };
 
-    if (tmdbApiKey) {
+    if (tmdbApiKey && !stats.tmdb.invalidKey) {
       try {
         const find = await fetchImpl(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${encodeURIComponent(tmdbApiKey)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
         const movie = find?.movie_results?.[0];
@@ -228,11 +244,11 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
         }
       } catch (err) {
         stats.tmdb.failures++;
-        onWarning?.(`TMDB (${imdbId}): ${err.message || err}`);
+        if (!giveUpOnKey('tmdb', 'TMDB_API_KEY', err)) onWarning?.(`TMDB (${imdbId}): ${err.message || err}`);
       }
     }
 
-    if (omdbApiKey) {
+    if (omdbApiKey && !stats.omdb.invalidKey) {
       try {
         const omdb = await fetchImpl(`https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&apikey=${encodeURIComponent(omdbApiKey)}`, { timeout: 10000, retries: 1 });
         if (omdb && omdb.Response !== 'False' && omdb.Title) {
@@ -251,7 +267,7 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
         }
       } catch (err) {
         stats.omdb.failures++;
-        onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
+        if (!giveUpOnKey('omdb', 'OMDB_API_KEY', err)) onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
       }
     }
   }
@@ -430,7 +446,7 @@ async function main() {
   const repository = repositoryInfo();
   const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
-  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, elimina anteriores)` : ''}`}`);
+  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, géneros: ${DISCOVERY_GENRES.map(g => g.label).join(', ') || 'ninguno'} + todos, elimina anteriores)` : ''}`}`);
   console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
   console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
@@ -587,6 +603,7 @@ async function main() {
         baseUrl: CINEMETA_BASE_URL,
         minYear: SEARCH_MIN_YEAR,
         maxYear: SEARCH_MAX_YEAR,
+        focusGenres: DISCOVERY_GENRES,
         onWarning: warn,
       });
       const resumed = FIXTURE_MODE && !SERIES_TARGET
@@ -837,7 +854,7 @@ async function main() {
   console.log(`   streams   : ${index.totalStreams} elegidos (🇪🇸 ${index.picks.es} · 🇬🇧 ${index.picks.en}) de ${index.totalCandidates} candidatos fusionados de ${providers.length} fuentes`);
   for (const p of providers) {
     const s = index.perProviderStats[p.slug];
-    console.log(`     · ${p.name.padEnd(16)} ${String(s.streams).padStart(5)} streams · ${s.ok} ok · ${s.errors} errores · ${s.skipped} omitidas${s.avgMs != null ? ` · ${s.avgMs} ms de media` : ''}`);
+    console.log(`     · ${p.name.padEnd(16)} ${String(s.streams).padStart(5)} streams · ${s.picks} picks (${s.uniquePicks} solo suyos) · ${s.ok} ok · ${s.errors} errores${s.rateLimited ? ` (${s.rateLimited}× 429)` : ''} · ${s.skipped} omitidas${s.avgMs != null ? ` · ${s.avgMs} ms de media` : ''}`);
   }
   if (index.missing.es || index.missing.en) console.log(`   sin pick  : ${index.missing.es} sin español · ${index.missing.en} sin inglés`);
   console.log(`   trackers  : ${index.selection.trackers.length} por magnet (${index.selection.trackersSource})`);

@@ -8,6 +8,7 @@
     "fetch": "node src/fetch.mjs && node src/check-db.mjs",
     "reprocess": "REPROCESS=1 node src/fetch.mjs",
     "summary": "node src/summary.mjs",
+    "check-providers": "node src/check-providers.mjs",
     "serve": "python3 -m http.server 4173 --directory public --bind 0.0.0.0",
     "dev": "npm run serve",
     "test": "node --test tests/*.test.mjs"

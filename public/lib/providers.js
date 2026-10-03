@@ -2,8 +2,11 @@
  * Registro de addons Stremio: lo comparten la GitHub Action (Node) y la web
  * (navegador), así que no puede depender de `process` ni del DOM.
  *
- * Los cinco addons consultables exponen el contrato estándar
+ * Los addons consultables exponen el contrato estándar
  *   /stream/{movie|series}/{id}.json
+ * `baseUrl` puede incluir un segmento de configuración (StremThru Torz).
+ * Solo addons que funcionan SIN cuenta ni debrid: MediaFusion, Comet e
+ * Intelligent Debrid Search se descartaron porque exigen registrarse.
  * `tpb-adult-addon.click` queda registrado por su manifest, pero solo expone
  * catálogos Porn (no streams IMDb movie/series): una watchlist IMDb no puede
  * consultarlo sin inventar un mapeo título → ID, así que se informa como
@@ -32,6 +35,8 @@ export const PROVIDERS = Object.freeze({
     adult: false,
     enabledByDefault: true,
     description: 'Agrega YTS, EZTV, 1337x, RARGB, Nyaa, TPB, Kat, TTL, Rutracker…',
+    // Responde HTTP 429 con 4 peticiones a la vez: 2 en paralelo como máximo.
+    concurrency: 2,
   }),
   torrentio: Object.freeze({
     slug: 'torrentio',
@@ -52,8 +57,12 @@ export const PROVIDERS = Object.freeze({
     types: ['movie', 'series'],
     queryable: true,
     adult: false,
-    enabledByDefault: true,
-    description: 'TPB directo',
+    // Desactivado por defecto: ~6 s por consulta y, en la última ingesta, 0 de
+    // 254 picks aportados que no tuvieran ya Torrentio/TorrentsDB (que ya
+    // indexan TPB). Se puede activar en Ajustes o con PROVIDERS=…,piratebay.
+    enabledByDefault: false,
+    timeoutMs: 10000,
+    description: 'TPB directo (lento; Torrentio y TorrentsDB ya incluyen TPB)',
   }),
   ytztvio: Object.freeze({
     slug: 'ytztvio',
@@ -65,6 +74,74 @@ export const PROVIDERS = Object.freeze({
     adult: false,
     enabledByDefault: true,
     description: 'YTS + EZTV',
+  }),
+  torrentclaw: Object.freeze({
+    slug: 'torrentclaw',
+    name: 'TorrentClaw',
+    baseUrl: 'https://torrentclaw.com/api/stremio',
+    manifestUrl: 'https://torrentclaw.com/api/stremio/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: '30+ fuentes verificadas (TrueSpec), incluye fuentes ES/LATAM',
+    // La 1.ª línea del título es una puntuación ("🔵 65/100 · 👤 579"); el
+    // release real está en behaviorHints.filename. "🌐 1080p" del name no es
+    // una fuente: la fuente/grupo va en "🏷️ YIFY".
+    titleFromFilename: true,
+    sourceBadge: '🏷️',
+  }),
+  aniscraper: Object.freeze({
+    slug: 'aniscraper',
+    name: 'AniScraper',
+    baseUrl: 'https://c5541ffce7d3-aniscraper.baby-beamup.club',
+    manifestUrl: 'https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: 'Anime: Nyaa, AnimeTosho, AniRena, TsukiHime (responde vacío si no es anime)',
+    // A veces tarda hasta el 504 de Cloudflare: mejor cortar antes.
+    timeoutMs: 12000,
+    titleFromFilename: true,
+    sourceBadge: '⚙️',
+  }),
+  stremthru: Object.freeze({
+    slug: 'stremthru',
+    aliases: ['torz', 'stremthru-torz', 'stremthru_torz'],
+    name: 'StremThru Torz',
+    // El manifest exige configuración (configurationRequired). Se consulta con
+    // la configuración pública P2P, sin debrid ni token:
+    //   base64('{"stores":[{"c":"p2p","t":""}]}')
+    baseUrl: 'https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==',
+    manifestUrl: 'https://stremthru.13377001.xyz/stremio/torz/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: 'Base de torrents colaborativa (modo P2P, sin debrid)',
+    // "⚙️" es el grupo del release y "🌐" los idiomas; el indexador va en "🔍".
+    titleFromFilename: true,
+    sourceBadge: '🔍',
+  }),
+  brazuca: Object.freeze({
+    slug: 'brazuca',
+    name: 'Brazuca Torrents',
+    baseUrl: 'https://94c8cb9f702d-brazuca-torrents.baby-beamup.club',
+    manifestUrl: 'https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: 'Doblado al portugués (Brasil) y anime: ApacheTorrent, BaixaFilmes, EraiRaws, Nyaa…',
+    // La 1.ª línea es el título traducido sin año ni calidad ("Um Sonho de
+    // Liberdade"); el archivo trae año y resolución.
+    titleFromFilename: true,
+    // Lo que no es anime está doblado al portugués: así un "Dual Audio"
+    // PT+original sin marcas no se toma por la versión original en inglés.
+    // EraiRaws/NyaaSi son anime en japonés, no doblajes.
+    defaultLanguages: ['pt'],
+    defaultLanguagesExceptSources: ['nyaa', 'erai'],
   }),
   tpbAdult: Object.freeze({
     slug: 'tpbAdult',

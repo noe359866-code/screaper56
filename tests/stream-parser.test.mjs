@@ -136,3 +136,90 @@ test('mergeStreams conserva los idiomas de cada addon y rellena lo que falta', a
   assert.deepEqual(merged[0].providers, ['peerflix', 'torrentio']);
   assert.deepEqual(merged[0].trackers, ['udp://a', 'udp://b']);
 });
+
+test('lee TorrentClaw: el release sale del archivo y "🌐 1080p" no es la fuente', () => {
+  const stream = parseStremioStream({
+    name: '🌐 1080p · Brrip',
+    title: '🔵 65/100 · 👤 720\n✅ TrueSpec Verified\n🎞️ x264\n🔊 aac · 🇬🇧\n💬 🇨🇿🇩🇰🇪🇸🇺🇸 +11\n💾 1.6 GB\n🏷️ YIFY',
+    infoHash: 'e0d00667650aba9ee05aacbbbd8b55ea8a51f534',
+    sources: ['tracker:udp://tracker.opentrackr.org:1337/announce', 'dht:e0d00667650aba9ee05aacbbbd8b55ea8a51f534'],
+    behaviorHints: { filename: 'The Shawshank Redemption (1994) 1080p bluray', videoSize: 1717986918 },
+  }, PROVIDERS.torrentclaw);
+
+  assert.equal(stream.title, 'The Shawshank Redemption (1994) 1080p bluray');
+  assert.equal(stream.quality, '1080p'); // no "720" de los seeders
+  assert.equal(stream.seeders, 720);
+  assert.equal(stream.sizeBytes, Math.round(1.6 * 1024 ** 3));
+  assert.equal(stream.externalProvider, 'YIFY');
+  assert.deepEqual(stream.languages, ['en']); // 🇪🇸 solo en subtítulos (💬)
+  assert.deepEqual(stream.trackers, ['udp://tracker.opentrackr.org:1337/announce']);
+});
+
+test('lee StremThru Torz: 📄 archivo, 💾 archivo antes que 📦 pack, 🔍 indexador y 💬 subtítulos', () => {
+  const movie = parseStremioStream({
+    infoHash: '45fa4233ef87c58f5f8b4817e4d50c9f5363caef',
+    name: '[P2P]\nTorz\n4k',
+    description: '💿 BluRay REMUX 🎞️ HEVC\n📺 DV HDR10 🎧 DTS Lossless | 5.1\n📦 54 GB 〽️ 6.8 MB/s 👤 101\n🎙️ 🇬🇧\n💬 🇬🇧 🇪🇸 🇲🇽\n⚙️ FraMeSToR 🔍 Uindex\n📄 The.Shawshank.Redemption.1994.UHD.BluRay.2160p.REMUX-FraMeSToR.mkv',
+    behaviorHints: { videoSize: 58339952712, filename: 'The.Shawshank.Redemption.1994.UHD.BluRay.2160p.REMUX-FraMeSToR.mkv' },
+  }, PROVIDERS.stremthru);
+  assert.equal(movie.title, 'The.Shawshank.Redemption.1994.UHD.BluRay.2160p.REMUX-FraMeSToR.mkv');
+  assert.equal(movie.quality, '4K');
+  assert.equal(movie.seeders, 101);
+  assert.equal(movie.sizeBytes, 58339952712);
+  assert.equal(movie.externalProvider, 'Uindex');
+  assert.deepEqual(movie.languages, ['en']);
+
+  const episode = parseStremioStream({
+    infoHash: '605b8f1c0032682c4826caf68db37b361199b2de',
+    name: '[P2P]\nTorz\n4k',
+    description: '💿 BluRay REMUX\n💾 31 GB 📦 2.2 TB 👤 29\n🎙️ 🇬🇧 🇪🇸\n⚙️ FGT \n📄 Game.of.Thrones.S01E01.2160p.BluRay.REMUX-FGT.mkv',
+    fileIdx: 72,
+    behaviorHints: { filename: 'Game.of.Thrones.S01E01.2160p.BluRay.REMUX-FGT.mkv' },
+  }, PROVIDERS.stremthru);
+  assert.equal(episode.sizeBytes, 31 * 1024 ** 3);
+  assert.equal(episode.fileIdx, 72);
+  assert.equal(episode.externalProvider, null); // ⚙️ es el grupo, no el indexador
+  assert.deepEqual(episode.languages, ['en', 'es']);
+});
+
+test('lee AniScraper: 📏 tamaño, 🌱 seeders y ⚙️ fuente', () => {
+  const stream = parseStremioStream({
+    name: '[p2p] Aniscraper 1080P HEVC',
+    description: '🎬 [YakuboEncodes] Cowboy Bebop - 01 [BD 1080p 10bit][x265 HEVC].mkv\n📜 Season 1 Episode 1\n📏 352.3 MiB | 🌱 269\n📦 [YakuboEncodes] Cowboy Bebop - 01 ~ 26 + Movie\n⚙️ Nyaa',
+    infoHash: '9fb439a81e07747607a8266376afae6dbe0b78ee',
+    fileIdx: 15,
+    sources: ['dht:9fb439a81e07747607a8266376afae6dbe0b78ee'],
+    behaviorHints: { videoSize: 369428089, filename: '[YakuboEncodes] Cowboy Bebop - 01 [BD 1080p 10bit][x265 HEVC].mkv' },
+  }, PROVIDERS.aniscraper);
+
+  assert.equal(stream.title, '[YakuboEncodes] Cowboy Bebop - 01 [BD 1080p 10bit][x265 HEVC].mkv');
+  assert.equal(stream.quality, '1080p');
+  assert.equal(stream.seeders, 269);
+  assert.equal(stream.sizeBytes, Math.round(352.3 * 1024 ** 2));
+  assert.equal(stream.externalProvider, 'Nyaa');
+  assert.equal(stream.fileIdx, 15);
+});
+
+test('lee Brazuca: archivo como release, doblaje PT implícito salvo en sus fuentes de anime', () => {
+  const dubbed = parseStremioStream({
+    name: 'Brazuca\n1080p',
+    title: 'Um Sonho de Liberdade\n👤 24 💾 2.91 GB ⚙️ BaixaFilmesTorrentHD\nDual Audio',
+    infoHash: '8715f7f42583980ac95a4e68d26b07e5ee98573a',
+    fileIdx: 3,
+    behaviorHints: { filename: 'Um.Sonho.De.Liberdade.1994.1080p.BluRay.x264.DUAL-SF.mkv' },
+    sources: ['tracker:udp://tracker.opentrackr.org:1337/announce', 'dht:8715f7f42583980ac95a4e68d26b07e5ee98573a'],
+  }, PROVIDERS.brazuca);
+  assert.equal(dubbed.title, 'Um.Sonho.De.Liberdade.1994.1080p.BluRay.x264.DUAL-SF.mkv');
+  assert.equal(dubbed.quality, '1080p');
+  assert.equal(dubbed.seeders, 24);
+  assert.equal(dubbed.sizeBytes, Math.round(2.91 * 1024 ** 3));
+  assert.equal(dubbed.externalProvider, 'BaixaFilmesTorrentHD');
+  assert.deepEqual(dubbed.languages, ['pt']);
+
+  const anime = parseStremioStream({
+    name: 'Brazuca\n1080p',
+    title: '[Erai-raws] Frieren - 01 [1080p]\n👤 300 💾 1.4 GB ⚙️ EraiRaws',
+    infoHash: 'a'.repeat(40),
+  }, PROVIDERS.brazuca);
+  assert.deepEqual(anime.languages, []);
+});

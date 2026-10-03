@@ -4,7 +4,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { picksToRows, reportToMarkdown, toCSV, toMagnetList } from '../public/lib/format.js';
+import { groupWarnings, picksToRows, reportToMarkdown, toCSV, toMagnetList } from '../public/lib/format.js';
 import { renderSummary } from '../src/summary.mjs';
 
 const H1 = '1'.repeat(40);
@@ -94,4 +94,21 @@ test('renderSummary no reutiliza un report.json viejo si esta ejecución falló'
   assert.match(await renderSummary({ reportPath, startedAt: '2026-09-30T09:59:00Z' }), /2 elegidos/);
   assert.match(await renderSummary({ reportPath, startedAt: '2026-10-01T00:00:00Z', runUrl: 'https://run' }), /no generó un report\.json nuevo[\s\S]*https:\/\/run/);
   assert.match(await renderSummary({ reportPath: join(dir, 'nope.json') }), /no generó/);
+});
+
+test('los avisos que solo cambian de ID se agrupan y la tabla de addons muestra los picks', () => {
+  const warnings = [
+    'OMDb (tt0055892): HTTP 401', 'OMDb (tt0056592): HTTP 401', 'OMDb (tt0123179): HTTP 401',
+    'Catálogo Cinemeta (/catalog/movie/top.json): timeout (10s)',
+  ];
+  assert.deepEqual(groupWarnings(warnings), [
+    { text: 'OMDb (tt…): HTTP 401', count: 3 },
+    { text: 'Catálogo Cinemeta (/catalog/movie/top.json): timeout (10s)', count: 1 },
+  ]);
+  const md = reportToMarkdown({
+    items: [], warnings,
+    perProviderStats: { torrentsdb: { ok: 90, errors: 4, rateLimited: 3, skipped: 0, streams: 900, picks: 40, uniquePicks: 5, avgMs: 210 } },
+  });
+  assert.match(md, /OMDb \(tt…\): HTTP 401 \(×3\)/);
+  assert.match(md, /\| torrentsdb \| 90 \| 4 \(3× 429\) \| 0 \| 900 \| 40 \(5\) \| 210 ms \|/);
 });

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  CINEMETA_GENRES,
   MAX_SEARCH_YEAR,
   MIN_SEARCH_YEAR,
   MOVIE_CATALOG_PATHS,
@@ -10,9 +11,11 @@ import {
   createSeenStore,
   discoverCatalogItems,
   discoverFromTmdb,
+  focusQuota,
   formatWatchlistFile,
   formatWatchlistLine,
   normalizeTitleKey,
+  resolveFocusGenres,
   rotateWatchlist,
   selectUniqueDbCandidates,
 } from '../public/lib/watchlist.js';
@@ -361,3 +364,96 @@ test('los catálogos y el descubrimiento cubren todos los años de 1935 a 2099 (
   assert.ok(movieYears.size >= 4, 'reparte las películas entre varios años/décadas en vez de un único año');
 });
 
+
+test('los catálogos incluyen todos los géneros de Cinemeta (anime, documentales y más)', () => {
+  for (const genre of CINEMETA_GENRES.movie) {
+    assert.ok(MOVIE_CATALOG_PATHS.includes(`/catalog/movie/top/genre=${genre}.json`), `movie top ${genre}`);
+    assert.ok(MOVIE_CATALOG_PATHS.includes(`/catalog/movie/imdbRating/genre=${genre}.json`), `movie imdbRating ${genre}`);
+  }
+  assert.ok(SERIES_CATALOG_PATHS.includes('/catalog/series/top/genre=Reality-TV.json'));
+  assert.equal(SERIES_CATALOG_PATHS.some(p => /Talk-Show|Game-Show/.test(p)), false);
+  // Los géneros se reparten entre los años: los 60 primeros ya tocan varios.
+  const firstGenres = MOVIE_CATALOG_PATHS.slice(0, 60).filter(p => /genre=[A-Z]/.test(p));
+  assert.ok(firstGenres.length >= 10, `solo ${firstGenres.length} géneros al principio`);
+});
+
+test('resolveFocusGenres: anime + documentales por defecto, alias en español y 0 = ninguno', () => {
+  assert.deepEqual(resolveFocusGenres().map(g => g.id), ['anime', 'documentary']);
+  assert.deepEqual(resolveFocusGenres('').map(g => g.id), ['anime', 'documentary']);
+  assert.deepEqual(resolveFocusGenres('documentales, animes, terror, Sci-Fi, inventado').map(g => g.genre), ['Documentary', 'Animation', 'Horror', 'Sci-Fi']);
+  assert.deepEqual(resolveFocusGenres('0'), []);
+  assert.equal(focusQuota(8, 2, 0), 2);
+  assert.equal(focusQuota(3, 2, 0), 1);
+  assert.equal(focusQuota(1, 2, 0), 1);
+  assert.equal(focusQuota(1, 2, 2), 0); // con 1 hueco se alterna con un título general
+});
+
+test('discoverCatalogItems reserva huecos para anime (Animation + Japón) y documentales', async () => {
+  const requested = [];
+  const fetchJSON = async url => {
+    requested.push(url);
+    if (url.includes('/catalog/movie/') && url.includes('genre=Animation')) {
+      return { metas: [
+        { imdb_id: 'tt0000101', name: 'Western Cartoon', type: 'movie', year: '2020', country: 'United States' },
+        { imdb_id: 'tt0245429', name: 'Spirited Away', type: 'movie', year: '2001', country: 'Japan' },
+      ] };
+    }
+    if (url.includes('/catalog/movie/') && url.includes('genre=Documentary')) {
+      return { metas: [{ imdb_id: 'tt0000201', name: 'Planet Doc', type: 'movie', year: '2019', country: 'UK' }] };
+    }
+    if (url.includes('/catalog/series/') && url.includes('genre=Animation')) {
+      return { metas: [{ imdb_id: 'tt13293588', name: 'Mushoku Tensei', type: 'series', year: '2021–', country: ['Japan'] }] };
+    }
+    if (url.includes('/catalog/movie/')) {
+      return { metas: [1, 2, 3, 4, 5, 6].map(n => ({ imdb_id: `tt000030${n}`, name: `General Movie ${n}`, type: 'movie', year: '2015' })) };
+    }
+    return { metas: [{ imdb_id: 'tt0000401', name: 'General Series', type: 'series', year: '2018–' }] };
+  };
+
+  const discovered = await discoverCatalogItems(fetchJSON, {
+    seen: createSeenStore(),
+    count: 6,
+    movieCount: 4,
+    seriesCount: 2,
+    now: Date.parse('2026-10-01T00:00:00Z'),
+  });
+  const byId = new Map(discovered.map(d => [d.imdbId, d]));
+  assert.equal(discovered.length, 6);
+  assert.equal(byId.get('tt0245429')?.discovery, 'Anime');
+  assert.equal(byId.get('tt0000201')?.discovery, 'Documental');
+  assert.equal(byId.get('tt13293588')?.discovery, 'Anime');
+  assert.equal(byId.has('tt0000101'), false, 'la animación no japonesa no cuenta como anime');
+  assert.equal(discovered.filter(d => d.discovery).length, 3); // 2 de 4 películas + 1 de 2 series
+  assert.ok(requested.some(u => u.endsWith('/catalog/movie/top/genre=Animation.json')));
+
+  // La etiqueta se escribe como comentario y el watchlist sigue siendo válido.
+  const line = formatWatchlistLine(byId.get('tt0245429'));
+  assert.equal(line, 'tt0245429 Spirited Away (2001)  # Anime');
+  assert.deepEqual(parseWatchlist(line).map(i => i.imdbId), ['tt0245429']);
+
+  // Con DISCOVERY_GENRES=0 no se reserva nada.
+  const plain = await discoverCatalogItems(fetchJSON, {
+    seen: createSeenStore(), count: 2, movieCount: 2, seriesCount: 0, focusGenres: '0', now: Date.parse('2026-10-01T00:00:00Z'),
+  });
+  assert.equal(plain.some(d => d.discovery), false);
+});
+
+test('enrichWithTmdbAndOmdb: con una API key inválida avisa una sola vez y deja de llamar', async () => {
+  let omdbCalls = 0;
+  const fakeFetch = async url => {
+    if (url.includes('omdbapi.com')) {
+      omdbCalls++;
+      throw Object.assign(new Error('HTTP 401'), { name: 'HttpError', status: 401 });
+    }
+    return {};
+  };
+  const warnings = [];
+  const ids = ['tt0055892', 'tt0056592', 'tt0123179', 'tt0054821'];
+  const stats = await enrichWithTmdbAndOmdb(ids.map(imdbId => ({ imdbId })), new Map(), {
+    fetchImpl: fakeFetch, tmdbApiKey: '', omdbApiKey: 'caducada', onWarning: w => warnings.push(w),
+  });
+  assert.equal(omdbCalls, 1);
+  assert.equal(stats.omdb.invalidKey, true);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /OMDb: la API key no es válida \(HTTP 401\); revisa el Secret OMDB_API_KEY/);
+});
