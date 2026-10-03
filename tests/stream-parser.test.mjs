@@ -199,3 +199,27 @@ test('lee AniScraper: 📏 tamaño, 🌱 seeders y ⚙️ fuente', () => {
   assert.equal(stream.externalProvider, 'Nyaa');
   assert.equal(stream.fileIdx, 15);
 });
+
+test('lee Brazuca: archivo como release, doblaje PT implícito salvo en sus fuentes de anime', () => {
+  const dubbed = parseStremioStream({
+    name: 'Brazuca\n1080p',
+    title: 'Um Sonho de Liberdade\n👤 24 💾 2.91 GB ⚙️ BaixaFilmesTorrentHD\nDual Audio',
+    infoHash: '8715f7f42583980ac95a4e68d26b07e5ee98573a',
+    fileIdx: 3,
+    behaviorHints: { filename: 'Um.Sonho.De.Liberdade.1994.1080p.BluRay.x264.DUAL-SF.mkv' },
+    sources: ['tracker:udp://tracker.opentrackr.org:1337/announce', 'dht:8715f7f42583980ac95a4e68d26b07e5ee98573a'],
+  }, PROVIDERS.brazuca);
+  assert.equal(dubbed.title, 'Um.Sonho.De.Liberdade.1994.1080p.BluRay.x264.DUAL-SF.mkv');
+  assert.equal(dubbed.quality, '1080p');
+  assert.equal(dubbed.seeders, 24);
+  assert.equal(dubbed.sizeBytes, Math.round(2.91 * 1024 ** 3));
+  assert.equal(dubbed.externalProvider, 'BaixaFilmesTorrentHD');
+  assert.deepEqual(dubbed.languages, ['pt']);
+
+  const anime = parseStremioStream({
+    name: 'Brazuca\n1080p',
+    title: '[Erai-raws] Frieren - 01 [1080p]\n👤 300 💾 1.4 GB ⚙️ EraiRaws',
+    infoHash: 'a'.repeat(40),
+  }, PROVIDERS.brazuca);
+  assert.deepEqual(anime.languages, []);
+});

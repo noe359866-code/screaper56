@@ -5,8 +5,8 @@
  * Los addons consultables exponen el contrato estándar
  *   /stream/{movie|series}/{id}.json
  * `baseUrl` puede incluir un segmento de configuración (StremThru Torz).
- * MediaFusion y Comet (ElfHosted) quedan registrados pero sin consultar: sin
- * debrid no devuelven torrents.
+ * Solo addons que funcionan SIN cuenta ni debrid: MediaFusion, Comet e
+ * Intelligent Debrid Search se descartaron porque exigen registrarse.
  * `tpb-adult-addon.click` queda registrado por su manifest, pero solo expone
  * catálogos Porn (no streams IMDb movie/series): una watchlist IMDb no puede
  * consultarlo sin inventar un mapeo título → ID, así que se informa como
@@ -116,29 +116,24 @@ export const PROVIDERS = Object.freeze({
     titleFromFilename: true,
     sourceBadge: '🔍',
   }),
-  mediafusion: Object.freeze({
-    slug: 'mediafusion',
-    name: 'MediaFusion',
-    baseUrl: 'https://mediafusion.elfhosted.com',
-    manifestUrl: 'https://mediafusion.elfhosted.com/manifest.json',
+  brazuca: Object.freeze({
+    slug: 'brazuca',
+    name: 'Brazuca Torrents',
+    baseUrl: 'https://94c8cb9f702d-brazuca-torrents.baby-beamup.club',
+    manifestUrl: 'https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json',
     types: ['movie', 'series'],
-    queryable: false,
+    queryable: true,
     adult: false,
-    enabledByDefault: false,
-    description: 'ElfHosted: sin configurar no devuelve torrents; necesita una configuración cifrada (normalmente con debrid).',
-    note: 'Manifest registrado; la instancia ElfHosted responde {"streams":[]} sin configuración y su configuración va cifrada por el servidor.',
-  }),
-  comet: Object.freeze({
-    slug: 'comet',
-    name: 'Comet',
-    baseUrl: 'https://comet.elfhosted.com',
-    manifestUrl: 'https://comet.elfhosted.com/manifest.json',
-    types: ['movie', 'series'],
-    queryable: false,
-    adult: false,
-    enabledByDefault: false,
-    description: 'ElfHosted: las búsquedas sin debrid están desactivadas.',
-    note: 'Manifest registrado; ElfHosted responde "Non-debrid searches disabled on ElfHosted" sin un debrid configurado.',
+    enabledByDefault: true,
+    description: 'Doblado al portugués (Brasil) y anime: ApacheTorrent, BaixaFilmes, EraiRaws, Nyaa…',
+    // La 1.ª línea es el título traducido sin año ni calidad ("Um Sonho de
+    // Liberdade"); el archivo trae año y resolución.
+    titleFromFilename: true,
+    // Lo que no es anime está doblado al portugués: así un "Dual Audio"
+    // PT+original sin marcas no se toma por la versión original en inglés.
+    // EraiRaws/NyaaSi son anime en japonés, no doblajes.
+    defaultLanguages: ['pt'],
+    defaultLanguagesExceptSources: ['nyaa', 'erai'],
   }),
   tpbAdult: Object.freeze({
     slug: 'tpbAdult',

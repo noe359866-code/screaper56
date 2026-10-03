@@ -2,7 +2,7 @@
   "id": "com.example.peerflix-static",
   "version": "1.3.0",
   "name": "Peerflix Static (personal, aggregated)",
-  "description": "Agregador personal con Peerflix, TorrentsDB, Torrentio, ThePirateBay+, Ytztvio, TorrentClaw, AniScraper, StremThru Torz. Solo 2 torrents por título: el mejor en español y el mejor en inglés. Responde solo a los IMDb IDs de tu watchlist.",
+  "description": "Agregador personal con Peerflix, TorrentsDB, Torrentio, ThePirateBay+, Ytztvio, TorrentClaw, AniScraper, StremThru Torz, Brazuca Torrents. Solo 2 torrents por título: el mejor en español y el mejor en inglés. Responde solo a los IMDb IDs de tu watchlist.",
   "catalogs": [
     {
       "type": "movie",
@@ -145,30 +145,17 @@
       "note": null
     },
     {
-      "slug": "mediafusion",
-      "name": "MediaFusion",
-      "baseUrl": "https://mediafusion.elfhosted.com",
-      "manifestUrl": "https://mediafusion.elfhosted.com/manifest.json",
+      "slug": "brazuca",
+      "name": "Brazuca Torrents",
+      "baseUrl": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club",
+      "manifestUrl": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json",
       "types": [
         "movie",
         "series"
       ],
-      "queryable": false,
+      "queryable": true,
       "adult": false,
-      "note": "Manifest registrado; la instancia ElfHosted responde {\"streams\":[]} sin configuración y su configuración va cifrada por el servidor."
-    },
-    {
-      "slug": "comet",
-      "name": "Comet",
-      "baseUrl": "https://comet.elfhosted.com",
-      "manifestUrl": "https://comet.elfhosted.com/manifest.json",
-      "types": [
-        "movie",
-        "series"
-      ],
-      "queryable": false,
-      "adult": false,
-      "note": "Manifest registrado; ElfHosted responde \"Non-debrid searches disabled on ElfHosted\" sin un debrid configurado."
+      "note": null
     },
     {
       "slug": "tpbAdult",

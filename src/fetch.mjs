@@ -52,6 +52,7 @@ import {
   MIN_SEARCH_YEAR,
   createSeenStore,
   formatWatchlistFile,
+  resolveFocusGenres,
   rotateWatchlist,
   selectUniqueDbCandidates,
 } from '../public/lib/watchlist.js';
@@ -109,6 +110,9 @@ const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
 const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
 const SEARCH_MIN_YEAR = Number.parseInt(process.env.MIN_YEAR || '', 10) || MIN_SEARCH_YEAR;
 const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_SEARCH_YEAR;
+// Géneros con hueco reservado en cada lote (anime y documentales por defecto;
+// "0" = ninguno). Acepta géneros de Cinemeta y alias en español.
+const DISCOVERY_GENRES = resolveFocusGenres(process.env.DISCOVERY_GENRES);
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
 const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
@@ -430,7 +434,7 @@ async function main() {
   const repository = repositoryInfo();
   const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
-  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, elimina anteriores)` : ''}`}`);
+  console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, géneros: ${DISCOVERY_GENRES.map(g => g.label).join(', ') || 'ninguno'} + todos, elimina anteriores)` : ''}`}`);
   console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
   console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
@@ -587,6 +591,7 @@ async function main() {
         baseUrl: CINEMETA_BASE_URL,
         minYear: SEARCH_MIN_YEAR,
         maxYear: SEARCH_MAX_YEAR,
+        focusGenres: DISCOVERY_GENRES,
         onWarning: warn,
       });
       const resumed = FIXTURE_MODE && !SERIES_TARGET

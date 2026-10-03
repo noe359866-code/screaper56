@@ -16,8 +16,7 @@ Addons consultados por IMDb:
 - **TorrentClaw** — https://torrentclaw.com/api/stremio/manifest.json
 - **AniScraper** — https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json (solo anime; para lo demás responde vacío)
 - **StremThru Torz** — https://stremthru.13377001.xyz/stremio/torz/manifest.json (se consulta en modo P2P, sin debrid)
-- **MediaFusion** — https://mediafusion.elfhosted.com/manifest.json (solo registrado; ver la nota más abajo)
-- **Comet** — https://comet.elfhosted.com/manifest.json (solo registrado; ver la nota más abajo)
+- **Brazuca Torrents** — https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json (doblado al portugués y anime)
 - **TPB Adult** — https://tpb-adult-addon.click/manifest.json (solo registrado; ver la nota más abajo)
 
 ## Tres formas de usarlo, ninguna necesita token
@@ -49,7 +48,7 @@ El resto también funciona sin token:
 watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
   └─ public/lib/pipeline.js  (mismo código en el navegador y en la Action)
        ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada (o de la serie completa)
-       ├─ /stream/movie|series/…json en los 8 addons IMDb
+       ├─ /stream/movie|series/…json en los 9 addons IMDb
        │    · reintentos con backoff (red, 429, 5xx; respeta Retry-After)
        │    · si un addon falla 3 veces seguidas para un tipo, se deja de consultar
        ├─ fusión por info_hash (trackers, addons, idiomas, seeds, tamaño…)
@@ -152,7 +151,7 @@ IDs IMDb. Declara catálogos de tipo `Porn`, con búsquedas que devuelven IDs
 internos `jstrm:*`. Una consulta `stream/Porn/tt...` no es una correspondencia
 válida con una lista IMDb y puede devolver contenido no relacionado. Por eso la
 URL queda registrada en `public/lib/providers.js`, en `public/manifest.json` y
-en el reporte, pero **no se importan resultados adultos aleatorios**. Los ocho
+en el reporte, pero **no se importan resultados adultos aleatorios**. Los nueve
 addons consultables sí se piden por cada IMDb ID.
 
 ## Formatos de TorrentClaw, StremThru Torz y AniScraper
@@ -179,21 +178,59 @@ StremThru Torz exige configuración (`configurationRequired`). Se consulta con
 la configuración pública P2P `{"stores":[{"c":"p2p","t":""}]}` en base64, que
 ya va incluida en su `baseUrl`. No hace falta token ni debrid.
 
-## MediaFusion y Comet (ElfHosted): por qué aparecen como “manifest-only”
+## Solo addons sin registro
 
-Las dos instancias públicas de ElfHosted exponen `stream` por IMDb, pero **sin
-debrid no devuelven torrents**:
+Todos los addons consultados funcionan **sin cuenta, sin debrid y sin token**.
+Se descartaron los que exigen registrarse:
 
-- `comet.elfhosted.com` sin configurar responde `Forbidden`. Con una
-  configuración solo de torrents, devuelve un único stream de aviso:
-  “Non-debrid searches disabled on ElfHosted”.
-- `mediafusion.elfhosted.com` responde `{"streams":[]}` sin configurar. Su
-  configuración va **cifrada con la clave del servidor** (`D-…`, se genera en su
-  `/configure`), así que no se puede construir sin pasar por su web.
+- **MediaFusion** y **Comet** (ElfHosted): sin debrid no devuelven torrents.
+  Comet responde “Non-debrid searches disabled on ElfHosted” y MediaFusion
+  `{"streams":[]}`.
+- **Intelligent Debrid Search** (`intell-debridsearch.nepiraw.com`): solo busca
+  en *tu* nube de debrid y exige la API key de RealDebrid, AllDebrid, TorBox,
+  etc. Sin ella responde `{"streams":[]}`.
 
-Por eso quedan registradas en `public/lib/providers.js`, en
-`public/manifest.json` y en el reporte (`manifestOnlyProviders`), igual que TPB
-Adult, pero no se consultan.
+**Brazuca Torrents** es P2P y no necesita cuenta. Su primera línea es el
+título traducido (“Um Sonho de Liberdade”), así que el release se lee del
+archivo. Todo lo que no viene de sus fuentes de anime (EraiRaws, NyaaSi) está
+doblado al portugués y se marca con `pt` (`defaultLanguages`). Así un “Dual
+Audio” PT + original nunca ocupa el hueco 🇬🇧.
+
+## Descubrimiento: anime, documentales y más
+
+Con la rotación automática del watchlist, cada lote **reserva huecos para
+géneros prioritarios**, por defecto anime y documentales:
+
+- **La mitad del lote**, con 1 título por género. En un lote de 8 películas
+  entran 1 película de anime y 1 documental. Si el lote es de 1 (la serie que
+  se sigue hasta terminarla), se alterna entre anime, documental y una serie
+  general.
+- **Anime** = catálogo `Animation` de Cinemeta con país **Japón**. Cinemeta no
+  tiene género “Anime”, y así no entran los dibujos occidentales.
+- **Documentales** = catálogo `Documentary`.
+- Se recorren los listados Popular y Featured del género, paginados hasta 500,
+  y la página cambia en cada ejecución para no repetir títulos.
+- En `watchlist.txt` se marcan con un comentario:
+  `tt0245429 Spirited Away (2001)  # Anime`.
+- **“Y más”**: el resto del lote sale de los años (1935–2099) y de los rankings,
+  que ahora incluyen **todos los géneros de Cinemeta**: acción, comedia,
+  terror, ciencia ficción, familia, historia, deporte, western, reality… Se
+  omiten Talk-Show y Game-Show, que tienen miles de episodios.
+- Con `TMDB_API_KEY`, TMDB también consulta primero anime
+  (`with_genres=16&with_original_language=ja`) y documentales
+  (`with_genres=99`).
+- Para encontrar los streams de anime ya están AniScraper (Nyaa, AnimeTosho…)
+  y las fuentes EraiRaws/NyaaSi de Brazuca.
+
+Los géneros prioritarios se cambian con `DISCOVERY_GENRES`, o con el campo
+**genres** de *Run workflow*:
+
+- `anime,documentales` *(por defecto)*;
+- `anime,documentales,terror,ciencia-ficcion`;
+- `0` para ninguno.
+
+Acepta los nombres de Cinemeta (`Horror`, `Sci-Fi`, `Family`…) o alias en
+español (`terror`, `familia`, `infantil`, `comedia`…).
 
 ## Puesta en marcha
 
@@ -315,13 +352,14 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 
 | Variable | Default | Uso |
 |---|---|---|
-| `PROVIDERS` | los 8 consultables | Addons a consultar (slugs separados por comas) |
+| `PROVIDERS` | los 9 consultables | Addons a consultar (slugs separados por comas) |
 | `DRY_RUN` | `0` | `1` = no escribe en Supabase |
 | `CINEMETA` | `1` | `0` = sin metadatos |
 | `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
 | `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
 | `FOLLOW_SERIES` | `1` | `1` = seguir 1 sola serie a la vez hasta terminarla (+ películas); `only` = solo continuar esa serie; `0` = varias series a la vez |
+| `DISCOVERY_GENRES` | `anime,documentales` | Géneros con hueco reservado en cada lote del watchlist automático (`0` = ninguno) |
 | `SERIES_ID` | — | Opcional: IMDb ID (`tt…`) de la serie a seguir hasta terminarla |
 | `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |

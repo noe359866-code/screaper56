@@ -403,12 +403,16 @@ export function parseStremioStream(rawStream, provider) {
   const quality = normalizeQuality(nameField, useFilename ? filename : titleField, rawStream.quality || rawStream.tag, filename);
   // Las líneas "💬 🇪🇸 🇬🇧 …" (TorrentClaw, Torz) son subtítulos, no audio.
   const languageText = metadataText.split('\n').filter(line => !SUBTITLE_LINE_RE.test(line)).join('\n');
-  const languages = normalizeLanguage(rawStream.language, filename ? `${languageText}\n${filename}` : languageText);
+  const detected = normalizeLanguage(rawStream.language, filename ? `${languageText}\n${filename}` : languageText);
   const externalProvider = sourceMatch
     ? sourceMatch[1].replace(/[.,]+$/, '')
     : provider.slug === 'ytztvio' && nameField && !/(?:4k|2160p|1440p|1080p|720p|480p)/i.test(nameField)
       ? nameField.trim()
       : null;
+  // Idiomas implícitos del addon (Brazuca = doblado PT), salvo sus fuentes de anime.
+  const exceptSource = (provider.defaultLanguagesExceptSources || [])
+    .some(src => String(externalProvider || '').toLowerCase().includes(src));
+  const languages = [...new Set([...detected, ...(exceptSource ? [] : provider.defaultLanguages || [])])];
 
   return {
     infoHash,

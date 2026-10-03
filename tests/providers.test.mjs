@@ -18,19 +18,20 @@ test('registra todos los manifests solicitados', () => {
   assert.equal(PROVIDERS.torrentclaw.manifestUrl, 'https://torrentclaw.com/api/stremio/manifest.json');
   assert.equal(PROVIDERS.aniscraper.manifestUrl, 'https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json');
   assert.equal(PROVIDERS.stremthru.manifestUrl, 'https://stremthru.13377001.xyz/stremio/torz/manifest.json');
-  assert.equal(PROVIDERS.mediafusion.manifestUrl, 'https://mediafusion.elfhosted.com/manifest.json');
-  assert.equal(PROVIDERS.comet.manifestUrl, 'https://comet.elfhosted.com/manifest.json');
+  assert.equal(PROVIDERS.brazuca.manifestUrl, 'https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/manifest.json');
   assert.equal(PROVIDERS.tpbAdult.manifestUrl, 'https://tpb-adult-addon.click/manifest.json');
-  assert.equal(allProviderManifestMetadata().length, 11);
+  assert.equal(allProviderManifestMetadata().length, 10);
 });
 
-test('los addons con streams IMDb sin debrid son queryables; el resto queda manifest-only', () => {
+test('todos los addons consultables funcionan sin cuenta; TPB Adult queda manifest-only', () => {
   const enabled = resolveEnabledProviders().map(provider => provider.slug);
-  assert.deepEqual(enabled, ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru']);
-  assert.deepEqual(manifestOnlyProviders().map(p => p.slug), ['mediafusion', 'comet', 'tpbAdult']);
+  assert.deepEqual(enabled, ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru', 'brazuca']);
+  assert.deepEqual(manifestOnlyProviders().map(p => p.slug), ['tpbAdult']);
   assert.equal(PROVIDERS.tpbAdult.queryable, false);
   assert.equal(PROVIDERS.tpbAdult.adult, true);
-  // Pedirlos explícitamente no los convierte en consultables.
+  // Los que exigen registrarse (debrid) no están registrados.
+  for (const slug of ['mediafusion', 'comet', 'intellDebridSearch']) assert.equal(PROVIDERS[slug], undefined);
+  assert.equal(allProviderManifestMetadata().some(p => /elfhosted|debridsearch/.test(p.manifestUrl)), false);
   assert.deepEqual(resolveEnabledProviders('comet,mediafusion,torrentclaw').map(p => p.slug), ['torrentclaw']);
 });
 

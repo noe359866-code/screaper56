@@ -14,6 +14,8 @@ const HEX_40_RE = /^[0-9a-f]{40}$/i;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export const DEFAULT_BATCH_SIZE = 10;
+/** Páginas de catálogo que se prueban por género prioritario y ejecución. */
+const FOCUS_MAX_REQUESTS = 4;
 
 /**
  * Normaliza un título humano o de release para detectar nombres repetidos
@@ -67,7 +69,7 @@ export function formatWatchlistLine(item) {
     // las temporadas y episodios emitidos de una sola vez.
     if (!Number.isInteger(season)) {
       const label = baseName || item.label || '';
-      return `${id}${label ? ' ' + label : ''}`;
+      return `${id}${label ? ' ' + label : ''}${discoveryTag(item)}`;
     }
     const s = season;
     const ep = Number.isInteger(episode) ? episode : 1;
@@ -80,7 +82,13 @@ export function formatWatchlistLine(item) {
     ? ` (${item.year})`
     : '';
   const label = item.label || (baseName ? `${baseName}${year}` : '');
-  return `${id}${label ? ' ' + label : ''}`;
+  return `${id}${label ? ' ' + label : ''}${discoveryTag(item)}`;
+}
+
+/** "  # Anime" cuando el título salió de un género prioritario del descubrimiento. */
+function discoveryTag(item) {
+  const tag = String(item?.discovery || '').replace(/[#\r\n`]/g, '').trim();
+  return tag ? `  # ${tag}` : '';
 }
 
 /** Genera el contenido completo de `watchlist.txt` con cabecera informativa. */
@@ -307,10 +315,24 @@ export function buildSearchYears({
 
 export const SEARCH_YEARS = Object.freeze(buildSearchYears());
 
+/** Géneros de los catálogos `top`/`imdbRating` de Cinemeta. */
+export const CINEMETA_GENRES = Object.freeze({
+  movie: Object.freeze([
+    'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+    'Fantasy', 'History', 'Horror', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western',
+  ]),
+  // Talk-Show y Game-Show se omiten: programas diarios con miles de episodios.
+  series: Object.freeze([
+    'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+    'Fantasy', 'History', 'Horror', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western',
+    'Reality-TV',
+  ]),
+});
+
 /**
  * Genera las rutas de catálogo de Cinemeta para `movie` o `series` cubriendo
  * todos los años de 1935 a 2099 (`/catalog/{kind}/year/genre={año}.json`)
- * junto con los listados `top` e `imdbRating` paginados.
+ * junto con los listados `top` e `imdbRating` paginados y los de cada género.
  */
 export function buildCatalogPaths(kind = 'movie', {
   minYear = MIN_SEARCH_YEAR,
@@ -318,7 +340,7 @@ export function buildCatalogPaths(kind = 'movie', {
   pivotYear = 2026,
 } = {}) {
   const years = buildSearchYears({ minYear, maxYear, pivotYear });
-  const general = [
+  const ranked = [
     `/catalog/${kind}/top.json`,
     `/catalog/${kind}/imdbRating.json`,
     `/catalog/${kind}/top/skip=100.json`,
@@ -331,10 +353,24 @@ export function buildCatalogPaths(kind = 'movie', {
     `/catalog/${kind}/imdbRating/skip=400.json`,
     `/catalog/${kind}/top/skip=500.json`,
   ];
+  // "Y más": cada género de Cinemeta (Animation, Documentary, Horror, Sci-Fi…)
+  // en sus listados Popular y Featured, intercalado con los rankings generales.
+  const byGenre = (CINEMETA_GENRES[kind] || CINEMETA_GENRES.movie).flatMap(genre => [
+    `/catalog/${kind}/top/genre=${encodeURIComponent(genre)}.json`,
+    `/catalog/${kind}/imdbRating/genre=${encodeURIComponent(genre)}.json`,
+  ]);
+  const general = [];
+  for (let i = 0; i < Math.max(ranked.length, byGenre.length); i++) {
+    if (i < ranked.length) general.push(ranked[i]);
+    if (2 * i < byGenre.length) general.push(byGenre[2 * i]);
+    if (2 * i + 1 < byGenre.length) general.push(byGenre[2 * i + 1]);
+  }
+  // Se reparten entre los años para que cada ejecución toque varios géneros.
+  const step = Math.max(1, Math.floor(years.length / general.length));
   const paths = [];
   let gIdx = 0;
   for (let i = 0; i < years.length; i++) {
-    if (i % 10 === 0 && gIdx < general.length) {
+    if (i % step === 0 && gIdx < general.length) {
       paths.push(general[gIdx++]);
     }
     paths.push(`/catalog/${kind}/year/genre=${years[i]}.json`);
@@ -345,6 +381,80 @@ export function buildCatalogPaths(kind = 'movie', {
 
 export const MOVIE_CATALOG_PATHS = buildCatalogPaths('movie');
 export const SERIES_CATALOG_PATHS = buildCatalogPaths('series');
+
+// ---------- géneros prioritarios: anime, documentales… ----------
+
+const isJapanese = meta => /\bjapan\b/i.test(Array.isArray(meta?.country) ? meta.country.join(', ') : String(meta?.country || ''));
+
+/**
+ * Géneros a los que cada lote del descubrimiento reserva hueco. Cinemeta no
+ * tiene género "Anime": es `Animation` con país Japón.
+ */
+export const FOCUS_GENRES = Object.freeze([
+  Object.freeze({ id: 'anime', label: 'Anime', genre: 'Animation', match: isJapanese, tmdb: 'with_genres=16&with_original_language=ja' }),
+  Object.freeze({ id: 'documentary', label: 'Documental', genre: 'Documentary', tmdb: 'with_genres=99' }),
+]);
+export const DEFAULT_FOCUS_GENRE_IDS = Object.freeze(FOCUS_GENRES.map(g => g.id));
+
+const GENRE_ALIASES = new Map([
+  ['anime', 'anime'], ['animes', 'anime'],
+  ['documentary', 'documentary'], ['documental', 'documentary'], ['documentales', 'documentary'], ['docs', 'documentary'],
+  ['animacion', 'Animation'], ['animación', 'Animation'], ['dibujos', 'Animation'],
+  ['terror', 'Horror'], ['comedia', 'Comedy'], ['familia', 'Family'], ['familiar', 'Family'], ['infantil', 'Family'],
+  ['ciencia-ficcion', 'Sci-Fi'], ['ciencia ficcion', 'Sci-Fi'], ['ciencia ficción', 'Sci-Fi'], ['scifi', 'Sci-Fi'],
+  ['fantasia', 'Fantasy'], ['fantasía', 'Fantasy'], ['historia', 'History'], ['biografia', 'Biography'], ['biografía', 'Biography'],
+  ['deporte', 'Sport'], ['deportes', 'Sport'], ['guerra', 'War'], ['accion', 'Action'], ['acción', 'Action'],
+  ['aventura', 'Adventure'], ['crimen', 'Crime'], ['misterio', 'Mystery'], ['romance', 'Romance'], ['romantica', 'Romance'],
+  ['suspenso', 'Thriller'], ['suspense', 'Thriller'], ['drama', 'Drama'], ['reality', 'Reality-TV'],
+]);
+
+/**
+ * "anime,documentales,terror" → géneros prioritarios. Vacío/ausente = anime +
+ * documentales; "0"/"no"/"none" = ninguno. Acepta cualquier género de
+ * Cinemeta y alias en español.
+ */
+export function resolveFocusGenres(raw) {
+  if (raw == null) return [...FOCUS_GENRES];
+  const list = Array.isArray(raw) ? raw : String(raw).split(',');
+  // Ya resueltos (p. ej. FOCUS_GENRES): se aceptan tal cual.
+  if (list.length && list.every(v => v && typeof v === 'object' && v.genre)) return [...list];
+  const cleaned = list.map(v => String(v?.id ?? v ?? '').trim()).filter(Boolean);
+  if (!cleaned.length) return [...FOCUS_GENRES];
+  if (cleaned.length === 1 && /^(?:0|no|none|ninguno|false|off)$/i.test(cleaned[0])) return [];
+  const known = new Map([...CINEMETA_GENRES.series].map(g => [g.toLowerCase(), g]));
+  const out = [];
+  for (const value of cleaned) {
+    const alias = GENRE_ALIASES.get(value.toLowerCase()) ?? known.get(value.toLowerCase()) ?? null;
+    if (!alias) continue;
+    const focus = FOCUS_GENRES.find(g => g.id === alias)
+      ?? FOCUS_GENRES.find(g => !g.match && g.genre === alias)
+      ?? { id: alias.toLowerCase(), label: alias, genre: alias };
+    if (!out.some(g => g.id === focus.id)) out.push(focus);
+  }
+  return out;
+}
+
+/** Popular y Featured de un género, paginados (0–500). */
+export function focusCatalogPaths(kind, genre) {
+  const g = encodeURIComponent(genre);
+  const paths = [];
+  for (let skip = 0; skip <= 500; skip += 100) {
+    for (const id of ['top', 'imdbRating']) {
+      paths.push(skip ? `/catalog/${kind}/${id}/genre=${g}&skip=${skip}.json` : `/catalog/${kind}/${id}/genre=${g}.json`);
+    }
+  }
+  return paths;
+}
+
+/**
+ * Cuántos huecos del lote van a géneros prioritarios: la mitad (1 por género)
+ * y, si el lote es de 1 (la serie a seguir), se alterna con un título general.
+ */
+export function focusQuota(target, genreCount, cursor = 0) {
+  if (target <= 0 || genreCount <= 0) return 0;
+  if (target === 1) return (cursor % (genreCount + 1)) < genreCount ? 1 : 0;
+  return Math.min(genreCount, Math.floor(target / 2));
+}
 
 /**
  * Pool integrado de respaldo (películas y series reales de 1935 en adelante con
@@ -471,6 +581,7 @@ function normalizeCatalogMeta(raw, fallbackType = 'movie', {
 
 const TMDB_MOVIE_FEEDS = Object.freeze([
   '/trending/movie/week',
+  ...FOCUS_GENRES.map(g => `/discover/movie?sort_by=popularity.desc&${g.tmdb}`),
   '/movie/top_rated',
   '/movie/popular',
   '/movie/now_playing',
@@ -479,6 +590,7 @@ const TMDB_MOVIE_FEEDS = Object.freeze([
 
 const TMDB_SERIES_FEEDS = Object.freeze([
   '/trending/tv/week',
+  ...FOCUS_GENRES.map(g => `/discover/tv?sort_by=popularity.desc&${g.tmdb}`),
   '/tv/top_rated',
   '/tv/popular',
   ...SEARCH_YEARS.map(y => `/discover/tv?sort_by=popularity.desc&first_air_date.gte=${MIN_SEARCH_YEAR}-01-01&first_air_date.lte=${MAX_SEARCH_YEAR}-12-31&first_air_date_year=${y}`),
@@ -595,6 +707,7 @@ export async function discoverCatalogItems(fetchJSON, {
   now = Date.now(),
   minYear = MIN_SEARCH_YEAR,
   maxYear = MAX_SEARCH_YEAR,
+  focusGenres = FOCUS_GENRES,
   onWarning = null,
 } = {}) {
   const total = Math.max(1, Number(count) || DEFAULT_BATCH_SIZE);
@@ -628,13 +741,48 @@ export async function discoverCatalogItems(fetchJSON, {
 
   const root = String(baseUrl || CINEMETA_URL).replace(/\/+$/, '');
   const cursor = seen.cursor || 0;
+  const focus = resolveFocusGenres(focusGenres);
+
+  // 1) Géneros prioritarios (anime, documentales…): 1 título por género, hasta
+  //    la mitad del lote, rotando el género y la página en cada ejecución.
+  if (focus.length && typeof fetchJSON === 'function') {
+    const collectFocus = async (kind, target, bucket) => {
+      const quota = focusQuota(target, focus.length, cursor);
+      let taken = 0;
+      for (let g = 0; g < focus.length && taken < quota && bucket.length < target; g++) {
+        const genre = focus[(cursor + g) % focus.length];
+        const paths = focusCatalogPaths(kind, genre.genre);
+        for (let i = 0; i < FOCUS_MAX_REQUESTS && i < paths.length; i++) {
+          const path = paths[(cursor + i) % paths.length];
+          let data;
+          try {
+            data = await fetchJSON(`${root}${path}`, { timeout: 10000, retries: 1 });
+          } catch (err) {
+            onWarning?.(`Catálogo Cinemeta (${path}): ${err.message || err}`);
+            continue;
+          }
+          const hit = (data?.metas || [])
+            .filter(raw => !genre.match || genre.match(raw))
+            .map(raw => normalizeCatalogMeta(raw, kind, { now, minYear, maxYear }))
+            .find(canPick);
+          if (hit) {
+            recordPick({ ...hit, discovery: genre.label }, bucket);
+            taken++;
+            break;
+          }
+        }
+      }
+    };
+    await collectFocus('movie', targetMovies, pickedMovies);
+    await collectFocus('series', targetSeries, pickedSeries);
+  }
 
   if (tmdbApiKey && typeof fetchJSON === 'function') {
     const fromTmdb = await discoverFromTmdb(fetchJSON, {
       apiKey: tmdbApiKey,
       seen,
-      movieCount: targetMovies,
-      seriesCount: targetSeries,
+      movieCount: targetMovies - pickedMovies.length,
+      seriesCount: targetSeries - pickedSeries.length,
       cursor,
       now,
       minYear,
@@ -737,6 +885,7 @@ export async function rotateWatchlist(currentText, {
   now = Date.now(),
   minYear = MIN_SEARCH_YEAR,
   maxYear = MAX_SEARCH_YEAR,
+  focusGenres = FOCUS_GENRES,
   onWarning = null,
 } = {}) {
   const targetSize = onlySeries ? 1 : Math.max(1, Number(batchSize) || DEFAULT_BATCH_SIZE);
@@ -795,6 +944,7 @@ export async function rotateWatchlist(currentText, {
       now,
       minYear,
       maxYear,
+      focusGenres,
       onWarning,
     });
     seen.cursor = tempSeen.cursor;
