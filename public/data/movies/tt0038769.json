@@ -1,0 +1,143 @@
+{
+  "id": "tt0038769",
+  "imdbId": "tt0038769",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Murderers Among Us (1946)",
+  "name": "Murderers Among Us",
+  "year": 1946,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0038769.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0038769.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0038769.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0038769.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0038769.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0038769.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0038769.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 14,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY[rarbg]",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 7301444403,
+      "sizeLabel": "6.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "ce59645d263e784c1ef88b2e4fc465ef96a0c701",
+      "fileIdx": 2,
+      "score": 6.46,
+      "magnetUrl": "magnet:?xt=urn:btih:ce59645d263e784c1ef88b2e4fc465ef96a0c701&dn=The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY%5Brarbg%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 5,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY[rarbg]",
+      "description": "The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY[rarbg]\n🎞️ BluRay · AVC\n👤 5 💾 6.8 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.46,
+      "infoHash": "ce59645d263e784c1ef88b2e4fc465ef96a0c701",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 7301444403,
+      "sizeLabel": "6.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "USURY"
+      ],
+      "filename": "The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY[rarbg]",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:ce59645d263e784c1ef88b2e4fc465ef96a0c701"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ce59645d263e784c1ef88b2e4fc465ef96a0c701&dn=The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY%5Brarbg%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Murderers.Are.Among.Us.1946.1080p.BluRay.x264-USURY[rarbg]"
+      }
+    }
+  ]
+}

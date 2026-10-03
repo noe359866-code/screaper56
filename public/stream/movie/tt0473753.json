@@ -1,0 +1,70 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Angel-A (2005).1080p.BDRemux.AVC.DTS-HD MA.mkv",
+      "description": "Angel-A (2005).1080p.BDRemux.AVC.DTS-HD MA.mkv\n🎞️ REMUX · AVC · DTS-HD\n👤 7 💾 20.5 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 6.56,
+      "infoHash": "4f507aa401faf4206d1e0574c9a93ec8a369120d",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 22011051504,
+      "sizeLabel": "20.5 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Torrents.csv"
+      ],
+      "filename": "Angel-A (2005).1080p.BDRemux.AVC.DTS-HD MA.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:4f507aa401faf4206d1e0574c9a93ec8a369120d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4f507aa401faf4206d1e0574c9a93ec8a369120d&dn=Angel-A%20(2005).1080p.BDRemux.AVC.DTS-HD%20MA.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Angel-A (2005).1080p.BDRemux.AVC.DTS-HD MA.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "id": "tt0086250",
+  "imdbId": "tt0086250",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Scarface (1983)",
+  "name": "Scarface",
+  "year": 1983,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0086250.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0086250.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0086250.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0086250.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0086250.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0086250.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0086250.json",
+    "brazuca": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/stream/movie/tt0086250.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 168,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Scarface (1983) 1080p H.264 (Al Pacino Michelle Pfeiffer) ENG-SPA (moviesbyrizzo) multisub",
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 4316442132,
+      "sizeLabel": "4.0 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "infoHash": "6304d684bc5ff526ae52e09650e5552bafdeb729",
+      "fileIdx": 0,
+      "score": 14.71,
+      "magnetUrl": "magnet:?xt=urn:btih:6304d684bc5ff526ae52e09650e5552bafdeb729&dn=Scarface%20(1983)%201080p%20H.264%20(Al%20Pacino%20Michelle%20Pfeiffer)%20ENG-SPA%20(moviesbyrizzo)%20multisub&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "quality": "4K",
+      "seeders": 98,
+      "sizeBytes": 8246881243,
+      "sizeLabel": "7.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "e3c0dcae5407f6eac225181ab175fb07c8822452",
+      "fileIdx": 0,
+      "score": 8.6,
+      "magnetUrl": "magnet:?xt=urn:btih:e3c0dcae5407f6eac225181ab175fb07c8822452&dn=Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-%5BYTS.MX%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 98,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Scarface (1983) 1080p H.264 (Al Pacino Michelle Pfeiffer) ENG-SPA (moviesbyrizzo) multisub",
+      "description": "Scarface (1983) 1080p H.264 (Al Pacino Michelle Pfeiffer) ENG-SPA (moviesbyrizzo) multisub\n🎞️ AVC\n👤 9 💾 4.0 GB ⚙️ TorrentsDB",
+      "pick": "es",
+      "score": 14.71,
+      "infoHash": "6304d684bc5ff526ae52e09650e5552bafdeb729",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 4316442132,
+      "sizeLabel": "4.0 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "filename": "Scarface (1983) (Al Pacino) 1080p H.264 ENG-SPA (moviesbyrizzo).mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:6304d684bc5ff526ae52e09650e5552bafdeb729"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6304d684bc5ff526ae52e09650e5552bafdeb729&dn=Scarface%20(1983)%201080p%20H.264%20(Al%20Pacino%20Michelle%20Pfeiffer)%20ENG-SPA%20(moviesbyrizzo)%20multisub&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Scarface (1983) (Al Pacino) 1080p H.264 ENG-SPA (moviesbyrizzo).mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "description": "Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv\n🎞️ BluRay · HEVC · AAC 5.1\n👤 98 💾 7.7 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.6,
+      "infoHash": "e3c0dcae5407f6eac225181ab175fb07c8822452",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 98,
+      "sizeBytes": 8246881243,
+      "sizeLabel": "7.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265",
+        "Knaben"
+      ],
+      "filename": "Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:e3c0dcae5407f6eac225181ab175fb07c8822452"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e3c0dcae5407f6eac225181ab175fb07c8822452&dn=Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-%5BYTS.MX%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Scarface.1983.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    }
+  ]
+}

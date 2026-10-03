@@ -1,0 +1,71 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "I see a dark stranger 1946 Divx Eng sub Ita",
+      "description": "I see a dark stranger 1946 Divx Eng sub Ita\n🎞️ XviD\n👤 1 💾 1.4 GB ⚙️ TorrentsDB+TorrentClaw",
+      "pick": "en",
+      "score": 1.74,
+      "infoHash": "3251c26a03a6490f042cbb393a3c610edc5c7cf8",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "it"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": null,
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "I See a Dark Stranger 1946.avi",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:3251c26a03a6490f042cbb393a3c610edc5c7cf8"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3251c26a03a6490f042cbb393a3c610edc5c7cf8&dn=I%20see%20a%20dark%20stranger%201946%20Divx%20Eng%20sub%20Ita&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "I See a Dark Stranger 1946.avi"
+      }
+    }
+  ]
+}

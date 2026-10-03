@@ -1,0 +1,156 @@
+{
+  "id": "tt0831315",
+  "imdbId": "tt0831315",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Loose Change: Second Edition (2005)",
+  "name": "Loose Change: Second Edition",
+  "year": 2005,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0831315.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0831315.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0831315.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0831315.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0831315.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 10,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "911 - Loose Change 2nd Edition (2005) HD - roflcopter2110",
+      "quality": "720p",
+      "seeders": 20,
+      "sizeBytes": 644245094,
+      "sizeLabel": "614 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "8e68faaca09839282c34fbbeaa7f8dacbb4bba0c",
+      "fileIdx": 0,
+      "score": 5.73,
+      "magnetUrl": "magnet:?xt=urn:btih:8e68faaca09839282c34fbbeaa7f8dacbb4bba0c&dn=911%20-%20Loose%20Change%202nd%20Edition%20(2005)%20HD%20-%20roflcopter2110&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 20,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "911 - Loose Change 2nd Edition (2005) HD - roflcopter2110",
+      "description": "911 - Loose Change 2nd Edition (2005) HD - roflcopter2110\n👤 20 💾 614 MB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 5.73,
+      "infoHash": "8e68faaca09839282c34fbbeaa7f8dacbb4bba0c",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 20,
+      "sizeBytes": 644245094,
+      "sizeLabel": "614 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "roflcopter2110",
+        "Torrents.csv"
+      ],
+      "filename": "911 - Loose Change 2nd Edition (2005) MKV HD - roflcopter2110.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:8e68faaca09839282c34fbbeaa7f8dacbb4bba0c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8e68faaca09839282c34fbbeaa7f8dacbb4bba0c&dn=911%20-%20Loose%20Change%202nd%20Edition%20(2005)%20HD%20-%20roflcopter2110&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "911 - Loose Change 2nd Edition (2005) MKV HD - roflcopter2110.mkv"
+      }
+    }
+  ]
+}
