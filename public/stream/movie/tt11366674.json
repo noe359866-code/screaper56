@@ -1,0 +1,73 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "LOLA 2022 1080p BluRay Remux AVC DTS-HD MA 5 1-CiNEPHiLES.mkv",
+      "description": "LOLA 2022 1080p BluRay Remux AVC DTS-HD MA 5 1-CiNEPHiLES.mkv\n🎞️ REMUX · AVC · DTS-HD 5.1\n👤 47 💾 20.0 GB ⚙️ TorrentsDB+StremThru Torz",
+      "pick": "en",
+      "score": 7.85,
+      "infoHash": "ec5c518ebf5240b2203eceffc1ef6a41a0e33162",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 21454143071,
+      "sizeLabel": "20.0 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "LOLA 2022 1080p BluRay Remux AVC DTS-HD MA 5 1-CiNEPHiLES.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:ec5c518ebf5240b2203eceffc1ef6a41a0e33162"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ec5c518ebf5240b2203eceffc1ef6a41a0e33162&dn=LOLA%202022%201080p%20BluRay%20Remux%20AVC%20DTS-HD%20MA%205%201-CiNEPHiLES.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "LOLA 2022 1080p BluRay Remux AVC DTS-HD MA 5 1-CiNEPHiLES.mkv"
+      }
+    }
+  ]
+}

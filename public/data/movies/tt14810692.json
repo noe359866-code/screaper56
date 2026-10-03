@@ -1,0 +1,241 @@
+{
+  "id": "tt14810692",
+  "imdbId": "tt14810692",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Escape from Mogadishu (2021)",
+  "name": "Escape from Mogadishu",
+  "year": 2021,
+  "imdbRating": "7.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt14810692.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt14810692.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt14810692.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt14810692.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt14810692.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 31,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Huida de Mogadiscio [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Coreano+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 5347234283,
+      "sizeLabel": "5.0 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "f54a63fdba35c637e1791d2dd337bd97803d172e",
+      "fileIdx": 0,
+      "score": 13.96,
+      "magnetUrl": "magnet:?xt=urn:btih:f54a63fdba35c637e1791d2dd337bd97803d172e&dn=Huida%20de%20Mogadiscio%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Coreano%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 24609604963,
+      "sizeLabel": "22.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "9eefcc9c3eb2c2bf5575140c208ed0cdeb7bb43d",
+      "fileIdx": null,
+      "score": 6.56,
+      "magnetUrl": "magnet:?xt=urn:btih:9eefcc9c3eb2c2bf5575140c208ed0cdeb7bb43d&dn=Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Huida de Mogadiscio [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Coreano+Subs][ES-EN]",
+      "description": "Huida de Mogadiscio [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Coreano+Subs][ES-EN]\n🎞️ BluRay · AC3 5.1\n👤 2 💾 5.0 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 13.96,
+      "infoHash": "f54a63fdba35c637e1791d2dd337bd97803d172e",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 5347234283,
+      "sizeLabel": "5.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:f54a63fdba35c637e1791d2dd337bd97803d172e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f54a63fdba35c637e1791d2dd337bd97803d172e&dn=Huida%20de%20Mogadiscio%20%5BMicroHD%201080p%5D%5BAC3%205.1-Castellano-AC3%205.1-Coreano%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv",
+      "description": "Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv\n🎞️ REMUX\n👤 6 💾 22.9 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 6.56,
+      "infoHash": "9eefcc9c3eb2c2bf5575140c208ed0cdeb7bb43d",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 24609604963,
+      "sizeLabel": "22.9 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Knaben"
+      ],
+      "filename": "Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:9eefcc9c3eb2c2bf5575140c208ed0cdeb7bb43d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9eefcc9c3eb2c2bf5575140c208ed0cdeb7bb43d&dn=Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Escape.from.Mogadishu.2021.HKG.BluRay.Remux.1080p.mkv"
+      }
+    }
+  ]
+}

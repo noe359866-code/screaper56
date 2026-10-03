@@ -1,0 +1,265 @@
+{
+  "id": "tt0878804",
+  "imdbId": "tt0878804",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Blind Side (2009)",
+  "name": "The Blind Side",
+  "year": 2009,
+  "imdbRating": "7.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0878804.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0878804.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0878804.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0878804.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0878804.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 79,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN.mkv",
+      "quality": "1080p",
+      "seeders": 46,
+      "sizeBytes": 12717575492,
+      "sizeLabel": "11.8 GB",
+      "audioLangs": [
+        "es",
+        "zh",
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "087a152dc5e5d46f38da41f178a84033b12d5e06",
+      "fileIdx": 3,
+      "score": 13.93,
+      "magnetUrl": "magnet:?xt=urn:btih:087a152dc5e5d46f38da41f178a84033b12d5e06&dn=The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4",
+      "quality": "1080p",
+      "seeders": 122,
+      "sizeBytes": 1929351929,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "infoHash": "1dedd589022ad1d9c4578178e23a4dfb57c7cd00",
+      "fileIdx": 0,
+      "score": 8.38,
+      "magnetUrl": "magnet:?xt=urn:btih:1dedd589022ad1d9c4578178e23a4dfb57c7cd00&dn=The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 122,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "zh"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN.mkv",
+      "description": "The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN.mkv\n🎞️ BluRay · AVC · DTS\n👤 46 💾 11.8 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "es",
+      "score": 13.93,
+      "infoHash": "087a152dc5e5d46f38da41f178a84033b12d5e06",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "zh",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 46,
+      "sizeBytes": 12717575492,
+      "sizeLabel": "11.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "BEN",
+        "TheRARBG"
+      ],
+      "filename": "The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:087a152dc5e5d46f38da41f178a84033b12d5e06"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:087a152dc5e5d46f38da41f178a84033b12d5e06&dn=The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The.Blind.Side.2009.1080p.BluRay.ENG.LATINO.CHINESE.DTS.5.1.H264-BEN.THE.MEN"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4",
+      "description": "The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4\n🎞️ BluRay · AVC\n👤 122 💾 1.8 GB ⚙️ TorrentsDB+Ytztvio+StremThru Torz",
+      "pick": "en",
+      "score": 8.38,
+      "infoHash": "1dedd589022ad1d9c4578178e23a4dfb57c7cd00",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 122,
+      "sizeBytes": 1929351929,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb",
+        "kickasstorrents",
+        "x264",
+        "Torrents.csv"
+      ],
+      "filename": "The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:1dedd589022ad1d9c4578178e23a4dfb57c7cd00"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1dedd589022ad1d9c4578178e23a4dfb57c7cd00&dn=The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Blind.Side.2009.1080p.BluRay.x264.YIFY.mp4"
+      }
+    }
+  ]
+}

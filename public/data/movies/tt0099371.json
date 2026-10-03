@@ -1,0 +1,273 @@
+{
+  "id": "tt0099371",
+  "imdbId": "tt0099371",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Days of Thunder (1990)",
+  "name": "Days of Thunder",
+  "year": 1990,
+  "imdbRating": "6.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0099371.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0099371.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0099371.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0099371.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0099371.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 78,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Dias de trueno [4K UHDmicro][2160p][HDR10][AC3 5.1 Castellano-Ingles Dolby TrueHD 5.1+Subs][ES-EN]",
+      "quality": "4K",
+      "seeders": 2,
+      "sizeBytes": 8407398481,
+      "sizeLabel": "7.8 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [
+          "TrueHD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "infoHash": "edef8bdf9353b49e4f23d3f75cab8f67a80c97d5",
+      "fileIdx": 4,
+      "score": 14.27,
+      "magnetUrl": "magnet:?xt=urn:btih:edef8bdf9353b49e4f23d3f75cab8f67a80c97d5&dn=Dias%20de%20trueno%20%5B4K%20UHDmicro%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1%20Castellano-Ingles%20Dolby%20TrueHD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Days Of Thunder (1990) BrRip 1080p x264 - 1.5GB - YIFY",
+      "quality": "1080p",
+      "seeders": 92,
+      "sizeBytes": 1610612736,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "30ecf6cb57b3d5bc2a2ee2262fe140d5c051d071",
+      "fileIdx": 1,
+      "score": 8.25,
+      "magnetUrl": "magnet:?xt=urn:btih:30ecf6cb57b3d5bc2a2ee2262fe140d5c051d071&dn=Days%20Of%20Thunder%20(1990)%20BrRip%201080p%20x264%20-%201.5GB%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 92,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Dias de trueno [4K UHDmicro][2160p][HDR10][AC3 5.1 Castellano-Ingles Dolby TrueHD 5.1+Subs][ES-EN]",
+      "description": "Dias de trueno [4K UHDmicro][2160p][HDR10][AC3 5.1 Castellano-Ingles Dolby TrueHD 5.1+Subs][ES-EN]\n🎞️ HDR10 · TrueHD/AC3 5.1\n👤 2 💾 7.8 GB ⚙️ Peerflix+StremThru Torz",
+      "pick": "es",
+      "score": 14.27,
+      "infoHash": "edef8bdf9353b49e4f23d3f75cab8f67a80c97d5",
+      "fileIdx": 4,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 2,
+      "sizeBytes": 8407398481,
+      "sizeLabel": "7.8 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [
+          "TrueHD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": "Dias de trueno 4Kmicro2160.pctmix.com.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:edef8bdf9353b49e4f23d3f75cab8f67a80c97d5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:edef8bdf9353b49e4f23d3f75cab8f67a80c97d5&dn=Dias%20de%20trueno%20%5B4K%20UHDmicro%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1%20Castellano-Ingles%20Dolby%20TrueHD%205.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Dias de trueno 4Kmicro2160.pctmix.com.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Days Of Thunder (1990) BrRip 1080p x264 - 1.5GB - YIFY",
+      "description": "Days Of Thunder (1990) BrRip 1080p x264 - 1.5GB - YIFY\n🎞️ BluRay · AVC\n👤 92 💾 1.5 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.25,
+      "infoHash": "30ecf6cb57b3d5bc2a2ee2262fe140d5c051d071",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 92,
+      "sizeBytes": 1610612736,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "x264",
+        "YIFY",
+        "Torrents.csv"
+      ],
+      "filename": "Days Of Thunder (1990) BrRip 1080p x264 YIFY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:30ecf6cb57b3d5bc2a2ee2262fe140d5c051d071"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:30ecf6cb57b3d5bc2a2ee2262fe140d5c051d071&dn=Days%20Of%20Thunder%20(1990)%20BrRip%201080p%20x264%20-%201.5GB%20-%20YIFY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Days Of Thunder (1990) BrRip 1080p x264 YIFY.mp4"
+      }
+    }
+  ]
+}
