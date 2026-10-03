@@ -1,0 +1,244 @@
+{
+  "id": "tt2599716",
+  "imdbId": "tt2599716",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Police Story: Lockdown (2013)",
+  "name": "Police Story: Lockdown",
+  "year": 2013,
+  "imdbRating": "5.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt2599716.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt2599716.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt2599716.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt2599716.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 53,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Accion Policial [BluRay 1080p][AC3 5.1-DTS 5.1 Castellano-AC3 5.1 Chino+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 11596411699,
+      "sizeLabel": "10.8 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "58f34ac95e1148a96ac43873bf787cff22b6db57",
+      "fileIdx": 0,
+      "score": 13.81,
+      "magnetUrl": "magnet:?xt=urn:btih:58f34ac95e1148a96ac43873bf787cff22b6db57&dn=Accion%20Policial%20%5BBluRay%201080p%5D%5BAC3%205.1-DTS%205.1%20Castellano-AC3%205.1%20Chino%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD",
+      "quality": "1080p",
+      "seeders": 64,
+      "sizeBytes": 11456825262,
+      "sizeLabel": "10.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "1328c00c0b8b454a934862285b271866d4b1f6da",
+      "fileIdx": 0,
+      "score": 8.08,
+      "magnetUrl": "magnet:?xt=urn:btih:1328c00c0b8b454a934862285b271866d4b1f6da&dn=Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 64,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Accion Policial [BluRay 1080p][AC3 5.1-DTS 5.1 Castellano-AC3 5.1 Chino+Subs][ES-EN]",
+      "description": "Accion Policial [BluRay 1080p][AC3 5.1-DTS 5.1 Castellano-AC3 5.1 Chino+Subs][ES-EN]\n🎞️ BluRay · DTS/AC3 5.1\n👤 1 💾 10.8 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 13.81,
+      "infoHash": "58f34ac95e1148a96ac43873bf787cff22b6db57",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 11596411699,
+      "sizeLabel": "10.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:58f34ac95e1148a96ac43873bf787cff22b6db57"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:58f34ac95e1148a96ac43873bf787cff22b6db57&dn=Accion%20Policial%20%5BBluRay%201080p%5D%5BAC3%205.1-DTS%205.1%20Castellano-AC3%205.1%20Chino%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD",
+      "description": "Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD\n🎞️ BluRay · AVC · DTS-HD\n👤 64 💾 10.7 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.08,
+      "infoHash": "1328c00c0b8b454a934862285b271866d4b1f6da",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 64,
+      "sizeBytes": 11456825262,
+      "sizeLabel": "10.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "ThePirateBay"
+      ],
+      "filename": "Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:1328c00c0b8b454a934862285b271866d4b1f6da"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1328c00c0b8b454a934862285b271866d4b1f6da&dn=Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Police.Story.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD.mkv"
+      }
+    }
+  ]
+}

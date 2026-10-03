@@ -1,0 +1,237 @@
+{
+  "id": "tt2458106",
+  "imdbId": "tt2458106",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Ninja: Shadow of a Tear (2013)",
+  "name": "Ninja: Shadow of a Tear",
+  "year": 2013,
+  "imdbRating": "6.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt2458106.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt2458106.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt2458106.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt2458106.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 14,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "[Bitsearch.to] Ninja 2 La Sombra De La Muerte 2013 [BRrip X264 MKV][Castellano]",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 1331439862,
+      "sizeLabel": "1.2 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "128d755e493522f5ca879b16158379d31b24542d",
+      "fileIdx": null,
+      "score": 10.28,
+      "magnetUrl": "magnet:?xt=urn:btih:128d755e493522f5ca879b16158379d31b24542d&dn=%5BBitsearch.to%5D%20Ninja%202%20La%20Sombra%20De%20La%20Muerte%202013%20%5BBRrip%20X264%20MKV%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ninja Shadow of a Tear 2013 1080p BluRay REMUX AVC TrueHD 5 1-RA",
+      "quality": "1080p",
+      "seeders": 33,
+      "sizeBytes": 15386720338,
+      "sizeLabel": "14.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "TrueHD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "4c55bcffbed1f71564da0ae98661bd755c2d7a6b",
+      "fileIdx": 0,
+      "score": 7.69,
+      "magnetUrl": "magnet:?xt=urn:btih:4c55bcffbed1f71564da0ae98661bd755c2d7a6b&dn=Ninja%20Shadow%20of%20a%20Tear%202013%201080p%20BluRay%20REMUX%20AVC%20TrueHD%205%201-RA&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 33,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "[Bitsearch.to] Ninja 2 La Sombra De La Muerte 2013 [BRrip X264 MKV][Castellano]",
+      "description": "[Bitsearch.to] Ninja 2 La Sombra De La Muerte 2013 [BRrip X264 MKV][Castellano]\n🎞️ BluRay · AVC\n👤 0 💾 1.2 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 10.28,
+      "infoHash": "128d755e493522f5ca879b16158379d31b24542d",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 1331439862,
+      "sizeLabel": "1.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:128d755e493522f5ca879b16158379d31b24542d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:128d755e493522f5ca879b16158379d31b24542d&dn=%5BBitsearch.to%5D%20Ninja%202%20La%20Sombra%20De%20La%20Muerte%202013%20%5BBRrip%20X264%20MKV%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ninja Shadow of a Tear 2013 1080p BluRay REMUX AVC TrueHD 5 1-RA",
+      "description": "Ninja Shadow of a Tear 2013 1080p BluRay REMUX AVC TrueHD 5 1-RA\n🎞️ REMUX · AVC · TrueHD 5.1\n👤 33 💾 14.3 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.69,
+      "infoHash": "4c55bcffbed1f71564da0ae98661bd755c2d7a6b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 33,
+      "sizeBytes": 15386720338,
+      "sizeLabel": "14.3 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "TrueHD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Ninja.Shadow.of.a.Tear.2013.1080p.BluRay.REMUX.AVC.TrueHD.5.1-RARBG.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:4c55bcffbed1f71564da0ae98661bd755c2d7a6b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4c55bcffbed1f71564da0ae98661bd755c2d7a6b&dn=Ninja%20Shadow%20of%20a%20Tear%202013%201080p%20BluRay%20REMUX%20AVC%20TrueHD%205%201-RA&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Ninja.Shadow.of.a.Tear.2013.1080p.BluRay.REMUX.AVC.TrueHD.5.1-RARBG.mkv"
+      }
+    }
+  ]
+}

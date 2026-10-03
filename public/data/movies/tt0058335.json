@@ -1,0 +1,36 @@
+{
+  "id": "tt0058335",
+  "imdbId": "tt0058335",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Marriage Italian Style (1964)",
+  "name": "Marriage Italian Style",
+  "year": 1964,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0058335.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0058335.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0058335.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0058335.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 11,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
