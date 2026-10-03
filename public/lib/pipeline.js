@@ -130,6 +130,11 @@ export function createJsonFetcher({
         lastErr = timedOut
           ? Object.assign(new Error(`timeout (${Math.round(timeout / 1000)}s)`), { name: 'TimeoutError' })
           : err;
+        // Algunos addons tras Cloudflare (Ytztvio) devuelven 403 a ciertos
+        // User-Agent: si las cabeceras rotan, se prueba una vez con las siguientes.
+        const rotateOn403 = lastErr?.name === 'HttpError' && lastErr.status === 403
+          && typeof headers === 'function' && attempt === 0 && maxRetries > 0;
+        if (rotateOn403) continue;
         if (!isRetryable(lastErr) || attempt >= maxRetries) break;
         await sleep(lastErr.retryAfterMs ?? 700 * 2 ** attempt + Math.random() * 300);
       } finally {
@@ -561,7 +566,7 @@ export async function fetchProviderStreams(fetchJSON, provider, query) {
   const url = streamUrl(provider, query);
   let data;
   try {
-    data = await fetchJSON(url);
+    data = await fetchJSON(url, Number.isFinite(provider.timeoutMs) ? { timeout: provider.timeoutMs } : {});
   } catch (err) {
     if (err?.status === 404) return { url, streams: [] }; // el addon no tiene ese título
     throw err;
@@ -615,10 +620,19 @@ export function buildItem(query, providerResults, errors = [], { bestTrackers = 
   return { item, streams, candidates: merged, errors };
 }
 
+/** Pausa ante un HTTP 429: Retry-After o 5 s, 10 s, 20 s… (máx. 60 s). */
+export function rateLimitPauseMs(strikes, retryAfterMs = null) {
+  const backoff = 5000 * 2 ** Math.max(0, strikes - 1);
+  return Math.min(60000, Math.max(retryAfterMs ?? 0, backoff));
+}
+
 /**
- * Consulta cada (título × addon) con concurrencia limitada. Si un addon falla
- * `breakerThreshold` veces seguidas para un tipo (p. ej. Ytztvio da 403 en
- * series), se deja de consultar para ese tipo y se ahorra el resto de esperas.
+ * Consulta cada (título × addon). Cada addon tiene su propia cola
+ * (`provider.concurrency` o `concurrency`), así un addon lento no frena a los
+ * demás. Si un addon falla `breakerThreshold` veces seguidas para un tipo
+ * (p. ej. Ytztvio da 403 en series), se deja de consultar para ese tipo.
+ * Un HTTP 429 (límite de peticiones) no lo corta enseguida: pausa ese addon
+ * y reintenta; solo se corta tras `breakerThreshold × 3` avisos seguidos.
  * `onItem` se llama en cuanto termina cada título (progreso en vivo).
  */
 export async function runPipeline(queries, {
@@ -632,24 +646,35 @@ export async function runPipeline(queries, {
   signal = null,
   onItem = null,
   now = () => Date.now(),
+  sleep = ms => new Promise(resolve => setTimeout(resolve, ms)),
 } = {}) {
   const source = streamSource || ((provider, query) => fetchProviderStreams(fetchJSON, provider, query));
-  const perProvider = Object.fromEntries(providers.map(p => [p.slug, { requests: 0, ok: 0, errors: 0, skipped: 0, streams: 0, avgMs: null, totalMs: 0 }]));
+  const perProvider = Object.fromEntries(providers.map(p => [p.slug, { requests: 0, ok: 0, errors: 0, skipped: 0, streams: 0, rateLimited: 0, avgMs: null, totalMs: 0 }]));
   const breakers = new Map();
-  const limit = createLimiter(concurrency);
+  const limiters = new Map(providers.map(p => [p.slug, createLimiter(Number.isInteger(p.concurrency) && p.concurrency > 0 ? p.concurrency : concurrency)]));
+  // El límite de peticiones es por servidor: la pausa vale para películas y series.
+  const throttles = new Map(providers.map(p => [p.slug, { strikes: 0, until: 0 }]));
+  const rateLimitThreshold = breakerThreshold * 3;
   const results = new Array(queries.length);
   let done = 0;
 
   const fetchOne = (provider, query) => {
     const key = `${provider.slug}:${query.kind}`;
-    if (!breakers.has(key)) breakers.set(key, { consecutive: 0, open: false, lastError: null });
+    if (!breakers.has(key)) breakers.set(key, { consecutive: 0, open: false, openReason: null, lastError: null });
     const breaker = breakers.get(key);
+    const throttle = throttles.get(provider.slug);
     const stats = perProvider[provider.slug];
-    return limit(async () => {
+    return limiters.get(provider.slug)(async () => {
       if (signal?.aborted) { stats.skipped++; return { ok: false, skipped: true, error: 'cancelado' }; }
       if (breaker.open) {
         stats.skipped++;
-        return { ok: false, skipped: true, error: `omitido tras ${breakerThreshold} errores seguidos (${breaker.lastError})` };
+        return { ok: false, skipped: true, error: breaker.openReason };
+      }
+      const wait = throttle.until - now();
+      if (wait > 0) await sleep(wait);
+      if (breaker.open || signal?.aborted) {
+        stats.skipped++;
+        return { ok: false, skipped: true, error: breaker.openReason || 'cancelado' };
       }
       stats.requests++;
       const started = now();
@@ -658,13 +683,26 @@ export async function runPipeline(queries, {
         stats.ok++;
         stats.streams += value.streams.length;
         breaker.consecutive = 0;
+        throttle.strikes = 0;
         return { ok: true, value };
       } catch (err) {
         stats.errors++;
         const message = describeError(err);
-        if (err?.name !== 'AbortError') {
+        if (err?.name === 'HttpError' && err.status === 429) {
+          stats.rateLimited++;
+          throttle.strikes++;
+          throttle.until = now() + rateLimitPauseMs(throttle.strikes, err.retryAfterMs);
           breaker.lastError = message;
-          if (++breaker.consecutive >= breakerThreshold) breaker.open = true;
+          if (throttle.strikes >= rateLimitThreshold) {
+            breaker.open = true;
+            breaker.openReason = `omitido tras ${rateLimitThreshold} avisos seguidos de límite de peticiones (${message})`;
+          }
+        } else if (err?.name !== 'AbortError') {
+          breaker.lastError = message;
+          if (++breaker.consecutive >= breakerThreshold) {
+            breaker.open = true;
+            breaker.openReason = `omitido tras ${breakerThreshold} errores seguidos (${message})`;
+          }
         }
         return { ok: false, error: message };
       } finally {
@@ -684,6 +722,16 @@ export async function runPipeline(queries, {
     onItem?.(results[index], { done, total: queries.length });
   }));
 
+  // Cuánto aporta cada addon a lo publicado: picks en los que aparece y picks
+  // que SOLO él encontró (si es 0, quitarlo no cambiaría el resultado).
+  for (const stats of Object.values(perProvider)) { stats.picks = 0; stats.uniquePicks = 0; }
+  for (const { streams } of results) {
+    for (const stream of streams) {
+      const slugs = [...new Set(stream.providers || [])];
+      for (const slug of slugs) if (perProvider[slug]) perProvider[slug].picks++;
+      if (slugs.length === 1 && perProvider[slugs[0]]) perProvider[slugs[0]].uniquePicks++;
+    }
+  }
   for (const stats of Object.values(perProvider)) {
     const measured = stats.ok + stats.errors;
     stats.avgMs = measured ? Math.round(stats.totalMs / measured) : null;

@@ -52,7 +52,7 @@ on:
       providers:
         description: "Addons Stremio (slugs separados por comas)"
         required: false
-        default: "peerflix,torrentsdb,torrentio,piratebay,ytztvio,torrentclaw,aniscraper,stremthru,brazuca"
+        default: "peerflix,torrentsdb,torrentio,ytztvio,torrentclaw,aniscraper,stremthru,brazuca"
         type: string
       issue:
         description: "Nº del Issue que pidió la ingesta (lo rellena issue-ingest.yml; vacío = ninguno)"
@@ -124,7 +124,7 @@ jobs:
           # ejecución reanuda donde quedó (0 = sin límite).
           MAX_EPISODES_PER_RUN: "60"
           DISCOVERY_GENRES: ${{ inputs.genres || 'anime,documentales' }}
-          PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio,torrentclaw,aniscraper,stremthru,brazuca' }}
+          PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,ytztvio,torrentclaw,aniscraper,stremthru,brazuca' }}
         run: node src/fetch.mjs
 
       - name: "Resumen de la ejecución"

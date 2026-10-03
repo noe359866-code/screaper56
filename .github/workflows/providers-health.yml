@@ -1,0 +1,27 @@
+name: "Salud de los addons"
+
+# Comprueba cada addon con una película y un episodio conocidos y deja la
+# tabla en el resumen del job. Solo lee: no hace commits ni toca la web.
+# Lánzalo a mano (Actions → Salud de los addons → Run workflow) o espera al
+# chequeo semanal de los lunes.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 12 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: "Chequeo de addons"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: "Probar addons"
+        run: node src/check-providers.mjs

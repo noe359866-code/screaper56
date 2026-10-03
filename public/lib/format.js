@@ -138,11 +138,15 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   if (stats.length) {
     lines.push('<details><summary>Addons consultados</summary>');
     lines.push('');
-    lines.push('| Addon | Respuestas | Errores | Omitidas | Streams | Media |');
-    lines.push('|---|---|---|---|---|---|');
+    lines.push('| Addon | Respuestas | Errores | Omitidas | Streams | Picks (solo él) | Media |');
+    lines.push('|---|---|---|---|---|---|---|');
     for (const [slug, s] of stats) {
-      lines.push(`| ${md(slug)} | ${s.ok ?? '—'} | ${s.errors ?? 0} | ${s.skipped ?? 0} | ${s.streams ?? 0} | ${s.avgMs != null ? s.avgMs + ' ms' : '—'} |`);
+      const picks = s.picks != null ? `${s.picks} (${s.uniquePicks ?? 0})` : '—';
+      const errors = `${s.errors ?? 0}${s.rateLimited ? ` (${s.rateLimited}× 429)` : ''}`;
+      lines.push(`| ${md(slug)} | ${s.ok ?? '—'} | ${errors} | ${s.skipped ?? 0} | ${s.streams ?? 0} | ${picks} | ${s.avgMs != null ? s.avgMs + ' ms' : '—'} |`);
     }
+    lines.push('');
+    lines.push('_Picks (solo él): torrents publicados en los que aparece el addon y, entre paréntesis, los que solo él encontró._');
     lines.push('');
     lines.push('</details>');
     lines.push('');
@@ -150,7 +154,7 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   const warnings = report.warnings || [];
   if (warnings.length) {
     lines.push('### ⚠️ Avisos');
-    for (const w of warnings.slice(0, 30)) lines.push(`- ${md(w)}`);
+    for (const { text, count } of groupWarnings(warnings).slice(0, 30)) lines.push(`- ${md(text)}${count > 1 ? ` (×${count})` : ''}`);
     lines.push('');
   }
   const errors = (report.errors || []).filter(e => !e.skipped);
@@ -169,4 +173,20 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
   const links = [pagesUrl && `[Abrir el dashboard](${pagesUrl})`, runUrl && `[Ver la ejecución](${runUrl})`].filter(Boolean);
   if (links.length) lines.push(links.join(' · '));
   return lines.join('\n').trim() + '\n';
+}
+
+/**
+ * Agrupa avisos que solo cambian en el ID ("OMDb (tt0055892): HTTP 401" ×100
+ * → "OMDb (tt…): HTTP 401 (×100)") para que no tapen los demás.
+ */
+export function groupWarnings(warnings) {
+  const groups = new Map();
+  for (const warning of warnings || []) {
+    const text = String(warning);
+    const key = text.replace(/\btt\d{7,}(?::\d+:\d+)?\b/g, 'tt…');
+    const group = groups.get(key);
+    if (group) group.count++;
+    else groups.set(key, { text: key === text ? text : key, count: 1 });
+  }
+  return [...groups.values()];
 }

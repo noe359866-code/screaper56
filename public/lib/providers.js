@@ -35,6 +35,8 @@ export const PROVIDERS = Object.freeze({
     adult: false,
     enabledByDefault: true,
     description: 'Agrega YTS, EZTV, 1337x, RARGB, Nyaa, TPB, Kat, TTL, Rutracker…',
+    // Responde HTTP 429 con 4 peticiones a la vez: 2 en paralelo como máximo.
+    concurrency: 2,
   }),
   torrentio: Object.freeze({
     slug: 'torrentio',
@@ -55,8 +57,12 @@ export const PROVIDERS = Object.freeze({
     types: ['movie', 'series'],
     queryable: true,
     adult: false,
-    enabledByDefault: true,
-    description: 'TPB directo',
+    // Desactivado por defecto: ~6 s por consulta y, en la última ingesta, 0 de
+    // 254 picks aportados que no tuvieran ya Torrentio/TorrentsDB (que ya
+    // indexan TPB). Se puede activar en Ajustes o con PROVIDERS=…,piratebay.
+    enabledByDefault: false,
+    timeoutMs: 10000,
+    description: 'TPB directo (lento; Torrentio y TorrentsDB ya incluyen TPB)',
   }),
   ytztvio: Object.freeze({
     slug: 'ytztvio',
@@ -95,6 +101,8 @@ export const PROVIDERS = Object.freeze({
     adult: false,
     enabledByDefault: true,
     description: 'Anime: Nyaa, AnimeTosho, AniRena, TsukiHime (responde vacío si no es anime)',
+    // A veces tarda hasta el 504 de Cloudflare: mejor cortar antes.
+    timeoutMs: 12000,
     titleFromFilename: true,
     sourceBadge: '⚙️',
   }),

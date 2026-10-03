@@ -437,3 +437,23 @@ test('discoverCatalogItems reserva huecos para anime (Animation + Japón) y docu
   });
   assert.equal(plain.some(d => d.discovery), false);
 });
+
+test('enrichWithTmdbAndOmdb: con una API key inválida avisa una sola vez y deja de llamar', async () => {
+  let omdbCalls = 0;
+  const fakeFetch = async url => {
+    if (url.includes('omdbapi.com')) {
+      omdbCalls++;
+      throw Object.assign(new Error('HTTP 401'), { name: 'HttpError', status: 401 });
+    }
+    return {};
+  };
+  const warnings = [];
+  const ids = ['tt0055892', 'tt0056592', 'tt0123179', 'tt0054821'];
+  const stats = await enrichWithTmdbAndOmdb(ids.map(imdbId => ({ imdbId })), new Map(), {
+    fetchImpl: fakeFetch, tmdbApiKey: '', omdbApiKey: 'caducada', onWarning: w => warnings.push(w),
+  });
+  assert.equal(omdbCalls, 1);
+  assert.equal(stats.omdb.invalidKey, true);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /OMDb: la API key no es válida \(HTTP 401\); revisa el Secret OMDB_API_KEY/);
+});

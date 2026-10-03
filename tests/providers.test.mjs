@@ -25,7 +25,7 @@ test('registra todos los manifests solicitados', () => {
 
 test('todos los addons consultables funcionan sin cuenta; TPB Adult queda manifest-only', () => {
   const enabled = resolveEnabledProviders().map(provider => provider.slug);
-  assert.deepEqual(enabled, ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru', 'brazuca']);
+  assert.deepEqual(enabled, ['peerflix', 'torrentsdb', 'torrentio', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru', 'brazuca']);
   assert.deepEqual(manifestOnlyProviders().map(p => p.slug), ['tpbAdult']);
   assert.equal(PROVIDERS.tpbAdult.queryable, false);
   assert.equal(PROVIDERS.tpbAdult.adult, true);

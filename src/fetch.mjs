@@ -142,9 +142,11 @@ const ENABLED_PROVIDERS = resolveEnabledProviders().map(provider =>
 );
 const MANIFEST_ONLY_PROVIDERS = resolveManifestOnlyProviders();
 
+// Primero un navegador: Ytztvio (Cloudflare Workers) respondía 403 en todas
+// las consultas al bot. Ante un 403 se reintenta una vez con el siguiente.
 const USER_AGENTS = [
-  'peerflix-static-bot/2.0',
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'peerflix-static-bot/2.0',
 ];
 
 const fetchJSON = createJsonFetcher({
@@ -203,15 +205,25 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
 } = {}) {
   const uniqueIds = [...new Set((items || []).map(i => i.imdbId).filter(Boolean))];
   const stats = {
-    tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0 },
-    omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0 },
+    tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0, invalidKey: false },
+    omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0, invalidKey: false },
   };
   if (!uniqueIds.length || (!tmdbApiKey && !omdbApiKey)) return stats;
+
+  // Una API key inválida (401) o sin permiso (403) no se arregla reintentando
+  // con otro título: se avisa UNA vez y se deja de usar ese servicio.
+  const giveUpOnKey = (service, secret, err) => {
+    const status = err?.status;
+    if (status !== 401 && status !== 403) return false;
+    stats[service].invalidKey = true;
+    onWarning?.(`${service === 'tmdb' ? 'TMDB' : 'OMDb'}: la API key no es válida (HTTP ${status}); revisa el Secret ${secret}. Se sigue sin ${service === 'tmdb' ? 'TMDB' : 'OMDb'} en esta ejecución.`);
+    return true;
+  };
 
   for (const imdbId of uniqueIds) {
     const current = metaById.get(imdbId) || { imdbId, type: null, name: null, year: null, yearEnd: null, videos: null };
 
-    if (tmdbApiKey) {
+    if (tmdbApiKey && !stats.tmdb.invalidKey) {
       try {
         const find = await fetchImpl(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${encodeURIComponent(tmdbApiKey)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
         const movie = find?.movie_results?.[0];
@@ -232,11 +244,11 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
         }
       } catch (err) {
         stats.tmdb.failures++;
-        onWarning?.(`TMDB (${imdbId}): ${err.message || err}`);
+        if (!giveUpOnKey('tmdb', 'TMDB_API_KEY', err)) onWarning?.(`TMDB (${imdbId}): ${err.message || err}`);
       }
     }
 
-    if (omdbApiKey) {
+    if (omdbApiKey && !stats.omdb.invalidKey) {
       try {
         const omdb = await fetchImpl(`https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&apikey=${encodeURIComponent(omdbApiKey)}`, { timeout: 10000, retries: 1 });
         if (omdb && omdb.Response !== 'False' && omdb.Title) {
@@ -255,7 +267,7 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
         }
       } catch (err) {
         stats.omdb.failures++;
-        onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
+        if (!giveUpOnKey('omdb', 'OMDB_API_KEY', err)) onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
       }
     }
   }
@@ -842,7 +854,7 @@ async function main() {
   console.log(`   streams   : ${index.totalStreams} elegidos (🇪🇸 ${index.picks.es} · 🇬🇧 ${index.picks.en}) de ${index.totalCandidates} candidatos fusionados de ${providers.length} fuentes`);
   for (const p of providers) {
     const s = index.perProviderStats[p.slug];
-    console.log(`     · ${p.name.padEnd(16)} ${String(s.streams).padStart(5)} streams · ${s.ok} ok · ${s.errors} errores · ${s.skipped} omitidas${s.avgMs != null ? ` · ${s.avgMs} ms de media` : ''}`);
+    console.log(`     · ${p.name.padEnd(16)} ${String(s.streams).padStart(5)} streams · ${s.picks} picks (${s.uniquePicks} solo suyos) · ${s.ok} ok · ${s.errors} errores${s.rateLimited ? ` (${s.rateLimited}× 429)` : ''} · ${s.skipped} omitidas${s.avgMs != null ? ` · ${s.avgMs} ms de media` : ''}`);
   }
   if (index.missing.es || index.missing.en) console.log(`   sin pick  : ${index.missing.es} sin español · ${index.missing.en} sin inglés`);
   console.log(`   trackers  : ${index.selection.trackers.length} por magnet (${index.selection.trackersSource})`);
