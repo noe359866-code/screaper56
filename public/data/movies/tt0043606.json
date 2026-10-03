@@ -1,0 +1,137 @@
+{
+  "id": "tt0043606",
+  "imdbId": "tt0043606",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Cops and Robbers (1951)",
+  "name": "Cops and Robbers",
+  "year": 1951,
+  "imdbRating": "7.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0043606.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0043606.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0043606.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0043606.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0043606.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0043606.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0043606.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Toto.Guardie.e.ladri-1951.DVDRip.avi",
+      "quality": "480p",
+      "seeders": 3,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "39f395c81e067c9825235806260e5cf2f4c53a2c",
+      "fileIdx": null,
+      "score": 3.51,
+      "magnetUrl": "magnet:?xt=urn:btih:39f395c81e067c9825235806260e5cf2f4c53a2c&dn=Toto.Guardie.e.ladri-1951.DVDRip.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 3,
+  "qualities": [
+    "480p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Toto.Guardie.e.ladri-1951.DVDRip.avi",
+      "description": "Toto.Guardie.e.ladri-1951.DVDRip.avi\n🎞️ DVD\n👤 3 💾 1.4 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 3.51,
+      "infoHash": "39f395c81e067c9825235806260e5cf2f4c53a2c",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 3,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Toto.Guardie.e.ladri-1951.DVDRip.avi",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:39f395c81e067c9825235806260e5cf2f4c53a2c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:39f395c81e067c9825235806260e5cf2f4c53a2c&dn=Toto.Guardie.e.ladri-1951.DVDRip.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Toto.Guardie.e.ladri-1951.DVDRip.avi"
+      }
+    }
+  ]
+}

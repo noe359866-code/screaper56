@@ -1,0 +1,143 @@
+{
+  "id": "tt0269856",
+  "imdbId": "tt0269856",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Ritual (2000)",
+  "name": "Ritual",
+  "year": 2000,
+  "imdbRating": "7.5",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0269856.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0269856.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0269856.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0269856.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0269856.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 18,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ritual (2000) (BD 1080p x264 AC-3) [65EB95BD] [Heartside].mkv",
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 19219978650,
+      "sizeLabel": "17.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "be19c61a4d89ad236d8c3f32b7d8fa7db92db6c4",
+      "fileIdx": null,
+      "score": 6.76,
+      "magnetUrl": "magnet:?xt=urn:btih:be19c61a4d89ad236d8c3f32b7d8fa7db92db6c4&dn=Ritual%20(2000)%20(BD%201080p%20x264%20AC-3)%20%5B65EB95BD%5D%20%5BHeartside%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 11,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ritual (2000) (BD 1080p x264 AC-3) [65EB95BD] [Heartside].mkv",
+      "description": "Ritual (2000) (BD 1080p x264 AC-3) [65EB95BD] [Heartside].mkv\n🎞️ AVC\n👤 11 💾 17.9 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 6.76,
+      "infoHash": "be19c61a4d89ad236d8c3f32b7d8fa7db92db6c4",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 19219978650,
+      "sizeLabel": "17.9 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Ritual (2000) (BD 1080p x264 AC-3) [65EB95BD] [Heartside].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:be19c61a4d89ad236d8c3f32b7d8fa7db92db6c4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:be19c61a4d89ad236d8c3f32b7d8fa7db92db6c4&dn=Ritual%20(2000)%20(BD%201080p%20x264%20AC-3)%20%5B65EB95BD%5D%20%5BHeartside%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Ritual (2000) (BD 1080p x264 AC-3) [65EB95BD] [Heartside].mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "tt0100912",
+  "imdbId": "tt0100912",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Werner and the Wizard of Booze (1990)",
+  "name": "Werner and the Wizard of Booze",
+  "year": 1990,
+  "imdbRating": "6.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0100912.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0100912.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0100912.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0100912.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0100912.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 12,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

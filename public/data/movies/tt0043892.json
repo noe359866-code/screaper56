@@ -1,0 +1,243 @@
+{
+  "id": "tt0043892",
+  "imdbId": "tt0043892",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Miss Oyu (1951)",
+  "name": "Miss Oyu",
+  "year": 1951,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0043892.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0043892.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0043892.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0043892.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0043892.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0043892.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0043892.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 14,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "La.Senyorita.Oyu.1951.SPANiSH.DVDRiP.XviD.[www.TorrentMas.com]",
+      "quality": "480p",
+      "seeders": null,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "49806a35b93e62714c72a8a74691c8f9593a66e3",
+      "fileIdx": null,
+      "score": 10.73,
+      "magnetUrl": "magnet:?xt=urn:btih:49806a35b93e62714c72a8a74691c8f9593a66e3&dn=La.Senyorita.Oyu.1951.SPANiSH.DVDRiP.XviD.%5Bwww.TorrentMas.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Oyu-sama 1951 720p BluRay FLAC 2 0 x264-DON",
+      "quality": "720p",
+      "seeders": 23,
+      "sizeBytes": 6410238689,
+      "sizeLabel": "6.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "infoHash": "8204f821e0d74a4d57b6c428b743eecb889fddc5",
+      "fileIdx": 0,
+      "score": 5.9,
+      "magnetUrl": "magnet:?xt=urn:btih:8204f821e0d74a4d57b6c428b743eecb889fddc5&dn=Oyu-sama%201951%20720p%20BluRay%20FLAC%202%200%20x264-DON&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 23,
+  "qualities": [
+    "480p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "La.Senyorita.Oyu.1951.SPANiSH.DVDRiP.XviD.[www.TorrentMas.com]",
+      "description": "La.Senyorita.Oyu.1951.SPANiSH.DVDRiP.XviD.[www.TorrentMas.com]\n🎞️ DVD · XviD\n👤 ? ⚙️ Peerflix",
+      "pick": "es",
+      "score": 10.73,
+      "infoHash": "49806a35b93e62714c72a8a74691c8f9593a66e3",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": null,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "MejorTorrent"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:49806a35b93e62714c72a8a74691c8f9593a66e3"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:49806a35b93e62714c72a8a74691c8f9593a66e3&dn=La.Senyorita.Oyu.1951.SPANiSH.DVDRiP.XviD.%5Bwww.TorrentMas.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Oyu-sama 1951 720p BluRay FLAC 2 0 x264-DON",
+      "description": "Oyu-sama 1951 720p BluRay FLAC 2 0 x264-DON\n🎞️ BluRay · AVC · FLAC 2.0\n👤 23 💾 6.0 GB ⚙️ TorrentsDB+TorrentClaw",
+      "pick": "en",
+      "score": 5.9,
+      "infoHash": "8204f821e0d74a4d57b6c428b743eecb889fddc5",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 23,
+      "sizeBytes": 6410238689,
+      "sizeLabel": "6.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "ThePirateBay",
+        "DON"
+      ],
+      "filename": "Oyu-sama.1951.720p.BluRay.FLAC.2.0.x264-DON.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:8204f821e0d74a4d57b6c428b743eecb889fddc5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8204f821e0d74a4d57b6c428b743eecb889fddc5&dn=Oyu-sama%201951%20720p%20BluRay%20FLAC%202%200%20x264-DON&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Oyu-sama.1951.720p.BluRay.FLAC.2.0.x264-DON.mkv"
+      }
+    }
+  ]
+}

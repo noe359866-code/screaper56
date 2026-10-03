@@ -1,0 +1,156 @@
+{
+  "id": "tt0218067",
+  "imdbId": "tt0218067",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Calling (2000)",
+  "name": "The Calling",
+  "year": 2000,
+  "imdbRating": "4.3",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0218067.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0218067.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0218067.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0218067.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0218067.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 6,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Zew Piekiel - The Calling 2000 [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL] [Alusia]",
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 4466765988,
+      "sizeLabel": "4.2 GB",
+      "audioLangs": [
+        "en",
+        "pl"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "c68cb56dede1344671fe404289fea3b8143828f1",
+      "fileIdx": 1,
+      "score": 5.15,
+      "magnetUrl": "magnet:?xt=urn:btih:c68cb56dede1344671fe404289fea3b8143828f1&dn=Zew%20Piekiel%20-%20The%20Calling%202000%20%5BHLG%20HDR%20SDR%5D%20%5B1080p.BluRay.H264.AC3.5.1.AS76-FT%5D%20%5BENG-Lektor%20PL%5D%20%5BAlusia%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 14,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "pl"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Zew Piekiel - The Calling 2000 [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL] [Alusia]",
+      "description": "Zew Piekiel - The Calling 2000 [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL] [Alusia]\n🎞️ BluRay · AVC · HDR · AC3\n👤 14 💾 4.2 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 5.15,
+      "infoHash": "c68cb56dede1344671fe404289fea3b8143828f1",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "pl"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 4466765988,
+      "sizeLabel": "4.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Zew Piekiel - The Calling 2000 [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL] [Alusia].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:c68cb56dede1344671fe404289fea3b8143828f1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c68cb56dede1344671fe404289fea3b8143828f1&dn=Zew%20Piekiel%20-%20The%20Calling%202000%20%5BHLG%20HDR%20SDR%5D%20%5B1080p.BluRay.H264.AC3.5.1.AS76-FT%5D%20%5BENG-Lektor%20PL%5D%20%5BAlusia%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Zew Piekiel - The Calling 2000 [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL] [Alusia].mkv"
+      }
+    }
+  ]
+}

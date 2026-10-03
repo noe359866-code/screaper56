@@ -1,0 +1,243 @@
+{
+  "id": "tt0100618",
+  "imdbId": "tt0100618",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Initiation: Silent Night, Deadly Night 4 (1990)",
+  "name": "Initiation: Silent Night, Deadly Night 4",
+  "year": 1990,
+  "imdbRating": "3.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0100618.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0100618.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0100618.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0100618.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0100618.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 19,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Silent Night Deadly Night 2025 1080p BluRay x265-GeneMige",
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": 7945689498,
+      "sizeLabel": "7.4 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "pt"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "5b20b925c4a5ec042c9a59744a17623bedc27624",
+      "fileIdx": 0,
+      "score": -0.78,
+      "magnetUrl": "magnet:?xt=urn:btih:5b20b925c4a5ec042c9a59744a17623bedc27624&dn=Silent%20Night%20Deadly%20Night%202025%201080p%20BluRay%20x265-GeneMige&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "04 Silent Night Deadly Night 4 Initiation - Horror 1990 Eng Subs 1080p [H264-mp4].mp4",
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "cbdd53ea23060c2d75c4f43904cbef4672c8b47a",
+      "fileIdx": 21,
+      "score": 6.98,
+      "magnetUrl": "magnet:?xt=urn:btih:cbdd53ea23060c2d75c4f43904cbef4672c8b47a&dn=04%20Silent%20Night%20Deadly%20Night%204%20Initiation%20-%20Horror%201990%20Eng%20Subs%201080p%20%5BH264-mp4%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 12,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "pt"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Silent Night Deadly Night 2025 1080p BluRay x265-GeneMige",
+      "description": "Silent Night Deadly Night 2025 1080p BluRay x265-GeneMige\n🎞️ BluRay · HEVC\n👤 3 💾 7.4 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": -0.78,
+      "infoHash": "5b20b925c4a5ec042c9a59744a17623bedc27624",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "pt"
+      ],
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": 7945689498,
+      "sizeLabel": "7.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Silent Night Deadly Night 2025 1080p BluRay x265-GeneMige.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:5b20b925c4a5ec042c9a59744a17623bedc27624"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5b20b925c4a5ec042c9a59744a17623bedc27624&dn=Silent%20Night%20Deadly%20Night%202025%201080p%20BluRay%20x265-GeneMige&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Silent Night Deadly Night 2025 1080p BluRay x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "04 Silent Night Deadly Night 4 Initiation - Horror 1990 Eng Subs 1080p [H264-mp4].mp4",
+      "description": "04 Silent Night Deadly Night 4 Initiation - Horror 1990 Eng Subs 1080p [H264-mp4].mp4\n🎞️ AVC\n👤 12 💾 2.7 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 6.98,
+      "infoHash": "cbdd53ea23060c2d75c4f43904cbef4672c8b47a",
+      "fileIdx": 21,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Knaben"
+      ],
+      "filename": "04 Silent Night Deadly Night 4 Initiation - Horror 1990 Eng Subs 1080p [H264-mp4].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:cbdd53ea23060c2d75c4f43904cbef4672c8b47a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:cbdd53ea23060c2d75c4f43904cbef4672c8b47a&dn=04%20Silent%20Night%20Deadly%20Night%204%20Initiation%20-%20Horror%201990%20Eng%20Subs%201080p%20%5BH264-mp4%5D.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "04 Silent Night Deadly Night 4 Initiation - Horror 1990 Eng Subs 1080p [H264-mp4].mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "id": "tt14205554",
+  "imdbId": "tt14205554",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "KPop Demon Hunters (2025)",
+  "name": "KPop Demon Hunters",
+  "year": 2025,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt14205554.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt14205554.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt14205554.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt14205554.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt14205554.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 158,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4",
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 1900523028,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "c3c7a43c960cfa87808de435c291fdb7d34d3320",
+      "fileIdx": 0,
+      "score": 15.31,
+      "magnetUrl": "magnet:?xt=urn:btih:c3c7a43c960cfa87808de435c291fdb7d34d3320&dn=Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "KPop Demon Hunters 2025 2160p HDR10 WEBRip 6CH x265 HEVC-RW",
+      "quality": "4K",
+      "seeders": 406,
+      "sizeBytes": 10844792422,
+      "sizeLabel": "10.1 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "61bd60bfedad88b9c91b247568f51f98a06adf62",
+      "fileIdx": 0,
+      "score": 8.55,
+      "magnetUrl": "magnet:?xt=urn:btih:61bd60bfedad88b9c91b247568f51f98a06adf62&dn=KPop%20Demon%20Hunters%202025%202160p%20HDR10%20WEBRip%206CH%20x265%20HEVC-RW&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 406,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4",
+      "description": "Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4\n👤 22 💾 1.8 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 15.31,
+      "infoHash": "c3c7a43c960cfa87808de435c291fdb7d34d3320",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 1900523028,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:c3c7a43c960cfa87808de435c291fdb7d34d3320"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c3c7a43c960cfa87808de435c291fdb7d34d3320&dn=Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Kpop.demon.hunters.2025.1080p-dual-lat-cinecalidad.rs.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "KPop Demon Hunters 2025 2160p HDR10 WEBRip 6CH x265 HEVC-RW",
+      "description": "KPop Demon Hunters 2025 2160p HDR10 WEBRip 6CH x265 HEVC-RW\n🎞️ WEBRip · HEVC · HDR10 · 5.1\n👤 406 💾 10.1 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.55,
+      "infoHash": "61bd60bfedad88b9c91b247568f51f98a06adf62",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 406,
+      "sizeBytes": 10844792422,
+      "sizeLabel": "10.1 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "RW",
+        "Torrents.csv"
+      ],
+      "filename": "KPop Demon Hunters 2025 2160p HDR10 WEBRip 6CH x265 HEVC-RW.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:61bd60bfedad88b9c91b247568f51f98a06adf62"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:61bd60bfedad88b9c91b247568f51f98a06adf62&dn=KPop%20Demon%20Hunters%202025%202160p%20HDR10%20WEBRip%206CH%20x265%20HEVC-RW&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "KPop Demon Hunters 2025 2160p HDR10 WEBRip 6CH x265 HEVC-RW.mkv"
+      }
+    }
+  ]
+}
