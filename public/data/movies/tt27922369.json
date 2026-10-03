@@ -1,0 +1,36 @@
+{
+  "id": "tt27922369",
+  "imdbId": "tt27922369",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Johnny Keep Walking! (2023)",
+  "name": "Johnny Keep Walking!",
+  "year": 2023,
+  "imdbRating": "7.3",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt27922369.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt27922369.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt27922369.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt27922369.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 24,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

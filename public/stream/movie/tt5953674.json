@@ -1,0 +1,70 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Top Gear Collection (2008) (576p DVDRip AAC x264) [m0rgan]",
+      "description": "Top Gear Collection (2008) (576p DVDRip AAC x264) [m0rgan]\n🎞️ DVD · AVC · AAC\n👤 0 💾 3.6 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": -8.35,
+      "infoHash": "82200cc4195aed6bdbb69cdf6edb1e1b58760496",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 3843995730,
+      "sizeLabel": "3.6 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "The Challenges - Boys Will Be Boys!.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:82200cc4195aed6bdbb69cdf6edb1e1b58760496"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:82200cc4195aed6bdbb69cdf6edb1e1b58760496&dn=Top%20Gear%20Collection%20(2008)%20(576p%20DVDRip%20AAC%20x264)%20%5Bm0rgan%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Challenges - Boys Will Be Boys!.mkv"
+      }
+    }
+  ]
+}

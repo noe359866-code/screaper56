@@ -1,0 +1,228 @@
+{
+  "id": "tt8463714:1:3",
+  "imdbId": "tt8463714",
+  "type": "series",
+  "season": 1,
+  "episode": 3,
+  "label": "The ABC Murders S01E03 – Episode 3",
+  "name": "The ABC Murders",
+  "year": 2018,
+  "imdbRating": "6.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt8463714:1:3.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt8463714:1:3.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt8463714:1:3.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt8463714:1:3.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 14,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "The ABC Murders 1x3 [720p][Castellano][wWw.EliteTorrent.BiZ]",
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 2340757176,
+      "sizeLabel": "2.2 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "77bc6675af9783d3775187339d7c9877e73ef4a9",
+      "fileIdx": 1,
+      "score": 12.21,
+      "magnetUrl": "magnet:?xt=urn:btih:77bc6675af9783d3775187339d7c9877e73ef4a9&dn=The%20ABC%20Murders%201x3%20%5B720p%5D%5BCastellano%5D%5BwWw.EliteTorrent.BiZ%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "The ABC Murders (TV Mini Series 2018) 720p BluRay HEVC x265 BONE",
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 475592131,
+      "sizeLabel": "454 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "db5a3d2df11de39dcf81717a1c5bccb03da63bd2",
+      "fileIdx": 1,
+      "score": 5.22,
+      "magnetUrl": "magnet:?xt=urn:btih:db5a3d2df11de39dcf81717a1c5bccb03da63bd2&dn=The%20ABC%20Murders%20(TV%20Mini%20Series%202018)%20720p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 8,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "The ABC Murders 1x3 [720p][Castellano][wWw.EliteTorrent.BiZ]",
+      "description": "The ABC Murders 1x3 [720p][Castellano][wWw.EliteTorrent.BiZ]\n👤 1 💾 2.2 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 12.21,
+      "infoHash": "77bc6675af9783d3775187339d7c9877e73ef4a9",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 2340757176,
+      "sizeLabel": "2.2 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:77bc6675af9783d3775187339d7c9877e73ef4a9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:77bc6675af9783d3775187339d7c9877e73ef4a9&dn=The%20ABC%20Murders%201x3%20%5B720p%5D%5BCastellano%5D%5BwWw.EliteTorrent.BiZ%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "The ABC Murders (TV Mini Series 2018) 720p BluRay HEVC x265 BONE",
+      "description": "The ABC Murders (TV Mini Series 2018) 720p BluRay HEVC x265 BONE\n🎞️ BluRay · HEVC\n👤 8 💾 454 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 5.22,
+      "infoHash": "db5a3d2df11de39dcf81717a1c5bccb03da63bd2",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 475592131,
+      "sizeLabel": "454 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "The ABC Murders 2018 S01E03 720p BluRay HEVC x265 BONE.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:db5a3d2df11de39dcf81717a1c5bccb03da63bd2"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:db5a3d2df11de39dcf81717a1c5bccb03da63bd2&dn=The%20ABC%20Murders%20(TV%20Mini%20Series%202018)%20720p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The ABC Murders 2018 S01E03 720p BluRay HEVC x265 BONE.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "tt6366854",
+  "imdbId": "tt6366854",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Check Store Next Door (2016)",
+  "name": "Check Store Next Door",
+  "year": 2016,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt6366854.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt6366854.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt6366854.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt6366854.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

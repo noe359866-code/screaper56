@@ -1,0 +1,142 @@
+{
+  "id": "tt18278698",
+  "imdbId": "tt18278698",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Dave Chappelle: The Dreamer (2023)",
+  "name": "Dave Chappelle: The Dreamer",
+  "year": 2023,
+  "imdbRating": "7.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt18278698.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt18278698.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt18278698.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt18278698.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 11,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL[TGx]",
+      "quality": "1080p",
+      "seeders": 112,
+      "sizeBytes": 2738041651,
+      "sizeLabel": "2.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "1d4b982145aa71f478fe5783bcd2e81b34f8b4c0",
+      "fileIdx": 0,
+      "score": 8.27,
+      "magnetUrl": "magnet:?xt=urn:btih:1d4b982145aa71f478fe5783bcd2e81b34f8b4c0&dn=Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 112,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL[TGx]",
+      "description": "Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL[TGx]\n🎞️ WEB · AVC\n👤 112 💾 2.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.27,
+      "infoHash": "1d4b982145aa71f478fe5783bcd2e81b34f8b4c0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 112,
+      "sizeBytes": 2738041651,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxy"
+      ],
+      "filename": "Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:1d4b982145aa71f478fe5783bcd2e81b34f8b4c0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1d4b982145aa71f478fe5783bcd2e81b34f8b4c0&dn=Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Dave.Chappelle.The.Dreamer.2023.1080p.WEB.h264-ETHEL.mkv"
+      }
+    }
+  ]
+}

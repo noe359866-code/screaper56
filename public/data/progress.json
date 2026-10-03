@@ -1,20 +1,8 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T02:00:23.763Z",
+  "updatedAt": "2026-10-03T02:05:46.692Z",
   "activeSeries": "tt10986410",
   "series": {
-    "tt40197357": {
-      "name": "Scrubs",
-      "status": "complete",
-      "done": 11,
-      "total": 11,
-      "lastSeason": 2,
-      "lastEpisode": 2,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-03T02:00:23.763Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt10986410": {
       "name": "Ted Lasso",
       "status": "in-progress",
@@ -305,14 +293,14 @@
     },
     "tt8463714": {
       "name": "The ABC Murders",
-      "status": "in-progress",
-      "done": 2,
+      "status": "complete",
+      "done": 3,
       "total": 3,
       "lastSeason": 1,
-      "lastEpisode": 2,
-      "nextSeason": 1,
-      "nextEpisode": 3,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastEpisode": 3,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T02:05:46.692Z",
       "startedAt": "2026-10-02T21:34:09.794Z"
     },
     "tt5670764": {
@@ -566,6 +554,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt40197357": {
+      "name": "Scrubs",
+      "status": "complete",
+      "done": 11,
+      "total": 11,
+      "lastSeason": 2,
+      "lastEpisode": 2,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T02:00:23.763Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0167872": {
       "name": "David Copperfield",
