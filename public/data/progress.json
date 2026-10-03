@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T02:05:46.692Z",
-  "activeSeries": "tt10986410",
+  "updatedAt": "2026-10-03T02:13:02.750Z",
+  "activeSeries": "tt0907683",
   "series": {
     "tt10986410": {
       "name": "Ted Lasso",
-      "status": "in-progress",
-      "done": 7,
+      "status": "complete",
+      "done": 43,
       "total": 43,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 4,
+      "lastEpisode": 9,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T02:13:02.750Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0907683": {
@@ -291,18 +291,6 @@
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:34:09.794Z"
     },
-    "tt8463714": {
-      "name": "The ABC Murders",
-      "status": "complete",
-      "done": 3,
-      "total": 3,
-      "lastSeason": 1,
-      "lastEpisode": 3,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-03T02:05:46.692Z",
-      "startedAt": "2026-10-02T21:34:09.794Z"
-    },
     "tt5670764": {
       "name": "Watership Down",
       "status": "in-progress",
@@ -554,6 +542,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt8463714": {
+      "name": "The ABC Murders",
+      "status": "complete",
+      "done": 3,
+      "total": 3,
+      "lastSeason": 1,
+      "lastEpisode": 3,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T02:13:02.750Z",
+      "startedAt": "2026-10-02T21:34:09.794Z"
     },
     "tt40197357": {
       "name": "Scrubs",

@@ -1,0 +1,246 @@
+{
+  "id": "tt10986410:4:1",
+  "imdbId": "tt10986410",
+  "type": "series",
+  "season": 4,
+  "episode": 1,
+  "label": "Ted Lasso S04E01 – Home",
+  "name": "Ted Lasso",
+  "year": 2020,
+  "imdbRating": "8.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt10986410:4:1.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt10986410:4:1.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt10986410:4:1.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 85,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Ted Lasso [4k 2160p][Cap.401]",
+      "quality": "4K",
+      "seeders": 14,
+      "sizeBytes": 7892002406,
+      "sizeLabel": "7.3 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "b43c6997731e1c8064a304a516a3a3d6ced3ef7f",
+      "fileIdx": 0,
+      "score": 15.25,
+      "magnetUrl": "magnet:?xt=urn:btih:b43c6997731e1c8064a304a516a3a3d6ced3ef7f&dn=Ted%20Lasso%20%5B4k%202160p%5D%5BCap.401%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+      "quality": "1080p",
+      "seeders": 331,
+      "sizeBytes": 629627945,
+      "sizeLabel": "600 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "infoHash": "537a04e15234455a17161cb491d60ef3d59f591a",
+      "fileIdx": 0,
+      "score": 8.29,
+      "magnetUrl": "magnet:?xt=urn:btih:537a04e15234455a17161cb491d60ef3d59f591a&dn=Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 331,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "piratebay",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Ted Lasso [4k 2160p][Cap.401]",
+      "description": "Ted Lasso [4k 2160p][Cap.401]\n👤 14 💾 7.3 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 15.25,
+      "infoHash": "b43c6997731e1c8064a304a516a3a3d6ced3ef7f",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "4K",
+      "seeders": 14,
+      "sizeBytes": 7892002406,
+      "sizeLabel": "7.3 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Wolfmax4k"
+      ],
+      "filename": "Ted Lasso [4k 2160p][Cap.401].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:b43c6997731e1c8064a304a516a3a3d6ced3ef7f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b43c6997731e1c8064a304a516a3a3d6ced3ef7f&dn=Ted%20Lasso%20%5B4k%202160p%5D%5BCap.401%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Ted Lasso [4k 2160p][Cap.401].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+      "description": "Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\n🎞️ WEBRip · HEVC · DD+ 5.1\n👤 331 💾 600 MB ⚙️ Torrentio+ThePirateBay+",
+      "pick": "en",
+      "score": 8.29,
+      "infoHash": "537a04e15234455a17161cb491d60ef3d59f591a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 331,
+      "sizeBytes": 629627945,
+      "sizeLabel": "600 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:537a04e15234455a17161cb491d60ef3d59f591a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:537a04e15234455a17161cb491d60ef3d59f591a&dn=Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Ted.Lasso.S04E01.Home.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    }
+  ]
+}

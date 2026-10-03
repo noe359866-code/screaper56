@@ -1,0 +1,140 @@
+{
+  "id": "tt0038687",
+  "imdbId": "tt0038687",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Let There Be Light (1980)",
+  "name": "Let There Be Light",
+  "year": 1980,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0038687.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0038687.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0038687.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0038687.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 5,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Let There Be Light 1946 1080p Bluray Flac 2 0 x264-RetroPeeps",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 5690831667,
+      "sizeLabel": "5.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "72ab181e82a1523e2e02841a76527dedf95e4323",
+      "fileIdx": 1,
+      "score": -2.61,
+      "magnetUrl": "magnet:?xt=urn:btih:72ab181e82a1523e2e02841a76527dedf95e4323&dn=Let%20There%20Be%20Light%201946%201080p%20Bluray%20Flac%202%200%20x264-RetroPeeps&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Let There Be Light 1946 1080p Bluray Flac 2 0 x264-RetroPeeps",
+      "description": "Let There Be Light 1946 1080p Bluray Flac 2 0 x264-RetroPeeps\n🎞️ BluRay · AVC · FLAC 2.0\n👤 0 💾 5.3 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": -2.61,
+      "infoHash": "72ab181e82a1523e2e02841a76527dedf95e4323",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 5690831667,
+      "sizeLabel": "5.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Let There Be Light 1946 1080p Bluray Flac 2 0 x264-RetroPeeps.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:72ab181e82a1523e2e02841a76527dedf95e4323"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:72ab181e82a1523e2e02841a76527dedf95e4323&dn=Let%20There%20Be%20Light%201946%201080p%20Bluray%20Flac%202%200%20x264-RetroPeeps&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Let There Be Light 1946 1080p Bluray Flac 2 0 x264-RetroPeeps.mkv"
+      }
+    }
+  ]
+}

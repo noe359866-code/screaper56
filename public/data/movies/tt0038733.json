@@ -1,0 +1,140 @@
+{
+  "id": "tt0038733",
+  "imdbId": "tt0038733",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "A Matter of Life and Death (1946)",
+  "name": "A Matter of Life and Death",
+  "year": 1946,
+  "imdbRating": "8.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0038733.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0038733.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0038733.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0038733.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 20,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A Matter of Life and Death (1946) Criterion (1080p BluRay x265 HEVC 10bit AAC 1.0 Tigole) [QxR]",
+      "quality": "1080p",
+      "seeders": 37,
+      "sizeBytes": 3435973837,
+      "sizeLabel": "3.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "882690bbc176bd65ef33c15732c852cda3db3a51",
+      "fileIdx": 0,
+      "score": 7.75,
+      "magnetUrl": "magnet:?xt=urn:btih:882690bbc176bd65ef33c15732c852cda3db3a51&dn=A%20Matter%20of%20Life%20and%20Death%20(1946)%20Criterion%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%201.0%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 37,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A Matter of Life and Death (1946) Criterion (1080p BluRay x265 HEVC 10bit AAC 1.0 Tigole) [QxR]",
+      "description": "A Matter of Life and Death (1946) Criterion (1080p BluRay x265 HEVC 10bit AAC 1.0 Tigole) [QxR]\n🎞️ BluRay · HEVC · AAC\n👤 37 💾 3.2 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.75,
+      "infoHash": "882690bbc176bd65ef33c15732c852cda3db3a51",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 37,
+      "sizeBytes": 3435973837,
+      "sizeLabel": "3.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "A Matter of Life and Death (1946) Criterion (1080p BluRay x265 10bit Tigole).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:882690bbc176bd65ef33c15732c852cda3db3a51"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:882690bbc176bd65ef33c15732c852cda3db3a51&dn=A%20Matter%20of%20Life%20and%20Death%20(1946)%20Criterion%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%201.0%20Tigole)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "A Matter of Life and Death (1946) Criterion (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    }
+  ]
+}

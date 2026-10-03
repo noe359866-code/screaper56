@@ -1,0 +1,36 @@
+{
+  "id": "tt1935109",
+  "imdbId": "tt1935109",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Dipu Number 2 (1996)",
+  "name": "Dipu Number 2",
+  "year": 1996,
+  "imdbRating": "8.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1935109.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1935109.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1935109.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1935109.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
