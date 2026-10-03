@@ -1,0 +1,35 @@
+{
+  "id": "tt15566126",
+  "imdbId": "tt15566126",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "S5 (2022)",
+  "name": "S5",
+  "year": 2022,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt15566126.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt15566126.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt15566126.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt15566126.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

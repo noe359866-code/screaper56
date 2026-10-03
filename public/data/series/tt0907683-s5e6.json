@@ -1,0 +1,148 @@
+{
+  "id": "tt0907683:5:6",
+  "imdbId": "tt0907683",
+  "type": "series",
+  "season": 5,
+  "episode": 6,
+  "label": "Beck S05E06 – Steinar",
+  "name": "Beck",
+  "year": 1997,
+  "imdbRating": "7.5",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0907683:5:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0907683:5:6.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0907683:5:6.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 1,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beck S05E06 Steinar 1080p AMZN WEB-DL DDP2 0 H 264-playWEB",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 4735201444,
+      "sizeLabel": "4.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "infoHash": "06017040e1c71390a3ade6650c56ef430f1514bd",
+      "fileIdx": 0,
+      "score": 6.44,
+      "magnetUrl": "magnet:?xt=urn:btih:06017040e1c71390a3ade6650c56ef430f1514bd&dn=Beck%20S05E06%20Steinar%201080p%20AMZN%20WEB-DL%20DDP2%200%20H%20264-playWEB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 5,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "piratebay",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beck S05E06 Steinar 1080p AMZN WEB-DL DDP2 0 H 264-playWEB",
+      "description": "Beck S05E06 Steinar 1080p AMZN WEB-DL DDP2 0 H 264-playWEB\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 5 💾 4.4 GB ⚙️ Torrentio+ThePirateBay+",
+      "pick": "en",
+      "score": 6.44,
+      "infoHash": "06017040e1c71390a3ade6650c56ef430f1514bd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 4735201444,
+      "sizeLabel": "4.4 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "piratebay"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "ThePirateBay+"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Beck S05E06 Steinar 1080p AMZN WEB-DL DDP2 0 H 264-playWEB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:06017040e1c71390a3ade6650c56ef430f1514bd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:06017040e1c71390a3ade6650c56ef430f1514bd&dn=Beck%20S05E06%20Steinar%201080p%20AMZN%20WEB-DL%20DDP2%200%20H%20264-playWEB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Beck S05E06 Steinar 1080p AMZN WEB-DL DDP2 0 H 264-playWEB.mkv"
+      }
+    }
+  ]
+}

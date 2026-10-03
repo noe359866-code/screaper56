@@ -1,0 +1,143 @@
+{
+  "id": "tt0027459",
+  "imdbId": "tt0027459",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Come and Get It (1936)",
+  "name": "Come and Get It",
+  "year": 1936,
+  "imdbRating": "6.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0027459.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0027459.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0027459.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0027459.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 4,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Приди и владей / Come and Get It",
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1513975972,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "050a64557aa36bed17fd9865d0a518b0ecf1a099",
+      "fileIdx": 0,
+      "score": 1.66,
+      "magnetUrl": "magnet:?xt=urn:btih:050a64557aa36bed17fd9865d0a518b0ecf1a099&dn=%D0%9F%D1%80%D0%B8%D0%B4%D0%B8%20%D0%B8%20%D0%B2%D0%BB%D0%B0%D0%B4%D0%B5%D0%B9%20%2F%20Come%20and%20Get%20It&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [],
+  "languages": [
+    "en",
+    "ru"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Приди и владей / Come and Get It",
+      "description": "Приди и владей / Come and Get It\n🎞️ DVD · XviD\n👤 1 💾 1.4 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 1.66,
+      "infoHash": "050a64557aa36bed17fd9865d0a518b0ecf1a099",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1513975972,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rutor",
+        "Rutor"
+      ],
+      "filename": "Pridi.i.vladei.1936.XviD.DVDRip.egoleshik.avi",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:050a64557aa36bed17fd9865d0a518b0ecf1a099"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:050a64557aa36bed17fd9865d0a518b0ecf1a099&dn=%D0%9F%D1%80%D0%B8%D0%B4%D0%B8%20%D0%B8%20%D0%B2%D0%BB%D0%B0%D0%B4%D0%B5%D0%B9%20%2F%20Come%20and%20Get%20It&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Pridi.i.vladei.1936.XviD.DVDRip.egoleshik.avi"
+      }
+    }
+  ]
+}

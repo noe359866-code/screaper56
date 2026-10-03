@@ -1,0 +1,235 @@
+{
+  "id": "tt0027440",
+  "imdbId": "tt0027440",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Charlie Chan at the Opera (1936)",
+  "name": "Charlie Chan at the Opera",
+  "year": 1936,
+  "imdbRating": "7.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0027440.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0027440.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0027440.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0027440.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 6,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Чарли Чен в опере / Charlie Chan at the Opera [1936 DVDRemux] VO (Andy Green перевод Serveladkin) + Sub Rus Eng Spa Fra + Original Eng",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 3264175145,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "f80139ec6b31cf239b3c4e28aabfa3900097c2b5",
+      "fileIdx": 0,
+      "score": -1.8,
+      "magnetUrl": "magnet:?xt=urn:btih:f80139ec6b31cf239b3c4e28aabfa3900097c2b5&dn=%D0%A7%D0%B0%D1%80%D0%BB%D0%B8%20%D0%A7%D0%B5%D0%BD%20%D0%B2%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B5%20%2F%20Charlie%20Chan%20at%20the%20Opera%20%5B1936%20DVDRemux%5D%20VO%20(Andy%20Green%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%20Serveladkin)%20%2B%20Sub%20Rus%20Eng%20Spa%20Fra%20%2B%20Original%20Eng&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Charlie Chan at the Opera 1936 DVDRip x264-HANDJOB",
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1148903752,
+      "sizeLabel": "1.1 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "infoHash": "720b9c3ef2aa58bbb3ca914221596d0b04c1e077",
+      "fileIdx": 0,
+      "score": 3.65,
+      "magnetUrl": "magnet:?xt=urn:btih:720b9c3ef2aa58bbb3ca914221596d0b04c1e077&dn=Charlie%20Chan%20at%20the%20Opera%201936%20DVDRip%20x264-HANDJOB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 1,
+  "qualities": [],
+  "languages": [
+    "en",
+    "es",
+    "fr",
+    "ru"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Чарли Чен в опере / Charlie Chan at the Opera [1936 DVDRemux] VO (Andy Green перевод Serveladkin) + Sub Rus Eng Spa Fra + Original Eng",
+      "description": "Чарли Чен в опере / Charlie Chan at the Opera [1936 DVDRemux] VO (Andy Green перевод Serveladkin) + Sub Rus Eng Spa Fra + Original Eng\n👤 0 💾 3.0 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": -1.8,
+      "infoHash": "f80139ec6b31cf239b3c4e28aabfa3900097c2b5",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 3264175145,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Rutracker"
+      ],
+      "filename": "Charlie.Chan.at.the.Opera.1936.DVDRemux.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:f80139ec6b31cf239b3c4e28aabfa3900097c2b5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f80139ec6b31cf239b3c4e28aabfa3900097c2b5&dn=%D0%A7%D0%B0%D1%80%D0%BB%D0%B8%20%D0%A7%D0%B5%D0%BD%20%D0%B2%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B5%20%2F%20Charlie%20Chan%20at%20the%20Opera%20%5B1936%20DVDRemux%5D%20VO%20(Andy%20Green%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%20Serveladkin)%20%2B%20Sub%20Rus%20Eng%20Spa%20Fra%20%2B%20Original%20Eng&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Charlie.Chan.at.the.Opera.1936.DVDRemux.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Charlie Chan at the Opera 1936 DVDRip x264-HANDJOB",
+      "description": "Charlie Chan at the Opera 1936 DVDRip x264-HANDJOB\n🎞️ DVD · AVC\n👤 1 💾 1.1 GB ⚙️ TorrentsDB",
+      "pick": "en",
+      "score": 3.65,
+      "infoHash": "720b9c3ef2aa58bbb3ca914221596d0b04c1e077",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1148903752,
+      "sizeLabel": "1.1 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Charlie.Chan.at.the.Opera.1936.DVDRip.x264-HANDJOB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:720b9c3ef2aa58bbb3ca914221596d0b04c1e077"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:720b9c3ef2aa58bbb3ca914221596d0b04c1e077&dn=Charlie%20Chan%20at%20the%20Opera%201936%20DVDRip%20x264-HANDJOB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Charlie.Chan.at.the.Opera.1936.DVDRip.x264-HANDJOB.mkv"
+      }
+    }
+  ]
+}

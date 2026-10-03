@@ -1,0 +1,254 @@
+{
+  "id": "tt1119646",
+  "imdbId": "tt1119646",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Hangover (2009)",
+  "name": "The Hangover",
+  "year": 2009,
+  "imdbRating": "7.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1119646.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1119646.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1119646.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt1119646.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 77,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Resacon 1 [4K UHDrip][2160p][HDR][AC3 5.1 Castellano-True HD 5.1-Ingles+Subs][ES-EN]",
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 21721797099,
+      "sizeLabel": "20.2 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "TrueHD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "aa21c679ec341c30b9b361f4809ce76a9c14aa55",
+      "fileIdx": 3,
+      "score": 13.94,
+      "magnetUrl": "magnet:?xt=urn:btih:aa21c679ec341c30b9b361f4809ce76a9c14aa55&dn=Resacon%201%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-True%20HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The.Hangover.2009.2160p.WEBRip.x265.10bit.HDR.TrueHD.5.1-GASMASK",
+      "quality": "4K",
+      "seeders": 77,
+      "sizeBytes": 21270825533,
+      "sizeLabel": "19.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "TrueHD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "60bfe9755e41bf96291697f615773cfb80178ab9",
+      "fileIdx": 1,
+      "score": 8.38,
+      "magnetUrl": "magnet:?xt=urn:btih:60bfe9755e41bf96291697f615773cfb80178ab9&dn=The.Hangover.2009.2160p.WEBRip.x265.10bit.HDR.TrueHD.5.1-GASMASK&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 77,
+  "qualities": [
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Resacon 1 [4K UHDrip][2160p][HDR][AC3 5.1 Castellano-True HD 5.1-Ingles+Subs][ES-EN]",
+      "description": "Resacon 1 [4K UHDrip][2160p][HDR][AC3 5.1 Castellano-True HD 5.1-Ingles+Subs][ES-EN]\n🎞️ HDR · TrueHD/AC3 5.1\n👤 1 💾 20.2 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 13.94,
+      "infoHash": "aa21c679ec341c30b9b361f4809ce76a9c14aa55",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 1,
+      "sizeBytes": 21721797099,
+      "sizeLabel": "20.2 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "TrueHD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Torrenflix",
+        "Wolfmax4k"
+      ],
+      "filename": "Resacon 1 4Krip2160.www.pctnew.org.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:aa21c679ec341c30b9b361f4809ce76a9c14aa55"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa21c679ec341c30b9b361f4809ce76a9c14aa55&dn=Resacon%201%20%5B4K%20UHDrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-True%20HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Resacon 1 4Krip2160.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The.Hangover.2009.2160p.WEBRip.x265.10bit.HDR.TrueHD.5.1-GASMASK",
+      "description": "The.Hangover.2009.2160p.WEBRip.x265.10bit.HDR.TrueHD.5.1-GASMASK\n🎞️ WEBRip · HEVC · HDR · TrueHD\n👤 77 💾 19.8 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 8.38,
+      "infoHash": "60bfe9755e41bf96291697f615773cfb80178ab9",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 77,
+      "sizeBytes": 21270825533,
+      "sizeLabel": "19.8 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "TrueHD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "The.Hangover.2009.2160p.HDR.WEBRip.TrueHD.5.1.x265-GASMASK.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:60bfe9755e41bf96291697f615773cfb80178ab9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:60bfe9755e41bf96291697f615773cfb80178ab9&dn=The.Hangover.2009.2160p.WEBRip.x265.10bit.HDR.TrueHD.5.1-GASMASK&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Hangover.2009.2160p.HDR.WEBRip.TrueHD.5.1.x265-GASMASK.mkv"
+      }
+    }
+  ]
+}

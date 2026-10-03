@@ -1,0 +1,36 @@
+{
+  "id": "tt20871388",
+  "imdbId": "tt20871388",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Il grande giorno (2022)",
+  "name": "Il grande giorno",
+  "year": 2022,
+  "imdbRating": "6.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt20871388.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt20871388.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt20871388.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt20871388.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 6,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
