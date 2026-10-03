@@ -1,0 +1,146 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "The sword in the stone 1963 Remastered 2160p 60fps multi HEVC",
+      "description": "The sword in the stone 1963 Remastered 2160p 60fps multi HEVC\n🎞️ HEVC\n👤 4 💾 4.7 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 12.56,
+      "infoHash": "6c7d27270192af2e2debf37fa020f50471b4bb48",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "it",
+        "pt",
+        "fr",
+        "de",
+        "nl",
+        "hi"
+      ],
+      "quality": "4K",
+      "seeders": 4,
+      "sizeBytes": 5057323991,
+      "sizeLabel": "4.7 GB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "The sword in the stone 1963 [2160p, 60fps, english, hindi, spanish, french, russian, german, portuguese, italian, dutch].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:6c7d27270192af2e2debf37fa020f50471b4bb48"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6c7d27270192af2e2debf37fa020f50471b4bb48&dn=The%20sword%20in%20the%20stone%201963%20Remastered%202160p%2060fps%20multi%20HEVC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The sword in the stone 1963 [2160p, 60fps, english, hindi, spanish, french, russian, german, portuguese, italian, dutch].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The Sword in the Stone 1963 2160p DSNP WEBRip x265 10bit HDR DTS-HD MA 5 1-TrollUHD",
+      "description": "The Sword in the Stone 1963 2160p DSNP WEBRip x265 10bit HDR DTS-HD MA 5 1-TrollUHD\n🎞️ WEBRip · HEVC · HDR · DTS-HD 5.1\n👤 77 💾 15.6 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.41,
+      "infoHash": "6bb0ad9cae59e3d86af059b4559a7a31a93231ea",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 77,
+      "sizeBytes": 16750372454,
+      "sizeLabel": "15.6 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "The Sword in the Stone (1963) 2160p HDR Disney+ WEBRip DTS-HD MA 5.1 x265-TrollUHD.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:6bb0ad9cae59e3d86af059b4559a7a31a93231ea"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6bb0ad9cae59e3d86af059b4559a7a31a93231ea&dn=The%20Sword%20in%20the%20Stone%201963%202160p%20DSNP%20WEBRip%20x265%2010bit%20HDR%20DTS-HD%20MA%205%201-TrollUHD&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Sword in the Stone (1963) 2160p HDR Disney+ WEBRip DTS-HD MA 5.1 x265-TrollUHD.mkv"
+      }
+    }
+  ]
+}

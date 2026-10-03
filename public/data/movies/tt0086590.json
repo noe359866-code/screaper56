@@ -1,0 +1,141 @@
+{
+  "id": "tt0086590",
+  "imdbId": "tt0086590",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Wind in the Willows (1983)",
+  "name": "The Wind in the Willows",
+  "year": 1983,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0086590.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0086590.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0086590.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0086590.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 9,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Wind in the Willows 1983 RESTORED 1080p BluRay HEVC x265 BONE",
+      "quality": "1080p",
+      "seeders": 43,
+      "sizeBytes": 1084479242,
+      "sizeLabel": "1.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "69ede327c946357f64bd1af01d9b4c4f499554c8",
+      "fileIdx": 0,
+      "score": 7.76,
+      "magnetUrl": "magnet:?xt=urn:btih:69ede327c946357f64bd1af01d9b4c4f499554c8&dn=The%20Wind%20in%20the%20Willows%201983%20RESTORED%201080p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 43,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Wind in the Willows 1983 RESTORED 1080p BluRay HEVC x265 BONE",
+      "description": "The Wind in the Willows 1983 RESTORED 1080p BluRay HEVC x265 BONE\n🎞️ BluRay · HEVC\n👤 43 💾 1.0 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.76,
+      "infoHash": "69ede327c946357f64bd1af01d9b4c4f499554c8",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 43,
+      "sizeBytes": 1084479242,
+      "sizeLabel": "1.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "filename": "The Wind in the Willows 1983 RESTORED 1080p BluRay HEVC x265 BONE.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:69ede327c946357f64bd1af01d9b4c4f499554c8"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:69ede327c946357f64bd1af01d9b4c4f499554c8&dn=The%20Wind%20in%20the%20Willows%201983%20RESTORED%201080p%20BluRay%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Wind in the Willows 1983 RESTORED 1080p BluRay HEVC x265 BONE.mkv"
+      }
+    }
+  ]
+}
