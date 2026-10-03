@@ -1,0 +1,260 @@
+{
+  "id": "tt0096697:35:6",
+  "imdbId": "tt0096697",
+  "type": "series",
+  "season": 35,
+  "episode": 6,
+  "label": "The Simpsons S35E06 – Iron Marge",
+  "name": "The Simpsons",
+  "year": 1989,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0096697:35:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0096697:35:6.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0096697:35:6.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0096697:35:6.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 84,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Simpsons.S01.to.S35.MULTi-VF2-ESP.1080p.DSNP.EAC3.DD5.1.x265-NFW",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 364673761,
+      "sizeLabel": "348 MB",
+      "audioLangs": [
+        "es",
+        "en",
+        "fr"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "1a26c3db21f5811514af0efba9a434a6e7649cec",
+      "fileIdx": 823,
+      "score": 12.3,
+      "magnetUrl": "magnet:?xt=urn:btih:1a26c3db21f5811514af0efba9a434a6e7649cec&dn=The.Simpsons.S01.to.S35.MULTi-VF2-ESP.1080p.DSNP.EAC3.DD5.1.x265-NFW&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Simpsons S35E06 Iron Marge 1080p Web-DL x264-OFT.mkv",
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 1008044703,
+      "sizeLabel": "961 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "c5faccfbb32c601f4a5d6ae7618b2e0b4aa3ee3b",
+      "fileIdx": 0,
+      "score": 8.24,
+      "magnetUrl": "magnet:?xt=urn:btih:c5faccfbb32c601f4a5d6ae7618b2e0b4aa3ee3b&dn=The%20Simpsons%20S35E06%20Iron%20Marge%201080p%20Web-DL%20x264-OFT.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 80,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "fr"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Simpsons.S01.to.S35.MULTi-VF2-ESP.1080p.DSNP.EAC3.DD5.1.x265-NFW",
+      "description": "The.Simpsons.S01.to.S35.MULTi-VF2-ESP.1080p.DSNP.EAC3.DD5.1.x265-NFW\n🎞️ HEVC · DD+ 5.1\n👤 4 💾 348 MB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 12.3,
+      "infoHash": "1a26c3db21f5811514af0efba9a434a6e7649cec",
+      "fileIdx": 823,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 364673761,
+      "sizeLabel": "348 MB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "The Simpsons - S35E06 - Iron Marge.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:1a26c3db21f5811514af0efba9a434a6e7649cec"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1a26c3db21f5811514af0efba9a434a6e7649cec&dn=The.Simpsons.S01.to.S35.MULTi-VF2-ESP.1080p.DSNP.EAC3.DD5.1.x265-NFW&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The Simpsons - S35E06 - Iron Marge.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Simpsons S35E06 Iron Marge 1080p Web-DL x264-OFT.mkv",
+      "description": "The Simpsons S35E06 Iron Marge 1080p Web-DL x264-OFT.mkv\n🎞️ WEB-DL · AVC\n👤 80 💾 961 MB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.24,
+      "infoHash": "c5faccfbb32c601f4a5d6ae7618b2e0b4aa3ee3b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 1008044703,
+      "sizeLabel": "961 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "OFT",
+        "TheRARBG"
+      ],
+      "filename": "The Simpsons S35E06 Iron Marge 1080p Web-DL x264-OFT.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:c5faccfbb32c601f4a5d6ae7618b2e0b4aa3ee3b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c5faccfbb32c601f4a5d6ae7618b2e0b4aa3ee3b&dn=The%20Simpsons%20S35E06%20Iron%20Marge%201080p%20Web-DL%20x264-OFT.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Simpsons S35E06 Iron Marge 1080p Web-DL x264-OFT.mkv"
+      }
+    }
+  ]
+}

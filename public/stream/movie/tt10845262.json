@@ -1,0 +1,66 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Miracle.in.Cell.No.7.2019.P.WEB-DL.1O8Op.mkv",
+      "description": "Miracle.in.Cell.No.7.2019.P.WEB-DL.1O8Op.mkv\n🎞️ WEB-DL\n👤 1 💾 6.9 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 3.72,
+      "infoHash": "2d90f47b5a90f2fa828a99a6e0607ae413c3bb50",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 7448067557,
+      "sizeLabel": "6.9 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "Miracle.in.Cell.No.7.2019.P.WEB-DL.1O8Op.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:2d90f47b5a90f2fa828a99a6e0607ae413c3bb50"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2d90f47b5a90f2fa828a99a6e0607ae413c3bb50&dn=Miracle.in.Cell.No.7.2019.P.WEB-DL.1O8Op.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Miracle.in.Cell.No.7.2019.P.WEB-DL.1O8Op.mkv"
+      }
+    }
+  ]
+}

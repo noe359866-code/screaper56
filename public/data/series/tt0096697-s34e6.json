@@ -1,0 +1,253 @@
+{
+  "id": "tt0096697:34:6",
+  "imdbId": "tt0096697",
+  "type": "series",
+  "season": 34,
+  "episode": 6,
+  "label": "The Simpsons S34E06 – Treehouse of Horror XXXIII",
+  "name": "The Simpsons",
+  "year": 1989,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0096697:34:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0096697:34:6.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0096697:34:6.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0096697:34:6.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 94,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "[Bitsearch.to] Los Simpsons - Temporada 34 [HDTV 720p][Cap.3406][AC3 5.1 Castellano][www.AtomoHD.win]",
+      "quality": "720p",
+      "seeders": 7,
+      "sizeBytes": 1127428915,
+      "sizeLabel": "1.0 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "bbf8e78bf7f5bd305d68e44e99e987bb1ecaac52",
+      "fileIdx": 2,
+      "score": 13.15,
+      "magnetUrl": "magnet:?xt=urn:btih:bbf8e78bf7f5bd305d68e44e99e987bb1ecaac52&dn=%5BBitsearch.to%5D%20Los%20Simpsons%20-%20Temporada%2034%20%5BHDTV%20720p%5D%5BCap.3406%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.win%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv",
+      "quality": "1080p",
+      "seeders": 73,
+      "sizeBytes": 610271232,
+      "sizeLabel": "582 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "18d2375e785cd9264de0580e77a2fd7c4db4f67d",
+      "fileIdx": 6,
+      "score": 8.21,
+      "magnetUrl": "magnet:?xt=urn:btih:18d2375e785cd9264de0580e77a2fd7c4db4f67d&dn=The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 73,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "[Bitsearch.to] Los Simpsons - Temporada 34 [HDTV 720p][Cap.3406][AC3 5.1 Castellano][www.AtomoHD.win]",
+      "description": "[Bitsearch.to] Los Simpsons - Temporada 34 [HDTV 720p][Cap.3406][AC3 5.1 Castellano][www.AtomoHD.win]\n🎞️ HDTV · AC3 5.1\n👤 7 💾 1.0 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 13.15,
+      "infoHash": "bbf8e78bf7f5bd305d68e44e99e987bb1ecaac52",
+      "fileIdx": 2,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 7,
+      "sizeBytes": 1127428915,
+      "sizeLabel": "1.0 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:bbf8e78bf7f5bd305d68e44e99e987bb1ecaac52"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bbf8e78bf7f5bd305d68e44e99e987bb1ecaac52&dn=%5BBitsearch.to%5D%20Los%20Simpsons%20-%20Temporada%2034%20%5BHDTV%20720p%5D%5BCap.3406%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.win%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv",
+      "description": "The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv\n🎞️ WEB-DL · AVC · AC3 5.1\n👤 73 💾 582 MB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 8.21,
+      "infoHash": "18d2375e785cd9264de0580e77a2fd7c4db4f67d",
+      "fileIdx": 6,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 73,
+      "sizeBytes": 610271232,
+      "sizeLabel": "582 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:18d2375e785cd9264de0580e77a2fd7c4db4f67d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:18d2375e785cd9264de0580e77a2fd7c4db4f67d&dn=The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Simpsons.S34E06.Treehouse.of.Horror.XXXIII.1080p.HULU.WEB-DL.DD5.1.H.264-NTb.mkv"
+      }
+    }
+  ]
+}

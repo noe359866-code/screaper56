@@ -1,0 +1,259 @@
+{
+  "id": "tt32338669",
+  "imdbId": "tt32338669",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Mutiny (2026)",
+  "name": "Mutiny",
+  "year": 2026,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt32338669.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt32338669.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt32338669.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt32338669.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt32338669.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt32338669.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 137,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Código Venganza Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p",
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 4166118277,
+      "sizeLabel": "3.9 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "0752df7a02020fffd0745b5e5f5cd66552dfda3c",
+      "fileIdx": 0,
+      "score": 14.7,
+      "magnetUrl": "magnet:?xt=urn:btih:0752df7a02020fffd0745b5e5f5cd66552dfda3c&dn=C%C3%B3digo%20Venganza%20Lat-Ing%20Subt%20Esp-Ing%20H264%20AC3%205.1%20BDRip%20Hd%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Mutiny 2026 2160p iT WEB-DL DDP5.1 HDR H265-BYNDR",
+      "quality": "4K",
+      "seeders": 270,
+      "sizeBytes": 10737418240,
+      "sizeLabel": "10.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "e1455a2c6f9e1575fcefdeb6abbad8c7e03d6e63",
+      "fileIdx": 0,
+      "score": 8.58,
+      "magnetUrl": "magnet:?xt=urn:btih:e1455a2c6f9e1575fcefdeb6abbad8c7e03d6e63&dn=Mutiny%202026%202160p%20iT%20WEB-DL%20DDP5.1%20HDR%20H265-BYNDR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 270,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Código Venganza Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p",
+      "description": "Código Venganza Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p\n🎞️ BluRay · AVC · AC3 5.1\n👤 8 💾 3.9 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.7,
+      "infoHash": "0752df7a02020fffd0745b5e5f5cd66552dfda3c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 4166118277,
+      "sizeLabel": "3.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "Código Venganza Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:0752df7a02020fffd0745b5e5f5cd66552dfda3c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0752df7a02020fffd0745b5e5f5cd66552dfda3c&dn=C%C3%B3digo%20Venganza%20Lat-Ing%20Subt%20Esp-Ing%20H264%20AC3%205.1%20BDRip%20Hd%201080p&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Código Venganza Lat-Ing Subt Esp-Ing H264 AC3 5.1 BDRip Hd 1080p.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Mutiny 2026 2160p iT WEB-DL DDP5.1 HDR H265-BYNDR",
+      "description": "Mutiny 2026 2160p iT WEB-DL DDP5.1 HDR H265-BYNDR\n🎞️ WEB-DL · HEVC · HDR · DD+ 5.1\n👤 270 💾 10.0 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.58,
+      "infoHash": "e1455a2c6f9e1575fcefdeb6abbad8c7e03d6e63",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 270,
+      "sizeBytes": 10737418240,
+      "sizeLabel": "10.0 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "BYNDR"
+      ],
+      "filename": "Mutiny 2026 2160p iT WEB-DL DDP5 1 HDR H 265-BYNDR.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:e1455a2c6f9e1575fcefdeb6abbad8c7e03d6e63"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e1455a2c6f9e1575fcefdeb6abbad8c7e03d6e63&dn=Mutiny%202026%202160p%20iT%20WEB-DL%20DDP5.1%20HDR%20H265-BYNDR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Mutiny 2026 2160p iT WEB-DL DDP5 1 HDR H 265-BYNDR.mkv"
+      }
+    }
+  ]
+}

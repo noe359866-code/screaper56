@@ -1,0 +1,44 @@
+{
+  "id": "tt11766802",
+  "imdbId": "tt11766802",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Dance With Me (2019)",
+  "name": "Dance With Me",
+  "year": 2019,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt11766802.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt11766802.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt11766802.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt11766802.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt11766802.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

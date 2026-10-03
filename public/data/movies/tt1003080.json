@@ -1,0 +1,154 @@
+{
+  "id": "tt1003080",
+  "imdbId": "tt1003080",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Green Elephant (1999)",
+  "name": "The Green Elephant",
+  "year": 1999,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1003080.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1003080.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1003080.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1003080.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1003080.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 11,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Зеленый слоник.1999.VHSRip.XviD.AC3.avi",
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1610612736,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "release": {
+        "source": null,
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "58a1dbcf6b954ca24c080e5c5404416ef777eb13",
+      "fileIdx": 0,
+      "score": 1.64,
+      "magnetUrl": "magnet:?xt=urn:btih:58a1dbcf6b954ca24c080e5c5404416ef777eb13&dn=%D0%97%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B%D0%B9%20%D1%81%D0%BB%D0%BE%D0%BD%D0%B8%D0%BA.1999.VHSRip.XviD.AC3.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [],
+  "languages": [
+    "en",
+    "ru"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Зеленый слоник.1999.VHSRip.XviD.AC3.avi",
+      "description": "Зеленый слоник.1999.VHSRip.XviD.AC3.avi\n🎞️ XviD · AC3\n👤 1 💾 1.5 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 1.64,
+      "infoHash": "58a1dbcf6b954ca24c080e5c5404416ef777eb13",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1610612736,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": null,
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Rutracker"
+      ],
+      "filename": "Зеленый слоник.1999.VHSRip.XviD.AC3.avi",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:58a1dbcf6b954ca24c080e5c5404416ef777eb13"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:58a1dbcf6b954ca24c080e5c5404416ef777eb13&dn=%D0%97%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B%D0%B9%20%D1%81%D0%BB%D0%BE%D0%BD%D0%B8%D0%BA.1999.VHSRip.XviD.AC3.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Зеленый слоник.1999.VHSRip.XviD.AC3.avi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Star Trek la pelicula [4K UHDremux][2160p][HDR10][Castellano AC3 2,0-Ingles TrueHD 7.1+Subs][ES-EN]",
+      "description": "Star Trek la pelicula [4K UHDremux][2160p][HDR10][Castellano AC3 2,0-Ingles TrueHD 7.1+Subs][ES-EN]\n🎞️ REMUX · HDR10 · TrueHD/AC3 7.1\n👤 5 💾 41.2 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 12.28,
+      "infoHash": "0ec824f3bf258c791b2171c145fff02f79863958",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 5,
+      "sizeBytes": 44216688312,
+      "sizeLabel": "41.2 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [
+          "TrueHD",
+          "AC3"
+        ],
+        "channels": "7.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:0ec824f3bf258c791b2171c145fff02f79863958"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0ec824f3bf258c791b2171c145fff02f79863958&dn=Star%20Trek%20la%20pelicula%20%5B4K%20UHDremux%5D%5B2160p%5D%5BHDR10%5D%5BCastellano%20AC3%202%2C0-Ingles%20TrueHD%207.1%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Star.Trek.The.Motion.Picture.The.Directors.Edition.1979.1080p.Bl",
+      "description": "Star.Trek.The.Motion.Picture.The.Directors.Edition.1979.1080p.Bl\n🎞️ BluRay · HEVC\n👤 90 💾 2.1 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.37,
+      "infoHash": "4643bb3e1e075afb35bc9e79031ae30f57391b2b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 90,
+      "sizeBytes": 2254857830,
+      "sizeLabel": "2.1 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "RBG",
+        "Knaben"
+      ],
+      "filename": "Star.Trek.The.Motion.Picture.The.Directors.Edition.1979.1080p.BluRay.x265-RBG.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:4643bb3e1e075afb35bc9e79031ae30f57391b2b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4643bb3e1e075afb35bc9e79031ae30f57391b2b&dn=Star.Trek.The.Motion.Picture.The.Directors.Edition.1979.1080p.Bl&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Star.Trek.The.Motion.Picture.The.Directors.Edition.1979.1080p.BluRay.x265-RBG.mp4"
+      }
+    }
+  ]
+}
