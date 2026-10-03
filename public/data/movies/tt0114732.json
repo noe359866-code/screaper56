@@ -1,0 +1,142 @@
+{
+  "id": "tt0114732",
+  "imdbId": "tt0114732",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Les trois frères (1995)",
+  "name": "Les trois frères",
+  "year": 1995,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0114732.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0114732.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0114732.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0114732.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0114732.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0114732.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0114732.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 19,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Les Trois Freres 1995 VOF 1080p BluRay mHD x264 AC3-ROMKENT",
+      "quality": "1080p",
+      "seeders": 51,
+      "sizeBytes": 4058744095,
+      "sizeLabel": "3.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "23f1f2ab93589b80490995033fc7681d17402471",
+      "fileIdx": 0,
+      "score": 7.9,
+      "magnetUrl": "magnet:?xt=urn:btih:23f1f2ab93589b80490995033fc7681d17402471&dn=Les%20Trois%20Freres%201995%20VOF%201080p%20BluRay%20mHD%20x264%20AC3-ROMKENT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 51,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Les Trois Freres 1995 VOF 1080p BluRay mHD x264 AC3-ROMKENT",
+      "description": "Les Trois Freres 1995 VOF 1080p BluRay mHD x264 AC3-ROMKENT\n🎞️ BluRay · AVC · AC3\n👤 51 💾 3.8 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.9,
+      "infoHash": "23f1f2ab93589b80490995033fc7681d17402471",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 51,
+      "sizeBytes": 4058744095,
+      "sizeLabel": "3.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Les.Trois.Freres.1995.VOF.1080p.BluRay.mHD.x264.AC3-ROMKENT.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:23f1f2ab93589b80490995033fc7681d17402471"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:23f1f2ab93589b80490995033fc7681d17402471&dn=Les%20Trois%20Freres%201995%20VOF%201080p%20BluRay%20mHD%20x264%20AC3-ROMKENT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Les.Trois.Freres.1995.VOF.1080p.BluRay.mHD.x264.AC3-ROMKENT.mkv"
+      }
+    }
+  ]
+}

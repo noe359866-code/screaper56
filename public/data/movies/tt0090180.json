@@ -1,0 +1,265 @@
+{
+  "id": "tt0090180",
+  "imdbId": "tt0090180",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "To Live and Die in L.A. (1985)",
+  "name": "To Live and Die in L.A.",
+  "year": 1985,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0090180.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0090180.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0090180.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0090180.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0090180.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 44,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Vivir y morir en los Angeles [BDremux 1080p][DTS 5.1 Castellano-DTS-HD 5.1 Ingles+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": 19434727014,
+      "sizeLabel": "18.1 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "c399a4eb82cae96c793f98f131f18dcf7906b0ab",
+      "fileIdx": 0,
+      "score": 14.17,
+      "magnetUrl": "magnet:?xt=urn:btih:c399a4eb82cae96c793f98f131f18dcf7906b0ab&dn=Vivir%20y%20morir%20en%20los%20Angeles%20%5BBDremux%201080p%5D%5BDTS%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "To Live and Die in L.A. 1985 1080p BluRay",
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 1879048192,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "infoHash": "8831608699f3c2501adc33e1df2f0b7241e0f5f1",
+      "fileIdx": 1,
+      "score": 8.2,
+      "magnetUrl": "magnet:?xt=urn:btih:8831608699f3c2501adc33e1df2f0b7241e0f5f1&dn=To%20Live%20and%20Die%20in%20L.A.%201985%201080p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 80,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Vivir y morir en los Angeles [BDremux 1080p][DTS 5.1 Castellano-DTS-HD 5.1 Ingles+Subs][ES-EN]",
+      "description": "Vivir y morir en los Angeles [BDremux 1080p][DTS 5.1 Castellano-DTS-HD 5.1 Ingles+Subs][ES-EN]\n🎞️ REMUX · DTS-HD 5.1\n👤 3 💾 18.1 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 14.17,
+      "infoHash": "c399a4eb82cae96c793f98f131f18dcf7906b0ab",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 3,
+      "sizeBytes": 19434727014,
+      "sizeLabel": "18.1 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Peerflix",
+        "MejorTorrent"
+      ],
+      "filename": "Vivir y morir en los Angeles BDR1080.www.atomohd.beer.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:c399a4eb82cae96c793f98f131f18dcf7906b0ab"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c399a4eb82cae96c793f98f131f18dcf7906b0ab&dn=Vivir%20y%20morir%20en%20los%20Angeles%20%5BBDremux%201080p%5D%5BDTS%205.1%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Vivir y morir en los Angeles BDR1080.www.atomohd.beer.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "To Live and Die in L.A. 1985 1080p BluRay",
+      "description": "To Live and Die in L.A. 1985 1080p BluRay\n🎞️ BluRay · AVC\n👤 80 💾 1.8 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 8.2,
+      "infoHash": "8831608699f3c2501adc33e1df2f0b7241e0f5f1",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 80,
+      "sizeBytes": 1879048192,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "rargb",
+        "YTS",
+        "x264"
+      ],
+      "filename": "To.Live.And.Die.In.L.A..1985.1080p.BluRay.x264-[YTS.AG].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:8831608699f3c2501adc33e1df2f0b7241e0f5f1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8831608699f3c2501adc33e1df2f0b7241e0f5f1&dn=To%20Live%20and%20Die%20in%20L.A.%201985%201080p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "To.Live.And.Die.In.L.A..1985.1080p.BluRay.x264-[YTS.AG].mp4"
+      }
+    }
+  ]
+}

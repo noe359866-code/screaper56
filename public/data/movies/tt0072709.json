@@ -1,0 +1,152 @@
+{
+  "id": "tt0072709",
+  "imdbId": "tt0072709",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Black Moon (1975)",
+  "name": "Black Moon",
+  "year": 1975,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0072709.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0072709.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0072709.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0072709.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0072709.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0072709.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 18,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics",
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "6cbf9e724154f6d8040869bded1d3c383af92f09",
+      "fileIdx": 8,
+      "score": 7.11,
+      "magnetUrl": "magnet:?xt=urn:btih:6cbf9e724154f6d8040869bded1d3c383af92f09&dn=Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 15,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics",
+      "description": "Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics\n🎞️ BluRay · AVC\n👤 15 💾 1.6 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 7.11,
+      "infoHash": "6cbf9e724154f6d8040869bded1d3c383af92f09",
+      "fileIdx": 8,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 15,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Classics"
+      ],
+      "filename": "Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:6cbf9e724154f6d8040869bded1d3c383af92f09"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6cbf9e724154f6d8040869bded1d3c383af92f09&dn=Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Black.Moon.1975.(Louis.Malle-Mystery).1080p.BRRip.x264-Classics.mkv"
+      }
+    }
+  ]
+}

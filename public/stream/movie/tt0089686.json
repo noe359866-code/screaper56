@@ -1,0 +1,142 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Pesadilla en Elm Street 2 [BDremux 1080p][AC3 Castellano-DTS-HD 5.1 Ingles+Subs][ES-EN]",
+      "description": "Pesadilla en Elm Street 2 [BDremux 1080p][AC3 Castellano-DTS-HD 5.1 Ingles+Subs][ES-EN]\n🎞️ REMUX · DTS-HD/AC3 5.1\n👤 5 💾 14.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.5,
+      "infoHash": "784f052c379eca0d91633cc642ee3d523047623f",
+      "fileIdx": 2,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 15547781611,
+      "sizeLabel": "14.5 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS-HD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Torrenflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:784f052c379eca0d91633cc642ee3d523047623f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:784f052c379eca0d91633cc642ee3d523047623f&dn=Pesadilla%20en%20Elm%20Street%202%20%5BBDremux%201080p%5D%5BAC3%20Castellano-DTS-HD%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "A Nightmare on Elm Street 2 Freddy's Revenge 1985 UHD BluRay 2160p HDR10 HEVC TrueHD Atmos 7.1 x265-E",
+      "description": "A Nightmare on Elm Street 2 Freddy's Revenge 1985 UHD BluRay 2160p HDR10 HEVC TrueHD Atmos 7.1 x265-E\n🎞️ BluRay · HEVC · HDR10 · Atmos/TrueHD 7.1\n👤 110 💾 14.9 GB ⚙️ TorrentsDB+TorrentClaw",
+      "pick": "en",
+      "score": 8.82,
+      "infoHash": "52f672fb5374a1f80a70c226f11c0bd9c6f71a5c",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 110,
+      "sizeBytes": 15998753178,
+      "sizeLabel": "14.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "TrueHD"
+        ],
+        "channels": "7.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "A Nightmare on Elm Street 2- Freddy's Revenge.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:52f672fb5374a1f80a70c226f11c0bd9c6f71a5c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:52f672fb5374a1f80a70c226f11c0bd9c6f71a5c&dn=A%20Nightmare%20on%20Elm%20Street%202%20Freddy's%20Revenge%201985%20UHD%20BluRay%202160p%20HDR10%20HEVC%20TrueHD%20Atmos%207.1%20x265-E&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "A Nightmare on Elm Street 2- Freddy's Revenge.mkv"
+      }
+    }
+  ]
+}

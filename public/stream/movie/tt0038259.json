@@ -1,0 +1,73 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Woman in Green 1945 1080p AMZN WEB-DL DDP2 0 H 264-GPRS.mkv",
+      "description": "The Woman in Green 1945 1080p AMZN WEB-DL DDP2 0 H 264-GPRS.mkv\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 17 💾 3.8 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.23,
+      "infoHash": "23d02bbfa0e8f1a78dc20ae5e9a99f84de60938f",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 4114300270,
+      "sizeLabel": "3.8 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "GPRS",
+        "Knaben"
+      ],
+      "filename": "www.UIndex.org    -    The Woman in Green 1945 1080p AMZN WEB-DL DDP2 0 H 264-GPRS",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:23d02bbfa0e8f1a78dc20ae5e9a99f84de60938f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:23d02bbfa0e8f1a78dc20ae5e9a99f84de60938f&dn=The%20Woman%20in%20Green%201945%201080p%20AMZN%20WEB-DL%20DDP2%200%20H%20264-GPRS.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "www.UIndex.org    -    The Woman in Green 1945 1080p AMZN WEB-DL DDP2 0 H 264-GPRS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "tt16751922",
+  "imdbId": "tt16751922",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Zeher Tulugu (2021)",
+  "name": "Zeher Tulugu",
+  "year": 2021,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt16751922.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt16751922.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt16751922.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt16751922.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt16751922.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

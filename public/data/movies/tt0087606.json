@@ -1,0 +1,147 @@
+{
+  "id": "tt0087606",
+  "imdbId": "tt0087606",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Legend of Suram Fortress (1985)",
+  "name": "The Legend of Suram Fortress",
+  "year": 1985,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0087606.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0087606.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0087606.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0087606.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0087606.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0087606.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0087606.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 11,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea",
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 4176855695,
+      "sizeLabel": "3.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "3b04107c2cebd56fef8cdcb0814c2a53d631f4a4",
+      "fileIdx": 0,
+      "score": 4.9,
+      "magnetUrl": "magnet:?xt=urn:btih:3b04107c2cebd56fef8cdcb0814c2a53d631f4a4&dn=Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 5,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea",
+      "description": "Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea\n🎞️ BluRay · AVC · AC3 2.0\n👤 5 💾 3.9 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 4.9,
+      "infoHash": "3b04107c2cebd56fef8cdcb0814c2a53d631f4a4",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 4176855695,
+      "sizeLabel": "3.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:3b04107c2cebd56fef8cdcb0814c2a53d631f4a4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3b04107c2cebd56fef8cdcb0814c2a53d631f4a4&dn=Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Ambavi.Suramis.Tsikhitsa.1985.720p.BluRay.DD2.0.H.264-mfcorrea.mkv"
+      }
+    }
+  ]
+}
