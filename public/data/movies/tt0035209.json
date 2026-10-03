@@ -1,0 +1,145 @@
+{
+  "id": "tt0035209",
+  "imdbId": "tt0035209",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Why We Fight (1942)",
+  "name": "Why We Fight",
+  "year": 1942,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0035209.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0035209.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0035209.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0035209.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0035209.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0035209.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Why We Fight Prelude to War 1942 BluRay 1080p FLAC 2 0 AVC REMUX-FraMeSToR",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 7301444403,
+      "sizeLabel": "6.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "1a7938c4c910e457cf2c157a83adef54dc2aa6fb",
+      "fileIdx": null,
+      "score": 5.81,
+      "magnetUrl": "magnet:?xt=urn:btih:1a7938c4c910e457cf2c157a83adef54dc2aa6fb&dn=Why%20We%20Fight%20Prelude%20to%20War%201942%20BluRay%201080p%20FLAC%202%200%20AVC%20REMUX-FraMeSToR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Why We Fight Prelude to War 1942 BluRay 1080p FLAC 2 0 AVC REMUX-FraMeSToR",
+      "description": "Why We Fight Prelude to War 1942 BluRay 1080p FLAC 2 0 AVC REMUX-FraMeSToR\n🎞️ REMUX · AVC · FLAC 2.0\n👤 1 💾 6.8 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 5.81,
+      "infoHash": "1a7938c4c910e457cf2c157a83adef54dc2aa6fb",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 7301444403,
+      "sizeLabel": "6.8 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "FraMeSToR"
+      ],
+      "filename": "Why We Fight Prelude to War 1942 BluRay 1080p FLAC 2 0 AVC REMUX-FraMeSToR",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1a7938c4c910e457cf2c157a83adef54dc2aa6fb"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1a7938c4c910e457cf2c157a83adef54dc2aa6fb&dn=Why%20We%20Fight%20Prelude%20to%20War%201942%20BluRay%201080p%20FLAC%202%200%20AVC%20REMUX-FraMeSToR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Why We Fight Prelude to War 1942 BluRay 1080p FLAC 2 0 AVC REMUX-FraMeSToR"
+      }
+    }
+  ]
+}

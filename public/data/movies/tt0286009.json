@@ -1,0 +1,149 @@
+{
+  "id": "tt0286009",
+  "imdbId": "tt0286009",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Les rois mages (2001)",
+  "name": "Les rois mages",
+  "year": 2001,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0286009.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0286009.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0286009.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0286009.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 15,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Les Rois Mages 2001 VFI 1080i HDLight BluRay AC3 5 1 x264-k7 mkv",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 3221225472,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "43e1c34c23ce4f37a915d67535964ce118b9c754",
+      "fileIdx": null,
+      "score": 5.78,
+      "magnetUrl": "magnet:?xt=urn:btih:43e1c34c23ce4f37a915d67535964ce118b9c754&dn=Les%20Rois%20Mages%202001%20VFI%201080i%20HDLight%20BluRay%20AC3%205%201%20x264-k7%20mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Les Rois Mages 2001 VFI 1080i HDLight BluRay AC3 5 1 x264-k7 mkv",
+      "description": "Les Rois Mages 2001 VFI 1080i HDLight BluRay AC3 5 1 x264-k7 mkv\n🎞️ BluRay · AVC · AC3 5.1\n👤 1 💾 3.0 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 5.78,
+      "infoHash": "43e1c34c23ce4f37a915d67535964ce118b9c754",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 3221225472,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Les Rois Mages 2001 VFI 1080i HDLight BluRay AC3 5 1 x264-k7 mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:43e1c34c23ce4f37a915d67535964ce118b9c754"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:43e1c34c23ce4f37a915d67535964ce118b9c754&dn=Les%20Rois%20Mages%202001%20VFI%201080i%20HDLight%20BluRay%20AC3%205%201%20x264-k7%20mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Les Rois Mages 2001 VFI 1080i HDLight BluRay AC3 5 1 x264-k7 mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "id": "tt1568346",
+  "imdbId": "tt1568346",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Girl with the Dragon Tattoo (2011)",
+  "name": "The Girl with the Dragon Tattoo",
+  "year": 2011,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1568346.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1568346.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1568346.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1568346.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1568346.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1568346.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 97,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4",
+      "quality": "1080p",
+      "seeders": null,
+      "sizeBytes": 2039348378,
+      "sizeLabel": "1.9 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "974f7be336a51c32ca9b20ca3e4d6ea4d0c7c294",
+      "fileIdx": 1,
+      "score": 13.27,
+      "magnetUrl": "magnet:?xt=urn:btih:974f7be336a51c32ca9b20ca3e4d6ea4d0c7c294&dn=The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Girl with the Dragon Tattoo (2011) (1080p BluRay x265 10bit AAC 5.1 afm72)",
+      "quality": "1080p",
+      "seeders": 127,
+      "sizeBytes": 4187593114,
+      "sizeLabel": "3.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "c1b9d46559d4cf5088f718c2394cf10190070c29",
+      "fileIdx": 0,
+      "score": 8.47,
+      "magnetUrl": "magnet:?xt=urn:btih:c1b9d46559d4cf5088f718c2394cf10190070c29&dn=The%20Girl%20with%20the%20Dragon%20Tattoo%20(2011)%20(1080p%20BluRay%20x265%2010bit%20AAC%205.1%20afm72)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 127,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4",
+      "description": "The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4\n👤 ? 💾 1.9 GB ⚙️ StremThru Torz",
+      "pick": "es",
+      "score": 13.27,
+      "infoHash": "974f7be336a51c32ca9b20ca3e4d6ea4d0c7c294",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": null,
+      "sizeBytes": 2039348378,
+      "sizeLabel": "1.9 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:974f7be336a51c32ca9b20ca3e4d6ea4d0c7c294"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:974f7be336a51c32ca9b20ca3e4d6ea4d0c7c294&dn=The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The.Girl.With.The.Dragon.Tattoo.2011.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Girl with the Dragon Tattoo (2011) (1080p BluRay x265 10bit AAC 5.1 afm72)",
+      "description": "The Girl with the Dragon Tattoo (2011) (1080p BluRay x265 10bit AAC 5.1 afm72)\n🎞️ BluRay · HEVC · AAC 5.1\n👤 127 💾 3.9 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.47,
+      "infoHash": "c1b9d46559d4cf5088f718c2394cf10190070c29",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 127,
+      "sizeBytes": 4187593114,
+      "sizeLabel": "3.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x",
+        "Torrents.csv"
+      ],
+      "filename": "The Girl with the Dragon Tattoo (2011) (1080p BluRay x265 afm72).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:c1b9d46559d4cf5088f718c2394cf10190070c29"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c1b9d46559d4cf5088f718c2394cf10190070c29&dn=The%20Girl%20with%20the%20Dragon%20Tattoo%20(2011)%20(1080p%20BluRay%20x265%2010bit%20AAC%205.1%20afm72)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Girl with the Dragon Tattoo (2011) (1080p BluRay x265 afm72).mkv"
+      }
+    }
+  ]
+}

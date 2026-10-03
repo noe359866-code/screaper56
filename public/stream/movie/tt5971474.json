@@ -1,0 +1,140 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Little.Mermaid.2023.1080p.BluRay.ENG.And.ESP.LATINO.DDP7.1.MKV-BEN.THE.MEN.mkv",
+      "description": "The.Little.Mermaid.2023.1080p.BluRay.ENG.And.ESP.LATINO.DDP7.1.MKV-BEN.THE.MEN.mkv\n🎞️ BluRay · DD+ 7.1\n👤 16 💾 14.4 GB ⚙️ StremThru Torz",
+      "pick": "es",
+      "score": 15.23,
+      "infoHash": "416541393cd4b6a2d2bea3af2aec974bab754c1b",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 15425569998,
+      "sizeLabel": "14.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "7.1"
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "TorrentGalaxyClone"
+      ],
+      "filename": "The.Little.Mermaid.2023.1080p.BluRay.ENG.And.ESP.LATINO.DDP7.1.MKV-BEN.THE.MEN.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:416541393cd4b6a2d2bea3af2aec974bab754c1b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:416541393cd4b6a2d2bea3af2aec974bab754c1b&dn=The.Little.Mermaid.2023.1080p.BluRay.ENG.And.ESP.LATINO.DDP7.1.MKV-BEN.THE.MEN.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The.Little.Mermaid.2023.1080p.BluRay.ENG.And.ESP.LATINO.DDP7.1.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Little.Mermaid.2023.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv",
+      "description": "The.Little.Mermaid.2023.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv\n🎞️ WEBRip · AVC · AC3 5.1\n👤 98 💾 1.6 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 8.22,
+      "infoHash": "561bdcb8bca86f691830cf2410d9cb719256f365",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 98,
+      "sizeBytes": 1722723597,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Knaben"
+      ],
+      "filename": "The.Little.Mermaid.2023.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:561bdcb8bca86f691830cf2410d9cb719256f365"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:561bdcb8bca86f691830cf2410d9cb719256f365&dn=The.Little.Mermaid.2023.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Little.Mermaid.2023.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv"
+      }
+    }
+  ]
+}

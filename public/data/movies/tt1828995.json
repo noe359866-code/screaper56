@@ -1,0 +1,232 @@
+{
+  "id": "tt1828995",
+  "imdbId": "tt1828995",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Delicacy (2011)",
+  "name": "Delicacy",
+  "year": 2011,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1828995.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1828995.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1828995.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1828995.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1828995.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1828995.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 26,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "La.Delicadeza.DVD.XviD.[www.DivxTotaL.com].avi",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1460288880,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "726731811594be15b9ed107ae2512677d512f87d",
+      "fileIdx": 0,
+      "score": 8.18,
+      "magnetUrl": "magnet:?xt=urn:btih:726731811594be15b9ed107ae2512677d512f87d&dn=La.Delicadeza.DVD.XviD.%5Bwww.DivxTotaL.com%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Delicacy.2011.1080p.BluRay.x264-SONiDO [PublicHD]",
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 8203387535,
+      "sizeLabel": "7.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "d7a8cb405f3c9454d838ee730c31af9274908899",
+      "fileIdx": null,
+      "score": 7.24,
+      "magnetUrl": "magnet:?xt=urn:btih:d7a8cb405f3c9454d838ee730c31af9274908899&dn=Delicacy.2011.1080p.BluRay.x264-SONiDO%20%5BPublicHD%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 20,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "La.Delicadeza.DVD.XviD.[www.DivxTotaL.com].avi",
+      "description": "La.Delicadeza.DVD.XviD.[www.DivxTotaL.com].avi\n🎞️ DVD · XviD\n👤 0 💾 1.4 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 8.18,
+      "infoHash": "726731811594be15b9ed107ae2512677d512f87d",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1460288880,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "PeerflixBot"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:726731811594be15b9ed107ae2512677d512f87d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:726731811594be15b9ed107ae2512677d512f87d&dn=La.Delicadeza.DVD.XviD.%5Bwww.DivxTotaL.com%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Delicacy.2011.1080p.BluRay.x264-SONiDO [PublicHD]",
+      "description": "Delicacy.2011.1080p.BluRay.x264-SONiDO [PublicHD]\n🎞️ BluRay · AVC\n👤 20 💾 7.6 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.24,
+      "infoHash": "d7a8cb405f3c9454d838ee730c31af9274908899",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 8203387535,
+      "sizeLabel": "7.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:d7a8cb405f3c9454d838ee730c31af9274908899"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d7a8cb405f3c9454d838ee730c31af9274908899&dn=Delicacy.2011.1080p.BluRay.x264-SONiDO%20%5BPublicHD%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

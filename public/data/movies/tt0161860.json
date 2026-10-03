@@ -1,0 +1,242 @@
+{
+  "id": "tt0161860",
+  "imdbId": "tt0161860",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Nowhere in Africa (2001)",
+  "name": "Nowhere in Africa",
+  "year": 2001,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0161860.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0161860.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0161860.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0161860.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "En un lugar de africa (2001) [HDrip][Castellano]",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 2147483648,
+      "sizeLabel": "2.0 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDRip",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "6f2a9826cbac9ac3dc0d321a6222ae0f9ecd1348",
+      "fileIdx": null,
+      "score": 8.23,
+      "magnetUrl": "magnet:?xt=urn:btih:6f2a9826cbac9ac3dc0d321a6222ae0f9ecd1348&dn=En%20un%20lugar%20de%20africa%20(2001)%20%5BHDrip%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Nowhere in Africa (2001) (Germany) 1080p H.264 (moviesbyrizzo)",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 3972844749,
+      "sizeLabel": "3.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "fa9c4bd49804b7c8669c2406f289caee3f1effc0",
+      "fileIdx": null,
+      "score": 6.44,
+      "magnetUrl": "magnet:?xt=urn:btih:fa9c4bd49804b7c8669c2406f289caee3f1effc0&dn=Nowhere%20in%20Africa%20(2001)%20(Germany)%201080p%20H.264%20(moviesbyrizzo)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "En un lugar de africa (2001) [HDrip][Castellano]",
+      "description": "En un lugar de africa (2001) [HDrip][Castellano]\n🎞️ HDRip\n👤 0 💾 2.0 GB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": 8.23,
+      "infoHash": "6f2a9826cbac9ac3dc0d321a6222ae0f9ecd1348",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 2147483648,
+      "sizeLabel": "2.0 GB",
+      "release": {
+        "source": "HDRip",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "En un lugar de africa (2001) [HDrip][Castellano]",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:6f2a9826cbac9ac3dc0d321a6222ae0f9ecd1348"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6f2a9826cbac9ac3dc0d321a6222ae0f9ecd1348&dn=En%20un%20lugar%20de%20africa%20(2001)%20%5BHDrip%5D%5BCastellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "En un lugar de africa (2001) [HDrip][Castellano]"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Nowhere in Africa (2001) (Germany) 1080p H.264 (moviesbyrizzo)",
+      "description": "Nowhere in Africa (2001) (Germany) 1080p H.264 (moviesbyrizzo)\n🎞️ AVC\n👤 6 💾 3.7 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.44,
+      "infoHash": "fa9c4bd49804b7c8669c2406f289caee3f1effc0",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 3972844749,
+      "sizeLabel": "3.7 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Knaben"
+      ],
+      "filename": "Nowhere in Africa (2001) (Germany) 1080p H.264 (moviesbyrizzo)",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:fa9c4bd49804b7c8669c2406f289caee3f1effc0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fa9c4bd49804b7c8669c2406f289caee3f1effc0&dn=Nowhere%20in%20Africa%20(2001)%20(Germany)%201080p%20H.264%20(moviesbyrizzo)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Nowhere in Africa (2001) (Germany) 1080p H.264 (moviesbyrizzo)"
+      }
+    }
+  ]
+}

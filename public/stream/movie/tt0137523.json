@@ -1,0 +1,139 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "El club de la Lucha [4K UHDreescaldo][2160p][HDR10][AC3 5.1-DTS 5.1 Castellano-DTS-HD 5.1-Ingles+Subs][ES-EN]",
+      "description": "El club de la Lucha [4K UHDreescaldo][2160p][HDR10][AC3 5.1-DTS 5.1 Castellano-DTS-HD 5.1-Ingles+Subs][ES-EN]\n🎞️ HDR10 · DTS-HD/AC3 5.1\n👤 11 💾 17.6 GB ⚙️ Peerflix+StremThru Torz",
+      "pick": "es",
+      "score": 14.7,
+      "infoHash": "ce71e481b9dd1822433726c6ec018368333b25c6",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 11,
+      "sizeBytes": 18930068357,
+      "sizeLabel": "17.6 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [
+          "HDR10"
+        ],
+        "audio": [
+          "DTS-HD",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": "El club de la Lucha 4Kreescalado2160.atomixhq.one.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:ce71e481b9dd1822433726c6ec018368333b25c6"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ce71e481b9dd1822433726c6ec018368333b25c6&dn=El%20club%20de%20la%20Lucha%20%5B4K%20UHDreescaldo%5D%5B2160p%5D%5BHDR10%5D%5BAC3%205.1-DTS%205.1%20Castellano-DTS-HD%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "El club de la Lucha 4Kreescalado2160.atomixhq.one.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Fight Club (1999)",
+      "description": "Fight Club (1999)\n👤 100 💾 6.5 GB ⚙️ Ytztvio",
+      "pick": "en",
+      "score": 8.43,
+      "infoHash": "7da52d5473e73707ea15a63019bb05563405cd5a",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 100,
+      "sizeBytes": 6968584438,
+      "sizeLabel": "6.5 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "x265"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:7da52d5473e73707ea15a63019bb05563405cd5a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7da52d5473e73707ea15a63019bb05563405cd5a&dn=Fight%20Club%20(1999)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

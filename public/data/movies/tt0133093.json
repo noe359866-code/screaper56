@@ -1,0 +1,263 @@
+{
+  "id": "tt0133093",
+  "imdbId": "tt0133093",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Matrix (1999)",
+  "name": "The Matrix",
+  "year": 1999,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0133093.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0133093.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0133093.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0133093.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 99,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Matrix [BDremux 1080 px][AC3 5.1-Castellano-AC3 5.1-DTS Ingles+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 19896435998,
+      "sizeLabel": "18.5 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c",
+      "fileIdx": 1,
+      "score": 14.89,
+      "magnetUrl": "magnet:?xt=urn:btih:f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c&dn=Matrix%20%5BBDremux%201080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-DTS%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The Matrix (1999) 2160p bluray",
+      "quality": "4K",
+      "seeders": 279,
+      "sizeBytes": 6979321856,
+      "sizeLabel": "6.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "infoHash": "28dec3ac8cc8c5758730a334d98705dd698f7bc1",
+      "fileIdx": 0,
+      "score": 8.62,
+      "magnetUrl": "magnet:?xt=urn:btih:28dec3ac8cc8c5758730a334d98705dd698f7bc1&dn=The%20Matrix%20(1999)%202160p%20bluray&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 279,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Matrix [BDremux 1080 px][AC3 5.1-Castellano-AC3 5.1-DTS Ingles+Subs][ES-EN]",
+      "description": "Matrix [BDremux 1080 px][AC3 5.1-Castellano-AC3 5.1-DTS Ingles+Subs][ES-EN]\n🎞️ REMUX · DTS/AC3 5.1\n👤 11 💾 18.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.89,
+      "infoHash": "f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 19896435998,
+      "sizeLabel": "18.5 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f321dc4e7696c5fa4e431f9f86de7cc0c8fc168c&dn=Matrix%20%5BBDremux%201080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1-DTS%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The Matrix (1999) 2160p bluray",
+      "description": "The Matrix (1999) 2160p bluray\n🎞️ BluRay · HEVC · AAC 5.1\n👤 279 💾 6.5 GB ⚙️ Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 8.62,
+      "infoHash": "28dec3ac8cc8c5758730a334d98705dd698f7bc1",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 279,
+      "sizeBytes": 6979321856,
+      "sizeLabel": "6.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265"
+      ],
+      "filename": "The.Matrix.1999.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:28dec3ac8cc8c5758730a334d98705dd698f7bc1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:28dec3ac8cc8c5758730a334d98705dd698f7bc1&dn=The%20Matrix%20(1999)%202160p%20bluray&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Matrix.1999.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    }
+  ]
+}

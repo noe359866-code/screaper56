@@ -1,0 +1,266 @@
+{
+  "id": "tt0241527",
+  "imdbId": "tt0241527",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Harry Potter and the Sorcerer's Stone (2001)",
+  "name": "Harry Potter and the Sorcerer's Stone",
+  "year": 2001,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0241527.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0241527.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0241527.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0241527.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0241527.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0241527.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0241527.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 347,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Saga Harry Potter 4k",
+      "quality": "4K",
+      "seeders": 290,
+      "sizeBytes": 4756676280,
+      "sizeLabel": "4.4 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "eb5f734122f53d741bf0edb55d74b014dd6f1b7e",
+      "fileIdx": 5,
+      "score": 16.56,
+      "magnetUrl": "magnet:?xt=urn:btih:eb5f734122f53d741bf0edb55d74b014dd6f1b7e&dn=Saga%20Harry%20Potter%204k&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Harry Potter and the Sorcerer's Stone (2001) 2160p bluray",
+      "quality": "4K",
+      "seeders": 202,
+      "sizeBytes": 7730941133,
+      "sizeLabel": "7.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "f6924fb6fb1c323a02386755fe3b88e0ec9f60cf",
+      "fileIdx": 0,
+      "score": 8.71,
+      "magnetUrl": "magnet:?xt=urn:btih:f6924fb6fb1c323a02386755fe3b88e0ec9f60cf&dn=Harry%20Potter%20and%20the%20Sorcerer's%20Stone%20(2001)%202160p%20bluray&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 290,
+  "qualities": [
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Saga Harry Potter 4k",
+      "description": "Saga Harry Potter 4k\n🎞️ HEVC · AC3\n👤 290 💾 4.4 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 16.56,
+      "infoHash": "eb5f734122f53d741bf0edb55d74b014dd6f1b7e",
+      "fileIdx": 5,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 290,
+      "sizeBytes": 4756676280,
+      "sizeLabel": "4.4 GB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "1-Harry.Potter.Y.La.Piedra.Filosofal.(2001)(Spanish.English.Subs).UHD.1440p.HEVC-AC3.by.Geot.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:eb5f734122f53d741bf0edb55d74b014dd6f1b7e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:eb5f734122f53d741bf0edb55d74b014dd6f1b7e&dn=Saga%20Harry%20Potter%204k&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "1-Harry.Potter.Y.La.Piedra.Filosofal.(2001)(Spanish.English.Subs).UHD.1440p.HEVC-AC3.by.Geot.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Harry Potter and the Sorcerer's Stone (2001) 2160p bluray",
+      "description": "Harry Potter and the Sorcerer's Stone (2001) 2160p bluray\n🎞️ BluRay · HEVC · AAC 5.1\n👤 202 💾 7.2 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.71,
+      "infoHash": "f6924fb6fb1c323a02386755fe3b88e0ec9f60cf",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 202,
+      "sizeBytes": 7730941133,
+      "sizeLabel": "7.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "knaben",
+        "x265"
+      ],
+      "filename": "Harry.Potter.And.The.Sorcerers.Stone.2001.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f6924fb6fb1c323a02386755fe3b88e0ec9f60cf"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f6924fb6fb1c323a02386755fe3b88e0ec9f60cf&dn=Harry%20Potter%20and%20the%20Sorcerer's%20Stone%20(2001)%202160p%20bluray&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Harry.Potter.And.The.Sorcerers.Stone.2001.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    }
+  ]
+}

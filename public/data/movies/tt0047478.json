@@ -1,0 +1,260 @@
+{
+  "id": "tt0047478",
+  "imdbId": "tt0047478",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Seven Samurai (1954)",
+  "name": "Seven Samurai",
+  "year": 1954,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0047478.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0047478.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0047478.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0047478.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0047478.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 67,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Los siete samurais (1954) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.atomixHQ.LINK]",
+      "quality": "720p",
+      "seeders": 3,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "ec0fad90db1e52753b7fbab4555ff36eef13a756",
+      "fileIdx": null,
+      "score": 12.76,
+      "magnetUrl": "magnet:?xt=urn:btih:ec0fad90db1e52753b7fbab4555ff36eef13a756&dn=Los%20siete%20samurais%20(1954)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.atomixHQ.LINK%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv",
+      "quality": "1080p",
+      "seeders": 68,
+      "sizeBytes": 20109121182,
+      "sizeLabel": "18.7 GB",
+      "audioLangs": [
+        "en",
+        "ja"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "43e4b505ee84ec32422abde2bd9cdad5e5f318b3",
+      "fileIdx": 0,
+      "score": 6.12,
+      "magnetUrl": "magnet:?xt=urn:btih:43e4b505ee84ec32422abde2bd9cdad5e5f318b3&dn=Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 68,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "ja"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Los siete samurais (1954) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.atomixHQ.LINK]",
+      "description": "Los siete samurais (1954) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.atomixHQ.LINK]\n🎞️ BluRay · AVC · AC3 5.1\n👤 3 ⚙️ Peerflix",
+      "pick": "es",
+      "score": 12.76,
+      "infoHash": "ec0fad90db1e52753b7fbab4555ff36eef13a756",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 3,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:ec0fad90db1e52753b7fbab4555ff36eef13a756"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ec0fad90db1e52753b7fbab4555ff36eef13a756&dn=Los%20siete%20samurais%20(1954)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.atomixHQ.LINK%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv",
+      "description": "Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv\n🎞️ BluRay · HEVC · AAC\n👤 68 💾 18.7 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.12,
+      "infoHash": "43e4b505ee84ec32422abde2bd9cdad5e5f318b3",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ja"
+      ],
+      "quality": "1080p",
+      "seeders": 68,
+      "sizeBytes": 20109121182,
+      "sizeLabel": "18.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "1337x",
+        "HeVK",
+        "Knaben"
+      ],
+      "filename": "Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:43e4b505ee84ec32422abde2bd9cdad5e5f318b3"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:43e4b505ee84ec32422abde2bd9cdad5e5f318b3&dn=Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Shichinin.no.samurai.1954.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv"
+      }
+    }
+  ]
+}

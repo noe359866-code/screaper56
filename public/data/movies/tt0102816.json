@@ -1,0 +1,150 @@
+{
+  "id": "tt0102816",
+  "imdbId": "tt0102816",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Center Stage (1991)",
+  "name": "Center Stage",
+  "year": 1991,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0102816.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0102816.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0102816.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0102816.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 20,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Center.Stage.1991.1080p.BluRay.FLAC.1.0.x264-JKP",
+      "quality": "1080p",
+      "seeders": 46,
+      "sizeBytes": 19542101197,
+      "sizeLabel": "18.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "7bcf4818deb36af4b78a93ff5fdf58fc778e1931",
+      "fileIdx": null,
+      "score": 7.87,
+      "magnetUrl": "magnet:?xt=urn:btih:7bcf4818deb36af4b78a93ff5fdf58fc778e1931&dn=Center.Stage.1991.1080p.BluRay.FLAC.1.0.x264-JKP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 46,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Center.Stage.1991.1080p.BluRay.FLAC.1.0.x264-JKP",
+      "description": "Center.Stage.1991.1080p.BluRay.FLAC.1.0.x264-JKP\n🎞️ BluRay · AVC · FLAC\n👤 46 💾 18.2 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.87,
+      "infoHash": "7bcf4818deb36af4b78a93ff5fdf58fc778e1931",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 46,
+      "sizeBytes": 19542101197,
+      "sizeLabel": "18.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:7bcf4818deb36af4b78a93ff5fdf58fc778e1931"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7bcf4818deb36af4b78a93ff5fdf58fc778e1931&dn=Center.Stage.1991.1080p.BluRay.FLAC.1.0.x264-JKP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

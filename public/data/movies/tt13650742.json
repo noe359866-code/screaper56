@@ -1,0 +1,267 @@
+{
+  "id": "tt13650742",
+  "imdbId": "tt13650742",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Suncoast (2024)",
+  "name": "Suncoast",
+  "year": 2024,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt13650742.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt13650742.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt13650742.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt13650742.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt13650742.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 42,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv",
+      "quality": "4K",
+      "seeders": 8,
+      "sizeBytes": 13045393075,
+      "sizeLabel": "12.1 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "a77d057bfa45247f8accb982e0228024de03606e",
+      "fileIdx": null,
+      "score": 4.89,
+      "magnetUrl": "magnet:?xt=urn:btih:a77d057bfa45247f8accb982e0228024de03606e&dn=Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv",
+      "quality": "1080p",
+      "seeders": 70,
+      "sizeBytes": 1507369928,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "055a33589e3916d25220dc1347b0bd62a75fd7c9",
+      "fileIdx": 1,
+      "score": 8.06,
+      "magnetUrl": "magnet:?xt=urn:btih:055a33589e3916d25220dc1347b0bd62a75fd7c9&dn=Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 70,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv",
+      "description": "Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv\n🎞️ HEVC · DV · HDR10 · Atmos/DD+ 5.1\n👤 8 💾 12.1 GB ⚙️ StremThru Torz",
+      "pick": "es",
+      "score": 4.89,
+      "infoHash": "a77d057bfa45247f8accb982e0228024de03606e",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 8,
+      "sizeBytes": 13045393075,
+      "sizeLabel": "12.1 GB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Knaben"
+      ],
+      "filename": "Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:a77d057bfa45247f8accb982e0228024de03606e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a77d057bfa45247f8accb982e0228024de03606e&dn=Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Suncoast.2024.2160p.Dolby.Vision.HDR10.PLUS.ENG.LATINO.Sub.DDP5.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv",
+      "description": "Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv\n🎞️ WEBRip · AVC · AC3 5.1\n👤 70 💾 1.4 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.06,
+      "infoHash": "055a33589e3916d25220dc1347b0bd62a75fd7c9",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 70,
+      "sizeBytes": 1507369928,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy",
+        "GalaxyRG",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:055a33589e3916d25220dc1347b0bd62a75fd7c9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:055a33589e3916d25220dc1347b0bd62a75fd7c9&dn=Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Suncoast.2024.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv"
+      }
+    }
+  ]
+}

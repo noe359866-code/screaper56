@@ -1,0 +1,250 @@
+{
+  "id": "tt0096697:25:13",
+  "imdbId": "tt0096697",
+  "type": "series",
+  "season": 25,
+  "episode": 13,
+  "label": "The Simpsons S25E13 – The Man Who Grew Too Much",
+  "name": "The Simpsons",
+  "year": 1989,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0096697:25:13.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0096697:25:13.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0096697:25:13.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 56,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv",
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 232783872,
+      "sizeLabel": "222 MB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "infoHash": "25626af940fe6b40768368404a78bffb176502fd",
+      "fileIdx": 13,
+      "score": 12.16,
+      "magnetUrl": "magnet:?xt=urn:btih:25626af940fe6b40768368404a78bffb176502fd&dn=Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Simpsons - S25E13 - The Man Who Grew Too Much [1080p] [x265] [pseudo].mkv",
+      "quality": "1080p",
+      "seeders": 126,
+      "sizeBytes": 250609664,
+      "sizeLabel": "239 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "65b6adffd0c000709bf5facba49330e5dfca6a09",
+      "fileIdx": 622,
+      "score": 8.35,
+      "magnetUrl": "magnet:?xt=urn:btih:65b6adffd0c000709bf5facba49330e5dfca6a09&dn=The%20Simpsons%20-%20S25E13%20-%20The%20Man%20Who%20Grew%20Too%20Much%20%5B1080p%5D%20%5Bx265%5D%20%5Bpseudo%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 126,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv",
+      "description": "Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv\n👤 1 💾 222 MB ⚙️ Peerflix+StremThru Torz",
+      "pick": "es",
+      "score": 12.16,
+      "infoHash": "25626af940fe6b40768368404a78bffb176502fd",
+      "fileIdx": 13,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 232783872,
+      "sizeLabel": "222 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "GranTorrent"
+      ],
+      "filename": "Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:25626af940fe6b40768368404a78bffb176502fd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:25626af940fe6b40768368404a78bffb176502fd&dn=Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Los_Simpsons_25x13_El_Hombre_Que_Crecia_Demasiado.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Simpsons - S25E13 - The Man Who Grew Too Much [1080p] [x265] [pseudo].mkv",
+      "description": "The Simpsons - S25E13 - The Man Who Grew Too Much [1080p] [x265] [pseudo].mkv\n🎞️ HEVC\n👤 126 💾 239 MB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 8.35,
+      "infoHash": "65b6adffd0c000709bf5facba49330e5dfca6a09",
+      "fileIdx": 622,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 126,
+      "sizeBytes": 250609664,
+      "sizeLabel": "239 MB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "The"
+      ],
+      "filename": "The Simpsons - S25E13 - The Man Who Grew Too Much [1080p] [x265] [pseudo].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:65b6adffd0c000709bf5facba49330e5dfca6a09"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:65b6adffd0c000709bf5facba49330e5dfca6a09&dn=The%20Simpsons%20-%20S25E13%20-%20The%20Man%20Who%20Grew%20Too%20Much%20%5B1080p%5D%20%5Bx265%5D%20%5Bpseudo%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Simpsons - S25E13 - The Man Who Grew Too Much [1080p] [x265] [pseudo].mkv"
+      }
+    }
+  ]
+}

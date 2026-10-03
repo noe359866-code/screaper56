@@ -1,0 +1,133 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Hasta donde los pies me lleven (2001) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.maxitorrent.com]",
+      "description": "Hasta donde los pies me lleven (2001) [BluRay 720p X264 MKV][AC3 5.1 Castellano][www.maxitorrent.com]\n🎞️ BluRay · AVC · AC3 5.1\n👤 0 ⚙️ Peerflix",
+      "pick": "es",
+      "score": 8.86,
+      "infoHash": "104d935713a623473bcf78ef812e5eb3945b639e",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:104d935713a623473bcf78ef812e5eb3945b639e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:104d935713a623473bcf78ef812e5eb3945b639e&dn=Hasta%20donde%20los%20pies%20me%20lleven%20(2001)%20%5BBluRay%20720p%20X264%20MKV%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "As Far As My Feet Will Carry Me 2001 BluRay 1080p HD MA 5 1 x264-CHD mkv",
+      "description": "As Far As My Feet Will Carry Me 2001 BluRay 1080p HD MA 5 1 x264-CHD mkv\n🎞️ BluRay · AVC · 5.1\n👤 1 💾 18.9 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 5.8,
+      "infoHash": "f630b7eb02931d55d7675bb353b234e1f3948eaf",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 20293720474,
+      "sizeLabel": "18.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "As Far As My Feet Will Carry Me 2001 BluRay 1080p HD MA 5 1 x264-CHD mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f630b7eb02931d55d7675bb353b234e1f3948eaf"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f630b7eb02931d55d7675bb353b234e1f3948eaf&dn=As%20Far%20As%20My%20Feet%20Will%20Carry%20Me%202001%20BluRay%201080p%20HD%20MA%205%201%20x264-CHD%20mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "As Far As My Feet Will Carry Me 2001 BluRay 1080p HD MA 5 1 x264-CHD mkv"
+      }
+    }
+  ]
+}

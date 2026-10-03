@@ -1,0 +1,253 @@
+{
+  "id": "tt1730697",
+  "imdbId": "tt1730697",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Hollywoo (2011)",
+  "name": "Hollywoo",
+  "year": 2011,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1730697.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1730697.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1730697.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1730697.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1730697.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1730697.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 14,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Голливу / Hollywoo [2011 BDRip 1080p] + Sub Rus Eng Fra + Original Fra",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 13357348291,
+      "sizeLabel": "12.4 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr",
+        "it"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "a22cf53df5194b34b83491f24194e78bc6c9c0fc",
+      "fileIdx": 0,
+      "score": 0.19,
+      "magnetUrl": "magnet:?xt=urn:btih:a22cf53df5194b34b83491f24194e78bc6c9c0fc&dn=%D0%93%D0%BE%D0%BB%D0%BB%D0%B8%D0%B2%D1%83%20%2F%20Hollywoo%20%5B2011%20BDRip%201080p%5D%20%2B%20Sub%20Rus%20Eng%20Fra%20%2B%20Original%20Fra&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Hollywoo.2011.1080p.BluRay.x265-RARBG",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1793148846,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "abb4f6fcc1a8d194e0466c001ae4180373ddd33a",
+      "fileIdx": 0,
+      "score": 5.71,
+      "magnetUrl": "magnet:?xt=urn:btih:abb4f6fcc1a8d194e0466c001ae4180373ddd33a&dn=Hollywoo.2011.1080p.BluRay.x265-RARBG&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 1,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "fr",
+    "it",
+    "ru"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Голливу / Hollywoo [2011 BDRip 1080p] + Sub Rus Eng Fra + Original Fra",
+      "description": "Голливу / Hollywoo [2011 BDRip 1080p] + Sub Rus Eng Fra + Original Fra\n🎞️ BluRay\n👤 0 💾 12.4 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 0.19,
+      "infoHash": "a22cf53df5194b34b83491f24194e78bc6c9c0fc",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr",
+        "it"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 13357348291,
+      "sizeLabel": "12.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Rutracker"
+      ],
+      "filename": "Hollywoo.2011.BDRip.1080p.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:a22cf53df5194b34b83491f24194e78bc6c9c0fc"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a22cf53df5194b34b83491f24194e78bc6c9c0fc&dn=%D0%93%D0%BE%D0%BB%D0%BB%D0%B8%D0%B2%D1%83%20%2F%20Hollywoo%20%5B2011%20BDRip%201080p%5D%20%2B%20Sub%20Rus%20Eng%20Fra%20%2B%20Original%20Fra&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Hollywoo.2011.BDRip.1080p.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Hollywoo.2011.1080p.BluRay.x265-RARBG",
+      "description": "Hollywoo.2011.1080p.BluRay.x265-RARBG\n🎞️ BluRay · HEVC\n👤 1 💾 1.7 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 5.71,
+      "infoHash": "abb4f6fcc1a8d194e0466c001ae4180373ddd33a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1793148846,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "Hollywoo.2011.1080p.BluRay.x265-RARBG.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:abb4f6fcc1a8d194e0466c001ae4180373ddd33a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:abb4f6fcc1a8d194e0466c001ae4180373ddd33a&dn=Hollywoo.2011.1080p.BluRay.x265-RARBG&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Hollywoo.2011.1080p.BluRay.x265-RARBG.mp4"
+      }
+    }
+  ]
+}
