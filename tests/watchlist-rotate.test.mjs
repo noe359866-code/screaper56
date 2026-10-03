@@ -173,6 +173,31 @@ test('rotateWatchlist con keep: las series en progreso se conservan aunque esté
   const items = parseWatchlist(rotated.text);
   assert.ok(items.some(i => i.imdbId === 'tt7777777'), 'la serie en progreso sigue en el watchlist');
   assert.ok(!items.some(i => i.imdbId === 'tt0111161'), 'la película completada se elimina');
+
+  // Con maxSeries: 1 y una serie ya en progreso: NO descubre series nuevas hasta terminar la actual.
+  const withDiscovery = await rotateWatchlist(text, {
+    seen: createSeenStore(seen.toJSON()),
+    fetchJSON: null,
+    autoDiscover: true,
+    replaceAll: true,
+    keep,
+    batchSize: 5,
+    maxSeries: 1,
+  });
+  const seriesInBatch = withDiscovery.items.filter(i => i.type === 'series' || i.typeHint === 'series');
+  assert.deepEqual(seriesInBatch.map(s => s.imdbId), ['tt7777777'], 'mantiene solo la serie activa sin añadir más series');
+  assert.equal(withDiscovery.items.length, 5);
+
+  // Con onlySeries: true: el watchlist contiene exclusivamente esa única serie (0 películas).
+  const onlyOneSeries = await rotateWatchlist(text, {
+    seen: createSeenStore(seen.toJSON()),
+    fetchJSON: null,
+    autoDiscover: true,
+    replaceAll: true,
+    keep,
+    onlySeries: true,
+  });
+  assert.deepEqual(onlyOneSeries.items.map(i => i.imdbId), ['tt7777777']);
 });
 
 test('formatWatchlistLine/File: las series completas se escriben sin :s1:e1', () => {

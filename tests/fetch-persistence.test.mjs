@@ -239,3 +239,94 @@ test('CLI reanuda series largas donde quedaron (progress.json) y las conserva en
   assert.equal(rec2.nextSeason, null);
   assert.ok(rec2.startedAt, 'conserva cuándo empezó la serie');
 });
+
+test('CLI con FOLLOW_SERIES=only sigue una única serie hasta terminarla antes de pasar a la siguiente', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'peerflix-follow-series-'));
+  let seq = 0;
+  const videosA = [1, 2, 3].map(episode => ({
+    season: 1, episode, name: `Ep A ${episode}`, released: '2020-01-01T00:00:00Z',
+  }));
+  const videosB = [1, 2].map(episode => ({
+    season: 1, episode, name: `Ep B ${episode}`, released: '2021-01-01T00:00:00Z',
+  }));
+  const server = createServer(async (request, response) => {
+    response.setHeader('content-type', 'application/json');
+    if (request.url === '/meta/series/tt7777771.json') {
+      response.end(JSON.stringify({ meta: { id: 'tt7777771', imdb_id: 'tt7777771', type: 'series', name: 'Serie Uno', year: '2020', videos: videosA } }));
+    } else if (request.url === '/meta/series/tt7777772.json') {
+      response.end(JSON.stringify({ meta: { id: 'tt7777772', imdb_id: 'tt7777772', type: 'series', name: 'Serie Dos', year: '2021', videos: videosB } }));
+    } else if (request.url.startsWith('/stream/')) {
+      seq++;
+      response.end(JSON.stringify({ streams: [{
+        name: 'Peerflix\n1080p',
+        title: `Stream ${request.url} [1080p][Castellano]\n👤 40 💾 2.0 GB`,
+        infoHash: seq.toString(16).padStart(40, '0'), fileIdx: 0,
+      }] }));
+    } else {
+      response.statusCode = 404;
+      response.end('{}');
+    }
+  });
+  t.after(async () => {
+    if (server.listening) await new Promise(resolve => server.close(resolve));
+    await rm(dir, { recursive: true, force: true });
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  await cp(join(ROOT, 'src'), join(dir, 'src'), { recursive: true });
+  await cp(join(ROOT, 'public/lib'), join(dir, 'public/lib'), { recursive: true });
+  await cp(join(ROOT, 'package.json'), join(dir, 'package.json'));
+  await symlink(join(ROOT, 'node_modules'), join(dir, 'node_modules'), 'dir');
+  await writeFile(join(dir, 'watchlist.txt'), [
+    '# --- Películas ---',
+    'tt0111161 The Shawshank Redemption (1994)',
+    '# --- Series ---',
+    'tt7777771 Serie Uno',
+    'tt7777772 Serie Dos',
+  ].join('\n') + '\n');
+
+  const env = {
+    ...process.env,
+    WATCHLIST_PATH: 'watchlist.txt', PROVIDERS: 'peerflix', PEERFLIX_BASE_URL: baseUrl,
+    CINEMETA: '1', CINEMETA_URL: baseUrl, TMDB_API_KEY: '', OMDB_API_KEY: '', TRACKERS_URL: '',
+    FETCH_CONCURRENCY: '2', DRY_RUN: '1', FIXTURE_MODE: '0', REPROCESS: '0',
+    AUTO_WATCHLIST: '1', FOLLOW_SERIES: 'only', MAX_EPISODES_PER_RUN: '2',
+  };
+
+  // Corrida 1: solo procesa 2 episodios de Serie Uno (0 películas, 0 de Serie Dos).
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report1 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.deepEqual(
+    report1.items.map(i => `${i.imdbId}:${i.season}:${i.episode}`),
+    ['tt7777771:1:1', 'tt7777771:1:2'],
+    'solo avanza en Serie Uno',
+  );
+  const progress1 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
+  assert.equal(progress1.activeSeries, 'tt7777771');
+  assert.equal(progress1.series.tt7777771.status, 'in-progress');
+  assert.equal(progress1.series.tt7777772.status, 'in-progress', 'Serie Dos queda en cola en progress.json');
+
+  // Corrida 2: termina el episodio restante de Serie Uno y marca Serie Dos como siguiente activa.
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report2 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.deepEqual(
+    report2.items.map(i => `${i.imdbId}:${i.season}:${i.episode}`),
+    ['tt7777771:1:3'],
+    'termina Serie Uno sin mezclar Serie Dos todavía',
+  );
+  const progress2 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
+  assert.equal(progress2.series.tt7777771.status, 'complete');
+  assert.equal(progress2.activeSeries, 'tt7777772', 'al terminar Serie Uno pasa automáticamente a Serie Dos');
+
+  // Corrida 3: ahora sí continúa con Serie Dos hasta terminarla.
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report3 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.deepEqual(
+    report3.items.map(i => `${i.imdbId}:${i.season}:${i.episode}`),
+    ['tt7777772:1:1', 'tt7777772:1:2'],
+  );
+  const progress3 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
+  assert.equal(progress3.series.tt7777772.status, 'complete');
+  assert.equal(progress3.activeSeries, null);
+});
+

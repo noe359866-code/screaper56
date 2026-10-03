@@ -103,14 +103,18 @@ export function reportToMarkdown(report, { pagesUrl = null, runUrl = null, maxRo
     lines.push(`Watchlist: 🔄 actualizado automáticamente (**${wl.addedCount ?? 0} nuevos** · ${wl.removedCount ?? 0} anteriores eliminados${wl.resumedCount ? ` · ${wl.resumedCount} serie(s) en progreso continúan` : ''} · ${wl.totalSeen ?? wl.totalSeenBefore ?? 0} en historial sin repetir)`);
   }
   lines.push('');
+  const activeSeriesId = report.progress?.activeSeries || report.watchlist?.activeSeries || null;
   const progressSeries = Object.entries(report.progress?.series || {});
-  const inProgress = progressSeries.filter(([, r]) => r.status === 'in-progress');
+  const inProgress = progressSeries
+    .filter(([, r]) => r.status === 'in-progress')
+    .sort(([a], [b]) => (a === activeSeriesId ? -1 : b === activeSeriesId ? 1 : 0));
   const completed = progressSeries.filter(([, r]) => r.status === 'complete');
   if (inProgress.length || completed.length) {
     const tag = (s, e) => `S${String(s ?? 0).padStart(2, '0')}E${String(e ?? 0).padStart(2, '0')}`;
     lines.push('### 📺 Progreso de series (dónde quedó cada una)');
-    for (const [, r] of inProgress) {
-      lines.push(`- ⏳ **${md(r.name)}**: ${r.done}/${r.total} episodios · último ${tag(r.lastSeason, r.lastEpisode)} · sigue en **${tag(r.nextSeason, r.nextEpisode)}** en la próxima ejecución`);
+    for (const [id, r] of inProgress) {
+      const activeBadge = id === activeSeriesId ? ' *(🎯 siguiendo hasta terminarla)*' : '';
+      lines.push(`- ⏳ **${md(r.name)}**: ${r.done}/${r.total} episodios · último ${tag(r.lastSeason, r.lastEpisode)} · sigue en **${tag(r.nextSeason, r.nextEpisode)}** en la próxima ejecución${activeBadge}`);
     }
     for (const [, r] of completed.slice(0, 10)) {
       lines.push(`- ✅ **${md(r.name)}**: completa (${r.total} episodios)`);

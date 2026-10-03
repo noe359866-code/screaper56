@@ -8,7 +8,9 @@ import {
   episodeKey,
   episodeTag,
   normalizeProgress,
+  parseSeriesTarget,
   pendingEpisodes,
+  pickActiveSeries,
   resumeKeepPredicate,
   resumeMissingItems,
 } from '../public/lib/progress.js';
@@ -118,3 +120,46 @@ test('resumeKeepPredicate/resumeMissingItems: el watchlist conserva lo que falta
   const withSeries = [...items, { imdbId: 'tt7777777', season: null }];
   assert.equal(resumeMissingItems(progress, withSeries).length, 0);
 });
+
+test('pickActiveSeries y activeSeries: sigue una sola serie hasta terminarla y pasa a la siguiente', () => {
+  assert.deepEqual(parseSeriesTarget('TT0411008 Lost'), { imdbId: 'tt0411008', label: 'Lost' });
+  assert.deepEqual(parseSeriesTarget('https://www.imdb.com/title/tt0411008/'), { imdbId: 'tt0411008', label: null });
+  assert.equal(parseSeriesTarget('basura'), null);
+
+  const progress = normalizeProgress({
+    activeSeries: 'tt7777777',
+    series: {
+      tt6666666: { name: 'Serie Primera', status: 'in-progress', done: 1, total: 10 },
+      tt7777777: { name: 'Serie Activa', status: 'in-progress', done: 3, total: 4 },
+      tt8888888: { name: 'Serie En Cola', status: 'in-progress', done: 2, total: 8 },
+    },
+  });
+
+  // Respeta activeSeries aunque haya otras en progreso antes.
+  assert.equal(pickActiveSeries(progress, []), 'tt7777777');
+  // Si el usuario pide una serie concreta en Run workflow, tiene prioridad.
+  assert.equal(pickActiveSeries(progress, [], { preferredId: 'tt8888888' }), 'tt8888888');
+
+  // Con activeSeriesId solo se conserva/reinyecta esa única serie en watchlist.txt.
+  const keepOne = resumeKeepPredicate(progress, { activeSeriesId: 'tt7777777' });
+  assert.equal(keepOne({ imdbId: 'tt7777777', season: null }), true);
+  assert.equal(keepOne({ imdbId: 'tt6666666', season: null }), false);
+  const missingOne = resumeMissingItems(progress, [], { activeSeriesId: 'tt7777777' });
+  assert.deepEqual(missingOne.map(m => m.imdbId), ['tt7777777']);
+
+  // Cuando la serie activa termina, advanceProgress pasa automáticamente a la siguiente en cola.
+  const doneAll = new Set(['tt0903747:s1:e1', 'tt0903747:s1:e2', 'tt0903747:s2:e1', 'tt0903747:s2:e2']);
+  const finishedState = advanceProgress(
+    normalizeProgress({
+      activeSeries: 'tt0903747',
+      series: {
+        tt0903747: { name: 'Breaking Bad', status: 'in-progress', done: 3, total: 4 },
+        tt6666666: { name: 'Serie Siguiente', status: 'in-progress', done: 1, total: 10 },
+      },
+    }),
+    { metaById: new Map([['tt0903747', SERIE]]), doneKeys: doneAll, imdbIds: ['tt0903747'], activeSeries: 'tt0903747' },
+  );
+  assert.equal(finishedState.series.tt0903747.status, 'complete');
+  assert.equal(finishedState.activeSeries, 'tt6666666', 'al terminar la serie actual pasa a la siguiente en progreso');
+});
+

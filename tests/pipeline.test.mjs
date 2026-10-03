@@ -235,6 +235,20 @@ test('expandWatchlist con maxEpisodeQueries: tope por corrida, repartido entre s
   // Sin tope, salen todos.
   const all = await expandWatchlist(items, { metaById });
   assert.equal(all.filter(q => q.kind === 'series').length, 6);
+
+  // Con singleSeries: concentra todas las consultas de episodios en UNA sola serie hasta terminarla.
+  const focused = await expandWatchlist(items, { metaById, maxEpisodeQueries: 4, singleSeries: true });
+  assert.deepEqual(
+    focused.filter(q => q.kind === 'series').map(q => `${q.imdbId}:${q.season}:${q.episode}`),
+    ['tt0000001:1:1', 'tt0000001:1:2', 'tt0000001:1:3'],
+    'solo avanza en la primera serie sin mezclar la segunda',
+  );
+  // Con focusSeriesId: fuerza la serie elegida aunque esté en segunda posición.
+  const byId = await expandWatchlist(items, { metaById, maxEpisodeQueries: 2, singleSeries: true, focusSeriesId: 'tt0000002' });
+  assert.deepEqual(
+    byId.filter(q => q.kind === 'series').map(q => `${q.imdbId}:${q.season}:${q.episode}`),
+    ['tt0000002:1:1', 'tt0000002:1:2'],
+  );
 });
 
 test('loadMetadata deja de consultar Cinemeta tras 3 fallos seguidos y sigue sin él', async () => {
