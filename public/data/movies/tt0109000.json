@@ -1,0 +1,36 @@
+{
+  "id": "tt0109000",
+  "imdbId": "tt0109000",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "00 Schneider - Jagd auf Nihil Baxter (1994)",
+  "name": "00 Schneider - Jagd auf Nihil Baxter",
+  "year": 1994,
+  "imdbRating": "6.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0109000.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0109000.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0109000.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0109000.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

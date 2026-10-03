@@ -1,0 +1,246 @@
+{
+  "id": "tt0110989",
+  "imdbId": "tt0110989",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Richie Rich (1994)",
+  "name": "Richie Rich",
+  "year": 1994,
+  "imdbRating": "5.5",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0110989.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0110989.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0110989.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0110989.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN",
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 6442450944,
+      "sizeLabel": "6.0 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "e6d36e06855fb81904c738532a15084f77d3df0f",
+      "fileIdx": 3,
+      "score": 14.92,
+      "magnetUrl": "magnet:?xt=urn:btih:e6d36e06855fb81904c738532a15084f77d3df0f&dn=Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Richie Rich 1994 AMZN WEBRip 1080p DTS AC3 x264-MgB",
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 6657199309,
+      "sizeLabel": "6.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "023d5a2dfc54b76e956973829de9faf24781e758",
+      "fileIdx": 18,
+      "score": 7.49,
+      "magnetUrl": "magnet:?xt=urn:btih:023d5a2dfc54b76e956973829de9faf24781e758&dn=Richie%20Rich%201994%20AMZN%20WEBRip%201080p%20DTS%20AC3%20x264-MgB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 29,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN",
+      "description": "Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN\n🎞️ WEB-DL · AVC · AC3\n👤 10 💾 6.0 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.92,
+      "infoHash": "e6d36e06855fb81904c738532a15084f77d3df0f",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 6442450944,
+      "sizeLabel": "6.0 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:e6d36e06855fb81904c738532a15084f77d3df0f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e6d36e06855fb81904c738532a15084f77d3df0f&dn=Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Richie.Rich.1994.1080p.MAX.WEB-DL.ENG.LATINO.DD.5.1.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Richie Rich 1994 AMZN WEBRip 1080p DTS AC3 x264-MgB",
+      "description": "Richie Rich 1994 AMZN WEBRip 1080p DTS AC3 x264-MgB\n🎞️ WEBRip · AVC · DTS/AC3\n👤 29 💾 6.2 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.49,
+      "infoHash": "023d5a2dfc54b76e956973829de9faf24781e758",
+      "fileIdx": 18,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 6657199309,
+      "sizeLabel": "6.2 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxy"
+      ],
+      "filename": "Richie Rich 1994 AMZN WEBRip 1080p DTS AC3 x264-MgB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:023d5a2dfc54b76e956973829de9faf24781e758"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:023d5a2dfc54b76e956973829de9faf24781e758&dn=Richie%20Rich%201994%20AMZN%20WEBRip%201080p%20DTS%20AC3%20x264-MgB&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Richie Rich 1994 AMZN WEBRip 1080p DTS AC3 x264-MgB.mkv"
+      }
+    }
+  ]
+}

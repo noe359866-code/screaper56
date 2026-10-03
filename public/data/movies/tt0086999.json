@@ -1,0 +1,146 @@
+{
+  "id": "tt0086999",
+  "imdbId": "tt0086999",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Breakin' 2: Electric Boogaloo (1984)",
+  "name": "Breakin' 2: Electric Boogaloo",
+  "year": 1984,
+  "imdbRating": "5.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0086999.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0086999.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0086999.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0086999.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 9,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-",
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 3231962890,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "016fb35a03b647fa882cfb74934e4978d2616773",
+      "fileIdx": 0,
+      "score": 7.19,
+      "magnetUrl": "magnet:?xt=urn:btih:016fb35a03b647fa882cfb74934e4978d2616773&dn=Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 16,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-",
+      "description": "Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-\n🎞️ BluRay · HEVC · DD+ 2.0\n👤 16 💾 3.0 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.19,
+      "infoHash": "016fb35a03b647fa882cfb74934e4978d2616773",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 3231962890,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "1337x"
+      ],
+      "filename": "Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-GalaxyRG265.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:016fb35a03b647fa882cfb74934e4978d2616773"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:016fb35a03b647fa882cfb74934e4978d2616773&dn=Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Breakin.2.Electric.Boogaloo.1984.1080p.BluRay.DDP2.0.x265.10bit-GalaxyRG265.mkv"
+      }
+    }
+  ]
+}

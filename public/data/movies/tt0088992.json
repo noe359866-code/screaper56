@@ -1,0 +1,246 @@
+{
+  "id": "tt0088992",
+  "imdbId": "tt0088992",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Runner (1984)",
+  "name": "The Runner",
+  "year": 1984,
+  "imdbRating": "7.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0088992.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0088992.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0088992.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0088992.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 7,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Бегун / Davandeh / The Runner [1984 BDRip 1080p] VO + Sub (Rus Eng Fra Spa) + Original Per",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 8407398482,
+      "sizeLabel": "7.8 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "7b68f54da714bb14a681ae06b648fb605cba2bce",
+      "fileIdx": 0,
+      "score": 0.19,
+      "magnetUrl": "magnet:?xt=urn:btih:7b68f54da714bb14a681ae06b648fb605cba2bce&dn=%D0%91%D0%B5%D0%B3%D1%83%D0%BD%20%2F%20Davandeh%20%2F%20The%20Runner%20%5B1984%20BDRip%201080p%5D%20VO%20%2B%20Sub%20(Rus%20Eng%20Fra%20Spa)%20%2B%20Original%20Per&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Runner (1984) [1080p] [BluRay] [2.0] [YTS] [YIFY]",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 1621350154,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "bb5a5780f4026f0f99068d9bbca6624567dca734",
+      "fileIdx": 1,
+      "score": 6.47,
+      "magnetUrl": "magnet:?xt=urn:btih:bb5a5780f4026f0f99068d9bbca6624567dca734&dn=The%20Runner%20(1984)%20%5B1080p%5D%20%5BBluRay%5D%20%5B2.0%5D%20%5BYTS%5D%20%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 5,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "fr",
+    "ru"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Бегун / Davandeh / The Runner [1984 BDRip 1080p] VO + Sub (Rus Eng Fra Spa) + Original Per",
+      "description": "Бегун / Davandeh / The Runner [1984 BDRip 1080p] VO + Sub (Rus Eng Fra Spa) + Original Per\n🎞️ BluRay\n👤 0 💾 7.8 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 0.19,
+      "infoHash": "7b68f54da714bb14a681ae06b648fb605cba2bce",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 8407398482,
+      "sizeLabel": "7.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Rutracker"
+      ],
+      "filename": "Davandeh 1984 BDRip 1080p.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:7b68f54da714bb14a681ae06b648fb605cba2bce"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7b68f54da714bb14a681ae06b648fb605cba2bce&dn=%D0%91%D0%B5%D0%B3%D1%83%D0%BD%20%2F%20Davandeh%20%2F%20The%20Runner%20%5B1984%20BDRip%201080p%5D%20VO%20%2B%20Sub%20(Rus%20Eng%20Fra%20Spa)%20%2B%20Original%20Per&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Davandeh 1984 BDRip 1080p.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Runner (1984) [1080p] [BluRay] [2.0] [YTS] [YIFY]",
+      "description": "The Runner (1984) [1080p] [BluRay] [2.0] [YTS] [YIFY]\n🎞️ BluRay · AVC · AAC 2.0\n👤 5 💾 1.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 6.47,
+      "infoHash": "bb5a5780f4026f0f99068d9bbca6624567dca734",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 1621350154,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS",
+        "1337x"
+      ],
+      "filename": "The.Runner.1984.1080p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:bb5a5780f4026f0f99068d9bbca6624567dca734"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bb5a5780f4026f0f99068d9bbca6624567dca734&dn=The%20Runner%20(1984)%20%5B1080p%5D%20%5BBluRay%5D%20%5B2.0%5D%20%5BYTS%5D%20%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Runner.1984.1080p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

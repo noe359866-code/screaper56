@@ -1,0 +1,36 @@
+{
+  "id": "tt0415481",
+  "imdbId": "tt0415481",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Alyosha Popovich i Tugarin Zmey (2004)",
+  "name": "Alyosha Popovich i Tugarin Zmey",
+  "year": 2004,
+  "imdbRating": "7.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0415481.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0415481.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0415481.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0415481.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 13,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

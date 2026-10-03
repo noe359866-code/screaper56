@@ -1,0 +1,36 @@
+{
+  "id": "tt0216755",
+  "imdbId": "tt0216755",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Formula of Love (1984)",
+  "name": "Formula of Love",
+  "year": 1984,
+  "imdbRating": "8.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0216755.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0216755.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0216755.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0216755.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 5,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

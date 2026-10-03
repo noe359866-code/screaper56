@@ -1,0 +1,36 @@
+{
+  "id": "tt0416331",
+  "imdbId": "tt0416331",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Go for Zucker (2004)",
+  "name": "Go for Zucker",
+  "year": 2004,
+  "imdbRating": "6.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0416331.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0416331.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0416331.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0416331.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 3,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

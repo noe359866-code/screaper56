@@ -1,0 +1,36 @@
+{
+  "id": "tt0072410",
+  "imdbId": "tt0072410",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Winnie the Pooh and Tigger Too (1974)",
+  "name": "Winnie the Pooh and Tigger Too",
+  "year": 1974,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0072410.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0072410.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0072410.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0072410.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
