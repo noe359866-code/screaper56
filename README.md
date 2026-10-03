@@ -23,7 +23,7 @@ Addons consultados por IMDb:
 
 | | Qué hace | Necesita |
 |---|---|---|
-| ⚡ **Procesar aquí** | Tu navegador consulta los addons y Cinemeta directamente (todos permiten CORS) con **el mismo código que la Action** (`public/lib/`). En 1–2 minutos tienes los 2 torrents de cada título, guardados en este navegador. | Nada |
+| ⚡ **Procesar aquí** | Tu navegador consulta los addons y Cinemeta directamente (todos permiten CORS) con **el mismo código que la Action** (`public/lib/`). Según el tamaño de la lista, guarda en este navegador los 2 torrents de cada título. | Nada |
 | ☁️ **Guardar en el repo / BD** | Sin token, la web abre un **Issue ya relleno** (`[ingest] …`). Al enviarlo, `issue-ingest.yml` reemplaza `watchlist.txt` y lanza la Action con el `GITHUB_TOKEN` automático. La Action publica los JSON y el addon Stremio, escribe en Supabase si está configurado y **responde en el Issue** con el resumen. | Ser el dueño o un colaborador del repo (sesión normal de GitHub) |
 | ⏰ **Programado** | La Action corre cada día a las 04:00 UTC con el `watchlist.txt` del repo. | Nada |
 
@@ -119,7 +119,11 @@ la copia integrada.
 ## Mejoras basadas en la última ingesta
 
 Se revisó `public/data/report.json` de la última ejecución (159 consultas) y
-se corrigió lo que fallaba de verdad:
+se corrigió lo que fallaba de verdad. **Ese 159 es el resultado publicado de esa
+corrida, no un límite**: el lote automático ahora tiene como objetivo hasta
+1000 entradas del watchlist por ejecución. Los JSON existentes no se regeneran
+hasta la siguiente ejecución de la Action. Las series completas se expanden a
+episodios, por lo que el `total` de consultas puede superar 1000.
 
 | Problema observado | Cambio |
 |---|---|
@@ -234,7 +238,8 @@ Audio” PT + original nunca ocupa el hueco 🇬🇧.
 ## Descubrimiento: anime, documentales y más
 
 Con la rotación automática del watchlist, cada lote **reserva huecos para
-géneros prioritarios**, por defecto anime y documentales:
+géneros prioritarios**, por defecto anime y documentales. El tamaño predeterminado
+es de hasta **1000 entradas por ejecución** (`WATCHLIST_BATCH_SIZE`, máximo 1000):
 
 - **La mitad del lote**, con 1 título por género. En un lote de 8 películas
   entran 1 película de anime y 1 documental. Si el lote es de 1 (la serie que
@@ -387,6 +392,7 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 
 | Variable | Default | Uso |
 |---|---|---|
+| `WATCHLIST_BATCH_SIZE` | `1000` en la Action (máximo `1000`) | Entradas del watchlist por lote; las series se expanden a episodios y pueden aumentar el total consultado |
 | `PROVIDERS` | los 8 por defecto (todos menos `piratebay`) | Addons a consultar (slugs separados por comas) |
 | `DRY_RUN` | `0` | `1` = no escribe en Supabase |
 | `CINEMETA` | `1` | `0` = sin metadatos |

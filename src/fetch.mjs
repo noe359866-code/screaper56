@@ -48,6 +48,7 @@ import { BEST_TRACKERS_URL, DEFAULT_MAX_TRACKERS, PICK_LANGUAGES } from '../publ
 import { CINEMETA_URL, showLabel } from '../public/lib/meta.js';
 import {
   DEFAULT_BATCH_SIZE,
+  MAX_BATCH_SIZE,
   MAX_SEARCH_YEAR,
   MIN_SEARCH_YEAR,
   createSeenStore,
@@ -107,7 +108,7 @@ const AUTO_WATCHLIST = process.env.AUTO_WATCHLIST === '1';
 const REPLACE_WATCHLIST = process.env.REPLACE_WATCHLIST
   ? process.env.REPLACE_WATCHLIST === '1'
   : AUTO_WATCHLIST;
-const WATCHLIST_BATCH_SIZE = Math.min(100, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
+const WATCHLIST_BATCH_SIZE = Math.min(MAX_BATCH_SIZE, Math.max(1, Number.parseInt(process.env.WATCHLIST_BATCH_SIZE || '', 10) || DEFAULT_BATCH_SIZE));
 const SEARCH_MIN_YEAR = Number.parseInt(process.env.MIN_YEAR || '', 10) || MIN_SEARCH_YEAR;
 const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_SEARCH_YEAR;
 // Géneros con hueco reservado en cada lote (anime y documentales por defecto;

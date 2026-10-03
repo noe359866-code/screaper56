@@ -27,7 +27,7 @@ import {
 import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/issue.js';
 import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
 import { describeDatabaseWrite } from './lib/persistence.js';
-import { createSeenStore, formatWatchlistFile, rotateWatchlist } from './lib/watchlist.js';
+import { createSeenStore, DEFAULT_BATCH_SIZE, formatWatchlistFile, rotateWatchlist } from './lib/watchlist.js';
 import { normalizeProgress, pickActiveSeries, resumeKeepPredicate, resumeMissingItems } from './lib/progress.js';
 
 const LS_KEY = 'peerflix-static.settings.v2';
@@ -863,7 +863,7 @@ $('#auto-rotate-wl').addEventListener('click', async () => {
       autoDiscover: true,
       replaceAll: true,
       keep: resumeKeepPredicate(progress, { activeSeriesId }),
-      batchSize: Math.max(1, 10 - preResumed.length),
+      batchSize: Math.max(1, DEFAULT_BATCH_SIZE - preResumed.length),
       maxSeries: preResumed.length > 0 ? 0 : 1,
     });
     const resumed = resumeMissingItems(progress, rotation.items, { activeSeriesId });

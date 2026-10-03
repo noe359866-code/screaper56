@@ -13,7 +13,15 @@ const IMDB_ID_RE = /^tt\d{7,10}$/i;
 const HEX_40_RE = /^[0-9a-f]{40}$/i;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-export const DEFAULT_BATCH_SIZE = 10;
+export const MAX_BATCH_SIZE = 1000;
+export const DEFAULT_BATCH_SIZE = MAX_BATCH_SIZE;
+
+function boundedBatchSize(value) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed === 0) return DEFAULT_BATCH_SIZE;
+  return Math.min(MAX_BATCH_SIZE, Math.max(1, Math.floor(parsed)));
+}
+
 /** Páginas de catálogo que se prueban por género prioritario y ejecución. */
 const FOCUS_MAX_REQUESTS = 4;
 
@@ -710,12 +718,12 @@ export async function discoverCatalogItems(fetchJSON, {
   focusGenres = FOCUS_GENRES,
   onWarning = null,
 } = {}) {
-  const total = Math.max(1, Number(count) || DEFAULT_BATCH_SIZE);
+  const total = boundedBatchSize(count);
   const targetSeries = seriesCount != null
-    ? Math.max(0, Number(seriesCount))
+    ? Math.min(total, Math.max(0, Math.floor(Number(seriesCount) || 0)))
     : (total >= 2 ? Math.max(1, Math.round(total * 0.2)) : 0);
   const targetMovies = movieCount != null
-    ? Math.max(0, Number(movieCount))
+    ? Math.min(total - targetSeries, Math.max(0, Math.floor(Number(movieCount) || 0)))
     : Math.max(0, total - targetSeries);
 
   const pickedMovies = [];
@@ -888,7 +896,7 @@ export async function rotateWatchlist(currentText, {
   focusGenres = FOCUS_GENRES,
   onWarning = null,
 } = {}) {
-  const targetSize = onlySeries ? 1 : Math.max(1, Number(batchSize) || DEFAULT_BATCH_SIZE);
+  const targetSize = onlySeries ? 1 : boundedBatchSize(batchSize);
   const currentItems = parseWatchlist(currentText);
   const removedItems = [];
   const keptItems = [];
