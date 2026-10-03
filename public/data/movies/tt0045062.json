@@ -1,0 +1,144 @@
+{
+  "id": "tt0045062",
+  "imdbId": "tt0045062",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Rabbit Seasoning (1952)",
+  "name": "Rabbit Seasoning",
+  "year": 1952,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0045062.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0045062.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0045062.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0045062.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0045062.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 4,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Looney.Tunes.Volume.2.1936-1959.1080p.BluRay.x264-DEiMOS",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 520838185,
+      "sizeLabel": "497 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "9e0d5d305a4147cf7194622d88a092277f53c870",
+      "fileIdx": 31,
+      "score": 0.68,
+      "magnetUrl": "magnet:?xt=urn:btih:9e0d5d305a4147cf7194622d88a092277f53c870&dn=Looney.Tunes.Volume.2.1936-1959.1080p.BluRay.x264-DEiMOS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Looney.Tunes.Volume.2.1936-1959.1080p.BluRay.x264-DEiMOS",
+      "description": "Looney.Tunes.Volume.2.1936-1959.1080p.BluRay.x264-DEiMOS\n🎞️ BluRay · AVC\n👤 1 💾 497 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.68,
+      "infoHash": "9e0d5d305a4147cf7194622d88a092277f53c870",
+      "fileIdx": 31,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 520838185,
+      "sizeLabel": "497 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "Looney.Tunes.Rabbit.Seasoning.1952.1080p.BluRay.x264-DEiMOS.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:9e0d5d305a4147cf7194622d88a092277f53c870"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9e0d5d305a4147cf7194622d88a092277f53c870&dn=Looney.Tunes.Volume.2.1936-1959.1080p.BluRay.x264-DEiMOS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Looney.Tunes.Rabbit.Seasoning.1952.1080p.BluRay.x264-DEiMOS.mkv"
+      }
+    }
+  ]
+}

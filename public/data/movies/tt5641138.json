@@ -1,0 +1,138 @@
+{
+  "id": "tt5641138",
+  "imdbId": "tt5641138",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "KidPoker (2015)",
+  "name": "KidPoker",
+  "year": 2015,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt5641138.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt5641138.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt5641138.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt5641138.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt5641138.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt5641138.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt5641138.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Kidpoker.2015.1080p.WEBRip.x265-RARBG",
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 1481763717,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "71c1aa1aca36ed68e06035eac4e003538461bda8",
+      "fileIdx": 0,
+      "score": 5.92,
+      "magnetUrl": "magnet:?xt=urn:btih:71c1aa1aca36ed68e06035eac4e003538461bda8&dn=Kidpoker.2015.1080p.WEBRip.x265-RARBG&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 2,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Kidpoker.2015.1080p.WEBRip.x265-RARBG",
+      "description": "Kidpoker.2015.1080p.WEBRip.x265-RARBG\n🎞️ WEBRip · HEVC\n👤 2 💾 1.4 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 5.92,
+      "infoHash": "71c1aa1aca36ed68e06035eac4e003538461bda8",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 1481763717,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "Kidpoker.2015.1080p.WEBRip.x265-RARBG.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:71c1aa1aca36ed68e06035eac4e003538461bda8"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:71c1aa1aca36ed68e06035eac4e003538461bda8&dn=Kidpoker.2015.1080p.WEBRip.x265-RARBG&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Kidpoker.2015.1080p.WEBRip.x265-RARBG.mp4"
+      }
+    }
+  ]
+}

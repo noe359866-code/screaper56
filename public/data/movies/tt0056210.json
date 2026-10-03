@@ -1,0 +1,151 @@
+{
+  "id": "tt0056210",
+  "imdbId": "tt0056210",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Mafioso (1962)",
+  "name": "Mafioso",
+  "year": 1962,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0056210.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0056210.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0056210.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0056210.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0056210.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0056210.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 17,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Mafioso 1962 1080p CRIT WEB-DL AAC H 264-BLOOM",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 4348654387,
+      "sizeLabel": "4.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "infoHash": "2e477bc886deca7ab3008485f4df0da1438f4604",
+      "fileIdx": 0,
+      "score": 6.45,
+      "magnetUrl": "magnet:?xt=urn:btih:2e477bc886deca7ab3008485f4df0da1438f4604&dn=Mafioso%201962%201080p%20CRIT%20WEB-DL%20AAC%20H%20264-BLOOM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 5,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Mafioso 1962 1080p CRIT WEB-DL AAC H 264-BLOOM",
+      "description": "Mafioso 1962 1080p CRIT WEB-DL AAC H 264-BLOOM\n🎞️ WEB-DL · AVC · AAC\n👤 5 💾 4.0 GB ⚙️ TorrentsDB+TorrentClaw",
+      "pick": "en",
+      "score": 6.45,
+      "infoHash": "2e477bc886deca7ab3008485f4df0da1438f4604",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 4348654387,
+      "sizeLabel": "4.0 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "BLOOM"
+      ],
+      "filename": "Mafioso 1962 1080p CRIT WEB-DL AAC H 264-BLOOM.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:2e477bc886deca7ab3008485f4df0da1438f4604"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2e477bc886deca7ab3008485f4df0da1438f4604&dn=Mafioso%201962%201080p%20CRIT%20WEB-DL%20AAC%20H%20264-BLOOM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Mafioso 1962 1080p CRIT WEB-DL AAC H 264-BLOOM.mkv"
+      }
+    }
+  ]
+}
