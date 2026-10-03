@@ -1,0 +1,133 @@
+{
+  "id": "tt0035250",
+  "imdbId": "tt0035250",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Reunion in France (1942)",
+  "name": "Reunion in France",
+  "year": 1942,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0035250.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0035250.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0035250.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0035250.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 7,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Reunion in France [1942 - USA] John Wayne WWII drama",
+      "quality": null,
+      "seeders": 4,
+      "sizeBytes": 1492501135,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "infoHash": "fa03b8e263a16a035bbe1dda0dab2d250d585a83",
+      "fileIdx": 0,
+      "score": 4.22,
+      "magnetUrl": "magnet:?xt=urn:btih:fa03b8e263a16a035bbe1dda0dab2d250d585a83&dn=Reunion%20in%20France%20%5B1942%20-%20USA%5D%20John%20Wayne%20WWII%20drama&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 4,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Reunion in France [1942 - USA] John Wayne WWII drama",
+      "description": "Reunion in France [1942 - USA] John Wayne WWII drama\n👤 4 💾 1.4 GB ⚙️ TorrentsDB",
+      "pick": "en",
+      "score": 4.22,
+      "infoHash": "fa03b8e263a16a035bbe1dda0dab2d250d585a83",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 4,
+      "sizeBytes": 1492501135,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Reunion in France (Jules Dassin, 1942).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:fa03b8e263a16a035bbe1dda0dab2d250d585a83"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fa03b8e263a16a035bbe1dda0dab2d250d585a83&dn=Reunion%20in%20France%20%5B1942%20-%20USA%5D%20John%20Wayne%20WWII%20drama&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Reunion in France (Jules Dassin, 1942).mkv"
+      }
+    }
+  ]
+}

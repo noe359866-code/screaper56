@@ -1,0 +1,256 @@
+{
+  "id": "tt0056023",
+  "imdbId": "tt0056023",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Girls! Girls! Girls! (1962)",
+  "name": "Girls! Girls! Girls!",
+  "year": 1962,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0056023.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0056023.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0056023.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0056023.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 8,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Cento ragazze e un marinaio - Girls! Girls! Girls! (1962) SD h264 Ac3 MultiLang.mkv",
+      "quality": null,
+      "seeders": 2,
+      "sizeBytes": 1653562409,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "it",
+        "fr",
+        "de"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "5bfce174bf21dc7ef5a7d957ba95bad60e743563",
+      "fileIdx": 0,
+      "score": 1.9,
+      "magnetUrl": "magnet:?xt=urn:btih:5bfce174bf21dc7ef5a7d957ba95bad60e743563&dn=Cento%20ragazze%20e%20un%20marinaio%20-%20Girls!%20Girls!%20Girls!%20(1962)%20SD%20h264%20Ac3%20MultiLang.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Girls! Girls! Girls! 1962 1080p WEBRip",
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 1954210120,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "bb2d05972704c7866700bf41004e0951ee3cc25d",
+      "fileIdx": 0,
+      "score": 6.87,
+      "magnetUrl": "magnet:?xt=urn:btih:bb2d05972704c7866700bf41004e0951ee3cc25d&dn=Girls!%20Girls!%20Girls!%201962%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 12,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "de",
+    "en",
+    "es",
+    "fr",
+    "it"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Cento ragazze e un marinaio - Girls! Girls! Girls! (1962) SD h264 Ac3 MultiLang.mkv",
+      "description": "Cento ragazze e un marinaio - Girls! Girls! Girls! (1962) SD h264 Ac3 MultiLang.mkv\n🎞️ AVC · AC3\n👤 2 💾 1.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "es",
+      "score": 1.9,
+      "infoHash": "5bfce174bf21dc7ef5a7d957ba95bad60e743563",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "it",
+        "fr",
+        "de"
+      ],
+      "quality": null,
+      "seeders": 2,
+      "sizeBytes": 1653562409,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ilcorsaronero",
+        "ilCorSaRoNeRo"
+      ],
+      "filename": "Cento ragazze e un marinaio - Girls! Girls! Girls! (1962) SD h264 Ac3 MultiLang.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:5bfce174bf21dc7ef5a7d957ba95bad60e743563"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5bfce174bf21dc7ef5a7d957ba95bad60e743563&dn=Cento%20ragazze%20e%20un%20marinaio%20-%20Girls!%20Girls!%20Girls!%20(1962)%20SD%20h264%20Ac3%20MultiLang.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Cento ragazze e un marinaio - Girls! Girls! Girls! (1962) SD h264 Ac3 MultiLang.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Girls! Girls! Girls! 1962 1080p WEBRip",
+      "description": "Girls! Girls! Girls! 1962 1080p WEBRip\n🎞️ WEBRip · AVC · AAC 5.1\n👤 12 💾 1.8 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 6.87,
+      "infoHash": "bb2d05972704c7866700bf41004e0951ee3cc25d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 1954210120,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "YTS"
+      ],
+      "filename": "Girls.Girls.Girls.1962.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:bb2d05972704c7866700bf41004e0951ee3cc25d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bb2d05972704c7866700bf41004e0951ee3cc25d&dn=Girls!%20Girls!%20Girls!%201962%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Girls.Girls.Girls.1962.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    }
+  ]
+}
