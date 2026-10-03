@@ -1,0 +1,75 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "War and Peace Part IV: Pierre Bezukhov (1967) [1080p] [BluRay] [5.1] [YTS] [YIFY]",
+      "description": "War and Peace Part IV: Pierre Bezukhov (1967) [1080p] [BluRay] [5.1] [YTS] [YIFY]\n🎞️ BluRay · AVC · AAC 5.1\n👤 11 💾 1.7 GB ⚙️ Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 7.05,
+      "infoHash": "4e7b94ac7ae80165fa30b45cebb33c624a55607a",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 1846835937,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "1337x",
+        "x264"
+      ],
+      "filename": "War.And.Peace,.Part.IV.Pierre.Bezukhov.1967.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:4e7b94ac7ae80165fa30b45cebb33c624a55607a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4e7b94ac7ae80165fa30b45cebb33c624a55607a&dn=War%20and%20Peace%20Part%20IV%3A%20Pierre%20Bezukhov%20(1967)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D%20%5BYTS%5D%20%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "War.And.Peace,.Part.IV.Pierre.Bezukhov.1967.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

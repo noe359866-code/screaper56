@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T06:50:18.153Z",
+  "updatedAt": "2026-10-03T07:03:57.217Z",
   "activeSeries": "tt0098740",
   "series": {
-    "tt0092337": {
-      "name": "Dekalog",
-      "status": "complete",
-      "done": 10,
-      "total": 10,
-      "lastSeason": 1,
-      "lastEpisode": 10,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-03T06:50:18.153Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0098740": {
       "name": "America's Funniest Home Videos",
       "status": "in-progress",
-      "done": 7,
+      "done": 67,
       "total": 815,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 4,
+      "lastEpisode": 1,
+      "nextSeason": 4,
+      "nextEpisode": 2,
+      "updatedAt": "2026-10-03T07:03:57.217Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0094517": {
@@ -494,6 +482,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0092337": {
+      "name": "Dekalog",
+      "status": "complete",
+      "done": 10,
+      "total": 10,
+      "lastSeason": 1,
+      "lastEpisode": 10,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T06:50:18.153Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0096697": {
       "name": "The Simpsons",

@@ -1,0 +1,249 @@
+{
+  "id": "tt7608534",
+  "imdbId": "tt7608534",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Christmas Inheritance (2017)",
+  "name": "Christmas Inheritance",
+  "year": 2017,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt7608534.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7608534.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7608534.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7608534.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7608534.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7608534.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 30,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Christmas.inheritance.2017.1080p-dual-lat.mp4",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "1dc4739312d731d3578632f3368bb237d216cd97",
+      "fileIdx": null,
+      "score": 13.69,
+      "magnetUrl": "magnet:?xt=urn:btih:1dc4739312d731d3578632f3368bb237d216cd97&dn=Christmas.inheritance.2017.1080p-dual-lat.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Christmas Inheritance-2017-1080p NF WEB-DL H265 SDR DDP 5 1 English-HONE-",
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 5089536246,
+      "sizeLabel": "4.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "675bbc936a9d079858cb25c1cc61d64920caf664",
+      "fileIdx": 0,
+      "score": 7.25,
+      "magnetUrl": "magnet:?xt=urn:btih:675bbc936a9d079858cb25c1cc61d64920caf664&dn=Christmas%20Inheritance-2017-1080p%20NF%20WEB-DL%20H265%20SDR%20DDP%205%201%20English-HONE-&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 16,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Christmas.inheritance.2017.1080p-dual-lat.mp4",
+      "description": "Christmas.inheritance.2017.1080p-dual-lat.mp4\n👤 1 💾 1.7 GB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": 13.69,
+      "infoHash": "1dc4739312d731d3578632f3368bb237d216cd97",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "lat"
+      ],
+      "filename": "Christmas.inheritance.2017.1080p-dual-lat.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1dc4739312d731d3578632f3368bb237d216cd97"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1dc4739312d731d3578632f3368bb237d216cd97&dn=Christmas.inheritance.2017.1080p-dual-lat.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Christmas.inheritance.2017.1080p-dual-lat.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Christmas Inheritance-2017-1080p NF WEB-DL H265 SDR DDP 5 1 English-HONE-",
+      "description": "Christmas Inheritance-2017-1080p NF WEB-DL H265 SDR DDP 5 1 English-HONE-\n🎞️ WEB-DL · HEVC · DD+ 5.1\n👤 16 💾 4.7 GB ⚙️ TorrentsDB+Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 7.25,
+      "infoHash": "675bbc936a9d079858cb25c1cc61d64920caf664",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 5089536246,
+      "sizeLabel": "4.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Knaben"
+      ],
+      "filename": "Christmas_Inheritance-2017-1080p_NF_WEB-DL_H265_SDR_DDP_5.1_English-HONE-.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:675bbc936a9d079858cb25c1cc61d64920caf664"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:675bbc936a9d079858cb25c1cc61d64920caf664&dn=Christmas%20Inheritance-2017-1080p%20NF%20WEB-DL%20H265%20SDR%20DDP%205%201%20English-HONE-&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Christmas_Inheritance-2017-1080p_NF_WEB-DL_H265_SDR_DDP_5.1_English-HONE-.mkv"
+      }
+    }
+  ]
+}

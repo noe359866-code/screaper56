@@ -1,0 +1,251 @@
+{
+  "id": "tt0119303",
+  "imdbId": "tt0119303",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Home Alone 3 (1997)",
+  "name": "Home Alone 3",
+  "year": 1997,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0119303.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0119303.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0119303.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0119303.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0119303.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0119303.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 72,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "Solo.En.Casa.3.DVDRip.Xvid.Spanish.www.DivxTotal.com.avi",
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 737715159,
+      "sizeLabel": "704 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "4bb24dc3ff023bf46a4c4b85c92769f3b5de1ce2",
+      "fileIdx": 0,
+      "score": 7.7,
+      "magnetUrl": "magnet:?xt=urn:btih:4bb24dc3ff023bf46a4c4b85c92769f3b5de1ce2&dn=Solo.En.Casa.3.DVDRip.Xvid.Spanish.www.DivxTotal.com.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Home Alone 3",
+      "quality": "1080p",
+      "seeders": 131,
+      "sizeBytes": 2802466161,
+      "sizeLabel": "2.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "d108c9632c4d4df3a02de552e75724c6fc32af9c",
+      "fileIdx": 13,
+      "score": 8.38,
+      "magnetUrl": "magnet:?xt=urn:btih:d108c9632c4d4df3a02de552e75724c6fc32af9c&dn=Home%20Alone%203&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 131,
+  "qualities": [
+    "1080p",
+    "480p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Solo.En.Casa.3.DVDRip.Xvid.Spanish.www.DivxTotal.com.avi",
+      "description": "Solo.En.Casa.3.DVDRip.Xvid.Spanish.www.DivxTotal.com.avi\n🎞️ DVD · XviD\n👤 0 💾 704 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 7.7,
+      "infoHash": "4bb24dc3ff023bf46a4c4b85c92769f3b5de1ce2",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 737715159,
+      "sizeLabel": "704 MB",
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "TorrentControl"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:4bb24dc3ff023bf46a4c4b85c92769f3b5de1ce2"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4bb24dc3ff023bf46a4c4b85c92769f3b5de1ce2&dn=Solo.En.Casa.3.DVDRip.Xvid.Spanish.www.DivxTotal.com.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Home Alone 3",
+      "description": "Home Alone 3\n🎞️ BluRay · AVC · 5.1\n👤 131 💾 2.6 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.38,
+      "infoHash": "d108c9632c4d4df3a02de552e75724c6fc32af9c",
+      "fileIdx": 13,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 131,
+      "sizeBytes": 2802466161,
+      "sizeLabel": "2.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "extremlymtorrents",
+        "ThePirateBay",
+        "Torrents.csv"
+      ],
+      "filename": "Home Alone 3 (1997) BluRay H264 DolbyD 5.1 + nickarad.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:d108c9632c4d4df3a02de552e75724c6fc32af9c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d108c9632c4d4df3a02de552e75724c6fc32af9c&dn=Home%20Alone%203&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Home Alone 3 (1997) BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    }
+  ]
+}

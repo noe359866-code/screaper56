@@ -1,0 +1,133 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "[Bitsearch.to] El Hobbit 1977 [Anime][Dvdrip][Castellano][www.lokotorrents.com]",
+      "description": "[Bitsearch.to] El Hobbit 1977 [Anime][Dvdrip][Castellano][www.lokotorrents.com]\n🎞️ DVD\n👤 0 💾 996 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 7.73,
+      "infoHash": "a4f5e3bdba2facc75ba4ccd80828358b32f89663",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 1044381696,
+      "sizeLabel": "996 MB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:a4f5e3bdba2facc75ba4ccd80828358b32f89663"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a4f5e3bdba2facc75ba4ccd80828358b32f89663&dn=%5BBitsearch.to%5D%20El%20Hobbit%201977%20%5BAnime%5D%5BDvdrip%5D%5BCastellano%5D%5Bwww.lokotorrents.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Hobbit (1977) 1080p web",
+      "description": "The Hobbit (1977) 1080p web\n🎞️ WEB\n👤 154 💾 1.3 GB ⚙️ Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 8.29,
+      "infoHash": "f4c1f4ee404a3793ee1ec620b11e56f324cab521",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 154,
+      "sizeBytes": 1395864371,
+      "sizeLabel": "1.3 GB",
+      "release": {
+        "source": "WEB",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "x264"
+      ],
+      "filename": "The Hobbit (1977) 1080p web",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f4c1f4ee404a3793ee1ec620b11e56f324cab521"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f4c1f4ee404a3793ee1ec620b11e56f324cab521&dn=The%20Hobbit%20(1977)%201080p%20web&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Hobbit (1977) 1080p web"
+      }
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "id": "tt7654082",
+  "imdbId": "tt7654082",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Royal New Year's Eve (2017)",
+  "name": "Royal New Year's Eve",
+  "year": 2017,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt7654082.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7654082.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7654082.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7654082.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7654082.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7654082.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 18,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Una.víspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv",
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 1567663063,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "b68eb5d3ae66492b0851dbbd2dacf7c3bebb2b32",
+      "fileIdx": 0,
+      "score": 13.9,
+      "magnetUrl": "magnet:?xt=urn:btih:b68eb5d3ae66492b0851dbbd2dacf7c3bebb2b32&dn=Una.v%C3%ADspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv",
+      "quality": "720p",
+      "seeders": 49,
+      "sizeBytes": 835715072,
+      "sizeLabel": "797 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "infoHash": "82f96865f127a978dbede7f260c4e8d3e9231ccf",
+      "fileIdx": 1,
+      "score": 6.28,
+      "magnetUrl": "magnet:?xt=urn:btih:82f96865f127a978dbede7f260c4e8d3e9231ccf&dn=Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 49,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Una.víspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv",
+      "description": "Una.víspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv\n👤 2 💾 1.5 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 13.9,
+      "infoHash": "b68eb5d3ae66492b0851dbbd2dacf7c3bebb2b32",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 1567663063,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "Una.víspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:b68eb5d3ae66492b0851dbbd2dacf7c3bebb2b32"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b68eb5d3ae66492b0851dbbd2dacf7c3bebb2b32&dn=Una.v%C3%ADspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Una.víspera.de.ano.nuevo.real.2017.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv",
+      "description": "Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv\n🎞️ WEBRip · AVC\n👤 49 💾 797 MB ⚙️ TorrentsDB+StremThru Torz",
+      "pick": "en",
+      "score": 6.28,
+      "infoHash": "82f96865f127a978dbede7f260c4e8d3e9231ccf",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 49,
+      "sizeBytes": 835715072,
+      "sizeLabel": "797 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:82f96865f127a978dbede7f260c4e8d3e9231ccf"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:82f96865f127a978dbede7f260c4e8d3e9231ccf&dn=Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Royal.New.Years.Eve.2017.720p.WEBRip.800MB.x264-GalaxyRG.mkv"
+      }
+    }
+  ]
+}

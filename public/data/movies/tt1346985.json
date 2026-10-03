@@ -1,0 +1,41 @@
+{
+  "id": "tt1346985",
+  "imdbId": "tt1346985",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Making of Dr. Horrible's Sing-Along Blog (2007)",
+  "name": "The Making of Dr. Horrible's Sing-Along Blog",
+  "year": 2007,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1346985.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1346985.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1346985.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1346985.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1346985.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1346985.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

@@ -1,0 +1,138 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Que Sucedio Entonces (1967)[HDRIP-XviD-AC3-ESP]",
+      "description": "Que Sucedio Entonces (1967)[HDRIP-XviD-AC3-ESP]\n🎞️ HDRip · XviD · AC3\n👤 2 💾 1.4 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 8.94,
+      "infoHash": "b6ed81951dc416a4d01a80545902cb5531491e10",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 2,
+      "sizeBytes": 1460288881,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "HDRip",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:b6ed81951dc416a4d01a80545902cb5531491e10"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b6ed81951dc416a4d01a80545902cb5531491e10&dn=Que%20Sucedio%20Entonces%20(1967)%5BHDRIP-XviD-AC3-ESP%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Quatermass.and.the.Pit.1967.SF.1080p.BluRay.x265.hevc.10bit.AAC.2.0.commentary-HeVK.mkv",
+      "description": "Quatermass.and.the.Pit.1967.SF.1080p.BluRay.x265.hevc.10bit.AAC.2.0.commentary-HeVK.mkv\n🎞️ BluRay · HEVC · AAC\n👤 25 💾 8.5 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.55,
+      "infoHash": "72cae7d3bf58dfd8f9271982566b070c5aa3d426",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 25,
+      "sizeBytes": 9126805504,
+      "sizeLabel": "8.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "HeVK",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Quatermass.and.the.Pit.1967.SF.1080p.BluRay.x265.hevc.10bit.AAC.2.0.commentary-HeVK.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:72cae7d3bf58dfd8f9271982566b070c5aa3d426"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:72cae7d3bf58dfd8f9271982566b070c5aa3d426&dn=Quatermass.and.the.Pit.1967.SF.1080p.BluRay.x265.hevc.10bit.AAC.2.0.commentary-HeVK.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Quatermass.and.the.Pit.1967.SF.1080p.BluRay.x265.hevc.10bit.AAC.2.0.commentary-HeVK.mkv"
+      }
+    }
+  ]
+}

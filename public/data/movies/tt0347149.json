@@ -1,0 +1,255 @@
+{
+  "id": "tt0347149",
+  "imdbId": "tt0347149",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Howl's Moving Castle (2004)",
+  "name": "Howl's Moving Castle",
+  "year": 2004,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0347149.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0347149.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0347149.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0347149.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0347149.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0347149.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 143,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Howl's Moving Castle (2004) [1080p] Español Latino",
+      "quality": "1080p",
+      "seeders": 86,
+      "sizeBytes": 2673617142,
+      "sizeLabel": "2.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "infoHash": "34b1797bfc97bf6062800fa1e31734af70af5951",
+      "fileIdx": 0,
+      "score": 16.2,
+      "magnetUrl": "magnet:?xt=urn:btih:34b1797bfc97bf6062800fa1e31734af70af5951&dn=Howl's%20Moving%20Castle%20(2004)%20%5B1080p%5D%20Espa%C3%B1ol%20Latino&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Howl's Moving Castle 2004 1080p BrRip x264 AAC 5 1 {The Hated} 【ThumperDC】",
+      "quality": "1080p",
+      "seeders": 86,
+      "sizeBytes": 1739461755,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "29c631c7508c1689975177a12a20b3257c0ddb09",
+      "fileIdx": 2,
+      "score": 8.28,
+      "magnetUrl": "magnet:?xt=urn:btih:29c631c7508c1689975177a12a20b3257c0ddb09&dn=Howl's%20Moving%20Castle%202004%201080p%20BrRip%20x264%20AAC%205%201%20%7BThe%20Hated%7D%20%E3%80%90ThumperDC%E3%80%91&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 86,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "timeout (12s)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Howl's Moving Castle (2004) [1080p] Español Latino",
+      "description": "Howl's Moving Castle (2004) [1080p] Español Latino\n👤 86 💾 2.5 GB ⚙️ TorrentsDB+StremThru Torz",
+      "pick": "es",
+      "score": 16.2,
+      "infoHash": "34b1797bfc97bf6062800fa1e31734af70af5951",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 86,
+      "sizeBytes": 2673617142,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "Knaben"
+      ],
+      "filename": "Howl's Moving Castle 2004 1080p.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:34b1797bfc97bf6062800fa1e31734af70af5951"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:34b1797bfc97bf6062800fa1e31734af70af5951&dn=Howl's%20Moving%20Castle%20(2004)%20%5B1080p%5D%20Espa%C3%B1ol%20Latino&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Howl's Moving Castle 2004 1080p.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Howl's Moving Castle 2004 1080p BrRip x264 AAC 5 1 {The Hated} 【ThumperDC】",
+      "description": "Howl's Moving Castle 2004 1080p BrRip x264 AAC 5 1 {The Hated} 【ThumperDC】\n🎞️ BluRay · AVC · AAC 5.1\n👤 86 💾 1.6 GB ⚙️ TorrentsDB+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.28,
+      "infoHash": "29c631c7508c1689975177a12a20b3257c0ddb09",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 86,
+      "sizeBytes": 1739461755,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "rargb",
+        "ThumperDC",
+        "Torrents.csv"
+      ],
+      "filename": "Howl's.Moving.Castle.2004.1080p.BrRip.x264.AAC.5.1.{The Hated}.【ThumperDC】.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:29c631c7508c1689975177a12a20b3257c0ddb09"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:29c631c7508c1689975177a12a20b3257c0ddb09&dn=Howl's%20Moving%20Castle%202004%201080p%20BrRip%20x264%20AAC%205%201%20%7BThe%20Hated%7D%20%E3%80%90ThumperDC%E3%80%91&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Howl's.Moving.Castle.2004.1080p.BrRip.x264.AAC.5.1.{The Hated}.【ThumperDC】.mkv"
+      }
+    }
+  ]
+}

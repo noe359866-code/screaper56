@@ -1,0 +1,156 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Legend of the Demon Cat 2017 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT",
+      "description": "Legend of the Demon Cat 2017 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT\n🎞️ WEB-DL · AVC · AAC 2.0\n👤 2 💾 3.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "es",
+      "score": 4.02,
+      "infoHash": "ed3edf76a9d5bd46db14d044e70e4dbd3bd4ce78",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "it",
+        "pt",
+        "zh",
+        "fr",
+        "de",
+        "pl",
+        "hu",
+        "tr"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 3768833802,
+      "sizeLabel": "3.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "filename": "Legend of the Demon Cat 2017 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker2.dler.org:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:ed3edf76a9d5bd46db14d044e70e4dbd3bd4ce78"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ed3edf76a9d5bd46db14d044e70e4dbd3bd4ce78&dn=Legend%20of%20the%20Demon%20Cat%202017%201080p%20VIKI%20WEB-DL%20AAC2%200%20H%20264-DUSKLiGHT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Legend of the Demon Cat 2017 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Legend of the Demon Cat 2017 1080p BluRay",
+      "description": "Legend of the Demon Cat 2017 1080p BluRay\n🎞️ BluRay · AVC\n👤 4 💾 2.1 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.45,
+      "infoHash": "1aed3716d983ff86a7d9f2464462d29ceabe2efd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 2222645576,
+      "sizeLabel": "2.1 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Torrents.csv"
+      ],
+      "filename": "Legend.Of.The.Demon.Cat.2017.1080p.BluRay.x264-[YTS.AM].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1aed3716d983ff86a7d9f2464462d29ceabe2efd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1aed3716d983ff86a7d9f2464462d29ceabe2efd&dn=Legend%20of%20the%20Demon%20Cat%202017%201080p%20BluRay&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Legend.Of.The.Demon.Cat.2017.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    }
+  ]
+}

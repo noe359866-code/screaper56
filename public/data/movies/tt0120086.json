@@ -1,0 +1,267 @@
+{
+  "id": "tt0120086",
+  "imdbId": "tt0120086",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Second Civil War (1997)",
+  "name": "The Second Civil War",
+  "year": 1997,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0120086.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0120086.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0120086.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0120086.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0120086.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 15,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "La seconda guerra civile americana (1997) sD h264 ita eng spa AC3",
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1632087572,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "it",
+        "de"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "edb9cf71d55305280137f92ffc326518cf642a95",
+      "fileIdx": null,
+      "score": 6.67,
+      "magnetUrl": "magnet:?xt=urn:btih:edb9cf71d55305280137f92ffc326518cf642a95&dn=La%20seconda%20guerra%20civile%20americana%20(1997)%20sD%20h264%20ita%20eng%20spa%20AC3&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Second Civil War (1997) 1080p web",
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "infoHash": "91f3fcf47e302a323bb17802825c7a10554ab6af",
+      "fileIdx": 0,
+      "score": 6.77,
+      "magnetUrl": "magnet:?xt=urn:btih:91f3fcf47e302a323bb17802825c7a10554ab6af&dn=The%20Second%20Civil%20War%20(1997)%201080p%20web&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 7,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "de",
+    "en",
+    "es",
+    "it"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "La seconda guerra civile americana (1997) sD h264 ita eng spa AC3",
+      "description": "La seconda guerra civile americana (1997) sD h264 ita eng spa AC3\n🎞️ AVC · AC3\n👤 1 💾 1.5 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 6.67,
+      "infoHash": "edb9cf71d55305280137f92ffc326518cf642a95",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "it",
+        "de"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 1632087572,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ilCorSaRoNeRo"
+      ],
+      "filename": "La Seconda Guerra Civile Americana.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:edb9cf71d55305280137f92ffc326518cf642a95"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:edb9cf71d55305280137f92ffc326518cf642a95&dn=La%20seconda%20guerra%20civile%20americana%20(1997)%20sD%20h264%20ita%20eng%20spa%20AC3&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "La Seconda Guerra Civile Americana.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Second Civil War (1997) 1080p web",
+      "description": "The Second Civil War (1997) 1080p web\n🎞️ WEB-DL · AVC · AAC\n👤 7 💾 1.6 GB ⚙️ Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 6.77,
+      "infoHash": "91f3fcf47e302a323bb17802825c7a10554ab6af",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264"
+      ],
+      "filename": "The.Second.Civil.War.1997.WEBDL.AMZN.1080p.WEBRip.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:91f3fcf47e302a323bb17802825c7a10554ab6af"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:91f3fcf47e302a323bb17802825c7a10554ab6af&dn=The%20Second%20Civil%20War%20(1997)%201080p%20web&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Second.Civil.War.1997.WEBDL.AMZN.1080p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

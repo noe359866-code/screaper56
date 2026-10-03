@@ -1,0 +1,155 @@
+{
+  "id": "tt7807000",
+  "imdbId": "tt7807000",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Dave Chappelle: The Bird Revelation (2017)",
+  "name": "Dave Chappelle: The Bird Revelation",
+  "year": 2017,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt7807000.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt7807000.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7807000.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7807000.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7807000.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7807000.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 21,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Dave Chappelle The Bird Revelation (2017) (1080p NF WEB-DL x265 HEVC 10bit AC3 5.1 t3nzin)",
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 322122547,
+      "sizeLabel": "307 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "58b381e2a559013213fc9d6876cc96215864101d",
+      "fileIdx": 0,
+      "score": 7.23,
+      "magnetUrl": "magnet:?xt=urn:btih:58b381e2a559013213fc9d6876cc96215864101d&dn=Dave%20Chappelle%20The%20Bird%20Revelation%20(2017)%20(1080p%20NF%20WEB-DL%20x265%20HEVC%2010bit%20AC3%205.1%20t3nzin)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 14,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Dave Chappelle The Bird Revelation (2017) (1080p NF WEB-DL x265 HEVC 10bit AC3 5.1 t3nzin)",
+      "description": "Dave Chappelle The Bird Revelation (2017) (1080p NF WEB-DL x265 HEVC 10bit AC3 5.1 t3nzin)\n🎞️ WEB-DL · HEVC · AC3 5.1\n👤 14 💾 307 MB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.23,
+      "infoHash": "58b381e2a559013213fc9d6876cc96215864101d",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 322122547,
+      "sizeLabel": "307 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "Dave Chappelle The Bird Revelation (2017) (1080p NF WEB-DL x265 10bit t3nzin).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:58b381e2a559013213fc9d6876cc96215864101d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:58b381e2a559013213fc9d6876cc96215864101d&dn=Dave%20Chappelle%20The%20Bird%20Revelation%20(2017)%20(1080p%20NF%20WEB-DL%20x265%20HEVC%2010bit%20AC3%205.1%20t3nzin)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Dave Chappelle The Bird Revelation (2017) (1080p NF WEB-DL x265 10bit t3nzin).mkv"
+      }
+    }
+  ]
+}
