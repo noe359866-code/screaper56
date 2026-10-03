@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T06:09:46.157Z",
-  "activeSeries": "tt0096697",
+  "updatedAt": "2026-10-03T06:26:17.655Z",
+  "activeSeries": "tt0092337",
   "series": {
     "tt0096697": {
       "name": "The Simpsons",
-      "status": "in-progress",
-      "done": 787,
+      "status": "complete",
+      "done": 802,
       "total": 802,
-      "lastSeason": 37,
+      "lastSeason": 38,
       "lastEpisode": 1,
-      "nextSeason": 37,
-      "nextEpisode": 2,
-      "updatedAt": "2026-10-03T06:09:46.157Z",
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T06:26:17.655Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0092337": {

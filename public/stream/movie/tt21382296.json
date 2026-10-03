@@ -1,0 +1,154 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Carry-On.2024.TRi-AUDiO.SPANiSHLAT-ENG-ESP.2160p.NF.WEB-DL.DV.DDP5.1.Atmos.HDR10.H.265-DMnT",
+      "description": "Carry-On.2024.TRi-AUDiO.SPANiSHLAT-ENG-ESP.2160p.NF.WEB-DL.DV.DDP5.1.Atmos.HDR10.H.265-DMnT\n🎞️ WEB-DL · HEVC · DV · HDR10 · Atmos/DD+ 5.1\n👤 28 💾 17.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "es",
+      "score": 15.82,
+      "infoHash": "1296853393e86f5a1eb9f8720c742ea1f103fe62",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 28,
+      "sizeBytes": 18779744502,
+      "sizeLabel": "17.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x"
+      ],
+      "filename": "carry-on.2024.tri-audio.spanishlat-eng-esp.2160p.nf.web-dl.dv.ddp5.1.atmos.hdr10.h.265-dmnt.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:1296853393e86f5a1eb9f8720c742ea1f103fe62"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1296853393e86f5a1eb9f8720c742ea1f103fe62&dn=Carry-On.2024.TRi-AUDiO.SPANiSHLAT-ENG-ESP.2160p.NF.WEB-DL.DV.DDP5.1.Atmos.HDR10.H.265-DMnT&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "carry-on.2024.tri-audio.spanishlat-eng-esp.2160p.nf.web-dl.dv.ddp5.1.atmos.hdr10.h.265-dmnt.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Carry-On.2024.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-playWEB[TGx]",
+      "description": "Carry-On.2024.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-playWEB[TGx]\n🎞️ WEB-DL · AVC · Atmos/DD+ 5.1\n👤 114 💾 4.7 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.37,
+      "infoHash": "6a20141a5ab0b75a25b9ac719634c5a19b476ba0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 114,
+      "sizeBytes": 5078798828,
+      "sizeLabel": "4.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb",
+        "ThePirateBay",
+        "playWEB",
+        "Knaben"
+      ],
+      "filename": "Carry-On.2024.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-playWEB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "dht:6a20141a5ab0b75a25b9ac719634c5a19b476ba0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6a20141a5ab0b75a25b9ac719634c5a19b476ba0&dn=Carry-On.2024.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-playWEB%5BTGx%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Carry-On.2024.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-playWEB.mkv"
+      }
+    }
+  ]
+}

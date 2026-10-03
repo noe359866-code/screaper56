@@ -1,0 +1,241 @@
+{
+  "id": "tt0041604",
+  "imdbId": "tt0041604",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Love Happy (1949)",
+  "name": "Love Happy",
+  "year": 1949,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0041604.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0041604.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0041604.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0041604.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0041604.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0041604.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0041604.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 20,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "Amor en conserva-DVDRip-mp4-Castellano.mp4",
+      "quality": "480p",
+      "seeders": 8,
+      "sizeBytes": 1116691496,
+      "sizeLabel": "1.0 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "3345ebf31991b90e666f8fc663c9882081005569",
+      "fileIdx": 0,
+      "score": 9.13,
+      "magnetUrl": "magnet:?xt=urn:btih:3345ebf31991b90e666f8fc663c9882081005569&dn=Amor%20en%20conserva-DVDRip-mp4-Castellano.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Love Happy 1949 1080p Bluray DTS x264-GCJM",
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 7322919240,
+      "sizeLabel": "6.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "infoHash": "6eb9e77806f6627c2ccfdf36316f25408e0fd373",
+      "fileIdx": 0,
+      "score": 7.4,
+      "magnetUrl": "magnet:?xt=urn:btih:6eb9e77806f6627c2ccfdf36316f25408e0fd373&dn=Love%20Happy%201949%201080p%20Bluray%20DTS%20x264-GCJM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 23,
+  "qualities": [
+    "1080p",
+    "480p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Amor en conserva-DVDRip-mp4-Castellano.mp4",
+      "description": "Amor en conserva-DVDRip-mp4-Castellano.mp4\n🎞️ DVD\n👤 8 💾 1.0 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 9.13,
+      "infoHash": "3345ebf31991b90e666f8fc663c9882081005569",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 8,
+      "sizeBytes": 1116691496,
+      "sizeLabel": "1.0 GB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "BT4G"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:3345ebf31991b90e666f8fc663c9882081005569"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3345ebf31991b90e666f8fc663c9882081005569&dn=Amor%20en%20conserva-DVDRip-mp4-Castellano.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Love Happy 1949 1080p Bluray DTS x264-GCJM",
+      "description": "Love Happy 1949 1080p Bluray DTS x264-GCJM\n🎞️ BluRay · AVC · DTS-HD\n👤 23 💾 6.8 GB ⚙️ TorrentsDB+TorrentClaw",
+      "pick": "en",
+      "score": 7.4,
+      "infoHash": "6eb9e77806f6627c2ccfdf36316f25408e0fd373",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 7322919240,
+      "sizeLabel": "6.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "GCJM"
+      ],
+      "filename": "Love.Happy.1949.1080p.Bluray.DTS.x264-GCJM.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:6eb9e77806f6627c2ccfdf36316f25408e0fd373"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6eb9e77806f6627c2ccfdf36316f25408e0fd373&dn=Love%20Happy%201949%201080p%20Bluray%20DTS%20x264-GCJM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Love.Happy.1949.1080p.Bluray.DTS.x264-GCJM.mkv"
+      }
+    }
+  ]
+}

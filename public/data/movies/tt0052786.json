@@ -1,0 +1,142 @@
+{
+  "id": "tt0052786",
+  "imdbId": "tt0052786",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Violent Summer (1959)",
+  "name": "Violent Summer",
+  "year": 1959,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0052786.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0052786.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0052786.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0052786.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0052786.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0052786.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0052786.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 12,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 6227702579,
+      "sizeLabel": "5.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "bd9ef18a1bd2d193fb1ea23bc80c5eea3d97832d",
+      "fileIdx": null,
+      "score": 2.18,
+      "magnetUrl": "magnet:?xt=urn:btih:bd9ef18a1bd2d193fb1ea23bc80c5eea3d97832d&dn=Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv",
+      "description": "Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv\n🎞️ HDTV · AVC · AC3\n👤 0 💾 5.8 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 2.18,
+      "infoHash": "bd9ef18a1bd2d193fb1ea23bc80c5eea3d97832d",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 6227702579,
+      "sizeLabel": "5.8 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "LePOURVOYEUR"
+      ],
+      "filename": "Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:bd9ef18a1bd2d193fb1ea23bc80c5eea3d97832d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bd9ef18a1bd2d193fb1ea23bc80c5eea3d97832d&dn=Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Estate.violenta.1959.1080p.HDTV.AC3.x264-LePOURVOYEUR.mkv"
+      }
+    }
+  ]
+}
