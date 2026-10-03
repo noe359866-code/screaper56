@@ -1,0 +1,73 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "[nekotan] Bleach the Movie The DiamondDust Rebellion 2007 (BD 1080p x264 10-bit DTS-HD MA) | Movie 2 Mou Hitotsu no Hyourinmaru",
+      "description": "[nekotan] Bleach the Movie The DiamondDust Rebellion 2007 (BD 1080p x264 10-bit DTS-HD MA) | Movie 2 Mou Hitotsu no Hyourinmaru\n🎞️ AVC · DTS-HD\n👤 29 💾 6.1 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.51,
+      "infoHash": "fa5ef27ed27834f8128ccf10ae4297125f5f8764",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 29,
+      "sizeBytes": 6549825126,
+      "sizeLabel": "6.1 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "nyaa",
+        "nekoBT"
+      ],
+      "filename": "[nekotan] Bleach the Movie The DiamondDust Rebellion 2007 (BD 1080p x264 10-bit DTS-HD MA).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:fa5ef27ed27834f8128ccf10ae4297125f5f8764"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fa5ef27ed27834f8128ccf10ae4297125f5f8764&dn=%5Bnekotan%5D%20Bleach%20the%20Movie%20The%20DiamondDust%20Rebellion%202007%20(BD%201080p%20x264%2010-bit%20DTS-HD%20MA)%20%7C%20Movie%202%20Mou%20Hitotsu%20no%20Hyourinmaru&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "[nekotan] Bleach the Movie The DiamondDust Rebellion 2007 (BD 1080p x264 10-bit DTS-HD MA).mkv"
+      }
+    }
+  ]
+}

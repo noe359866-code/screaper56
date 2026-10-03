@@ -1,0 +1,140 @@
+{
+  "id": "tt0058606",
+  "imdbId": "tt0058606",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Spider Baby or, The Maddest Story Ever Told (1967)",
+  "name": "Spider Baby or, The Maddest Story Ever Told",
+  "year": 1967,
+  "imdbRating": "6.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0058606.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0058606.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0058606.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0058606.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 7,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Spider Baby (1967) Director's Cut (1080p BluRay x265 10bit EAC3 2.0 r00t) [QxR]",
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 5400921375,
+      "sizeLabel": "5.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "ee9d13969010ff37cbf5c0f2ec215c444245dee8",
+      "fileIdx": 9,
+      "score": 7.42,
+      "magnetUrl": "magnet:?xt=urn:btih:ee9d13969010ff37cbf5c0f2ec215c444245dee8&dn=Spider%20Baby%20(1967)%20Director's%20Cut%20(1080p%20BluRay%20x265%2010bit%20EAC3%202.0%20r00t)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 23,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Spider Baby (1967) Director's Cut (1080p BluRay x265 10bit EAC3 2.0 r00t) [QxR]",
+      "description": "Spider Baby (1967) Director's Cut (1080p BluRay x265 10bit EAC3 2.0 r00t) [QxR]\n🎞️ BluRay · HEVC · DD+ 2.0\n👤 23 💾 5.0 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 7.42,
+      "infoHash": "ee9d13969010ff37cbf5c0f2ec215c444245dee8",
+      "fileIdx": 9,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 5400921375,
+      "sizeLabel": "5.0 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "Spider Baby (1967) Director's Cut (1080p BluRay x265 10bit r00t).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:ee9d13969010ff37cbf5c0f2ec215c444245dee8"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ee9d13969010ff37cbf5c0f2ec215c444245dee8&dn=Spider%20Baby%20(1967)%20Director's%20Cut%20(1080p%20BluRay%20x265%2010bit%20EAC3%202.0%20r00t)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Spider Baby (1967) Director's Cut (1080p BluRay x265 10bit r00t).mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "id": "tt0050599",
+  "imdbId": "tt0050599",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Kiss Them for Me (1957)",
+  "name": "Kiss Them for Me",
+  "year": 1957,
+  "imdbRating": "5.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0050599.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0050599.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0050599.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0050599.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 6,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Besalas Por Mi [Spanish][DVD-Rip].avi",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 881820959,
+      "sizeLabel": "841 MB",
+      "audioLangs": [
+        "es",
+        "pt"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "38eca44c0dc8f54c212ebceb5f6eab3ad9c972ae",
+      "fileIdx": null,
+      "score": 3.2,
+      "magnetUrl": "magnet:?xt=urn:btih:38eca44c0dc8f54c212ebceb5f6eab3ad9c972ae&dn=Besalas%20Por%20Mi%20%5BSpanish%5D%5BDVD-Rip%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Kiss Them for Me - Jayne Mansfield Cary Grant HDDivxRipBY RUBr",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1095216660,
+      "sizeLabel": "1.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "309b0ffbda1597855a0f796acf759b6c342814fb",
+      "fileIdx": null,
+      "score": 0.17,
+      "magnetUrl": "magnet:?xt=urn:btih:309b0ffbda1597855a0f796acf759b6c342814fb&dn=Kiss%20Them%20for%20Me%20-%20Jayne%20Mansfield%20Cary%20Grant%20HDDivxRipBY%20RUBr&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 0,
+  "qualities": [],
+  "languages": [
+    "en",
+    "es",
+    "pt"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Besalas Por Mi [Spanish][DVD-Rip].avi",
+      "description": "Besalas Por Mi [Spanish][DVD-Rip].avi\n🎞️ DVD\n👤 0 💾 841 MB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 3.2,
+      "infoHash": "38eca44c0dc8f54c212ebceb5f6eab3ad9c972ae",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "pt"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 881820959,
+      "sizeLabel": "841 MB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:38eca44c0dc8f54c212ebceb5f6eab3ad9c972ae"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:38eca44c0dc8f54c212ebceb5f6eab3ad9c972ae&dn=Besalas%20Por%20Mi%20%5BSpanish%5D%5BDVD-Rip%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Kiss Them for Me - Jayne Mansfield Cary Grant HDDivxRipBY RUBr",
+      "description": "Kiss Them for Me - Jayne Mansfield Cary Grant HDDivxRipBY RUBr\n👤 0 💾 1.0 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.17,
+      "infoHash": "309b0ffbda1597855a0f796acf759b6c342814fb",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1095216660,
+      "sizeLabel": "1.0 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:309b0ffbda1597855a0f796acf759b6c342814fb"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:309b0ffbda1597855a0f796acf759b6c342814fb&dn=Kiss%20Them%20for%20Me%20-%20Jayne%20Mansfield%20Cary%20Grant%20HDDivxRipBY%20RUBr&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

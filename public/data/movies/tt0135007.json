@@ -1,0 +1,36 @@
+{
+  "id": "tt0135007",
+  "imdbId": "tt0135007",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Three Men and a Leg (1997)",
+  "name": "Three Men and a Leg",
+  "year": 1997,
+  "imdbRating": "7.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0135007.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0135007.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0135007.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0135007.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 6,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}

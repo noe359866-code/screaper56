@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-02T21:50:16.853Z",
-  "activeSeries": "tt40197357",
+  "updatedAt": "2026-10-03T02:00:23.763Z",
+  "activeSeries": "tt10986410",
   "series": {
     "tt40197357": {
       "name": "Scrubs",
-      "status": "in-progress",
-      "done": 7,
+      "status": "complete",
+      "done": 11,
       "total": 11,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 2,
+      "lastEpisode": 2,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-03T02:00:23.763Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt10986410": {
@@ -411,54 +411,6 @@
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:34:09.794Z"
     },
-    "tt0167872": {
-      "name": "David Copperfield",
-      "status": "complete",
-      "done": 4,
-      "total": 4,
-      "lastSeason": 1,
-      "lastEpisode": 4,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
-    "tt0215364": {
-      "name": "Wives and Daughters",
-      "status": "complete",
-      "done": 4,
-      "total": 4,
-      "lastSeason": 1,
-      "lastEpisode": 4,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
-    "tt0078655": {
-      "name": "The Meeting Place Cannot Be Changed",
-      "status": "complete",
-      "done": 5,
-      "total": 5,
-      "lastSeason": 1,
-      "lastEpisode": 5,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
-    "tt0079844": {
-      "name": "Salem's Lot",
-      "status": "complete",
-      "done": 2,
-      "total": 2,
-      "lastSeason": 1,
-      "lastEpisode": 2,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-02T21:34:09.794Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0062589": {
       "name": "Mod Squad",
       "status": "in-progress",
@@ -614,6 +566,54 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0167872": {
+      "name": "David Copperfield",
+      "status": "complete",
+      "done": 4,
+      "total": 4,
+      "lastSeason": 1,
+      "lastEpisode": 4,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
+    },
+    "tt0215364": {
+      "name": "Wives and Daughters",
+      "status": "complete",
+      "done": 4,
+      "total": 4,
+      "lastSeason": 1,
+      "lastEpisode": 4,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
+    },
+    "tt0078655": {
+      "name": "The Meeting Place Cannot Be Changed",
+      "status": "complete",
+      "done": 5,
+      "total": 5,
+      "lastSeason": 1,
+      "lastEpisode": 5,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
+    },
+    "tt0079844": {
+      "name": "Salem's Lot",
+      "status": "complete",
+      "done": 2,
+      "total": 2,
+      "lastSeason": 1,
+      "lastEpisode": 2,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-02T21:34:09.794Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     }
   }
 }

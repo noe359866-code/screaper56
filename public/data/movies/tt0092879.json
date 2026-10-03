@@ -1,0 +1,36 @@
+{
+  "id": "tt0092879",
+  "imdbId": "tt0092879",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Ten Little Indians (1987)",
+  "name": "Ten Little Indians",
+  "year": 1987,
+  "imdbRating": "7.7",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0092879.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0092879.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0092879.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0092879.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 5,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": []
+}
