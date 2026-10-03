@@ -1,0 +1,153 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Infiltrados En Clase [BluRay 1080p][AC3 5.1 Castellano DTS 5.1-Ingles+Subs][ES]",
+      "description": "Infiltrados En Clase [BluRay 1080p][AC3 5.1 Castellano DTS 5.1-Ingles+Subs][ES]\n🎞️ BluRay · DTS/AC3 5.1\n👤 4 💾 9.1 GB ⚙️ Peerflix+Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 14.41,
+      "infoHash": "b81f361d85380b6395ad4cddf394e1a09e546908",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 9760313180,
+      "sizeLabel": "9.1 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Peerflix",
+        "Wolfmax4k"
+      ],
+      "filename": "InfiltradosenClaseBD1080.www.newpct1.com.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:b81f361d85380b6395ad4cddf394e1a09e546908"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b81f361d85380b6395ad4cddf394e1a09e546908&dn=Infiltrados%20En%20Clase%20%5BBluRay%201080p%5D%5BAC3%205.1%20Castellano%20DTS%205.1-Ingles%2BSubs%5D%5BES%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "InfiltradosenClaseBD1080.www.newpct1.com.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "21 Jump Street (2012) (2160p BluRay x265 HEVC 10bit DV HDR TrueHD 7.1 Atmos r00t) [QxR]",
+      "description": "21 Jump Street (2012) (2160p BluRay x265 HEVC 10bit DV HDR TrueHD 7.1 Atmos r00t) [QxR]\n🎞️ BluRay · HEVC · DV · HDR · Atmos/TrueHD 7.1\n👤 58 💾 13.3 GB ⚙️ TorrentsDB+Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 8.4,
+      "infoHash": "331276a8720f19108706f7652f45534fa1a2a42a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 58,
+      "sizeBytes": 14270028841,
+      "sizeLabel": "13.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR"
+        ],
+        "audio": [
+          "Atmos",
+          "TrueHD"
+        ],
+        "channels": "7.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb",
+        "1337x",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "21 Jump Street (2012) (2160p BluRay x265 10bit DV HDR r00t).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:331276a8720f19108706f7652f45534fa1a2a42a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:331276a8720f19108706f7652f45534fa1a2a42a&dn=21%20Jump%20Street%20(2012)%20(2160p%20BluRay%20x265%20HEVC%2010bit%20DV%20HDR%20TrueHD%207.1%20Atmos%20r00t)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "21 Jump Street (2012) (2160p BluRay x265 10bit DV HDR r00t).mkv"
+      }
+    }
+  ]
+}

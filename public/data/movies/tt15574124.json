@@ -1,0 +1,240 @@
+{
+  "id": "tt15574124",
+  "imdbId": "tt15574124",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Peaky Blinders: The Immortal Man (2026)",
+  "name": "Peaky Blinders: The Immortal Man",
+  "year": 2026,
+  "imdbRating": "6.5",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt15574124.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt15574124.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt15574124.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt15574124.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt15574124.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt15574124.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 187,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4",
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 2179695903,
+      "sizeLabel": "2.0 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "95f735938361e0a8952e5b653591890789057d4c",
+      "fileIdx": 0,
+      "score": 14.92,
+      "magnetUrl": "magnet:?xt=urn:btih:95f735938361e0a8952e5b653591890789057d4c&dn=Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Peaky Blinders The Immortal Man 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv",
+      "quality": "1080p",
+      "seeders": 137,
+      "sizeBytes": 1827266910,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "1e3ae763119b32b26f957fa6cf4a2dad87dbe7c3",
+      "fileIdx": null,
+      "score": 8.42,
+      "magnetUrl": "magnet:?xt=urn:btih:1e3ae763119b32b26f957fa6cf4a2dad87dbe7c3&dn=Peaky%20Blinders%20The%20Immortal%20Man%202026%201080p%20WEB-DL%20HEVC%20x265%205.1%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 137,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4",
+      "description": "Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4\n👤 11 💾 2.0 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.92,
+      "infoHash": "95f735938361e0a8952e5b653591890789057d4c",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 2179695903,
+      "sizeLabel": "2.0 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:95f735938361e0a8952e5b653591890789057d4c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:95f735938361e0a8952e5b653591890789057d4c&dn=Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Peaky.blinders.the.immortal.man.2026.1080p-dual-lat-cinecalidad.ro.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Peaky Blinders The Immortal Man 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv",
+      "description": "Peaky Blinders The Immortal Man 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv\n🎞️ WEB-DL · HEVC · 5.1\n👤 137 💾 1.7 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.42,
+      "infoHash": "1e3ae763119b32b26f957fa6cf4a2dad87dbe7c3",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 137,
+      "sizeBytes": 1827266910,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Torrents.csv"
+      ],
+      "filename": "Peaky Blinders The Immortal Man 2026 1080p WEB-DL HEVC x265 5.1 BONE",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1e3ae763119b32b26f957fa6cf4a2dad87dbe7c3"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1e3ae763119b32b26f957fa6cf4a2dad87dbe7c3&dn=Peaky%20Blinders%20The%20Immortal%20Man%202026%201080p%20WEB-DL%20HEVC%20x265%205.1%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Peaky Blinders The Immortal Man 2026 1080p WEB-DL HEVC x265 5.1 BONE"
+      }
+    }
+  ]
+}
