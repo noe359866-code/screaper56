@@ -2,8 +2,11 @@
  * Registro de addons Stremio: lo comparten la GitHub Action (Node) y la web
  * (navegador), así que no puede depender de `process` ni del DOM.
  *
- * Los cinco addons consultables exponen el contrato estándar
+ * Los addons consultables exponen el contrato estándar
  *   /stream/{movie|series}/{id}.json
+ * `baseUrl` puede incluir un segmento de configuración (StremThru Torz).
+ * MediaFusion y Comet (ElfHosted) quedan registrados pero sin consultar: sin
+ * debrid no devuelven torrents.
  * `tpb-adult-addon.click` queda registrado por su manifest, pero solo expone
  * catálogos Porn (no streams IMDb movie/series): una watchlist IMDb no puede
  * consultarlo sin inventar un mapeo título → ID, así que se informa como
@@ -65,6 +68,77 @@ export const PROVIDERS = Object.freeze({
     adult: false,
     enabledByDefault: true,
     description: 'YTS + EZTV',
+  }),
+  torrentclaw: Object.freeze({
+    slug: 'torrentclaw',
+    name: 'TorrentClaw',
+    baseUrl: 'https://torrentclaw.com/api/stremio',
+    manifestUrl: 'https://torrentclaw.com/api/stremio/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: '30+ fuentes verificadas (TrueSpec), incluye fuentes ES/LATAM',
+    // La 1.ª línea del título es una puntuación ("🔵 65/100 · 👤 579"); el
+    // release real está en behaviorHints.filename. "🌐 1080p" del name no es
+    // una fuente: la fuente/grupo va en "🏷️ YIFY".
+    titleFromFilename: true,
+    sourceBadge: '🏷️',
+  }),
+  aniscraper: Object.freeze({
+    slug: 'aniscraper',
+    name: 'AniScraper',
+    baseUrl: 'https://c5541ffce7d3-aniscraper.baby-beamup.club',
+    manifestUrl: 'https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: 'Anime: Nyaa, AnimeTosho, AniRena, TsukiHime (responde vacío si no es anime)',
+    titleFromFilename: true,
+    sourceBadge: '⚙️',
+  }),
+  stremthru: Object.freeze({
+    slug: 'stremthru',
+    aliases: ['torz', 'stremthru-torz', 'stremthru_torz'],
+    name: 'StremThru Torz',
+    // El manifest exige configuración (configurationRequired). Se consulta con
+    // la configuración pública P2P, sin debrid ni token:
+    //   base64('{"stores":[{"c":"p2p","t":""}]}')
+    baseUrl: 'https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==',
+    manifestUrl: 'https://stremthru.13377001.xyz/stremio/torz/manifest.json',
+    types: ['movie', 'series'],
+    queryable: true,
+    adult: false,
+    enabledByDefault: true,
+    description: 'Base de torrents colaborativa (modo P2P, sin debrid)',
+    // "⚙️" es el grupo del release y "🌐" los idiomas; el indexador va en "🔍".
+    titleFromFilename: true,
+    sourceBadge: '🔍',
+  }),
+  mediafusion: Object.freeze({
+    slug: 'mediafusion',
+    name: 'MediaFusion',
+    baseUrl: 'https://mediafusion.elfhosted.com',
+    manifestUrl: 'https://mediafusion.elfhosted.com/manifest.json',
+    types: ['movie', 'series'],
+    queryable: false,
+    adult: false,
+    enabledByDefault: false,
+    description: 'ElfHosted: sin configurar no devuelve torrents; necesita una configuración cifrada (normalmente con debrid).',
+    note: 'Manifest registrado; la instancia ElfHosted responde {"streams":[]} sin configuración y su configuración va cifrada por el servidor.',
+  }),
+  comet: Object.freeze({
+    slug: 'comet',
+    name: 'Comet',
+    baseUrl: 'https://comet.elfhosted.com',
+    manifestUrl: 'https://comet.elfhosted.com/manifest.json',
+    types: ['movie', 'series'],
+    queryable: false,
+    adult: false,
+    enabledByDefault: false,
+    description: 'ElfHosted: las búsquedas sin debrid están desactivadas.',
+    note: 'Manifest registrado; ElfHosted responde "Non-debrid searches disabled on ElfHosted" sin un debrid configurado.',
   }),
   tpbAdult: Object.freeze({
     slug: 'tpbAdult',

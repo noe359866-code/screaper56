@@ -312,7 +312,7 @@ export function releaseTags(info) {
 
 export function parseSize(label) {
   if (!label) return null;
-  const m = label.toLowerCase().replace(',', '.').match(/([0-9.]+)\s*(gb|mb|kb|b|gib|mib)/);
+  const m = label.toLowerCase().replace(',', '.').match(/([0-9.]+)\s*(tib|tb|gib|gb|mib|mb|kib|kb|b)/);
   if (!m) return null;
   const n = Number(m[1]);
   if (!Number.isFinite(n)) return null;
@@ -322,6 +322,7 @@ export function parseSize(label) {
     kb: 1024, kib: 1024,
     mb: 1024 * 1024, mib: 1024 * 1024,
     gb: 1024 * 1024 * 1024, gib: 1024 * 1024 * 1024,
+    tb: 1024 ** 4, tib: 1024 ** 4,
   }[unit];
   if (!mult) return null;
   return Math.round(n * mult);
@@ -336,6 +337,21 @@ export function formatBytes(bytes) {
   return `${value.toFixed(value >= 100 || unit === 0 ? 0 : 1)} ${units[unit]}`;
 }
 
+const SIZE_UNIT = String.raw`[0-9.,]+\s*(?:TB|GB|MB|KB|B|TiB|GiB|MiB|KiB)`;
+const SIZE_BADGE_RE = Object.freeze({
+  file: new RegExp(`(?:💾|📏)\\s*(${SIZE_UNIT})`, 'iu'),
+  pack: new RegExp(`📦\\s*(${SIZE_UNIT})`, 'iu'),
+});
+const SUBTITLE_LINE_RE = /^\s*💬/u;
+const DEFAULT_SOURCE_RE = /(?:⚙️|🌐)\s*([^\s]+)/u;
+
+/** Badge que precede a la fuente/indexador en el título ("⚙️ YTS", "🔍 Knaben"). */
+function sourceBadgeRe(badge) {
+  if (!badge) return DEFAULT_SOURCE_RE;
+  const escaped = String(badge).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`${escaped}\\s*([^\\s]+)`, 'u');
+}
+
 export function parseStremioStream(rawStream, provider) {
   if (!rawStream) return null;
   const infoHash = String(rawStream.infoHash || '').toLowerCase();
@@ -347,20 +363,34 @@ export function parseStremioStream(rawStream, provider) {
   const titleField = String(rawStream.title || rawStream.description || '');
   const metadataText = `${nameField}\n${titleField}`;
   const lines = titleField.split('\n').map(s => s.trim()).filter(Boolean);
-  const releaseTitle = lines[0] || nameField.replace(/\n/g, ' ').trim() || infoHash;
+  // Torrentio/TorrentsDB expose the real file name, which often carries the
+  // audio languages ("[Hindi + English]") that the truncated title lost.
+  const filename = typeof rawStream.behaviorHints?.filename === 'string' && rawStream.behaviorHints.filename.trim()
+    ? rawStream.behaviorHints.filename.trim()
+    : null;
+  // TorrentClaw, StremThru Torz y AniScraper empiezan el título con badges
+  // ("🔵 65/100 · 👤 579", "💿 BluRay REMUX"): el release real es el archivo.
+  const useFilename = Boolean(provider.titleFromFilename && filename);
+  const releaseTitle = (useFilename ? filename : null)
+    || lines[0] || nameField.replace(/\n/g, ' ').trim() || infoHash;
 
   // Seed/size may be proper JSON fields (Peerflix) or footer badges in title.
-  const seedMatch = metadataText.match(/👤\s*(\d+|\?)/);
-  const sizeMatch = metadataText.match(/💾\s*([0-9.,]+\s*(?:GB|MB|KB|B|GiB|MiB))/i);
-  const sourceMatch = metadataText.match(/(?:⚙️|🌐)\s*([^\s]+)/);
+  // 👤/🌱 = seeders; 💾/📏 = tamaño del archivo; 📦 = tamaño del pack (Torz).
+  const seedMatch = metadataText.match(/(?:👤|🌱)\s*(\d+|\?)/u);
+  const sourceMatch = metadataText.match(sourceBadgeRe(provider.sourceBadge));
   const explicitSeeders = rawStream.seed ?? rawStream.seeders;
   const seeders = Number.isSafeInteger(explicitSeeders) && explicitSeeders >= 0
     ? explicitSeeders
     : seedMatch && /^\d+$/.test(seedMatch[1]) ? Number(seedMatch[1]) : null;
   const explicitSize = rawStream.sizebytes ?? rawStream.sizeBytes;
+  const videoSize = rawStream.behaviorHints?.videoSize;
+  const fileSizeBadge = metadataText.match(SIZE_BADGE_RE.file);
+  const packSizeBadge = metadataText.match(SIZE_BADGE_RE.pack);
   const sizeBytes = Number.isSafeInteger(explicitSize) && explicitSize >= 0
     ? explicitSize
-    : parseSize(sizeMatch ? sizeMatch[1] : null);
+    : fileSizeBadge ? parseSize(fileSizeBadge[1])
+      : Number.isSafeInteger(videoSize) && videoSize > 0 ? videoSize
+        : parseSize(packSizeBadge ? packSizeBadge[1] : null);
 
   const sourceTrackers = Array.isArray(rawStream.sources)
     ? rawStream.sources
@@ -369,14 +399,11 @@ export function parseStremioStream(rawStream, provider) {
     : [];
   const magnetUrl = rawStream.magnet || rawStream.magnetUrl || null;
   const trackers = [...new Set([...sourceTrackers, ...trackersFromMagnet(magnetUrl)])];
-  // Torrentio/TorrentsDB expose the real file name, which often carries the
-  // audio languages ("[Hindi + English]") that the truncated title lost.
-  const filename = typeof rawStream.behaviorHints?.filename === 'string' && rawStream.behaviorHints.filename.trim()
-    ? rawStream.behaviorHints.filename.trim()
-    : null;
 
-  const quality = normalizeQuality(nameField, titleField, rawStream.quality || rawStream.tag, filename);
-  const languages = normalizeLanguage(rawStream.language, filename ? `${metadataText}\n${filename}` : metadataText);
+  const quality = normalizeQuality(nameField, useFilename ? filename : titleField, rawStream.quality || rawStream.tag, filename);
+  // Las líneas "💬 🇪🇸 🇬🇧 …" (TorrentClaw, Torz) son subtítulos, no audio.
+  const languageText = metadataText.split('\n').filter(line => !SUBTITLE_LINE_RE.test(line)).join('\n');
+  const languages = normalizeLanguage(rawStream.language, filename ? `${languageText}\n${filename}` : languageText);
   const externalProvider = sourceMatch
     ? sourceMatch[1].replace(/[.,]+$/, '')
     : provider.slug === 'ytztvio' && nameField && !/(?:4k|2160p|1440p|1080p|720p|480p)/i.test(nameField)

@@ -47,7 +47,7 @@ on:
       providers:
         description: "Addons Stremio (slugs separados por comas)"
         required: false
-        default: "peerflix,torrentsdb,torrentio,piratebay,ytztvio"
+        default: "peerflix,torrentsdb,torrentio,piratebay,ytztvio,torrentclaw,aniscraper,stremthru"
         type: string
       issue:
         description: "Nº del Issue que pidió la ingesta (lo rellena issue-ingest.yml; vacío = ninguno)"
@@ -118,7 +118,7 @@ jobs:
           # Serie larga: máx. episodios expandidos por corrida; la próxima
           # ejecución reanuda donde quedó (0 = sin límite).
           MAX_EPISODES_PER_RUN: "60"
-          PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio' }}
+          PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,piratebay,ytztvio,torrentclaw,aniscraper,stremthru' }}
         run: node src/fetch.mjs
 
       - name: "Resumen de la ejecución"

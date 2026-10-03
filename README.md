@@ -13,6 +13,11 @@ Addons consultados por IMDb:
 - **Torrentio** — https://torrentio.strem.fun/manifest.json
 - **ThePirateBay+** — https://thepiratebay-plus.strem.fun/manifest.json
 - **Ytztvio** — https://ytztvio.galacticcapsule.workers.dev/manifest.json
+- **TorrentClaw** — https://torrentclaw.com/api/stremio/manifest.json
+- **AniScraper** — https://c5541ffce7d3-aniscraper.baby-beamup.club/manifest.json (solo anime; para lo demás responde vacío)
+- **StremThru Torz** — https://stremthru.13377001.xyz/stremio/torz/manifest.json (se consulta en modo P2P, sin debrid)
+- **MediaFusion** — https://mediafusion.elfhosted.com/manifest.json (solo registrado; ver la nota más abajo)
+- **Comet** — https://comet.elfhosted.com/manifest.json (solo registrado; ver la nota más abajo)
 - **TPB Adult** — https://tpb-adult-addon.click/manifest.json (solo registrado; ver la nota más abajo)
 
 ## Tres formas de usarlo, ninguna necesita token
@@ -44,7 +49,7 @@ El resto también funciona sin token:
 watchlist (web ⚡ / Issue ☁️ / watchlist.txt ⏰)
   └─ public/lib/pipeline.js  (mismo código en el navegador y en la Action)
        ├─ Cinemeta (sin API key): título original, año, episodios de cada temporada (o de la serie completa)
-       ├─ /stream/movie|series/…json en los 5 addons IMDb
+       ├─ /stream/movie|series/…json en los 8 addons IMDb
        │    · reintentos con backoff (red, 429, 5xx; respeta Retry-After)
        │    · si un addon falla 3 veces seguidas para un tipo, se deja de consultar
        ├─ fusión por info_hash (trackers, addons, idiomas, seeds, tamaño…)
@@ -147,8 +152,48 @@ IDs IMDb. Declara catálogos de tipo `Porn`, con búsquedas que devuelven IDs
 internos `jstrm:*`. Una consulta `stream/Porn/tt...` no es una correspondencia
 válida con una lista IMDb y puede devolver contenido no relacionado. Por eso la
 URL queda registrada en `public/lib/providers.js`, en `public/manifest.json` y
-en el reporte, pero **no se importan resultados adultos aleatorios**. Los otros
-cinco addons sí se consultan por cada IMDb ID.
+en el reporte, pero **no se importan resultados adultos aleatorios**. Los ocho
+addons consultables sí se piden por cada IMDb ID.
+
+## Formatos de TorrentClaw, StremThru Torz y AniScraper
+
+Estos tres addons no siguen el formato de Torrentio. Por eso tienen dos opciones
+en `public/lib/providers.js`, que `parseStremioStream` respeta:
+
+- `titleFromFilename`: el release se lee de `behaviorHints.filename`, porque la
+  primera línea del título son badges. TorrentClaw empieza con la puntuación
+  (`🔵 65/100 · 👤 579`) y Torz con `💿 BluRay REMUX`. Así un `👤 720` no se toma
+  por una resolución.
+- `sourceBadge`: indica qué badge marca la fuente. En TorrentClaw es `🏷️`
+  (`🌐 1080p` es la calidad), en Torz `🔍` (`⚙️` es el grupo y `🌐` los
+  idiomas) y en AniScraper `⚙️`.
+
+Además, para todos los addons:
+
+- **Tamaño**: `💾`/`📏` (archivo), luego `behaviorHints.videoSize` y, por
+  último, `📦` (pack de Torz).
+- **Seeders**: `👤` o `🌱`.
+- **Idiomas**: las líneas `💬 …` son subtítulos y no cuentan como audio.
+
+StremThru Torz exige configuración (`configurationRequired`). Se consulta con
+la configuración pública P2P `{"stores":[{"c":"p2p","t":""}]}` en base64, que
+ya va incluida en su `baseUrl`. No hace falta token ni debrid.
+
+## MediaFusion y Comet (ElfHosted): por qué aparecen como “manifest-only”
+
+Las dos instancias públicas de ElfHosted exponen `stream` por IMDb, pero **sin
+debrid no devuelven torrents**:
+
+- `comet.elfhosted.com` sin configurar responde `Forbidden`. Con una
+  configuración solo de torrents, devuelve un único stream de aviso:
+  “Non-debrid searches disabled on ElfHosted”.
+- `mediafusion.elfhosted.com` responde `{"streams":[]}` sin configurar. Su
+  configuración va **cifrada con la clave del servidor** (`D-…`, se genera en su
+  `/configure`), así que no se puede construir sin pasar por su web.
+
+Por eso quedan registradas en `public/lib/providers.js`, en
+`public/manifest.json` y en el reporte (`manifestOnlyProviders`), igual que TPB
+Adult, pero no se consultan.
 
 ## Puesta en marcha
 
@@ -270,7 +315,7 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 
 | Variable | Default | Uso |
 |---|---|---|
-| `PROVIDERS` | los 5 consultables | Addons a consultar (slugs separados por comas) |
+| `PROVIDERS` | los 8 consultables | Addons a consultar (slugs separados por comas) |
 | `DRY_RUN` | `0` | `1` = no escribe en Supabase |
 | `CINEMETA` | `1` | `0` = sin metadatos |
 | `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |

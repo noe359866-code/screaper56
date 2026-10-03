@@ -195,9 +195,17 @@ async function readRepoFile(repo, path) {
 
 // ---------- ajustes ----------
 
+// Addons que existían antes de guardar `knownProviders` en los ajustes.
+const LEGACY_KNOWN_PROVIDERS = ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio', 'tpbAdult'];
+
 function selectedProviders() {
   const saved = state.settings.providers;
-  return resolveProviderSlugs(Array.isArray(saved) && saved.length ? saved : DEFAULT_PROVIDER_SLUGS);
+  if (!Array.isArray(saved) || !saved.length) return resolveProviderSlugs(DEFAULT_PROVIDER_SLUGS);
+  // Los addons añadidos después de guardar los ajustes se activan si van
+  // activados por defecto; los que el usuario desmarcó siguen desmarcados.
+  const known = new Set(Array.isArray(state.settings.knownProviders) ? state.settings.knownProviders : LEGACY_KNOWN_PROVIDERS);
+  const added = DEFAULT_PROVIDER_SLUGS.filter(slug => !known.has(slug));
+  return resolveProviderSlugs([...saved, ...added]);
 }
 
 function renderProviderList() {
@@ -253,6 +261,7 @@ $('#save-settings').addEventListener('click', () => {
   s.sbAnon = $('#sb-anon').value.trim();
   s.pageSize = clamp($('#sb-page-size').value, 20, 500);
   s.providers = readProvidersFromUI();
+  s.knownProviders = Object.keys(PROVIDERS);
   s.cinemeta = $('#use-cinemeta').checked;
   s.concurrency = clamp($('#concurrency').value, 1, 8);
   if (sbChanged) state.supabase = null;

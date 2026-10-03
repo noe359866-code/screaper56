@@ -48,7 +48,7 @@ test('parseIssueBody acepta listas pegadas a mano (sin bloque) y opciones por de
   const parsed = parseIssueBody('tt0111161\r\ntt1375666 Inception');
   assert.equal(parsed.count, 2);
   assert.equal(parsed.dryRun, false);
-  assert.deepEqual(parsed.providers, ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio']);
+  assert.deepEqual(parsed.providers, ['peerflix', 'torrentsdb', 'torrentio', 'piratebay', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru']);
   assert.equal(parseIssueBody('```\nnada útil\n```').count, 0);
 });
 
