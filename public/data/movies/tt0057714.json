@@ -1,0 +1,139 @@
+{
+  "id": "tt0057714",
+  "imdbId": "tt0057714",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Zatoichi on the Road (1963)",
+  "name": "Zatoichi on the Road",
+  "year": 1963,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0057714.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0057714.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0057714.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0057714.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0057714.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0057714.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0057714.json",
+    "brazuca": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/stream/movie/tt0057714.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 18,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Zatoichi.1-25.Criterion.1962-1973.720p.BluRay.x264-SHiNTARO",
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 4058744095,
+      "sizeLabel": "3.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "a2a279f9d49ec7f2f6a5cb5410757c6237c82786",
+      "fileIdx": 8,
+      "score": 5.19,
+      "magnetUrl": "magnet:?xt=urn:btih:a2a279f9d49ec7f2f6a5cb5410757c6237c82786&dn=Zatoichi.1-25.Criterion.1962-1973.720p.BluRay.x264-SHiNTARO&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 8,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Zatoichi.1-25.Criterion.1962-1973.720p.BluRay.x264-SHiNTARO",
+      "description": "Zatoichi.1-25.Criterion.1962-1973.720p.BluRay.x264-SHiNTARO\n🎞️ BluRay · AVC\n👤 8 💾 3.8 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 5.19,
+      "infoHash": "a2a279f9d49ec7f2f6a5cb5410757c6237c82786",
+      "fileIdx": 8,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 4058744095,
+      "sizeLabel": "3.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Zatoichi.05.Zatoichi.On.The.Road.1963.Criterion.720p.BluRay.x264-SHiNTARO.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:a2a279f9d49ec7f2f6a5cb5410757c6237c82786"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a2a279f9d49ec7f2f6a5cb5410757c6237c82786&dn=Zatoichi.1-25.Criterion.1962-1973.720p.BluRay.x264-SHiNTARO&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Zatoichi.05.Zatoichi.On.The.Road.1963.Criterion.720p.BluRay.x264-SHiNTARO.mkv"
+      }
+    }
+  ]
+}
