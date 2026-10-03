@@ -1,0 +1,39 @@
+{
+  "id": "tt0199232:2:3",
+  "imdbId": "tt0199232",
+  "type": "series",
+  "season": 2,
+  "episode": 3,
+  "label": "Jesus S02E03 – Crimetime",
+  "name": "Jesus",
+  "year": 1999,
+  "imdbRating": "6.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0199232:2:3.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0199232:2:3.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/series/tt0199232:2:3.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    }
+  ],
+  "streams": []
+}

@@ -1,0 +1,146 @@
+{
+  "id": "tt0089789",
+  "imdbId": "tt0089789",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Peanut Butter Solution (1985)",
+  "name": "The Peanut Butter Solution",
+  "year": 1985,
+  "imdbRating": "5.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0089789.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0089789.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0089789.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt0089789.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 11,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Peanut Butter Solution 1985 Director's Cut 1080p Remux x264 FLAC 2.0-3G_Rips",
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 25458418647,
+      "sizeLabel": "23.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "c5a8b9b5ca5c1d475a806129a6cb6e6f305a0849",
+      "fileIdx": 5,
+      "score": 7.01,
+      "magnetUrl": "magnet:?xt=urn:btih:c5a8b9b5ca5c1d475a806129a6cb6e6f305a0849&dn=The%20Peanut%20Butter%20Solution%201985%20Director's%20Cut%201080p%20Remux%20x264%20FLAC%202.0-3G_Rips&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 11,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Peanut Butter Solution 1985 Director's Cut 1080p Remux x264 FLAC 2.0-3G_Rips",
+      "description": "The Peanut Butter Solution 1985 Director's Cut 1080p Remux x264 FLAC 2.0-3G_Rips\n🎞️ REMUX · AVC · FLAC 2.0\n👤 11 💾 23.7 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.01,
+      "infoHash": "c5a8b9b5ca5c1d475a806129a6cb6e6f305a0849",
+      "fileIdx": 5,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 11,
+      "sizeBytes": 25458418647,
+      "sizeLabel": "23.7 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "filename": "The Peanut Butter Solution (1985) {imdb-tt0089789} {edition-Director's Cut} 1080p Bluray Remux x264 FLAC 2.0.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker2.dler.org:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:c5a8b9b5ca5c1d475a806129a6cb6e6f305a0849"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c5a8b9b5ca5c1d475a806129a6cb6e6f305a0849&dn=The%20Peanut%20Butter%20Solution%201985%20Director's%20Cut%201080p%20Remux%20x264%20FLAC%202.0-3G_Rips&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Peanut Butter Solution (1985) {imdb-tt0089789} {edition-Director's Cut} 1080p Bluray Remux x264 FLAC 2.0.mkv"
+      }
+    }
+  ]
+}

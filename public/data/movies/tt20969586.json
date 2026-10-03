@@ -1,0 +1,253 @@
+{
+  "id": "tt20969586",
+  "imdbId": "tt20969586",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Thunderbolts* (2025)",
+  "name": "Thunderbolts*",
+  "year": 2025,
+  "imdbRating": "7.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt20969586.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt20969586.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt20969586.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt20969586.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 180,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Thunderbolts 2025 2160p WEB-DL SDR ENG LATINO DDP5 1 Atmos H265 MP4-BEN THE",
+      "quality": "4K",
+      "seeders": 139,
+      "sizeBytes": 22290880266,
+      "sizeLabel": "20.8 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "infoHash": "aa1dacdf03df1279d42dcbb6e14d1c3ddcf2c595",
+      "fileIdx": 0,
+      "score": 16.63,
+      "magnetUrl": "magnet:?xt=urn:btih:aa1dacdf03df1279d42dcbb6e14d1c3ddcf2c595&dn=Thunderbolts%202025%202160p%20WEB-DL%20SDR%20ENG%20LATINO%20DDP5%201%20Atmos%20H265%20MP4-BEN%20THE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Thunderbolts 2025 WEB-DL 2160p HDR10 DV HEVC DDP Atmos 5.1 x265-E",
+      "quality": "4K",
+      "seeders": 872,
+      "sizeBytes": 19864223744,
+      "sizeLabel": "18.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "915052d80727ce95bf2c642331bf0976f71b2626",
+      "fileIdx": 0,
+      "score": 8.57,
+      "magnetUrl": "magnet:?xt=urn:btih:915052d80727ce95bf2c642331bf0976f71b2626&dn=Thunderbolts%202025%20WEB-DL%202160p%20HDR10%20DV%20HEVC%20DDP%20Atmos%205.1%20x265-E&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 872,
+  "qualities": [
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Thunderbolts 2025 2160p WEB-DL SDR ENG LATINO DDP5 1 Atmos H265 MP4-BEN THE",
+      "description": "Thunderbolts 2025 2160p WEB-DL SDR ENG LATINO DDP5 1 Atmos H265 MP4-BEN THE\n🎞️ WEB-DL · HEVC · Atmos/DD+ 5.1\n👤 139 💾 20.8 GB ⚙️ TorrentsDB",
+      "pick": "es",
+      "score": 16.63,
+      "infoHash": "aa1dacdf03df1279d42dcbb6e14d1c3ddcf2c595",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 139,
+      "sizeBytes": 22290880266,
+      "sizeLabel": "20.8 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "limetorrent"
+      ],
+      "filename": "Thunderbolts.2025.2160p.WEB-DL.SDR[Ben The Men].mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker2.dler.org:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:aa1dacdf03df1279d42dcbb6e14d1c3ddcf2c595"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa1dacdf03df1279d42dcbb6e14d1c3ddcf2c595&dn=Thunderbolts%202025%202160p%20WEB-DL%20SDR%20ENG%20LATINO%20DDP5%201%20Atmos%20H265%20MP4-BEN%20THE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Thunderbolts.2025.2160p.WEB-DL.SDR[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Thunderbolts 2025 WEB-DL 2160p HDR10 DV HEVC DDP Atmos 5.1 x265-E",
+      "description": "Thunderbolts 2025 WEB-DL 2160p HDR10 DV HEVC DDP Atmos 5.1 x265-E\n🎞️ WEB-DL · HEVC · DV · HDR10 · Atmos/DD+ 5.1\n👤 872 💾 18.5 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 8.57,
+      "infoHash": "915052d80727ce95bf2c642331bf0976f71b2626",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 872,
+      "sizeBytes": 19864223744,
+      "sizeLabel": "18.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "Atmos",
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "Thunderbolts 2025.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:915052d80727ce95bf2c642331bf0976f71b2626"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:915052d80727ce95bf2c642331bf0976f71b2626&dn=Thunderbolts%202025%20WEB-DL%202160p%20HDR10%20DV%20HEVC%20DDP%20Atmos%205.1%20x265-E&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Thunderbolts 2025.mkv"
+      }
+    }
+  ]
+}
