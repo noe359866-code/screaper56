@@ -1,0 +1,38 @@
+{
+  "id": "tt0300957",
+  "imdbId": "tt0300957",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "As perimenoun oi gynaikes! (1998)",
+  "name": "As perimenoun oi gynaikes!",
+  "year": 1998,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0300957.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0300957.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0300957.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0300957.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0300957.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0300957.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0300957.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

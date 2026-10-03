@@ -1,0 +1,155 @@
+{
+  "id": "tt0078155",
+  "imdbId": "tt0078155",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Rescue from Gilligan's Island (1978)",
+  "name": "Rescue from Gilligan's Island",
+  "year": 1978,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0078155.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0078155.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0078155.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0078155.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0078155.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0078155.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 6,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "[ www.Torrenting.com ] - Rescue from Gilligan's Island (1978)-DVDRIp-AC3-Xvid-THC",
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "a5b053fdff20551db256eed0cf1ae97fd3618521",
+      "fileIdx": 2,
+      "score": 4.41,
+      "magnetUrl": "magnet:?xt=urn:btih:a5b053fdff20551db256eed0cf1ae97fd3618521&dn=%5B%20www.Torrenting.com%20%5D%20-%20Rescue%20from%20Gilligan's%20Island%20(1978)-DVDRIp-AC3-Xvid-THC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 5,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "[ www.Torrenting.com ] - Rescue from Gilligan's Island (1978)-DVDRIp-AC3-Xvid-THC",
+      "description": "[ www.Torrenting.com ] - Rescue from Gilligan's Island (1978)-DVDRIp-AC3-Xvid-THC\n🎞️ DVD · XviD · AC3\n👤 5 💾 1.4 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 4.41,
+      "infoHash": "a5b053fdff20551db256eed0cf1ae97fd3618521",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 5,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "THC",
+        "Torrents.csv"
+      ],
+      "filename": "[ www.Torrenting.com ] - Rescue from Gilligan's Island (1978)-DVDRIp-AC3-Xvid-THC",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:a5b053fdff20551db256eed0cf1ae97fd3618521"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a5b053fdff20551db256eed0cf1ae97fd3618521&dn=%5B%20www.Torrenting.com%20%5D%20-%20Rescue%20from%20Gilligan's%20Island%20(1978)-DVDRIp-AC3-Xvid-THC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "[ www.Torrenting.com ] - Rescue from Gilligan's Island (1978)-DVDRIp-AC3-Xvid-THC"
+      }
+    }
+  ]
+}

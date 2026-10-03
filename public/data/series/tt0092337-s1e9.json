@@ -1,0 +1,150 @@
+{
+  "id": "tt0092337:1:9",
+  "imdbId": "tt0092337",
+  "type": "series",
+  "season": 1,
+  "episode": 9,
+  "label": "Dekalog S01E09 – Thou shalt not covet thy neighbour's wife",
+  "name": "Dekalog",
+  "year": 1989,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0092337:1:9.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0092337:1:9.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0092337:1:9.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "The Decalogue aka Dekalog (1989) [E1-E10] BluRay 720p x264-XpoZ",
+      "quality": "720p",
+      "seeders": 31,
+      "sizeBytes": 5261334938,
+      "sizeLabel": "4.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "b992c35e42509bfff14b22635ad4255cedf614c7",
+      "fileIdx": null,
+      "score": 6.1,
+      "magnetUrl": "magnet:?xt=urn:btih:b992c35e42509bfff14b22635ad4255cedf614c7&dn=The%20Decalogue%20aka%20Dekalog%20(1989)%20%5BE1-E10%5D%20BluRay%20720p%20x264-XpoZ&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 31,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "timeout (12s)"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "The Decalogue aka Dekalog (1989) [E1-E10] BluRay 720p x264-XpoZ",
+      "description": "The Decalogue aka Dekalog (1989) [E1-E10] BluRay 720p x264-XpoZ\n🎞️ BluRay · AVC\n👤 31 💾 4.9 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 6.1,
+      "infoHash": "b992c35e42509bfff14b22635ad4255cedf614c7",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 31,
+      "sizeBytes": 5261334938,
+      "sizeLabel": "4.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "XpoZ"
+      ],
+      "filename": "The Decalogue aka Dekalog (1989) [E1-E10] BluRay 720p x264-XpoZ",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b992c35e42509bfff14b22635ad4255cedf614c7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b992c35e42509bfff14b22635ad4255cedf614c7&dn=The%20Decalogue%20aka%20Dekalog%20(1989)%20%5BE1-E10%5D%20BluRay%20720p%20x264-XpoZ&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Decalogue aka Dekalog (1989) [E1-E10] BluRay 720p x264-XpoZ"
+      }
+    }
+  ]
+}

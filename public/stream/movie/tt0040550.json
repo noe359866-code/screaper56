@@ -1,0 +1,71 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Louisiana.Story.1948.(Robert.Flaherty-Adventure).720p.x264-Classics",
+      "description": "Louisiana.Story.1948.(Robert.Flaherty-Adventure).720p.x264-Classics\n🎞️ AVC\n👤 2 💾 1.3 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 4.39,
+      "infoHash": "c6da107c96c08770add31cbf804bdcc3d53ff273",
+      "fileIdx": 9,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 1395864371,
+      "sizeLabel": "1.3 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Classics"
+      ],
+      "filename": "Louisiana.Story.1948.(Robert.Flaherty-Adventure).720p.x264-Classics.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://exodus.desync.com:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:c6da107c96c08770add31cbf804bdcc3d53ff273"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c6da107c96c08770add31cbf804bdcc3d53ff273&dn=Louisiana.Story.1948.(Robert.Flaherty-Adventure).720p.x264-Classics&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Louisiana.Story.1948.(Robert.Flaherty-Adventure).720p.x264-Classics.mkv"
+      }
+    }
+  ]
+}
