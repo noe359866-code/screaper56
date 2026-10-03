@@ -1,0 +1,135 @@
+{
+  "id": "tt3028018",
+  "imdbId": "tt3028018",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Blue Exorcist: The Movie (2012)",
+  "name": "Blue Exorcist: The Movie",
+  "year": 2012,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt3028018.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt3028018.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt3028018.json",
+    "piratebay": "https://thepiratebay-plus.strem.fun/stream/movie/tt3028018.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 21,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "[Naruto-Kun.Hu] Ao no Exorcist - The Movie [1080p].mkv",
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 2931315180,
+      "sizeLabel": "2.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "65e8c029654f07dcc1972c55277fca7e3cc599d4",
+      "fileIdx": 0,
+      "score": 6.81,
+      "magnetUrl": "magnet:?xt=urn:btih:65e8c029654f07dcc1972c55277fca7e3cc599d4&dn=%5BNaruto-Kun.Hu%5D%20Ao%20no%20Exorcist%20-%20The%20Movie%20%5B1080p%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 12,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "[Naruto-Kun.Hu] Ao no Exorcist - The Movie [1080p].mkv",
+      "description": "[Naruto-Kun.Hu] Ao no Exorcist - The Movie [1080p].mkv\n👤 12 💾 2.7 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 6.81,
+      "infoHash": "65e8c029654f07dcc1972c55277fca7e3cc599d4",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 12,
+      "sizeBytes": 2931315180,
+      "sizeLabel": "2.7 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "[Naruto-Kun.Hu] Ao no Exorcist - The Movie [1080p].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:65e8c029654f07dcc1972c55277fca7e3cc599d4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:65e8c029654f07dcc1972c55277fca7e3cc599d4&dn=%5BNaruto-Kun.Hu%5D%20Ao%20no%20Exorcist%20-%20The%20Movie%20%5B1080p%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "[Naruto-Kun.Hu] Ao no Exorcist - The Movie [1080p].mkv"
+      }
+    }
+  ]
+}
