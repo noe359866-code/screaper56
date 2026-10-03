@@ -360,16 +360,26 @@ async function expandWholeSeries(it, meta, { seriesFallback = null, doneKeys = n
 }
 
 /**
- * Reparte `max` consultas de episodios entre varias series en progreso
- * (una de cada serie por ronda) para que todas avancen en cada ejecución.
+ * Limita las consultas de episodios expandidos por corrida (`max`):
+ *  - Con `singleSeries: true` (o `focusSeriesId`): concentra TODOS los
+ *    episodios de la corrida en una única serie hasta terminarla (sin mezclar
+ *    otras series hasta que esa quede completa).
+ *  - Por defecto (`singleSeries: false`): reparte `max` entre varias series en
+ *    progreso (una de cada serie por ronda).
  */
-function capEpisodeQueries(expanded, max) {
-  if (!Number.isInteger(max) || max <= 0 || expanded.length <= max) return expanded;
+function capEpisodeQueries(expanded, max, { singleSeries = false, focusSeriesId = null } = {}) {
+  if (!expanded.length) return expanded;
   const bySeries = new Map();
   for (const query of expanded) {
     if (!bySeries.has(query.imdbId)) bySeries.set(query.imdbId, []);
     bySeries.get(query.imdbId).push(query);
   }
+  if (singleSeries || focusSeriesId) {
+    const targetId = focusSeriesId ? String(focusSeriesId).toLowerCase().trim() : null;
+    const chosenQueue = (targetId && bySeries.get(targetId)) || bySeries.values().next().value || [];
+    return Number.isInteger(max) && max > 0 ? chosenQueue.slice(0, max) : chosenQueue;
+  }
+  if (!Number.isInteger(max) || max <= 0 || expanded.length <= max) return expanded;
   const queues = [...bySeries.values()];
   const picked = [];
   while (picked.length < max) {
@@ -437,6 +447,8 @@ export async function expandWatchlist(items, {
   seasonFallback = null,
   doneKeys = null,
   maxEpisodeQueries = null,
+  singleSeries = false,
+  focusSeriesId = null,
   now = Date.now(),
   onWarning = null,
 } = {}) {
@@ -531,7 +543,7 @@ export async function expandWatchlist(items, {
     itemIndex += 1;
   }
   // Orden del watchlist: cada expansión queda donde estaba su línea.
-  const all = [...queries, ...capEpisodeQueries(expanded, maxEpisodeQueries)]
+  const all = [...queries, ...capEpisodeQueries(expanded, maxEpisodeQueries, { singleSeries, focusSeriesId })]
     .sort((a, b) => a.__order - b.__order)
     .map(({ __order, ...query }) => query);
   return dedupeQueries(all);
@@ -702,6 +714,8 @@ export async function processWatchlist(text, {
   seasonFallback = null,
   doneKeys = null,
   maxEpisodeQueries = null,
+  singleSeries = false,
+  focusSeriesId = null,
   onWarning = null,
   onQueries = null,
   ...runOptions
@@ -712,7 +726,7 @@ export async function processWatchlist(text, {
   const { metaById, stats: metaStats } = metadata
     ? await loadMetadata(items, { fetchJSON, baseUrl: cinemetaUrl, onWarning: warn })
     : { metaById: new Map(), stats: { source: 'none', requested: 0, found: 0, failures: 0, disabled: true, lastError: null } };
-  const queries = await expandWatchlist(items, { metaById, seasonFallback, doneKeys, maxEpisodeQueries, onWarning: warn });
+  const queries = await expandWatchlist(items, { metaById, seasonFallback, doneKeys, maxEpisodeQueries, singleSeries, focusSeriesId, onWarning: warn });
   onQueries?.(queries);
   const result = await runPipeline(queries, { providers, fetchJSON, ...runOptions });
   return { ...result, items, queries, warnings, metaStats };

@@ -245,16 +245,24 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
   `lastEpisode`) y por dónde sigue (`nextSeason` / `nextEpisode`). El
   dashboard lo muestra en el panel “📺 Por dónde van las series” y el resumen
   de la Action (y del Issue) incluye la misma tabla.
-- Cada ejecución expande como máximo `MAX_EPISODES_PER_RUN` episodios
-  (60 por defecto), repartidos entre las series en progreso para que todas
-  avancen. Los episodios ya ingeridos (claves `tt…:sN:eN` de `seen.json`)
-  nunca se vuelven a consultar.
-- **El watchlist conserva solo lo que falta**: la rotación diaria elimina
-  películas y series ya completas, pero **conserva las series a las que aún
-  les faltan episodios** (y las reinyecta si algún Issue reemplazó el
-  `watchlist.txt`). Cuando una serie termina, se elimina sola en la siguiente
-  corrida. Si salen episodios nuevos de una serie en emisión, se detectan y se
-  ingieren automáticamente.
+- **Sigue una sola serie hasta terminarla** (`FOLLOW_SERIES=1` por defecto):
+  en vez de acumular decenas de series a la vez avanzando 1 episodio de cada
+  una, cada ejecución dedica **todos los episodios del lote**
+  (`MAX_EPISODES_PER_RUN`, 60 por defecto) a **una única serie activa**
+  (`activeSeries` en `progress.json`) y no añade series nuevas hasta que esa
+  serie termina al 100 %. Cuando se completa, la siguiente corrida pasa
+  automáticamente a la siguiente serie pendiente en cola (o descubre 1 nueva).
+- En **Run workflow** (`static.yml`) puedes elegir:
+  - `follow_series = 1` *(por defecto)*: sigue **1 sola serie** hasta terminarla
+    junto con el lote de películas nuevas;
+  - `follow_series = only`: **solo continúa esa serie** hasta terminarla (sin
+    películas ni otras series);
+  - `follow_series = 0`: reparte los episodios entre varias series a la vez;
+  - `series_id`: opcionalmente indica el IMDb ID (ej. `tt0411008`) de la serie
+    concreta que quieres fijar y seguir hasta terminarla.
+- Los episodios ya ingeridos (claves `tt…:sN:eN` de `seen.json`) nunca se
+  vuelven a consultar. Si salen episodios nuevos de una serie en emisión, se
+  detectan y se ingieren automáticamente.
 - Los episodios pedidos a mano (`tt…:s1:e1`) nunca se omiten, aunque ya estén
   en el historial.
 
@@ -268,6 +276,8 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 | `TMDB_API_KEY` | — | Opcional: respaldo para expandir temporadas |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
 | `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
+| `FOLLOW_SERIES` | `1` | `1` = seguir 1 sola serie a la vez hasta terminarla (+ películas); `only` = solo continuar esa serie; `0` = varias series a la vez |
+| `SERIES_ID` | — | Opcional: IMDb ID (`tt…`) de la serie a seguir hasta terminarla |
 | `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
 | `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas / timeout |

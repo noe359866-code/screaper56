@@ -48,6 +48,10 @@ function pad2(n) {
   return String(n ?? 1).padStart(2, '0');
 }
 
+function isSeriesEntry(item) {
+  return Boolean(item && (item.type === 'series' || item.typeHint === 'series' || item.season != null));
+}
+
 /** Formatea una entrada como línea canónica para `watchlist.txt`. */
 export function formatWatchlistLine(item) {
   const id = String(item.imdbId || '').toLowerCase().trim();
@@ -58,7 +62,7 @@ export function formatWatchlistLine(item) {
     .replace(/\s+S\d{2}E\d{2}.*$/i, '')
     .trim();
 
-  if (item.type === 'series' || season != null) {
+  if (isSeriesEntry(item)) {
     // Serie sin temporada: el ID solo basta; la ingesta la expande a TODAS
     // las temporadas y episodios emitidos de una sola vez.
     if (!Number.isInteger(season)) {
@@ -82,9 +86,8 @@ export function formatWatchlistLine(item) {
 /** Genera el contenido completo de `watchlist.txt` con cabecera informativa. */
 export function formatWatchlistFile(items, { date = new Date(), removedCount = 0, addedCount = 0 } = {}) {
   const stamp = (date instanceof Date ? date : new Date(date)).toISOString().slice(0, 19).replace('T', ' ') + ' UTC';
-  const isSeriesItem = i => i.type === 'series' || i.typeHint === 'series' || i.season != null;
-  const movies = items.filter(i => !isSeriesItem(i));
-  const series = items.filter(isSeriesItem);
+  const movies = items.filter(i => !isSeriesEntry(i));
+  const series = items.filter(isSeriesEntry);
   const lines = [
     '# Peerflix Static – Watchlist',
     '# -----------------------------------------------------------',
@@ -727,6 +730,8 @@ export async function rotateWatchlist(currentText, {
   replaceAll = false,
   keep = null,
   batchSize = DEFAULT_BATCH_SIZE,
+  maxSeries = null,
+  onlySeries = false,
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
@@ -734,7 +739,7 @@ export async function rotateWatchlist(currentText, {
   maxYear = MAX_SEARCH_YEAR,
   onWarning = null,
 } = {}) {
-  const targetSize = Math.max(1, Number(batchSize) || DEFAULT_BATCH_SIZE);
+  const targetSize = onlySeries ? 1 : Math.max(1, Number(batchSize) || DEFAULT_BATCH_SIZE);
   const currentItems = parseWatchlist(currentText);
   const removedItems = [];
   const keptItems = [];
@@ -746,25 +751,34 @@ export async function rotateWatchlist(currentText, {
     const normTitle = normalizeTitleKey(item.label || item.name);
     const isDuplicateInBatch = batchIds.has(id) || (normTitle && batchTitles.has(normTitle));
     const mustKeep = !isDuplicateInBatch && typeof keep === 'function' && keep({ ...item, imdbId: id });
-    if (!mustKeep && (replaceAll || isDuplicateInBatch || seen.hasItem(item))) {
+    if (!mustKeep && (onlySeries || replaceAll || isDuplicateInBatch || seen.hasItem(item))) {
       seen.addItem(item);
       removedItems.push(item);
       continue;
     }
     batchIds.add(id);
     if (normTitle) batchTitles.add(normTitle);
-    keptItems.push(item);
+    keptItems.push(mustKeep ? { ...item, type: 'series' } : item);
   }
 
   let addedItems = [];
   if (autoDiscover && keptItems.length < targetSize) {
     const needed = targetSize - keptItems.length;
-    const hasSeries = keptItems.some(i => i.type === 'series');
-    const hasMovies = keptItems.some(i => i.type === 'movie');
-    let seriesCount = targetSize >= 2 ? Math.max(1, Math.round(needed * 0.2)) : 0;
-    if (hasSeries && needed === 1 && !hasMovies) seriesCount = 0;
-    if (!hasSeries && targetSize >= 2 && seriesCount === 0) seriesCount = 1;
-    const movieCount = Math.max(0, needed - seriesCount);
+    const keptSeriesCount = keptItems.filter(isSeriesEntry).length;
+    const hasSeries = keptSeriesCount > 0;
+    const hasMovies = keptItems.some(i => !isSeriesEntry(i));
+    let seriesCount;
+    if (onlySeries) {
+      seriesCount = needed;
+    } else {
+      seriesCount = targetSize >= 2 ? Math.max(1, Math.round(needed * 0.2)) : 0;
+      if (hasSeries && needed === 1 && !hasMovies) seriesCount = 0;
+      if (!hasSeries && targetSize >= 2 && seriesCount === 0) seriesCount = 1;
+      if (Number.isInteger(maxSeries) && maxSeries >= 0) {
+        seriesCount = Math.min(seriesCount, Math.max(0, maxSeries - keptSeriesCount));
+      }
+    }
+    const movieCount = onlySeries ? 0 : Math.max(0, needed - seriesCount);
 
     // Creamos una vista temporal de `seen` que también incluye los `keptItems`
     // para que `discoverCatalogItems` no los duplique.

@@ -57,9 +57,13 @@ import {
 } from '../public/lib/watchlist.js';
 import {
   advanceProgress,
+  candidateSeriesIds,
   countInProgress,
+  episodeTag,
   normalizeProgress,
+  parseSeriesTarget,
   pendingEpisodes,
+  pickActiveSeries,
   resumeKeepPredicate,
   resumeMissingItems,
 } from '../public/lib/progress.js';
@@ -108,6 +112,14 @@ const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_S
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
 const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
+// Seguir una sola serie hasta terminarla:
+//   '1' (por defecto) -> 1 sola serie activa a la vez (más las películas del lote)
+//   'only'            -> solo continuar la serie activa hasta terminarla (sin películas ni otras series)
+//   '0'               -> repartir entre varias series a la vez
+const RAW_FOLLOW_SERIES = String(process.env.FOLLOW_SERIES ?? '1').trim().toLowerCase();
+const ONLY_SERIES_MODE = ['only', 'solo', 'exclusive', 'serie'].includes(RAW_FOLLOW_SERIES);
+const FOLLOW_SINGLE_SERIES = ONLY_SERIES_MODE || !['0', 'false', 'no', 'off', 'multi'].includes(RAW_FOLLOW_SERIES);
+const SERIES_TARGET = parseSeriesTarget(process.env.SERIES_ID || '');
 const DRY_RUN_DB = process.env.DRY_RUN === '1' || process.env.DRY_RUN_DB === '1';
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -432,7 +444,7 @@ async function main() {
   console.log(`   metadatos   : ${REPROCESS ? 'los ya publicados' : metaSources.length ? metaSources.join(' + ') : 'desactivados'}`);
   console.log(`   Supabase    : ${repo.enabled ? 'configurada ✅' : repo.skipReason === 'missing-credentials' ? `sin credenciales (faltan ${repo.missingCredentials.join(' y ')}; solo JSON)` : 'DRY RUN (solo JSON; no escribe en la BD)'}`);
   console.log(`   selección   : 2 por título → 🇪🇸 mejor en español + 🇬🇧 mejor en inglés`);
-  console.log(`   series      : las series en progreso reanudan donde quedaron (progress.json)${MAX_EPISODES_PER_RUN ? ` · máx. ${MAX_EPISODES_PER_RUN} episodios expandidos por corrida` : ''}`);
+  console.log(`   series      : ${ONLY_SERIES_MODE ? `🎯 solo continuar 1 serie hasta terminarla${SERIES_TARGET ? ` (${SERIES_TARGET.imdbId})` : ''}` : FOLLOW_SINGLE_SERIES ? `🎯 seguir 1 sola serie a la vez hasta terminarla${SERIES_TARGET ? ` (${SERIES_TARGET.imdbId})` : ''}` : 'varias series en paralelo'} (progress.json)${MAX_EPISODES_PER_RUN ? ` · máx. ${MAX_EPISODES_PER_RUN} episodios expandidos por corrida` : ''}`);
   const bestTrackers = FIXTURE_MODE || REPROCESS
     ? await loadBestTrackers({ url: '' })
     : await loadBestTrackers({ url: TRACKERS_URL, timeoutMs: Math.min(FETCH_TIMEOUT_MS, 10000), headers: { 'user-agent': USER_AGENTS[0] } });
@@ -447,10 +459,12 @@ async function main() {
     warn(`No se guardará en Supabase: faltan ${repo.missingCredentials.join(' y ')} en los Secrets de GitHub Actions. Solo se publicarán los JSON.`);
   }
 
-  const seen = await loadSeenStore(repo, { queryDb: AUTO_WATCHLIST });
+  const seen = await loadSeenStore(repo, { queryDb: AUTO_WATCHLIST || ONLY_SERIES_MODE });
   let watchlistRotation = null;
   let loadedItems = [];
   let progress = normalizeProgress(null);
+  let activeSeriesId = null;
+  let queuedSeries = [];
   let metaById = new Map();
 
   // 1. Consultas: del watchlist (con Cinemeta) o de los datos ya publicados.
@@ -477,60 +491,152 @@ async function main() {
     }
     let preMetaById = new Map();
     let preMetaStats = null;
-    if (AUTO_WATCHLIST) {
-      // Antes de rotar: ¿a qué series completas aún les faltan episodios?
-      // Esas se conservan en el watchlist (aunque ya estén en el historial)
-      // y se reinyectan las que un Issue haya podido borrar.
-      const preItems = parseWatchlist(watchText, { onWarning: warn });
-      const resumeItems = FIXTURE_MODE ? [] : resumeMissingItems(progress, preItems);
-      const preAll = [...preItems, ...resumeItems];
-      let pendingBySeries = null;
-      if (!FIXTURE_MODE && CINEMETA_ENABLED && preAll.length) {
-        const prepass = await loadMetadata(preAll, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn });
-        preMetaById = prepass.metaById;
-        preMetaStats = prepass.stats;
+    const preItems = parseWatchlist(watchText, { onWarning: warn });
+    let pendingBySeries = null;
+
+    if (FOLLOW_SINGLE_SERIES) {
+      queuedSeries = preItems
+        .filter(it => it.season == null && (it.type === 'series' || it.typeHint === 'series') && !progress.series[it.imdbId] && !seen.hasItem(it))
+        .map(it => ({ imdbId: it.imdbId, label: it.label || it.name || it.imdbId }));
+      const candidates = candidateSeriesIds(progress, preItems, { preferredId: SERIES_TARGET?.imdbId || null });
+      if (!FIXTURE_MODE && CINEMETA_ENABLED && candidates.length) {
         pendingBySeries = new Map();
-        for (const it of preAll) {
-          if (it.season != null) continue;
-          const meta = preMetaById.get(it.imdbId);
-          if (meta?.type !== 'series') continue;
-          pendingBySeries.set(it.imdbId, pendingEpisodes(it.imdbId, meta, seen.keys).length);
+        preMetaStats = { source: 'cinemeta', requested: 0, found: 0, failures: 0, disabled: false, lastError: null };
+        for (const candidate of candidates) {
+          if (candidate.source !== 'preferred' && !progress?.series?.[candidate.imdbId] && seen.hasItem({ imdbId: candidate.imdbId, name: candidate.label })) {
+            continue;
+          }
+          const singlePre = await loadMetadata([{ imdbId: candidate.imdbId, type: 'series', typeHint: 'series' }], {
+            fetchJSON: pipelineFetch,
+            baseUrl: CINEMETA_BASE_URL,
+            concurrency: 1,
+            onWarning: warn,
+          });
+          for (const [k, v] of singlePre.metaById) preMetaById.set(k, v);
+          preMetaStats.requested += singlePre.stats.requested;
+          preMetaStats.found += singlePre.stats.found;
+          preMetaStats.failures += singlePre.stats.failures;
+          preMetaStats.disabled = preMetaStats.disabled || singlePre.stats.disabled;
+          preMetaStats.lastError = singlePre.stats.lastError || preMetaStats.lastError;
+          const meta = preMetaById.get(candidate.imdbId);
+          if (meta?.type === 'series') {
+            const pendingCount = pendingEpisodes(candidate.imdbId, meta, seen.keys).length;
+            pendingBySeries.set(candidate.imdbId, pendingCount);
+            if (pendingCount > 0) {
+              activeSeriesId = candidate.imdbId;
+              break;
+            }
+            if (candidate.source === 'preferred') {
+              warn(`${candidate.imdbId}${meta?.name ? ` (“${meta.name}”)` : ''} ya tiene todos sus episodios emitidos ingeridos; se continúa con la siguiente serie pendiente.`);
+            }
+          } else if (candidate.source === 'preferred' && !meta) {
+            activeSeriesId = candidate.imdbId;
+            break;
+          }
+          if (preMetaStats.disabled) break;
+        }
+      } else {
+        activeSeriesId = pickActiveSeries(progress, preItems, { preferredId: SERIES_TARGET?.imdbId || null, seen });
+      }
+      queuedSeries = queuedSeries.filter(q => q.imdbId !== activeSeriesId);
+    }
+
+    if (AUTO_WATCHLIST || ONLY_SERIES_MODE) {
+      if (!FOLLOW_SINGLE_SERIES) {
+        const resumeItems = FIXTURE_MODE ? [] : resumeMissingItems(progress, preItems);
+        const preAll = [...preItems, ...resumeItems];
+        if (!FIXTURE_MODE && CINEMETA_ENABLED && preAll.length) {
+          const prepass = await loadMetadata(preAll, { fetchJSON: pipelineFetch, baseUrl: CINEMETA_BASE_URL, concurrency: FETCH_CONCURRENCY, onWarning: warn });
+          preMetaById = prepass.metaById;
+          preMetaStats = prepass.stats;
+          pendingBySeries = new Map();
+          for (const it of preAll) {
+            if (it.season != null) continue;
+            const meta = preMetaById.get(it.imdbId);
+            if (meta?.type !== 'series') continue;
+            pendingBySeries.set(it.imdbId, pendingEpisodes(it.imdbId, meta, seen.keys).length);
+          }
         }
       }
+      const keepPred = FIXTURE_MODE && !SERIES_TARGET
+        ? null
+        : resumeKeepPredicate(progress, {
+            pendingById: pendingBySeries,
+            ...(FOLLOW_SINGLE_SERIES ? { activeSeriesId } : {}),
+          });
+      const preResumed = FIXTURE_MODE && !SERIES_TARGET
+        ? []
+        : resumeMissingItems(progress, preItems, {
+            pendingById: pendingBySeries,
+            ...(FOLLOW_SINGLE_SERIES ? { activeSeriesId, preferredTarget: SERIES_TARGET } : {}),
+          });
+      const hasActiveInBatch = Boolean(activeSeriesId) && (preResumed.length > 0 || preItems.some(i => i.season == null && i.imdbId.toLowerCase() === activeSeriesId));
+      const targetBatch = ONLY_SERIES_MODE ? 1 : WATCHLIST_BATCH_SIZE;
+      const rotateBatchSize = FOLLOW_SINGLE_SERIES ? Math.max(1, targetBatch - preResumed.length) : WATCHLIST_BATCH_SIZE;
+      const shouldDiscover = ONLY_SERIES_MODE ? !hasActiveInBatch : (!FOLLOW_SINGLE_SERIES || targetBatch - preResumed.length > 0);
       const rotation = await rotateWatchlist(watchText, {
         seen,
         fetchJSON: (CINEMETA_ENABLED || TMDB_API_KEY) && !FIXTURE_MODE ? pipelineFetch : null,
-        autoDiscover: true,
-        replaceAll: REPLACE_WATCHLIST,
-        keep: FIXTURE_MODE ? null : resumeKeepPredicate(progress, { pendingById: pendingBySeries }),
-        batchSize: WATCHLIST_BATCH_SIZE,
+        autoDiscover: shouldDiscover,
+        replaceAll: ONLY_SERIES_MODE || REPLACE_WATCHLIST,
+        keep: keepPred,
+        batchSize: rotateBatchSize,
+        maxSeries: FOLLOW_SINGLE_SERIES ? (preResumed.length > 0 ? 0 : 1) : null,
+        onlySeries: ONLY_SERIES_MODE,
         tmdbApiKey: !FIXTURE_MODE ? TMDB_API_KEY : '',
         baseUrl: CINEMETA_BASE_URL,
         minYear: SEARCH_MIN_YEAR,
         maxYear: SEARCH_MAX_YEAR,
         onWarning: warn,
       });
-      const resumed = FIXTURE_MODE ? [] : resumeMissingItems(progress, rotation.items, { pendingById: pendingBySeries });
+      const resumed = FIXTURE_MODE && !SERIES_TARGET
+        ? []
+        : resumeMissingItems(progress, rotation.items, {
+            pendingById: pendingBySeries,
+            ...(FOLLOW_SINGLE_SERIES ? { activeSeriesId, preferredTarget: SERIES_TARGET } : {}),
+          });
       const finalItems = [...rotation.items, ...resumed];
+      if (FOLLOW_SINGLE_SERIES && !activeSeriesId) {
+        const discoveredSeries = finalItems.find(i => i.type === 'series' || i.typeHint === 'series');
+        if (discoveredSeries) activeSeriesId = discoveredSeries.imdbId.toLowerCase();
+      }
       watchText = resumed.length
         ? formatWatchlistFile(finalItems, { date: new Date(), removedCount: rotation.removedCount, addedCount: rotation.addedCount })
         : rotation.text;
       await writeFile(WATCHLIST_PATH, watchText, 'utf8');
       watchlistRotation = {
         autoUpdated: true,
-        batchSize: WATCHLIST_BATCH_SIZE,
+        batchSize: targetBatch,
         yearRange: { min: SEARCH_MIN_YEAR, max: SEARCH_MAX_YEAR },
         removedCount: rotation.removedCount,
         keptCount: rotation.keptCount + resumed.length,
         addedCount: rotation.addedCount,
         resumedCount: resumed.length,
         totalSeenBefore: seen.imdbIds.size,
+        ...(FOLLOW_SINGLE_SERIES ? { followSeries: ONLY_SERIES_MODE ? 'only' : '1', activeSeries: activeSeriesId } : {}),
       };
-      console.log(`🔄 Watchlist actualizado: ${finalItems.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) en progreso continúan` : ''} · ${seen.imdbIds.size} en historial sin repetir).`);
+      console.log(`🔄 Watchlist actualizado: ${finalItems.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) en progreso continúan` : ''}${activeSeriesId ? ` · 🎯 serie activa: ${activeSeriesId}` : ''} · ${seen.imdbIds.size} en historial sin repetir).`);
     }
-    const items = parseWatchlist(watchText, { onWarning: warn });
+    let items = parseWatchlist(watchText, { onWarning: warn });
+    if (SERIES_TARGET && !items.some(i => i.imdbId === SERIES_TARGET.imdbId)) {
+      items.push({
+        imdbId: SERIES_TARGET.imdbId,
+        type: 'series',
+        typeHint: 'series',
+        season: null,
+        episode: null,
+        label: SERIES_TARGET.label || progress?.series?.[SERIES_TARGET.imdbId]?.name || SERIES_TARGET.imdbId,
+      });
+    }
+    if (FOLLOW_SINGLE_SERIES && activeSeriesId) {
+      items = items.filter(i => {
+        if (ONLY_SERIES_MODE) return i.imdbId === activeSeriesId;
+        const isKnownWholeSeries = i.season == null && (i.type === 'series' || i.typeHint === 'series' || Boolean(progress?.series?.[i.imdbId]));
+        return !isKnownWholeSeries || i.imdbId === activeSeriesId;
+      });
+    }
     loadedItems = items;
-    console.log(`🔎 Watchlist: ${items.length} líneas.`);
+    console.log(`🔎 Watchlist: ${items.length} líneas${activeSeriesId ? ` (🎯 siguiendo serie ${activeSeriesId} hasta terminarla)` : ''}.`);
     const labelsById = new Map();
     if (FIXTURE_MODE) pipelineFetch = createFixtureFetch(new Set(items.filter(i => i.type === 'series').map(i => i.imdbId)), labelsById);
     if (CINEMETA_ENABLED) {
@@ -562,6 +668,8 @@ async function main() {
       // los episodios expandidos de cada ejecución (el resto queda pendiente).
       doneKeys: FIXTURE_MODE ? null : seen.keys,
       maxEpisodeQueries: REPROCESS ? null : (MAX_EPISODES_PER_RUN || null),
+      singleSeries: FOLLOW_SINGLE_SERIES,
+      focusSeriesId: FOLLOW_SINGLE_SERIES ? activeSeriesId : null,
       onWarning: warn,
     });
     for (const q of queries) labelsById.set(q.kind === 'movie' ? q.imdbId : `${q.imdbId}:${q.season}:${q.episode}`, q.label || q.imdbId);
@@ -649,7 +757,7 @@ async function main() {
 
   // Persistimos SOLO los 2 mejores torrents elegidos por título (1 🇪🇸 + 1 🇬🇧),
   // sin repetir info_hash ni nombres de torrents ya vistos.
-  const { dbCandidates } = selectUniqueDbCandidates(pipeline.results, { seen: AUTO_WATCHLIST ? seen : null });
+  const { dbCandidates } = selectUniqueDbCandidates(pipeline.results, { seen: (AUTO_WATCHLIST || ONLY_SERIES_MODE) ? seen : null });
 
   // 5. Supabase (opcional).
   if (dbCandidates.length) {
@@ -674,12 +782,22 @@ async function main() {
   // para reanudarlas en la próxima ejecución y conservar en el watchlist solo
   // las series a las que todavía les faltan episodios.
   if (mode === 'live') {
-    const seriesIds = pipeline.results.filter(r => r.item.type === 'series').map(r => r.item.imdbId);
-    progress = advanceProgress(progress, { metaById, doneKeys: seen.keys, imdbIds: seriesIds });
+    const seriesIds = [...new Set(pipeline.results.filter(r => r.item.type === 'series').map(r => r.item.imdbId))];
+    progress = advanceProgress(progress, {
+      metaById,
+      doneKeys: seen.keys,
+      imdbIds: seriesIds,
+      activeSeries: FOLLOW_SINGLE_SERIES ? (activeSeriesId || seriesIds[0] || undefined) : null,
+      queuedSeries,
+    });
     await writeJSON(PROGRESS_PATH, progress);
     if (Object.keys(progress.series).length) {
       const pendientes = countInProgress(progress);
-      console.log(`⏪ Progreso de series: ${pendientes} en progreso${pendientes ? ' (la próxima ejecución sigue donde quedó' + (MAX_EPISODES_PER_RUN ? `, máx. ${MAX_EPISODES_PER_RUN} episodios por corrida` : '') + ')' : ''} · historial en public/data/progress.json`);
+      const nextActive = progress.activeSeries ? progress.series[progress.activeSeries] : null;
+      const nextHint = nextActive
+        ? ` · 🎯 próxima corrida sigue con ${nextActive.name}${nextActive.nextSeason != null ? ` (${episodeTag(nextActive.nextSeason, nextActive.nextEpisode)}, ${nextActive.done}/${nextActive.total})` : ''}`
+        : '';
+      console.log(`⏪ Progreso de series: ${pendientes} en progreso${pendientes ? ' (la próxima ejecución sigue donde quedó' + (MAX_EPISODES_PER_RUN ? `, máx. ${MAX_EPISODES_PER_RUN} episodios por corrida` : '') + ')' : ''}${nextHint} · historial en public/data/progress.json`);
       index.progress = progress;
     }
   }

@@ -28,7 +28,7 @@ import { buildIssueBody, buildIssueTitle, sanitizeWatchlistLines } from './lib/i
 import { picksToRows, toCSV, toMagnetList } from './lib/format.js';
 import { describeDatabaseWrite } from './lib/persistence.js';
 import { createSeenStore, formatWatchlistFile, rotateWatchlist } from './lib/watchlist.js';
-import { normalizeProgress, resumeKeepPredicate, resumeMissingItems } from './lib/progress.js';
+import { normalizeProgress, pickActiveSeries, resumeKeepPredicate, resumeMissingItems } from './lib/progress.js';
 
 const LS_KEY = 'peerflix-static.settings.v2';
 const LOCAL_KEY = 'peerflix-static.local.v1';
@@ -495,17 +495,21 @@ function renderSeriesProgress() {
   const el = $('#series-progress');
   if (!el) return;
   const progress = state.source === 'published' ? state.published?.progress : null;
+  const activeId = progress?.activeSeries || null;
   const records = Object.entries(progress?.series || {});
-  const pending = records.filter(([, r]) => r.status === 'in-progress');
+  const pending = records
+    .filter(([, r]) => r.status === 'in-progress')
+    .sort(([a], [b]) => (a === activeId ? -1 : b === activeId ? 1 : 0));
   const complete = records.filter(([, r]) => r.status === 'complete').slice(0, 8);
   if (!pending.length && !complete.length) { el.classList.add('hidden'); el.innerHTML = ''; return; }
   const tag = (s, e) => `S${String(s ?? 0).padStart(2, '0')}E${String(e ?? 0).padStart(2, '0')}`;
   const row = ([id, r]) => {
     const pct = r.total ? Math.min(100, Math.round(100 * r.done / r.total)) : 0;
     const poster = posterUrl(id, 'small');
+    const isActive = id === activeId && r.status === 'in-progress';
     const stateTxt = r.status === 'complete'
       ? '✅ completa'
-      : `⏳ sigue en ${tag(r.nextSeason, r.nextEpisode)} la próxima ejecución`;
+      : `${isActive ? '🎯 siguiendo hasta terminarla · ' : ''}⏳ sigue en ${tag(r.nextSeason, r.nextEpisode)} la próxima ejecución`;
     return `<div class="sp-row">
       ${poster ? `<img class="sp-poster" src="${escapeHtml(poster)}" alt="" loading="lazy"/>` : ''}
       <div class="sp-main">
@@ -839,24 +843,27 @@ $('#auto-rotate-wl').addEventListener('click', async () => {
     if (state.published?.index) seen.addFromIndex(state.published.index);
     for (const item of loadLocal().items) seen.addItem(item);
     const fetchJSON = createJsonFetcher({ timeoutMs: 10000, retries: 1 });
-    // Las series a las que aún les faltan episodios se conservan (y se
-    // reinyectan si no estaban) para seguir donde se quedó la ingesta.
+    // Solo se conserva y continúa 1 serie activa a la vez hasta terminarla.
     const progress = state.published?.progress || normalizeProgress(null);
+    const currentItems = parseWatchlist($('#watchlist').value);
+    const activeSeriesId = pickActiveSeries(progress, currentItems, { seen });
+    const preResumed = resumeMissingItems(progress, currentItems, { activeSeriesId });
     const rotation = await rotateWatchlist($('#watchlist').value, {
       seen,
       fetchJSON: state.settings.cinemeta !== false ? fetchJSON : null,
       autoDiscover: true,
       replaceAll: true,
-      keep: resumeKeepPredicate(progress),
-      batchSize: 10,
+      keep: resumeKeepPredicate(progress, { activeSeriesId }),
+      batchSize: Math.max(1, 10 - preResumed.length),
+      maxSeries: preResumed.length > 0 ? 0 : 1,
     });
-    const resumed = resumeMissingItems(progress, rotation.items);
+    const resumed = resumeMissingItems(progress, rotation.items, { activeSeriesId });
     $('#watchlist').value = resumed.length
       ? formatWatchlistFile([...rotation.items, ...resumed], { removedCount: rotation.removedCount, addedCount: rotation.addedCount })
       : rotation.text;
-    $('#upload-name').textContent = `Lote nuevo (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) continúan` : ''})`;
+    $('#upload-name').textContent = `Lote nuevo (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie continúa` : ''})`;
     updateWatchlistPreview();
-    setStatus(`✅ Watchlist actualizado: ${rotation.addedCount} títulos nuevos (${rotation.removedCount} anteriores eliminados${resumed.length ? `; ${resumed.length} serie(s) en progreso continúan donde quedaron` : ''}).`);
+    setStatus(`✅ Watchlist actualizado: ${rotation.addedCount} títulos nuevos (${rotation.removedCount} anteriores eliminados${resumed.length ? `; ${resumed.length} serie en progreso continúa donde quedó` : ''}).`);
   } catch (err) {
     setStatus(`❌ No se pudo autogenerar el watchlist: ${err.message}`);
   }
