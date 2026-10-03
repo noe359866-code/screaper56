@@ -1,0 +1,263 @@
+{
+  "id": "tt1727824",
+  "imdbId": "tt1727824",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Bohemian Rhapsody (2018)",
+  "name": "Bohemian Rhapsody",
+  "year": 2018,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1727824.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1727824.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1727824.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1727824.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1727824.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1727824.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 153,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN",
+      "quality": "4K",
+      "seeders": 42,
+      "sizeBytes": 39556648796,
+      "sizeLabel": "36.8 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "infoHash": "a9b6cf450c20f6802ca5f526d89ca48db09eca9e",
+      "fileIdx": 0,
+      "score": 15.07,
+      "magnetUrl": "magnet:?xt=urn:btih:a9b6cf450c20f6802ca5f526d89ca48db09eca9e&dn=Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Bohemian Rhapsody (2018) (2160p x265 10bit HDR UHD BD Atmos) [Prof]",
+      "quality": "4K",
+      "seeders": 115,
+      "sizeBytes": 17598628495,
+      "sizeLabel": "16.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "Atmos"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "infoHash": "66b5eed39521f91d01b45caa8578533016f720c9",
+      "fileIdx": 0,
+      "score": 8.49,
+      "magnetUrl": "magnet:?xt=urn:btih:66b5eed39521f91d01b45caa8578533016f720c9&dn=Bohemian%20Rhapsody%20(2018)%20(2160p%20x265%2010bit%20HDR%20UHD%20BD%20Atmos)%20%5BProf%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 115,
+  "qualities": [
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN",
+      "description": "Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN\n🎞️ REMUX · HEVC · DV · HDR10 · DD+ 5.1\n👤 42 💾 36.8 GB ⚙️ TorrentsDB+StremThru Torz",
+      "pick": "es",
+      "score": 15.07,
+      "infoHash": "a9b6cf450c20f6802ca5f526d89ca48db09eca9e",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 42,
+      "sizeBytes": 39556648796,
+      "sizeLabel": "36.8 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": "HEVC",
+        "hdr": [
+          "DV",
+          "HDR10"
+        ],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb"
+      ],
+      "filename": "Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:a9b6cf450c20f6802ca5f526d89ca48db09eca9e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a9b6cf450c20f6802ca5f526d89ca48db09eca9e&dn=Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Bohemian.Rhapsody.2018.2160p.REMUX.Dolby.Vision.And.HDR10.PLUS.ENG.And.ESP.LATINO.DDP5.1.DV.x265.MP4-BEN.THE.MEN.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Bohemian Rhapsody (2018) (2160p x265 10bit HDR UHD BD Atmos) [Prof]",
+      "description": "Bohemian Rhapsody (2018) (2160p x265 10bit HDR UHD BD Atmos) [Prof]\n🎞️ HEVC · HDR · Atmos\n👤 115 💾 16.4 GB ⚙️ TorrentsDB+StremThru Torz",
+      "pick": "en",
+      "score": 8.49,
+      "infoHash": "66b5eed39521f91d01b45caa8578533016f720c9",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 115,
+      "sizeBytes": 17598628495,
+      "sizeLabel": "16.4 GB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "Atmos"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "rargb",
+        "Torrents.csv"
+      ],
+      "filename": "Bohemian Rhapsody (2018).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:66b5eed39521f91d01b45caa8578533016f720c9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:66b5eed39521f91d01b45caa8578533016f720c9&dn=Bohemian%20Rhapsody%20(2018)%20(2160p%20x265%2010bit%20HDR%20UHD%20BD%20Atmos)%20%5BProf%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Bohemian Rhapsody (2018).mkv"
+      }
+    }
+  ]
+}

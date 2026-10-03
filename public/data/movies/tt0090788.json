@@ -1,0 +1,148 @@
+{
+  "id": "tt0090788",
+  "imdbId": "tt0090788",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Body Count (1986)",
+  "name": "Body Count",
+  "year": 1986,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0090788.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0090788.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0090788.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0090788.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0090788.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 8,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Body.Count.1986.DVDRip.x264",
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 1567663063,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "492dce435166108bba8f7485955828e8bf4bb04a",
+      "fileIdx": 0,
+      "score": 4.52,
+      "magnetUrl": "magnet:?xt=urn:btih:492dce435166108bba8f7485955828e8bf4bb04a&dn=Body.Count.1986.DVDRip.x264&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 6,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Body.Count.1986.DVDRip.x264",
+      "description": "Body.Count.1986.DVDRip.x264\n🎞️ DVD · AVC\n👤 6 💾 1.5 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 4.52,
+      "infoHash": "492dce435166108bba8f7485955828e8bf4bb04a",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 6,
+      "sizeBytes": 1567663063,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": "DVD",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "MagnetDL",
+        "Knaben"
+      ],
+      "filename": "Body Count 1986 DVDRip x264.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:492dce435166108bba8f7485955828e8bf4bb04a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:492dce435166108bba8f7485955828e8bf4bb04a&dn=Body.Count.1986.DVDRip.x264&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Body Count 1986 DVDRip x264.mkv"
+      }
+    }
+  ]
+}

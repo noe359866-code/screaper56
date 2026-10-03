@@ -1,0 +1,245 @@
+{
+  "id": "tt0039895",
+  "imdbId": "tt0039895",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "I Became a Criminal (1947)",
+  "name": "I Became a Criminal",
+  "year": 1947,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0039895.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0039895.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0039895.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0039895.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0039895.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0039895.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 22,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Me Hicieron Un Fugitivo 1947 [BDrip][Español Castellano]",
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 1653562408,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "infoHash": "de3f5dd84e3c2ea88c6a904fd68b452204839d95",
+      "fileIdx": 0,
+      "score": 7.25,
+      "magnetUrl": "magnet:?xt=urn:btih:de3f5dd84e3c2ea88c6a904fd68b452204839d95&dn=Me%20Hicieron%20Un%20Fugitivo%201947%20%5BBDrip%5D%5BEspa%C3%B1ol%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "I Became a Criminal 1947 m1080p BluRay x264-GeneMige",
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "8934da849d6c999158ad207eaaf954a60f1f6620",
+      "fileIdx": 0,
+      "score": 7.05,
+      "magnetUrl": "magnet:?xt=urn:btih:8934da849d6c999158ad207eaaf954a60f1f6620&dn=I%20Became%20a%20Criminal%201947%20m1080p%20BluRay%20x264-GeneMige&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 14,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Me Hicieron Un Fugitivo 1947 [BDrip][Español Castellano]",
+      "description": "Me Hicieron Un Fugitivo 1947 [BDrip][Español Castellano]\n🎞️ BluRay\n👤 0 💾 1.5 GB ⚙️ Peerflix+TorrentClaw",
+      "pick": "es",
+      "score": 7.25,
+      "infoHash": "de3f5dd84e3c2ea88c6a904fd68b452204839d95",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 0,
+      "sizeBytes": 1653562408,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": "Me Hicieron Un Fugitivo 1947 [BDrip][Español Castellano]",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:de3f5dd84e3c2ea88c6a904fd68b452204839d95"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:de3f5dd84e3c2ea88c6a904fd68b452204839d95&dn=Me%20Hicieron%20Un%20Fugitivo%201947%20%5BBDrip%5D%5BEspa%C3%B1ol%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Me Hicieron Un Fugitivo 1947 [BDrip][Español Castellano]"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "I Became a Criminal 1947 m1080p BluRay x264-GeneMige",
+      "description": "I Became a Criminal 1947 m1080p BluRay x264-GeneMige\n🎞️ BluRay · AVC\n👤 14 💾 2.7 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 7.05,
+      "infoHash": "8934da849d6c999158ad207eaaf954a60f1f6620",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay"
+      ],
+      "filename": "I Became a Criminal 1947 m1080p BluRay x264-GeneMige.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker2.dler.org:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:8934da849d6c999158ad207eaaf954a60f1f6620"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8934da849d6c999158ad207eaaf954a60f1f6620&dn=I%20Became%20a%20Criminal%201947%20m1080p%20BluRay%20x264-GeneMige&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "I Became a Criminal 1947 m1080p BluRay x264-GeneMige.mkv"
+      }
+    }
+  ]
+}
