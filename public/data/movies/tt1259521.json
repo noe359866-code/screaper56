@@ -1,0 +1,242 @@
+{
+  "id": "tt1259521",
+  "imdbId": "tt1259521",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Cabin in the Woods (2012)",
+  "name": "The Cabin in the Woods",
+  "year": 2012,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1259521.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1259521.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1259521.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1259521.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 108,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "La Cabaña En El Bosque [BluRay Rip][AC3 2.0 Español Castellano]",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 1760936591,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "61661653d55cec3e7a97ae7ec1c545987c91cc0f",
+      "fileIdx": 1,
+      "score": 14.41,
+      "magnetUrl": "magnet:?xt=urn:btih:61661653d55cec3e7a97ae7ec1c545987c91cc0f&dn=La%20Caba%C3%B1a%20En%20El%20Bosque%20%5BBluRay%20Rip%5D%5BAC3%202.0%20Espa%C3%B1ol%20Castellano%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Cabin in the Woods (2011)",
+      "quality": "1080p",
+      "seeders": 100,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "infoHash": "ee48ac557b1abe606d87f9c89758498f5ad660ba",
+      "fileIdx": null,
+      "score": 8.18,
+      "magnetUrl": "magnet:?xt=urn:btih:ee48ac557b1abe606d87f9c89758498f5ad660ba&dn=The%20Cabin%20in%20the%20Woods%20(2011)&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 100,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "La Cabaña En El Bosque [BluRay Rip][AC3 2.0 Español Castellano]",
+      "description": "La Cabaña En El Bosque [BluRay Rip][AC3 2.0 Español Castellano]\n🎞️ BluRay · AC3 2.0\n👤 4 💾 1.6 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.41,
+      "infoHash": "61661653d55cec3e7a97ae7ec1c545987c91cc0f",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 1760936591,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:61661653d55cec3e7a97ae7ec1c545987c91cc0f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:61661653d55cec3e7a97ae7ec1c545987c91cc0f&dn=La%20Caba%C3%B1a%20En%20El%20Bosque%20%5BBluRay%20Rip%5D%5BAC3%202.0%20Espa%C3%B1ol%20Castellano%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Cabin in the Woods (2011)",
+      "description": "The Cabin in the Woods (2011)\n👤 100 💾 1.4 GB ⚙️ Ytztvio",
+      "pick": "en",
+      "score": 8.18,
+      "infoHash": "ee48ac557b1abe606d87f9c89758498f5ad660ba",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 100,
+      "sizeBytes": 1503238554,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "x264"
+      ],
+      "filename": null,
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:ee48ac557b1abe606d87f9c89758498f5ad660ba"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ee48ac557b1abe606d87f9c89758498f5ad660ba&dn=The%20Cabin%20in%20the%20Woods%20(2011)&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "tt0046054",
+  "imdbId": "tt0046054",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Master of Ballantrae (1953)",
+  "name": "The Master of Ballantrae",
+  "year": 1953,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0046054.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0046054.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0046054.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0046054.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0046054.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0046054.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0046054.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 10,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "The Master Of Ballantrae 1953 (DVD 5)",
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 4509715661,
+      "sizeLabel": "4.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "d32ed10b25aea2d63711636dab29836e7bb461b2",
+      "fileIdx": null,
+      "score": 3.62,
+      "magnetUrl": "magnet:?xt=urn:btih:d32ed10b25aea2d63711636dab29836e7bb461b2&dn=The%20Master%20Of%20Ballantrae%201953%20(DVD%205)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "The Master Of Ballantrae 1953 (DVD 5)",
+      "description": "The Master Of Ballantrae 1953 (DVD 5)\n🎞️ DVD\n👤 1 💾 4.2 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 3.62,
+      "infoHash": "d32ed10b25aea2d63711636dab29836e7bb461b2",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 4509715661,
+      "sizeLabel": "4.2 GB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "The Master Of Ballantrae 1953 (DVD 5)",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:d32ed10b25aea2d63711636dab29836e7bb461b2"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d32ed10b25aea2d63711636dab29836e7bb461b2&dn=The%20Master%20Of%20Ballantrae%201953%20(DVD%205)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Master Of Ballantrae 1953 (DVD 5)"
+      }
+    }
+  ]
+}

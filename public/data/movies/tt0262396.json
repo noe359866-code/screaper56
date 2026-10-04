@@ -1,0 +1,162 @@
+{
+  "id": "tt0262396",
+  "imdbId": "tt0262396",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Empire (2002)",
+  "name": "Empire",
+  "year": 2002,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0262396.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0262396.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0262396.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0262396.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0262396.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0262396.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 20,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Empire (2002) [1080p] [BluRay] [5.1]",
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 1964947538,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "infoHash": "eb35ef521e7915446226f446def0b6d3139c0e4f",
+      "fileIdx": 0,
+      "score": 7.86,
+      "magnetUrl": "magnet:?xt=urn:btih:eb35ef521e7915446226f446def0b6d3139c0e4f&dn=Empire%20(2002)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 47,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Empire (2002) [1080p] [BluRay] [5.1]",
+      "description": "Empire (2002) [1080p] [BluRay] [5.1]\n🎞️ BluRay · AVC · AAC 5.1\n👤 47 💾 1.8 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 7.86,
+      "infoHash": "eb35ef521e7915446226f446def0b6d3139c0e4f",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 1964947538,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "YTS",
+        "x264"
+      ],
+      "filename": "Empire.2002.1080p.BluRay.x264.AAC5.1-[YTS.BZ].mp4",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:eb35ef521e7915446226f446def0b6d3139c0e4f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:eb35ef521e7915446226f446def0b6d3139c0e4f&dn=Empire%20(2002)%20%5B1080p%5D%20%5BBluRay%5D%20%5B5.1%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Empire.2002.1080p.BluRay.x264.AAC5.1-[YTS.BZ].mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "id": "tt0319758",
+  "imdbId": "tt0319758",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Live from Baghdad (2002)",
+  "name": "Live from Baghdad",
+  "year": 2002,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0319758.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0319758.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0319758.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0319758.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0319758.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0319758.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "Fuego sobre Bagdad [DVDRip Espanol Drama 2002][ToDoTorrente.com]",
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 751619277,
+      "sizeLabel": "717 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "infoHash": "15bb40d9415b52bd5905e7ca968042dfaa458bc2",
+      "fileIdx": null,
+      "score": 4.7,
+      "magnetUrl": "magnet:?xt=urn:btih:15bb40d9415b52bd5905e7ca968042dfaa458bc2&dn=Fuego%20sobre%20Bagdad%20%5BDVDRip%20Espanol%20Drama%202002%5D%5BToDoTorrente.com%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Live.from.Baghdad.2002.HDTV.1080p.x264.[ExYu-Subs]",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "4aed5b4ed268fa01b6409b95fdcec4af6f799d58",
+      "fileIdx": 0,
+      "score": 6.47,
+      "magnetUrl": "magnet:?xt=urn:btih:4aed5b4ed268fa01b6409b95fdcec4af6f799d58&dn=Live.from.Baghdad.2002.HDTV.1080p.x264.%5BExYu-Subs%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p",
+    "480p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Fuego sobre Bagdad [DVDRip Espanol Drama 2002][ToDoTorrente.com]",
+      "description": "Fuego sobre Bagdad [DVDRip Espanol Drama 2002][ToDoTorrente.com]\n🎞️ DVD\n👤 0 💾 717 MB ⚙️ Peerflix+TorrentClaw",
+      "pick": "es",
+      "score": 4.7,
+      "infoHash": "15bb40d9415b52bd5905e7ca968042dfaa458bc2",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": 751619277,
+      "sizeLabel": "717 MB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "MejorTorrent"
+      ],
+      "filename": "Fuego sobre Bagdad [DVDRip Espanol Drama 2002][ToDoTorrente.com]",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:15bb40d9415b52bd5905e7ca968042dfaa458bc2"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:15bb40d9415b52bd5905e7ca968042dfaa458bc2&dn=Fuego%20sobre%20Bagdad%20%5BDVDRip%20Espanol%20Drama%202002%5D%5BToDoTorrente.com%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Fuego sobre Bagdad [DVDRip Espanol Drama 2002][ToDoTorrente.com]"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Live.from.Baghdad.2002.HDTV.1080p.x264.[ExYu-Subs]",
+      "description": "Live.from.Baghdad.2002.HDTV.1080p.x264.[ExYu-Subs]\n🎞️ HDTV · AVC\n👤 6 💾 1.6 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.47,
+      "infoHash": "4aed5b4ed268fa01b6409b95fdcec4af6f799d58",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 1717986918,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Knaben"
+      ],
+      "filename": "Live.from.Baghdad.2002.HDTV.1080p.x264.[ExYu-Subs].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:4aed5b4ed268fa01b6409b95fdcec4af6f799d58"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4aed5b4ed268fa01b6409b95fdcec4af6f799d58&dn=Live.from.Baghdad.2002.HDTV.1080p.x264.%5BExYu-Subs%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Live.from.Baghdad.2002.HDTV.1080p.x264.[ExYu-Subs].mp4"
+      }
+    }
+  ]
+}

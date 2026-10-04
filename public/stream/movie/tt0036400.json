@@ -1,0 +1,68 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Sugata Sanshirou",
+      "description": "Sugata Sanshirou\n👤 8 💾 1.3 GB ⚙️ TorrentsDB",
+      "pick": "en",
+      "score": 5.07,
+      "infoHash": "e6e36f01dd409931fc9d2b2a197a96e6722cb781",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 8,
+      "sizeBytes": 1428076626,
+      "sizeLabel": "1.3 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb"
+      ],
+      "providerNames": [
+        "TorrentsDB"
+      ],
+      "externalProviders": [
+        "animetosho"
+      ],
+      "filename": "[Orphan] Sugata Sanshirou (720p) [DB2600CB].mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:e6e36f01dd409931fc9d2b2a197a96e6722cb781"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e6e36f01dd409931fc9d2b2a197a96e6722cb781&dn=Sugata%20Sanshirou&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "[Orphan] Sugata Sanshirou (720p) [DB2600CB].mkv"
+      }
+    }
+  ]
+}

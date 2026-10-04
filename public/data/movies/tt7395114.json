@@ -1,0 +1,263 @@
+{
+  "id": "tt7395114",
+  "imdbId": "tt7395114",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Devil All the Time (2020)",
+  "name": "The Devil All the Time",
+  "year": 2020,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt7395114.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt7395114.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7395114.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7395114.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7395114.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 70,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 4K",
+      "title": "El diablo a todas horas [4K Webrip][2160p][HDR][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "quality": "4K",
+      "seeders": 3,
+      "sizeBytes": 17695265259,
+      "sizeLabel": "16.5 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": null,
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "4388af0921b1aac1f9faf48522fb21de9d0b4757",
+      "fileIdx": 4,
+      "score": 14.45,
+      "magnetUrl": "magnet:?xt=urn:btih:4388af0921b1aac1f9faf48522fb21de9d0b4757&dn=El%20diablo%20a%20todas%20horas%20%5B4K%20Webrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "quality": "1080p",
+      "seeders": 120,
+      "sizeBytes": 2748135025,
+      "sizeLabel": "2.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "infoHash": "ebb9ac690eafbc441e764641c763969078df6fde",
+      "fileIdx": 2,
+      "score": 8.24,
+      "magnetUrl": "magnet:?xt=urn:btih:ebb9ac690eafbc441e764641c763969078df6fde&dn=The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-%5BYTS.MX%5D.mp4&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 120,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 4K",
+      "title": "El diablo a todas horas [4K Webrip][2160p][HDR][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "description": "El diablo a todas horas [4K Webrip][2160p][HDR][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]\n🎞️ WEBRip · HDR · AC3 5.1\n👤 3 💾 16.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.45,
+      "infoHash": "4388af0921b1aac1f9faf48522fb21de9d0b4757",
+      "fileIdx": 4,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 3,
+      "sizeBytes": 17695265259,
+      "sizeLabel": "16.5 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": null,
+        "hdr": [
+          "HDR"
+        ],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:4388af0921b1aac1f9faf48522fb21de9d0b4757"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:4388af0921b1aac1f9faf48522fb21de9d0b4757&dn=El%20diablo%20a%20todas%20horas%20%5B4K%20Webrip%5D%5B2160p%5D%5BHDR%5D%5BAC3%205.1%20Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "description": "The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4\n🎞️ WEBRip · AVC · AAC 5.1\n👤 120 💾 2.6 GB ⚙️ Torrentio+Ytztvio+StremThru Torz",
+      "pick": "en",
+      "score": 8.24,
+      "infoHash": "ebb9ac690eafbc441e764641c763969078df6fde",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 120,
+      "sizeBytes": 2748135025,
+      "sizeLabel": "2.6 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Torrents.csv"
+      ],
+      "filename": "The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:ebb9ac690eafbc441e764641c763969078df6fde"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ebb9ac690eafbc441e764641c763969078df6fde&dn=The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-%5BYTS.MX%5D.mp4&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Devil.All.The.Time.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

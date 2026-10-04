@@ -1,0 +1,76 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Lost in Thailand 2012 BluRay 1080p TrueHD x264-HDWinG",
+      "description": "Lost in Thailand 2012 BluRay 1080p TrueHD x264-HDWinG\n🎞️ BluRay · AVC · TrueHD\n👤 23 💾 11.5 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 7.43,
+      "infoHash": "96900d5a9d74b412a0b66b8210e4c9bbaadb951c",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 23,
+      "sizeBytes": 12315818721,
+      "sizeLabel": "11.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "TrueHD"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "kickasstorrents",
+        "ThePirateBay",
+        "HDWinG"
+      ],
+      "filename": "Lost.in.Thailand.2012.BluRay.1080p.TrueHD.x264-HDWinG.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:96900d5a9d74b412a0b66b8210e4c9bbaadb951c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:96900d5a9d74b412a0b66b8210e4c9bbaadb951c&dn=Lost%20in%20Thailand%202012%20BluRay%201080p%20TrueHD%20x264-HDWinG&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Lost.in.Thailand.2012.BluRay.1080p.TrueHD.x264-HDWinG.mkv"
+      }
+    }
+  ]
+}

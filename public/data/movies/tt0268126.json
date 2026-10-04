@@ -1,0 +1,249 @@
+{
+  "id": "tt0268126",
+  "imdbId": "tt0268126",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Adaptation. (2002)",
+  "name": "Adaptation.",
+  "year": 2002,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0268126.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0268126.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0268126.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0268126.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0268126.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0268126.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 84,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 8708046193,
+      "sizeLabel": "8.1 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "a058e2d09c9dccf6fc153a8e8a673f7cbca0cd69",
+      "fileIdx": 0,
+      "score": 14.45,
+      "magnetUrl": "magnet:?xt=urn:btih:a058e2d09c9dccf6fc153a8e8a673f7cbca0cd69&dn=El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Adaptation.2002.1080p.BluRay.H264.AAC-RARBG",
+      "quality": "1080p",
+      "seeders": 126,
+      "sizeBytes": 2362232013,
+      "sizeLabel": "2.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "a8db0454837047ac3709f70ba24243e856b27bf9",
+      "fileIdx": 0,
+      "score": 8.39,
+      "magnetUrl": "magnet:?xt=urn:btih:a8db0454837047ac3709f70ba24243e856b27bf9&dn=Adaptation.2002.1080p.BluRay.H264.AAC-RARBG&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 126,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat",
+      "description": "El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat\n🎞️ WEB-DL\n👤 5 💾 8.1 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.45,
+      "infoHash": "a058e2d09c9dccf6fc153a8e8a673f7cbca0cd69",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 8708046193,
+      "sizeLabel": "8.1 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:a058e2d09c9dccf6fc153a8e8a673f7cbca0cd69"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a058e2d09c9dccf6fc153a8e8a673f7cbca0cd69&dn=El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "El.Ladron.De.Orquideas.2002.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Adaptation.2002.1080p.BluRay.H264.AAC-RARBG",
+      "description": "Adaptation.2002.1080p.BluRay.H264.AAC-RARBG\n🎞️ BluRay · AVC · AAC\n👤 126 💾 2.2 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 8.39,
+      "infoHash": "a8db0454837047ac3709f70ba24243e856b27bf9",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 126,
+      "sizeBytes": 2362232013,
+      "sizeLabel": "2.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "kickasstorrents",
+        "RARBG"
+      ],
+      "filename": "Adaptation.2002.1080p.BluRay.H264.AAC-RARBG.mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:a8db0454837047ac3709f70ba24243e856b27bf9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a8db0454837047ac3709f70ba24243e856b27bf9&dn=Adaptation.2002.1080p.BluRay.H264.AAC-RARBG&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Adaptation.2002.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    }
+  ]
+}
