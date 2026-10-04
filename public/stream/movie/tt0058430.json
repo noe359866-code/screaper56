@@ -1,0 +1,78 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Onibaba (1964)",
+      "description": "Onibaba (1964)\n🎞️ BluRay · AVC · AAC\n👤 69 💾 1.7 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.07,
+      "infoHash": "069652bfe1b5a07c8b6153a4a2264dc6258ac037",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 69,
+      "sizeBytes": 1836098519,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Knaben"
+      ],
+      "filename": "Onibaba.1964.1080p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:069652bfe1b5a07c8b6153a4a2264dc6258ac037"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:069652bfe1b5a07c8b6153a4a2264dc6258ac037&dn=Onibaba%20(1964)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Onibaba.1964.1080p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

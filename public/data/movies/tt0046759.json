@@ -1,0 +1,254 @@
+{
+  "id": "tt0046759",
+  "imdbId": "tt0046759",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Beau Brummell (1954)",
+  "name": "Beau Brummell",
+  "year": 1954,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0046759.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0046759.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0046759.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0046759.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0046759.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 17,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Beau Brummell (1954) [1080P][Latino][Ver-Peliculas-Online.org].mp4",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "333b226c051c12b39b735c53b049ffc5d6f42262",
+      "fileIdx": null,
+      "score": 10.71,
+      "magnetUrl": "magnet:?xt=urn:btih:333b226c051c12b39b735c53b049ffc5d6f42262&dn=Beau%20Brummell%20(1954)%20%5B1080P%5D%5BLatino%5D%5BVer-Peliculas-Online.org%5D.mp4&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beau.Brummell.1954.1080p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 1995735943,
+      "sizeLabel": "1.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "c1ac3207c4aca2aba45cefbd2fa3e8351d9eae6b",
+      "fileIdx": 0,
+      "score": 6.46,
+      "magnetUrl": "magnet:?xt=urn:btih:c1ac3207c4aca2aba45cefbd2fa3e8351d9eae6b&dn=Beau.Brummell.1954.1080p.BluRay.x264.AAC-%5BYTS.MX%5D.mp4&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 4,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Beau Brummell (1954) [1080P][Latino][Ver-Peliculas-Online.org].mp4",
+      "description": "Beau Brummell (1954) [1080P][Latino][Ver-Peliculas-Online.org].mp4\n👤 1 💾 1.8 GB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": 10.71,
+      "infoHash": "333b226c051c12b39b735c53b049ffc5d6f42262",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Beau Brummell (1954) [1080P][Latino][Ver-Peliculas-Online.org].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:333b226c051c12b39b735c53b049ffc5d6f42262"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:333b226c051c12b39b735c53b049ffc5d6f42262&dn=Beau%20Brummell%20(1954)%20%5B1080P%5D%5BLatino%5D%5BVer-Peliculas-Online.org%5D.mp4&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Beau Brummell (1954) [1080P][Latino][Ver-Peliculas-Online.org].mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Beau.Brummell.1954.1080p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "description": "Beau.Brummell.1954.1080p.BluRay.x264.AAC-[YTS.MX].mp4\n🎞️ BluRay · AVC · AAC\n👤 4 💾 1.9 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.46,
+      "infoHash": "c1ac3207c4aca2aba45cefbd2fa3e8351d9eae6b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 1995735943,
+      "sizeLabel": "1.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264"
+      ],
+      "filename": "Beau.Brummell.1954.1080p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:c1ac3207c4aca2aba45cefbd2fa3e8351d9eae6b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c1ac3207c4aca2aba45cefbd2fa3e8351d9eae6b&dn=Beau.Brummell.1954.1080p.BluRay.x264.AAC-%5BYTS.MX%5D.mp4&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Beau.Brummell.1954.1080p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "id": "tt0047603",
+  "imdbId": "tt0047603",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Track of the Cat (1954)",
+  "name": "Track of the Cat",
+  "year": 1954,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0047603.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0047603.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0047603.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0047603.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0047603.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 17,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Track of the Cat (1954).Dual Audio Eng+Spa.avi",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 858993459,
+      "sizeLabel": "819 MB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "917a9dd88dd22e2fbc9304d5ab29c140d7334769",
+      "fileIdx": null,
+      "score": 8.24,
+      "magnetUrl": "magnet:?xt=urn:btih:917a9dd88dd22e2fbc9304d5ab29c140d7334769&dn=Track%20of%20the%20Cat%20(1954).Dual%20Audio%20Eng%2BSpa.avi&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Track of the Cat (1954)",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 2040109466,
+      "sizeLabel": "1.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "infoHash": "ce9d74948628f0de249d8bf17a6aff70a31146a6",
+      "fileIdx": 0,
+      "score": 6.58,
+      "magnetUrl": "magnet:?xt=urn:btih:ce9d74948628f0de249d8bf17a6aff70a31146a6&dn=Track%20of%20the%20Cat%20(1954)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Track of the Cat (1954).Dual Audio Eng+Spa.avi",
+      "description": "Track of the Cat (1954).Dual Audio Eng+Spa.avi\n👤 0 💾 819 MB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": 8.24,
+      "infoHash": "917a9dd88dd22e2fbc9304d5ab29c140d7334769",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 858993459,
+      "sizeLabel": "819 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Track of the Cat (1954).Dual Audio Eng+Spa.avi",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:917a9dd88dd22e2fbc9304d5ab29c140d7334769"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:917a9dd88dd22e2fbc9304d5ab29c140d7334769&dn=Track%20of%20the%20Cat%20(1954).Dual%20Audio%20Eng%2BSpa.avi&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Track of the Cat (1954).Dual Audio Eng+Spa.avi"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Track of the Cat (1954)",
+      "description": "Track of the Cat (1954)\n🎞️ WEBRip · AVC · AAC 5.1\n👤 6 💾 1.9 GB ⚙️ Torrentio+Ytztvio+TorrentClaw",
+      "pick": "en",
+      "score": 6.58,
+      "infoHash": "ce9d74948628f0de249d8bf17a6aff70a31146a6",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 2040109466,
+      "sizeLabel": "1.9 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264"
+      ],
+      "filename": "Track.Of.The.Cat.1954.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:ce9d74948628f0de249d8bf17a6aff70a31146a6"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ce9d74948628f0de249d8bf17a6aff70a31146a6&dn=Track%20of%20the%20Cat%20(1954)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Track.Of.The.Cat.1954.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

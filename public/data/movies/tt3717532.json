@@ -1,0 +1,230 @@
+{
+  "id": "tt3717532",
+  "imdbId": "tt3717532",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Last: Naruto the Movie (2014)",
+  "name": "The Last: Naruto the Movie",
+  "year": 2014,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt3717532.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt3717532.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt3717532.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt3717532.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt3717532.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt3717532.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt3717532.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 60,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The Last Naruto The Movie.2014.WEBrip.XviD.SBT",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 681689743,
+      "sizeLabel": "650 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "65d4f867548eda40267c7aa0f2f3d2540b77fd8f",
+      "fileIdx": 0,
+      "score": 13.75,
+      "magnetUrl": "magnet:?xt=urn:btih:65d4f867548eda40267c7aa0f2f3d2540b77fd8f&dn=The%20Last%20Naruto%20The%20Movie.2014.WEBrip.XviD.SBT&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Sengoku Basara Samurai Kings - S00E03 - The Last Party.mkv",
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 3167538381,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "aniscraper"
+      ],
+      "providerNames": [
+        "AniScraper"
+      ],
+      "infoHash": "92924273606ce26fc831a93460560f87a4cbfa9d",
+      "fileIdx": 52,
+      "score": 6.9,
+      "magnetUrl": "magnet:?xt=urn:btih:92924273606ce26fc831a93460560f87a4cbfa9d&dn=Sengoku%20Basara%20Samurai%20Kings%20-%20S00E03%20-%20The%20Last%20Party.mkv&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 14,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "aniscraper",
+    "peerflix"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The Last Naruto The Movie.2014.WEBrip.XviD.SBT",
+      "description": "The Last Naruto The Movie.2014.WEBrip.XviD.SBT\n🎞️ WEBRip · XviD\n👤 1 💾 650 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 13.75,
+      "infoHash": "65d4f867548eda40267c7aa0f2f3d2540b77fd8f",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 681689743,
+      "sizeLabel": "650 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "TorrentControl"
+      ],
+      "filename": null,
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:65d4f867548eda40267c7aa0f2f3d2540b77fd8f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:65d4f867548eda40267c7aa0f2f3d2540b77fd8f&dn=The%20Last%20Naruto%20The%20Movie.2014.WEBrip.XviD.SBT&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Sengoku Basara Samurai Kings - S00E03 - The Last Party.mkv",
+      "description": "Sengoku Basara Samurai Kings - S00E03 - The Last Party.mkv\n👤 14 💾 3.0 GB ⚙️ AniScraper",
+      "pick": "en",
+      "score": 6.9,
+      "infoHash": "92924273606ce26fc831a93460560f87a4cbfa9d",
+      "fileIdx": 52,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 3167538381,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "aniscraper"
+      ],
+      "providerNames": [
+        "AniScraper"
+      ],
+      "externalProviders": [
+        "Nyaa"
+      ],
+      "filename": "Sengoku Basara Samurai Kings - S00E03 - The Last Party.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:92924273606ce26fc831a93460560f87a4cbfa9d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:92924273606ce26fc831a93460560f87a4cbfa9d&dn=Sengoku%20Basara%20Samurai%20Kings%20-%20S00E03%20-%20The%20Last%20Party.mkv&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Sengoku Basara Samurai Kings - S00E03 - The Last Party.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "id": "tt11394296",
+  "imdbId": "tt11394296",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Into the Deep (2020)",
+  "name": "Into the Deep",
+  "year": 2020,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt11394296.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt11394296.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt11394296.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt11394296.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt11394296.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 10,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1653562409,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "34ed95c603525eacaf50b20909440cf1942b2d3f",
+      "fileIdx": 2,
+      "score": 13.69,
+      "magnetUrl": "magnet:?xt=urn:btih:34ed95c603525eacaf50b20909440cf1942b2d3f&dn=Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB",
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 3221225472,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "2181841b81f76d052b181638b53557a1d947ffc5",
+      "fileIdx": null,
+      "score": 7.29,
+      "magnetUrl": "magnet:?xt=urn:btih:2181841b81f76d052b181638b53557a1d947ffc5&dn=Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 20,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat",
+      "description": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat\n👤 1 💾 1.5 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 13.69,
+      "infoHash": "34ed95c603525eacaf50b20909440cf1942b2d3f",
+      "fileIdx": 2,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1653562409,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Cinecalidad",
+        "Lat"
+      ],
+      "filename": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat.mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:34ed95c603525eacaf50b20909440cf1942b2d3f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:34ed95c603525eacaf50b20909440cf1942b2d3f&dn=Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB",
+      "description": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB\n🎞️ WEB\n👤 20 💾 3.0 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 7.29,
+      "infoHash": "2181841b81f76d052b181638b53557a1d947ffc5",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 20,
+      "sizeBytes": 3221225472,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": "WEB",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:2181841b81f76d052b181638b53557a1d947ffc5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2181841b81f76d052b181638b53557a1d947ffc5&dn=Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Into.the.Deep.The.Submarine.Murder.Case.2020.1080p.WEB"
+      }
+    }
+  ]
+}

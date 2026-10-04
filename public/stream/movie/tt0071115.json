@@ -1,0 +1,164 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Alice Doesn't Live Here Anymore (1974) Criterion (1080p RM4K Blu…",
+      "description": "Alice Doesn't Live Here Anymore (1974) Criterion (1080p RM4K Blu…\n🎞️ BluRay · HEVC\n👤 38 💾 8.2 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 5.79,
+      "infoHash": "ec02f9742300ae71cf5ea7948756ff37f14d9ecb",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru",
+        "it",
+        "pt",
+        "zh",
+        "fr",
+        "de",
+        "nl",
+        "pl",
+        "cs",
+        "hu",
+        "hr",
+        "uk",
+        "da",
+        "sv",
+        "no",
+        "tr",
+        "he",
+        "id",
+        "th"
+      ],
+      "quality": "1080p",
+      "seeders": 38,
+      "sizeBytes": 8836895212,
+      "sizeLabel": "8.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "Alice Doesn't Live Here Anymore (1974) Criterion (1080p RM4K BluRay x265 10bit r00t).mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:ec02f9742300ae71cf5ea7948756ff37f14d9ecb"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ec02f9742300ae71cf5ea7948756ff37f14d9ecb&dn=Alice%20Doesn't%20Live%20Here%20Anymore%20(1974)%20Criterion%20(1080p%20RM4K%20Blu%E2%80%A6&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Alice Doesn't Live Here Anymore (1974) Criterion (1080p RM4K BluRay x265 10bit r00t).mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Alice Doesn't Live Here Anymore (1974)",
+      "description": "Alice Doesn't Live Here Anymore (1974)\n🎞️ WEBRip · AVC · AAC\n👤 47 💾 1.9 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.96,
+      "infoHash": "42c1daec0fb6180d6e8c10684936f749f4d45768",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 2007897211,
+      "sizeLabel": "1.9 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Torrents.csv"
+      ],
+      "filename": "Alice.Doesn't.Live.Here.Anymore.1974.1080p.WEBRip.x264.AAC-[YTS.LT].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:42c1daec0fb6180d6e8c10684936f749f4d45768"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:42c1daec0fb6180d6e8c10684936f749f4d45768&dn=Alice%20Doesn't%20Live%20Here%20Anymore%20(1974)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Alice.Doesn't.Live.Here.Anymore.1974.1080p.WEBRip.x264.AAC-[YTS.LT].mp4"
+      }
+    }
+  ]
+}

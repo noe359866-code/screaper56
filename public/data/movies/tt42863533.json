@@ -1,0 +1,267 @@
+{
+  "id": "tt42863533",
+  "imdbId": "tt42863533",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Maternal Instinct (2026)",
+  "name": "Maternal Instinct",
+  "year": 2026,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt42863533.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt42863533.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt42863533.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt42863533.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt42863533.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 23,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Instinto maternal (2026) [HDTV 1080p][Esp]",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 2888365507,
+      "sizeLabel": "2.7 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "bffc1714200ba00ab8ed47a0fa31cdcbe8030e2e",
+      "fileIdx": 0,
+      "score": 13.69,
+      "magnetUrl": "magnet:?xt=urn:btih:bffc1714200ba00ab8ed47a0fa31cdcbe8030e2e&dn=Instinto%20maternal%20(2026)%20%5BHDTV%201080p%5D%5BEsp%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv",
+      "quality": "4K",
+      "seeders": 67,
+      "sizeBytes": 4638749801,
+      "sizeLabel": "4.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "3dcfef4331f5750065b09286d0c6b1db50f7c0a1",
+      "fileIdx": 0,
+      "score": 8.33,
+      "magnetUrl": "magnet:?xt=urn:btih:3dcfef4331f5750065b09286d0c6b1db50f7c0a1&dn=Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-%5BYTS.BZ%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 67,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Instinto maternal (2026) [HDTV 1080p][Esp]",
+      "description": "Instinto maternal (2026) [HDTV 1080p][Esp]\n🎞️ HDTV\n👤 1 💾 2.7 GB ⚙️ Peerflix+Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 13.69,
+      "infoHash": "bffc1714200ba00ab8ed47a0fa31cdcbe8030e2e",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 2888365507,
+      "sizeLabel": "2.7 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Wolfmax4k"
+      ],
+      "filename": "Instinto maternal (2026) [HDTV 1080p][Esp].mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "http://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:http://tracker.dler.org:6969/announce",
+        "dht:bffc1714200ba00ab8ed47a0fa31cdcbe8030e2e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bffc1714200ba00ab8ed47a0fa31cdcbe8030e2e&dn=Instinto%20maternal%20(2026)%20%5BHDTV%201080p%5D%5BEsp%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Instinto maternal (2026) [HDTV 1080p][Esp].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv",
+      "description": "Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv\n🎞️ WEB · HEVC · AAC 5.1\n👤 67 💾 4.3 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.33,
+      "infoHash": "3dcfef4331f5750065b09286d0c6b1db50f7c0a1",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 67,
+      "sizeBytes": 4638749801,
+      "sizeLabel": "4.3 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265",
+        "Knaben"
+      ],
+      "filename": "Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:3dcfef4331f5750065b09286d0c6b1db50f7c0a1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3dcfef4331f5750065b09286d0c6b1db50f7c0a1&dn=Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-%5BYTS.BZ%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Maternal.Instinct.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "[Bitsearch.to] Aquellos que desean mi muerte (2021) [BluRay Rip][AC3 5.1 Castellano][www.maxitorrent.com]",
+      "description": "[Bitsearch.to] Aquellos que desean mi muerte (2021) [BluRay Rip][AC3 5.1 Castellano][www.maxitorrent.com]\n🎞️ BluRay · AC3 5.1\n👤 8 💾 1.8 GB ⚙️ Peerflix+TorrentClaw",
+      "pick": "es",
+      "score": 14.79,
+      "infoHash": "b719788bdd2b1601d895850885c8fef6f1c59901",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 1879048192,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "BitSearch"
+      ],
+      "filename": "Aquellos que desean mi muerte (2021) [BluRay Rip][AC3 5.1 Castellano][www.maxitorrent.com]",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:b719788bdd2b1601d895850885c8fef6f1c59901"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b719788bdd2b1601d895850885c8fef6f1c59901&dn=%5BBitsearch.to%5D%20Aquellos%20que%20desean%20mi%20muerte%20(2021)%20%5BBluRay%20Rip%5D%5BAC3%205.1%20Castellano%5D%5Bwww.maxitorrent.com%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Aquellos que desean mi muerte (2021) [BluRay Rip][AC3 5.1 Castellano][www.maxitorrent.com]"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Those Who Wish Me Dead (2021) [2160p] [WEBRip] [x265] [10bit] [5.1]",
+      "description": "Those Who Wish Me Dead (2021) [2160p] [WEBRip] [x265] [10bit] [5.1]\n🎞️ WEBRip · HEVC · AAC 5.1\n👤 111 💾 4.5 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.65,
+      "infoHash": "3c1e2cc59527c8e14d71c9fb8a0af3619d37f1bf",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 111,
+      "sizeBytes": 4778151117,
+      "sizeLabel": "4.5 GB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "YTS",
+        "Knaben"
+      ],
+      "filename": "Those.Who.Wish.Me.Dead.2021.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:3c1e2cc59527c8e14d71c9fb8a0af3619d37f1bf"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3c1e2cc59527c8e14d71c9fb8a0af3619d37f1bf&dn=Those%20Who%20Wish%20Me%20Dead%20(2021)%20%5B2160p%5D%20%5BWEBRip%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Those.Who.Wish.Me.Dead.2021.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv"
+      }
+    }
+  ]
+}

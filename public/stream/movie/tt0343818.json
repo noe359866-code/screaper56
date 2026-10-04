@@ -1,0 +1,142 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Yo Robot [MicroHD 1080p][AC3 5.1-DTS 5.1 Castellano-AC3 5.1 Ingles+Subs][ES-EN]",
+      "description": "Yo Robot [MicroHD 1080p][AC3 5.1-DTS 5.1 Castellano-AC3 5.1 Ingles+Subs][ES-EN]\n🎞️ BluRay · DTS/AC3 5.1\n👤 7 💾 5.4 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.62,
+      "infoHash": "ead27f7a7f943177e0a9846ac5a2fc52b414fd87",
+      "fileIdx": 3,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 7,
+      "sizeBytes": 5841155522,
+      "sizeLabel": "5.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "DTS",
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:ead27f7a7f943177e0a9846ac5a2fc52b414fd87"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ead27f7a7f943177e0a9846ac5a2fc52b414fd87&dn=Yo%20Robot%20%5BMicroHD%201080p%5D%5BAC3%205.1-DTS%205.1%20Castellano-AC3%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "I, Robot (2004) Open Matte (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) REPACK",
+      "description": "I, Robot (2004) Open Matte (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) REPACK\n🎞️ BluRay · HEVC · AAC 5.1\n👤 102 💾 5.4 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.41,
+      "infoHash": "3022692f21fb7a2b70c25c7146c0452520be48ad",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 102,
+      "sizeBytes": 5798205850,
+      "sizeLabel": "5.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "1337x",
+        "The"
+      ],
+      "filename": "I, Robot (2004) Open Matte (1080p BluRay x265 Silence).mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:3022692f21fb7a2b70c25c7146c0452520be48ad"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3022692f21fb7a2b70c25c7146c0452520be48ad&dn=I%2C%20Robot%20(2004)%20Open%20Matte%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205.1%20Silence)%20REPACK&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "I, Robot (2004) Open Matte (1080p BluRay x265 Silence).mkv"
+      }
+    }
+  ]
+}

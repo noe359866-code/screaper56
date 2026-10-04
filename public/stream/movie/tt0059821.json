@@ -1,0 +1,135 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "La tumba de ligeia (1964) [HDrip][Castellano]",
+      "description": "La tumba de ligeia (1964) [HDrip][Castellano]\n🎞️ HDRip\n👤 0 💾 1.1 GB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": 8.23,
+      "infoHash": "78a98b9e3ec9c5bd4aa011bd4fb575e6c3ebce25",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 1181116006,
+      "sizeLabel": "1.1 GB",
+      "release": {
+        "source": "HDRip",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "La tumba de ligeia (1964) [HDrip][Castellano]",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:78a98b9e3ec9c5bd4aa011bd4fb575e6c3ebce25"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:78a98b9e3ec9c5bd4aa011bd4fb575e6c3ebce25&dn=La%20tumba%20de%20ligeia%20(1964)%20%5BHDrip%5D%5BCastellano%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "La tumba de ligeia (1964) [HDrip][Castellano]"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Tomb.of.Ligeia.1964.Arrow.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv",
+      "description": "The.Tomb.of.Ligeia.1964.Arrow.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv\n🎞️ BluRay · HEVC · AAC\n👤 9 💾 7.3 GB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.93,
+      "infoHash": "123a91e39895fa5703ff0b85e6311b3bd218cb0b",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 7838315315,
+      "sizeLabel": "7.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "HeVK",
+        "Knaben"
+      ],
+      "filename": "The.Tomb.of.Ligeia.1964.Arrow.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:123a91e39895fa5703ff0b85e6311b3bd218cb0b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:123a91e39895fa5703ff0b85e6311b3bd218cb0b&dn=The.Tomb.of.Ligeia.1964.Arrow.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Tomb.of.Ligeia.1964.Arrow.1080p.BluRay.x265.hevc.10bit.AAC.1.0.commentary-HeVK.mkv"
+      }
+    }
+  ]
+}

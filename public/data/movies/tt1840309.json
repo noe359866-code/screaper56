@@ -1,0 +1,267 @@
+{
+  "id": "tt1840309",
+  "imdbId": "tt1840309",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Divergent (2014)",
+  "name": "Divergent",
+  "year": 2014,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt1840309.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1840309.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt1840309.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1840309.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1840309.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1840309.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 162,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Divergente [MicroHD][1080 px][AC3 5.1-Castellano-AC3 5.1 Ingles+Subs][ES-EN]",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 5647881994,
+      "sizeLabel": "5.3 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "7c26526ae9dd8580a7ad12ca9e9f88108179a781",
+      "fileIdx": 0,
+      "score": 14.51,
+      "magnetUrl": "magnet:?xt=urn:btih:7c26526ae9dd8580a7ad12ca9e9f88108179a781&dn=Divergente%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Divergent (2014)",
+      "quality": "4K",
+      "seeders": 100,
+      "sizeBytes": 6743098655,
+      "sizeLabel": "6.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "infoHash": "b9128ad920ea1d1d447ed2e2d84cdd6e62b773c0",
+      "fileIdx": 0,
+      "score": 8.54,
+      "magnetUrl": "magnet:?xt=urn:btih:b9128ad920ea1d1d447ed2e2d84cdd6e62b773c0&dn=Divergent%20(2014)&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 100,
+  "qualities": [
+    "1080p",
+    "4K"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Divergente [MicroHD][1080 px][AC3 5.1-Castellano-AC3 5.1 Ingles+Subs][ES-EN]",
+      "description": "Divergente [MicroHD][1080 px][AC3 5.1-Castellano-AC3 5.1 Ingles+Subs][ES-EN]\n🎞️ BluRay · AC3 5.1\n👤 6 💾 5.3 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 14.51,
+      "infoHash": "7c26526ae9dd8580a7ad12ca9e9f88108179a781",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 5647881994,
+      "sizeLabel": "5.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Peerflix",
+        "MejorTorrent"
+      ],
+      "filename": "DivergenteM1080.www.newpct1.com.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:7c26526ae9dd8580a7ad12ca9e9f88108179a781"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7c26526ae9dd8580a7ad12ca9e9f88108179a781&dn=Divergente%20%5BMicroHD%5D%5B1080%20px%5D%5BAC3%205.1-Castellano-AC3%205.1%20Ingles%2BSubs%5D%5BES-EN%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "DivergenteM1080.www.newpct1.com.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "Divergent (2014)",
+      "description": "Divergent (2014)\n🎞️ BluRay · HEVC · AAC 5.1\n👤 100 💾 6.3 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+StremThru Torz",
+      "pick": "en",
+      "score": 8.54,
+      "infoHash": "b9128ad920ea1d1d447ed2e2d84cdd6e62b773c0",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 100,
+      "sizeBytes": 6743098655,
+      "sizeLabel": "6.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x265",
+        "Knaben"
+      ],
+      "filename": "Divergent.2014.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:b9128ad920ea1d1d447ed2e2d84cdd6e62b773c0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b9128ad920ea1d1d447ed2e2d84cdd6e62b773c0&dn=Divergent%20(2014)&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Divergent.2014.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    }
+  ]
+}

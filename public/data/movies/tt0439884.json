@@ -1,0 +1,266 @@
+{
+  "id": "tt0439884",
+  "imdbId": "tt0439884",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "A World Without Thieves (2004)",
+  "name": "A World Without Thieves",
+  "year": 2004,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0439884.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0439884.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0439884.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0439884.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0439884.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0439884.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0439884.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 26,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 23707887591,
+      "sizeLabel": "22.1 GB",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru"
+      ],
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "83a3f542366ecd5d60e8c57ccbeede950cd65ce9",
+      "fileIdx": 0,
+      "score": 4.28,
+      "magnetUrl": "magnet:?xt=urn:btih:83a3f542366ecd5d60e8c57ccbeede950cd65ce9&dn=Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A World Without Thieves 2004 1080p BluRay",
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2233382994,
+      "sizeLabel": "2.1 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "81c9aad07f18b93a9e95fb83bdebc728992ab402",
+      "fileIdx": 0,
+      "score": 7.16,
+      "magnetUrl": "magnet:?xt=urn:btih:81c9aad07f18b93a9e95fb83bdebc728992ab402&dn=A%20World%20Without%20Thieves%202004%201080p%20BluRay&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 14,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "ru"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv",
+      "description": "Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv\n🎞️ REMUX\n👤 5 💾 22.1 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 4.28,
+      "infoHash": "83a3f542366ecd5d60e8c57ccbeede950cd65ce9",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "ru"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 23707887591,
+      "sizeLabel": "22.1 GB",
+      "release": {
+        "source": "REMUX",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Rutracker",
+        "Knaben"
+      ],
+      "filename": "Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:83a3f542366ecd5d60e8c57ccbeede950cd65ce9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:83a3f542366ecd5d60e8c57ccbeede950cd65ce9&dn=Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Tian.xia.wu.zei.2004.1080p.BDRemux.Rutracker.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A World Without Thieves 2004 1080p BluRay",
+      "description": "A World Without Thieves 2004 1080p BluRay\n🎞️ BluRay · AVC · AAC 5.1\n👤 14 💾 2.1 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.16,
+      "infoHash": "81c9aad07f18b93a9e95fb83bdebc728992ab402",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 14,
+      "sizeBytes": 2233382994,
+      "sizeLabel": "2.1 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Torrents.csv"
+      ],
+      "filename": "A.World.Without.Thieves.2004.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:81c9aad07f18b93a9e95fb83bdebc728992ab402"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:81c9aad07f18b93a9e95fb83bdebc728992ab402&dn=A%20World%20Without%20Thieves%202004%201080p%20BluRay&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "A.World.Without.Thieves.2004.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

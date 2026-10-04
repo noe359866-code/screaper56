@@ -1,0 +1,260 @@
+{
+  "id": "tt34686029",
+  "imdbId": "tt34686029",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Bill Burr: Drop Dead Years (2025)",
+  "name": "Bill Burr: Drop Dead Years",
+  "year": 2025,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt34686029.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt34686029.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt34686029.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt34686029.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt34686029.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 13,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "www.UIndex.org    -    Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak",
+      "quality": "1080p",
+      "seeders": 81,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "695bb5d00405f8570f27f56639a718aed75a79ba",
+      "fileIdx": 0,
+      "score": 6.19,
+      "magnetUrl": "magnet:?xt=urn:btih:695bb5d00405f8570f27f56639a718aed75a79ba&dn=www.UIndex.org%20%20%20%20-%20%20%20%20Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak",
+      "quality": "1080p",
+      "seeders": 64,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "d8d9a7a2ab0a8fe4a417c272ab9af989de327c66",
+      "fileIdx": 1,
+      "score": 8.12,
+      "magnetUrl": "magnet:?xt=urn:btih:d8d9a7a2ab0a8fe4a417c272ab9af989de327c66&dn=Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 81,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "www.UIndex.org    -    Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak",
+      "description": "www.UIndex.org    -    Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak\n🎞️ WEB · AVC\n👤 81 💾 1.8 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "es",
+      "score": 6.19,
+      "infoHash": "695bb5d00405f8570f27f56639a718aed75a79ba",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 81,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "AccomplishedYak",
+        "Knaben"
+      ],
+      "filename": "bill.burr.drop.dead.years.2025.1080p.web.h264-accomplishedyak.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:695bb5d00405f8570f27f56639a718aed75a79ba"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:695bb5d00405f8570f27f56639a718aed75a79ba&dn=www.UIndex.org%20%20%20%20-%20%20%20%20Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "bill.burr.drop.dead.years.2025.1080p.web.h264-accomplishedyak.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak",
+      "description": "Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak\n🎞️ WEB · AVC\n👤 64 💾 1.7 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.12,
+      "infoHash": "d8d9a7a2ab0a8fe4a417c272ab9af989de327c66",
+      "fileIdx": 1,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 64,
+      "sizeBytes": 1825361101,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "1337x",
+        "AccomplishedYak",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "bill.burr.drop.dead.years.2025.1080p.web.h264-accomplishedyak.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:d8d9a7a2ab0a8fe4a417c272ab9af989de327c66"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d8d9a7a2ab0a8fe4a417c272ab9af989de327c66&dn=Bill.Burr.Drop.Dead.Years.2025.1080p.WEB.H264-AccomplishedYak&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "bill.burr.drop.dead.years.2025.1080p.web.h264-accomplishedyak.mkv"
+      }
+    }
+  ]
+}

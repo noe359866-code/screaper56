@@ -1,0 +1,41 @@
+{
+  "id": "tt0780061",
+  "imdbId": "tt0780061",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Redhat and Cousin (1994)",
+  "name": "Redhat and Cousin",
+  "year": 1994,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0780061.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0780061.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0780061.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0780061.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0780061.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0780061.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

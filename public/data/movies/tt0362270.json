@@ -1,0 +1,165 @@
+{
+  "id": "tt0362270",
+  "imdbId": "tt0362270",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Life Aquatic with Steve Zissou (2004)",
+  "name": "The Life Aquatic with Steve Zissou",
+  "year": 2004,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0362270.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0362270.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0362270.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0362270.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0362270.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0362270.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0362270.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 61,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The Life Aquatic with Steve Zissou (2004) [2160p] [BluRay] [x265] [10bit] [5.1]",
+      "quality": "4K",
+      "seeders": 108,
+      "sizeBytes": 5798205850,
+      "sizeLabel": "5.4 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "aa2cfbd2dc647e292c78a194226e1e658c037fdd",
+      "fileIdx": 0,
+      "score": 8.71,
+      "magnetUrl": "magnet:?xt=urn:btih:aa2cfbd2dc647e292c78a194226e1e658c037fdd&dn=The%20Life%20Aquatic%20with%20Steve%20Zissou%20(2004)%20%5B2160p%5D%20%5BBluRay%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 108,
+  "qualities": [
+    "4K"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb",
+    "ytztvio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "The Life Aquatic with Steve Zissou (2004) [2160p] [BluRay] [x265] [10bit] [5.1]",
+      "description": "The Life Aquatic with Steve Zissou (2004) [2160p] [BluRay] [x265] [10bit] [5.1]\n🎞️ BluRay · HEVC · AAC 5.1\n👤 108 💾 5.4 GB ⚙️ TorrentsDB+Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.71,
+      "infoHash": "aa2cfbd2dc647e292c78a194226e1e658c037fdd",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 108,
+      "sizeBytes": 5798205850,
+      "sizeLabel": "5.4 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "YTS",
+        "x265",
+        "Knaben"
+      ],
+      "filename": "The.Life.Aquatic.With.Steve.Zissou.2004.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.LT].mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:aa2cfbd2dc647e292c78a194226e1e658c037fdd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:aa2cfbd2dc647e292c78a194226e1e658c037fdd&dn=The%20Life%20Aquatic%20with%20Steve%20Zissou%20(2004)%20%5B2160p%5D%20%5BBluRay%5D%20%5Bx265%5D%20%5B10bit%5D%20%5B5.1%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Life.Aquatic.With.Steve.Zissou.2004.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.LT].mkv"
+      }
+    }
+  ]
+}

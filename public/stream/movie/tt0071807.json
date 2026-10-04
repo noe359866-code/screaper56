@@ -1,0 +1,144 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Saga James Bond [MicroHD 1080p][HEVC X265][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]",
+      "description": "Saga James Bond [MicroHD 1080p][HEVC X265][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]\n🎞️ BluRay · HEVC · AC3 5.1\n👤 5 💾 2.9 GB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 14.41,
+      "infoHash": "db4285819839d1da9cda2d7eb60e7c0884c2f1d7",
+      "fileIdx": 8,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 3146063544,
+      "sizeLabel": "2.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MejorTorrent"
+      ],
+      "filename": "09.El.Hombre de la Pistola de Oro 1974 M1080.www.newpct1.com.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:db4285819839d1da9cda2d7eb60e7c0884c2f1d7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:db4285819839d1da9cda2d7eb60e7c0884c2f1d7&dn=Saga%20James%20Bond%20%5BMicroHD%201080p%5D%5BHEVC%20X265%5D%5BAC3%205.1-Castellano-AC3%205.1-Ingles%2BSubs%5D%5BES-EN%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "09.El.Hombre de la Pistola de Oro 1974 M1080.www.newpct1.com.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Man with the Golden Gun (1974)",
+      "description": "The Man with the Golden Gun (1974)\n🎞️ BluRay · AVC\n👤 84 💾 1.8 GB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.22,
+      "infoHash": "acecda126f975c4afb1d8846e0f3d98c65902981",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 84,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "YIFY",
+        "Torrents.csv"
+      ],
+      "filename": "James.Bond.The.Man.With.The.Golden.Gun.1974.1080p.BRrip.x264.GAZ.YIFY.mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:acecda126f975c4afb1d8846e0f3d98c65902981"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:acecda126f975c4afb1d8846e0f3d98c65902981&dn=The%20Man%20with%20the%20Golden%20Gun%20(1974)&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "James.Bond.The.Man.With.The.Golden.Gun.1974.1080p.BRrip.x264.GAZ.YIFY.mp4"
+      }
+    }
+  ]
+}

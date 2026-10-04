@@ -1,0 +1,244 @@
+{
+  "id": "tt0111543",
+  "imdbId": "tt0111543",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Little Indian, Big City (1994)",
+  "name": "Little Indian, Big City",
+  "year": 1994,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0111543.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0111543.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0111543.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0111543.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0111543.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0111543.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0111543.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 22,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Un indio en Paris (1994) [HD 720p Reescalado][AAC 2.0 Castellano][NVENC h264].mkv",
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 3564822856,
+      "sizeLabel": "3.3 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "infoHash": "db200c49d572e3a6a00a942dd3809a991495d1b7",
+      "fileIdx": null,
+      "score": 9.19,
+      "magnetUrl": "magnet:?xt=urn:btih:db200c49d572e3a6a00a942dd3809a991495d1b7&dn=Un%20indio%20en%20Paris%20(1994)%20%5BHD%20720p%20Reescalado%5D%5BAAC%202.0%20Castellano%5D%5BNVENC%20h264%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Un indien dans la ville (1994) REMASTERED VOF 1080p BluRay DTS-HD MA 5.1 x265-k7",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 5229122683,
+      "sizeLabel": "4.9 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "7ac094875f3b98dab655ca4d26fa7738819191ed",
+      "fileIdx": null,
+      "score": 6.35,
+      "magnetUrl": "magnet:?xt=urn:btih:7ac094875f3b98dab655ca4d26fa7738819191ed&dn=Un%20indien%20dans%20la%20ville%20(1994)%20REMASTERED%20VOF%201080p%20BluRay%20DTS-HD%20MA%205.1%20x265-k7&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 4,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Un indio en Paris (1994) [HD 720p Reescalado][AAC 2.0 Castellano][NVENC h264].mkv",
+      "description": "Un indio en Paris (1994) [HD 720p Reescalado][AAC 2.0 Castellano][NVENC h264].mkv\n🎞️ AVC · AAC 2.0\n👤 1 💾 3.3 GB ⚙️ Peerflix+TorrentClaw",
+      "pick": "es",
+      "score": 9.19,
+      "infoHash": "db200c49d572e3a6a00a942dd3809a991495d1b7",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 3564822856,
+      "sizeLabel": "3.3 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": "Un indio en Paris (1994) [HD 720p Reescalado][AAC 2.0 Castellano][NVENC h264].mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:db200c49d572e3a6a00a942dd3809a991495d1b7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:db200c49d572e3a6a00a942dd3809a991495d1b7&dn=Un%20indio%20en%20Paris%20(1994)%20%5BHD%20720p%20Reescalado%5D%5BAAC%202.0%20Castellano%5D%5BNVENC%20h264%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Un indio en Paris (1994) [HD 720p Reescalado][AAC 2.0 Castellano][NVENC h264].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Un indien dans la ville (1994) REMASTERED VOF 1080p BluRay DTS-HD MA 5.1 x265-k7",
+      "description": "Un indien dans la ville (1994) REMASTERED VOF 1080p BluRay DTS-HD MA 5.1 x265-k7\n🎞️ BluRay · HEVC · DTS-HD 5.1\n👤 4 💾 4.9 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 6.35,
+      "infoHash": "7ac094875f3b98dab655ca4d26fa7738819191ed",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 5229122683,
+      "sizeLabel": "4.9 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "DTS-HD"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": null,
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:7ac094875f3b98dab655ca4d26fa7738819191ed"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7ac094875f3b98dab655ca4d26fa7738819191ed&dn=Un%20indien%20dans%20la%20ville%20(1994)%20REMASTERED%20VOF%201080p%20BluRay%20DTS-HD%20MA%205.1%20x265-k7&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

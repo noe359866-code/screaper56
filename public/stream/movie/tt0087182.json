@@ -1,0 +1,137 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Dune.(1984).BDRip.Castellano.Català.Galego.Inglés.1080p.x264.AC3.mkv",
+      "description": "Dune.(1984).BDRip.Castellano.Català.Galego.Inglés.1080p.x264.AC3.mkv\n🎞️ BluRay · AVC · AC3\n👤 2 💾 2.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.04,
+      "infoHash": "b619622531007474000ef19b703f4c2765e1f04c",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 2,
+      "sizeBytes": 2705829396,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:b619622531007474000ef19b703f4c2765e1f04c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b619622531007474000ef19b703f4c2765e1f04c&dn=Dune.(1984).BDRip.Castellano.Catal%C3%A0.Galego.Ingl%C3%A9s.1080p.x264.AC3.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Dune (1984) 1080p BrRip x264 - YIFY",
+      "description": "Dune (1984) 1080p BrRip x264 - YIFY\n🎞️ BluRay · AVC\n👤 100 💾 1.8 GB ⚙️ Torrentio+Ytztvio",
+      "pick": "en",
+      "score": 8.2,
+      "infoHash": "21b12a01d2907744901a01a5052fc05cb5f7bfad",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 100,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "x264"
+      ],
+      "filename": "Dune.1984.1080p.BRrip.x264.YIFY.mp4",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:21b12a01d2907744901a01a5052fc05cb5f7bfad"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:21b12a01d2907744901a01a5052fc05cb5f7bfad&dn=Dune%20(1984)%201080p%20BrRip%20x264%20-%20YIFY&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Dune.1984.1080p.BRrip.x264.YIFY.mp4"
+      }
+    }
+  ]
+}

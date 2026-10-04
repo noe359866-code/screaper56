@@ -1,0 +1,141 @@
+{
+  "id": "tt0406649",
+  "imdbId": "tt0406649",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "A Christmas Carol: The Musical (2004)",
+  "name": "A Christmas Carol: The Musical",
+  "year": 2004,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0406649.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0406649.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0406649.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0406649.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0406649.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0406649.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0406649.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 5,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv",
+      "quality": "1080p",
+      "seeders": 38,
+      "sizeBytes": 4165428955,
+      "sizeLabel": "3.9 GB",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "79fa2501631f6d42452f878c5f95234eeebfd72e",
+      "fileIdx": null,
+      "score": 5.7,
+      "magnetUrl": "magnet:?xt=urn:btih:79fa2501631f6d42452f878c5f95234eeebfd72e&dn=A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 38,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "ru"
+  ],
+  "providers": [
+    "stremthru"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv",
+      "description": "A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv\n🎞️ WEB-DL\n👤 38 💾 3.9 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 5.7,
+      "infoHash": "79fa2501631f6d42452f878c5f95234eeebfd72e",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en",
+        "ru"
+      ],
+      "quality": "1080p",
+      "seeders": 38,
+      "sizeBytes": 4165428955,
+      "sizeLabel": "3.9 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Knaben"
+      ],
+      "filename": "A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:79fa2501631f6d42452f878c5f95234eeebfd72e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:79fa2501631f6d42452f878c5f95234eeebfd72e&dn=A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "A.Christmas.Carol.WEB-DL.IVI.1080p-SOFCJ.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Frankenweenie (1984) 1080p AI Upscale x265 HEVC 10bit AAC 2CH ENG FRE SPA POR subs",
+      "description": "Frankenweenie (1984) 1080p AI Upscale x265 HEVC 10bit AAC 2CH ENG FRE SPA POR subs\n🎞️ HEVC · AAC 2.0\n👤 19 💾 1.8 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "es",
+      "score": 13.22,
+      "infoHash": "54cabf547e1807c35e379d29f192e4dbacd19509",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en",
+        "pt",
+        "fr"
+      ],
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 1932735283,
+      "sizeLabel": "1.8 GB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Frankenweenie (1984).mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:54cabf547e1807c35e379d29f192e4dbacd19509"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:54cabf547e1807c35e379d29f192e4dbacd19509&dn=Frankenweenie%20(1984)%201080p%20AI%20Upscale%20x265%20HEVC%2010bit%20AAC%202CH%20ENG%20FRE%20SPA%20POR%20subs&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Frankenweenie (1984).mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Frankenweenie (1984) 480p web",
+      "description": "Frankenweenie (1984) 480p web\n🎞️ WEB · AVC · AAC\n👤 15 💾 205 MB ⚙️ Torrentio+Ytztvio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 4.63,
+      "infoHash": "3b8c1ea264c63518e4809492ba3bc201f2dd3bf3",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 15,
+      "sizeBytes": 214748365,
+      "sizeLabel": "205 MB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "ytztvio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "Ytztvio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "YTS",
+        "x264",
+        "Knaben"
+      ],
+      "filename": "Frankenweenie.1984.480p.DVDRip.x264.AAC-[YTS.MX].mp4",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:3b8c1ea264c63518e4809492ba3bc201f2dd3bf3"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3b8c1ea264c63518e4809492ba3bc201f2dd3bf3&dn=Frankenweenie%20(1984)%20480p%20web&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Frankenweenie.1984.480p.DVDRip.x264.AAC-[YTS.MX].mp4"
+      }
+    }
+  ]
+}

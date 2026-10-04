@@ -1,0 +1,244 @@
+{
+  "id": "tt0087537",
+  "imdbId": "tt0087537",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Kaos (1984)",
+  "name": "Kaos",
+  "year": 1984,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0087537.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0087537.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0087537.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0087537.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0087537.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 16,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Хаос.1984.BDRip-AVC msltel.mkv",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 6120328397,
+      "sizeLabel": "5.7 GB",
+      "audioLangs": [
+        "es",
+        "it",
+        "de"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "b16cb6f4a1240368a96f5dca1b4424e8db155c50",
+      "fileIdx": null,
+      "score": -4.84,
+      "magnetUrl": "magnet:?xt=urn:btih:b16cb6f4a1240368a96f5dca1b4424e8db155c50&dn=%D0%A5%D0%B0%D0%BE%D1%81.1984.BDRip-AVC%20msltel.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Kaos.1984.1080p.BluRay.H264.AAC",
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 3865470566,
+      "sizeLabel": "3.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "ce2bcf64da20b754f35f2ff7a202f997de7b8c89",
+      "fileIdx": null,
+      "score": 6.35,
+      "magnetUrl": "magnet:?xt=urn:btih:ce2bcf64da20b754f35f2ff7a202f997de7b8c89&dn=Kaos.1984.1080p.BluRay.H264.AAC&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 4,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "de",
+    "en",
+    "es",
+    "it"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Хаос.1984.BDRip-AVC msltel.mkv",
+      "description": "Хаос.1984.BDRip-AVC msltel.mkv\n🎞️ BluRay · AVC\n👤 0 💾 5.7 GB ⚙️ TorrentClaw",
+      "pick": "es",
+      "score": -4.84,
+      "infoHash": "b16cb6f4a1240368a96f5dca1b4424e8db155c50",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "it",
+        "de"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 6120328397,
+      "sizeLabel": "5.7 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Хаос.1984.BDRip-AVC msltel.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:b16cb6f4a1240368a96f5dca1b4424e8db155c50"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b16cb6f4a1240368a96f5dca1b4424e8db155c50&dn=%D0%A5%D0%B0%D0%BE%D1%81.1984.BDRip-AVC%20msltel.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Хаос.1984.BDRip-AVC msltel.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Kaos.1984.1080p.BluRay.H264.AAC",
+      "description": "Kaos.1984.1080p.BluRay.H264.AAC\n🎞️ BluRay · AVC · AAC\n👤 4 💾 3.6 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 6.35,
+      "infoHash": "ce2bcf64da20b754f35f2ff7a202f997de7b8c89",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 4,
+      "sizeBytes": 3865470566,
+      "sizeLabel": "3.6 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "Kaos.1984.1080p.BluRay.H264.AAC",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:ce2bcf64da20b754f35f2ff7a202f997de7b8c89"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ce2bcf64da20b754f35f2ff7a202f997de7b8c89&dn=Kaos.1984.1080p.BluRay.H264.AAC&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Kaos.1984.1080p.BluRay.H264.AAC"
+      }
+    }
+  ]
+}

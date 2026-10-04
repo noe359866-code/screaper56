@@ -1,0 +1,135 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Poker.Night.2014.BRRip.XviD.AC3.SBT",
+      "description": "Poker.Night.2014.BRRip.XviD.AC3.SBT\n🎞️ BluRay · XviD · AC3\n👤 0 ⚙️ Peerflix",
+      "pick": "es",
+      "score": 7.83,
+      "infoHash": "91db53a374ea6da18c1de3a65794d7b2db981af2",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 0,
+      "sizeBytes": null,
+      "sizeLabel": null,
+      "release": {
+        "source": "BluRay",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "MejorTorrent"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:91db53a374ea6da18c1de3a65794d7b2db981af2"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:91db53a374ea6da18c1de3a65794d7b2db981af2&dn=Poker.Night.2014.BRRip.XviD.AC3.SBT&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Poker Night 2014 1080p AMZN WEB-DL H264-GPRS",
+      "description": "Poker Night 2014 1080p AMZN WEB-DL H264-GPRS\n🎞️ WEB-DL · AVC\n👤 6 💾 7.1 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 6.54,
+      "infoHash": "5419029e471c3e0d8e0d5f14eadedd5f8c4bc24c",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 7602092114,
+      "sizeLabel": "7.1 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Poker Night 2014 1080p AMZN WEB-DL H264-GPRS.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:5419029e471c3e0d8e0d5f14eadedd5f8c4bc24c"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5419029e471c3e0d8e0d5f14eadedd5f8c4bc24c&dn=Poker%20Night%202014%201080p%20AMZN%20WEB-DL%20H264-GPRS&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Poker Night 2014 1080p AMZN WEB-DL H264-GPRS.mkv"
+      }
+    }
+  ]
+}
