@@ -1,0 +1,138 @@
+{
+  "id": "tt0098740:21:13",
+  "imdbId": "tt0098740",
+  "type": "series",
+  "season": 21,
+  "episode": 13,
+  "label": "America's Funniest Home Videos S21E13 – A boy dumps cold water over his father",
+  "name": "America's Funniest Home Videos",
+  "year": 1989,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0098740:21:13.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0098740:21:13.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0098740:21:13.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0098740:21:13.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0098740:21:13.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0098740:21:13.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 1,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés",
+      "title": "Americas.Funniest.Home.Videos.S21E13.HDTV.XviD-FQM",
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 376291983,
+      "sizeLabel": "359 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "8a80c66bb688eab08a68f270ad6bf75fb709ccf6",
+      "fileIdx": null,
+      "score": 0.23,
+      "magnetUrl": "magnet:?xt=urn:btih:8a80c66bb688eab08a68f270ad6bf75fb709ccf6&dn=Americas.Funniest.Home.Videos.S21E13.HDTV.XviD-FQM&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Americas.Funniest.Home.Videos.S21E13.HDTV.XviD-FQM",
+      "description": "Americas.Funniest.Home.Videos.S21E13.HDTV.XviD-FQM\n🎞️ HDTV · XviD\n👤 0 💾 359 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.23,
+      "infoHash": "8a80c66bb688eab08a68f270ad6bf75fb709ccf6",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 0,
+      "sizeBytes": 376291983,
+      "sizeLabel": "359 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:8a80c66bb688eab08a68f270ad6bf75fb709ccf6"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8a80c66bb688eab08a68f270ad6bf75fb709ccf6&dn=Americas.Funniest.Home.Videos.S21E13.HDTV.XviD-FQM&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

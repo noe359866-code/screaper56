@@ -1,991 +1,228 @@
 {
   "metas": [
     {
-      "id": "tt21692408",
-      "type": "movie",
-      "name": "Kung Fu Panda 4",
-      "poster": "https://images.metahub.space/poster/medium/tt21692408/img",
-      "releaseInfo": "2024"
-    },
-    {
-      "id": "tt3715406",
-      "type": "movie",
-      "name": "Atari: Game Over",
-      "poster": "https://images.metahub.space/poster/medium/tt3715406/img",
-      "releaseInfo": "2014"
-    },
-    {
-      "id": "tt0045585",
-      "type": "movie",
-      "name": "Bully for Bugs",
-      "poster": "https://images.metahub.space/poster/medium/tt0045585/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045537",
-      "type": "movie",
-      "name": "The Band Wagon",
-      "poster": "https://images.metahub.space/poster/medium/tt0045537/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0046035",
-      "type": "movie",
-      "name": "The Man from the Alamo",
-      "poster": "https://images.metahub.space/poster/medium/tt0046035/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0046054",
-      "type": "movie",
-      "name": "The Master of Ballantrae",
-      "poster": "https://images.metahub.space/poster/medium/tt0046054/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045469",
-      "type": "movie",
-      "name": "Abbott and Costello Meet Dr. Jekyll and Mr. Hyde",
-      "poster": "https://images.metahub.space/poster/medium/tt0045469/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045709",
-      "type": "movie",
-      "name": "Duck Dodgers in the 24½th Century",
-      "poster": "https://images.metahub.space/poster/medium/tt0045709/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045566",
-      "type": "movie",
-      "name": "A Blueprint for Murder",
-      "poster": "https://images.metahub.space/poster/medium/tt0045566/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045669",
-      "type": "movie",
-      "name": "Dangerous Crossing",
-      "poster": "https://images.metahub.space/poster/medium/tt0045669/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045810",
-      "type": "movie",
-      "name": "Gentlemen Prefer Blondes",
-      "poster": "https://images.metahub.space/poster/medium/tt0045810/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045361",
-      "type": "movie",
-      "name": "El",
-      "poster": "https://images.metahub.space/poster/medium/tt0045361/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0046094",
-      "type": "movie",
-      "name": "The Moon Is Blue",
-      "poster": "https://images.metahub.space/poster/medium/tt0046094/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045492",
-      "type": "movie",
-      "name": "All I Desire",
-      "poster": "https://images.metahub.space/poster/medium/tt0045492/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045886",
-      "type": "movie",
-      "name": "Houdini",
-      "poster": "https://images.metahub.space/poster/medium/tt0045886/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045464",
-      "type": "movie",
-      "name": "The 5,000 Fingers of Dr. T.",
-      "poster": "https://images.metahub.space/poster/medium/tt0045464/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045706",
-      "type": "movie",
-      "name": "Dream Wife",
-      "poster": "https://images.metahub.space/poster/medium/tt0045706/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0045546",
-      "type": "movie",
-      "name": "The Beast from 20,000 Fathoms",
-      "poster": "https://images.metahub.space/poster/medium/tt0045546/img",
-      "releaseInfo": "1953"
-    },
-    {
-      "id": "tt0035665",
-      "type": "movie",
-      "name": "Batman",
-      "poster": "https://images.metahub.space/poster/medium/tt0035665/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035896",
-      "type": "movie",
-      "name": "For Whom the Bell Tolls",
-      "poster": "https://images.metahub.space/poster/medium/tt0035896/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036174",
-      "type": "movie",
-      "name": "Mr. Lucky",
-      "poster": "https://images.metahub.space/poster/medium/tt0036174/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036547",
-      "type": "movie",
-      "name": "The Yankee Doodle Mouse",
-      "poster": "https://images.metahub.space/poster/medium/tt0036547/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035608",
-      "type": "movie",
-      "name": "Action in the North Atlantic",
-      "poster": "https://images.metahub.space/poster/medium/tt0035608/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035664",
-      "type": "movie",
-      "name": "Bataan",
-      "poster": "https://images.metahub.space/poster/medium/tt0035664/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035605",
-      "type": "movie",
-      "name": "Above Suspicion",
-      "poster": "https://images.metahub.space/poster/medium/tt0035605/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035884",
-      "type": "movie",
-      "name": "Five Graves to Cairo",
-      "poster": "https://images.metahub.space/poster/medium/tt0035884/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036172",
-      "type": "movie",
-      "name": "The More the Merrier",
-      "poster": "https://images.metahub.space/poster/medium/tt0036172/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036104",
-      "type": "movie",
-      "name": "The Leopard Man",
-      "poster": "https://images.metahub.space/poster/medium/tt0036104/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036295",
-      "type": "movie",
-      "name": "Red Hot Riding Hood",
-      "poster": "https://images.metahub.space/poster/medium/tt0036295/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036431",
-      "type": "movie",
-      "name": "This Land Is Mine",
-      "poster": "https://images.metahub.space/poster/medium/tt0036431/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036094",
-      "type": "movie",
-      "name": "Lady of Burlesque",
-      "poster": "https://images.metahub.space/poster/medium/tt0036094/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0036027",
-      "type": "movie",
-      "name": "I Walked with a Zombie",
-      "poster": "https://images.metahub.space/poster/medium/tt0036027/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0034694",
-      "type": "movie",
-      "name": "Edge of Darkness",
-      "poster": "https://images.metahub.space/poster/medium/tt0034694/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0035966",
-      "type": "movie",
-      "name": "Hangmen Also Die!",
-      "poster": "https://images.metahub.space/poster/medium/tt0035966/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt0034936",
-      "type": "movie",
-      "name": "Keeper of the Flame",
-      "poster": "https://images.metahub.space/poster/medium/tt0034936/img",
-      "releaseInfo": "1942"
-    },
-    {
-      "id": "tt0036400",
-      "type": "movie",
-      "name": "Sanshiro Sugata",
-      "poster": "https://images.metahub.space/poster/medium/tt0036400/img",
-      "releaseInfo": "1943"
-    },
-    {
-      "id": "tt2459022",
-      "type": "movie",
-      "name": "Lost in Thailand",
-      "poster": "https://images.metahub.space/poster/medium/tt2459022/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2589132",
-      "type": "movie",
-      "name": "Habibie & Ainun",
-      "poster": "https://images.metahub.space/poster/medium/tt2589132/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2713324",
-      "type": "movie",
-      "name": "5 cm",
-      "poster": "https://images.metahub.space/poster/medium/tt2713324/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2355762",
-      "type": "movie",
-      "name": "Christmas with Holly",
-      "poster": "https://images.metahub.space/poster/medium/tt2355762/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2490352",
-      "type": "movie",
-      "name": "The Mistle-Tones",
-      "poster": "https://images.metahub.space/poster/medium/tt2490352/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2374486",
-      "type": "movie",
-      "name": "Help for the Holidays",
-      "poster": "https://images.metahub.space/poster/medium/tt2374486/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1704292",
-      "type": "movie",
-      "name": "Battlestar Galactica: Blood & Chrome",
-      "poster": "https://images.metahub.space/poster/medium/tt1704292/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2332623",
-      "type": "movie",
-      "name": "Fateful Findings",
-      "poster": "https://images.metahub.space/poster/medium/tt2332623/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1606339",
-      "type": "movie",
-      "name": "Sushi Girl",
-      "poster": "https://images.metahub.space/poster/medium/tt1606339/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1865573",
-      "type": "movie",
-      "name": "Bad Kids Go to Hell",
-      "poster": "https://images.metahub.space/poster/medium/tt1865573/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1159922",
-      "type": "movie",
-      "name": "Cheerful Weather for the Wedding",
-      "poster": "https://images.metahub.space/poster/medium/tt1159922/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1477855",
-      "type": "movie",
-      "name": "Hyde Park on Hudson",
-      "poster": "https://images.metahub.space/poster/medium/tt1477855/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt1766094",
-      "type": "movie",
-      "name": "So Undercover",
-      "poster": "https://images.metahub.space/poster/medium/tt1766094/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt2258858",
-      "type": "movie",
-      "name": "Wadjda",
-      "poster": "https://images.metahub.space/poster/medium/tt2258858/img",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tt0346952",
-      "type": "movie",
-      "name": "An Evening with Kevin Smith",
-      "poster": "https://images.metahub.space/poster/medium/tt0346952/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0345543",
-      "type": "movie",
-      "name": "The Land Before Time IX: Journey to Big Water",
-      "poster": "https://images.metahub.space/poster/medium/tt0345543/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0316768",
-      "type": "movie",
-      "name": "Tiptoes",
-      "poster": "https://images.metahub.space/poster/medium/tt0316768/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0279331",
-      "type": "movie",
-      "name": "Dark Blue",
-      "poster": "https://images.metahub.space/poster/medium/tt0279331/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0253754",
-      "type": "movie",
-      "name": "Star Trek: Nemesis",
-      "poster": "https://images.metahub.space/poster/medium/tt0253754/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0252076",
-      "type": "movie",
-      "name": "Maid in Manhattan",
-      "poster": "https://images.metahub.space/poster/medium/tt0252076/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0303933",
-      "type": "movie",
-      "name": "Drumline",
-      "poster": "https://images.metahub.space/poster/medium/tt0303933/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0345561",
-      "type": "movie",
-      "name": "The Legend of Al, John and Jack",
-      "poster": "https://images.metahub.space/poster/medium/tt0345561/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0219400",
-      "type": "movie",
-      "name": "Waking Up in Reno",
-      "poster": "https://images.metahub.space/poster/medium/tt0219400/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0302640",
-      "type": "movie",
-      "name": "The Hot Chick",
-      "poster": "https://images.metahub.space/poster/medium/tt0302640/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0338564",
-      "type": "movie",
-      "name": "Infernal Affairs",
-      "poster": "https://images.metahub.space/poster/medium/tt0338564/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0257360",
-      "type": "movie",
-      "name": "About Schmidt",
-      "poster": "https://images.metahub.space/poster/medium/tt0257360/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0341555",
-      "type": "movie",
-      "name": "Sex Is Zero",
-      "poster": "https://images.metahub.space/poster/medium/tt0341555/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0322674",
-      "type": "movie",
-      "name": "Twin Sisters",
-      "poster": "https://images.metahub.space/poster/medium/tt0322674/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0299658",
-      "type": "movie",
-      "name": "Chicago",
-      "poster": "https://images.metahub.space/poster/medium/tt0299658/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0319758",
-      "type": "movie",
-      "name": "Live from Baghdad",
-      "poster": "https://images.metahub.space/poster/medium/tt0319758/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0210294",
-      "type": "movie",
-      "name": "Snow Queen",
-      "poster": "https://images.metahub.space/poster/medium/tt0210294/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0268126",
-      "type": "movie",
-      "name": "Adaptation.",
-      "poster": "https://images.metahub.space/poster/medium/tt0268126/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0289848",
-      "type": "movie",
-      "name": "Analyze That",
-      "poster": "https://images.metahub.space/poster/medium/tt0289848/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0262396",
-      "type": "movie",
-      "name": "Empire",
-      "poster": "https://images.metahub.space/poster/medium/tt0262396/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0332605",
-      "type": "movie",
-      "name": "House of Fools",
-      "poster": "https://images.metahub.space/poster/medium/tt0332605/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0284655",
-      "type": "movie",
-      "name": "WiseGirls",
-      "poster": "https://images.metahub.space/poster/medium/tt0284655/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0238380",
-      "type": "movie",
-      "name": "Equilibrium",
-      "poster": "https://images.metahub.space/poster/medium/tt0238380/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0337961",
-      "type": "movie",
-      "name": "In My Skin",
-      "poster": "https://images.metahub.space/poster/medium/tt0337961/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0298504",
-      "type": "movie",
-      "name": "Undertaking Betty",
-      "poster": "https://images.metahub.space/poster/medium/tt0298504/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0330152",
-      "type": "movie",
-      "name": "The Christmas Shoes",
-      "poster": "https://images.metahub.space/poster/medium/tt0330152/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0329737",
-      "type": "movie",
-      "name": "It's a Very Merry Muppet Christmas Movie",
-      "poster": "https://images.metahub.space/poster/medium/tt0329737/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0271263",
-      "type": "movie",
-      "name": "Eight Crazy Nights",
-      "poster": "https://images.metahub.space/poster/medium/tt0271263/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0283160",
-      "type": "movie",
-      "name": "Extreme Ops",
-      "poster": "https://images.metahub.space/poster/medium/tt0283160/img",
-      "releaseInfo": "2002"
-    },
-    {
-      "id": "tt0103855",
-      "type": "movie",
-      "name": "The Bodyguard",
-      "poster": "https://images.metahub.space/poster/medium/tt0103855/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0105462",
-      "type": "movie",
-      "name": "Stalin",
-      "poster": "https://images.metahub.space/poster/medium/tt0105462/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0105185",
-      "type": "movie",
-      "name": "Psy",
-      "poster": "https://images.metahub.space/poster/medium/tt0105185/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0103759",
-      "type": "movie",
-      "name": "Bad Lieutenant",
-      "poster": "https://images.metahub.space/poster/medium/tt0103759/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0104797",
-      "type": "movie",
-      "name": "Malcolm X",
-      "poster": "https://images.metahub.space/poster/medium/tt0104797/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0104431",
-      "type": "movie",
-      "name": "Home Alone 2: Lost in New York",
-      "poster": "https://images.metahub.space/poster/medium/tt0104431/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0102343",
-      "type": "movie",
-      "name": "Love Potion No. 9",
-      "poster": "https://images.metahub.space/poster/medium/tt0102343/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0105631",
-      "type": "movie",
-      "name": "Traces of Red",
-      "poster": "https://images.metahub.space/poster/medium/tt0105631/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0104870",
-      "type": "movie",
-      "name": "Mikey",
-      "poster": "https://images.metahub.space/poster/medium/tt0104870/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0104549",
-      "type": "movie",
-      "name": "Jennifer 8",
-      "poster": "https://images.metahub.space/poster/medium/tt0104549/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0104810",
-      "type": "movie",
-      "name": "Manufacturing Consent: Noam Chomsky and the Media",
-      "poster": "https://images.metahub.space/poster/medium/tt0104810/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0105104",
-      "type": "movie",
-      "name": "Passenger 57",
-      "poster": "https://images.metahub.space/poster/medium/tt0105104/img",
-      "releaseInfo": "1992"
-    },
-    {
-      "id": "tt0216434",
-      "type": "movie",
-      "name": "Zhil-byl pyos",
-      "poster": "https://images.metahub.space/poster/medium/tt0216434/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084637",
-      "type": "movie",
-      "name": "The Scarlet Pimpernel",
-      "poster": "https://images.metahub.space/poster/medium/tt0084637/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084698",
-      "type": "movie",
-      "name": "Smithereens",
-      "poster": "https://images.metahub.space/poster/medium/tt0084698/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0083449",
-      "type": "movie",
-      "name": "The Missionary",
-      "poster": "https://images.metahub.space/poster/medium/tt0083449/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0086013",
-      "type": "movie",
-      "name": "Nightbeast",
-      "poster": "https://images.metahub.space/poster/medium/tt0086013/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084395",
-      "type": "movie",
-      "name": "Class Reunion",
-      "poster": "https://images.metahub.space/poster/medium/tt0084395/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084777",
-      "type": "movie",
-      "name": "Tenebrae",
-      "poster": "https://images.metahub.space/poster/medium/tt0084777/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0083580",
-      "type": "movie",
-      "name": "Ace of Aces",
-      "poster": "https://images.metahub.space/poster/medium/tt0083580/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084357",
-      "type": "movie",
-      "name": "The Living Dead Girl",
-      "poster": "https://images.metahub.space/poster/medium/tt0084357/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0083944",
-      "type": "movie",
-      "name": "First Blood",
-      "poster": "https://images.metahub.space/poster/medium/tt0083944/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084658",
-      "type": "movie",
-      "name": "The Sender",
-      "poster": "https://images.metahub.space/poster/medium/tt0084658/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0085636",
-      "type": "movie",
-      "name": "Halloween III: Season of the Witch",
-      "poster": "https://images.metahub.space/poster/medium/tt0085636/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0083557",
-      "type": "movie",
-      "name": "Android",
-      "poster": "https://images.metahub.space/poster/medium/tt0083557/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084116",
-      "type": "movie",
-      "name": "Identification of a Woman",
-      "poster": "https://images.metahub.space/poster/medium/tt0084116/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0180274",
-      "type": "movie",
-      "name": "Unhinged",
-      "poster": "https://images.metahub.space/poster/medium/tt0180274/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt0084807",
-      "type": "movie",
-      "name": "Boat People",
-      "poster": "https://images.metahub.space/poster/medium/tt0084807/img",
-      "releaseInfo": "1982"
-    },
-    {
-      "id": "tt2316411",
-      "type": "movie",
-      "name": "Enemy",
-      "poster": "https://images.metahub.space/poster/medium/tt2316411/img",
-      "releaseInfo": "2013"
-    },
-    {
-      "id": "tt3498820",
-      "type": "movie",
-      "name": "Captain America: Civil War",
-      "poster": "https://images.metahub.space/poster/medium/tt3498820/img",
-      "releaseInfo": "2016"
-    },
-    {
-      "id": "tt2866360",
-      "type": "movie",
-      "name": "Coherence",
-      "poster": "https://images.metahub.space/poster/medium/tt2866360/img",
-      "releaseInfo": "2013"
+      "id": "tt0092067",
+      "type": "movie",
+      "name": "Castle in the Sky",
+      "poster": "https://images.metahub.space/poster/medium/tt0092067/img",
+      "releaseInfo": "1986"
     },
     {
-      "id": "tt0377092",
-      "type": "movie",
-      "name": "Mean Girls",
-      "poster": "https://images.metahub.space/poster/medium/tt0377092/img",
-      "releaseInfo": "2004"
+      "id": "tt4284010",
+      "type": "movie",
+      "name": "What Happened, Miss Simone?",
+      "poster": "https://images.metahub.space/poster/medium/tt4284010/img",
+      "releaseInfo": "2015"
     },
     {
-      "id": "tt34895535",
-      "type": "movie",
-      "name": "Nimrods",
-      "poster": "https://images.metahub.space/poster/medium/tt34895535/img",
-      "releaseInfo": "2026"
+      "id": "tt0056215",
+      "type": "movie",
+      "name": "Mamma Roma",
+      "poster": "https://images.metahub.space/poster/medium/tt0056215/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0251127",
-      "type": "movie",
-      "name": "How to Lose a Guy in 10 Days",
-      "poster": "https://images.metahub.space/poster/medium/tt0251127/img",
-      "releaseInfo": "2003"
+      "id": "tt0056194",
+      "type": "movie",
+      "name": "The Loneliness of the Long Distance Runner",
+      "poster": "https://images.metahub.space/poster/medium/tt0056194/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt37614297",
-      "type": "movie",
-      "name": "A Man Called Autumn Flower",
-      "poster": "https://images.metahub.space/poster/medium/tt37614297/img",
-      "releaseInfo": "1978"
+      "id": "tt0056663",
+      "type": "movie",
+      "name": "Vivre sa vie",
+      "poster": "https://images.metahub.space/poster/medium/tt0056663/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0290673",
-      "type": "movie",
-      "name": "Irreversible",
-      "poster": "https://images.metahub.space/poster/medium/tt0290673/img",
-      "releaseInfo": "2002"
+      "id": "tt0055858",
+      "type": "movie",
+      "name": "The Grim Reaper",
+      "poster": "https://images.metahub.space/poster/medium/tt0055858/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt1259521",
-      "type": "movie",
-      "name": "The Cabin in the Woods",
-      "poster": "https://images.metahub.space/poster/medium/tt1259521/img",
-      "releaseInfo": "2012"
+      "id": "tt0057427",
+      "type": "movie",
+      "name": "The Trial",
+      "poster": "https://images.metahub.space/poster/medium/tt0057427/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt33088452",
-      "type": "movie",
-      "name": "Regretting You",
-      "poster": "https://images.metahub.space/poster/medium/tt33088452/img",
-      "releaseInfo": "2025"
+      "id": "tt0056121",
+      "type": "movie",
+      "name": "Jigsaw",
+      "poster": "https://images.metahub.space/poster/medium/tt0056121/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0087363",
-      "type": "movie",
-      "name": "Gremlins",
-      "poster": "https://images.metahub.space/poster/medium/tt0087363/img",
-      "releaseInfo": "1984"
+      "id": "tt0056625",
+      "type": "movie",
+      "name": "Two Weeks in Another Town",
+      "poster": "https://images.metahub.space/poster/medium/tt0056625/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0094721",
-      "type": "movie",
-      "name": "Beetlejuice",
-      "poster": "https://images.metahub.space/poster/medium/tt0094721/img",
-      "releaseInfo": "1988"
+      "id": "tt13364334",
+      "type": "movie",
+      "name": "King Kong vs. Godzilla",
+      "poster": "https://images.metahub.space/poster/medium/tt13364334/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt3501632",
-      "type": "movie",
-      "name": "Thor: Ragnarok",
-      "poster": "https://images.metahub.space/poster/medium/tt3501632/img",
-      "releaseInfo": "2017"
+      "id": "tt0056700",
+      "type": "movie",
+      "name": "The Wonderful World of the Brothers Grimm",
+      "poster": "https://images.metahub.space/poster/medium/tt0056700/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt7395114",
-      "type": "movie",
-      "name": "The Devil All the Time",
-      "poster": "https://images.metahub.space/poster/medium/tt7395114/img",
-      "releaseInfo": "2020"
+      "id": "tt0055719",
+      "type": "movie",
+      "name": "The 300 Spartans",
+      "poster": "https://images.metahub.space/poster/medium/tt0055719/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0082971",
-      "type": "movie",
-      "name": "Raiders of the Lost Ark",
-      "poster": "https://images.metahub.space/poster/medium/tt0082971/img",
-      "releaseInfo": "1981"
+      "id": "tt0056315",
+      "type": "movie",
+      "name": "The Horrible Dr. Hichcock",
+      "poster": "https://images.metahub.space/poster/medium/tt0056315/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0068655",
-      "type": "movie",
-      "name": "The Tall Blond Man with One Black Shoe",
-      "poster": "https://images.metahub.space/poster/medium/tt0068655/img",
-      "releaseInfo": "1972"
+      "id": "tt0056636",
+      "type": "movie",
+      "name": "A Monkey in Winter",
+      "poster": "https://images.metahub.space/poster/medium/tt0056636/img",
+      "releaseInfo": "1962"
     },
     {
-      "id": "tt0069738",
-      "type": "movie",
-      "name": "The Asphyx",
-      "poster": "https://images.metahub.space/poster/medium/tt0069738/img",
-      "releaseInfo": "1972"
+      "id": "tt0044573",
+      "type": "movie",
+      "name": "The Duel at Silver Creek",
+      "poster": "https://images.metahub.space/poster/medium/tt0044573/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069847",
-      "type": "movie",
-      "name": "Carry on Abroad",
-      "poster": "https://images.metahub.space/poster/medium/tt0069847/img",
-      "releaseInfo": "1972"
+      "id": "tt0044916",
+      "type": "movie",
+      "name": "Monkey Business",
+      "poster": "https://images.metahub.space/poster/medium/tt0044916/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068853",
-      "type": "movie",
-      "name": "The Life and Times of Judge Roy Bean",
-      "poster": "https://images.metahub.space/poster/medium/tt0068853/img",
-      "releaseInfo": "1972"
+      "id": "tt0045009",
+      "type": "movie",
+      "name": "Park Row",
+      "poster": "https://images.metahub.space/poster/medium/tt0045009/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069113",
-      "type": "movie",
-      "name": "The Poseidon Adventure",
-      "poster": "https://images.metahub.space/poster/medium/tt0069113/img",
-      "releaseInfo": "1972"
+      "id": "tt0044418",
+      "type": "movie",
+      "name": "Big Jim McLain",
+      "poster": "https://images.metahub.space/poster/medium/tt0044418/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069197",
-      "type": "movie",
-      "name": "The Call of the Wild",
-      "poster": "https://images.metahub.space/poster/medium/tt0069197/img",
-      "releaseInfo": "1972"
+      "id": "tt0044417",
+      "type": "movie",
+      "name": "Beware, My Lovely",
+      "poster": "https://images.metahub.space/poster/medium/tt0044417/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068622",
-      "type": "movie",
-      "name": "Gargoyles",
-      "poster": "https://images.metahub.space/poster/medium/tt0068622/img",
-      "releaseInfo": "1972"
+      "id": "tt0044419",
+      "type": "movie",
+      "name": "The Big Sky",
+      "poster": "https://images.metahub.space/poster/medium/tt0044419/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068190",
-      "type": "movie",
-      "name": "Alice's Adventures in Wonderland",
-      "poster": "https://images.metahub.space/poster/medium/tt0068190/img",
-      "releaseInfo": "1972"
+      "id": "tt0044851",
+      "type": "movie",
+      "name": "Lost in Alaska",
+      "poster": "https://images.metahub.space/poster/medium/tt0044851/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068230",
-      "type": "movie",
-      "name": "Asylum",
-      "poster": "https://images.metahub.space/poster/medium/tt0068230/img",
-      "releaseInfo": "1972"
+      "id": "tt0045205",
+      "type": "movie",
+      "name": "Sudden Fear",
+      "poster": "https://images.metahub.space/poster/medium/tt0045205/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068971",
-      "type": "movie",
-      "name": "Death Walks at Midnight",
-      "poster": "https://images.metahub.space/poster/medium/tt0068971/img",
-      "releaseInfo": "1972"
+      "id": "tt0044760",
+      "type": "movie",
+      "name": "Ivanhoe",
+      "poster": "https://images.metahub.space/poster/medium/tt0044760/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068156",
-      "type": "movie",
-      "name": "1776",
-      "poster": "https://images.metahub.space/poster/medium/tt0068156/img",
-      "releaseInfo": "1972"
+      "id": "tt0044331",
+      "type": "movie",
+      "name": "Affair in Trinidad",
+      "poster": "https://images.metahub.space/poster/medium/tt0044331/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0066982",
-      "type": "movie",
-      "name": "Demons of the Mind",
-      "poster": "https://images.metahub.space/poster/medium/tt0066982/img",
-      "releaseInfo": "1972"
+      "id": "tt0044446",
+      "type": "movie",
+      "name": "The Sound Barrier",
+      "poster": "https://images.metahub.space/poster/medium/tt0044446/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068161",
-      "type": "movie",
-      "name": "The Dawns Here Are Quiet",
-      "poster": "https://images.metahub.space/poster/medium/tt0068161/img",
-      "releaseInfo": "1972"
+      "id": "tt0045061",
+      "type": "movie",
+      "name": "The Quiet Man",
+      "poster": "https://images.metahub.space/poster/medium/tt0045061/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0068537",
-      "type": "movie",
-      "name": "Elvis on Tour",
-      "poster": "https://images.metahub.space/poster/medium/tt0068537/img",
-      "releaseInfo": "1972"
+      "id": "tt0044557",
+      "type": "movie",
+      "name": "Don't Bother to Knock",
+      "poster": "https://images.metahub.space/poster/medium/tt0044557/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0070694",
-      "type": "movie",
-      "name": "Deathouse",
-      "poster": "https://images.metahub.space/poster/medium/tt0070694/img",
-      "releaseInfo": "1972"
+      "id": "tt0045283",
+      "type": "movie",
+      "name": "The White Reindeer",
+      "poster": "https://images.metahub.space/poster/medium/tt0045283/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069134",
-      "type": "movie",
-      "name": "Pulp",
-      "poster": "https://images.metahub.space/poster/medium/tt0069134/img",
-      "releaseInfo": "1972"
+      "id": "tt0045177",
+      "type": "movie",
+      "name": "Son of Paleface",
+      "poster": "https://images.metahub.space/poster/medium/tt0045177/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069525",
-      "type": "movie",
-      "name": "You're Not Elected, Charlie Brown",
-      "poster": "https://images.metahub.space/poster/medium/tt0069525/img",
-      "releaseInfo": "1972"
+      "id": "tt0045317",
+      "type": "movie",
+      "name": "We're Not Married!",
+      "poster": "https://images.metahub.space/poster/medium/tt0045317/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069436",
-      "type": "movie",
-      "name": "Ulzana's Raid",
-      "poster": "https://images.metahub.space/poster/medium/tt0069436/img",
-      "releaseInfo": "1972"
+      "id": "tt0043873",
+      "type": "movie",
+      "name": "Has Anybody Seen My Gal?",
+      "poster": "https://images.metahub.space/poster/medium/tt0043873/img",
+      "releaseInfo": "1952"
     },
     {
-      "id": "tt0069090",
-      "type": "movie",
-      "name": "Pink Floyd: Live at Pompeii",
-      "poster": "https://images.metahub.space/poster/medium/tt0069090/img",
-      "releaseInfo": "1972"
+      "id": "tt0045012",
+      "type": "movie",
+      "name": "Pat and Mike",
+      "poster": "https://images.metahub.space/poster/medium/tt0045012/img",
+      "releaseInfo": "1952"
     }
   ]
 }
