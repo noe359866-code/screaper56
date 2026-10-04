@@ -1,0 +1,145 @@
+{
+  "id": "tt0098740:27:15",
+  "imdbId": "tt0098740",
+  "type": "series",
+  "season": 27,
+  "episode": 15,
+  "label": "America's Funniest Home Videos S27E15 – Animals Stealing Hats vs Stilts, In the Background, and Scares",
+  "name": "America's Funniest Home Videos",
+  "year": 1989,
+  "imdbRating": "6.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0098740:27:15.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0098740:27:15.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0098740:27:15.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0098740:27:15.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0098740:27:15.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0098740:27:15.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 2,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S27E15.720p.HULU.WEBRip.AAC2.0.H264-RTN[rartv]",
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 986080870,
+      "sizeLabel": "940 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "22c52b08c7dc1dd6adfa801e5c2a8f6b0e212655",
+      "fileIdx": null,
+      "score": 0.76,
+      "magnetUrl": "magnet:?xt=urn:btih:22c52b08c7dc1dd6adfa801e5c2a8f6b0e212655&dn=Americas.Funniest.Home.Videos.S27E15.720p.HULU.WEBRip.AAC2.0.H264-RTN%5Brartv%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 0,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S27E15.720p.HULU.WEBRip.AAC2.0.H264-RTN[rartv]",
+      "description": "Americas.Funniest.Home.Videos.S27E15.720p.HULU.WEBRip.AAC2.0.H264-RTN[rartv]\n🎞️ WEBRip · AVC · AAC 2.0\n👤 0 💾 940 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 0.76,
+      "infoHash": "22c52b08c7dc1dd6adfa801e5c2a8f6b0e212655",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 0,
+      "sizeBytes": 986080870,
+      "sizeLabel": "940 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": null,
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:22c52b08c7dc1dd6adfa801e5c2a8f6b0e212655"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:22c52b08c7dc1dd6adfa801e5c2a8f6b0e212655&dn=Americas.Funniest.Home.Videos.S27E15.720p.HULU.WEBRip.AAC2.0.H264-RTN%5Brartv%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}
