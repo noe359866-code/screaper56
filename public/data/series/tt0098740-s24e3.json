@@ -1,0 +1,45 @@
+{
+  "id": "tt0098740:24:3",
+  "imdbId": "tt0098740",
+  "type": "series",
+  "season": 24,
+  "episode": 3,
+  "label": "America's Funniest Home Videos S24E03 – October 27, 2013",
+  "name": "America's Funniest Home Videos",
+  "year": 1989,
+  "imdbRating": "6.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0098740:24:3.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0098740:24:3.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0098740:24:3.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0098740:24:3.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0098740:24:3.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}
