@@ -1,0 +1,151 @@
+{
+  "id": "tt13197624",
+  "imdbId": "tt13197624",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "A Glenbrooke Christmas (2020)",
+  "name": "A Glenbrooke Christmas",
+  "year": 2020,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt13197624.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt13197624.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt13197624.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt13197624.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt13197624.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt13197624.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 20,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 6635724472,
+      "sizeLabel": "6.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "infoHash": "a1c767acf731229f097783cddc8acc7370e8106f",
+      "fileIdx": 0,
+      "score": 6.54,
+      "magnetUrl": "magnet:?xt=urn:btih:a1c767acf731229f097783cddc8acc7370e8106f&dn=A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY",
+      "description": "A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY\n🎞️ WEB-DL · AVC · DD+ 5.1\n👤 6 💾 6.2 GB ⚙️ TorrentsDB+Torrentio",
+      "pick": "en",
+      "score": 6.54,
+      "infoHash": "a1c767acf731229f097783cddc8acc7370e8106f",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 6635724472,
+      "sizeLabel": "6.2 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "1337x"
+      ],
+      "filename": "A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "dht:a1c767acf731229f097783cddc8acc7370e8106f"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a1c767acf731229f097783cddc8acc7370e8106f&dn=A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "A.Glenbrooke.Christmas.2020.1080p.AMZN.WEB-DL.DDP5.1.H.264-MERRY.mkv"
+      }
+    }
+  ]
+}

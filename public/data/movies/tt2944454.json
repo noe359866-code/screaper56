@@ -1,0 +1,44 @@
+{
+  "id": "tt2944454",
+  "imdbId": "tt2944454",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Riley Rewind (2013)",
+  "name": "Riley Rewind",
+  "year": 2013,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt2944454.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt2944454.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt2944454.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt2944454.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt2944454.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "stremthru",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

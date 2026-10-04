@@ -1,0 +1,148 @@
+{
+  "id": "tt8704802",
+  "imdbId": "tt8704802",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "The Last Blockbuster (2020)",
+  "name": "The Last Blockbuster",
+  "year": 2020,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt8704802.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt8704802.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt8704802.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt8704802.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt8704802.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt8704802.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt8704802.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 15,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Last Blockbuster 2020 1080p NF WEB-DL DDP2 0 x264-TEPES",
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "92e7202f69d82fcf2e5d8c9367c479b40d9d7832",
+      "fileIdx": 0,
+      "score": 6.91,
+      "magnetUrl": "magnet:?xt=urn:btih:92e7202f69d82fcf2e5d8c9367c479b40d9d7832&dn=The%20Last%20Blockbuster%202020%201080p%20NF%20WEB-DL%20DDP2%200%20x264-TEPES&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 10,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Last Blockbuster 2020 1080p NF WEB-DL DDP2 0 x264-TEPES",
+      "description": "The Last Blockbuster 2020 1080p NF WEB-DL DDP2 0 x264-TEPES\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 10 💾 2.7 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 6.91,
+      "infoHash": "92e7202f69d82fcf2e5d8c9367c479b40d9d7832",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 10,
+      "sizeBytes": 2899102925,
+      "sizeLabel": "2.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "EXT",
+        "TEPES"
+      ],
+      "filename": "The Last Blockbuster 2020 1080p NF WEB-DL DDP2 0 x264-TEPES.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce",
+        "http://tracker.qu.ax:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "dht:92e7202f69d82fcf2e5d8c9367c479b40d9d7832"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:92e7202f69d82fcf2e5d8c9367c479b40d9d7832&dn=The%20Last%20Blockbuster%202020%201080p%20NF%20WEB-DL%20DDP2%200%20x264-TEPES&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Last Blockbuster 2020 1080p NF WEB-DL DDP2 0 x264-TEPES.mkv"
+      }
+    }
+  ]
+}

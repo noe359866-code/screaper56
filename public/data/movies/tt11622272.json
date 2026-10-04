@@ -1,0 +1,41 @@
+{
+  "id": "tt11622272",
+  "imdbId": "tt11622272",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "Run Uje Run (2020)",
+  "name": "Run Uje Run",
+  "year": 2020,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt11622272.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt11622272.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt11622272.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt11622272.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt11622272.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt11622272.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 2,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

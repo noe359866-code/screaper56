@@ -1,0 +1,142 @@
+{
+  "id": "tt0036953",
+  "imdbId": "tt0036953",
+  "type": "movie",
+  "season": null,
+  "episode": null,
+  "label": "In Society (1944)",
+  "name": "In Society",
+  "year": 1944,
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/movie/tt0036953.json",
+    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0036953.json",
+    "torrentio": "https://torrentio.strem.fun/stream/movie/tt0036953.json",
+    "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0036953.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0036953.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0036953.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0036953.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 10,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Abbott and Costello In Society 1944 1080p BluRay FLAC x264-HANDJOB",
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 5594194903,
+      "sizeLabel": "5.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "fd4b42239e3d3bf338b2090f1221a20ab560fdc4",
+      "fileIdx": 0,
+      "score": 6.83,
+      "magnetUrl": "magnet:?xt=urn:btih:fd4b42239e3d3bf338b2090f1221a20ab560fdc4&dn=Abbott%20and%20Costello%20In%20Society%201944%201080p%20BluRay%20FLAC%20x264-HANDJOB&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 9,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Abbott and Costello In Society 1944 1080p BluRay FLAC x264-HANDJOB",
+      "description": "Abbott and Costello In Society 1944 1080p BluRay FLAC x264-HANDJOB\n🎞️ BluRay · AVC · FLAC\n👤 9 💾 5.2 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 6.83,
+      "infoHash": "fd4b42239e3d3bf338b2090f1221a20ab560fdc4",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 5594194903,
+      "sizeLabel": "5.2 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "FLAC"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Abbott and Costello In Society 1944 1080p BluRay FLAC x264-HANDJOB.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:fd4b42239e3d3bf338b2090f1221a20ab560fdc4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fd4b42239e3d3bf338b2090f1221a20ab560fdc4&dn=Abbott%20and%20Costello%20In%20Society%201944%201080p%20BluRay%20FLAC%20x264-HANDJOB&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Abbott and Costello In Society 1944 1080p BluRay FLAC x264-HANDJOB.mkv"
+      }
+    }
+  ]
+}
