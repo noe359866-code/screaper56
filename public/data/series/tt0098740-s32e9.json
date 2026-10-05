@@ -1,0 +1,140 @@
+{
+  "id": "tt0098740:32:9",
+  "imdbId": "tt0098740",
+  "type": "series",
+  "season": 32,
+  "episode": 9,
+  "label": "America's Funniest Home Videos S32E09 – Unprankable People, Hoverboards, and Virtual Assistant Insanity",
+  "name": "America's Funniest Home Videos",
+  "year": 1989,
+  "imdbRating": "6.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0098740:32:9.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0098740:32:9.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0098740:32:9.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0098740:32:9.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0098740:32:9.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0098740:32:9.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 8,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv",
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 1073741824,
+      "sizeLabel": "1.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "infoHash": "8e133404b24c0f3a096fb24d3175cd55741ceb1a",
+      "fileIdx": null,
+      "score": 4.45,
+      "magnetUrl": "magnet:?xt=urn:btih:8e133404b24c0f3a096fb24d3175cd55741ceb1a&dn=Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 2,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv",
+      "description": "Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv\n🎞️ HDTV\n👤 2 💾 1.0 GB ⚙️ TorrentClaw",
+      "pick": "en",
+      "score": 4.45,
+      "infoHash": "8e133404b24c0f3a096fb24d3175cd55741ceb1a",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 1073741824,
+      "sizeLabel": "1.0 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentClaw"
+      ],
+      "externalProviders": [],
+      "filename": "Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.gmi.gd:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "dht:8e133404b24c0f3a096fb24d3175cd55741ceb1a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8e133404b24c0f3a096fb24d3175cd55741ceb1a&dn=Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Americas.Funniest.Home.Videos.S32E09.720p.HDTV.OTA.mkv"
+      }
+    }
+  ]
+}
