@@ -128,7 +128,7 @@ const DISCOVERY_GENRES = resolveFocusGenres(process.env.DISCOVERY_GENRES);
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
 const rawMaxEpisodes = Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10);
-const MAX_EPISODES_PER_RUN = Number.isFinite(rawMaxEpisodes) ? Math.max(0, rawMaxEpisodes) : 60;
+const MAX_EPISODES_PER_RUN = Number.isFinite(rawMaxEpisodes) ? Math.max(0, rawMaxEpisodes) : 230;
 // Tipos que puede descubrir la rotación automática. Por defecto conserva el
 // comportamiento anterior (películas y series); 0/false/no desactiva cada tipo.
 const discoveryEnabled = value => !['0', 'false', 'no', 'off'].includes(String(value ?? '1').trim().toLowerCase());
