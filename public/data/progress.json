@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T04:13:39.279Z",
+  "updatedAt": "2026-10-06T04:24:25.789Z",
   "activeSeries": "tt0078638",
   "series": {
-    "tt0094517": {
-      "name": "Mystery Science Theater 3000",
-      "status": "complete",
-      "done": 176,
-      "total": 176,
-      "lastSeason": 10,
-      "lastEpisode": 13,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-06T04:13:39.279Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0078638": {
       "name": "Knots Landing",
       "status": "in-progress",
-      "done": 7,
+      "done": 67,
       "total": 345,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 4,
+      "lastEpisode": 14,
+      "nextSeason": 4,
+      "nextEpisode": 15,
+      "updatedAt": "2026-10-06T04:24:25.789Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0076998": {
@@ -470,6 +458,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0094517": {
+      "name": "Mystery Science Theater 3000",
+      "status": "complete",
+      "done": 176,
+      "total": 176,
+      "lastSeason": 10,
+      "lastEpisode": 13,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-06T04:13:39.279Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0098740": {
       "name": "America's Funniest Home Videos",
