@@ -18,7 +18,23 @@ on:
           - "0"
           - "1"
       rotate_watchlist:
-        description: "Actualizar watchlist.txt con títulos nuevos y eliminar los anteriores"
+        description: "Actualizar watchlist.txt con títulos nuevos y eliminar los anteriores (opt-in)"
+        required: false
+        default: "0"
+        type: choice
+        options:
+          - "1"
+          - "0"
+      discover_movies:
+        description: "Añadir películas nuevas al rotar el watchlist"
+        required: false
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "0"
+      discover_series:
+        description: "Añadir series nuevas al rotar (en modo 1: como máximo una, solo si no hay una activa)"
         required: false
         default: "1"
         type: choice
@@ -26,7 +42,7 @@ on:
           - "1"
           - "0"
       follow_series:
-        description: "Seguir una sola serie hasta terminarla (1 = 1 serie + películas, only = solo esa serie sin películas, 0 = varias a la vez)"
+        description: "Series: 1 = seguir una serie activa hasta terminarla (+ películas); only = solo una serie, sin películas; 0 = varias en paralelo"
         required: false
         default: "1"
         type: choice
@@ -65,6 +81,7 @@ permissions:
   id-token: write
   issues: write     # responder en el Issue de ingesta (ingesta sin token)
 
+# También compartido con issue-ingest.yml para serializar cambios al watchlist.
 concurrency:
   group: peerflix-static
   cancel-in-progress: false
@@ -116,9 +133,12 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           DRY_RUN: ${{ inputs.dry_run || '0' }}
-          AUTO_WATCHLIST: ${{ inputs.issue != '' && '0' || inputs.rotate_watchlist || '1' }}
+          # El cron también es opt-in: define la variable del repo AUTO_WATCHLIST=1 para rotarlo.
+          AUTO_WATCHLIST: ${{ github.event_name == 'schedule' && vars.AUTO_WATCHLIST == '1' && '1' || inputs.rotate_watchlist || '0' }}
           WATCHLIST_BATCH_SIZE: ${{ inputs.batch_size || '1000' }}
-          FOLLOW_SERIES: ${{ inputs.issue != '' && '0' || inputs.follow_series || '1' }}
+          FOLLOW_SERIES: ${{ inputs.follow_series || '1' }}
+          DISCOVERY_MOVIES: ${{ inputs.discover_movies || '1' }}
+          DISCOVERY_SERIES: ${{ inputs.discover_series || '1' }}
           SERIES_ID: ${{ inputs.series_id || '' }}
           # Serie larga: máx. episodios expandidos por corrida; la próxima
           # ejecución reanuda donde quedó (0 = sin límite).

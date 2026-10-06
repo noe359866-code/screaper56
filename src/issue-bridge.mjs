@@ -11,13 +11,14 @@
  * Writes:
  *   - watchlist.txt (only when the Issue has valid lines)
  *   - $COMMENT_PATH  Markdown reply for the Issue
- *   - $GITHUB_OUTPUT ok, reason, count, dry_run, providers
+ *   - $GITHUB_OUTPUT ok, reason, count, dry_run, providers y opciones de ingesta
  */
 
 import { readFile, writeFile, appendFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ISSUE_TITLE_PREFIX, parseIssueBody, watchlistFromIssue } from '../public/lib/issue.js';
+import { MAX_BATCH_SIZE } from '../public/lib/watchlist.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const ROOT = resolve(dirname(__filename), '..');
@@ -54,7 +55,8 @@ export function planFromEvent(event, { now = new Date() } = {}) {
     };
   }
   const parsed = parseIssueBody(issue.body);
-  if (!parsed.count) {
+  const canRunWithoutList = parsed.rotateWatchlist || parsed.followSeries === 'only' || Boolean(parsed.seriesId);
+  if (!parsed.count && !canRunWithoutList) {
     return {
       ok: false,
       reason: 'empty',
@@ -78,10 +80,24 @@ export function commentFor(plan, { repository = null } = {}) {
   if (!plan.ok) return plan.message;
   const { parsed } = plan;
   const runsUrl = repository ? `https://github.com/${repository}/actions/workflows/static.yml` : null;
+  const followLabel = parsed.followSeries === 'only'
+    ? 'una sola serie activa, sin películas'
+    : parsed.followSeries === '1'
+      ? 'una serie a la vez (las películas de la lista sí se procesan)'
+      : 'series en paralelo';
+  const discoverTypes = [
+    parsed.discoverMovies && 'películas',
+    parsed.discoverSeries && 'series',
+  ].filter(Boolean).join(' y ') || 'ninguno';
+  const keptSeries = parsed.followSeries === '0' ? 'las series pendientes' : 'la serie activa';
+  const rotation = parsed.rotateWatchlist
+    ? `rotación activada: lote de hasta ${parsed.batchSize} títulos (${discoverTypes}); se reemplaza el lote anterior salvo ${keptSeries}`
+    : 'rotación desactivada: se procesa la lista tal como está';
   return [
     `🤖 Recibido: **${parsed.count} título${parsed.count === 1 ? '' : 's'}**${parsed.invalid ? ` (${parsed.invalid} líneas no reconocidas se ignoraron)` : ''}.`,
     '',
     `- \`watchlist.txt\` actualizado con esta lista (reemplaza la anterior).`,
+    `- Series: ${followLabel}${parsed.seriesId ? ` · prioridad ${parsed.seriesId}` : ''}. ${rotation}.`,
     `- Addons: ${parsed.providers.join(', ') || '—'}${parsed.dryRun ? ' · **dry-run** (no escribe en Supabase)' : ''}.`,
     `- Ingesta lanzada${runsUrl ? `: [ver ejecuciones](${runsUrl})` : ''}. Cuando termine te respondo aquí con los 2 torrents de cada título (🇪🇸 + 🇬🇧) y cierro el Issue.`,
   ].join('\n');
@@ -103,6 +119,12 @@ async function main() {
     count: String(plan.parsed?.count ?? 0),
     dry_run: plan.parsed?.dryRun ? '1' : '0',
     providers: (plan.parsed?.providers || []).join(','),
+    follow_series: plan.parsed?.followSeries || '0',
+    rotate_watchlist: plan.parsed?.rotateWatchlist ? '1' : '0',
+    discover_movies: plan.parsed?.discoverMovies === false ? '0' : '1',
+    discover_series: plan.parsed?.discoverSeries === false ? '0' : '1',
+    batch_size: String(plan.parsed?.batchSize || MAX_BATCH_SIZE),
+    series_id: plan.parsed?.seriesId || '',
   };
   if (process.env.GITHUB_OUTPUT) {
     await appendFile(process.env.GITHUB_OUTPUT, Object.entries(outputs).map(([k, v]) => `${k}=${v}`).join('\n') + '\n');

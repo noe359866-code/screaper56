@@ -20,11 +20,26 @@ const LIST = [
   'tt0068646 $(rm -rf /) `whoami` ; echo pwned',
 ].join('\n');
 
-test('buildIssueBody → parseIssueBody: ida y vuelta con opciones', () => {
-  const body = buildIssueBody(LIST, { dryRun: true, providers: ['peerflix', 'torrentio', 'inventado'] });
+test('buildIssueBody → parseIssueBody: ida y vuelta con opciones de series y descubrimiento', () => {
+  const body = buildIssueBody(LIST, {
+    dryRun: true,
+    providers: ['peerflix', 'torrentio', 'inventado'],
+    followSeries: 'only',
+    rotateWatchlist: true,
+    discoverMovies: true,
+    discoverSeries: false,
+    batchSize: 24,
+    seriesId: 'https://www.imdb.com/title/tt0411008/',
+  });
   const parsed = parseIssueBody(body);
   assert.equal(parsed.count, 4);
   assert.equal(parsed.dryRun, true);
+  assert.equal(parsed.followSeries, 'only');
+  assert.equal(parsed.rotateWatchlist, true);
+  assert.equal(parsed.discoverMovies, true);
+  assert.equal(parsed.discoverSeries, false);
+  assert.equal(parsed.batchSize, 24);
+  assert.equal(parsed.seriesId, 'tt0411008');
   assert.deepEqual(parsed.providers, ['peerflix', 'torrentio']);
   assert.deepEqual(parsed.lines.slice(0, 3), [
     'tt0111161 Cadena perpetua (1994)',
@@ -55,8 +70,34 @@ test('parseIssueBody acepta listas pegadas a mano (sin bloque) y opciones por de
   const parsed = parseIssueBody('tt0111161\r\ntt1375666 Inception');
   assert.equal(parsed.count, 2);
   assert.equal(parsed.dryRun, false);
+  assert.equal(parsed.followSeries, '0', 'Issues antiguos mantienen el comportamiento en paralelo');
+  assert.equal(parsed.rotateWatchlist, false);
+  assert.equal(parsed.discoverMovies, true);
+  assert.equal(parsed.discoverSeries, true);
+  assert.equal(parsed.batchSize, 1000);
+  assert.equal(parsed.seriesId, '');
   assert.deepEqual(parsed.providers, ['peerflix', 'torrentsdb', 'torrentio', 'ytztvio', 'torrentclaw', 'aniscraper', 'stremthru', 'brazuca']);
   assert.equal(parseIssueBody('```\nnada útil\n```').count, 0);
+});
+
+test('las opciones manuales de Issue se validan y limitan a valores seguros', () => {
+  const parsed = parseIssueBody([
+    'follow_series: modo-raro',
+    'rotate_watchlist: sí',
+    'discover_movies: no',
+    'discover_series: inventado',
+    'batch_size: 50000',
+    'series_id: basura tt0411008 ; echo pwned',
+    '```watchlist',
+    'tt0111161',
+    '```',
+  ].join('\n'));
+  assert.equal(parsed.followSeries, '0');
+  assert.equal(parsed.rotateWatchlist, true);
+  assert.equal(parsed.discoverMovies, false);
+  assert.equal(parsed.discoverSeries, true, 'valor desconocido usa el default seguro');
+  assert.equal(parsed.batchSize, 1000);
+  assert.equal(parsed.seriesId, 'tt0411008');
 });
 
 test('watchlistFromIssue genera un watchlist.txt válido', () => {
@@ -83,5 +124,10 @@ test('planFromEvent: solo dueño/colaboradores, solo títulos [ingest] y con IDs
   const empty = planFromEvent(event({ body: 'hola' }));
   assert.equal(empty.reason, 'empty');
   assert.match(commentFor(empty), /No encontré ningún IMDb ID válido/);
+  const autoOnly = planFromEvent(event({ body: buildIssueBody('', { rotateWatchlist: true, followSeries: '1' }) }));
+  assert.equal(autoOnly.ok, true, 'permite autogenerar un lote aunque la lista manual esté vacía');
+  assert.equal(autoOnly.parsed.count, 0);
+  const continueSeries = planFromEvent(event({ body: buildIssueBody('', { followSeries: 'only' }) }));
+  assert.equal(continueSeries.ok, true, 'permite continuar la cola persistida sin volver a pegar IDs');
   assert.equal(planFromEvent({}).reason, 'no-issue');
 });

@@ -203,8 +203,12 @@ export function createSeenStore(initial = {}) {
     hasItem(item) {
       if (!item) return false;
       const id = String(item.imdbId || item.imdb_id || item.id || '').toLowerCase().trim();
-      if (id && imdbIds.has(id)) return true;
       const key = watchlistItemKey(item);
+      // A series ID is shared by every episode. For an explicit season/episode
+      // request, only that exact progress key means "seen"; broad ID/title
+      // matching would silently drop later episodes from an auto-rotated list.
+      if (item.season != null) return Boolean(key && keys.has(key));
+      if (id && imdbIds.has(id)) return true;
       if (key && keys.has(key)) return true;
       for (const candidateTitle of [item.name, item.label, item.title]) {
         const norm = normalizeTitleKey(candidateTitle);
@@ -888,6 +892,8 @@ export async function rotateWatchlist(currentText, {
   batchSize = DEFAULT_BATCH_SIZE,
   maxSeries = null,
   onlySeries = false,
+  includeMovies = true,
+  includeSeries = true,
   tmdbApiKey = '',
   baseUrl = CINEMETA_URL,
   now = Date.now(),
@@ -901,19 +907,25 @@ export async function rotateWatchlist(currentText, {
   const removedItems = [];
   const keptItems = [];
   const batchIds = new Set();
+  const batchKeys = new Set();
   const batchTitles = new Set();
 
   for (const item of currentItems) {
     const id = item.imdbId.toLowerCase();
-    const normTitle = normalizeTitleKey(item.label || item.name);
-    const isDuplicateInBatch = batchIds.has(id) || (normTitle && batchTitles.has(normTitle));
+    const key = watchlistItemKey(item);
+    const hasEpisodeCoordinates = item.season != null;
+    const normTitle = hasEpisodeCoordinates ? null : normalizeTitleKey(item.label || item.name);
+    const isDuplicateInBatch = batchKeys.has(key) || (!hasEpisodeCoordinates && (
+      batchIds.has(id) || (normTitle && batchTitles.has(normTitle))
+    ));
     const mustKeep = !isDuplicateInBatch && typeof keep === 'function' && keep({ ...item, imdbId: id });
     if (!mustKeep && (onlySeries || replaceAll || isDuplicateInBatch || seen.hasItem(item))) {
       seen.addItem(item);
       removedItems.push(item);
       continue;
     }
-    batchIds.add(id);
+    if (!hasEpisodeCoordinates) batchIds.add(id);
+    batchKeys.add(key);
     if (normTitle) batchTitles.add(normTitle);
     keptItems.push(mustKeep ? { ...item, type: 'series' } : item);
   }
@@ -921,41 +933,47 @@ export async function rotateWatchlist(currentText, {
   let addedItems = [];
   if (autoDiscover && keptItems.length < targetSize) {
     const needed = targetSize - keptItems.length;
-    const keptSeriesCount = keptItems.filter(isSeriesEntry).length;
+    const keptSeriesCount = new Set(keptItems.filter(isSeriesEntry).map(item => item.imdbId)).size;
     const hasSeries = keptSeriesCount > 0;
     const hasMovies = keptItems.some(i => !isSeriesEntry(i));
     let seriesCount;
-    if (onlySeries) {
-      seriesCount = needed;
-    } else {
+    if (onlySeries || (!includeMovies && includeSeries)) {
+      seriesCount = includeSeries ? needed : 0;
+    } else if (includeSeries) {
       seriesCount = targetSize >= 2 ? Math.max(1, Math.round(needed * 0.2)) : 0;
       if (hasSeries && needed === 1 && !hasMovies) seriesCount = 0;
       if (!hasSeries && targetSize >= 2 && seriesCount === 0) seriesCount = 1;
-      if (Number.isInteger(maxSeries) && maxSeries >= 0) {
-        seriesCount = Math.min(seriesCount, Math.max(0, maxSeries - keptSeriesCount));
-      }
+    } else {
+      seriesCount = 0;
     }
-    const movieCount = onlySeries ? 0 : Math.max(0, needed - seriesCount);
+    if (!onlySeries && Number.isInteger(maxSeries) && maxSeries >= 0) {
+      seriesCount = Math.min(seriesCount, Math.max(0, maxSeries - keptSeriesCount));
+    }
+    const movieCount = onlySeries || !includeMovies ? 0 : Math.max(0, needed - seriesCount);
+    const discoveryCount = movieCount + seriesCount;
 
     // Creamos una vista temporal de `seen` que también incluye los `keptItems`
-    // para que `discoverCatalogItems` no los duplique.
-    const tempSeen = createSeenStore(seen.toJSON({ now }));
-    for (const item of keptItems) tempSeen.addItem(item);
+    // para que `discoverCatalogItems` no los duplique. Si ambas categorías
+    // están desactivadas, la rotación conserva solo lo que ya estaba pendiente.
+    if (discoveryCount > 0) {
+      const tempSeen = createSeenStore(seen.toJSON({ now }));
+      for (const item of keptItems) tempSeen.addItem(item);
 
-    addedItems = await discoverCatalogItems(fetchJSON, {
-      seen: tempSeen,
-      count: needed,
-      movieCount,
-      seriesCount,
-      tmdbApiKey,
-      baseUrl,
-      now,
-      minYear,
-      maxYear,
-      focusGenres,
-      onWarning,
-    });
-    seen.cursor = tempSeen.cursor;
+      addedItems = await discoverCatalogItems(fetchJSON, {
+        seen: tempSeen,
+        count: discoveryCount,
+        movieCount,
+        seriesCount,
+        tmdbApiKey,
+        baseUrl,
+        now,
+        minYear,
+        maxYear,
+        focusGenres,
+        onWarning,
+      });
+      seen.cursor = tempSeen.cursor;
+    }
   }
 
   const finalItems = [...keptItems, ...addedItems];

@@ -221,6 +221,62 @@ function readProvidersFromUI() {
   return $$('#provider-list input[type=checkbox]').filter(c => c.checked && !c.disabled).map(c => c.dataset.provider);
 }
 
+function readRemoteIngestOptions() {
+  const followSeries = $$('input[name="follow-series"]').find(input => input.checked)?.value || '1';
+  const rawSeriesId = $('#series-id').value.trim();
+  return {
+    followSeries,
+    autoDiscover: $('#auto-discover').checked && followSeries !== 'only',
+    discoverMovies: $('#discover-movies').checked,
+    discoverSeries: $('#discover-series').checked,
+    batchSize: clamp($('#ingest-batch-size').value, 1, 1000),
+    seriesId: rawSeriesId,
+  };
+}
+
+function saveRemoteIngestPreferences() {
+  const s = state.settings;
+  const followSeries = $$('input[name="follow-series"]').find(input => input.checked)?.value || '1';
+  s.ingest = {
+    followSeries,
+    autoDiscover: $('#auto-discover').checked,
+    discoverMovies: $('#discover-movies').checked,
+    discoverSeries: $('#discover-series').checked,
+    batchSize: clamp($('#ingest-batch-size').value, 1, 1000),
+    seriesId: $('#series-id').value.trim(),
+  };
+  saveSettings();
+}
+
+function updateIngestOptionsUI({ persist = false } = {}) {
+  const options = readRemoteIngestOptions();
+  const onlySeries = options.followSeries === 'only';
+  if (onlySeries) $('#auto-discover').checked = false;
+  const discoveryDisabled = onlySeries || !$('#auto-discover').checked;
+  $('#auto-discover').disabled = onlySeries;
+  $('#discover-movies').disabled = discoveryDisabled;
+  $('#discover-series').disabled = discoveryDisabled;
+  $('#ingest-batch-size').disabled = discoveryDisabled;
+  $('#discovery-controls').setAttribute('aria-disabled', String(discoveryDisabled));
+
+  const summary = $('#ingest-options-summary');
+  if (onlySeries) {
+    summary.textContent = 'Solo se continuará una serie pendiente; no se añadirán películas ni contenido nuevo.';
+  } else if (options.autoDiscover) {
+    const kinds = [options.discoverMovies && 'películas', options.discoverSeries && 'series'].filter(Boolean);
+    const seriesFlow = options.followSeries === '1'
+      ? ' La siguiente serie no empezará hasta que termine la activa.'
+      : ' Las series seleccionadas se procesarán en paralelo.';
+    summary.textContent = kinds.length
+      ? `Se generará un lote de hasta ${options.batchSize} entradas (${kinds.join(' y ')}).${seriesFlow}`
+      : 'La rotación sustituirá el lote anterior, pero no añadirá películas ni series nuevas.';
+  } else {
+    summary.textContent = 'Desactivado: la Action procesa la lista tal como la has pegado, sin autogenerar ni rotar títulos.';
+  }
+  if (persist) saveRemoteIngestPreferences();
+  updateIngestHint();
+}
+
 function applySettingsToUI() {
   const s = state.settings;
   $('#gh-owner').value = s.ghOwner || '';
@@ -232,22 +288,54 @@ function applySettingsToUI() {
   $('#sb-page-size').value = s.pageSize || 50;
   $('#use-cinemeta').checked = s.cinemeta !== false;
   $('#concurrency').value = s.concurrency || 4;
+  const ingest = s.ingest || {};
+  const followValue = ['1', 'only', '0'].includes(ingest.followSeries) ? ingest.followSeries : '1';
+  $$('input[name="follow-series"]').forEach(input => { input.checked = input.value === followValue; });
+  $('#auto-discover').checked = Boolean(ingest.autoDiscover);
+  $('#discover-movies').checked = ingest.discoverMovies !== false;
+  $('#discover-series').checked = ingest.discoverSeries !== false;
+  $('#ingest-batch-size').value = clamp(ingest.batchSize || 10, 1, 1000);
+  $('#series-id').value = ingest.seriesId || '';
   const detected = state.detectedRepo;
   $('#gh-owner').placeholder = detected ? `${detected.owner} (detectado)` : 'ej: noe359866-code';
   $('#gh-repo').placeholder = detected ? `${detected.repo} (detectado)` : 'ej: screaper56';
   $('#gh-branch').placeholder = detected?.branch || 'main';
   renderProviderList();
   updateRepoLabels();
-  updateIngestHint();
+  updateIngestOptionsUI();
 }
 
 function updateIngestHint() {
   const hint = $('#ingest-mode-hint');
   const token = Boolean(state.settings.ghToken);
+  const options = readRemoteIngestOptions();
+  const followLabel = options.followSeries === 'only'
+    ? 'solo continúa una serie pendiente, sin películas'
+    : options.followSeries === '1'
+      ? 'termina una serie activa antes de iniciar otra (las películas de la lista sí se procesan)'
+      : 'procesa en paralelo las series de la lista';
   hint.innerHTML = token
     ? 'Con tu token: actualiza <code>watchlist.txt</code> y lanza la Action directamente. Publica los JSON y el addon Stremio en GitHub Pages y, si hay credenciales, hace UPSERT en Supabase.'
     : 'Sin token: abre un <b>Issue ya relleno</b> en GitHub. Pulsa “Submit new issue” (tienes que ser el dueño o un colaborador del repo) y la Action actualiza <code>watchlist.txt</code>, publica los resultados y te responde en el Issue.';
+  hint.innerHTML += ` <b>Plan de series:</b> ${followLabel}.`;
+  if (options.autoDiscover) {
+    const kinds = [options.discoverMovies && 'películas', options.discoverSeries && 'series'].filter(Boolean).join(' y ') || 'ningún tipo';
+    const pendingLabel = options.followSeries === '0' ? 'mantiene las series pendientes' : 'mantiene la serie activa';
+    hint.innerHTML += ` Rotación activada: reemplaza el lote anterior, ${pendingLabel} y prepara hasta ${options.batchSize} entradas (${kinds}) sin repetir.`;
+  } else if (options.followSeries === 'only') {
+    hint.innerHTML += ' La opción de títulos nuevos no se aplica al modo de solo serie.';
+  } else {
+    hint.innerHTML += ' Sin rotación: se procesa la lista pegada tal cual.';
+  }
   hint.innerHTML += ' <b>La BD solo se guarda si la Action tiene los Secrets <code>SUPABASE_URL</code> y <code>SUPABASE_SERVICE_ROLE_KEY</code> y Dry-run está desactivado.</b> La anon key de Ajustes no habilita la escritura.';
+}
+
+$$('input[name="follow-series"]').forEach(input => input.addEventListener('change', () => updateIngestOptionsUI({ persist: true })));
+for (const selector of ['#auto-discover', '#discover-movies', '#discover-series']) {
+  $(selector).addEventListener('change', () => updateIngestOptionsUI({ persist: true }));
+}
+for (const selector of ['#ingest-batch-size', '#series-id']) {
+  $(selector).addEventListener('input', () => updateIngestOptionsUI({ persist: true }));
 }
 
 $('#save-settings').addEventListener('click', () => {
@@ -1031,7 +1119,13 @@ $('#ingest').addEventListener('click', ingestRemote);
 
 async function ingestRemote() {
   const text = $('#watchlist').value;
-  if (!updateWatchlistPreview().valid) { setStatus('❌ Añade al menos un IMDb ID válido.'); return; }
+  const listStats = updateWatchlistPreview();
+  const options = readRemoteIngestOptions();
+  const canRunWithoutList = options.autoDiscover || options.followSeries === 'only' || Boolean(options.seriesId);
+  if (!listStats.valid && !canRunWithoutList) {
+    setStatus('❌ Añade un IMDb ID, activa la rotación automática o indica una serie prioritaria.');
+    return;
+  }
   const repo = currentRepo();
   if (!repo) {
     setStatus('❌ No sé cuál es tu repositorio: escribe owner y repo en Ajustes (o abre esta web desde GitHub Pages).');
@@ -1039,15 +1133,30 @@ async function ingestRemote() {
   }
   const dryRun = $('#dryrun').checked;
   const providers = selectedProviders();
+  if (options.seriesId && !/^tt\d{7,10}$/i.test(options.seriesId)) {
+    setStatus('❌ La serie prioritaria debe ser un IMDb ID válido, por ejemplo tt0944947.');
+    return;
+  }
+  options.seriesId = options.seriesId.toLowerCase();
   resetRunUI();
-  if (state.settings.ghToken) return dispatchWithToken(repo, text, { dryRun, providers });
-  return ingestViaIssue(repo, text, { dryRun, providers });
+  const request = { dryRun, providers, ...options };
+  if (state.settings.ghToken) return dispatchWithToken(repo, text, request);
+  return ingestViaIssue(repo, text, request);
 }
 
-async function ingestViaIssue(repo, text, { dryRun, providers }) {
+async function ingestViaIssue(repo, text, { dryRun, providers, followSeries, autoDiscover, discoverMovies, discoverSeries, batchSize, seriesId }) {
   const { lines, invalid } = sanitizeWatchlistLines(text);
   const title = buildIssueTitle(lines.length);
-  const body = buildIssueBody(text, { dryRun, providers });
+  const body = buildIssueBody(text, {
+    dryRun,
+    providers,
+    followSeries,
+    rotateWatchlist: autoDiscover,
+    discoverMovies,
+    discoverSeries,
+    batchSize,
+    seriesId,
+  });
   const base = `https://github.com/${repo.owner}/${repo.repo}/issues/new`;
   let url = `${base}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   let copied = false;
@@ -1058,13 +1167,14 @@ async function ingestViaIssue(repo, text, { dryRun, providers }) {
   }
   window.open(url, '_blank', 'noopener');
   const since = Date.now();
-  log(`📝 Issue preparado en ${repo.owner}/${repo.repo}: ${plural(lines.length, 'título')}${invalid ? ` (${invalid} líneas no válidas descartadas)` : ''}${dryRun ? ' · dry-run' : ''}.`);
+  const modeLabel = followSeries === 'only' ? 'solo serie activa' : followSeries === '1' ? 'una serie a la vez' : 'series en paralelo';
+  log(`📝 Issue preparado en ${repo.owner}/${repo.repo}: ${plural(lines.length, 'título')} · ${modeLabel}${autoDiscover ? ` · lote nuevo de hasta ${batchSize}` : ''}${invalid ? ` (${invalid} líneas no válidas descartadas)` : ''}${dryRun ? ' · dry-run' : ''}.`);
   $('#run-meta').innerHTML = `Si no se abrió la pestaña: <a href="${escapeHtml(url)}" target="_blank" rel="noopener">abrir el Issue en GitHub ↗</a>${copied ? ' · la lista está copiada en el portapapeles: pégala en el cuerpo del Issue' : ''}.`;
   setStatus('👉 En la pestaña de GitHub pulsa “Submit new issue” (tienes que ser el dueño o un colaborador). Esperaré aquí el resultado.');
   await watchRemoteRun(repo, since);
 }
 
-async function dispatchWithToken(repo, text, { dryRun, providers }) {
+async function dispatchWithToken(repo, text, { dryRun, providers, followSeries, autoDiscover, discoverMovies, discoverSeries, batchSize, seriesId }) {
   const controller = beginRun('remote');
   try {
     setStatus('Enviando watchlist.txt al repo…');
@@ -1087,7 +1197,19 @@ async function dispatchWithToken(repo, text, { dryRun, providers }) {
     const since = Date.now();
     await gh(`/repos/${repo.owner}/${repo.repo}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
       method: 'POST',
-      body: { ref: repo.branch, inputs: { dry_run: dryRun ? '1' : '0', rotate_watchlist: '0', providers: providers.join(',') } },
+      body: {
+        ref: repo.branch,
+        inputs: {
+          dry_run: dryRun ? '1' : '0',
+          rotate_watchlist: autoDiscover ? '1' : '0',
+          follow_series: followSeries,
+          series_id: seriesId,
+          batch_size: String(batchSize),
+          discover_movies: discoverMovies ? '1' : '0',
+          discover_series: discoverSeries ? '1' : '0',
+          providers: providers.join(','),
+        },
+      },
     });
     log('🚀 Action lanzada.', 'ok');
     endRun();

@@ -234,14 +234,33 @@ export function createRepository({
     get mode() { return mode; },
     async fetchSeen({ limit = 5000 } = {}) {
       if (this.dryRun || !client) return [];
+      const maxRows = parseNonNegativeInt(limit, 5000);
+      if (!maxRows) return [];
+      const pageSize = 1000; // Supabase/PostgREST suele limitar cada respuesta a 1000 filas.
+      const collected = [];
       try {
-        const query = client.from(TABLE).select('imdb_id, type, season, episode, info_hash, title');
-        const bounded = typeof query?.limit === 'function' ? query.limit(limit) : query;
-        const rows = typeof bounded?.abortSignal === 'function' ? await run(bounded) : (await bounded)?.data;
-        return Array.isArray(rows) ? rows : [];
+        for (let offset = 0; offset < maxRows; offset += pageSize) {
+          const size = Math.min(pageSize, maxRows - offset);
+          let query = client.from(TABLE).select('imdb_id, type, season, episode, info_hash, title');
+          if (typeof query?.order === 'function') query = query.order('info_hash', { ascending: true });
+          if (typeof query?.range === 'function') {
+            query = query.range(offset, offset + size - 1);
+          } else if (offset === 0 && typeof query?.limit === 'function') {
+            // Backwards-compatible fallback for injected/older clients without range().
+            query = query.limit(size);
+          } else {
+            break;
+          }
+          const rows = typeof query?.abortSignal === 'function' ? await run(query) : (await query)?.data;
+          if (!Array.isArray(rows)) break;
+          collected.push(...rows);
+          if (rows.length < size) break;
+        }
       } catch {
-        return [];
+        // Preserve rows from successful pages if a later page fails; discarding
+        // the whole history would make an auto-rotation repeat known titles.
       }
+      return collected;
     },
     async upsert(records) {
       const unique = new Map();

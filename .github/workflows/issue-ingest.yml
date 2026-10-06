@@ -14,8 +14,10 @@ permissions:
   actions: write    # gh workflow run static.yml
   issues: write     # responder / cerrar el Issue
 
+# Compartido con static.yml: evita que un Issue cambie watchlist.txt mientras
+# una ingesta lo rota/publica, lo que podía producir un rebase conflictivo.
 concurrency:
-  group: peerflix-issue-ingest
+  group: peerflix-static
   cancel-in-progress: false
 
 jobs:
@@ -72,10 +74,19 @@ jobs:
           REF: ${{ github.event.repository.default_branch }}
           DRY_RUN: ${{ steps.plan.outputs.dry_run }}
           PROVIDERS: ${{ steps.plan.outputs.providers }}
+          FOLLOW_SERIES: ${{ steps.plan.outputs.follow_series }}
+          ROTATE_WATCHLIST: ${{ steps.plan.outputs.rotate_watchlist }}
+          DISCOVER_MOVIES: ${{ steps.plan.outputs.discover_movies }}
+          DISCOVER_SERIES: ${{ steps.plan.outputs.discover_series }}
+          BATCH_SIZE: ${{ steps.plan.outputs.batch_size }}
+          SERIES_ID: ${{ steps.plan.outputs.series_id }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh workflow run static.yml --repo "$GITHUB_REPOSITORY" --ref "$REF" \
-            -f dry_run="$DRY_RUN" -f providers="$PROVIDERS" -f issue="$ISSUE_NUMBER"
+            -f dry_run="$DRY_RUN" -f providers="$PROVIDERS" -f issue="$ISSUE_NUMBER" \
+            -f follow_series="$FOLLOW_SERIES" -f rotate_watchlist="$ROTATE_WATCHLIST" \
+            -f discover_movies="$DISCOVER_MOVIES" -f discover_series="$DISCOVER_SERIES" \
+            -f batch_size="$BATCH_SIZE" -f series_id="$SERIES_ID"
 
       - name: "Responder en el Issue"
         if: always() && steps.plan.outcome == 'success'

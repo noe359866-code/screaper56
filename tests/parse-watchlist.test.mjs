@@ -56,7 +56,7 @@ test('watchlist.txt del repo es parseable y contiene entradas válidas', async (
   const root = resolve(__dirname, '..');
   const txt = readFileSync(resolve(root, 'watchlist.txt'), 'utf8');
   const items = parseWatchlist(txt);
-  assert.ok(items.length >= 5, 'debe haber al menos 5 entradas de ejemplo');
+  assert.ok(items.length > 0, 'watchlist.txt debe tener al menos una entrada válida (la rotación automática puede dejar lotes pequeños)');
   assert.ok(items.every(i => /^tt\d{7,10}$/.test(i.imdbId)), 'todos los IDs son IMDb válidos');
   // Las series pueden llevar temporada explícita (`:sN`, type 'series') o ir
   // con el ID solo (serie completa: todas las temporadas y episodios).
