@@ -15,8 +15,7 @@
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7525514.json",
     "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7525514.json",
     "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt7525514.json",
-    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7525514.json",
-    "brazuca": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/stream/movie/tt7525514.json"
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7525514.json"
   },
   "streamCount": 1,
   "candidateCount": 13,
@@ -79,7 +78,12 @@
     "ytztvio"
   ],
   "warnings": [],
-  "errors": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
   "streams": [
     {
       "name": "🇬🇧 Inglés 1080p",

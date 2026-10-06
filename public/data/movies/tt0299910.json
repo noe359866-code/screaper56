@@ -15,8 +15,7 @@
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
     "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
     "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0299910.json",
-    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0299910.json",
-    "brazuca": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/stream/movie/tt0299910.json"
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0299910.json"
   },
   "streamCount": 0,
   "candidateCount": 3,
@@ -30,6 +29,11 @@
   "languages": [],
   "providers": [],
   "warnings": [],
-  "errors": [],
+  "errors": [
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
   "streams": []
 }
