@@ -142,7 +142,7 @@ jobs:
           SERIES_ID: ${{ inputs.series_id || '' }}
           # Serie larga: máx. episodios expandidos por corrida; la próxima
           # ejecución reanuda donde quedó (0 = sin límite).
-          MAX_EPISODES_PER_RUN: "60"
+          MAX_EPISODES_PER_RUN: "230"
           DISCOVERY_GENRES: ${{ inputs.genres || 'anime,documentales' }}
           PROVIDERS: ${{ inputs.providers || 'peerflix,torrentsdb,torrentio,ytztvio,torrentclaw,aniscraper,stremthru,brazuca' }}
         run: node src/fetch.mjs

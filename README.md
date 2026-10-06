@@ -384,7 +384,7 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 - **Sigue una sola serie hasta terminarla** (`FOLLOW_SERIES=1` por defecto):
   en vez de acumular decenas de series a la vez avanzando 1 episodio de cada
   una, cada ejecución dedica **todos los episodios del lote**
-  (`MAX_EPISODES_PER_RUN`, 60 por defecto) a **una única serie activa**
+  (`MAX_EPISODES_PER_RUN`, 230 por defecto) a **una única serie activa**
   (`activeSeries` en `progress.json`) y no empieza otra serie hasta que esa
   termina al 100 %. Cuando se completa, la siguiente corrida pasa
   automáticamente a la siguiente serie pendiente en cola (o descubre 1 nueva).
@@ -426,7 +426,7 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 | `DISCOVERY_SERIES` | `1` | `0` = no añadir series al descubrimiento automático |
 | `DISCOVERY_GENRES` | `anime,documentales` | Géneros con hueco reservado en cada lote del watchlist automático (`0` = ninguno) |
 | `SERIES_ID` | — | Opcional: IMDb ID (`tt…`) de la serie a seguir hasta terminarla |
-| `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
+| `MAX_EPISODES_PER_RUN` | `230` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
 | `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas por addon (1–16; algunos providers limitan más) / timeout en ms (1000–120000); valores inválidos usan el default |
 | `BREAKER_THRESHOLD` | `3` | Errores seguidos de un addon antes de dejar de consultarlo |
