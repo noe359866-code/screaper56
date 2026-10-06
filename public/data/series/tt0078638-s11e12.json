@@ -1,0 +1,151 @@
+{
+  "id": "tt0078638:11:12",
+  "imdbId": "tt0078638",
+  "type": "series",
+  "season": 11,
+  "episode": 12,
+  "label": "Knots Landing S11E12 – What a Swell Party This Is",
+  "name": "Knots Landing",
+  "year": 1979,
+  "imdbRating": "6.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0078638:11:12.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0078638:11:12.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0078638:11:12.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0078638:11:12.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0078638:11:12.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 3,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Knots.Landing.Season.11.WEB-DL.x264-RYBOI",
+      "quality": "480p",
+      "seeders": 10,
+      "sizeBytes": 527737815,
+      "sizeLabel": "503 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "0f543ab0feae51edb315e568c5c87d9e5872cb12",
+      "fileIdx": 11,
+      "score": 4.41,
+      "magnetUrl": "magnet:?xt=urn:btih:0f543ab0feae51edb315e568c5c87d9e5872cb12&dn=Knots.Landing.Season.11.WEB-DL.x264-RYBOI&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 10,
+  "qualities": [
+    "480p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "Knots.Landing.Season.11.WEB-DL.x264-RYBOI",
+      "description": "Knots.Landing.Season.11.WEB-DL.x264-RYBOI\n🎞️ WEB-DL · AVC\n👤 10 💾 503 MB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 4.41,
+      "infoHash": "0f543ab0feae51edb315e568c5c87d9e5872cb12",
+      "fileIdx": 11,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 10,
+      "sizeBytes": 527737815,
+      "sizeLabel": "503 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "EXT",
+        "RYBOI"
+      ],
+      "filename": "12 What a Swell Party This Is.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:0f543ab0feae51edb315e568c5c87d9e5872cb12"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0f543ab0feae51edb315e568c5c87d9e5872cb12&dn=Knots.Landing.Season.11.WEB-DL.x264-RYBOI&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "12 What a Swell Party This Is.mkv"
+      }
+    }
+  ]
+}
