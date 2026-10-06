@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T02:38:47.788Z",
-  "activeSeries": "tt0098740",
+  "updatedAt": "2026-10-06T02:43:10.138Z",
+  "activeSeries": "tt0094517",
   "series": {
     "tt0098740": {
       "name": "America's Funniest Home Videos",
-      "status": "in-progress",
-      "done": 787,
+      "status": "complete",
+      "done": 816,
       "total": 816,
-      "lastSeason": 35,
-      "lastEpisode": 17,
-      "nextSeason": 35,
-      "nextEpisode": 18,
-      "updatedAt": "2026-10-06T02:38:47.788Z",
+      "lastSeason": 37,
+      "lastEpisode": 2,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-06T02:43:10.138Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0094517": {
