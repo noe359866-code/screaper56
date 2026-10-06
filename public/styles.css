@@ -513,3 +513,101 @@ nav button:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .skip-link { transition: none; }
 }
+
+
+/* ---------- opciones de ingesta / seguimiento de series ---------- */
+.ingest-config {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 12px;
+  margin: 14px 0 8px;
+}
+.ingest-options {
+  min-width: 0;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(130,151,184,.2);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(20,29,43,.86), rgba(13,19,29,.88));
+}
+.ingest-options legend {
+  padding: 0 7px;
+  color: #dfe7ff;
+  font-size: 13px;
+  font-weight: 750;
+}
+.ingest-options > p { margin: 3px 0 10px; }
+.choice-grid { display: grid; gap: 8px; }
+.ingest-options label.choice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  padding: 10px 11px;
+  border: 1px solid rgba(130,151,184,.16);
+  border-radius: 11px;
+  background: rgba(255,255,255,.025);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease;
+}
+.ingest-options label.choice-card:has(input:checked) {
+  border-color: rgba(124,156,255,.55);
+  background: rgba(124,156,255,.08);
+}
+.ingest-options label.choice-card span { display: grid; gap: 2px; }
+.ingest-options label.choice-card b { font-size: 12px; line-height: 1.4; }
+.ingest-options label.choice-card small { color: var(--muted); font-size: 11px; line-height: 1.45; }
+.ingest-options input[type="radio"],
+.ingest-options label.chk input[type="checkbox"] {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: auto;
+  margin: 3px 0 0;
+}
+.ingest-options label.series-target,
+.ingest-options label.batch-size-label {
+  display: block;
+  margin: 11px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.ingest-options label.series-target input,
+.ingest-options label.batch-size-label input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid rgba(130,151,184,.22);
+  border-radius: 9px;
+  background: rgba(15,22,33,.9);
+  color: var(--text);
+  padding: 8px 10px;
+}
+.ingest-options label.chk {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.ingest-options .discovery-controls {
+  display: grid;
+  gap: 3px;
+  margin: 10px 0 4px;
+  padding: 9px 10px;
+  border: 1px solid rgba(130,151,184,.13);
+  border-radius: 10px;
+  background: rgba(255,255,255,.02);
+}
+.ingest-options .discovery-controls[aria-disabled="true"] { opacity: .45; }
+.ingest-options :disabled { cursor: not-allowed; }
+#ingest-options-summary {
+  min-height: 18px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(130,151,184,.12);
+}
+@media (max-width: 760px) {
+  .ingest-config { grid-template-columns: 1fr; }
+}

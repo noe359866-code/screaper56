@@ -39,6 +39,39 @@ test('rechaza info-hashes que no sean 40 hex distintos de cero', () => {
   assert.equal(streamToTorrentRecord(candidate().item, { ...candidate().stream, infoHash: 'not-a-hash' }), null);
 });
 
+test('fetchSeen pagina filas de Supabase y respeta el límite solicitado', async () => {
+  const rows = Array.from({ length: 1200 }, (_, i) => ({ imdb_id: `tt${String(1000000 + i)}`, info_hash: String(i) }));
+  const ranges = [];
+  const client = {
+    from(name) {
+      assert.equal(name, 'torrents');
+      return {
+        select(columns) {
+          assert.equal(columns, 'imdb_id, type, season, episode, info_hash, title');
+          const builder = {
+            order(column, options) {
+              assert.equal(column, 'info_hash');
+              assert.deepEqual(options, { ascending: true });
+              return this;
+            },
+            range(from, to) {
+              ranges.push([from, to]);
+              return {
+                abortSignal: async () => ({ data: rows.slice(from, to + 1), error: null, status: 200 }),
+              };
+            },
+          };
+          return builder;
+        },
+      };
+    },
+  };
+  const repo = createRepository({ client });
+  const seen = await repo.fetchSeen({ limit: 1500 });
+  assert.equal(seen.length, 1200);
+  assert.deepEqual(ranges, [[0, 999], [1000, 1499]]);
+});
+
 test('dry-run deduplica por info_hash y cuenta rechazos', async () => {
   const repo = createRepository({ dryRun: true });
   const result = await repo.upsert([

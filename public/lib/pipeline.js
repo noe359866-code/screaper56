@@ -62,7 +62,9 @@ function parseRetryAfter(value) {
   if (!value) return null;
   const seconds = Number(value);
   const ms = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(value) - Date.now();
-  return Number.isFinite(ms) ? Math.min(10000, Math.max(0, ms)) : null;
+  // Retry-After may be either seconds or an HTTP date. Respect the server's
+  // requested pause while keeping any single wait bounded for this process.
+  return Number.isFinite(ms) ? Math.min(60000, Math.max(0, ms)) : null;
 }
 
 function isRetryable(err) {
@@ -148,15 +150,36 @@ export function createJsonFetcher({
 
 /** Limita cuántas promesas corren a la vez (cola FIFO). */
 export function createLimiter(concurrency = 4) {
+  const requested = Number(concurrency);
+  // Un NaN/Infinity en la configuración no debe convertirse en concurrencia
+  // ilimitada (ni bloquear la cola). Para llamadas genéricas, fallback a 4 y
+  // un techo defensivo; la Action valida su propia configuración antes.
+  const maxConcurrency = Number.isFinite(requested)
+    ? Math.min(64, Math.max(1, Math.floor(requested)))
+    : 4;
   let active = 0;
-  const queue = [];
+  let head = 0;
+  let queue = [];
   const next = () => {
-    if (active >= Math.max(1, concurrency) || !queue.length) return;
-    active++;
-    const { fn, resolve, reject } = queue.shift();
-    Promise.resolve().then(fn).then(resolve, reject).finally(() => { active--; next(); });
+    while (active < maxConcurrency && head < queue.length) {
+      active++;
+      const { fn, resolve, reject } = queue[head++];
+      Promise.resolve().then(fn).then(resolve, reject).finally(() => {
+        active--;
+        next();
+        // Avoid Array.shift()'s O(n) copy per queued task. Periodically drop
+        // processed entries so long runs do not retain settled closures.
+        if (head >= 1024 && head * 2 >= queue.length) {
+          queue = queue.slice(head);
+          head = 0;
+        }
+      });
+    }
   };
-  return fn => new Promise((resolve, reject) => { queue.push({ fn, resolve, reject }); next(); });
+  return fn => new Promise((resolve, reject) => {
+    queue.push({ fn, resolve, reject });
+    next();
+  });
 }
 
 // ---------- trackers ----------
@@ -670,8 +693,12 @@ export async function runPipeline(queries, {
         stats.skipped++;
         return { ok: false, skipped: true, error: breaker.openReason };
       }
-      const wait = throttle.until - now();
-      if (wait > 0) await sleep(wait);
+      // Another in-flight request may extend the pause while this task sleeps
+      // (e.g. several simultaneous 429s). Re-check the shared deadline before
+      // sending so queued requests cannot slip through the newer Retry-After.
+      while (!signal?.aborted && throttle.until > now()) {
+        await sleep(throttle.until - now());
+      }
       if (breaker.open || signal?.aborted) {
         stats.skipped++;
         return { ok: false, skipped: true, error: breaker.openReason || 'cancelado' };

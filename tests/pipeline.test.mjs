@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   HttpError,
   createJsonFetcher,
+  createLimiter,
   describeError,
   expandWatchlist,
   loadMetadata,
@@ -58,6 +59,42 @@ test('createJsonFetcher corta por timeout y no envía cabeceras si no se piden (
   const slow = createJsonFetcher({ fetchImpl, timeoutMs: 20, retries: 0, sleep: noSleep });
   await assert.rejects(slow('https://x'), err => err.name === 'TimeoutError' && /timeout/.test(describeError(err)));
   assert.equal('headers' in seenInit, false);
+});
+
+test('createJsonFetcher respeta Retry-After largo sin aceptar esperas ilimitadas', async () => {
+  const waits = [];
+  let calls = 0;
+  const fetcher = createJsonFetcher({
+    retries: 1,
+    sleep: async ms => { waits.push(ms); },
+    fetchImpl: async () => ++calls === 1
+      ? response(429, '', { 'retry-after': '30' })
+      : response(200, { ok: true }),
+  });
+  assert.deepEqual(await fetcher('https://x/retry.json'), { ok: true });
+  assert.deepEqual(waits, [30000]);
+});
+
+test('createLimiter conserva FIFO, acota concurrencia y recupera configuración inválida', async () => {
+  const fifo = createLimiter(1);
+  const order = [];
+  const values = await Promise.all(Array.from({ length: 20 }, (_, i) => fifo(async () => {
+    order.push(i);
+    return i;
+  })));
+  assert.deepEqual(values, Array.from({ length: 20 }, (_, i) => i));
+  assert.deepEqual(order, values);
+
+  let active = 0;
+  let peak = 0;
+  const safeDefault = createLimiter(Number.NaN);
+  await Promise.all(Array.from({ length: 12 }, (_, i) => safeDefault(async () => {
+    peak = Math.max(peak, ++active);
+    await new Promise(resolve => setTimeout(resolve, 2));
+    active--;
+    return i;
+  })));
+  assert.equal(peak, 4, 'NaN debe caer al default seguro y nunca abrir la cola sin límite');
 });
 
 const PROVIDERS = [

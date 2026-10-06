@@ -86,6 +86,27 @@ test('createSeenStore recuerda IDs, nombres y hashes de index.json y de Supabase
   assert.equal(seen.hasItem({ imdbId: 'tt0111161', name: 'The Shawshank Redemption' }), false);
 });
 
+test('la rotación distingue episodios de la misma serie y no descarta episodios pendientes', async () => {
+  const seen = createSeenStore();
+  const episode1 = { imdbId: 'tt7777777', type: 'series', season: 1, episode: 1, label: 'Serie Larga S01E01' };
+  const episode2 = { imdbId: 'tt7777777', type: 'series', season: 1, episode: 2, label: 'Serie Larga S01E02' };
+  seen.addItem(episode1);
+  assert.equal(seen.hasItem(episode1), true);
+  assert.equal(seen.hasItem(episode2), false, 'un episodio visto no marca como vistos todos los de la serie');
+
+  const rotated = await rotateWatchlist([
+    'tt7777777:s1:e1 Serie Larga S01E01',
+    'tt7777777:s1:e2 Serie Larga S01E02',
+  ].join('\n'), {
+    seen,
+    autoDiscover: false,
+    replaceAll: false,
+  });
+  assert.deepEqual(rotated.items.map(item => `${item.imdbId}:s${item.season}:e${item.episode}`), [
+    'tt7777777:s1:e2',
+  ]);
+});
+
 test('rotateWatchlist elimina las anteriores en cada Run y nunca repite títulos ni nombres', async () => {
   const seen = createSeenStore();
   const initialWatchlist = [
@@ -221,6 +242,60 @@ test('rotateWatchlist con keep: las series en progreso se conservan aunque esté
     onlySeries: true,
   });
   assert.deepEqual(onlyOneSeries.items.map(i => i.imdbId), ['tt7777777']);
+});
+
+test('rotateWatchlist puede añadir solo películas, solo series o ningún tipo', async () => {
+  const fetchJSON = async url => {
+    const isSeries = url.includes('/catalog/series/');
+    const type = isSeries ? 'series' : 'movie';
+    const base = isSeries ? 7_000_000 : 8_000_000;
+    return {
+      metas: Array.from({ length: 8 }, (_, i) => ({
+        imdb_id: `tt${base + i}`,
+        name: `${type} candidata ${i}`,
+        type,
+        year: '2024',
+      })),
+    };
+  };
+
+  const movies = await rotateWatchlist('', {
+    seen: createSeenStore(), fetchJSON, autoDiscover: true, replaceAll: true,
+    batchSize: 4, includeMovies: true, includeSeries: false, focusGenres: '0',
+  });
+  assert.equal(movies.items.length, 4);
+  assert.ok(movies.items.every(item => item.type === 'movie'));
+
+  const series = await rotateWatchlist('', {
+    seen: createSeenStore(), fetchJSON, autoDiscover: true, replaceAll: true,
+    batchSize: 4, includeMovies: false, includeSeries: true, focusGenres: '0',
+  });
+  assert.equal(series.items.length, 4);
+  assert.ok(series.items.every(item => item.type === 'series'));
+
+  const oneSeries = await rotateWatchlist('', {
+    seen: createSeenStore(), fetchJSON, autoDiscover: true, replaceAll: true,
+    batchSize: 10, maxSeries: 1, includeMovies: false, includeSeries: true, focusGenres: '0',
+  });
+  assert.equal(oneSeries.items.length, 1, 'FOLLOW_SERIES=1 solo permite añadir una serie nueva cuando no hay una activa');
+  assert.equal(oneSeries.items[0].type, 'series');
+
+  const parallelEpisodes = await rotateWatchlist([
+    'tt7777777:s1:e1 Serie Larga S01E01',
+    'tt7777777:s1:e2 Serie Larga S01E02',
+  ].join('\n'), {
+    seen: createSeenStore(), fetchJSON, autoDiscover: true, replaceAll: false,
+    batchSize: 4, maxSeries: 2, includeMovies: false, includeSeries: true, focusGenres: '0',
+  });
+  assert.equal(new Set(parallelEpisodes.items.filter(item => item.type === 'series').map(item => item.imdbId)).size, 2,
+    'dos episodios de la misma serie cuentan como una sola serie al aplicar maxSeries');
+
+  const neither = await rotateWatchlist('', {
+    seen: createSeenStore(), fetchJSON, autoDiscover: true, replaceAll: true,
+    batchSize: 4, includeMovies: false, includeSeries: false, focusGenres: '0',
+  });
+  assert.equal(neither.items.length, 0);
+  assert.equal(neither.addedCount, 0);
 });
 
 test('formatWatchlistLine/File: las series completas se escriben sin :s1:e1', () => {
@@ -456,6 +531,55 @@ test('discoverCatalogItems reserva huecos para anime (Animation + Japón) y docu
     seen: createSeenStore(), count: 2, movieCount: 2, seriesCount: 0, focusGenres: '0', now: Date.parse('2026-10-01T00:00:00Z'),
   });
   assert.equal(plain.some(d => d.discovery), false);
+});
+
+test('enrichWithTmdbAndOmdb procesa IDs únicos en paralelo con concurrencia acotada', async () => {
+  let active = 0;
+  let peak = 0;
+  const fetchImpl = async url => {
+    peak = Math.max(peak, ++active);
+    await new Promise(resolve => setTimeout(resolve, 3));
+    active--;
+    if (url.includes('/find/')) {
+      const imdbId = url.match(/\/find\/(tt\d+)/)?.[1];
+      return { movie_results: [{ id: Number(imdbId?.slice(2)) || 1, title: `Movie ${imdbId}`, release_date: '2024-01-01' }], tv_results: [] };
+    }
+    if (url.includes('omdbapi.com')) {
+      const imdbId = new URL(url).searchParams.get('i');
+      return { Response: 'True', Title: `Movie ${imdbId}`, Year: '2024', Type: 'movie', imdbRating: '7.5' };
+    }
+    return {};
+  };
+  const ids = Array.from({ length: 8 }, (_, i) => `tt${String(1000000 + i)}`);
+  const metaById = new Map();
+  const stats = await enrichWithTmdbAndOmdb(
+    [...ids.map(imdbId => ({ imdbId })), { imdbId: ids[0] }],
+    metaById,
+    { fetchImpl, tmdbApiKey: 'tmdb-test', omdbApiKey: 'omdb-test', concurrency: 3 },
+  );
+  assert.equal(peak, 3);
+  assert.equal(stats.tmdb.found, ids.length);
+  assert.equal(stats.omdb.found, ids.length);
+  assert.equal(metaById.size, ids.length, 'IDs repetidos se consultan una sola vez');
+});
+
+test('enrichWithTmdbAndOmdb reconoce el error JSON de clave inválida de OMDb y no lo repite', async () => {
+  let calls = 0;
+  const warnings = [];
+  const stats = await enrichWithTmdbAndOmdb(
+    ['tt0000001', 'tt0000002', 'tt0000003'].map(imdbId => ({ imdbId })),
+    new Map(),
+    {
+      fetchImpl: async () => { calls++; return { Response: 'False', Error: 'Invalid API key!' }; },
+      tmdbApiKey: '',
+      omdbApiKey: 'invalid',
+      concurrency: 3,
+      onWarning: warning => warnings.push(warning),
+    },
+  );
+  assert.equal(calls, 1);
+  assert.equal(stats.omdb.invalidKey, true);
+  assert.equal(warnings.length, 1);
 });
 
 test('enrichWithTmdbAndOmdb: con una API key inválida avisa una sola vez y deja de llamar', async () => {

@@ -167,7 +167,7 @@ test('CLI con AUTO_WATCHLIST=1 reemplaza watchlist.txt en cada corrida y no repi
   }
 });
 
-test('CLI reanuda series largas donde quedaron (progress.json) y las conserva en watchlist.txt', async t => {
+test('CLI reanuda la serie activa junto con películas aunque una ingesta sustituya el watchlist', async t => {
   const dir = await mkdtemp(join(tmpdir(), 'peerflix-resume-'));
   let seq = 0;
   // Cinemeta local: serie de 2 temporadas × 3 episodios (ya emitidos).
@@ -224,20 +224,75 @@ test('CLI reanuda series largas donde quedaron (progress.json) y las conserva en
   assert.deepEqual([rec1.lastSeason, rec1.lastEpisode], [2, 1], 'recuerda dónde quedó');
   assert.deepEqual([rec1.nextSeason, rec1.nextEpisode], [2, 2], 'sabe por dónde seguir');
 
-  // Corrida 2: sigue donde quedó (solo los 2 episodios restantes).
+  // Corrida 2: una lista nueva de la web trae una película, pero la serie
+  // activa se reinyecta y continúa desde donde quedó aunque AUTO_WATCHLIST=0.
+  await writeFile(join(dir, 'watchlist.txt'), 'tt0111161 Película nueva (1994)\n');
+  env.AUTO_WATCHLIST = '0';
+  env.FOLLOW_SERIES = '1';
   await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
   const report2 = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  const resumedEpisodes = report2.items
+    .filter(item => item.type === 'series')
+    .map(i => `${i.imdbId}:${i.season}:${i.episode}`)
+    .sort();
   assert.deepEqual(
-    report2.items.map(i => `${i.imdbId}:${i.season}:${i.episode}`).sort(),
+    resumedEpisodes,
     ['tt7777777:2:2', 'tt7777777:2:3'],
-    'no repite los episodios ya ingeridos',
+    'no repite episodios y continúa la serie activa junto con la lista nueva',
   );
+  assert.ok(report2.items.some(item => item.type === 'movie' && item.imdbId === 'tt0111161'), 'también ingesta la película manual');
   const progress2 = JSON.parse(await readFile(join(dir, 'public/data/progress.json'), 'utf8'));
   const rec2 = progress2.series.tt7777777;
   assert.equal(rec2.status, 'complete');
   assert.equal(rec2.done, 6);
   assert.equal(rec2.nextSeason, null);
   assert.ok(rec2.startedAt, 'conserva cuándo empezó la serie');
+});
+
+test('MAX_EPISODES_PER_RUN=0 procesa todos los episodios sin aplicar el límite por ejecución', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'peerflix-no-episode-limit-'));
+  let seq = 0;
+  const videos = Array.from({ length: 61 }, (_, i) => ({
+    season: 1, episode: i + 1, name: `Episodio ${i + 1}`, released: '2020-01-01T00:00:00Z',
+  }));
+  const server = createServer(async (request, response) => {
+    response.setHeader('content-type', 'application/json');
+    if (request.url === '/meta/series/tt7777778.json') {
+      response.end(JSON.stringify({ meta: { id: 'tt7777778', imdb_id: 'tt7777778', type: 'series', name: 'Serie sin límite', year: '2020', videos } }));
+    } else if (request.url.startsWith('/stream/')) {
+      seq++;
+      response.end(JSON.stringify({ streams: [{
+        name: 'Peerflix\n1080p',
+        title: `Episodio ${seq} [1080p][Castellano]\n👤 40 💾 2.0 GB`,
+        infoHash: seq.toString(16).padStart(40, '0'), fileIdx: 0,
+      }] }));
+    } else {
+      response.statusCode = 404;
+      response.end('{}');
+    }
+  });
+  t.after(async () => {
+    if (server.listening) await new Promise(resolve => server.close(resolve));
+    await rm(dir, { recursive: true, force: true });
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  await cp(join(ROOT, 'src'), join(dir, 'src'), { recursive: true });
+  await cp(join(ROOT, 'public/lib'), join(dir, 'public/lib'), { recursive: true });
+  await cp(join(ROOT, 'package.json'), join(dir, 'package.json'));
+  await symlink(join(ROOT, 'node_modules'), join(dir, 'node_modules'), 'dir');
+  await writeFile(join(dir, 'watchlist.txt'), 'tt7777778 Serie sin límite\n');
+
+  const env = {
+    ...process.env,
+    WATCHLIST_PATH: 'watchlist.txt', PROVIDERS: 'peerflix', PEERFLIX_BASE_URL: baseUrl,
+    CINEMETA: '1', CINEMETA_URL: baseUrl, TMDB_API_KEY: '', OMDB_API_KEY: '', TRACKERS_URL: '',
+    FETCH_CONCURRENCY: '4', DRY_RUN: '1', FIXTURE_MODE: '0', REPROCESS: '0',
+    AUTO_WATCHLIST: '0', FOLLOW_SERIES: '1', MAX_EPISODES_PER_RUN: '0',
+  };
+  await exec('npm', ['run', 'fetch'], { cwd: dir, env, timeout: 30000 });
+  const report = JSON.parse(await readFile(join(dir, 'public/data/report.json'), 'utf8'));
+  assert.equal(report.items.length, 61);
 });
 
 test('CLI con FOLLOW_SERIES=only sigue una única serie hasta terminarla antes de pasar a la siguiente', async t => {

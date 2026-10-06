@@ -169,6 +169,45 @@
 
   <textarea id="watchlist" aria-label="Lista de IMDb IDs, uno por línea" placeholder="tt0111161 Cadena perpetua&#10;tt1375666 Inception&#10;tt0944947 Juego de Tronos (serie completa)&#10;tt0944947:s1:e1 Juego de Tronos S01E01"></textarea>
 
+  <div class="ingest-config">
+    <fieldset class="ingest-options">
+      <legend>Cómo seguir las series</legend>
+      <p class="muted small">El progreso se guarda en <code>public/data/progress.json</code>. Las series largas continúan en la siguiente ejecución, sin repetir episodios ya procesados.</p>
+      <div class="choice-grid">
+        <label class="choice-card">
+          <input type="radio" name="follow-series" value="1" checked />
+          <span><b>Una serie a la vez + películas</b><small>Termina la serie activa antes de empezar otra; las películas de tu lista sí se procesan.</small></span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="follow-series" value="only" />
+          <span><b>Solo seguir la serie pendiente</b><small>No procesa películas ni descubre títulos nuevos; al completarla puede continuar con otra serie pendiente.</small></span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="follow-series" value="0" />
+          <span><b>Varias series en paralelo</b><small>Procesa a la vez todas las series que haya en la lista.</small></span>
+        </label>
+      </div>
+      <label class="series-target">Serie prioritaria <span class="optional">opcional</span>
+        <input id="series-id" type="text" placeholder="IMDb ID, por ejemplo tt0944947" autocomplete="off" />
+      </label>
+    </fieldset>
+
+    <fieldset class="ingest-options">
+      <legend>Títulos nuevos</legend>
+      <label class="chk discover-toggle"><input type="checkbox" id="auto-discover" /> Añadir automáticamente títulos no vistos en cada ingesta</label>
+      <p class="muted small">Al activarlo, la lista pegada se sustituye por un lote nuevo (salvo la serie activa); busca títulos no vistos en Cinemeta y no repite títulos del historial.</p>
+      <div id="discovery-controls" class="discovery-controls">
+        <label class="chk"><input type="checkbox" id="discover-movies" checked /> Añadir películas nuevas</label>
+        <label class="chk"><input type="checkbox" id="discover-series" checked /> Añadir series nuevas (como máximo una, solo si no hay una activa)</label>
+        <label class="batch-size-label">Títulos por lote
+          <input id="ingest-batch-size" type="number" min="1" max="1000" value="10" />
+        </label>
+      </div>
+      <p id="ingest-options-summary" class="muted small" aria-live="polite"></p>
+    </fieldset>
+  </div>
+  <p class="muted small">Las opciones de arriba se aplican a <b>☁️ Guardar en el repo / BD</b>. “⚡ Procesar aquí” solo procesa exactamente la lista pegada, sin rotación ni cola de series persistente.</p>
+
   <div class="modes">
     <div class="mode">
       <button id="process-local" class="primary">⚡ Procesar aquí (sin token)</button>

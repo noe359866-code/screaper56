@@ -31,6 +31,19 @@ Con un token opcional (fine-grained, solo este repo, *Contents* + *Actions* en
 lectura/escritura), ☁️ actualiza `watchlist.txt` y lanza la Action
 directamente, sin pasar por el Issue.
 
+En **Ingestar → Guardar en el repo / BD** puedes elegir la política de series:
+seguir una sola hasta completarla y procesar películas, seguir solo la serie
+pendiente (sin películas ni descubrimiento) o procesar varias en paralelo.
+También puedes activar la rotación de títulos nuevos y marcar por separado si
+quieres descubrir películas y/o series; la rotación reemplaza la lista anterior
+(salvo la serie activa). En la web el lote nuevo empieza en 10 títulos para que
+la primera ejecución sea manejable. Sin activar esa opción, se procesa tal cual
+la lista que pegaste. La rotación automática está desactivada por defecto tanto
+al ejecutar el workflow como en la ejecución programada: elige `rotate_watchlist=1`
+para una corrida manual. Para habilitarla en el cron, define explícitamente la
+variable de Actions del repositorio `AUTO_WATCHLIST=1`; si no existe, el cron
+conserva la lista sin rotarla.
+
 El resto también funciona sin token:
 - **Dashboard**:
   - 📦 lo publicado (`data/index.json` de la propia web);
@@ -131,6 +144,7 @@ episodios, por lo que el `total` de consultas puede superar 1000.
 | **TorrentsDB**: 3 × HTTP 429 y después 56 consultas omitidas por el cortocircuito | Un 429 ya no cuenta como fallo: pausa solo ese addon (Retry-After o 5 s → 10 s → 20 s…, máx. 60 s) y sigue. Solo se corta tras 9 avisos seguidos. Además, TorrentsDB usa 2 consultas a la vez como máximo |
 | **ThePirateBay+**: ~6 s por consulta y 14 streams en 159 consultas; aparecía en 4 de 254 picks y **ninguno era solo suyo** (Torrentio y TorrentsDB ya indexan TPB) | Desactivado por defecto, con timeout de 10 s. Se puede activar en ⚙️ Ajustes o con `PROVIDERS=…,piratebay` |
 | Una cola común de 4 consultas para todos los addons: el más lento frenaba al resto | Cada addon tiene su propia cola (`concurrency` en `providers.js`, o `FETCH_CONCURRENCY`) |
+| TMDB/OMDb y temporadas de respaldo se consultaban de una en una; los JSON se escribían secuencialmente y los datos anteriores se borraban antes de consultar | Pool concurrente acotado para metadatos/temporadas, escrituras paralelas limitadas y limpieza posterior a la pipeline; si esta se aborta antes de acabar, se conserva el último estado publicado |
 | AniScraper a veces tarda hasta el 504 de Cloudflare | Timeout propio de 12 s |
 | **OMDb**: HTTP 401 en los 100 títulos (100 avisos que tapaban todo lo demás) | Con una API key inválida (401/403) se avisa **una vez** (“revisa el Secret `OMDB_API_KEY`”) y se sigue sin OMDb. Lo mismo con TMDB. Los avisos repetidos se agrupan en el resumen (`… (×100)`) |
 
@@ -371,17 +385,23 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
   en vez de acumular decenas de series a la vez avanzando 1 episodio de cada
   una, cada ejecución dedica **todos los episodios del lote**
   (`MAX_EPISODES_PER_RUN`, 60 por defecto) a **una única serie activa**
-  (`activeSeries` en `progress.json`) y no añade series nuevas hasta que esa
-  serie termina al 100 %. Cuando se completa, la siguiente corrida pasa
+  (`activeSeries` en `progress.json`) y no empieza otra serie hasta que esa
+  termina al 100 %. Cuando se completa, la siguiente corrida pasa
   automáticamente a la siguiente serie pendiente en cola (o descubre 1 nueva).
-- En **Run workflow** (`static.yml`) puedes elegir:
-  - `follow_series = 1` *(por defecto)*: sigue **1 sola serie** hasta terminarla
-    junto con el lote de películas nuevas;
-  - `follow_series = only`: **solo continúa esa serie** hasta terminarla (sin
-    películas ni otras series);
+- En **Ingestar → Guardar en el repo / BD** y en **Run workflow** (`static.yml`)
+  puedes elegir:
+  - `follow_series = 1` *(por defecto)*: sigue **1 sola serie activa** hasta
+    terminarla, mientras procesa las películas de la lista;
+  - `follow_series = only`: solo procesa una serie activa cada vez y no mezcla
+    películas ni descubre contenido nuevo; cuando termina, puede continuar con
+    otra serie que ya estuviera pendiente;
   - `follow_series = 0`: reparte los episodios entre varias series a la vez;
   - `series_id`: opcionalmente indica el IMDb ID (ej. `tt0411008`) de la serie
-    concreta que quieres fijar y seguir hasta terminarla.
+    concreta que quieres fijar y seguir hasta terminarla;
+  - `rotate_watchlist=0` por defecto: no sustituye la lista ni descubre títulos.
+    Con `rotate_watchlist=1`, reemplaza el lote anterior con entradas no vistas;
+    `discover_movies=0` y/o `discover_series=0` eligen qué tipos nuevos añadir.
+    En el modo `only` no hay descubrimiento automático.
 - Los episodios ya ingeridos (claves `tt…:sN:eN` de `seen.json`) nunca se
   vuelven a consultar. Si salen episodios nuevos de una serie en emisión, se
   detectan y se ingieren automáticamente.
@@ -392,7 +412,8 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 
 | Variable | Default | Uso |
 |---|---|---|
-| `WATCHLIST_BATCH_SIZE` | `1000` en la Action (máximo `1000`) | Entradas del watchlist por lote; las series se expanden a episodios y pueden aumentar el total consultado |
+| `AUTO_WATCHLIST` | `0` | `1` = opt-in: descubre títulos nuevos y reemplaza el lote anterior (excepto la serie activa) |
+| `WATCHLIST_BATCH_SIZE` | `1000` en la Action (máximo `1000`) | Entradas del watchlist por lote; solo se usa con `AUTO_WATCHLIST=1`; las series se expanden a episodios y pueden aumentar el total consultado |
 | `PROVIDERS` | los 8 por defecto (todos menos `piratebay`) | Addons a consultar (slugs separados por comas) |
 | `DRY_RUN` | `0` | `1` = no escribe en Supabase |
 | `CINEMETA` | `1` | `0` = sin metadatos |
@@ -400,12 +421,14 @@ ingesta **guarda dónde quedó cada serie** y sigue desde ahí:
 | `OMDB_API_KEY` | — | Opcional: verifica título/año y añade la nota IMDb (si es inválida, se avisa una vez y se ignora) |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | — | Opcionales: UPSERT en `public.torrents` |
 | `MAX_TRACKERS` | `10` | Trackers por magnet (1–50) |
-| `FOLLOW_SERIES` | `1` | `1` = seguir 1 sola serie a la vez hasta terminarla (+ películas); `only` = solo continuar esa serie; `0` = varias series a la vez |
+| `FOLLOW_SERIES` | `1` | `1` = seguir 1 sola serie a la vez hasta terminarla (+ películas); `only` = solo continuar la serie activa sin películas ni descubrimiento; `0` = varias series a la vez |
+| `DISCOVERY_MOVIES` | `1` | `0` = no añadir películas al descubrimiento automático |
+| `DISCOVERY_SERIES` | `1` | `0` = no añadir series al descubrimiento automático |
 | `DISCOVERY_GENRES` | `anime,documentales` | Géneros con hueco reservado en cada lote del watchlist automático (`0` = ninguno) |
 | `SERIES_ID` | — | Opcional: IMDb ID (`tt…`) de la serie a seguir hasta terminarla |
 | `MAX_EPISODES_PER_RUN` | `60` | Episodios expandidos como máximo por ejecución (las series largas reanudan donde quedaron; `0` = sin límite) |
 | `TRACKERS_URL` | `trackers_best.txt` de ngosang | Vacío = solo la copia integrada |
-| `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas **por addon** / timeout (algunos addons tienen su propio límite en `providers.js`) |
+| `FETCH_CONCURRENCY` / `FETCH_TIMEOUT_MS` | `4` / `15000` | Consultas simultáneas por addon (1–16; algunos providers limitan más) / timeout en ms (1000–120000); valores inválidos usan el default |
 | `BREAKER_THRESHOLD` | `3` | Errores seguidos de un addon antes de dejar de consultarlo |
 | `REPROCESS` | `0` | `1` = vuelve a elegir sobre `public/data` ya publicado, sin red |
 | `FIXTURE_MODE` | `0` | `1` = respuestas falsas, sin red (sobrescribe `public/`) |

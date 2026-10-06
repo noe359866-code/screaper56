@@ -72,6 +72,7 @@ import {
 import {
   PICK_META,
   createJsonFetcher,
+  createLimiter,
   expandWatchlist,
   loadBestTrackers,
   candidateFromPublished,
@@ -95,8 +96,18 @@ const CATALOG_MOVIES = join(CATALOG_DIR, 'movie');
 const CATALOG_SERIES = join(CATALOG_DIR, 'series');
 const CATALOG_ID = 'peerflix-static-watchlist';
 
-const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 15000);
-const FETCH_CONCURRENCY = Math.max(1, Number(process.env.FETCH_CONCURRENCY || 4));
+function boundedEnvInt(value, fallback, min, max) {
+  const raw = String(value ?? '').trim();
+  if (!/^-?\d+$/.test(raw)) return fallback;
+  const parsed = Number(raw);
+  if (!Number.isSafeInteger(parsed)) return fallback;
+  return Math.min(max, Math.max(min, parsed));
+}
+
+// Invalid environment values must never turn the request limiter into an
+// unbounded fan-out or make setTimeout(…, NaN) abort requests immediately.
+const FETCH_TIMEOUT_MS = boundedEnvInt(process.env.FETCH_TIMEOUT_MS, 15000, 1000, 120000);
+const FETCH_CONCURRENCY = boundedEnvInt(process.env.FETCH_CONCURRENCY, 4, 1, 16);
 const TMDB_API_KEY = (process.env.TMDB_API_KEY || '').trim();
 const OMDB_API_KEY = (process.env.OMDB_API_KEY || '').trim();
 const WATCHLIST_PATH = resolve(ROOT, process.env.WATCHLIST_PATH || 'watchlist.txt');
@@ -116,7 +127,13 @@ const SEARCH_MAX_YEAR = Number.parseInt(process.env.MAX_YEAR || '', 10) || MAX_S
 const DISCOVERY_GENRES = resolveFocusGenres(process.env.DISCOVERY_GENRES);
 // Episodios expandidos como máximo por ejecución (las series largas reanudan
 // donde quedaron en la siguiente corrida). 0 = sin límite.
-const MAX_EPISODES_PER_RUN = Math.max(0, Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10) || 60);
+const rawMaxEpisodes = Number.parseInt(process.env.MAX_EPISODES_PER_RUN || '', 10);
+const MAX_EPISODES_PER_RUN = Number.isFinite(rawMaxEpisodes) ? Math.max(0, rawMaxEpisodes) : 60;
+// Tipos que puede descubrir la rotación automática. Por defecto conserva el
+// comportamiento anterior (películas y series); 0/false/no desactiva cada tipo.
+const discoveryEnabled = value => !['0', 'false', 'no', 'off'].includes(String(value ?? '1').trim().toLowerCase());
+const DISCOVERY_MOVIES = discoveryEnabled(process.env.DISCOVERY_MOVIES);
+const DISCOVERY_SERIES = discoveryEnabled(process.env.DISCOVERY_SERIES);
 // Seguir una sola serie hasta terminarla:
 //   '1' (por defecto) -> 1 sola serie activa a la vez (más las películas del lote)
 //   'only'            -> solo continuar la serie activa hasta terminarla (sin películas ni otras series)
@@ -184,13 +201,19 @@ async function tmdbEpisodes(item) {
         .map(s => Number(s?.season_number))
         .filter(n => Number.isInteger(n) && n >= 1);
     }
-    const episodes = [];
-    for (const seasonNumber of seasonNumbers) {
+    // Las temporadas son independientes: descargarlas con concurrencia acotada
+    // evita esperar en serie por cada temporada sin saturar TMDB.
+    const limit = createLimiter(Math.min(4, FETCH_CONCURRENCY));
+    const seasons = await Promise.all(seasonNumbers.map(seasonNumber => limit(async () => {
       const season = await fetchJSON(`https://api.themoviedb.org/3/tv/${tv.id}/season/${seasonNumber}?${key}`, tmdbOpts);
-      for (const e of season.episodes || []) {
-        episodes.push({ season: seasonNumber, episode: e.episode_number, title: e.name || null, released: e.air_date || null });
-      }
-    }
+      return (season.episodes || []).map(e => ({
+        season: seasonNumber,
+        episode: e.episode_number,
+        title: e.name || null,
+        released: e.air_date || null,
+      }));
+    })));
+    const episodes = seasons.flat();
     return episodes.length ? episodes : null;
   } catch (err) {
     console.warn(`⚠️  TMDB falló para ${item.imdbId}${item.season != null ? ':s' + item.season : ''}: ${err.message}`);
@@ -202,46 +225,61 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
   fetchImpl = fetchJSON,
   tmdbApiKey = TMDB_API_KEY,
   omdbApiKey = OMDB_API_KEY,
+  concurrency = FETCH_CONCURRENCY,
   onWarning = null,
 } = {}) {
-  const uniqueIds = [...new Set((items || []).map(i => i.imdbId).filter(Boolean))];
+  const uniqueIds = [...new Set((items || [])
+    .map(item => String(item?.imdbId || '').trim().toLowerCase())
+    .filter(imdbId => /^tt\d{7,10}$/.test(imdbId)))];
   const stats = {
     tmdb: { enabled: Boolean(tmdbApiKey), found: 0, failures: 0, invalidKey: false },
     omdb: { enabled: Boolean(omdbApiKey), found: 0, failures: 0, invalidKey: false },
   };
   if (!uniqueIds.length || (!tmdbApiKey && !omdbApiKey)) return stats;
 
-  // Una API key inválida (401) o sin permiso (403) no se arregla reintentando
-  // con otro título: se avisa UNA vez y se deja de usar ese servicio.
+  // Una API key inválida (401/403 o el error JSON de OMDb) no se arregla
+  // probando otros IDs: se avisa una sola vez y se detienen las llamadas nuevas.
+  const disableService = (service, secret, reason) => {
+    const alreadyDisabled = stats[service].invalidKey;
+    stats[service].invalidKey = true;
+    if (!alreadyDisabled) {
+      const serviceName = service === 'tmdb' ? 'TMDB' : 'OMDb';
+      onWarning?.(`${serviceName}: la API key no es válida (${reason}); revisa el Secret ${secret}. Se sigue sin ${serviceName} en esta ejecución.`);
+    }
+  };
   const giveUpOnKey = (service, secret, err) => {
     const status = err?.status;
     if (status !== 401 && status !== 403) return false;
-    stats[service].invalidKey = true;
-    onWarning?.(`${service === 'tmdb' ? 'TMDB' : 'OMDb'}: la API key no es válida (HTTP ${status}); revisa el Secret ${secret}. Se sigue sin ${service === 'tmdb' ? 'TMDB' : 'OMDb'} en esta ejecución.`);
+    disableService(service, secret, `HTTP ${status}`);
     return true;
   };
 
-  for (const imdbId of uniqueIds) {
+  const enrichOne = async imdbId => {
     const current = metaById.get(imdbId) || { imdbId, type: null, name: null, year: null, yearEnd: null, videos: null };
 
     if (tmdbApiKey && !stats.tmdb.invalidKey) {
       try {
         const find = await fetchImpl(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${encodeURIComponent(tmdbApiKey)}&external_source=imdb_id&language=es-ES`, { timeout: 10000, retries: 1 });
-        const movie = find?.movie_results?.[0];
-        const tv = find?.tv_results?.[0];
-        const hit = movie || tv;
-        if (hit) {
-          stats.tmdb.found++;
-          current.tmdbId = hit.id ?? current.tmdbId ?? null;
-          current.type = current.type || (tv ? 'series' : 'movie');
-          current.name = current.name || hit.title || hit.name || hit.original_title || hit.original_name || null;
-          const dateStr = hit.release_date || hit.first_air_date || '';
-          const y = Number.parseInt(dateStr.slice(0, 4), 10);
-          if (!current.year && Number.isInteger(y)) {
-            current.year = y;
-            if (current.type === 'movie') current.yearEnd = y;
+        if (find?.status_code === 7 || /invalid api key|invalid key/i.test(find?.status_message || '')) {
+          stats.tmdb.failures++;
+          disableService('tmdb', 'TMDB_API_KEY', find.status_message || 'respuesta de autorización');
+        } else {
+          const movie = find?.movie_results?.[0];
+          const tv = find?.tv_results?.[0];
+          const hit = movie || tv;
+          if (hit) {
+            stats.tmdb.found++;
+            current.tmdbId = hit.id ?? current.tmdbId ?? null;
+            current.type = current.type || (tv ? 'series' : 'movie');
+            current.name = current.name || hit.title || hit.name || hit.original_title || hit.original_name || null;
+            const dateStr = hit.release_date || hit.first_air_date || '';
+            const y = Number.parseInt(dateStr.slice(0, 4), 10);
+            if (!current.year && Number.isInteger(y)) {
+              current.year = y;
+              if (current.type === 'movie') current.yearEnd = y;
+            }
+            metaById.set(imdbId, current);
           }
-          metaById.set(imdbId, current);
         }
       } catch (err) {
         stats.tmdb.failures++;
@@ -252,7 +290,10 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
     if (omdbApiKey && !stats.omdb.invalidKey) {
       try {
         const omdb = await fetchImpl(`https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&apikey=${encodeURIComponent(omdbApiKey)}`, { timeout: 10000, retries: 1 });
-        if (omdb && omdb.Response !== 'False' && omdb.Title) {
+        if (omdb?.Response === 'False' && /invalid api key|invalid key/i.test(omdb.Error || '')) {
+          stats.omdb.failures++;
+          disableService('omdb', 'OMDB_API_KEY', omdb.Error || 'respuesta de autorización');
+        } else if (omdb && omdb.Response !== 'False' && omdb.Title) {
           stats.omdb.found++;
           current.type = current.type || (omdb.Type === 'series' ? 'series' : 'movie');
           current.name = current.name || omdb.Title.trim();
@@ -271,6 +312,16 @@ export async function enrichWithTmdbAndOmdb(items, metaById, {
         if (!giveUpOnKey('omdb', 'OMDB_API_KEY', err)) onWarning?.(`OMDb (${imdbId}): ${err.message || err}`);
       }
     }
+  };
+
+  // Probeamos una vez antes de abrir el pool. Así una clave caducada no lanza
+  // una ráfaga de peticiones rechazadas; el resto de IDs sí se enriquecen en
+  // paralelo con un límite compartido.
+  await enrichOne(uniqueIds[0]);
+  const serviceStillUsable = (tmdbApiKey && !stats.tmdb.invalidKey) || (omdbApiKey && !stats.omdb.invalidKey);
+  if (uniqueIds.length > 1 && serviceStillUsable) {
+    const limit = createLimiter(concurrency);
+    await Promise.all(uniqueIds.slice(1).map(imdbId => limit(() => enrichOne(imdbId))));
   }
   return stats;
 }
@@ -354,16 +405,15 @@ async function loadPublishedSnapshot() {
 
 // ---------- ficheros ----------
 
-async function writeJSON(path, value) {
-  await mkdir(dirname(path), { recursive: true });
+async function writeJSON(path, value, { ensureDir = true } = {}) {
+  if (ensureDir) await mkdir(dirname(path), { recursive: true });
   await writeFile(path, JSON.stringify(value, null, 2), 'utf8');
 }
 
 async function cleanDir(dir) {
   await mkdir(dir, { recursive: true });
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    if (e.isFile()) await unlink(join(dir, e.name));
-  }
+  const entries = await readdir(dir, { withFileTypes: true });
+  await Promise.all(entries.filter(entry => entry.isFile()).map(entry => unlink(join(dir, entry.name))));
 }
 
 function git(args) {
@@ -443,12 +493,13 @@ async function loadSeenStore(repo, { queryDb = false } = {}) {
 }
 
 async function main() {
+  const startedAt = new Date().toISOString();
   const mode = FIXTURE_MODE ? 'fixture' : REPROCESS ? 'reprocess' : 'live';
   const repository = repositoryInfo();
   const repo = createRepository({ supabaseUrl: SUPABASE_URL, supabaseServiceRoleKey: SUPABASE_SERVICE_ROLE_KEY, dryRun: DRY_RUN_DB || mode !== 'live' });
   console.log(`📂 peerflix-static – multi-provider fetch & ingest${mode !== 'live' ? `  [${mode.toUpperCase()}]` : ''}`);
   console.log(`   watchlist   : ${REPROCESS ? join(DATA_DIR, 'index.json') + ' (datos publicados)' : `${WATCHLIST_PATH}${AUTO_WATCHLIST ? ` (rotación automática: lote de ${WATCHLIST_BATCH_SIZE}, años ${SEARCH_MIN_YEAR}–${SEARCH_MAX_YEAR}, géneros: ${DISCOVERY_GENRES.map(g => g.label).join(', ') || 'ninguno'} + todos, elimina anteriores)` : ''}`}`);
-  console.log(`   concurrency : ${FETCH_CONCURRENCY} · corte tras ${BREAKER_THRESHOLD} errores seguidos por addon`);
+  console.log(`   concurrency : ${FETCH_CONCURRENCY} por addon · timeout ${FETCH_TIMEOUT_MS} ms · corte tras ${BREAKER_THRESHOLD} errores seguidos`);
   console.log(`   providers   : ${REPROCESS ? 'ninguno (sin red)' : ENABLED_PROVIDERS.map(p => `${p.name}(${p.slug})`).join(', ') || 'ninguno'}`);
   if (MANIFEST_ONLY_PROVIDERS.length) {
     console.log(`   manifest    : ${MANIFEST_ONLY_PROVIDERS.map(p => `${p.name} (${p.manifestUrl})`).join(', ')} [solo catálogo, no compatible con IMDb]`);
@@ -558,7 +609,7 @@ async function main() {
       queuedSeries = queuedSeries.filter(q => q.imdbId !== activeSeriesId);
     }
 
-    if (AUTO_WATCHLIST || ONLY_SERIES_MODE) {
+    if (AUTO_WATCHLIST && !ONLY_SERIES_MODE) {
       if (!FOLLOW_SINGLE_SERIES) {
         const resumeItems = FIXTURE_MODE ? [] : resumeMissingItems(progress, preItems);
         const preAll = [...preItems, ...resumeItems];
@@ -587,10 +638,11 @@ async function main() {
             pendingById: pendingBySeries,
             ...(FOLLOW_SINGLE_SERIES ? { activeSeriesId, preferredTarget: SERIES_TARGET } : {}),
           });
-      const hasActiveInBatch = Boolean(activeSeriesId) && (preResumed.length > 0 || preItems.some(i => i.season == null && i.imdbId.toLowerCase() === activeSeriesId));
       const targetBatch = ONLY_SERIES_MODE ? 1 : WATCHLIST_BATCH_SIZE;
       const rotateBatchSize = FOLLOW_SINGLE_SERIES ? Math.max(1, targetBatch - preResumed.length) : WATCHLIST_BATCH_SIZE;
-      const shouldDiscover = ONLY_SERIES_MODE ? !hasActiveInBatch : (!FOLLOW_SINGLE_SERIES || targetBatch - preResumed.length > 0);
+      // `only` means genuinely resume/finish one requested or in-progress
+      // series; it must never seed a new series behind the user's back.
+      const shouldDiscover = !ONLY_SERIES_MODE && (!FOLLOW_SINGLE_SERIES || targetBatch - preResumed.length > 0);
       const rotation = await rotateWatchlist(watchText, {
         seen,
         fetchJSON: (CINEMETA_ENABLED || TMDB_API_KEY) && !FIXTURE_MODE ? pipelineFetch : null,
@@ -598,8 +650,13 @@ async function main() {
         replaceAll: ONLY_SERIES_MODE || REPLACE_WATCHLIST,
         keep: keepPred,
         batchSize: rotateBatchSize,
-        maxSeries: FOLLOW_SINGLE_SERIES ? (preResumed.length > 0 ? 0 : 1) : null,
+        // A series selected from the current manual list is already active even
+        // when it has no progress.json record yet. Never queue another series
+        // while that active ID still has work to do.
+        maxSeries: FOLLOW_SINGLE_SERIES ? ((activeSeriesId || preResumed.length > 0) ? 0 : 1) : null,
         onlySeries: ONLY_SERIES_MODE,
+        includeMovies: DISCOVERY_MOVIES,
+        includeSeries: DISCOVERY_SERIES,
         tmdbApiKey: !FIXTURE_MODE ? TMDB_API_KEY : '',
         baseUrl: CINEMETA_BASE_URL,
         minYear: SEARCH_MIN_YEAR,
@@ -636,6 +693,16 @@ async function main() {
       console.log(`🔄 Watchlist actualizado: ${finalItems.length} títulos (${rotation.addedCount} nuevos · ${rotation.removedCount} anteriores eliminados${resumed.length ? ` · ${resumed.length} serie(s) en progreso continúan` : ''}${activeSeriesId ? ` · 🎯 serie activa: ${activeSeriesId}` : ''} · ${seen.imdbIds.size} en historial sin repetir).`);
     }
     let items = parseWatchlist(watchText, { onWarning: warn });
+    // Una ingesta de películas solicitada desde la web no debe romper la cola
+    // de una serie pendiente, aunque la lista nueva no la mencione.
+    if (FOLLOW_SINGLE_SERIES && activeSeriesId) {
+      const resumeActive = resumeMissingItems(progress, items, {
+        pendingById: pendingBySeries,
+        activeSeriesId,
+        preferredTarget: SERIES_TARGET,
+      });
+      items.push(...resumeActive);
+    }
     if (SERIES_TARGET && !items.some(i => i.imdbId === SERIES_TARGET.imdbId)) {
       items.push({
         imdbId: SERIES_TARGET.imdbId,
@@ -646,9 +713,10 @@ async function main() {
         label: SERIES_TARGET.label || progress?.series?.[SERIES_TARGET.imdbId]?.name || SERIES_TARGET.imdbId,
       });
     }
-    if (FOLLOW_SINGLE_SERIES && activeSeriesId) {
+    if (FOLLOW_SINGLE_SERIES) {
       items = items.filter(i => {
-        if (ONLY_SERIES_MODE) return i.imdbId === activeSeriesId;
+        if (ONLY_SERIES_MODE) return Boolean(activeSeriesId) && i.imdbId === activeSeriesId;
+        if (!activeSeriesId) return true;
         const isKnownWholeSeries = i.season == null && (i.type === 'series' || i.typeHint === 'series' || Boolean(progress?.series?.[i.imdbId]));
         return !isKnownWholeSeries || i.imdbId === activeSeriesId;
       });
@@ -696,12 +764,9 @@ async function main() {
   if (!queries.length) { console.error('❌ No hay nada que consultar.'); process.exitCode = 1; return; }
   console.log();
 
-  // 2. Salidas limpias (tras leer los datos publicados si se reprocesa).
-  for (const dir of [DATA_MOVIES, DATA_SERIES, STREAM_MOVIES, STREAM_SERIES, CATALOG_MOVIES, CATALOG_SERIES]) await cleanDir(dir);
-
-  const startedAt = new Date().toISOString();
-
-  // 3. Consultar, fusionar y elegir 2 por título (se loguea cada título al terminar).
+  // 2. Consultar, fusionar y elegir 2 por título (se loguea cada título al terminar).
+  // Los JSON anteriores se conservan hasta que termina la pipeline: si esta
+  // aborta o falla de forma fatal, no borramos el último estado publicado.
   const pipeline = await runPipeline(queries, {
     providers,
     fetchJSON: pipelineFetch,
@@ -718,6 +783,10 @@ async function main() {
       console.log(`  ${icon} ${progress} ${item.id.padEnd(22)} ${String(streams.length)}/${String(item.candidateCount).padEnd(4)} ${formatPickForLog(es)} ${formatPickForLog(en)} ${item.label}`);
     },
   });
+
+  // Sustituye los archivos solo cuando todas las consultas terminaron; limpia
+  // en paralelo y prepara cada directorio una sola vez antes de las escrituras.
+  await Promise.all([DATA_MOVIES, DATA_SERIES, STREAM_MOVIES, STREAM_SERIES, CATALOG_MOVIES, CATALOG_SERIES].map(cleanDir));
 
   const index = {
     generatedAt: startedAt,
@@ -760,17 +829,27 @@ async function main() {
   };
 
   // 4. Ficheros por título: data/ (web) + stream/ (addon Stremio).
+  index.items = pipeline.results.map(({ item }) => item);
+  index.movies = index.items.filter(item => item.type === 'movie').length;
+  index.episodes = index.items.length - index.movies;
+  const writeLimit = createLimiter(Math.min(16, Math.max(2, FETCH_CONCURRENCY * 2)));
+  const fileWrites = [];
   for (const { item, streams } of pipeline.results) {
-    index.items.push(item);
-    if (item.type === 'movie') {
-      index.movies++;
-      await writeJSON(join(DATA_MOVIES, `${item.imdbId}.json`), { ...item, streams });
-      await writeJSON(join(STREAM_MOVIES, `${item.imdbId}.json`), { streams });
-    } else {
-      index.episodes++;
-      await writeJSON(join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`), { ...item, streams });
-      await writeJSON(join(STREAM_SERIES, `${item.imdbId}:${item.season}:${item.episode}.json`), { streams });
-    }
+    const isMovie = item.type === 'movie';
+    const dataPath = isMovie
+      ? join(DATA_MOVIES, `${item.imdbId}.json`)
+      : join(DATA_SERIES, `${item.imdbId}-s${item.season}e${item.episode}.json`);
+    const streamPath = isMovie
+      ? join(STREAM_MOVIES, `${item.imdbId}.json`)
+      : join(STREAM_SERIES, `${item.imdbId}:${item.season}:${item.episode}.json`);
+    fileWrites.push(writeLimit(() => writeJSON(dataPath, { ...item, streams }, { ensureDir: false })));
+    fileWrites.push(writeLimit(() => writeJSON(streamPath, { streams }, { ensureDir: false })));
+  }
+  const writeResults = await Promise.allSettled(fileWrites);
+  const writeFailures = writeResults.filter(result => result.status === 'rejected');
+  if (writeFailures.length) {
+    const details = writeFailures.slice(0, 3).map(result => result.reason?.message || String(result.reason));
+    throw new Error(`No se pudieron escribir ${writeFailures.length} archivo(s) de salida: ${details.join(' · ')}`);
   }
 
   // Persistimos SOLO los 2 mejores torrents elegidos por título (1 🇪🇸 + 1 🇬🇧),
