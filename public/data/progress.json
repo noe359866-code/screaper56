@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T04:02:05.599Z",
-  "activeSeries": "tt0094517",
+  "updatedAt": "2026-10-06T04:13:39.279Z",
+  "activeSeries": "tt0078638",
   "series": {
     "tt0094517": {
       "name": "Mystery Science Theater 3000",
-      "status": "in-progress",
-      "done": 127,
+      "status": "complete",
+      "done": 176,
       "total": 176,
-      "lastSeason": 7,
-      "lastEpisode": 5,
-      "nextSeason": 7,
-      "nextEpisode": 6,
-      "updatedAt": "2026-10-06T04:02:05.599Z",
+      "lastSeason": 10,
+      "lastEpisode": 13,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-06T04:13:39.279Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0078638": {

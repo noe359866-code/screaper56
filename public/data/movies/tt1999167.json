@@ -70,7 +70,7 @@
   "errors": [
     {
       "provider": "brazuca",
-      "error": "HTTP 504"
+      "error": "HTTP 429"
     }
   ],
   "streams": [
