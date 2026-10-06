@@ -1,0 +1,160 @@
+{
+  "id": "tt0098740:35:8",
+  "imdbId": "tt0098740",
+  "type": "series",
+  "season": 35,
+  "episode": 8,
+  "label": "America's Funniest Home Videos S35E08 – AFV's Wreck the Halls: 35 Years of Holiday Hijinks",
+  "name": "America's Funniest Home Videos",
+  "year": 1989,
+  "imdbRating": "6.2",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0098740:35:8.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0098740:35:8.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0098740:35:8.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0098740:35:8.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0098740:35:8.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0098740:35:8.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 5,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH[EZTVx.to].mkv",
+      "quality": "720p",
+      "seeders": 22,
+      "sizeBytes": 1851810602,
+      "sizeLabel": "1.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "b166f97bc1c226779b3acefca3f0f6c74131a369",
+      "fileIdx": 0,
+      "score": 5.88,
+      "magnetUrl": "magnet:?xt=urn:btih:b166f97bc1c226779b3acefca3f0f6c74131a369&dn=Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 22,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH[EZTVx.to].mkv",
+      "description": "Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH[EZTVx.to].mkv\n🎞️ WEB · AVC\n👤 22 💾 1.7 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 5.88,
+      "infoHash": "b166f97bc1c226779b3acefca3f0f6c74131a369",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 22,
+      "sizeBytes": 1851810602,
+      "sizeLabel": "1.7 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "EZTV",
+        "EDITH",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH[EZTVx.to].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:b166f97bc1c226779b3acefca3f0f6c74131a369"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:b166f97bc1c226779b3acefca3f0f6c74131a369&dn=Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Americas.Funniest.Home.Videos.S35E08.720p.WEB.h264-EDITH[EZTVx.to].mkv"
+      }
+    }
+  ]
+}
