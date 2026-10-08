@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-07T10:55:02.836Z",
-  "activeSeries": "tt0063869",
+  "updatedAt": "2026-10-08T11:18:36.106Z",
+  "activeSeries": "tt0063951",
   "series": {
-    "tt0076998": {
-      "name": "D'artagnan and Three Musketeers",
-      "status": "complete",
-      "done": 13,
-      "total": 13,
-      "lastSeason": 4,
-      "lastEpisode": 4,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-07T10:55:02.836Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0063869": {
       "name": "The Benny Hill Show",
-      "status": "in-progress",
-      "done": 7,
+      "status": "complete",
+      "done": 63,
       "total": 63,
-      "lastSeason": 2,
-      "lastEpisode": 3,
-      "nextSeason": 2,
-      "nextEpisode": 4,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 19,
+      "lastEpisode": 5,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-08T11:18:36.106Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063951": {
@@ -446,6 +434,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0076998": {
+      "name": "D'artagnan and Three Musketeers",
+      "status": "complete",
+      "done": 13,
+      "total": 13,
+      "lastSeason": 4,
+      "lastEpisode": 4,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-07T10:55:02.836Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0078638": {
       "name": "Knots Landing",

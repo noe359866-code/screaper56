@@ -1,0 +1,142 @@
+{
+  "id": "tt0063869:17:3",
+  "imdbId": "tt0063869",
+  "type": "series",
+  "season": 17,
+  "episode": 3,
+  "label": "The Benny Hill Show S17E03 – Show 53",
+  "name": "The Benny Hill Show",
+  "year": 1969,
+  "imdbRating": "7.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0063869:17:3.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0063869:17:3.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0063869:17:3.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0063869:17:3.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0063869:17:3.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0063869:17:3.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 6,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Benny Hill-Ep.56 (1989) 1080p H264 DolbyD 5.1 + nickarad",
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1739461755,
+      "sizeLabel": "1.6 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "ae6653ca44d245be08884a4ca32d8807f90c6764",
+      "fileIdx": 2,
+      "score": 5.62,
+      "magnetUrl": "magnet:?xt=urn:btih:ae6653ca44d245be08884a4ca32d8807f90c6764&dn=Benny%20Hill-Ep.56%20(1989)%201080p%20H264%20DolbyD%205.1%20%2B%20nickarad&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 1,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Benny Hill-Ep.56 (1989) 1080p H264 DolbyD 5.1 + nickarad",
+      "description": "Benny Hill-Ep.56 (1989) 1080p H264 DolbyD 5.1 + nickarad\n🎞️ AVC · 5.1\n👤 1 💾 1.6 GB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 5.62,
+      "infoHash": "ae6653ca44d245be08884a4ca32d8807f90c6764",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1739461755,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Benny Hill-Ep.56 (1989) 1080p H264 DolbyD 5.1 + nickarad.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:ae6653ca44d245be08884a4ca32d8807f90c6764"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ae6653ca44d245be08884a4ca32d8807f90c6764&dn=Benny%20Hill-Ep.56%20(1989)%201080p%20H264%20DolbyD%205.1%20%2B%20nickarad&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Benny Hill-Ep.56 (1989) 1080p H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    }
+  ]
+}
