@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-08T11:18:36.106Z",
+  "updatedAt": "2026-10-09T11:17:29.588Z",
   "activeSeries": "tt0063951",
   "series": {
-    "tt0063869": {
-      "name": "The Benny Hill Show",
-      "status": "complete",
-      "done": 63,
-      "total": 63,
-      "lastSeason": 19,
-      "lastEpisode": 5,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-08T11:18:36.106Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0063951": {
       "name": "Sesame Street",
       "status": "in-progress",
-      "done": 7,
+      "done": 237,
       "total": 3444,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 2,
+      "lastEpisode": 107,
+      "nextSeason": 2,
+      "nextEpisode": 108,
+      "updatedAt": "2026-10-09T11:17:29.588Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063929": {
@@ -434,6 +422,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0063869": {
+      "name": "The Benny Hill Show",
+      "status": "complete",
+      "done": 63,
+      "total": 63,
+      "lastSeason": 19,
+      "lastEpisode": 5,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-08T11:18:36.106Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0076998": {
       "name": "D'artagnan and Three Musketeers",
