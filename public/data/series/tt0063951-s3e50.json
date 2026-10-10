@@ -1,0 +1,45 @@
+{
+  "id": "tt0063951:3:50",
+  "imdbId": "tt0063951",
+  "type": "series",
+  "season": 3,
+  "episode": 50,
+  "label": "Sesame Street S03E50 – Oscar decides to move his trash can",
+  "name": "Sesame Street",
+  "year": 1969,
+  "imdbRating": "8.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0063951:3:50.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0063951:3:50.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0063951:3:50.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0063951:3:50.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0063951:3:50.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "omitido tras 3 errores seguidos (timeout (12s))"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}

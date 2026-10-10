@@ -1,0 +1,42 @@
+{
+  "id": "tt0063951:2:111",
+  "imdbId": "tt0063951",
+  "type": "series",
+  "season": 2,
+  "episode": 111,
+  "label": "Sesame Street S02E111 – Episode 241",
+  "name": "Sesame Street",
+  "year": 1969,
+  "imdbRating": "8.1",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0063951:2:111.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0063951:2:111.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0063951:2:111.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0063951:2:111.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0063951:2:111.json",
+    "brazuca": "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club/stream/series/tt0063951:2:111.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 1,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "timeout (12s)"
+    }
+  ],
+  "streams": []
+}
