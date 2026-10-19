@@ -1,0 +1,68 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Sesame Street Season 25",
+      "description": "Sesame Street Season 25\n👤 3 💾 298 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 4.07,
+      "infoHash": "2f82f046fd03c6aea23f271a5b13e6fee50abbcd",
+      "fileIdx": 362,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": 3,
+      "sizeBytes": 312957993,
+      "sizeLabel": "298 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "EXT"
+      ],
+      "filename": "Sesame Street 3226 The Martians Discover A Menu Season 25 - American Archive of Public Broadcasting_2024-07-29_10-22-30.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "dht:2f82f046fd03c6aea23f271a5b13e6fee50abbcd"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2f82f046fd03c6aea23f271a5b13e6fee50abbcd&dn=Sesame%20Street%20Season%2025&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Sesame Street 3226 The Martians Discover A Menu Season 25 - American Archive of Public Broadcasting_2024-07-29_10-22-30.mp4"
+      }
+    }
+  ]
+}
