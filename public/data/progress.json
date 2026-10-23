@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-22T09:20:37.093Z",
-  "activeSeries": "tt0063951",
+  "updatedAt": "2026-10-23T09:16:59.749Z",
+  "activeSeries": "tt0063929",
   "series": {
     "tt0063951": {
       "name": "Sesame Street",
-      "status": "in-progress",
-      "done": 3227,
+      "status": "complete",
+      "done": 3445,
       "total": 3445,
-      "lastSeason": 50,
-      "lastEpisode": 6,
-      "nextSeason": 50,
-      "nextEpisode": 7,
-      "updatedAt": "2026-10-22T09:20:37.093Z",
+      "lastSeason": 57,
+      "lastEpisode": 3,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-23T09:16:59.749Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063929": {
