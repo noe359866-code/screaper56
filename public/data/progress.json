@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-23T09:16:59.749Z",
-  "activeSeries": "tt0063929",
+  "updatedAt": "2026-10-24T08:49:53.618Z",
+  "activeSeries": "tt0063925",
   "series": {
-    "tt0063951": {
-      "name": "Sesame Street",
-      "status": "complete",
-      "done": 3445,
-      "total": 3445,
-      "lastSeason": 57,
-      "lastEpisode": 3,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-23T09:16:59.749Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0063929": {
       "name": "Monty Python's Flying Circus",
-      "status": "in-progress",
-      "done": 7,
+      "status": "complete",
+      "done": 45,
       "total": 45,
-      "lastSeason": 1,
-      "lastEpisode": 7,
-      "nextSeason": 1,
-      "nextEpisode": 8,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 4,
+      "lastEpisode": 6,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-24T08:49:53.618Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063925": {
@@ -422,6 +410,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0063951": {
+      "name": "Sesame Street",
+      "status": "complete",
+      "done": 3445,
+      "total": 3445,
+      "lastSeason": 57,
+      "lastEpisode": 3,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-23T09:16:59.749Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063869": {
       "name": "The Benny Hill Show",
