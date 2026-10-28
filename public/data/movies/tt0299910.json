@@ -10,7 +10,6 @@
   "imdbRating": "6.0",
   "providerUrls": {
     "peerflix": "https://peerflix.mov/stream/movie/tt0299910.json",
-    "torrentsdb": "https://torrentsdb.com/stream/movie/tt0299910.json",
     "torrentio": "https://torrentio.strem.fun/stream/movie/tt0299910.json",
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
     "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
@@ -30,6 +29,10 @@
   "providers": [],
   "warnings": [],
   "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 502"
+    },
     {
       "provider": "brazuca",
       "error": "HTTP 504"

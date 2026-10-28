@@ -10,7 +10,6 @@
   "imdbRating": "7.1",
   "providerUrls": {
     "peerflix": "https://peerflix.mov/stream/movie/tt1999167.json",
-    "torrentsdb": "https://torrentsdb.com/stream/movie/tt1999167.json",
     "torrentio": "https://torrentio.strem.fun/stream/movie/tt1999167.json",
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1999167.json",
     "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1999167.json",
@@ -18,15 +17,15 @@
     "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
   },
   "streamCount": 1,
-  "candidateCount": 44,
+  "candidateCount": 35,
   "picks": [
     {
       "pick": "en",
       "name": "🇬🇧 Inglés 1080p",
-      "title": "Gekijouban Naruto Shippuuden: Hi no Ishi o Tsugu Mono",
+      "title": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv",
       "quality": "1080p",
-      "seeders": 15,
-      "sizeBytes": 864875971,
+      "seeders": 6,
+      "sizeBytes": 865075200,
       "sizeLabel": "825 MB",
       "audioLangs": [
         "en"
@@ -39,23 +38,21 @@
         "channels": null
       },
       "providers": [
-        "torrentsdb",
         "stremthru"
       ],
       "providerNames": [
-        "TorrentsDB",
         "StremThru Torz"
       ],
       "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
       "fileIdx": 4,
-      "score": 7.03,
-      "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+      "score": 6.58,
+      "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=%5BJudas%5D%20Naruto%20Shippuden%20-%20Movie%2005%20-%20Blood%20Prison.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
     }
   ],
   "missing": [
     "es"
   ],
-  "bestSeeders": 15,
+  "bestSeeders": 6,
   "qualities": [
     "1080p"
   ],
@@ -63,13 +60,16 @@
     "en"
   ],
   "providers": [
-    "stremthru",
-    "torrentsdb"
+    "stremthru"
   ],
   "warnings": [
     "la etiqueta “Naruto Shippuden the Movie: Blood Prison (2011)” no cuadra: en IMDb es “Naruto Shippuden the Movie: Blood Prison (2014)”"
   ],
   "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "HTTP 502"
+    },
     {
       "provider": "brazuca",
       "error": "HTTP 504"
@@ -78,10 +78,10 @@
   "streams": [
     {
       "name": "🇬🇧 Inglés 1080p",
-      "title": "Gekijouban Naruto Shippuuden: Hi no Ishi o Tsugu Mono",
-      "description": "Gekijouban Naruto Shippuuden: Hi no Ishi o Tsugu Mono\n👤 15 💾 825 MB ⚙️ TorrentsDB+StremThru Torz",
+      "title": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv",
+      "description": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv\n👤 6 💾 825 MB ⚙️ StremThru Torz",
       "pick": "en",
-      "score": 7.03,
+      "score": 6.58,
       "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
       "fileIdx": 4,
       "language": "en",
@@ -89,8 +89,8 @@
         "en"
       ],
       "quality": "1080p",
-      "seeders": 15,
-      "sizeBytes": 864875971,
+      "seeders": 6,
+      "sizeBytes": 865075200,
       "sizeLabel": "825 MB",
       "release": {
         "source": null,
@@ -100,43 +100,39 @@
         "channels": null
       },
       "providers": [
-        "torrentsdb",
         "stremthru"
       ],
       "providerNames": [
-        "TorrentsDB",
         "StremThru Torz"
       ],
-      "externalProviders": [
-        "animetosho"
-      ],
+      "externalProviders": [],
       "filename": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv",
       "trackers": [
         "udp://tracker.opentrackr.org:1337/announce",
         "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
         "udp://open.demonii.com:1337/announce",
         "udp://open.tracker.cl:1337/announce",
-        "udp://exodus.desync.com:6969/announce",
-        "udp://tracker.torrent.eu.org:451/announce",
         "udp://tracker.skynetcloud.site:6969/announce",
         "udp://tracker.qu.ax:6969/announce",
-        "udp://tracker.corpscorp.online:80/announce",
-        "udp://tracker-udp.gbitt.info:80/announce"
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://explodie.org:6969/announce"
       ],
       "sources": [
         "tracker:udp://tracker.opentrackr.org:1337/announce",
         "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
         "tracker:udp://open.demonii.com:1337/announce",
         "tracker:udp://open.tracker.cl:1337/announce",
-        "tracker:udp://exodus.desync.com:6969/announce",
-        "tracker:udp://tracker.torrent.eu.org:451/announce",
         "tracker:udp://tracker.skynetcloud.site:6969/announce",
         "tracker:udp://tracker.qu.ax:6969/announce",
-        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
         "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
         "dht:37dac909a189133648bf229aab6524e0ea31d825"
       ],
-      "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=%5BJudas%5D%20Naruto%20Shippuden%20-%20Movie%2005%20-%20Blood%20Prison.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
       "behaviorHints": {
         "bingeGroup": "peerflix-static-en",
         "filename": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv"

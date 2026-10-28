@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-27T09:46:42.527Z",
-  "activeSeries": "tt0052522",
+  "updatedAt": "2026-10-28T10:31:33.884Z",
+  "activeSeries": "tt0052461",
   "series": {
-    "tt0052507": {
-      "name": "The Bullwinkle Show",
-      "status": "complete",
-      "done": 26,
-      "total": 26,
-      "lastSeason": 1,
-      "lastEpisode": 26,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-10-27T09:46:42.527Z",
-      "startedAt": "2026-10-02T20:55:39.954Z"
-    },
     "tt0052522": {
       "name": "The Untouchables",
-      "status": "in-progress",
-      "done": 5,
+      "status": "complete",
+      "done": 118,
       "total": 118,
-      "lastSeason": 1,
-      "lastEpisode": 5,
-      "nextSeason": 1,
-      "nextEpisode": 6,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 4,
+      "lastEpisode": 30,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-28T10:31:33.884Z",
       "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0052461": {
@@ -386,6 +374,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0052507": {
+      "name": "The Bullwinkle Show",
+      "status": "complete",
+      "done": 26,
+      "total": 26,
+      "lastSeason": 1,
+      "lastEpisode": 26,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-10-27T09:46:42.527Z",
+      "startedAt": "2026-10-02T20:55:39.954Z"
     },
     "tt0063925": {
       "name": "Love, American Style",
