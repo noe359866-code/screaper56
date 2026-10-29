@@ -1,0 +1,45 @@
+{
+  "id": "tt0052461:4:1",
+  "imdbId": "tt0052461",
+  "type": "series",
+  "season": 4,
+  "episode": 1,
+  "label": "Dennis the Menace S04E01 – The Chinese Girl",
+  "name": "Dennis the Menace",
+  "year": 1959,
+  "imdbRating": "7.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0052461:4:1.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0052461:4:1.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0052461:4:1.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0052461:4:1.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0052461:4:1.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 3,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 502)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)"
+    }
+  ],
+  "streams": []
+}

@@ -1,0 +1,66 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés",
+      "title": "Dennis.the.Menace.S04E08.San.Diego.Safari.WEBRip.h.264-GC.mkv",
+      "description": "Dennis.the.Menace.S04E08.San.Diego.Safari.WEBRip.h.264-GC.mkv\n🎞️ WEBRip · AVC\n👤 ? 💾 173 MB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 3.32,
+      "infoHash": "a3c5663a2a6fb2f08d254fb00decc60b4dc2c2bc",
+      "fileIdx": 119,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": null,
+      "seeders": null,
+      "sizeBytes": 181403648,
+      "sizeLabel": "173 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "Dennis.the.Menace.S04E08.San.Diego.Safari.WEBRip.h.264-GC.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:a3c5663a2a6fb2f08d254fb00decc60b4dc2c2bc"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a3c5663a2a6fb2f08d254fb00decc60b4dc2c2bc&dn=Dennis.the.Menace.S04E08.San.Diego.Safari.WEBRip.h.264-GC.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Dennis.the.Menace.S04E08.San.Diego.Safari.WEBRip.h.264-GC.mkv"
+      }
+    }
+  ]
+}
