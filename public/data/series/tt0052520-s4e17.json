@@ -1,0 +1,146 @@
+{
+  "id": "tt0052520:4:17",
+  "imdbId": "tt0052520",
+  "type": "series",
+  "season": 4,
+  "episode": 17,
+  "label": "The Twilight Zone S04E17 – Passage on the Lady Anne",
+  "name": "The Twilight Zone",
+  "year": 1959,
+  "imdbRating": "9.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0052520:4:17.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0052520:4:17.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0052520:4:17.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0052520:4:17.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 18,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Twilight Zone S04E17 Passage on the Lady Anne.mp4",
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 876609536,
+      "sizeLabel": "836 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "d5a78747ffba8eef8f6db16efb0a0650e04813be",
+      "fileIdx": 128,
+      "score": 7.5,
+      "magnetUrl": "magnet:?xt=urn:btih:d5a78747ffba8eef8f6db16efb0a0650e04813be&dn=The%20Twilight%20Zone%20S04E17%20Passage%20on%20the%20Lady%20Anne.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 30,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 502)"
+    },
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Twilight Zone S04E17 Passage on the Lady Anne.mp4",
+      "description": "The Twilight Zone S04E17 Passage on the Lady Anne.mp4\n👤 30 💾 836 MB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 7.5,
+      "infoHash": "d5a78747ffba8eef8f6db16efb0a0650e04813be",
+      "fileIdx": 128,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 30,
+      "sizeBytes": 876609536,
+      "sizeLabel": "836 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "The Twilight Zone S04E17 Passage on the Lady Anne.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.ducks.party:1984/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "dht:d5a78747ffba8eef8f6db16efb0a0650e04813be"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:d5a78747ffba8eef8f6db16efb0a0650e04813be&dn=The%20Twilight%20Zone%20S04E17%20Passage%20on%20the%20Lady%20Anne.mp4&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Twilight Zone S04E17 Passage on the Lady Anne.mp4"
+      }
+    }
+  ]
+}

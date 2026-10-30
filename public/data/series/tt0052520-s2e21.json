@@ -1,0 +1,149 @@
+{
+  "id": "tt0052520:2:21",
+  "imdbId": "tt0052520",
+  "type": "series",
+  "season": 2,
+  "episode": 21,
+  "label": "The Twilight Zone S02E21 – The Prime Mover",
+  "name": "The Twilight Zone",
+  "year": 1959,
+  "imdbRating": "9.0",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0052520:2:21.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0052520:2:21.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0052520:2:21.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0052520:2:21.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0052520:2:21.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 48,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Twilight Zone (1959) Season 1-5 S01-05 (1080p BluRay x265 HEVC 10bit AAC 2.0 ImE) [QxR]",
+      "quality": "1080p",
+      "seeders": 295,
+      "sizeBytes": 977010688,
+      "sizeLabel": "932 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "7be4b9d30842f80be036c8a5c259a67aab84f7be",
+      "fileIdx": 56,
+      "score": 8.36,
+      "magnetUrl": "magnet:?xt=urn:btih:7be4b9d30842f80be036c8a5c259a67aab84f7be&dn=The%20Twilight%20Zone%20(1959)%20Season%201-5%20S01-05%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%202.0%20ImE)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 295,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 3 errores seguidos (HTTP 502)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Twilight Zone (1959) Season 1-5 S01-05 (1080p BluRay x265 HEVC 10bit AAC 2.0 ImE) [QxR]",
+      "description": "The Twilight Zone (1959) Season 1-5 S01-05 (1080p BluRay x265 HEVC 10bit AAC 2.0 ImE) [QxR]\n🎞️ BluRay · HEVC · AAC 2.0\n👤 295 💾 932 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 8.36,
+      "infoHash": "7be4b9d30842f80be036c8a5c259a67aab84f7be",
+      "fileIdx": 56,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 295,
+      "sizeBytes": 977010688,
+      "sizeLabel": "932 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "1337x"
+      ],
+      "filename": "The Twilight Zone (1959) - S02E21 - The Prime Mover (1080p BluRay x265 ImE).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.skynetcloud.site:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.ducks.party:1984/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "dht:7be4b9d30842f80be036c8a5c259a67aab84f7be"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7be4b9d30842f80be036c8a5c259a67aab84f7be&dn=The%20Twilight%20Zone%20(1959)%20Season%201-5%20S01-05%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%202.0%20ImE)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The Twilight Zone (1959) - S02E21 - The Prime Mover (1080p BluRay x265 ImE).mkv"
+      }
+    }
+  ]
+}
