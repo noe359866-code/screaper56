@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-31T10:13:43.426Z",
-  "finishedAt": "2026-10-31T10:19:56.150Z",
+  "generatedAt": "2026-11-01T11:04:05.305Z",
+  "finishedAt": "2026-11-01T11:12:12.414Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,17 +171,17 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 6,
+  "total": 23,
   "movies": 3,
-  "episodes": 3,
-  "totalStreams": 8,
-  "totalCandidates": 313,
+  "episodes": 20,
+  "totalStreams": 37,
+  "totalCandidates": 955,
   "picks": {
-    "es": 3,
-    "en": 5
+    "es": 15,
+    "en": 22
   },
   "missing": {
-    "es": 3,
+    "es": 8,
     "en": 1
   },
   "selection": {
@@ -195,14 +195,14 @@
     "trackers": [
       "udp://tracker.opentrackr.org:1337/announce",
       "udp://open.stealth.si:80/announce",
-      "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
       "udp://open.tracker.cl:1337/announce",
-      "udp://exodus.desync.com:6969/announce",
-      "udp://tracker.skynetcloud.site:6969/announce",
       "udp://tracker.qu.ax:6969/announce",
-      "udp://tracker.corpscorp.online:80/announce",
-      "udp://tracker.ducks.party:1984/announce"
+      "udp://tracker.ducks.party:1984/announce",
+      "udp://explodie.org:6969/announce",
+      "udp://tracker.tryhackx.org:6969/announce",
+      "udp://tracker.nyaa.vc:6969/announce",
+      "udp://tracker.gmi.gd:6969/announce"
     ]
   },
   "meta": {
@@ -238,6 +238,7 @@
       "imdbRating": "7.1",
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt1999167.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt1999167.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1999167.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1999167.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1999167.json",
@@ -245,15 +246,15 @@
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 37,
+      "candidateCount": 45,
       "picks": [
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "[Judas] Naruto Shippuden - Movie 05 - Blood Prison.mkv",
+          "title": "Gekijouban Naruto Shippuuden: Hi no Ishi o Tsugu Mono",
           "quality": "1080p",
-          "seeders": 6,
-          "sizeBytes": 865075200,
+          "seeders": 15,
+          "sizeBytes": 864875971,
           "sizeLabel": "825 MB",
           "audioLangs": [
             "en"
@@ -266,21 +267,23 @@
             "channels": null
           },
           "providers": [
+            "torrentsdb",
             "stremthru"
           ],
           "providerNames": [
+            "TorrentsDB",
             "StremThru Torz"
           ],
           "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
           "fileIdx": 4,
-          "score": 6.58,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=%5BJudas%5D%20Naruto%20Shippuden%20-%20Movie%2005%20-%20Blood%20Prison.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 7.03,
+          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         }
       ],
       "missing": [
         "es"
       ],
-      "bestSeeders": 6,
+      "bestSeeders": 15,
       "qualities": [
         "1080p"
       ],
@@ -288,16 +291,13 @@
         "en"
       ],
       "providers": [
-        "stremthru"
+        "stremthru",
+        "torrentsdb"
       ],
       "warnings": [
         "la etiqueta “Naruto Shippuden the Movie: Blood Prison (2011)” no cuadra: en IMDb es “Naruto Shippuden the Movie: Blood Prison (2014)”"
       ],
       "errors": [
-        {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
-        },
         {
           "provider": "brazuca",
           "error": "HTTP 504"
@@ -316,6 +316,7 @@
       "imdbRating": "7.3",
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt7525514.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt7525514.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt7525514.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7525514.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7525514.json",
@@ -330,7 +331,7 @@
           "name": "🇬🇧 Inglés 1080p",
           "title": "Bad Reputation 2018 1080p WEBRip",
           "quality": "1080p",
-          "seeders": 10,
+          "seeders": 17,
           "sizeBytes": 1846835937,
           "sizeLabel": "1.7 GB",
           "audioLangs": [
@@ -346,12 +347,14 @@
             "channels": "5.1"
           },
           "providers": [
+            "torrentsdb",
             "torrentio",
             "ytztvio",
             "torrentclaw",
             "stremthru"
           ],
           "providerNames": [
+            "TorrentsDB",
             "Torrentio",
             "Ytztvio",
             "TorrentClaw",
@@ -359,14 +362,14 @@
           ],
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
-          "score": 6.87,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce"
+          "score": 7.19,
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [
         "es"
       ],
-      "bestSeeders": 10,
+      "bestSeeders": 17,
       "qualities": [
         "1080p"
       ],
@@ -377,14 +380,11 @@
         "stremthru",
         "torrentclaw",
         "torrentio",
+        "torrentsdb",
         "ytztvio"
       ],
       "warnings": [],
       "errors": [
-        {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
-        },
         {
           "provider": "brazuca",
           "error": "HTTP 504"
@@ -403,6 +403,7 @@
       "imdbRating": "6.0",
       "providerUrls": {
         "peerflix": "https://peerflix.mov/stream/movie/tt0299910.json",
+        "torrentsdb": "https://torrentsdb.com/stream/movie/tt0299910.json",
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0299910.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
@@ -423,8 +424,125 @@
       "warnings": [],
       "errors": [
         {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:1:4",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 1,
+      "episode": 4,
+      "label": "Blue Lights S01E04 – Full Moon Fever",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:1:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:1:4.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 59,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 4K",
+          "title": "Blue Lights [HDTV][Cap.104](wolfmax4k.com)",
+          "quality": "4K",
+          "seeders": 6,
+          "sizeBytes": 711364444,
+          "sizeLabel": "678 MB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio",
+            "torrentclaw"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio",
+            "TorrentClaw"
+          ],
+          "infoHash": "836cf9f44db41c02051cfb1b1c1e241d680487cb",
+          "fileIdx": 0,
+          "score": 14.79,
+          "magnetUrl": "magnet:?xt=urn:btih:836cf9f44db41c02051cfb1b1c1e241d680487cb&dn=Blue%20Lights%20%5BHDTV%5D%5BCap.104%5D(wolfmax4k.com)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) Season 1 S01 (1080p iP WEB-DL x265 HEVC 10bit AAC 2.0 Ghost) [QxR]",
+          "quality": "1080p",
+          "seeders": 105,
+          "sizeBytes": 2083059139,
+          "sizeLabel": "1.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "2.0"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "b4701fcc2783c581a212aa73501ba761f81aae60",
+          "fileIdx": 3,
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:b4701fcc2783c581a212aa73501ba761f81aae60&dn=Blue%20Lights%20(2023)%20Season%201%20S01%20(1080p%20iP%20WEB-DL%20x265%20HEVC%2010bit%20AAC%202.0%20Ghost)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 105,
+      "qualities": [
+        "1080p",
+        "4K"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
         },
         {
           "provider": "brazuca",
@@ -433,35 +551,620 @@
       ]
     },
     {
-      "id": "tt6037988:1:4",
-      "imdbId": "tt6037988",
+      "id": "tt14466018:1:5",
+      "imdbId": "tt14466018",
       "type": "series",
       "season": 1,
-      "episode": 4,
-      "label": "Last Seen S01E04 – The Truth",
-      "name": "Last Seen",
-      "year": 2026,
+      "episode": 5,
+      "label": "Blue Lights S01E05 – The Q Word",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt6037988:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt6037988:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt6037988:1:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt6037988:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt6037988:1:4.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:1:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:1:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:1:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:1:5.json"
       },
       "streamCount": 2,
-      "candidateCount": 98,
+      "candidateCount": 57,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
-          "title": "Causa Abierta [HDTV 1080p][Cap.104]",
+          "title": "Blue Lights 1x05(Castellano.1080p.x264.AC3.by.Ercius).mkv",
           "quality": "1080p",
-          "seeders": 7,
-          "sizeBytes": 3929895076,
-          "sizeLabel": "3.7 GB",
+          "seeders": 1,
+          "sizeBytes": 1385793722,
+          "sizeLabel": "1.3 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "stremthru"
+          ],
+          "providerNames": [
+            "StremThru Torz"
+          ],
+          "infoHash": "716f64fa65a2ebbb41936bd7dee3ec458dbada56",
+          "fileIdx": null,
+          "score": 13.75,
+          "magnetUrl": "magnet:?xt=urn:btih:716f64fa65a2ebbb41936bd7dee3ec458dbada56&dn=Blue%20Lights%201x05(Castellano.1080p.x264.AC3.by.Ercius).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) Season 1 S01 (1080p iP WEB-DL x265 HEVC 10bit AAC 2.0 Ghost) [QxR]",
+          "quality": "1080p",
+          "seeders": 104,
+          "sizeBytes": 2050846884,
+          "sizeLabel": "1.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "2.0"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "b4701fcc2783c581a212aa73501ba761f81aae60",
+          "fileIdx": 4,
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:b4701fcc2783c581a212aa73501ba761f81aae60&dn=Blue%20Lights%20(2023)%20Season%201%20S01%20(1080p%20iP%20WEB-DL%20x265%20HEVC%2010bit%20AAC%202.0%20Ghost)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 104,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:1:6",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 1,
+      "episode": 6,
+      "label": "Blue Lights S01E06 – Love the One You're With",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:1:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:1:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:1:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:1:6.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:1:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:1:6.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 55,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights 1x06(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+          "quality": "1080p",
+          "seeders": 1,
+          "sizeBytes": 1365065515,
+          "sizeLabel": "1.3 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "StremThru Torz"
+          ],
+          "infoHash": "5fd7dadae62bcdba628e2272db144d7050f98f54",
+          "fileIdx": null,
+          "score": 13.75,
+          "magnetUrl": "magnet:?xt=urn:btih:5fd7dadae62bcdba628e2272db144d7050f98f54&dn=Blue%20Lights%201x06(Castellano.1080p.x264.AC3.by.Ercius).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) Season 1 S01 (1080p iP WEB-DL x265 HEVC 10bit AAC 2.0 Ghost) [QxR]",
+          "quality": "1080p",
+          "seeders": 104,
+          "sizeBytes": 2018634629,
+          "sizeLabel": "1.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": "2.0"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "b4701fcc2783c581a212aa73501ba761f81aae60",
+          "fileIdx": 5,
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:b4701fcc2783c581a212aa73501ba761f81aae60&dn=Blue%20Lights%20(2023)%20Season%201%20S01%20(1080p%20iP%20WEB-DL%20x265%20HEVC%2010bit%20AAC%202.0%20Ghost)%20%5BQxR%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 104,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:2:1",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 2,
+      "episode": 1,
+      "label": "Blue Lights S02E01 – This Too Shall Pass",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:1.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:1.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:1.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:1.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 47,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 720p",
+          "title": "Blue Lights [HDTv 720p][cap.201]",
+          "quality": "720p",
+          "seeders": 2,
+          "sizeBytes": 1524713390,
+          "sizeLabel": "1.4 GB",
           "audioLangs": [
             "es",
             "en"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "1dd07daa173a701cc2565735f74d167dc76bd617",
+          "fileIdx": 0,
+          "score": 12.49,
+          "magnetUrl": "magnet:?xt=urn:btih:1dd07daa173a701cc2565735f74d167dc76bd617&dn=Blue%20Lights%20%5BHDTv%20720p%5D%5Bcap.201%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) - S02E01 - This Too Shall Pass (1080p AMZN WEB-DL x265 Ghost).mkv",
+          "quality": "1080p",
+          "seeders": 378,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
+          "fileIdx": 2,
+          "score": 8.45,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E01%20-%20This%20Too%20Shall%20Pass%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 378,
+      "qualities": [
+        "1080p",
+        "720p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:2:2",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 2,
+      "episode": 2,
+      "label": "Blue Lights S02E02 – Iceberg",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:2.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:2.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:2.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:2.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:2.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:2.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 45,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights 2x02(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+          "quality": "1080p",
+          "seeders": 1,
+          "sizeBytes": 1398764560,
+          "sizeLabel": "1.3 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "stremthru"
+          ],
+          "providerNames": [
+            "StremThru Torz"
+          ],
+          "infoHash": "715d1b0213c8766f3e10a29c5e0fdbc388b01175",
+          "fileIdx": null,
+          "score": 13.75,
+          "magnetUrl": "magnet:?xt=urn:btih:715d1b0213c8766f3e10a29c5e0fdbc388b01175&dn=Blue%20Lights%202x02(Castellano.1080p.x264.AC3.by.Ercius).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) - S02E02 - Iceberg (1080p AMZN WEB-DL x265 Ghost).mkv",
+          "quality": "1080p",
+          "seeders": 378,
+          "sizeBytes": 2147483648,
+          "sizeLabel": "2.0 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
+          "fileIdx": 1,
+          "score": 8.39,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E02%20-%20Iceberg%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 378,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:2:3",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 2,
+      "episode": 3,
+      "label": "Blue Lights S02E03 – Love Knows",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:3.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:3.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 49,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 720p",
+          "title": "Blue Lights [HDTV 720p][Cap.203]",
+          "quality": "720p",
+          "seeders": 2,
+          "sizeBytes": 1868310774,
+          "sizeLabel": "1.7 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "fa9be52daceeb075d64b6e7a8c62bb38ca789895",
+          "fileIdx": 0,
+          "score": 12.49,
+          "magnetUrl": "magnet:?xt=urn:btih:fa9be52daceeb075d64b6e7a8c62bb38ca789895&dn=Blue%20Lights%20%5BHDTV%20720p%5D%5BCap.203%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) - S02E03 - Love Knows (1080p AMZN WEB-DL x265 Ghost).mkv",
+          "quality": "1080p",
+          "seeders": 378,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
+          "fileIdx": 0,
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E03%20-%20Love%20Knows%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 378,
+      "qualities": [
+        "1080p",
+        "720p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:2:4",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 2,
+      "episode": 4,
+      "label": "Blue Lights S02E04 – The Stamp of Nature",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:4.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 47,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights [HDTV 1080p][Cap.204]",
+          "quality": "1080p",
+          "seeders": 4,
+          "sizeBytes": 3704409292,
+          "sizeLabel": "3.4 GB",
+          "audioLangs": [
+            "es"
           ],
           "release": {
             "source": "HDTV",
@@ -478,47 +1181,47 @@
             "Peerflix",
             "Torrentio"
           ],
-          "infoHash": "0d22ed41e5a761045c8f4554da6aa3af0340cede",
+          "infoHash": "cb189228f99570242089226fe438c81c2b78eb84",
           "fileIdx": 0,
-          "score": 14.56,
-          "magnetUrl": "magnet:?xt=urn:btih:0d22ed41e5a761045c8f4554da6aa3af0340cede&dn=Causa%20Abierta%20%5BHDTV%201080p%5D%5BCap.104%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 14.32,
+          "magnetUrl": "magnet:?xt=urn:btih:cb189228f99570242089226fe438c81c2b78eb84&dn=Blue%20Lights%20%5BHDTV%201080p%5D%5BCap.204%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+          "title": "Blue Lights (2023) - S02E04 - The Stamp of Nature (1080p AMZN WEB-DL x265 Ghost).mkv",
           "quality": "1080p",
-          "seeders": 187,
-          "sizeBytes": 661913600,
-          "sizeLabel": "631 MB",
+          "seeders": 378,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEBRip",
+            "source": "WEB-DL",
             "codec": "HEVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentio",
+            "torrentclaw",
             "stremthru"
           ],
           "providerNames": [
             "Torrentio",
+            "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "72388aea41fcb0e20916454f74f162d2623e9c23",
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
           "fileIdx": 3,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:72388aea41fcb0e20916454f74f162d2623e9c23&dn=Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E04%20-%20The%20Stamp%20of%20Nature%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 187,
+      "bestSeeders": 378,
       "qualities": [
         "1080p"
       ],
@@ -529,54 +1232,52 @@
       "providers": [
         "peerflix",
         "stremthru",
+        "torrentclaw",
         "torrentio"
       ],
       "warnings": [],
       "errors": [
         {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
-        },
-        {
           "provider": "ytztvio",
-          "error": "HTTP 403"
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
         }
       ]
     },
     {
-      "id": "tt6037988:1:5",
-      "imdbId": "tt6037988",
+      "id": "tt14466018:2:5",
+      "imdbId": "tt14466018",
       "type": "series",
-      "season": 1,
+      "season": 2,
       "episode": 5,
-      "label": "Last Seen S01E05 – The Prophet",
-      "name": "Last Seen",
-      "year": 2026,
+      "label": "Blue Lights S02E05 – Where I Want to Be",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt6037988:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt6037988:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt6037988:1:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt6037988:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt6037988:1:5.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:5.json"
       },
       "streamCount": 2,
-      "candidateCount": 88,
+      "candidateCount": 44,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "Causa Abierta [HDTV 1080p][Cap.105]",
-          "quality": "1080p",
-          "seeders": 11,
-          "sizeBytes": 3940632494,
-          "sizeLabel": "3.7 GB",
+          "name": "🇪🇸 Español 720p",
+          "title": "Blue Lights [HDTV 720p][Cap.205]",
+          "quality": "720p",
+          "seeders": 2,
+          "sizeBytes": 1846835937,
+          "sizeLabel": "1.7 GB",
           "audioLangs": [
-            "es",
-            "en"
+            "es"
           ],
           "release": {
             "source": "HDTV",
@@ -586,52 +1287,174 @@
             "channels": null
           },
           "providers": [
-            "peerflix"
+            "peerflix",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
           ],
           "providerNames": [
-            "Peerflix"
+            "Peerflix",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
           ],
-          "infoHash": "1d58f1330a5cbeccaaff81f2158387019175add1",
+          "infoHash": "51c61293baa43b10d8f6afda72e64ae4788a071b",
           "fileIdx": 0,
-          "score": 14.83,
-          "magnetUrl": "magnet:?xt=urn:btih:1d58f1330a5cbeccaaff81f2158387019175add1&dn=Causa%20Abierta%20%5BHDTV%201080p%5D%5BCap.105%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 12.49,
+          "magnetUrl": "magnet:?xt=urn:btih:51c61293baa43b10d8f6afda72e64ae4788a071b&dn=Blue%20Lights%20%5BHDTV%20720p%5D%5BCap.205%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+          "title": "Blue Lights (2023) - S02E05 - Where I Want to Be (1080p AMZN WEB-DL x265 Ghost).mkv",
           "quality": "1080p",
-          "seeders": 187,
-          "sizeBytes": 652392530,
-          "sizeLabel": "622 MB",
+          "seeders": 378,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEBRip",
+            "source": "WEB-DL",
             "codec": "HEVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentio",
+            "torrentclaw",
             "stremthru"
           ],
           "providerNames": [
             "Torrentio",
+            "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "72388aea41fcb0e20916454f74f162d2623e9c23",
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
           "fileIdx": 4,
-          "score": 8.34,
-          "magnetUrl": "magnet:?xt=urn:btih:72388aea41fcb0e20916454f74f162d2623e9c23&dn=Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E05%20-%20Where%20I%20Want%20to%20Be%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 187,
+      "bestSeeders": 378,
+      "qualities": [
+        "1080p",
+        "720p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:2:6",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 2,
+      "episode": 6,
+      "label": "Blue Lights S02E06 – The Loyal",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:2:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:2:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:2:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:2:6.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:2:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:2:6.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 44,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights 2x06(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+          "quality": "1080p",
+          "seeders": 1,
+          "sizeBytes": 1452150644,
+          "sizeLabel": "1.4 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": null,
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AC3"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "StremThru Torz"
+          ],
+          "infoHash": "0e1c971a60c9e9ecfcac4f2862323e5f8e34135b",
+          "fileIdx": null,
+          "score": 13.75,
+          "magnetUrl": "magnet:?xt=urn:btih:0e1c971a60c9e9ecfcac4f2862323e5f8e34135b&dn=Blue%20Lights%202x06(Castellano.1080p.x264.AC3.by.Ercius).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights (2023) - S02E06 - The Loyal (1080p AMZN WEB-DL x265 Ghost).mkv",
+          "quality": "1080p",
+          "seeders": 378,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
+          "fileIdx": 5,
+          "score": 8.39,
+          "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E06%20-%20The%20Loyal%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 378,
       "qualities": [
         "1080p"
       ],
@@ -642,51 +1465,50 @@
       "providers": [
         "peerflix",
         "stremthru",
+        "torrentclaw",
         "torrentio"
       ],
       "warnings": [],
       "errors": [
         {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
-        },
-        {
           "provider": "ytztvio",
-          "error": "HTTP 403"
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
         }
       ]
     },
     {
-      "id": "tt6037988:1:6",
-      "imdbId": "tt6037988",
+      "id": "tt14466018:3:1",
+      "imdbId": "tt14466018",
       "type": "series",
-      "season": 1,
-      "episode": 6,
-      "label": "Last Seen S01E06 – The Choice",
-      "name": "Last Seen",
-      "year": 2026,
+      "season": 3,
+      "episode": 1,
+      "label": "Blue Lights S03E01 – The Party",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt6037988:1:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt6037988:1:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt6037988:1:6.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt6037988:1:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt6037988:1:6.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:1.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:1.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:1.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:1.json"
       },
       "streamCount": 2,
-      "candidateCount": 72,
+      "candidateCount": 51,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "Causa Abierta [HDTV 720p][Cap.106]",
-          "quality": "720p",
-          "seeders": 8,
-          "sizeBytes": 1589137899,
-          "sizeLabel": "1.5 GB",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights [HDTV 1080p][Cap.301]",
+          "quality": "1080p",
+          "seeders": 1,
+          "sizeBytes": 2287070085,
+          "sizeLabel": "2.1 GB",
           "audioLangs": [
             "es"
           ],
@@ -703,30 +1525,28 @@
           "providerNames": [
             "Peerflix"
           ],
-          "infoHash": "4a118661760efd4b30ad22bb0d83100e40c0877b",
+          "infoHash": "7a26f7e68e8ed0609f4cdaba8283416cc50ffb00",
           "fileIdx": 0,
-          "score": 13.14,
-          "magnetUrl": "magnet:?xt=urn:btih:4a118661760efd4b30ad22bb0d83100e40c0877b&dn=Causa%20Abierta%20%5BHDTV%20720p%5D%5BCap.106%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "score": 13.72,
+          "magnetUrl": "magnet:?xt=urn:btih:7a26f7e68e8ed0609f4cdaba8283416cc50ffb00&dn=Blue%20Lights%20%5BHDTV%201080p%5D%5BCap.301%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
           "quality": "1080p",
-          "seeders": 187,
-          "sizeBytes": 732210135,
-          "sizeLabel": "698 MB",
+          "seeders": 107,
+          "sizeBytes": 820028375,
+          "sizeLabel": "782 MB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEBRip",
+            "source": "WEB-DL",
             "codec": "HEVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentio",
@@ -736,14 +1556,454 @@
             "Torrentio",
             "StremThru Torz"
           ],
-          "infoHash": "72388aea41fcb0e20916454f74f162d2623e9c23",
-          "fileIdx": 5,
-          "score": 8.34,
-          "magnetUrl": "magnet:?xt=urn:btih:72388aea41fcb0e20916454f74f162d2623e9c23&dn=Last.Seen.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.skynetcloud.site%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 9,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 187,
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:3:2",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 3,
+      "episode": 2,
+      "label": "Blue Lights S03E02 – Skipper",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:2.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:2.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:2.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:2.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:2.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:2.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 46,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights [HDTV 1080p][Cap.302]",
+          "quality": "1080p",
+          "seeders": 11,
+          "sizeBytes": 2297807503,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "51aafe3cb51ae639b6bdb01dce61bd0a7ce34bb1",
+          "fileIdx": 0,
+          "score": 14.89,
+          "magnetUrl": "magnet:?xt=urn:btih:51aafe3cb51ae639b6bdb01dce61bd0a7ce34bb1&dn=Blue%20Lights%20%5BHDTV%201080p%5D%5BCap.302%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 823184589,
+          "sizeLabel": "785 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 11,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:3:3",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 3,
+      "episode": 3,
+      "label": "Blue Lights S03E03 – The Bird",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:3.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:3.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 41,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights [HDTV 1080p][Cap.303]",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": 2244120412,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "919fc4b3a6acb8f41722d1876160dcfd59e24e19",
+          "fileIdx": 0,
+          "score": 14.44,
+          "magnetUrl": "magnet:?xt=urn:btih:919fc4b3a6acb8f41722d1876160dcfd59e24e19&dn=Blue%20Lights%20%5BHDTV%201080p%5D%5BCap.303%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S03E03 The Bird 1080p WEB-DL HEVC x265 BONE.mkv",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 803209216,
+          "sizeLabel": "766 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 3,
+          "score": 8.39,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S03E03%20The%20Bird%201080p%20WEB-DL%20HEVC%20x265%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:3:4",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 3,
+      "episode": 4,
+      "label": "Blue Lights S03E04 – The Parting Glass",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:4.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 43,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español",
+          "title": "Blue lights 3X3X4 HDTV XviD Castellano",
+          "quality": null,
+          "seeders": 42,
+          "sizeBytes": 835505356,
+          "sizeLabel": "797 MB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": "XviD",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "StremThru Torz"
+          ],
+          "infoHash": "2e842a628f75fa45be59e0d13e401a8a93a4019b",
+          "fileIdx": 1,
+          "score": 13.74,
+          "magnetUrl": "magnet:?xt=urn:btih:2e842a628f75fa45be59e0d13e401a8a93a4019b&dn=Blue%20lights%203X3X4%20HDTV%20XviD%20Castellano&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S03E04 The Parting Glass 1080p WEB-DL HEVC x265 BONE.mkv",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 829423616,
+          "sizeLabel": "791 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 15,
+          "score": 8.42,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S03E04%20The%20Parting%20Glass%201080p%20WEB-DL%20HEVC%20x265%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:3:5",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 3,
+      "episode": 5,
+      "label": "Blue Lights S03E05 – Ordo ab Chao",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:5.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 43,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 720p",
+          "title": "Blue Lights [HDTV 720p][Cap.305]",
+          "quality": "720p",
+          "seeders": 19,
+          "sizeBytes": 1793148846,
+          "sizeLabel": "1.7 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "4225b5bb443dbf3f2c4200b2f609473f4b8f34cb",
+          "fileIdx": 0,
+          "score": 13.72,
+          "magnetUrl": "magnet:?xt=urn:btih:4225b5bb443dbf3f2c4200b2f609473f4b8f34cb&dn=Blue%20Lights%20%5BHDTV%20720p%5D%5BCap.305%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S03E05 Ordo ab Chao 1080p WEB-DL HEVC x265 BONE.mkv",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 822083584,
+          "sizeLabel": "784 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 10,
+          "score": 8.34,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S03E05%20Ordo%20ab%20Chao%201080p%20WEB-DL%20HEVC%20x265%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
       "qualities": [
         "1080p",
         "720p"
@@ -760,16 +2020,520 @@
       "warnings": [],
       "errors": [
         {
-          "provider": "torrentsdb",
-          "error": "HTTP 502"
-        },
-        {
           "provider": "ytztvio",
-          "error": "HTTP 403"
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:3:6",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 3,
+      "episode": 6,
+      "label": "Blue Lights S03E06 – World of Our Own",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:3:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:3:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:3:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:3:6.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:3:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:3:6.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 44,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "Blue Lights [HDTV 1080p][Cap.306]",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": 2308544921,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "3333d09475670378b4baf3e129506894e2ae5b79",
+          "fileIdx": 0,
+          "score": 14.44,
+          "magnetUrl": "magnet:?xt=urn:btih:3333d09475670378b4baf3e129506894e2ae5b79&dn=Blue%20Lights%20%5BHDTV%201080p%5D%5BCap.306%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S03E06 World of Our Own 1080p WEB-DL HEVC x265 BONE.mkv",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 828375040,
+          "sizeLabel": "790 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 14,
+          "score": 8.37,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S03E06%20World%20of%20Our%20Own%201080p%20WEB-DL%20HEVC%20x265%20BONE.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:4:1",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 4,
+      "episode": 1,
+      "label": "Blue Lights S04E01 – Eyes",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:4:1.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:4:1.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:4:1.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:4:1.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:4:1.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:4:1.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 38,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 831237652,
+          "sizeLabel": "793 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 20,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:4:2",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 4,
+      "episode": 2,
+      "label": "Blue Lights S04E02 – Numbers",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:4:2.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:4:2.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:4:2.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:4:2.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:4:2.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:4:2.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 35,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 830503649,
+          "sizeLabel": "792 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 17,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:4:3",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 4,
+      "episode": 3,
+      "label": "Blue Lights S04E03 – Everybody Knows",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:4:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:4:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:4:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:4:3.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:4:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:4:3.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 36,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights S04E03 Everybody Knows 1080p WEBRip x264-CBFM",
+          "quality": "1080p",
+          "seeders": 111,
+          "sizeBytes": 1352914698,
+          "sizeLabel": "1.3 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEBRip",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "67e194781a43039af93d7606565669061f19da9f",
+          "fileIdx": 0,
+          "score": 8.38,
+          "magnetUrl": "magnet:?xt=urn:btih:67e194781a43039af93d7606565669061f19da9f&dn=Blue%20Lights%20S04E03%20Everybody%20Knows%201080p%20WEBRip%20x264-CBFM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 111,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:4:4",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 4,
+      "episode": 4,
+      "label": "Blue Lights S04E04 – So Far",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:4:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:4:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:4:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:4:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:4:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:4:4.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 33,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 830985994,
+          "sizeLabel": "792 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 19,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+        }
+      ]
+    },
+    {
+      "id": "tt14466018:4:5",
+      "imdbId": "tt14466018",
+      "type": "series",
+      "season": 4,
+      "episode": 5,
+      "label": "Blue Lights S04E05 – Ghosts",
+      "name": "Blue Lights",
+      "year": 2023,
+      "imdbRating": "8.2",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt14466018:4:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt14466018:4:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt14466018:4:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt14466018:4:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt14466018:4:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt14466018:4:5.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 35,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Blue Lights 2023 S01-S04 1080p WEB-DL HEVC x265 BONE",
+          "quality": "1080p",
+          "seeders": 107,
+          "sizeBytes": 813988577,
+          "sizeLabel": "776 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "de7a008b55d3ba26f05bee9104d36b7459ff41e8",
+          "fileIdx": 7,
+          "score": 8.36,
+          "magnetUrl": "magnet:?xt=urn:btih:de7a008b55d3ba26f05bee9104d36b7459ff41e8&dn=Blue%20Lights%202023%20S01-S04%201080p%20WEB-DL%20HEVC%20x265%20BONE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 107,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "omitido tras 3 errores seguidos (HTTP 504)"
         }
       ]
     }
@@ -780,21 +2544,9 @@
   "errors": [
     {
       "id": "tt1999167",
-      "provider": "torrentsdb",
-      "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
-      "error": "HTTP 502"
-    },
-    {
-      "id": "tt1999167",
       "provider": "brazuca",
       "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
       "error": "HTTP 504"
-    },
-    {
-      "id": "tt7525514",
-      "provider": "torrentsdb",
-      "label": "Bad Reputation (2018)",
-      "error": "HTTP 502"
     },
     {
       "id": "tt7525514",
@@ -804,198 +2556,394 @@
     },
     {
       "id": "tt0299910",
-      "provider": "torrentsdb",
-      "label": "Full Metal Yakuza (1997)",
-      "error": "HTTP 502"
-    },
-    {
-      "id": "tt0299910",
       "provider": "brazuca",
       "label": "Full Metal Yakuza (1997)",
       "error": "HTTP 504"
     },
     {
-      "id": "tt6037988:1:4",
-      "provider": "torrentsdb",
-      "label": "Last Seen S01E04 – The Truth",
-      "error": "HTTP 502"
-    },
-    {
-      "id": "tt6037988:1:4",
+      "id": "tt14466018:1:4",
       "provider": "ytztvio",
-      "label": "Last Seen S01E04 – The Truth",
+      "label": "Blue Lights S01E04 – Full Moon Fever",
       "error": "HTTP 403"
     },
     {
-      "id": "tt6037988:1:4",
+      "id": "tt14466018:1:4",
       "provider": "brazuca",
-      "label": "Last Seen S01E04 – The Truth",
+      "label": "Blue Lights S01E04 – Full Moon Fever",
       "error": "HTTP 504"
     },
     {
-      "id": "tt6037988:1:5",
-      "provider": "torrentsdb",
-      "label": "Last Seen S01E05 – The Prophet",
-      "error": "HTTP 502"
-    },
-    {
-      "id": "tt6037988:1:5",
+      "id": "tt14466018:1:5",
       "provider": "ytztvio",
-      "label": "Last Seen S01E05 – The Prophet",
+      "label": "Blue Lights S01E05 – The Q Word",
       "error": "HTTP 403"
     },
     {
-      "id": "tt6037988:1:5",
+      "id": "tt14466018:1:5",
       "provider": "brazuca",
-      "label": "Last Seen S01E05 – The Prophet",
+      "label": "Blue Lights S01E05 – The Q Word",
       "error": "HTTP 504"
     },
     {
-      "id": "tt6037988:1:6",
-      "provider": "torrentsdb",
-      "label": "Last Seen S01E06 – The Choice",
-      "error": "HTTP 502"
-    },
-    {
-      "id": "tt6037988:1:6",
+      "id": "tt14466018:1:6",
       "provider": "ytztvio",
-      "label": "Last Seen S01E06 – The Choice",
+      "label": "Blue Lights S01E06 – Love the One You're With",
       "error": "HTTP 403"
     },
     {
-      "id": "tt6037988:1:6",
+      "id": "tt14466018:1:6",
       "provider": "brazuca",
-      "label": "Last Seen S01E06 – The Choice",
+      "label": "Blue Lights S01E06 – Love the One You're With",
       "error": "HTTP 504"
+    },
+    {
+      "id": "tt14466018:2:1",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E01 – This Too Shall Pass",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt14466018:2:1",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E01 – This Too Shall Pass",
+      "error": "HTTP 504"
+    },
+    {
+      "id": "tt14466018:2:2",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E02 – Iceberg",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt14466018:2:2",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E02 – Iceberg",
+      "error": "HTTP 504"
+    },
+    {
+      "id": "tt14466018:2:3",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E03 – Love Knows",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt14466018:2:3",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E03 – Love Knows",
+      "error": "HTTP 504"
+    },
+    {
+      "id": "tt14466018:2:4",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E04 – The Stamp of Nature",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:2:4",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E04 – The Stamp of Nature",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:2:5",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E05 – Where I Want to Be",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:2:5",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E05 – Where I Want to Be",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:2:6",
+      "provider": "ytztvio",
+      "label": "Blue Lights S02E06 – The Loyal",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:2:6",
+      "provider": "brazuca",
+      "label": "Blue Lights S02E06 – The Loyal",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:1",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E01 – The Party",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:1",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E01 – The Party",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:2",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E02 – Skipper",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:2",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E02 – Skipper",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:3",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E03 – The Bird",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:3",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E03 – The Bird",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:4",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E04 – The Parting Glass",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:4",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E04 – The Parting Glass",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:5",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E05 – Ordo ab Chao",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:5",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E05 – Ordo ab Chao",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:6",
+      "provider": "ytztvio",
+      "label": "Blue Lights S03E06 – World of Our Own",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:3:6",
+      "provider": "brazuca",
+      "label": "Blue Lights S03E06 – World of Our Own",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:1",
+      "provider": "ytztvio",
+      "label": "Blue Lights S04E01 – Eyes",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:1",
+      "provider": "brazuca",
+      "label": "Blue Lights S04E01 – Eyes",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:2",
+      "provider": "ytztvio",
+      "label": "Blue Lights S04E02 – Numbers",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:2",
+      "provider": "brazuca",
+      "label": "Blue Lights S04E02 – Numbers",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:3",
+      "provider": "ytztvio",
+      "label": "Blue Lights S04E03 – Everybody Knows",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:3",
+      "provider": "brazuca",
+      "label": "Blue Lights S04E03 – Everybody Knows",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:4",
+      "provider": "ytztvio",
+      "label": "Blue Lights S04E04 – So Far",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:4",
+      "provider": "brazuca",
+      "label": "Blue Lights S04E04 – So Far",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:5",
+      "provider": "ytztvio",
+      "label": "Blue Lights S04E05 – Ghosts",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt14466018:4:5",
+      "provider": "brazuca",
+      "label": "Blue Lights S04E05 – Ghosts",
+      "error": "omitido tras 3 errores seguidos (HTTP 504)",
+      "skipped": true
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 23,
+      "ok": 23,
       "errors": 0,
       "skipped": 0,
-      "streams": 11,
+      "streams": 61,
       "rateLimited": 0,
-      "avgMs": 681,
-      "picks": 3,
-      "uniquePicks": 2
+      "avgMs": 633,
+      "picks": 13,
+      "uniquePicks": 1
     },
     "torrentsdb": {
-      "requests": 6,
-      "ok": 0,
-      "errors": 6,
-      "skipped": 0,
-      "streams": 0,
-      "rateLimited": 0,
-      "avgMs": 120702,
-      "picks": 0,
-      "uniquePicks": 0
-    },
-    "torrentio": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 23,
+      "ok": 23,
       "errors": 0,
       "skipped": 0,
-      "streams": 180,
+      "streams": 241,
       "rateLimited": 0,
-      "avgMs": 255,
+      "avgMs": 212,
       "picks": 5,
       "uniquePicks": 0
     },
-    "ytztvio": {
-      "requests": 6,
-      "ok": 3,
-      "errors": 3,
+    "torrentio": {
+      "requests": 23,
+      "ok": 23,
+      "errors": 0,
       "skipped": 0,
+      "streams": 536,
+      "rateLimited": 0,
+      "avgMs": 209,
+      "picks": 30,
+      "uniquePicks": 0
+    },
+    "ytztvio": {
+      "requests": 9,
+      "ok": 3,
+      "errors": 6,
+      "skipped": 14,
       "streams": 4,
       "rateLimited": 0,
-      "avgMs": 10966,
+      "avgMs": 14128,
       "picks": 1,
       "uniquePicks": 0
     },
     "torrentclaw": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 23,
+      "ok": 23,
       "errors": 0,
       "skipped": 0,
-      "streams": 76,
+      "streams": 331,
       "rateLimited": 0,
-      "avgMs": 498,
-      "picks": 1,
+      "avgMs": 435,
+      "picks": 14,
       "uniquePicks": 0
     },
     "aniscraper": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 23,
+      "ok": 23,
       "errors": 0,
       "skipped": 0,
       "streams": 8,
       "rateLimited": 0,
-      "avgMs": 2087,
+      "avgMs": 1318,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 23,
+      "ok": 23,
       "errors": 0,
       "skipped": 0,
-      "streams": 216,
+      "streams": 709,
       "rateLimited": 0,
-      "avgMs": 293,
-      "picks": 5,
-      "uniquePicks": 1
+      "avgMs": 632,
+      "picks": 30,
+      "uniquePicks": 2
     },
     "brazuca": {
-      "requests": 6,
+      "requests": 9,
       "ok": 0,
-      "errors": 6,
-      "skipped": 0,
+      "errors": 9,
+      "skipped": 14,
       "streams": 0,
       "rateLimited": 0,
-      "avgMs": 157377,
+      "avgMs": 157439,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 6,
-    "prepared": 6,
+    "inserted": 21,
+    "prepared": 21,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 4,
+    "created": 19,
     "updated": 2
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-10-31T10:19:56.148Z",
-    "activeSeries": "tt14466018",
+    "updatedAt": "2026-11-01T11:12:12.412Z",
+    "activeSeries": "tt32544507",
     "series": {
-      "tt6037988": {
-        "name": "Last Seen",
-        "status": "complete",
-        "done": 6,
-        "total": 6,
-        "lastSeason": 1,
-        "lastEpisode": 6,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-10-31T10:19:56.148Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt14466018": {
         "name": "Blue Lights",
-        "status": "in-progress",
-        "done": 3,
-        "total": 19,
-        "lastSeason": 1,
-        "lastEpisode": 3,
-        "nextSeason": 1,
-        "nextEpisode": 4,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "status": "complete",
+        "done": 23,
+        "total": 23,
+        "lastSeason": 4,
+        "lastEpisode": 5,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-01T11:12:12.412Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt32544507": {
@@ -1310,6 +3258,18 @@
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
       },
+      "tt6037988": {
+        "name": "Last Seen",
+        "status": "complete",
+        "done": 6,
+        "total": 6,
+        "lastSeason": 1,
+        "lastEpisode": 6,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-10-31T10:19:56.148Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
+      },
       "tt0052520": {
         "name": "The Twilight Zone",
         "status": "complete",
@@ -1588,5 +3548,5 @@
       }
     }
   },
-  "durationMs": 372724
+  "durationMs": 487109
 }

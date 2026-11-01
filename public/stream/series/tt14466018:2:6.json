@@ -1,0 +1,141 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Blue Lights 2x06(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+      "description": "Blue Lights 2x06(Castellano.1080p.x264.AC3.by.Ercius).mkv\n🎞️ AVC · AC3\n👤 1 💾 1.4 GB ⚙️ Peerflix+StremThru Torz",
+      "pick": "es",
+      "score": 13.75,
+      "infoHash": "0e1c971a60c9e9ecfcac4f2862323e5f8e34135b",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 1,
+      "sizeBytes": 1452150644,
+      "sizeLabel": "1.4 GB",
+      "release": {
+        "source": null,
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": "Blue Lights 2x06(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.tryhackx.org:6969/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "dht:0e1c971a60c9e9ecfcac4f2862323e5f8e34135b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0e1c971a60c9e9ecfcac4f2862323e5f8e34135b&dn=Blue%20Lights%202x06(Castellano.1080p.x264.AC3.by.Ercius).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Blue Lights 2x06(Castellano.1080p.x264.AC3.by.Ercius).mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Blue Lights (2023) - S02E06 - The Loyal (1080p AMZN WEB-DL x265 Ghost).mkv",
+      "description": "Blue Lights (2023) - S02E06 - The Loyal (1080p AMZN WEB-DL x265 Ghost).mkv\n🎞️ WEB-DL · HEVC\n👤 378 💾 2.1 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.39,
+      "infoHash": "9a95d8defa887a7f03c17ab042f83cc4d3fe8fff",
+      "fileIdx": 5,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 378,
+      "sizeBytes": 2254857830,
+      "sizeLabel": "2.1 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Blue Lights (2023) - S02E06 - The Loyal (1080p AMZN WEB-DL x265 Ghost).mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://tracker.peerfect.org:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://open.tracker.cl:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "dht:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:9a95d8defa887a7f03c17ab042f83cc4d3fe8fff&dn=Blue%20Lights%20(2023)%20-%20S02E06%20-%20The%20Loyal%20(1080p%20AMZN%20WEB-DL%20x265%20Ghost).mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Blue Lights (2023) - S02E06 - The Loyal (1080p AMZN WEB-DL x265 Ghost).mkv"
+      }
+    }
+  ]
+}
