@@ -1,0 +1,253 @@
+{
+  "id": "tt26453092:1:8",
+  "imdbId": "tt26453092",
+  "type": "series",
+  "season": 1,
+  "episode": 8,
+  "label": "The Mighty Nein S01E08 – The Zadash Job",
+  "name": "The Mighty Nein",
+  "year": 2025,
+  "imdbRating": "8.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:8.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:8.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:8.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:8.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:8.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 95,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv",
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 891249785,
+      "sizeLabel": "850 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "infoHash": "897e43172d1692119dd8ddc727a681fecd7c551a",
+      "fileIdx": null,
+      "score": 14.41,
+      "magnetUrl": "magnet:?xt=urn:btih:897e43172d1692119dd8ddc727a681fecd7c551a&dn=The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Mighty Nein S01E08 1080p WEB h264-GRACE",
+      "quality": "1080p",
+      "seeders": 765,
+      "sizeBytes": 3242700308,
+      "sizeLabel": "3.0 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "1344d586589c7f0acacbc645085386bba2ddd629",
+      "fileIdx": 0,
+      "score": 8.32,
+      "magnetUrl": "magnet:?xt=urn:btih:1344d586589c7f0acacbc645085386bba2ddd629&dn=The%20Mighty%20Nein%20S01E08%201080p%20WEB%20h264-GRACE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 765,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "timeout (12s)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 504"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv",
+      "description": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv\n👤 5 💾 850 MB ⚙️ StremThru Torz",
+      "pick": "es",
+      "score": 14.41,
+      "infoHash": "897e43172d1692119dd8ddc727a681fecd7c551a",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 5,
+      "sizeBytes": 891249785,
+      "sizeLabel": "850 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:897e43172d1692119dd8ddc727a681fecd7c551a"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:897e43172d1692119dd8ddc727a681fecd7c551a&dn=The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The Mighty Nein S01E08 1080p WEB h264-GRACE",
+      "description": "The Mighty Nein S01E08 1080p WEB h264-GRACE\n🎞️ WEB · AVC\n👤 765 💾 3.0 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.32,
+      "infoHash": "1344d586589c7f0acacbc645085386bba2ddd629",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 765,
+      "sizeBytes": 3242700308,
+      "sizeLabel": "3.0 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "EZTV",
+        "GRACE",
+        "The"
+      ],
+      "filename": "The.Mighty.Nein.S01E08.1080p.WEB.h264-GRACE[EZTVx.to].mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://t.overflow.biz:6969/announce",
+        "udp://open.tracker.cl:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://t.overflow.biz:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "dht:1344d586589c7f0acacbc645085386bba2ddd629"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:1344d586589c7f0acacbc645085386bba2ddd629&dn=The%20Mighty%20Nein%20S01E08%201080p%20WEB%20h264-GRACE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Mighty.Nein.S01E08.1080p.WEB.h264-GRACE[EZTVx.to].mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The Mighty Nein [HDTV 1080p][Cap.105] [3.42GB]",
+      "description": "The Mighty Nein [HDTV 1080p][Cap.105] [3.42GB]\n🎞️ HDTV\n👤 16 💾 3.4 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 15.12,
+      "infoHash": "920934e614901a2e0d1de9aa777b221e8ae0c938",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 16,
+      "sizeBytes": 3672197038,
+      "sizeLabel": "3.4 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Wolfmax4k"
+      ],
+      "filename": "The Mighty Nein [HDTV 1080p][Cap.105].mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://explodie.org:6969/announce",
+        "http://tracker.dler.org:6969/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.ducks.party:1984/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.dler.org:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "dht:920934e614901a2e0d1de9aa777b221e8ae0c938"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:920934e614901a2e0d1de9aa777b221e8ae0c938&dn=The%20Mighty%20Nein%20%5BHDTV%201080p%5D%5BCap.105%5D%20%5B3.42GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The Mighty Nein [HDTV 1080p][Cap.105].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv",
+      "description": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv\n🎞️ WEB · AVC\n👤 123 💾 3.2 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.32,
+      "infoHash": "913d14caf7a0b2d0ef37b8e71625a947e2286c16",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 123,
+      "sizeBytes": 3450310022,
+      "sizeLabel": "3.2 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "EZTV",
+        "sylix",
+        "The"
+      ],
+      "filename": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://t.overflow.biz:6969/announce",
+        "udp://open.tracker.cl:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://t.overflow.biz:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "dht:913d14caf7a0b2d0ef37b8e71625a947e2286c16"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:913d14caf7a0b2d0ef37b8e71625a947e2286c16&dn=the.mighty.nein.s01e05.1080p.web.h264-sylix%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv"
+      }
+    }
+  ]
+}

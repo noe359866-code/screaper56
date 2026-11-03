@@ -1,0 +1,258 @@
+{
+  "id": "tt26453092:1:4",
+  "imdbId": "tt26453092",
+  "type": "series",
+  "season": 1,
+  "episode": 4,
+  "label": "The Mighty Nein S01E04 – The Mighty Nein",
+  "name": "The Mighty Nein",
+  "year": 2025,
+  "imdbRating": "8.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:4.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:4.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:4.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:4.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:4.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 175,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv",
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 3782441271,
+      "sizeLabel": "3.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "3df248d75b7118082f8d194daf4bd2288446b2a9",
+      "fileIdx": 0,
+      "score": 14.77,
+      "magnetUrl": "magnet:?xt=urn:btih:3df248d75b7118082f8d194daf4bd2288446b2a9&dn=The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE",
+      "quality": "1080p",
+      "seeders": 157,
+      "sizeBytes": 680630682,
+      "sizeLabel": "649 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "a4a2deb329afeb80bcbaeab0b28df5dd09ab0476",
+      "fileIdx": 4,
+      "score": 8.26,
+      "magnetUrl": "magnet:?xt=urn:btih:a4a2deb329afeb80bcbaeab0b28df5dd09ab0476&dn=The.Mighty.Nein.S01E04.1080p.x265-ELiTE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 157,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "aniscraper",
+      "error": "timeout (12s)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 504"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv",
+      "description": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv\n🎞️ WEB-DL\n👤 8 💾 3.5 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "es",
+      "score": 14.77,
+      "infoHash": "3df248d75b7118082f8d194daf4bd2288446b2a9",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 8,
+      "sizeBytes": 3782441271,
+      "sizeLabel": "3.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "Cinecalidad"
+      ],
+      "filename": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.tryhackx.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "dht:3df248d75b7118082f8d194daf4bd2288446b2a9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:3df248d75b7118082f8d194daf4bd2288446b2a9&dn=The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE",
+      "description": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE\n🎞️ HEVC\n👤 157 💾 649 MB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 8.26,
+      "infoHash": "a4a2deb329afeb80bcbaeab0b28df5dd09ab0476",
+      "fileIdx": 4,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 157,
+      "sizeBytes": 680630682,
+      "sizeLabel": "649 MB",
+      "release": {
+        "source": null,
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "1337x",
+        "ELiTE",
+        "Knaben"
+      ],
+      "filename": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://t.overflow.biz:6969/announce",
+        "udp://open.tracker.cl:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://t.overflow.biz:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "dht:a4a2deb329afeb80bcbaeab0b28df5dd09ab0476"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a4a2deb329afeb80bcbaeab0b28df5dd09ab0476&dn=The.Mighty.Nein.S01E04.1080p.x265-ELiTE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE.mkv"
+      }
+    }
+  ]
+}

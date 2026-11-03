@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-02T12:02:31.702Z",
-  "finishedAt": "2026-11-02T12:10:35.121Z",
+  "generatedAt": "2026-11-03T11:40:07.064Z",
+  "finishedAt": "2026-11-03T11:45:33.934Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,17 +171,17 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 18,
+  "total": 8,
   "movies": 3,
-  "episodes": 15,
-  "totalStreams": 26,
-  "totalCandidates": 493,
+  "episodes": 5,
+  "totalStreams": 12,
+  "totalCandidates": 710,
   "picks": {
-    "es": 9,
-    "en": 17
+    "es": 5,
+    "en": 7
   },
   "missing": {
-    "es": 9,
+    "es": 3,
     "en": 1
   },
   "selection": {
@@ -193,15 +193,15 @@
     "maxTrackers": 10,
     "trackersSource": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt",
     "trackers": [
-      "udp://tracker.opentrackr.org:1337/announce",
       "udp://open.stealth.si:80/announce",
       "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
-      "udp://tracker.qu.ax:6969/announce",
       "udp://open.tracker.cl:1337/announce",
-      "udp://tracker.ducks.party:1984/announce",
-      "udp://tracker.bittor.pw:1337/announce",
+      "udp://tracker.qu.ax:6969/announce",
+      "udp://tracker.theoks.net:6969/announce",
+      "udp://tracker.corpscorp.online:80/announce",
       "udp://explodie.org:6969/announce",
+      "udp://tracker.ducks.party:1984/announce",
       "udp://tracker.tryhackx.org:6969/announce"
     ]
   },
@@ -246,7 +246,7 @@
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 45,
+      "candidateCount": 46,
       "picks": [
         {
           "pick": "en",
@@ -277,7 +277,7 @@
           "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
           "fileIdx": 4,
           "score": 7.03,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -363,7 +363,7 @@
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
           "score": 7.19,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [
@@ -430,783 +430,308 @@
       ]
     },
     {
-      "id": "tt32544507:1:4",
-      "imdbId": "tt32544507",
+      "id": "tt26453092:1:4",
+      "imdbId": "tt26453092",
       "type": "series",
       "season": 1,
       "episode": 4,
-      "label": "The Creep Tapes S01E04 – BRAD",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
+      "label": "The Mighty Nein S01E04 – The Mighty Nein",
+      "name": "The Mighty Nein",
+      "year": 2025,
+      "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:1:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:1:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:1:4.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:4.json"
       },
       "streamCount": 2,
-      "candidateCount": 36,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.104]",
-          "quality": "720p",
-          "seeders": 2,
-          "sizeBytes": 900831641,
-          "sizeLabel": "859 MB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio",
-            "TorrentClaw"
-          ],
-          "infoHash": "694df1748a9a219f808ef256ccf94f0829b7a63a",
-          "fileIdx": 0,
-          "score": 12.49,
-          "magnetUrl": "magnet:?xt=urn:btih:694df1748a9a219f808ef256ccf94f0829b7a63a&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.104%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Creep Tapes 2024 Season 1 Complete 1080p WEB x264 [i c]",
-          "quality": "1080p",
-          "seeders": 115,
-          "sizeBytes": 1438814044,
-          "sizeLabel": "1.3 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "f3338e91a4b93ba1cfce2e0930b9ae3554a958fe",
-          "fileIdx": 0,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:f3338e91a4b93ba1cfce2e0930b9ae3554a958fe&dn=The%20Creep%20Tapes%202024%20Season%201%20Complete%201080p%20WEB%20x264%20%5Bi%20c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 115,
-      "qualities": [
-        "1080p",
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:1:5",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 1,
-      "episode": 5,
-      "label": "The Creep Tapes S01E05 – BRANDT",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:1:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:1:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:1:5.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 33,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.105]",
-          "quality": "720p",
-          "seeders": 9,
-          "sizeBytes": 833691320,
-          "sizeLabel": "795 MB",
-          "audioLangs": [
-            "es",
-            "en"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio",
-            "TorrentClaw"
-          ],
-          "infoHash": "bd04956411d7317f63cd240c5fad0905b3f393e5",
-          "fileIdx": 0,
-          "score": 13.27,
-          "magnetUrl": "magnet:?xt=urn:btih:bd04956411d7317f63cd240c5fad0905b3f393e5&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.105%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Creep Tapes 2024 Season 1 Complete 1080p WEB x264 [i c]",
-          "quality": "1080p",
-          "seeders": 115,
-          "sizeBytes": 727774659,
-          "sizeLabel": "694 MB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "f3338e91a4b93ba1cfce2e0930b9ae3554a958fe",
-          "fileIdx": 4,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:f3338e91a4b93ba1cfce2e0930b9ae3554a958fe&dn=The%20Creep%20Tapes%202024%20Season%201%20Complete%201080p%20WEB%20x264%20%5Bi%20c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 115,
-      "qualities": [
-        "1080p",
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:1:6",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 1,
-      "episode": 6,
-      "label": "The Creep Tapes S01E06 – MOM (AND ALBERT)",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:1:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:1:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:1:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:1:6.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:1:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:1:6.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 43,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.106]",
-          "quality": "720p",
-          "seeders": 3,
-          "sizeBytes": 858741800,
-          "sizeLabel": "819 MB",
-          "audioLangs": [
-            "es",
-            "en"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio",
-            "TorrentClaw"
-          ],
-          "infoHash": "a6289da4b3197614ce32cdf62d4230f4ec9dc496",
-          "fileIdx": 0,
-          "score": 12.67,
-          "magnetUrl": "magnet:?xt=urn:btih:a6289da4b3197614ce32cdf62d4230f4ec9dc496&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.106%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Creep Tapes 2024 Season 1 Complete 1080p WEB x264 [i c]",
-          "quality": "1080p",
-          "seeders": 115,
-          "sizeBytes": 817648108,
-          "sizeLabel": "780 MB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "f3338e91a4b93ba1cfce2e0930b9ae3554a958fe",
-          "fileIdx": 5,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:f3338e91a4b93ba1cfce2e0930b9ae3554a958fe&dn=The%20Creep%20Tapes%202024%20Season%201%20Complete%201080p%20WEB%20x264%20%5Bi%20c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 115,
-      "qualities": [
-        "1080p",
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:2:1",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 2,
-      "episode": 1,
-      "label": "The Creep Tapes S02E01 – JOSEPH",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:1.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:1.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:1.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:1.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:1.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:1.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 46,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español",
-          "title": "The Creep Tapes [HDTV][Cap.201]",
-          "quality": null,
-          "seeders": 52,
-          "sizeBytes": 567856332,
-          "sizeLabel": "542 MB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "TorrentClaw"
-          ],
-          "infoHash": "8aa9c3dacf8d447ef03ccc5a9a7459de32a7ede9",
-          "fileIdx": 0,
-          "score": 13.86,
-          "magnetUrl": "magnet:?xt=urn:btih:8aa9c3dacf8d447ef03ccc5a9a7459de32a7ede9&dn=The%20Creep%20Tapes%20%5BHDTV%5D%5BCap.201%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Creep Tapes 2024 Season 2 Complete 1080p WEB x264 [i_c]",
-          "quality": "1080p",
-          "seeders": 27,
-          "sizeBytes": 1986422374,
-          "sizeLabel": "1.8 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "acf1fd232bc5217bb99673a3119d820f22704f3d",
-          "fileIdx": 5,
-          "score": 7.48,
-          "magnetUrl": "magnet:?xt=urn:btih:acf1fd232bc5217bb99673a3119d820f22704f3d&dn=The%20Creep%20Tapes%202024%20Season%202%20Complete%201080p%20WEB%20x264%20%5Bi_c%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 52,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:2:2",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 2,
-      "episode": 2,
-      "label": "The Creep Tapes S02E02 – WES",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:2.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:2.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:2.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:2.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:2.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:2.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 48,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.202]",
-          "quality": "720p",
-          "seeders": 17,
-          "sizeBytes": 662637117,
-          "sizeLabel": "632 MB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "d0631eb9dc42da234119f44e020ed08f2e03f02e",
-          "fileIdx": 0,
-          "score": 13.65,
-          "magnetUrl": "magnet:?xt=urn:btih:d0631eb9dc42da234119f44e020ed08f2e03f02e&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.202%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S02E02 WES 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
-          "quality": "1080p",
-          "seeders": 165,
-          "sizeBytes": 1655302738,
-          "sizeLabel": "1.5 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "07555019dda8de4e1437e3e4eea17af314edaf3c",
-          "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:07555019dda8de4e1437e3e4eea17af314edaf3c&dn=THE%20CREEP%20TAPES%20S02E02%20WES%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 165,
-      "qualities": [
-        "1080p",
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:2:3",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 2,
-      "episode": 3,
-      "label": "The Creep Tapes S02E03 – MARK",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:3.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:3.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:3.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:3.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:3.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:3.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 40,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.203]",
-          "quality": "720p",
-          "seeders": 8,
-          "sizeBytes": 710546554,
-          "sizeLabel": "678 MB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "d7c6cd0c9256c3d72d1c5404aa44d86bf9fe0949",
-          "fileIdx": 0,
-          "score": 13.2,
-          "magnetUrl": "magnet:?xt=urn:btih:d7c6cd0c9256c3d72d1c5404aa44d86bf9fe0949&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.203%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S02E03 MARK 1080p AMZN WEB-DL DDP5 1 H 264-RAWR[EZTVx.to].mkv",
-          "quality": "1080p",
-          "seeders": 278,
-          "sizeBytes": 1501661103,
-          "sizeLabel": "1.4 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "d21ecb9e48c006f5336150c9503e134439b4b4e3",
-          "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:d21ecb9e48c006f5336150c9503e134439b4b4e3&dn=THE%20CREEP%20TAPES%20S02E03%20MARK%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 278,
-      "qualities": [
-        "1080p",
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "peerflix",
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:2:4",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 2,
-      "episode": 4,
-      "label": "The Creep Tapes S02E04 – AVA",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:4.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 32,
+      "candidateCount": 175,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
-          "title": "The Creep Tapes [HDTV 1080p][Cap.204]",
+          "title": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv",
+          "quality": "1080p",
+          "seeders": 8,
+          "sizeBytes": 3782441271,
+          "sizeLabel": "3.5 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "StremThru Torz"
+          ],
+          "infoHash": "3df248d75b7118082f8d194daf4bd2288446b2a9",
+          "fileIdx": 0,
+          "score": 14.77,
+          "magnetUrl": "magnet:?xt=urn:btih:3df248d75b7118082f8d194daf4bd2288446b2a9&dn=The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE",
+          "quality": "1080p",
+          "seeders": 157,
+          "sizeBytes": 680630682,
+          "sizeLabel": "649 MB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": null,
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "a4a2deb329afeb80bcbaeab0b28df5dd09ab0476",
+          "fileIdx": 4,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:a4a2deb329afeb80bcbaeab0b28df5dd09ab0476&dn=The.Mighty.Nein.S01E04.1080p.x265-ELiTE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 157,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt26453092:1:5",
+      "imdbId": "tt26453092",
+      "type": "series",
+      "season": 1,
+      "episode": 5,
+      "label": "The Mighty Nein S01E05 – Little Spark",
+      "name": "The Mighty Nein",
+      "year": 2025,
+      "imdbRating": "8.4",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:5.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 144,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The Mighty Nein [HDTV 1080p][Cap.105] [3.42GB]",
+          "quality": "1080p",
+          "seeders": 16,
+          "sizeBytes": 3672197038,
+          "sizeLabel": "3.4 GB",
+          "audioLangs": [
+            "es"
+          ],
+          "release": {
+            "source": "HDTV",
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "920934e614901a2e0d1de9aa777b221e8ae0c938",
+          "fileIdx": 0,
+          "score": 15.12,
+          "magnetUrl": "magnet:?xt=urn:btih:920934e614901a2e0d1de9aa777b221e8ae0c938&dn=The%20Mighty%20Nein%20%5BHDTV%201080p%5D%5BCap.105%5D%20%5B3.42GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv",
+          "quality": "1080p",
+          "seeders": 123,
+          "sizeBytes": 3450310022,
+          "sizeLabel": "3.2 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "913d14caf7a0b2d0ef37b8e71625a947e2286c16",
+          "fileIdx": 0,
+          "score": 8.32,
+          "magnetUrl": "magnet:?xt=urn:btih:913d14caf7a0b2d0ef37b8e71625a947e2286c16&dn=the.mighty.nein.s01e05.1080p.web.h264-sylix%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 123,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "peerflix",
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 504"
+        }
+      ]
+    },
+    {
+      "id": "tt26453092:1:6",
+      "imdbId": "tt26453092",
+      "type": "series",
+      "season": 1,
+      "episode": 6,
+      "label": "The Mighty Nein S01E06 – Many Gifts",
+      "name": "The Mighty Nein",
+      "year": 2025,
+      "imdbRating": "8.4",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:6.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 120,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The.Mighty.Nein.S01E06.2025.WEB-DL.1080p-Dual-Lat",
           "quality": "1080p",
           "seeders": 2,
-          "sizeBytes": 856277647,
-          "sizeLabel": "817 MB",
+          "sizeBytes": 3865470566,
+          "sizeLabel": "3.6 GB",
           "audioLangs": [
-            "es"
+            "es",
+            "en"
           ],
           "release": {
-            "source": "HDTV",
+            "source": "WEB-DL",
             "codec": null,
             "hdr": [],
             "audio": [],
             "channels": null
           },
           "providers": [
-            "peerflix",
-            "torrentio"
+            "torrentio",
+            "stremthru"
           ],
           "providerNames": [
-            "Peerflix",
-            "Torrentio"
+            "Torrentio",
+            "StremThru Torz"
           ],
-          "infoHash": "53b5a9add2e780b7181b0e2c8a25eb2873a72a54",
+          "infoHash": "97b2a3e6bc13ebd77c5c9e5dc9a4164a001bbb9d",
           "fileIdx": 0,
-          "score": 13.99,
-          "magnetUrl": "magnet:?xt=urn:btih:53b5a9add2e780b7181b0e2c8a25eb2873a72a54&dn=The%20Creep%20Tapes%20%5BHDTV%201080p%5D%5BCap.204%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+          "score": 14.06,
+          "magnetUrl": "magnet:?xt=urn:btih:97b2a3e6bc13ebd77c5c9e5dc9a4164a001bbb9d&dn=The.Mighty.Nein.S01E06.2025.WEB-DL.1080p-Dual-Lat&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S02E04 AVA 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
+          "title": "The.Mighty.Nein.S01E06.1080p.x265-ELiTE.mkv",
           "quality": "1080p",
-          "seeders": 166,
-          "sizeBytes": 1858522095,
-          "sizeLabel": "1.7 GB",
+          "seeders": 306,
+          "sizeBytes": 681574400,
+          "sizeLabel": "650 MB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
+            "source": null,
+            "codec": "HEVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentsdb",
@@ -1220,14 +745,14 @@
             "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "81c89b52f7e6a220e98bbf6d8a8e80e77325b2c7",
-          "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:81c89b52f7e6a220e98bbf6d8a8e80e77325b2c7&dn=THE%20CREEP%20TAPES%20S02E04%20AVA%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+          "infoHash": "fbd991516044daf631dca6c4395987eda12661ab",
+          "fileIdx": 4,
+          "score": 8.26,
+          "magnetUrl": "magnet:?xt=urn:btih:fbd991516044daf631dca6c4395987eda12661ab&dn=The.Mighty.Nein.S01E06.1080p.x265-ELiTE.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 166,
+      "bestSeeders": 306,
       "qualities": [
         "1080p"
       ],
@@ -1236,7 +761,6 @@
         "es"
       ],
       "providers": [
-        "peerflix",
         "stremthru",
         "torrentclaw",
         "torrentio",
@@ -1246,85 +770,87 @@
       "errors": [
         {
           "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
         },
         {
           "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+          "error": "HTTP 504"
         }
       ]
     },
     {
-      "id": "tt32544507:2:5",
-      "imdbId": "tt32544507",
+      "id": "tt26453092:1:7",
+      "imdbId": "tt26453092",
       "type": "series",
-      "season": 2,
-      "episode": 5,
-      "label": "The Creep Tapes S02E05 – NICK",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
+      "season": 1,
+      "episode": 7,
+      "label": "The Mighty Nein S01E07 – Belonging",
+      "name": "The Mighty Nein",
+      "year": 2025,
+      "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:5.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:7.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:7.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:7.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:7.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:7.json"
       },
       "streamCount": 2,
-      "candidateCount": 33,
+      "candidateCount": 112,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.205]",
-          "quality": "720p",
-          "seeders": 25,
-          "sizeBytes": 661567569,
-          "sizeLabel": "631 MB",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The.Mighty.Nein.S01E07.2025.WEB-DL.1080p-Dual-Lat.mkv",
+          "quality": "1080p",
+          "seeders": 7,
+          "sizeBytes": 3797057572,
+          "sizeLabel": "3.5 GB",
           "audioLangs": [
-            "es"
+            "es",
+            "en"
           ],
           "release": {
-            "source": "HDTV",
+            "source": "WEB-DL",
             "codec": null,
             "hdr": [],
             "audio": [],
             "channels": null
           },
           "providers": [
-            "peerflix",
-            "torrentio"
+            "torrentclaw",
+            "stremthru"
           ],
           "providerNames": [
-            "Peerflix",
-            "Torrentio"
+            "TorrentClaw",
+            "StremThru Torz"
           ],
-          "infoHash": "80c784f4cefa4ac4551f97ecb91f7f0b8df54e70",
-          "fileIdx": 0,
-          "score": 13.89,
-          "magnetUrl": "magnet:?xt=urn:btih:80c784f4cefa4ac4551f97ecb91f7f0b8df54e70&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.205%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+          "infoHash": "3cb6687c11f5b30aa6e43e54559988cdefbbdff0",
+          "fileIdx": null,
+          "score": 14.69,
+          "magnetUrl": "magnet:?xt=urn:btih:3cb6687c11f5b30aa6e43e54559988cdefbbdff0&dn=The.Mighty.Nein.S01E07.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S02E05 NICK 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
+          "title": "The Mighty Nein S01E07 1080p WEB H264-SYLiX",
           "quality": "1080p",
-          "seeders": 503,
-          "sizeBytes": 1672512172,
-          "sizeLabel": "1.6 GB",
+          "seeders": 1021,
+          "sizeBytes": 3564822856,
+          "sizeLabel": "3.3 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEB-DL",
+            "source": "WEB",
             "codec": "AVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentsdb",
@@ -1338,24 +864,22 @@
             "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "2c000366698f75f932983082b5ce6da6143afade",
+          "infoHash": "b81dbe4fc1cb9d45b269a9078aec406651809f05",
           "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:2c000366698f75f932983082b5ce6da6143afade&dn=THE%20CREEP%20TAPES%20S02E05%20NICK%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "score": 8.32,
+          "magnetUrl": "magnet:?xt=urn:btih:b81dbe4fc1cb9d45b269a9078aec406651809f05&dn=The%20Mighty%20Nein%20S01E07%201080p%20WEB%20H264-SYLiX&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 503,
+      "bestSeeders": 1021,
       "qualities": [
-        "1080p",
-        "720p"
+        "1080p"
       ],
       "languages": [
         "en",
         "es"
       ],
       "providers": [
-        "peerflix",
         "stremthru",
         "torrentclaw",
         "torrentio",
@@ -1365,87 +889,84 @@
       "errors": [
         {
           "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
         },
         {
           "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+          "error": "HTTP 504"
         }
       ]
     },
     {
-      "id": "tt32544507:2:6",
-      "imdbId": "tt32544507",
+      "id": "tt26453092:1:8",
+      "imdbId": "tt26453092",
       "type": "series",
-      "season": 2,
-      "episode": 6,
-      "label": "The Creep Tapes S02E06 – ANGELA",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
+      "season": 1,
+      "episode": 8,
+      "label": "The Mighty Nein S01E08 – The Zadash Job",
+      "name": "The Mighty Nein",
+      "year": 2025,
+      "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:2:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:2:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:2:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:2:6.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:2:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:2:6.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:8.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:8.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:8.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:8.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:8.json"
       },
       "streamCount": 2,
-      "candidateCount": 26,
+      "candidateCount": 95,
       "picks": [
         {
           "pick": "es",
-          "name": "🇪🇸 Español 720p",
-          "title": "The Creep Tapes [HDTV 720p][Cap.206]",
-          "quality": "720p",
-          "seeders": 16,
-          "sizeBytes": 789892300,
-          "sizeLabel": "753 MB",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv",
+          "quality": "1080p",
+          "seeders": 5,
+          "sizeBytes": 891249785,
+          "sizeLabel": "850 MB",
           "audioLangs": [
             "es"
           ],
           "release": {
-            "source": "HDTV",
+            "source": null,
             "codec": null,
             "hdr": [],
             "audio": [],
             "channels": null
           },
           "providers": [
-            "peerflix",
-            "torrentio",
-            "torrentclaw"
+            "stremthru"
           ],
           "providerNames": [
-            "Peerflix",
-            "Torrentio",
-            "TorrentClaw"
+            "StremThru Torz"
           ],
-          "infoHash": "7aab2ab33980ee31aa018ca73b9bffe179f01726",
-          "fileIdx": 0,
-          "score": 13.62,
-          "magnetUrl": "magnet:?xt=urn:btih:7aab2ab33980ee31aa018ca73b9bffe179f01726&dn=The%20Creep%20Tapes%20%5BHDTV%20720p%5D%5BCap.206%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+          "infoHash": "897e43172d1692119dd8ddc727a681fecd7c551a",
+          "fileIdx": null,
+          "score": 14.41,
+          "magnetUrl": "magnet:?xt=urn:btih:897e43172d1692119dd8ddc727a681fecd7c551a&dn=The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
         },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S02E06 ANGELA 1080p AMZN WEB-DL DDP5 1 H 264-RAWR",
+          "title": "The Mighty Nein S01E08 1080p WEB h264-GRACE",
           "quality": "1080p",
-          "seeders": 135,
-          "sizeBytes": 1997159793,
-          "sizeLabel": "1.9 GB",
+          "seeders": 765,
+          "sizeBytes": 3242700308,
+          "sizeLabel": "3.0 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": "WEB-DL",
+            "source": "WEB",
             "codec": "AVC",
             "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
+            "audio": [],
+            "channels": null
           },
           "providers": [
             "torrentsdb",
@@ -1459,24 +980,22 @@
             "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "281506d1ca7ac61e9ff223a734d6db146cb0ad21",
+          "infoHash": "1344d586589c7f0acacbc645085386bba2ddd629",
           "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:281506d1ca7ac61e9ff223a734d6db146cb0ad21&dn=THE%20CREEP%20TAPES%20S02E06%20ANGELA%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "score": 8.32,
+          "magnetUrl": "magnet:?xt=urn:btih:1344d586589c7f0acacbc645085386bba2ddd629&dn=The%20Mighty%20Nein%20S01E08%201080p%20WEB%20h264-GRACE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 135,
+      "bestSeeders": 765,
       "qualities": [
-        "1080p",
-        "720p"
+        "1080p"
       ],
       "languages": [
         "en",
         "es"
       ],
       "providers": [
-        "peerflix",
         "stremthru",
         "torrentclaw",
         "torrentio",
@@ -1486,515 +1005,15 @@
       "errors": [
         {
           "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
         },
         {
           "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:1",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 1,
-      "label": "The Creep Tapes S03E01 – CRYSTAL",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:1.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:1.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:1.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:1.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:1.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:1.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 18,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E01 CRYSTAL 1080p AMZN WEB-DL DDP5 1 H 264-RAWR[EZTVx.to].mkv",
-          "quality": "1080p",
-          "seeders": 140,
-          "sizeBytes": 1699565754,
-          "sizeLabel": "1.6 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "cccf2c1dc4f6eeda899efa1fb8c957bf988ef548",
-          "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:cccf2c1dc4f6eeda899efa1fb8c957bf988ef548&dn=THE%20CREEP%20TAPES%20S03E01%20CRYSTAL%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 140,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:2",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 2,
-      "label": "The Creep Tapes S03E02 – MO",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:2.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:2.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:2.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:2.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:2.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:2.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 19,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E02 MO 1080p AMZN WEB-DL DDP5 1 H 264-RAWR EZ…",
-          "quality": "1080p",
-          "seeders": 78,
-          "sizeBytes": 1481763717,
-          "sizeLabel": "1.4 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "daa303b83a52980802a87d2de174e86fb87af025",
-          "fileIdx": 0,
-          "score": 8.2,
-          "magnetUrl": "magnet:?xt=urn:btih:daa303b83a52980802a87d2de174e86fb87af025&dn=THE%20CREEP%20TAPES%20S03E02%20MO%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR%20EZ%E2%80%A6&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 78,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:3",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 3,
-      "label": "The Creep Tapes S03E03 – ANISHA",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:3.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:3.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:3.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:3.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:3.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:3.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 14,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E03 ANISHA 1080p AMZN WEB-DL DDP5 1 H 264-RAWR",
-          "quality": "1080p",
-          "seeders": 84,
-          "sizeBytes": 1642824991,
-          "sizeLabel": "1.5 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "3a4427a3b6280b7d0a2470f7eada93aa66ee275a",
-          "fileIdx": 0,
-          "score": 8.27,
-          "magnetUrl": "magnet:?xt=urn:btih:3a4427a3b6280b7d0a2470f7eada93aa66ee275a&dn=THE%20CREEP%20TAPES%20S03E03%20ANISHA%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 84,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:4",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 4,
-      "label": "The Creep Tapes S03E04 – NOBODY",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:4.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 15,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E04 NOBODY 1080p AMZN WEB-DL DDP5 1 H 264-RAWR",
-          "quality": "1080p",
-          "seeders": 74,
-          "sizeBytes": 1556925645,
-          "sizeLabel": "1.5 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "47d5d040c62b8fc20c5aa5397cb5955a4e088cae",
-          "fileIdx": 0,
-          "score": 8.19,
-          "magnetUrl": "magnet:?xt=urn:btih:47d5d040c62b8fc20c5aa5397cb5955a4e088cae&dn=THE%20CREEP%20TAPES%20S03E04%20NOBODY%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 74,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:5",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 5,
-      "label": "The Creep Tapes S03E05 – GREG",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:5.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 14,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E05 GREG 1080p AMZN WEB DL DDP5 1 H 264 RAWR",
-          "quality": "1080p",
-          "seeders": 100,
-          "sizeBytes": 1288490189,
-          "sizeLabel": "1.2 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "35c044129ba52f398d3c627b425159d3778b2c7d",
-          "fileIdx": 0,
-          "score": 8.39,
-          "magnetUrl": "magnet:?xt=urn:btih:35c044129ba52f398d3c627b425159d3778b2c7d&dn=THE%20CREEP%20TAPES%20S03E05%20GREG%201080p%20AMZN%20WEB%20DL%20DDP5%201%20H%20264%20RAWR&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 100,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
-        }
-      ]
-    },
-    {
-      "id": "tt32544507:3:6",
-      "imdbId": "tt32544507",
-      "type": "series",
-      "season": 3,
-      "episode": 6,
-      "label": "The Creep Tapes S03E06 – JODY + BRIE",
-      "name": "The Creep Tapes",
-      "year": 2024,
-      "imdbRating": "6.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt32544507:3:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt32544507:3:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt32544507:3:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt32544507:3:6.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt32544507:3:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt32544507:3:6.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 13,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "THE CREEP TAPES S03E06 JODY plus BRIE 1080p AMZN WEB-DL DDP5 1 H 264-RAWR[EZTVx.to].mkv",
-          "quality": "1080p",
-          "seeders": 191,
-          "sizeBytes": 1506399240,
-          "sizeLabel": "1.4 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "9229262b309478ce18c7ec4fdf2a2f752b4c08e5",
-          "fileIdx": 0,
-          "score": 8.42,
-          "magnetUrl": "magnet:?xt=urn:btih:9229262b309478ce18c7ec4fdf2a2f752b4c08e5&dn=THE%20CREEP%20TAPES%20S03E06%20JODY%20plus%20BRIE%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 191,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "omitido tras 3 errores seguidos (HTTP 504)"
+          "error": "HTTP 504"
         }
       ]
     }
@@ -2022,331 +1041,211 @@
       "error": "HTTP 504"
     },
     {
-      "id": "tt32544507:1:4",
+      "id": "tt26453092:1:4",
       "provider": "ytztvio",
-      "label": "The Creep Tapes S01E04 – BRAD",
+      "label": "The Mighty Nein S01E04 – The Mighty Nein",
       "error": "HTTP 403"
     },
     {
-      "id": "tt32544507:1:4",
+      "id": "tt26453092:1:4",
+      "provider": "aniscraper",
+      "label": "The Mighty Nein S01E04 – The Mighty Nein",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt26453092:1:4",
       "provider": "brazuca",
-      "label": "The Creep Tapes S01E04 – BRAD",
+      "label": "The Mighty Nein S01E04 – The Mighty Nein",
       "error": "HTTP 504"
     },
     {
-      "id": "tt32544507:1:5",
+      "id": "tt26453092:1:5",
       "provider": "ytztvio",
-      "label": "The Creep Tapes S01E05 – BRANDT",
+      "label": "The Mighty Nein S01E05 – Little Spark",
       "error": "HTTP 403"
     },
     {
-      "id": "tt32544507:1:5",
+      "id": "tt26453092:1:5",
+      "provider": "aniscraper",
+      "label": "The Mighty Nein S01E05 – Little Spark",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt26453092:1:5",
       "provider": "brazuca",
-      "label": "The Creep Tapes S01E05 – BRANDT",
+      "label": "The Mighty Nein S01E05 – Little Spark",
       "error": "HTTP 504"
     },
     {
-      "id": "tt32544507:1:6",
+      "id": "tt26453092:1:6",
       "provider": "ytztvio",
-      "label": "The Creep Tapes S01E06 – MOM (AND ALBERT)",
+      "label": "The Mighty Nein S01E06 – Many Gifts",
       "error": "HTTP 403"
     },
     {
-      "id": "tt32544507:1:6",
+      "id": "tt26453092:1:6",
+      "provider": "aniscraper",
+      "label": "The Mighty Nein S01E06 – Many Gifts",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt26453092:1:6",
       "provider": "brazuca",
-      "label": "The Creep Tapes S01E06 – MOM (AND ALBERT)",
+      "label": "The Mighty Nein S01E06 – Many Gifts",
       "error": "HTTP 504"
     },
     {
-      "id": "tt32544507:2:1",
+      "id": "tt26453092:1:7",
       "provider": "ytztvio",
-      "label": "The Creep Tapes S02E01 – JOSEPH",
+      "label": "The Mighty Nein S01E07 – Belonging",
       "error": "HTTP 403"
     },
     {
-      "id": "tt32544507:2:1",
+      "id": "tt26453092:1:7",
+      "provider": "aniscraper",
+      "label": "The Mighty Nein S01E07 – Belonging",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt26453092:1:7",
       "provider": "brazuca",
-      "label": "The Creep Tapes S02E01 – JOSEPH",
+      "label": "The Mighty Nein S01E07 – Belonging",
       "error": "HTTP 504"
     },
     {
-      "id": "tt32544507:2:2",
+      "id": "tt26453092:1:8",
       "provider": "ytztvio",
-      "label": "The Creep Tapes S02E02 – WES",
+      "label": "The Mighty Nein S01E08 – The Zadash Job",
       "error": "HTTP 403"
     },
     {
-      "id": "tt32544507:2:2",
+      "id": "tt26453092:1:8",
+      "provider": "aniscraper",
+      "label": "The Mighty Nein S01E08 – The Zadash Job",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt26453092:1:8",
       "provider": "brazuca",
-      "label": "The Creep Tapes S02E02 – WES",
+      "label": "The Mighty Nein S01E08 – The Zadash Job",
       "error": "HTTP 504"
-    },
-    {
-      "id": "tt32544507:2:3",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S02E03 – MARK",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt32544507:2:3",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S02E03 – MARK",
-      "error": "HTTP 504"
-    },
-    {
-      "id": "tt32544507:2:4",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S02E04 – AVA",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:2:4",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S02E04 – AVA",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:2:5",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S02E05 – NICK",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:2:5",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S02E05 – NICK",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:2:6",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S02E06 – ANGELA",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:2:6",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S02E06 – ANGELA",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:1",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E01 – CRYSTAL",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:1",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E01 – CRYSTAL",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:2",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E02 – MO",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:2",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E02 – MO",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:3",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E03 – ANISHA",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:3",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E03 – ANISHA",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:4",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E04 – NOBODY",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:4",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E04 – NOBODY",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:5",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E05 – GREG",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:5",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E05 – GREG",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:6",
-      "provider": "ytztvio",
-      "label": "The Creep Tapes S03E06 – JODY + BRIE",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt32544507:3:6",
-      "provider": "brazuca",
-      "label": "The Creep Tapes S03E06 – JODY + BRIE",
-      "error": "omitido tras 3 errores seguidos (HTTP 504)",
-      "skipped": true
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 18,
-      "ok": 18,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 33,
-      "rateLimited": 0,
-      "avgMs": 767,
-      "picks": 9,
-      "uniquePicks": 0
-    },
-    "torrentsdb": {
-      "requests": 18,
-      "ok": 18,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 89,
-      "rateLimited": 0,
-      "avgMs": 128,
-      "picks": 9,
-      "uniquePicks": 0
-    },
-    "torrentio": {
-      "requests": 18,
-      "ok": 18,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 217,
-      "rateLimited": 0,
-      "avgMs": 386,
-      "picks": 24,
-      "uniquePicks": 0
-    },
-    "ytztvio": {
-      "requests": 9,
-      "ok": 3,
-      "errors": 6,
-      "skipped": 9,
-      "streams": 4,
-      "rateLimited": 0,
-      "avgMs": 14126,
-      "picks": 1,
-      "uniquePicks": 0
-    },
-    "torrentclaw": {
-      "requests": 18,
-      "ok": 18,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 222,
-      "rateLimited": 0,
-      "avgMs": 381,
-      "picks": 21,
-      "uniquePicks": 0
-    },
-    "aniscraper": {
-      "requests": 18,
-      "ok": 18,
+      "requests": 8,
+      "ok": 8,
       "errors": 0,
       "skipped": 0,
       "streams": 8,
       "rateLimited": 0,
-      "avgMs": 1239,
+      "avgMs": 416,
+      "picks": 1,
+      "uniquePicks": 0
+    },
+    "torrentsdb": {
+      "requests": 8,
+      "ok": 8,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 153,
+      "rateLimited": 0,
+      "avgMs": 219,
+      "picks": 6,
+      "uniquePicks": 0
+    },
+    "torrentio": {
+      "requests": 8,
+      "ok": 8,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 221,
+      "rateLimited": 0,
+      "avgMs": 241,
+      "picks": 9,
+      "uniquePicks": 0
+    },
+    "ytztvio": {
+      "requests": 8,
+      "ok": 3,
+      "errors": 5,
+      "skipped": 0,
+      "streams": 4,
+      "rateLimited": 0,
+      "avgMs": 13428,
+      "picks": 1,
+      "uniquePicks": 0
+    },
+    "torrentclaw": {
+      "requests": 8,
+      "ok": 8,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 106,
+      "rateLimited": 0,
+      "avgMs": 461,
+      "picks": 7,
+      "uniquePicks": 0
+    },
+    "aniscraper": {
+      "requests": 8,
+      "ok": 3,
+      "errors": 5,
+      "skipped": 0,
+      "streams": 8,
+      "rateLimited": 0,
+      "avgMs": 25819,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 18,
-      "ok": 18,
+      "requests": 8,
+      "ok": 8,
       "errors": 0,
       "skipped": 0,
-      "streams": 345,
+      "streams": 624,
       "rateLimited": 0,
-      "avgMs": 163,
-      "picks": 17,
-      "uniquePicks": 0
+      "avgMs": 262,
+      "picks": 11,
+      "uniquePicks": 1
     },
     "brazuca": {
-      "requests": 9,
+      "requests": 8,
       "ok": 0,
-      "errors": 9,
-      "skipped": 9,
+      "errors": 8,
+      "skipped": 0,
       "streams": 0,
       "rateLimited": 0,
-      "avgMs": 157158,
+      "avgMs": 157047,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 24,
-    "prepared": 24,
+    "inserted": 8,
+    "prepared": 8,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 18,
-    "updated": 6
+    "created": 7,
+    "updated": 1
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-11-02T12:10:35.120Z",
-    "activeSeries": "tt26453092",
+    "updatedAt": "2026-11-03T11:45:33.932Z",
+    "activeSeries": "tt35328184",
     "series": {
-      "tt32544507": {
-        "name": "The Creep Tapes",
-        "status": "complete",
-        "done": 18,
-        "total": 18,
-        "lastSeason": 3,
-        "lastEpisode": 6,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-11-02T12:10:35.120Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt26453092": {
         "name": "The Mighty Nein",
-        "status": "in-progress",
-        "done": 3,
+        "status": "complete",
+        "done": 8,
         "total": 8,
         "lastSeason": 1,
-        "lastEpisode": 3,
-        "nextSeason": 1,
-        "nextEpisode": 4,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "lastEpisode": 8,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-03T11:45:33.932Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt35328184": {
@@ -2636,6 +1535,18 @@
         "nextEpisode": 2,
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
+      },
+      "tt32544507": {
+        "name": "The Creep Tapes",
+        "status": "complete",
+        "done": 18,
+        "total": 18,
+        "lastSeason": 3,
+        "lastEpisode": 6,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-02T12:10:35.120Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt14466018": {
         "name": "Blue Lights",
@@ -2939,5 +1850,5 @@
       }
     }
   },
-  "durationMs": 483419
+  "durationMs": 326870
 }
