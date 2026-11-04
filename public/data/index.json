@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-03T11:40:07.064Z",
-  "finishedAt": "2026-11-03T11:45:33.934Z",
+  "generatedAt": "2026-11-04T11:53:02.149Z",
+  "finishedAt": "2026-11-04T11:57:15.957Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,17 +171,17 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 8,
+  "total": 7,
   "movies": 3,
-  "episodes": 5,
-  "totalStreams": 12,
-  "totalCandidates": 710,
+  "episodes": 4,
+  "totalStreams": 8,
+  "totalCandidates": 152,
   "picks": {
-    "es": 5,
-    "en": 7
+    "es": 2,
+    "en": 6
   },
   "missing": {
-    "es": 3,
+    "es": 5,
     "en": 1
   },
   "selection": {
@@ -196,13 +196,13 @@
       "udp://open.stealth.si:80/announce",
       "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
+      "udp://exodus.desync.com:6969/announce",
       "udp://open.tracker.cl:1337/announce",
       "udp://tracker.qu.ax:6969/announce",
-      "udp://tracker.theoks.net:6969/announce",
-      "udp://tracker.corpscorp.online:80/announce",
       "udp://explodie.org:6969/announce",
-      "udp://tracker.ducks.party:1984/announce",
-      "udp://tracker.tryhackx.org:6969/announce"
+      "udp://tracker-udp.gbitt.info:80/announce",
+      "udp://retracker01-msk-virt.corbina.net:80/announce",
+      "udp://tracker.ducks.party:1984/announce"
     ]
   },
   "meta": {
@@ -242,11 +242,10 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1999167.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1999167.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1999167.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt1999167.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 46,
+      "candidateCount": 40,
       "picks": [
         {
           "pick": "en",
@@ -277,7 +276,7 @@
           "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
           "fileIdx": 4,
           "score": 7.03,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
         }
       ],
       "missing": [
@@ -299,8 +298,12 @@
       ],
       "errors": [
         {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     },
@@ -320,7 +323,6 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt7525514.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7525514.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7525514.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt7525514.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7525514.json"
       },
       "streamCount": 1,
@@ -363,7 +365,7 @@
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
           "score": 7.19,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -386,8 +388,12 @@
       "warnings": [],
       "errors": [
         {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     },
@@ -407,7 +413,6 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0299910.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0299910.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0299910.json"
       },
       "streamCount": 0,
@@ -424,111 +429,202 @@
       "warnings": [],
       "errors": [
         {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt26453092:1:4",
-      "imdbId": "tt26453092",
+      "id": "tt35328184:1:3",
+      "imdbId": "tt35328184",
+      "type": "series",
+      "season": 1,
+      "episode": 3,
+      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
+      "name": "The American Revolution",
+      "year": 2025,
+      "imdbRating": "8.4",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:3.json"
+      },
+      "streamCount": 2,
+      "candidateCount": 25,
+      "picks": [
+        {
+          "pick": "es",
+          "name": "🇪🇸 Español 1080p",
+          "title": "The American Revolution 2025 S01E03 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
+          "quality": "1080p",
+          "seeders": 35,
+          "sizeBytes": 6626496069,
+          "sizeLabel": "6.2 GB",
+          "audioLangs": [
+            "es",
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "363ca2d6dfc4acb7794aa82a4fa27645704e9fc4",
+          "fileIdx": 0,
+          "score": 5.6,
+          "magnetUrl": "magnet:?xt=urn:btih:363ca2d6dfc4acb7794aa82a4fa27645704e9fc4&dn=The%20American%20Revolution%202025%20S01E03%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
+          "quality": "1080p",
+          "seeders": 185,
+          "sizeBytes": 2254857830,
+          "sizeLabel": "2.1 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentclaw"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "TorrentClaw"
+          ],
+          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
+          "fileIdx": 2,
+          "score": 8.4,
+          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [],
+      "bestSeeders": 185,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en",
+        "es"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt35328184:1:4",
+      "imdbId": "tt35328184",
       "type": "series",
       "season": 1,
       "episode": 4,
-      "label": "The Mighty Nein S01E04 – The Mighty Nein",
-      "name": "The Mighty Nein",
+      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
+      "name": "The American Revolution",
       "year": 2025,
       "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:4.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:4.json"
       },
-      "streamCount": 2,
-      "candidateCount": 175,
+      "streamCount": 1,
+      "candidateCount": 23,
       "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv",
-          "quality": "1080p",
-          "seeders": 8,
-          "sizeBytes": 3782441271,
-          "sizeLabel": "3.5 GB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentio",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "StremThru Torz"
-          ],
-          "infoHash": "3df248d75b7118082f8d194daf4bd2288446b2a9",
-          "fileIdx": 0,
-          "score": 14.77,
-          "magnetUrl": "magnet:?xt=urn:btih:3df248d75b7118082f8d194daf4bd2288446b2a9&dn=The.Mighty.Nein.S01E04.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "The.Mighty.Nein.S01E04.1080p.x265-ELiTE",
+          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
           "quality": "1080p",
-          "seeders": 157,
-          "sizeBytes": 680630682,
-          "sizeLabel": "649 MB",
+          "seeders": 185,
+          "sizeBytes": 2576980378,
+          "sizeLabel": "2.4 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
-            "source": null,
+            "source": "WEB-DL",
             "codec": "HEVC",
             "hdr": [],
-            "audio": [],
-            "channels": null
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
           },
           "providers": [
             "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
+            "torrentclaw"
           ],
           "providerNames": [
             "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
+            "TorrentClaw"
           ],
-          "infoHash": "a4a2deb329afeb80bcbaeab0b28df5dd09ab0476",
-          "fileIdx": 4,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:a4a2deb329afeb80bcbaeab0b28df5dd09ab0476&dn=The.Mighty.Nein.S01E04.1080p.x265-ELiTE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
+          "fileIdx": 3,
+          "score": 8.4,
+          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
         }
       ],
-      "missing": [],
-      "bestSeeders": 157,
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 185,
       "qualities": [
         "1080p"
       ],
       "languages": [
-        "en",
-        "es"
+        "en"
       ],
       "providers": [
-        "stremthru",
         "torrentclaw",
-        "torrentio",
         "torrentsdb"
       ],
       "warnings": [],
@@ -543,78 +639,50 @@
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt26453092:1:5",
-      "imdbId": "tt26453092",
+      "id": "tt35328184:1:5",
+      "imdbId": "tt35328184",
       "type": "series",
       "season": 1,
       "episode": 5,
-      "label": "The Mighty Nein S01E05 – Little Spark",
-      "name": "The Mighty Nein",
+      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
+      "name": "The American Revolution",
       "year": 2025,
       "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:5.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:5.json"
       },
       "streamCount": 2,
-      "candidateCount": 144,
+      "candidateCount": 23,
       "picks": [
         {
           "pick": "es",
           "name": "🇪🇸 Español 1080p",
-          "title": "The Mighty Nein [HDTV 1080p][Cap.105] [3.42GB]",
+          "title": "The American Revolution 2025 S01E05 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
           "quality": "1080p",
-          "seeders": 16,
-          "sizeBytes": 3672197038,
-          "sizeLabel": "3.4 GB",
+          "seeders": 26,
+          "sizeBytes": 6588230961,
+          "sizeLabel": "6.1 GB",
           "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": "HDTV",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "peerflix",
-            "torrentio"
-          ],
-          "providerNames": [
-            "Peerflix",
-            "Torrentio"
-          ],
-          "infoHash": "920934e614901a2e0d1de9aa777b221e8ae0c938",
-          "fileIdx": 0,
-          "score": 15.12,
-          "magnetUrl": "magnet:?xt=urn:btih:920934e614901a2e0d1de9aa777b221e8ae0c938&dn=The%20Mighty%20Nein%20%5BHDTV%201080p%5D%5BCap.105%5D%20%5B3.42GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "the.mighty.nein.s01e05.1080p.web.h264-sylix[EZTVx.to].mkv",
-          "quality": "1080p",
-          "seeders": 123,
-          "sizeBytes": 3450310022,
-          "sizeLabel": "3.2 GB",
-          "audioLangs": [
+            "es",
             "en"
           ],
           "release": {
-            "source": "WEB",
+            "source": "WEB-DL",
             "codec": "AVC",
             "hdr": [],
-            "audio": [],
-            "channels": null
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
           },
           "providers": [
             "torrentio",
@@ -626,14 +694,47 @@
             "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "913d14caf7a0b2d0ef37b8e71625a947e2286c16",
+          "infoHash": "b07bdadd275f0f75c63aba687d0c975b5e4e82af",
           "fileIdx": 0,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:913d14caf7a0b2d0ef37b8e71625a947e2286c16&dn=the.mighty.nein.s01e05.1080p.web.h264-sylix%5BEZTVx.to%5D.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "score": 5.42,
+          "magnetUrl": "magnet:?xt=urn:btih:b07bdadd275f0f75c63aba687d0c975b5e4e82af&dn=The%20American%20Revolution%202025%20S01E05%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
+          "quality": "1080p",
+          "seeders": 185,
+          "sizeBytes": 2362232013,
+          "sizeLabel": "2.2 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentclaw"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "TorrentClaw"
+          ],
+          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
+          "fileIdx": 4,
+          "score": 8.4,
+          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
         }
       ],
       "missing": [],
-      "bestSeeders": 123,
+      "bestSeeders": 185,
       "qualities": [
         "1080p"
       ],
@@ -642,10 +743,10 @@
         "es"
       ],
       "providers": [
-        "peerflix",
         "stremthru",
         "torrentclaw",
-        "torrentio"
+        "torrentio",
+        "torrentsdb"
       ],
       "warnings": [],
       "errors": [
@@ -659,111 +760,76 @@
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt26453092:1:6",
-      "imdbId": "tt26453092",
+      "id": "tt35328184:1:6",
+      "imdbId": "tt35328184",
       "type": "series",
       "season": 1,
       "episode": 6,
-      "label": "The Mighty Nein S01E06 – Many Gifts",
-      "name": "The Mighty Nein",
+      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
+      "name": "The American Revolution",
       "year": 2025,
       "imdbRating": "8.4",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:6.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:6.json"
       },
-      "streamCount": 2,
-      "candidateCount": 120,
+      "streamCount": 1,
+      "candidateCount": 23,
       "picks": [
         {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The.Mighty.Nein.S01E06.2025.WEB-DL.1080p-Dual-Lat",
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
           "quality": "1080p",
-          "seeders": 2,
-          "sizeBytes": 3865470566,
-          "sizeLabel": "3.6 GB",
+          "seeders": 185,
+          "sizeBytes": 3006477107,
+          "sizeLabel": "2.8 GB",
           "audioLangs": [
-            "es",
             "en"
           ],
           "release": {
             "source": "WEB-DL",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentio",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "StremThru Torz"
-          ],
-          "infoHash": "97b2a3e6bc13ebd77c5c9e5dc9a4164a001bbb9d",
-          "fileIdx": 0,
-          "score": 14.06,
-          "magnetUrl": "magnet:?xt=urn:btih:97b2a3e6bc13ebd77c5c9e5dc9a4164a001bbb9d&dn=The.Mighty.Nein.S01E06.2025.WEB-DL.1080p-Dual-Lat&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The.Mighty.Nein.S01E06.1080p.x265-ELiTE.mkv",
-          "quality": "1080p",
-          "seeders": 306,
-          "sizeBytes": 681574400,
-          "sizeLabel": "650 MB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": null,
             "codec": "HEVC",
             "hdr": [],
-            "audio": [],
-            "channels": null
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
           },
           "providers": [
             "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
+            "torrentclaw"
           ],
           "providerNames": [
             "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
+            "TorrentClaw"
           ],
-          "infoHash": "fbd991516044daf631dca6c4395987eda12661ab",
-          "fileIdx": 4,
-          "score": 8.26,
-          "magnetUrl": "magnet:?xt=urn:btih:fbd991516044daf631dca6c4395987eda12661ab&dn=The.Mighty.Nein.S01E06.1080p.x265-ELiTE.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
+          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
+          "fileIdx": 5,
+          "score": 8.4,
+          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
         }
       ],
-      "missing": [],
-      "bestSeeders": 306,
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 185,
       "qualities": [
         "1080p"
       ],
       "languages": [
-        "en",
-        "es"
+        "en"
       ],
       "providers": [
-        "stremthru",
         "torrentclaw",
-        "torrentio",
         "torrentsdb"
       ],
       "warnings": [],
@@ -778,242 +844,7 @@
         },
         {
           "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt26453092:1:7",
-      "imdbId": "tt26453092",
-      "type": "series",
-      "season": 1,
-      "episode": 7,
-      "label": "The Mighty Nein S01E07 – Belonging",
-      "name": "The Mighty Nein",
-      "year": 2025,
-      "imdbRating": "8.4",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:7.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:7.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:7.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:7.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:7.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 112,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The.Mighty.Nein.S01E07.2025.WEB-DL.1080p-Dual-Lat.mkv",
-          "quality": "1080p",
-          "seeders": 7,
-          "sizeBytes": 3797057572,
-          "sizeLabel": "3.5 GB",
-          "audioLangs": [
-            "es",
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "3cb6687c11f5b30aa6e43e54559988cdefbbdff0",
-          "fileIdx": null,
-          "score": 14.69,
-          "magnetUrl": "magnet:?xt=urn:btih:3cb6687c11f5b30aa6e43e54559988cdefbbdff0&dn=The.Mighty.Nein.S01E07.2025.WEB-DL.1080p-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Mighty Nein S01E07 1080p WEB H264-SYLiX",
-          "quality": "1080p",
-          "seeders": 1021,
-          "sizeBytes": 3564822856,
-          "sizeLabel": "3.3 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "b81dbe4fc1cb9d45b269a9078aec406651809f05",
-          "fileIdx": 0,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:b81dbe4fc1cb9d45b269a9078aec406651809f05&dn=The%20Mighty%20Nein%20S01E07%201080p%20WEB%20H264-SYLiX&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 1021,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
-        }
-      ]
-    },
-    {
-      "id": "tt26453092:1:8",
-      "imdbId": "tt26453092",
-      "type": "series",
-      "season": 1,
-      "episode": 8,
-      "label": "The Mighty Nein S01E08 – The Zadash Job",
-      "name": "The Mighty Nein",
-      "year": 2025,
-      "imdbRating": "8.4",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt26453092:1:8.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt26453092:1:8.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt26453092:1:8.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt26453092:1:8.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt26453092:1:8.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 95,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv",
-          "quality": "1080p",
-          "seeders": 5,
-          "sizeBytes": 891249785,
-          "sizeLabel": "850 MB",
-          "audioLangs": [
-            "es"
-          ],
-          "release": {
-            "source": null,
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "stremthru"
-          ],
-          "providerNames": [
-            "StremThru Torz"
-          ],
-          "infoHash": "897e43172d1692119dd8ddc727a681fecd7c551a",
-          "fileIdx": null,
-          "score": 14.41,
-          "magnetUrl": "magnet:?xt=urn:btih:897e43172d1692119dd8ddc727a681fecd7c551a&dn=The.Mighty.Nein.S01e08.2025.1080P-Dual-Lat.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The Mighty Nein S01E08 1080p WEB h264-GRACE",
-          "quality": "1080p",
-          "seeders": 765,
-          "sizeBytes": 3242700308,
-          "sizeLabel": "3.0 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "1344d586589c7f0acacbc645085386bba2ddd629",
-          "fileIdx": 0,
-          "score": 8.32,
-          "magnetUrl": "magnet:?xt=urn:btih:1344d586589c7f0acacbc645085386bba2ddd629&dn=The%20Mighty%20Nein%20S01E08%201080p%20WEB%20h264-GRACE&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce"
-        }
-      ],
-      "missing": [],
-      "bestSeeders": 765,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en",
-        "es"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 504"
+          "error": "HTTP 429"
         }
       ]
     }
@@ -1024,240 +855,228 @@
   "errors": [
     {
       "id": "tt1999167",
+      "provider": "aniscraper",
+      "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt1999167",
       "provider": "brazuca",
       "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
-      "error": "HTTP 504"
+      "error": "HTTP 429"
+    },
+    {
+      "id": "tt7525514",
+      "provider": "aniscraper",
+      "label": "Bad Reputation (2018)",
+      "error": "timeout (12s)"
     },
     {
       "id": "tt7525514",
       "provider": "brazuca",
       "label": "Bad Reputation (2018)",
-      "error": "HTTP 504"
+      "error": "HTTP 429"
+    },
+    {
+      "id": "tt0299910",
+      "provider": "aniscraper",
+      "label": "Full Metal Yakuza (1997)",
+      "error": "timeout (12s)"
     },
     {
       "id": "tt0299910",
       "provider": "brazuca",
       "label": "Full Metal Yakuza (1997)",
-      "error": "HTTP 504"
+      "error": "HTTP 429"
     },
     {
-      "id": "tt26453092:1:4",
+      "id": "tt35328184:1:3",
       "provider": "ytztvio",
-      "label": "The Mighty Nein S01E04 – The Mighty Nein",
+      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt26453092:1:4",
+      "id": "tt35328184:1:3",
       "provider": "aniscraper",
-      "label": "The Mighty Nein S01E04 – The Mighty Nein",
+      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
       "error": "timeout (12s)"
     },
     {
-      "id": "tt26453092:1:4",
+      "id": "tt35328184:1:3",
       "provider": "brazuca",
-      "label": "The Mighty Nein S01E04 – The Mighty Nein",
-      "error": "HTTP 504"
+      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
+      "error": "HTTP 429"
     },
     {
-      "id": "tt26453092:1:5",
+      "id": "tt35328184:1:4",
       "provider": "ytztvio",
-      "label": "The Mighty Nein S01E05 – Little Spark",
+      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt26453092:1:5",
+      "id": "tt35328184:1:4",
       "provider": "aniscraper",
-      "label": "The Mighty Nein S01E05 – Little Spark",
+      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
       "error": "timeout (12s)"
     },
     {
-      "id": "tt26453092:1:5",
+      "id": "tt35328184:1:4",
       "provider": "brazuca",
-      "label": "The Mighty Nein S01E05 – Little Spark",
-      "error": "HTTP 504"
+      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
+      "error": "HTTP 429"
     },
     {
-      "id": "tt26453092:1:6",
+      "id": "tt35328184:1:5",
       "provider": "ytztvio",
-      "label": "The Mighty Nein S01E06 – Many Gifts",
+      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt26453092:1:6",
+      "id": "tt35328184:1:5",
       "provider": "aniscraper",
-      "label": "The Mighty Nein S01E06 – Many Gifts",
+      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
       "error": "timeout (12s)"
     },
     {
-      "id": "tt26453092:1:6",
+      "id": "tt35328184:1:5",
       "provider": "brazuca",
-      "label": "The Mighty Nein S01E06 – Many Gifts",
-      "error": "HTTP 504"
+      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
+      "error": "HTTP 429"
     },
     {
-      "id": "tt26453092:1:7",
+      "id": "tt35328184:1:6",
       "provider": "ytztvio",
-      "label": "The Mighty Nein S01E07 – Belonging",
+      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
       "error": "HTTP 403"
     },
     {
-      "id": "tt26453092:1:7",
+      "id": "tt35328184:1:6",
       "provider": "aniscraper",
-      "label": "The Mighty Nein S01E07 – Belonging",
+      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
       "error": "timeout (12s)"
     },
     {
-      "id": "tt26453092:1:7",
+      "id": "tt35328184:1:6",
       "provider": "brazuca",
-      "label": "The Mighty Nein S01E07 – Belonging",
-      "error": "HTTP 504"
-    },
-    {
-      "id": "tt26453092:1:8",
-      "provider": "ytztvio",
-      "label": "The Mighty Nein S01E08 – The Zadash Job",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt26453092:1:8",
-      "provider": "aniscraper",
-      "label": "The Mighty Nein S01E08 – The Zadash Job",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt26453092:1:8",
-      "provider": "brazuca",
-      "label": "The Mighty Nein S01E08 – The Zadash Job",
-      "error": "HTTP 504"
+      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
+      "error": "HTTP 429"
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 8,
-      "ok": 8,
+      "requests": 7,
+      "ok": 7,
       "errors": 0,
       "skipped": 0,
-      "streams": 8,
+      "streams": 0,
       "rateLimited": 0,
-      "avgMs": 416,
-      "picks": 1,
+      "avgMs": 271,
+      "picks": 0,
       "uniquePicks": 0
     },
     "torrentsdb": {
-      "requests": 8,
-      "ok": 8,
+      "requests": 7,
+      "ok": 7,
       "errors": 0,
       "skipped": 0,
-      "streams": 153,
+      "streams": 47,
       "rateLimited": 0,
-      "avgMs": 219,
+      "avgMs": 168,
       "picks": 6,
       "uniquePicks": 0
     },
     "torrentio": {
-      "requests": 8,
-      "ok": 8,
+      "requests": 7,
+      "ok": 7,
       "errors": 0,
       "skipped": 0,
-      "streams": 221,
+      "streams": 81,
       "rateLimited": 0,
-      "avgMs": 241,
-      "picks": 9,
+      "avgMs": 218,
+      "picks": 3,
       "uniquePicks": 0
     },
     "ytztvio": {
-      "requests": 8,
+      "requests": 7,
       "ok": 3,
-      "errors": 5,
+      "errors": 4,
       "skipped": 0,
       "streams": 4,
       "rateLimited": 0,
-      "avgMs": 13428,
+      "avgMs": 12234,
       "picks": 1,
       "uniquePicks": 0
     },
     "torrentclaw": {
-      "requests": 8,
-      "ok": 8,
+      "requests": 7,
+      "ok": 7,
       "errors": 0,
       "skipped": 0,
-      "streams": 106,
+      "streams": 91,
       "rateLimited": 0,
-      "avgMs": 461,
+      "avgMs": 453,
       "picks": 7,
       "uniquePicks": 0
     },
     "aniscraper": {
-      "requests": 8,
-      "ok": 3,
-      "errors": 5,
+      "requests": 7,
+      "ok": 0,
+      "errors": 7,
       "skipped": 0,
-      "streams": 8,
+      "streams": 0,
       "rateLimited": 0,
-      "avgMs": 25819,
+      "avgMs": 38355,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 8,
-      "ok": 8,
+      "requests": 7,
+      "ok": 7,
       "errors": 0,
       "skipped": 0,
-      "streams": 624,
+      "streams": 95,
       "rateLimited": 0,
-      "avgMs": 262,
-      "picks": 11,
-      "uniquePicks": 1
+      "avgMs": 235,
+      "picks": 4,
+      "uniquePicks": 0
     },
     "brazuca": {
-      "requests": 8,
+      "requests": 7,
       "ok": 0,
-      "errors": 8,
+      "errors": 7,
       "skipped": 0,
       "streams": 0,
-      "rateLimited": 0,
-      "avgMs": 157047,
+      "rateLimited": 7,
+      "avgMs": 79106,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 8,
-    "prepared": 8,
+    "inserted": 5,
+    "prepared": 5,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 7,
-    "updated": 1
+    "created": 3,
+    "updated": 2
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-11-03T11:45:33.932Z",
-    "activeSeries": "tt35328184",
+    "updatedAt": "2026-11-04T11:57:15.956Z",
+    "activeSeries": "tt34929687",
     "series": {
-      "tt26453092": {
-        "name": "The Mighty Nein",
-        "status": "complete",
-        "done": 8,
-        "total": 8,
-        "lastSeason": 1,
-        "lastEpisode": 8,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-11-03T11:45:33.932Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt35328184": {
         "name": "The American Revolution",
-        "status": "in-progress",
-        "done": 2,
+        "status": "complete",
+        "done": 6,
         "total": 6,
         "lastSeason": 1,
-        "lastEpisode": 2,
-        "nextSeason": 1,
-        "nextEpisode": 3,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "lastEpisode": 6,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-04T11:57:15.956Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt34929687": {
@@ -1535,6 +1354,18 @@
         "nextEpisode": 2,
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
+      },
+      "tt26453092": {
+        "name": "The Mighty Nein",
+        "status": "complete",
+        "done": 8,
+        "total": 8,
+        "lastSeason": 1,
+        "lastEpisode": 8,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-03T11:45:33.932Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt32544507": {
         "name": "The Creep Tapes",
@@ -1850,5 +1681,5 @@
       }
     }
   },
-  "durationMs": 326870
+  "durationMs": 253808
 }
