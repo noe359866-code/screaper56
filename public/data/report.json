@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-04T11:53:02.149Z",
-  "finishedAt": "2026-11-04T11:57:15.957Z",
+  "generatedAt": "2026-11-05T11:55:20.543Z",
+  "finishedAt": "2026-11-05T12:02:35.405Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,18 +171,18 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 7,
+  "total": 11,
   "movies": 3,
-  "episodes": 4,
-  "totalStreams": 8,
-  "totalCandidates": 152,
+  "episodes": 8,
+  "totalStreams": 9,
+  "totalCandidates": 88,
   "picks": {
-    "es": 2,
-    "en": 6
+    "es": 0,
+    "en": 9
   },
   "missing": {
-    "es": 5,
-    "en": 1
+    "es": 11,
+    "en": 2
   },
   "selection": {
     "perTitle": 2,
@@ -194,14 +194,14 @@
     "trackersSource": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt",
     "trackers": [
       "udp://open.stealth.si:80/announce",
+      "udp://tracker.opentrackr.org:1337/announce",
       "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
       "udp://exodus.desync.com:6969/announce",
       "udp://open.tracker.cl:1337/announce",
       "udp://tracker.qu.ax:6969/announce",
-      "udp://explodie.org:6969/announce",
-      "udp://tracker-udp.gbitt.info:80/announce",
-      "udp://retracker01-msk-virt.corbina.net:80/announce",
+      "udp://tracker.corpscorp.online:80/announce",
+      "udp://tracker.bittor.pw:1337/announce",
       "udp://tracker.ducks.party:1984/announce"
     ]
   },
@@ -242,10 +242,11 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt1999167.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt1999167.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt1999167.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt1999167.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 40,
+      "candidateCount": 47,
       "picks": [
         {
           "pick": "en",
@@ -276,7 +277,7 @@
           "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
           "fileIdx": 4,
           "score": 7.03,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
         }
       ],
       "missing": [
@@ -297,10 +298,6 @@
         "la etiqueta “Naruto Shippuden the Movie: Blood Prison (2011)” no cuadra: en IMDb es “Naruto Shippuden the Movie: Blood Prison (2014)”"
       ],
       "errors": [
-        {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
         {
           "provider": "brazuca",
           "error": "HTTP 429"
@@ -323,6 +320,7 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt7525514.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt7525514.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt7525514.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt7525514.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt7525514.json"
       },
       "streamCount": 1,
@@ -365,7 +363,7 @@
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
           "score": 7.19,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -388,10 +386,6 @@
       "warnings": [],
       "errors": [
         {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
           "provider": "brazuca",
           "error": "HTTP 429"
         }
@@ -413,6 +407,7 @@
         "torrentio": "https://torrentio.strem.fun/stream/movie/tt0299910.json",
         "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
         "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0299910.json",
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0299910.json"
       },
       "streamCount": 0,
@@ -429,45 +424,41 @@
       "warnings": [],
       "errors": [
         {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
           "provider": "brazuca",
           "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt35328184:1:3",
-      "imdbId": "tt35328184",
+      "id": "tt34929687:1:3",
+      "imdbId": "tt34929687",
       "type": "series",
       "season": 1,
       "episode": 3,
-      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
-      "name": "The American Revolution",
+      "label": "Me and Thee S01E03 – Headshot",
+      "name": "Me and Thee",
       "year": 2025,
-      "imdbRating": "8.4",
+      "imdbRating": "8.8",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:3.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:3.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:3.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:3.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:3.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:3.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:3.json"
       },
-      "streamCount": 2,
-      "candidateCount": 25,
+      "streamCount": 1,
+      "candidateCount": 3,
       "picks": [
         {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The American Revolution 2025 S01E03 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Me and Thee S01E03 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
           "quality": "1080p",
-          "seeders": 35,
-          "sizeBytes": 6626496069,
-          "sizeLabel": "6.2 GB",
+          "seeders": 0,
+          "sizeBytes": 4509715661,
+          "sizeLabel": "4.2 GB",
           "audioLangs": [
-            "es",
             "en"
           ],
           "release": {
@@ -475,73 +466,37 @@
             "codec": "AVC",
             "hdr": [],
             "audio": [
-              "DD+"
+              "AAC"
             ],
-            "channels": "5.1"
+            "channels": null
           },
           "providers": [
             "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "363ca2d6dfc4acb7794aa82a4fa27645704e9fc4",
-          "fileIdx": 0,
-          "score": 5.6,
-          "magnetUrl": "magnet:?xt=urn:btih:363ca2d6dfc4acb7794aa82a4fa27645704e9fc4&dn=The%20American%20Revolution%202025%20S01E03%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
-          "quality": "1080p",
-          "seeders": 185,
-          "sizeBytes": 2254857830,
-          "sizeLabel": "2.1 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "HEVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentsdb",
             "torrentclaw"
           ],
           "providerNames": [
-            "TorrentsDB",
+            "Torrentio",
             "TorrentClaw"
           ],
-          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
-          "fileIdx": 2,
-          "score": 8.4,
-          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+          "infoHash": "c1225f496c03091dfd09089775358ac6eadd99ea",
+          "fileIdx": 0,
+          "score": 2.28,
+          "magnetUrl": "magnet:?xt=urn:btih:c1225f496c03091dfd09089775358ac6eadd99ea&dn=Me%20and%20Thee%20S01E03%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
         }
       ],
-      "missing": [],
-      "bestSeeders": 185,
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 0,
       "qualities": [
         "1080p"
       ],
       "languages": [
-        "en",
-        "es"
+        "en"
       ],
       "providers": [
-        "stremthru",
         "torrentclaw",
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
       ],
       "warnings": [],
       "errors": [
@@ -550,129 +505,41 @@
           "error": "HTTP 403"
         },
         {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
           "provider": "brazuca",
           "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt35328184:1:4",
-      "imdbId": "tt35328184",
+      "id": "tt34929687:1:4",
+      "imdbId": "tt34929687",
       "type": "series",
       "season": 1,
       "episode": 4,
-      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
-      "name": "The American Revolution",
+      "label": "Me and Thee S01E04 – Depth of Field",
+      "name": "Me and Thee",
       "year": 2025,
-      "imdbRating": "8.4",
+      "imdbRating": "8.8",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:4.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:4.json"
       },
       "streamCount": 1,
-      "candidateCount": 23,
+      "candidateCount": 3,
       "picks": [
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
+          "title": "Me and Thee S01E04 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
           "quality": "1080p",
-          "seeders": 185,
-          "sizeBytes": 2576980378,
-          "sizeLabel": "2.4 GB",
+          "seeders": 48,
+          "sizeBytes": 4049285326,
+          "sizeLabel": "3.8 GB",
           "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "HEVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "TorrentClaw"
-          ],
-          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
-          "fileIdx": 3,
-          "score": 8.4,
-          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 185,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "torrentclaw",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt35328184:1:5",
-      "imdbId": "tt35328184",
-      "type": "series",
-      "season": 1,
-      "episode": 5,
-      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
-      "name": "The American Revolution",
-      "year": 2025,
-      "imdbRating": "8.4",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:5.json"
-      },
-      "streamCount": 2,
-      "candidateCount": 23,
-      "picks": [
-        {
-          "pick": "es",
-          "name": "🇪🇸 Español 1080p",
-          "title": "The American Revolution 2025 S01E05 1080p AMZN WEB-DL DDP5 1 H 264-RAWR.mkv",
-          "quality": "1080p",
-          "seeders": 26,
-          "sizeBytes": 6588230961,
-          "sizeLabel": "6.1 GB",
-          "audioLangs": [
-            "es",
             "en"
           ],
           "release": {
@@ -680,67 +547,37 @@
             "codec": "AVC",
             "hdr": [],
             "audio": [
-              "DD+"
+              "AAC"
             ],
-            "channels": "5.1"
+            "channels": null
           },
           "providers": [
+            "torrentsdb",
             "torrentio",
             "torrentclaw",
             "stremthru"
           ],
           "providerNames": [
+            "TorrentsDB",
             "Torrentio",
             "TorrentClaw",
             "StremThru Torz"
           ],
-          "infoHash": "b07bdadd275f0f75c63aba687d0c975b5e4e82af",
+          "infoHash": "ca453fa7dcc8898ef78e7b83d6945ce745d2db3c",
           "fileIdx": 0,
-          "score": 5.42,
-          "magnetUrl": "magnet:?xt=urn:btih:b07bdadd275f0f75c63aba687d0c975b5e4e82af&dn=The%20American%20Revolution%202025%20S01E05%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-RAWR.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
-        },
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
-          "quality": "1080p",
-          "seeders": 185,
-          "sizeBytes": 2362232013,
-          "sizeLabel": "2.2 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "HEVC",
-            "hdr": [],
-            "audio": [
-              "DD+"
-            ],
-            "channels": "5.1"
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "TorrentClaw"
-          ],
-          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
-          "fileIdx": 4,
-          "score": 8.4,
-          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+          "score": 7.82,
+          "magnetUrl": "magnet:?xt=urn:btih:ca453fa7dcc8898ef78e7b83d6945ce745d2db3c&dn=Me%20and%20Thee%20S01E04%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
         }
       ],
-      "missing": [],
-      "bestSeeders": 185,
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 48,
       "qualities": [
         "1080p"
       ],
       "languages": [
-        "en",
-        "es"
+        "en"
       ],
       "providers": [
         "stremthru",
@@ -755,73 +592,74 @@
           "error": "HTTP 403"
         },
         {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
-        },
-        {
           "provider": "brazuca",
           "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt35328184:1:6",
-      "imdbId": "tt35328184",
+      "id": "tt34929687:1:5",
+      "imdbId": "tt34929687",
       "type": "series",
       "season": 1,
-      "episode": 6,
-      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
-      "name": "The American Revolution",
+      "episode": 5,
+      "label": "Me and Thee S01E05 – Selfie",
+      "name": "Me and Thee",
       "year": 2025,
-      "imdbRating": "8.4",
+      "imdbRating": "8.8",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt35328184:1:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt35328184:1:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt35328184:1:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt35328184:1:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt35328184:1:6.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:5.json"
       },
       "streamCount": 1,
-      "candidateCount": 23,
+      "candidateCount": 4,
       "picks": [
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
-          "title": "The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL [14.3GB]",
+          "title": "Me and Thee S01E05 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
           "quality": "1080p",
-          "seeders": 185,
-          "sizeBytes": 3006477107,
-          "sizeLabel": "2.8 GB",
+          "seeders": 4,
+          "sizeBytes": 4316442132,
+          "sizeLabel": "4.0 GB",
           "audioLangs": [
             "en"
           ],
           "release": {
             "source": "WEB-DL",
-            "codec": "HEVC",
+            "codec": "AVC",
             "hdr": [],
             "audio": [
-              "DD+"
+              "AAC"
             ],
-            "channels": "5.1"
+            "channels": null
           },
           "providers": [
             "torrentsdb",
-            "torrentclaw"
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
           ],
           "providerNames": [
             "TorrentsDB",
-            "TorrentClaw"
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
           ],
-          "infoHash": "2f610d5070ffa6fac8e39cb5130c33c19c86ac4f",
-          "fileIdx": 5,
-          "score": 8.4,
-          "magnetUrl": "magnet:?xt=urn:btih:2f610d5070ffa6fac8e39cb5130c33c19c86ac4f&dn=The.American.Revolution.Ken.Burns.PBS.2025.1080p.x265.HEVC.MP4.AC3.Web-DL%20%5B14.3GB%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.004430.xyz%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce"
+          "infoHash": "6578c57221e21faeaf6e866e96e8f21e03419598",
+          "fileIdx": 0,
+          "score": 6.33,
+          "magnetUrl": "magnet:?xt=urn:btih:6578c57221e21faeaf6e866e96e8f21e03419598&dn=Me%20and%20Thee%20S01E05%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
         }
       ],
       "missing": [
         "es"
       ],
-      "bestSeeders": 185,
+      "bestSeeders": 4,
       "qualities": [
         "1080p"
       ],
@@ -829,7 +667,9 @@
         "en"
       ],
       "providers": [
+        "stremthru",
         "torrentclaw",
+        "torrentio",
         "torrentsdb"
       ],
       "warnings": [],
@@ -839,8 +679,387 @@
           "error": "HTTP 403"
         },
         {
-          "provider": "aniscraper",
-          "error": "timeout (12s)"
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt34929687:1:6",
+      "imdbId": "tt34929687",
+      "type": "series",
+      "season": 1,
+      "episode": 6,
+      "label": "Me and Thee S01E06 – Candid",
+      "name": "Me and Thee",
+      "year": 2025,
+      "imdbRating": "8.8",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:6.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:6.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:6.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:6.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:6.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:6.json"
+      },
+      "streamCount": 0,
+      "candidateCount": 2,
+      "picks": [],
+      "missing": [
+        "es",
+        "en"
+      ],
+      "bestSeeders": null,
+      "qualities": [],
+      "languages": [],
+      "providers": [],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt34929687:1:7",
+      "imdbId": "tt34929687",
+      "type": "series",
+      "season": 1,
+      "episode": 7,
+      "label": "Me and Thee S01E07 – Macro",
+      "name": "Me and Thee",
+      "year": 2025,
+      "imdbRating": "8.8",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:7.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:7.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:7.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:7.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:7.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:7.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 2,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Me and Thee S01E07 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
+          "quality": "1080p",
+          "seeders": 30,
+          "sizeBytes": 3833424483,
+          "sizeLabel": "3.6 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "443bb60696add14ccf5ee5d780aee40ed2d4be6f",
+          "fileIdx": 0,
+          "score": 7.52,
+          "magnetUrl": "magnet:?xt=urn:btih:443bb60696add14ccf5ee5d780aee40ed2d4be6f&dn=Me%20and%20Thee%20S01E07%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 30,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt34929687:1:8",
+      "imdbId": "tt34929687",
+      "type": "series",
+      "season": 1,
+      "episode": 8,
+      "label": "Me and Thee S01E08 – White Balance",
+      "name": "Me and Thee",
+      "year": 2025,
+      "imdbRating": "8.8",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:8.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:8.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:8.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:8.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:8.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:8.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 3,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Me and Thee S01E08 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
+          "quality": "1080p",
+          "seeders": 25,
+          "sizeBytes": 4190724612,
+          "sizeLabel": "3.9 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "f3c405584f16b2dc140d5b3dc6c033c2e3c4db02",
+          "fileIdx": 0,
+          "score": 7.4,
+          "magnetUrl": "magnet:?xt=urn:btih:f3c405584f16b2dc140d5b3dc6c033c2e3c4db02&dn=Me%20and%20Thee%20S01E08%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 25,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt34929687:1:9",
+      "imdbId": "tt34929687",
+      "type": "series",
+      "season": 1,
+      "episode": 9,
+      "label": "Me and Thee S01E09 – Harmony",
+      "name": "Me and Thee",
+      "year": 2025,
+      "imdbRating": "8.8",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:9.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:9.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:9.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:9.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:9.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:9.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 3,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Me and Thee S01E09 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
+          "quality": "1080p",
+          "seeders": 6,
+          "sizeBytes": 3661459620,
+          "sizeLabel": "3.4 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "0f1a7a33f8d4fa844e2eb9e58df17f397dd2ab47",
+          "fileIdx": 0,
+          "score": 6.55,
+          "magnetUrl": "magnet:?xt=urn:btih:0f1a7a33f8d4fa844e2eb9e58df17f397dd2ab47&dn=Me%20and%20Thee%20S01E09%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 6,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt34929687:1:10",
+      "imdbId": "tt34929687",
+      "type": "series",
+      "season": 1,
+      "episode": 10,
+      "label": "Me and Thee S01E10 – Panorama",
+      "name": "Me and Thee",
+      "year": 2025,
+      "imdbRating": "8.8",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:10.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:10.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:10.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:10.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:10.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:10.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 3,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Me and Thee S01E10 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
+          "quality": "1080p",
+          "seeders": 22,
+          "sizeBytes": 4114249288,
+          "sizeLabel": "3.8 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "AVC",
+            "hdr": [],
+            "audio": [
+              "AAC"
+            ],
+            "channels": null
+          },
+          "providers": [
+            "torrentsdb",
+            "torrentio",
+            "torrentclaw",
+            "stremthru"
+          ],
+          "providerNames": [
+            "TorrentsDB",
+            "Torrentio",
+            "TorrentClaw",
+            "StremThru Torz"
+          ],
+          "infoHash": "e860e9d2c6f617af020fac780ee4fa8f3590c064",
+          "fileIdx": 0,
+          "score": 7.32,
+          "magnetUrl": "magnet:?xt=urn:btih:e860e9d2c6f617af020fac780ee4fa8f3590c064&dn=Me%20and%20Thee%20S01E10%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 22,
+      "qualities": [
+        "1080p"
+      ],
+      "languages": [
+        "en"
+      ],
+      "providers": [
+        "stremthru",
+        "torrentclaw",
+        "torrentio",
+        "torrentsdb"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "omitido tras 3 errores seguidos (HTTP 403)"
         },
         {
           "provider": "brazuca",
@@ -855,21 +1074,9 @@
   "errors": [
     {
       "id": "tt1999167",
-      "provider": "aniscraper",
-      "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt1999167",
       "provider": "brazuca",
       "label": "Naruto Shippuden the Movie: Blood Prison (2011)",
       "error": "HTTP 429"
-    },
-    {
-      "id": "tt7525514",
-      "provider": "aniscraper",
-      "label": "Bad Reputation (2018)",
-      "error": "timeout (12s)"
     },
     {
       "id": "tt7525514",
@@ -879,216 +1086,224 @@
     },
     {
       "id": "tt0299910",
-      "provider": "aniscraper",
-      "label": "Full Metal Yakuza (1997)",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt0299910",
       "provider": "brazuca",
       "label": "Full Metal Yakuza (1997)",
       "error": "HTTP 429"
     },
     {
-      "id": "tt35328184:1:3",
+      "id": "tt34929687:1:3",
       "provider": "ytztvio",
-      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
+      "label": "Me and Thee S01E03 – Headshot",
       "error": "HTTP 403"
     },
     {
-      "id": "tt35328184:1:3",
-      "provider": "aniscraper",
-      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt35328184:1:3",
+      "id": "tt34929687:1:3",
       "provider": "brazuca",
-      "label": "The American Revolution S01E03 – The Times That Try Men's Souls (July 1776 – January 1777)",
+      "label": "Me and Thee S01E03 – Headshot",
       "error": "HTTP 429"
     },
     {
-      "id": "tt35328184:1:4",
+      "id": "tt34929687:1:4",
       "provider": "ytztvio",
-      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
+      "label": "Me and Thee S01E04 – Depth of Field",
       "error": "HTTP 403"
     },
     {
-      "id": "tt35328184:1:4",
-      "provider": "aniscraper",
-      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt35328184:1:4",
+      "id": "tt34929687:1:4",
       "provider": "brazuca",
-      "label": "The American Revolution S01E04 – Conquer by a Drawn Game (January 1777 – February 1778)",
+      "label": "Me and Thee S01E04 – Depth of Field",
       "error": "HTTP 429"
     },
     {
-      "id": "tt35328184:1:5",
+      "id": "tt34929687:1:5",
       "provider": "ytztvio",
-      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
+      "label": "Me and Thee S01E05 – Selfie",
       "error": "HTTP 403"
     },
     {
-      "id": "tt35328184:1:5",
-      "provider": "aniscraper",
-      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
-      "error": "timeout (12s)"
-    },
-    {
-      "id": "tt35328184:1:5",
+      "id": "tt34929687:1:5",
       "provider": "brazuca",
-      "label": "The American Revolution S01E05 – The Soul of All America (December 1777 – May 1780)",
+      "label": "Me and Thee S01E05 – Selfie",
       "error": "HTTP 429"
     },
     {
-      "id": "tt35328184:1:6",
+      "id": "tt34929687:1:6",
       "provider": "ytztvio",
-      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
+      "label": "Me and Thee S01E06 – Candid",
       "error": "HTTP 403"
     },
     {
-      "id": "tt35328184:1:6",
-      "provider": "aniscraper",
-      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
-      "error": "timeout (12s)"
+      "id": "tt34929687:1:6",
+      "provider": "brazuca",
+      "label": "Me and Thee S01E06 – Candid",
+      "error": "HTTP 429"
     },
     {
-      "id": "tt35328184:1:6",
+      "id": "tt34929687:1:7",
+      "provider": "ytztvio",
+      "label": "Me and Thee S01E07 – Macro",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt34929687:1:7",
       "provider": "brazuca",
-      "label": "The American Revolution S01E06 – The Most Sacred Thing (May 1780 – Onward)",
+      "label": "Me and Thee S01E07 – Macro",
+      "error": "HTTP 429"
+    },
+    {
+      "id": "tt34929687:1:8",
+      "provider": "ytztvio",
+      "label": "Me and Thee S01E08 – White Balance",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "tt34929687:1:8",
+      "provider": "brazuca",
+      "label": "Me and Thee S01E08 – White Balance",
+      "error": "HTTP 429"
+    },
+    {
+      "id": "tt34929687:1:9",
+      "provider": "ytztvio",
+      "label": "Me and Thee S01E09 – Harmony",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt34929687:1:9",
+      "provider": "brazuca",
+      "label": "Me and Thee S01E09 – Harmony",
+      "error": "HTTP 429"
+    },
+    {
+      "id": "tt34929687:1:10",
+      "provider": "ytztvio",
+      "label": "Me and Thee S01E10 – Panorama",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)",
+      "skipped": true
+    },
+    {
+      "id": "tt34929687:1:10",
+      "provider": "brazuca",
+      "label": "Me and Thee S01E10 – Panorama",
       "error": "HTTP 429"
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 7,
-      "ok": 7,
+      "requests": 11,
+      "ok": 11,
       "errors": 0,
       "skipped": 0,
       "streams": 0,
       "rateLimited": 0,
-      "avgMs": 271,
+      "avgMs": 464,
       "picks": 0,
       "uniquePicks": 0
     },
     "torrentsdb": {
-      "requests": 7,
-      "ok": 7,
+      "requests": 11,
+      "ok": 11,
       "errors": 0,
       "skipped": 0,
-      "streams": 47,
+      "streams": 33,
       "rateLimited": 0,
-      "avgMs": 168,
+      "avgMs": 144,
       "picks": 6,
       "uniquePicks": 0
     },
     "torrentio": {
-      "requests": 7,
-      "ok": 7,
+      "requests": 11,
+      "ok": 11,
       "errors": 0,
       "skipped": 0,
-      "streams": 81,
+      "streams": 41,
       "rateLimited": 0,
-      "avgMs": 218,
-      "picks": 3,
+      "avgMs": 248,
+      "picks": 8,
       "uniquePicks": 0
     },
     "ytztvio": {
-      "requests": 7,
+      "requests": 9,
       "ok": 3,
-      "errors": 4,
-      "skipped": 0,
+      "errors": 6,
+      "skipped": 2,
       "streams": 4,
       "rateLimited": 0,
-      "avgMs": 12234,
+      "avgMs": 14129,
       "picks": 1,
       "uniquePicks": 0
     },
     "torrentclaw": {
-      "requests": 7,
-      "ok": 7,
+      "requests": 11,
+      "ok": 11,
       "errors": 0,
       "skipped": 0,
-      "streams": 91,
+      "streams": 48,
       "rateLimited": 0,
-      "avgMs": 453,
-      "picks": 7,
+      "avgMs": 458,
+      "picks": 8,
       "uniquePicks": 0
     },
     "aniscraper": {
-      "requests": 7,
-      "ok": 0,
-      "errors": 7,
+      "requests": 11,
+      "ok": 11,
+      "errors": 0,
       "skipped": 0,
-      "streams": 0,
+      "streams": 8,
       "rateLimited": 0,
-      "avgMs": 38355,
+      "avgMs": 1615,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 7,
-      "ok": 7,
+      "requests": 11,
+      "ok": 11,
       "errors": 0,
       "skipped": 0,
-      "streams": 95,
+      "streams": 35,
       "rateLimited": 0,
-      "avgMs": 235,
-      "picks": 4,
+      "avgMs": 232,
+      "picks": 8,
       "uniquePicks": 0
     },
     "brazuca": {
-      "requests": 7,
+      "requests": 11,
       "ok": 0,
-      "errors": 7,
+      "errors": 11,
       "skipped": 0,
       "streams": 0,
-      "rateLimited": 7,
-      "avgMs": 79106,
+      "rateLimited": 11,
+      "avgMs": 94513,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 5,
-    "prepared": 5,
+    "inserted": 9,
+    "prepared": 9,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 3,
-    "updated": 2
+    "created": 8,
+    "updated": 1
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-11-04T11:57:15.956Z",
-    "activeSeries": "tt34929687",
+    "updatedAt": "2026-11-05T12:02:35.404Z",
+    "activeSeries": "tt9604400",
     "series": {
-      "tt35328184": {
-        "name": "The American Revolution",
-        "status": "complete",
-        "done": 6,
-        "total": 6,
-        "lastSeason": 1,
-        "lastEpisode": 6,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-11-04T11:57:15.956Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt34929687": {
         "name": "Me and Thee",
-        "status": "in-progress",
-        "done": 2,
+        "status": "complete",
+        "done": 10,
         "total": 10,
         "lastSeason": 1,
-        "lastEpisode": 2,
-        "nextSeason": 1,
-        "nextEpisode": 3,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "lastEpisode": 10,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-05T12:02:35.404Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt9604400": {
@@ -1354,6 +1569,18 @@
         "nextEpisode": 2,
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
+      },
+      "tt35328184": {
+        "name": "The American Revolution",
+        "status": "complete",
+        "done": 6,
+        "total": 6,
+        "lastSeason": 1,
+        "lastEpisode": 6,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-04T11:57:15.956Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt26453092": {
         "name": "The Mighty Nein",
@@ -1681,5 +1908,5 @@
       }
     }
   },
-  "durationMs": 253808
+  "durationMs": 434862
 }
