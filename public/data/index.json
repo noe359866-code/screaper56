@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-05T11:55:20.543Z",
-  "finishedAt": "2026-11-05T12:02:35.405Z",
+  "generatedAt": "2026-11-06T11:51:22.473Z",
+  "finishedAt": "2026-11-06T11:55:36.984Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,18 +171,18 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 11,
+  "total": 6,
   "movies": 3,
-  "episodes": 8,
-  "totalStreams": 9,
-  "totalCandidates": 88,
+  "episodes": 3,
+  "totalStreams": 5,
+  "totalCandidates": 93,
   "picks": {
     "es": 0,
-    "en": 9
+    "en": 5
   },
   "missing": {
-    "es": 11,
-    "en": 2
+    "es": 6,
+    "en": 1
   },
   "selection": {
     "perTitle": 2,
@@ -193,8 +193,8 @@
     "maxTrackers": 10,
     "trackersSource": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt",
     "trackers": [
-      "udp://open.stealth.si:80/announce",
       "udp://tracker.opentrackr.org:1337/announce",
+      "udp://open.stealth.si:80/announce",
       "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
       "udp://exodus.desync.com:6969/announce",
@@ -202,7 +202,7 @@
       "udp://tracker.qu.ax:6969/announce",
       "udp://tracker.corpscorp.online:80/announce",
       "udp://tracker.bittor.pw:1337/announce",
-      "udp://tracker.ducks.party:1984/announce"
+      "udp://tracker.theoks.net:6969/announce"
     ]
   },
   "meta": {
@@ -246,7 +246,7 @@
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 47,
+      "candidateCount": 45,
       "picks": [
         {
           "pick": "en",
@@ -277,7 +277,7 @@
           "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
           "fileIdx": 4,
           "score": 7.03,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -363,7 +363,7 @@
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
           "score": 7.19,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -430,44 +430,43 @@
       ]
     },
     {
-      "id": "tt34929687:1:3",
-      "imdbId": "tt34929687",
+      "id": "tt9604400:1:3",
+      "imdbId": "tt9604400",
       "type": "series",
       "season": 1,
       "episode": 3,
-      "label": "Me and Thee S01E03 – Headshot",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
+      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
+      "name": "Unknown Soldier",
+      "year": 2018,
+      "imdbRating": "8.5",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:3.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:3.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:3.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:3.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:3.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:3.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:3.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:3.json"
       },
       "streamCount": 1,
-      "candidateCount": 3,
+      "candidateCount": 10,
       "picks": [
         {
           "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E03 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
-          "quality": "1080p",
-          "seeders": 0,
-          "sizeBytes": 4509715661,
-          "sizeLabel": "4.2 GB",
+          "name": "🇬🇧 Inglés 720p",
+          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
+          "quality": "720p",
+          "seeders": 6,
+          "sizeBytes": 1868310774,
+          "sizeLabel": "1.7 GB",
           "audioLangs": [
-            "en"
+            "en",
+            "fi"
           ],
           "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
+            "source": null,
+            "codec": null,
             "hdr": [],
-            "audio": [
-              "AAC"
-            ],
+            "audio": [],
             "channels": null
           },
           "providers": [
@@ -478,479 +477,10 @@
             "Torrentio",
             "TorrentClaw"
           ],
-          "infoHash": "c1225f496c03091dfd09089775358ac6eadd99ea",
-          "fileIdx": 0,
-          "score": 2.28,
-          "magnetUrl": "magnet:?xt=urn:btih:c1225f496c03091dfd09089775358ac6eadd99ea&dn=Me%20and%20Thee%20S01E03%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 0,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:4",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 4,
-      "label": "Me and Thee S01E04 – Depth of Field",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:4.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 3,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E04 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
-          "quality": "1080p",
-          "seeders": 48,
-          "sizeBytes": 4049285326,
-          "sizeLabel": "3.8 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "AAC"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "ca453fa7dcc8898ef78e7b83d6945ce745d2db3c",
-          "fileIdx": 0,
-          "score": 7.82,
-          "magnetUrl": "magnet:?xt=urn:btih:ca453fa7dcc8898ef78e7b83d6945ce745d2db3c&dn=Me%20and%20Thee%20S01E04%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 48,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:5",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 5,
-      "label": "Me and Thee S01E05 – Selfie",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:5.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 4,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E05 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
-          "quality": "1080p",
-          "seeders": 4,
-          "sizeBytes": 4316442132,
-          "sizeLabel": "4.0 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "AAC"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "6578c57221e21faeaf6e866e96e8f21e03419598",
-          "fileIdx": 0,
-          "score": 6.33,
-          "magnetUrl": "magnet:?xt=urn:btih:6578c57221e21faeaf6e866e96e8f21e03419598&dn=Me%20and%20Thee%20S01E05%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 4,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:6",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 6,
-      "label": "Me and Thee S01E06 – Candid",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:6.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:6.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:6.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:6.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:6.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:6.json"
-      },
-      "streamCount": 0,
-      "candidateCount": 2,
-      "picks": [],
-      "missing": [
-        "es",
-        "en"
-      ],
-      "bestSeeders": null,
-      "qualities": [],
-      "languages": [],
-      "providers": [],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:7",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 7,
-      "label": "Me and Thee S01E07 – Macro",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:7.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:7.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:7.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:7.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:7.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:7.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 2,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E07 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
-          "quality": "1080p",
-          "seeders": 30,
-          "sizeBytes": 3833424483,
-          "sizeLabel": "3.6 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "AAC"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "443bb60696add14ccf5ee5d780aee40ed2d4be6f",
-          "fileIdx": 0,
-          "score": 7.52,
-          "magnetUrl": "magnet:?xt=urn:btih:443bb60696add14ccf5ee5d780aee40ed2d4be6f&dn=Me%20and%20Thee%20S01E07%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 30,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:8",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 8,
-      "label": "Me and Thee S01E08 – White Balance",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:8.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:8.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:8.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:8.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:8.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:8.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 3,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E08 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
-          "quality": "1080p",
-          "seeders": 25,
-          "sizeBytes": 4190724612,
-          "sizeLabel": "3.9 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "AAC"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "torrentsdb",
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "TorrentsDB",
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "f3c405584f16b2dc140d5b3dc6c033c2e3c4db02",
-          "fileIdx": 0,
-          "score": 7.4,
-          "magnetUrl": "magnet:?xt=urn:btih:f3c405584f16b2dc140d5b3dc6c033c2e3c4db02&dn=Me%20and%20Thee%20S01E08%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 25,
-      "qualities": [
-        "1080p"
-      ],
-      "languages": [
-        "en"
-      ],
-      "providers": [
-        "stremthru",
-        "torrentclaw",
-        "torrentio",
-        "torrentsdb"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
-        },
-        {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt34929687:1:9",
-      "imdbId": "tt34929687",
-      "type": "series",
-      "season": 1,
-      "episode": 9,
-      "label": "Me and Thee S01E09 – Harmony",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:9.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:9.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:9.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:9.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:9.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:9.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 3,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E09 2025 1080p friDay WEB-DL H 264 AAC-ADWeb",
-          "quality": "1080p",
-          "seeders": 6,
-          "sizeBytes": 3661459620,
-          "sizeLabel": "3.4 GB",
-          "audioLangs": [
-            "en"
-          ],
-          "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
-            "hdr": [],
-            "audio": [
-              "AAC"
-            ],
-            "channels": null
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw",
-            "stremthru"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
-          ],
-          "infoHash": "0f1a7a33f8d4fa844e2eb9e58df17f397dd2ab47",
-          "fileIdx": 0,
-          "score": 6.55,
-          "magnetUrl": "magnet:?xt=urn:btih:0f1a7a33f8d4fa844e2eb9e58df17f397dd2ab47&dn=Me%20and%20Thee%20S01E09%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
+          "fileIdx": 3,
+          "score": 2.98,
+          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -958,13 +488,13 @@
       ],
       "bestSeeders": 6,
       "qualities": [
-        "1080p"
+        "720p"
       ],
       "languages": [
-        "en"
+        "en",
+        "fi"
       ],
       "providers": [
-        "stremthru",
         "torrentclaw",
         "torrentio"
       ],
@@ -972,7 +502,7 @@
       "errors": [
         {
           "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+          "error": "HTTP 403"
         },
         {
           "provider": "brazuca",
@@ -981,85 +511,160 @@
       ]
     },
     {
-      "id": "tt34929687:1:10",
-      "imdbId": "tt34929687",
+      "id": "tt9604400:1:4",
+      "imdbId": "tt9604400",
       "type": "series",
       "season": 1,
-      "episode": 10,
-      "label": "Me and Thee S01E10 – Panorama",
-      "name": "Me and Thee",
-      "year": 2025,
-      "imdbRating": "8.8",
+      "episode": 4,
+      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
+      "name": "Unknown Soldier",
+      "year": 2018,
+      "imdbRating": "8.5",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt34929687:1:10.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt34929687:1:10.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt34929687:1:10.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt34929687:1:10.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt34929687:1:10.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt34929687:1:10.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:4.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:4.json"
       },
       "streamCount": 1,
-      "candidateCount": 3,
+      "candidateCount": 10,
       "picks": [
         {
           "pick": "en",
-          "name": "🇬🇧 Inglés 1080p",
-          "title": "Me and Thee S01E10 2025 1080p friDay WEB-DL H 264 AAC-ADWeb.mkv",
-          "quality": "1080p",
-          "seeders": 22,
-          "sizeBytes": 4114249288,
-          "sizeLabel": "3.8 GB",
+          "name": "🇬🇧 Inglés 720p",
+          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
+          "quality": "720p",
+          "seeders": 6,
+          "sizeBytes": 1879048192,
+          "sizeLabel": "1.8 GB",
           "audioLangs": [
-            "en"
+            "en",
+            "fi"
           ],
           "release": {
-            "source": "WEB-DL",
-            "codec": "AVC",
+            "source": null,
+            "codec": null,
             "hdr": [],
-            "audio": [
-              "AAC"
-            ],
+            "audio": [],
             "channels": null
           },
           "providers": [
-            "torrentsdb",
             "torrentio",
-            "torrentclaw",
-            "stremthru"
+            "torrentclaw"
           ],
           "providerNames": [
-            "TorrentsDB",
             "Torrentio",
-            "TorrentClaw",
-            "StremThru Torz"
+            "TorrentClaw"
           ],
-          "infoHash": "e860e9d2c6f617af020fac780ee4fa8f3590c064",
-          "fileIdx": 0,
-          "score": 7.32,
-          "magnetUrl": "magnet:?xt=urn:btih:e860e9d2c6f617af020fac780ee4fa8f3590c064&dn=Me%20and%20Thee%20S01E10%202025%201080p%20friDay%20WEB-DL%20H%20264%20AAC-ADWeb.mkv&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce"
+          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
+          "fileIdx": 4,
+          "score": 2.98,
+          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
         }
       ],
       "missing": [
         "es"
       ],
-      "bestSeeders": 22,
+      "bestSeeders": 6,
       "qualities": [
-        "1080p"
+        "720p"
       ],
       "languages": [
-        "en"
+        "en",
+        "fi"
       ],
       "providers": [
-        "stremthru",
         "torrentclaw",
-        "torrentio",
-        "torrentsdb"
+        "torrentio"
       ],
       "warnings": [],
       "errors": [
         {
           "provider": "ytztvio",
-          "error": "omitido tras 3 errores seguidos (HTTP 403)"
+          "error": "HTTP 403"
+        },
+        {
+          "provider": "brazuca",
+          "error": "HTTP 429"
+        }
+      ]
+    },
+    {
+      "id": "tt9604400:1:5",
+      "imdbId": "tt9604400",
+      "type": "series",
+      "season": 1,
+      "episode": 5,
+      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
+      "name": "Unknown Soldier",
+      "year": 2018,
+      "imdbRating": "8.5",
+      "providerUrls": {
+        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:5.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:5.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:5.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:5.json",
+        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:5.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:5.json"
+      },
+      "streamCount": 1,
+      "candidateCount": 10,
+      "picks": [
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 720p",
+          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
+          "quality": "720p",
+          "seeders": 6,
+          "sizeBytes": 1857573356,
+          "sizeLabel": "1.7 GB",
+          "audioLangs": [
+            "en",
+            "fi"
+          ],
+          "release": {
+            "source": null,
+            "codec": null,
+            "hdr": [],
+            "audio": [],
+            "channels": null
+          },
+          "providers": [
+            "torrentio",
+            "torrentclaw"
+          ],
+          "providerNames": [
+            "Torrentio",
+            "TorrentClaw"
+          ],
+          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
+          "fileIdx": 5,
+          "score": 2.98,
+          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+        }
+      ],
+      "missing": [
+        "es"
+      ],
+      "bestSeeders": 6,
+      "qualities": [
+        "720p"
+      ],
+      "languages": [
+        "en",
+        "fi"
+      ],
+      "providers": [
+        "torrentclaw",
+        "torrentio"
+      ],
+      "warnings": [],
+      "errors": [
+        {
+          "provider": "ytztvio",
+          "error": "HTTP 403"
         },
         {
           "provider": "brazuca",
@@ -1091,231 +696,157 @@
       "error": "HTTP 429"
     },
     {
-      "id": "tt34929687:1:3",
+      "id": "tt9604400:1:3",
       "provider": "ytztvio",
-      "label": "Me and Thee S01E03 – Headshot",
+      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
       "error": "HTTP 403"
     },
     {
-      "id": "tt34929687:1:3",
+      "id": "tt9604400:1:3",
       "provider": "brazuca",
-      "label": "Me and Thee S01E03 – Headshot",
+      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
       "error": "HTTP 429"
     },
     {
-      "id": "tt34929687:1:4",
+      "id": "tt9604400:1:4",
       "provider": "ytztvio",
-      "label": "Me and Thee S01E04 – Depth of Field",
+      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
       "error": "HTTP 403"
     },
     {
-      "id": "tt34929687:1:4",
+      "id": "tt9604400:1:4",
       "provider": "brazuca",
-      "label": "Me and Thee S01E04 – Depth of Field",
+      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
       "error": "HTTP 429"
     },
     {
-      "id": "tt34929687:1:5",
+      "id": "tt9604400:1:5",
       "provider": "ytztvio",
-      "label": "Me and Thee S01E05 – Selfie",
+      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
       "error": "HTTP 403"
     },
     {
-      "id": "tt34929687:1:5",
+      "id": "tt9604400:1:5",
       "provider": "brazuca",
-      "label": "Me and Thee S01E05 – Selfie",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt34929687:1:6",
-      "provider": "ytztvio",
-      "label": "Me and Thee S01E06 – Candid",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt34929687:1:6",
-      "provider": "brazuca",
-      "label": "Me and Thee S01E06 – Candid",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt34929687:1:7",
-      "provider": "ytztvio",
-      "label": "Me and Thee S01E07 – Macro",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt34929687:1:7",
-      "provider": "brazuca",
-      "label": "Me and Thee S01E07 – Macro",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt34929687:1:8",
-      "provider": "ytztvio",
-      "label": "Me and Thee S01E08 – White Balance",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt34929687:1:8",
-      "provider": "brazuca",
-      "label": "Me and Thee S01E08 – White Balance",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt34929687:1:9",
-      "provider": "ytztvio",
-      "label": "Me and Thee S01E09 – Harmony",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt34929687:1:9",
-      "provider": "brazuca",
-      "label": "Me and Thee S01E09 – Harmony",
-      "error": "HTTP 429"
-    },
-    {
-      "id": "tt34929687:1:10",
-      "provider": "ytztvio",
-      "label": "Me and Thee S01E10 – Panorama",
-      "error": "omitido tras 3 errores seguidos (HTTP 403)",
-      "skipped": true
-    },
-    {
-      "id": "tt34929687:1:10",
-      "provider": "brazuca",
-      "label": "Me and Thee S01E10 – Panorama",
+      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
       "error": "HTTP 429"
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
       "streams": 0,
       "rateLimited": 0,
-      "avgMs": 464,
+      "avgMs": 511,
       "picks": 0,
       "uniquePicks": 0
     },
     "torrentsdb": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
-      "streams": 33,
+      "streams": 19,
       "rateLimited": 0,
-      "avgMs": 144,
-      "picks": 6,
+      "avgMs": 241,
+      "picks": 2,
       "uniquePicks": 0
     },
     "torrentio": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
-      "streams": 41,
+      "streams": 44,
       "rateLimited": 0,
-      "avgMs": 248,
-      "picks": 8,
+      "avgMs": 437,
+      "picks": 4,
       "uniquePicks": 0
     },
     "ytztvio": {
-      "requests": 9,
+      "requests": 6,
       "ok": 3,
-      "errors": 6,
-      "skipped": 2,
+      "errors": 3,
+      "skipped": 0,
       "streams": 4,
       "rateLimited": 0,
-      "avgMs": 14129,
+      "avgMs": 11035,
       "picks": 1,
       "uniquePicks": 0
     },
     "torrentclaw": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
-      "streams": 48,
+      "streams": 61,
       "rateLimited": 0,
-      "avgMs": 458,
-      "picks": 8,
+      "avgMs": 650,
+      "picks": 4,
       "uniquePicks": 0
     },
     "aniscraper": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
       "streams": 8,
       "rateLimited": 0,
-      "avgMs": 1615,
+      "avgMs": 2265,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 11,
-      "ok": 11,
+      "requests": 6,
+      "ok": 6,
       "errors": 0,
       "skipped": 0,
-      "streams": 35,
+      "streams": 13,
       "rateLimited": 0,
-      "avgMs": 232,
-      "picks": 8,
+      "avgMs": 394,
+      "picks": 2,
       "uniquePicks": 0
     },
     "brazuca": {
-      "requests": 11,
+      "requests": 6,
       "ok": 0,
-      "errors": 11,
+      "errors": 6,
       "skipped": 0,
       "streams": 0,
-      "rateLimited": 11,
-      "avgMs": 94513,
+      "rateLimited": 6,
+      "avgMs": 72330,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 9,
-    "prepared": 9,
+    "inserted": 3,
+    "prepared": 3,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
-    "created": 8,
-    "updated": 1
+    "created": 1,
+    "updated": 2
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-11-05T12:02:35.404Z",
-    "activeSeries": "tt9604400",
+    "updatedAt": "2026-11-06T11:55:36.983Z",
+    "activeSeries": "tt5670764",
     "series": {
-      "tt34929687": {
-        "name": "Me and Thee",
-        "status": "complete",
-        "done": 10,
-        "total": 10,
-        "lastSeason": 1,
-        "lastEpisode": 10,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-11-05T12:02:35.404Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt9604400": {
         "name": "Unknown Soldier",
-        "status": "in-progress",
-        "done": 2,
+        "status": "complete",
+        "done": 5,
         "total": 5,
         "lastSeason": 1,
-        "lastEpisode": 2,
-        "nextSeason": 1,
-        "nextEpisode": 3,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "lastEpisode": 5,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-06T11:55:36.983Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt5670764": {
@@ -1569,6 +1100,18 @@
         "nextEpisode": 2,
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
+      },
+      "tt34929687": {
+        "name": "Me and Thee",
+        "status": "complete",
+        "done": 10,
+        "total": 10,
+        "lastSeason": 1,
+        "lastEpisode": 10,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-05T12:02:35.404Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt35328184": {
         "name": "The American Revolution",
@@ -1908,5 +1451,5 @@
       }
     }
   },
-  "durationMs": 434862
+  "durationMs": 254511
 }
