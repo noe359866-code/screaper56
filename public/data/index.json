@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-06T11:51:22.473Z",
-  "finishedAt": "2026-11-06T11:55:36.984Z",
+  "generatedAt": "2026-11-07T10:54:07.879Z",
+  "finishedAt": "2026-11-07T10:58:22.764Z",
   "mode": "live",
   "repository": {
     "slug": "noe359866-code/screaper56",
@@ -171,17 +171,17 @@
   ],
   "fixture": false,
   "dryRunDb": false,
-  "total": 6,
+  "total": 5,
   "movies": 3,
-  "episodes": 3,
-  "totalStreams": 5,
-  "totalCandidates": 93,
+  "episodes": 2,
+  "totalStreams": 6,
+  "totalCandidates": 106,
   "picks": {
-    "es": 0,
-    "en": 5
+    "es": 2,
+    "en": 4
   },
   "missing": {
-    "es": 6,
+    "es": 3,
     "en": 1
   },
   "selection": {
@@ -197,12 +197,12 @@
       "udp://open.stealth.si:80/announce",
       "udp://tracker.torrent.eu.org:451/announce",
       "udp://open.demonii.com:1337/announce",
-      "udp://exodus.desync.com:6969/announce",
       "udp://open.tracker.cl:1337/announce",
+      "udp://exodus.desync.com:6969/announce",
       "udp://tracker.qu.ax:6969/announce",
-      "udp://tracker.corpscorp.online:80/announce",
-      "udp://tracker.bittor.pw:1337/announce",
-      "udp://tracker.theoks.net:6969/announce"
+      "udp://tracker-udp.gbitt.info:80/announce",
+      "udp://tracker.theoks.net:6969/announce",
+      "udp://tracker.tryhackx.org:6969/announce"
     ]
   },
   "meta": {
@@ -246,16 +246,16 @@
         "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt1999167.json"
       },
       "streamCount": 1,
-      "candidateCount": 45,
+      "candidateCount": 47,
       "picks": [
         {
           "pick": "en",
           "name": "🇬🇧 Inglés 1080p",
           "title": "Gekijouban Naruto Shippuuden: Hi no Ishi o Tsugu Mono",
           "quality": "1080p",
-          "seeders": 15,
-          "sizeBytes": 864875971,
-          "sizeLabel": "825 MB",
+          "seeders": 7,
+          "sizeBytes": 7441030840,
+          "sizeLabel": "6.9 GB",
           "audioLangs": [
             "en"
           ],
@@ -263,27 +263,27 @@
             "source": null,
             "codec": null,
             "hdr": [],
-            "audio": [],
+            "audio": [
+              "DTS-HD"
+            ],
             "channels": null
           },
           "providers": [
-            "torrentsdb",
-            "stremthru"
+            "torrentsdb"
           ],
           "providerNames": [
-            "TorrentsDB",
-            "StremThru Torz"
+            "TorrentsDB"
           ],
-          "infoHash": "37dac909a189133648bf229aab6524e0ea31d825",
-          "fileIdx": 4,
-          "score": 7.03,
-          "magnetUrl": "magnet:?xt=urn:btih:37dac909a189133648bf229aab6524e0ea31d825&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce"
+          "infoHash": "d4cf4d5d2e86157c805fb135705dd09a15a5adf7",
+          "fileIdx": 7,
+          "score": 6.56,
+          "magnetUrl": "magnet:?xt=urn:btih:d4cf4d5d2e86157c805fb135705dd09a15a5adf7&dn=Gekijouban%20Naruto%20Shippuuden%3A%20Hi%20no%20Ishi%20o%20Tsugu%20Mono&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
         }
       ],
       "missing": [
         "es"
       ],
-      "bestSeeders": 15,
+      "bestSeeders": 7,
       "qualities": [
         "1080p"
       ],
@@ -291,7 +291,6 @@
         "en"
       ],
       "providers": [
-        "stremthru",
         "torrentsdb"
       ],
       "warnings": [
@@ -363,7 +362,7 @@
           "infoHash": "5a27824f286810c0014246612077f70e38b37ce7",
           "fileIdx": 0,
           "score": 7.19,
-          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+          "magnetUrl": "magnet:?xt=urn:btih:5a27824f286810c0014246612077f70e38b37ce7&dn=Bad%20Reputation%202018%201080p%20WEBRip&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce"
         }
       ],
       "missing": [
@@ -430,71 +429,107 @@
       ]
     },
     {
-      "id": "tt9604400:1:3",
-      "imdbId": "tt9604400",
+      "id": "tt5670764:1:3",
+      "imdbId": "tt5670764",
       "type": "series",
       "season": 1,
       "episode": 3,
-      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
-      "name": "Unknown Soldier",
+      "label": "Watership Down S01E03 – The Escape",
+      "name": "Watership Down",
       "year": 2018,
-      "imdbRating": "8.5",
+      "imdbRating": "7.3",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:3.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:3.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:3.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:3.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:3.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:3.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt5670764:1:3.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt5670764:1:3.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt5670764:1:3.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt5670764:1:3.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt5670764:1:3.json"
       },
-      "streamCount": 1,
-      "candidateCount": 10,
+      "streamCount": 2,
+      "candidateCount": 21,
       "picks": [
         {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 720p",
-          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
+          "pick": "es",
+          "name": "🇪🇸 Español 720p",
+          "title": "La Colina De Watership - Temporada 1 [HDTV 720p][Cap.101_104][AC3 5.1 Castellano][www.pctnew.com]",
           "quality": "720p",
-          "seeders": 6,
-          "sizeBytes": 1868310774,
-          "sizeLabel": "1.7 GB",
+          "seeders": 1,
+          "sizeBytes": 2007897211,
+          "sizeLabel": "1.9 GB",
           "audioLangs": [
-            "en",
-            "fi"
+            "es"
           ],
           "release": {
-            "source": null,
+            "source": "HDTV",
             "codec": null,
             "hdr": [],
-            "audio": [],
-            "channels": null
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "d88a77197c9c54503d41a0c26f3762b6540f9b52",
+          "fileIdx": 3,
+          "score": 12.25,
+          "magnetUrl": "magnet:?xt=urn:btih:d88a77197c9c54503d41a0c26f3762b6540f9b52&dn=La%20Colina%20De%20Watership%20-%20Temporada%201%20%5BHDTV%20720p%5D%5BCap.101_104%5D%5BAC3%205.1%20Castellano%5D%5Bwww.pctnew.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Watership Down (2018) S01 (1080p NF WEB-DL x265 10bit EAC3 5.1 HxD) [TAoE]",
+          "quality": "1080p",
+          "seeders": 8,
+          "sizeBytes": 4509715661,
+          "sizeLabel": "4.2 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
           },
           "providers": [
             "torrentio",
-            "torrentclaw"
+            "torrentclaw",
+            "stremthru"
           ],
           "providerNames": [
             "Torrentio",
-            "TorrentClaw"
+            "TorrentClaw",
+            "StremThru Torz"
           ],
-          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
-          "fileIdx": 3,
-          "score": 2.98,
-          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+          "infoHash": "ca236705ad346c886defede062a473b6cf213fbe",
+          "fileIdx": 2,
+          "score": 6.84,
+          "magnetUrl": "magnet:?xt=urn:btih:ca236705ad346c886defede062a473b6cf213fbe&dn=Watership%20Down%20(2018)%20S01%20(1080p%20NF%20WEB-DL%20x265%2010bit%20EAC3%205.1%20HxD)%20%5BTAoE%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce"
         }
       ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 6,
+      "missing": [],
+      "bestSeeders": 8,
       "qualities": [
+        "1080p",
         "720p"
       ],
       "languages": [
         "en",
-        "fi"
+        "es"
       ],
       "providers": [
+        "peerflix",
+        "stremthru",
         "torrentclaw",
         "torrentio"
       ],
@@ -505,77 +540,117 @@
           "error": "HTTP 403"
         },
         {
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
+        },
+        {
           "provider": "brazuca",
           "error": "HTTP 429"
         }
       ]
     },
     {
-      "id": "tt9604400:1:4",
-      "imdbId": "tt9604400",
+      "id": "tt5670764:1:4",
+      "imdbId": "tt5670764",
       "type": "series",
       "season": 1,
       "episode": 4,
-      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
-      "name": "Unknown Soldier",
+      "label": "Watership Down S01E04 – The Siege",
+      "name": "Watership Down",
       "year": 2018,
-      "imdbRating": "8.5",
+      "imdbRating": "7.3",
       "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:4.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:4.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:4.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:4.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:4.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:4.json"
+        "peerflix": "https://peerflix.mov/stream/series/tt5670764:1:4.json",
+        "torrentsdb": "https://torrentsdb.com/stream/series/tt5670764:1:4.json",
+        "torrentio": "https://torrentio.strem.fun/stream/series/tt5670764:1:4.json",
+        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt5670764:1:4.json",
+        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt5670764:1:4.json"
       },
-      "streamCount": 1,
-      "candidateCount": 10,
+      "streamCount": 2,
+      "candidateCount": 20,
       "picks": [
         {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 720p",
-          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
+          "pick": "es",
+          "name": "🇪🇸 Español 720p",
+          "title": "La Colina De Watership - Temporada 1 [HDTV 720p][Cap.101_104][AC3 5.1 Castellano][www.pctnew.com]",
           "quality": "720p",
-          "seeders": 6,
-          "sizeBytes": 1879048192,
-          "sizeLabel": "1.8 GB",
+          "seeders": 1,
+          "sizeBytes": 2029372047,
+          "sizeLabel": "1.9 GB",
           "audioLangs": [
-            "en",
-            "fi"
+            "es"
           ],
           "release": {
-            "source": null,
+            "source": "HDTV",
             "codec": null,
             "hdr": [],
-            "audio": [],
-            "channels": null
+            "audio": [
+              "AC3"
+            ],
+            "channels": "5.1"
+          },
+          "providers": [
+            "peerflix",
+            "torrentio"
+          ],
+          "providerNames": [
+            "Peerflix",
+            "Torrentio"
+          ],
+          "infoHash": "d88a77197c9c54503d41a0c26f3762b6540f9b52",
+          "fileIdx": 4,
+          "score": 12.25,
+          "magnetUrl": "magnet:?xt=urn:btih:d88a77197c9c54503d41a0c26f3762b6540f9b52&dn=La%20Colina%20De%20Watership%20-%20Temporada%201%20%5BHDTV%20720p%5D%5BCap.101_104%5D%5BAC3%205.1%20Castellano%5D%5Bwww.pctnew.com%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce"
+        },
+        {
+          "pick": "en",
+          "name": "🇬🇧 Inglés 1080p",
+          "title": "Watership Down (2018) S01 (1080p NF WEB-DL x265 10bit EAC3 5.1 HxD) [TAoE]",
+          "quality": "1080p",
+          "seeders": 8,
+          "sizeBytes": 4509715661,
+          "sizeLabel": "4.2 GB",
+          "audioLangs": [
+            "en"
+          ],
+          "release": {
+            "source": "WEB-DL",
+            "codec": "HEVC",
+            "hdr": [],
+            "audio": [
+              "DD+"
+            ],
+            "channels": "5.1"
           },
           "providers": [
             "torrentio",
-            "torrentclaw"
+            "torrentclaw",
+            "stremthru"
           ],
           "providerNames": [
             "Torrentio",
-            "TorrentClaw"
+            "TorrentClaw",
+            "StremThru Torz"
           ],
-          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
-          "fileIdx": 4,
-          "score": 2.98,
-          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+          "infoHash": "ca236705ad346c886defede062a473b6cf213fbe",
+          "fileIdx": 3,
+          "score": 6.84,
+          "magnetUrl": "magnet:?xt=urn:btih:ca236705ad346c886defede062a473b6cf213fbe&dn=Watership%20Down%20(2018)%20S01%20(1080p%20NF%20WEB-DL%20x265%2010bit%20EAC3%205.1%20HxD)%20%5BTAoE%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce"
         }
       ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 6,
+      "missing": [],
+      "bestSeeders": 8,
       "qualities": [
+        "1080p",
         "720p"
       ],
       "languages": [
         "en",
-        "fi"
+        "es"
       ],
       "providers": [
+        "peerflix",
+        "stremthru",
         "torrentclaw",
         "torrentio"
       ],
@@ -586,85 +661,8 @@
           "error": "HTTP 403"
         },
         {
-          "provider": "brazuca",
-          "error": "HTTP 429"
-        }
-      ]
-    },
-    {
-      "id": "tt9604400:1:5",
-      "imdbId": "tt9604400",
-      "type": "series",
-      "season": 1,
-      "episode": 5,
-      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
-      "name": "Unknown Soldier",
-      "year": 2018,
-      "imdbRating": "8.5",
-      "providerUrls": {
-        "peerflix": "https://peerflix.mov/stream/series/tt9604400:1:5.json",
-        "torrentsdb": "https://torrentsdb.com/stream/series/tt9604400:1:5.json",
-        "torrentio": "https://torrentio.strem.fun/stream/series/tt9604400:1:5.json",
-        "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt9604400:1:5.json",
-        "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt9604400:1:5.json",
-        "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt9604400:1:5.json"
-      },
-      "streamCount": 1,
-      "candidateCount": 10,
-      "picks": [
-        {
-          "pick": "en",
-          "name": "🇬🇧 Inglés 720p",
-          "title": "Tuntematon Sotilas (Unknown Soldier) - season 1 (Eng subs)",
-          "quality": "720p",
-          "seeders": 6,
-          "sizeBytes": 1857573356,
-          "sizeLabel": "1.7 GB",
-          "audioLangs": [
-            "en",
-            "fi"
-          ],
-          "release": {
-            "source": null,
-            "codec": null,
-            "hdr": [],
-            "audio": [],
-            "channels": null
-          },
-          "providers": [
-            "torrentio",
-            "torrentclaw"
-          ],
-          "providerNames": [
-            "Torrentio",
-            "TorrentClaw"
-          ],
-          "infoHash": "1a6ece40efabe52dbf8fe17125d1a9904ee8b983",
-          "fileIdx": 5,
-          "score": 2.98,
-          "magnetUrl": "magnet:?xt=urn:btih:1a6ece40efabe52dbf8fe17125d1a9904ee8b983&dn=Tuntematon%20Sotilas%20(Unknown%20Soldier)%20-%20season%201%20(Eng%20subs)&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
-        }
-      ],
-      "missing": [
-        "es"
-      ],
-      "bestSeeders": 6,
-      "qualities": [
-        "720p"
-      ],
-      "languages": [
-        "en",
-        "fi"
-      ],
-      "providers": [
-        "torrentclaw",
-        "torrentio"
-      ],
-      "warnings": [],
-      "errors": [
-        {
-          "provider": "ytztvio",
-          "error": "HTTP 403"
+          "provider": "aniscraper",
+          "error": "timeout (12s)"
         },
         {
           "provider": "brazuca",
@@ -696,169 +694,157 @@
       "error": "HTTP 429"
     },
     {
-      "id": "tt9604400:1:3",
+      "id": "tt5670764:1:3",
       "provider": "ytztvio",
-      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
+      "label": "Watership Down S01E03 – The Escape",
       "error": "HTTP 403"
     },
     {
-      "id": "tt9604400:1:3",
+      "id": "tt5670764:1:3",
+      "provider": "aniscraper",
+      "label": "Watership Down S01E03 – The Escape",
+      "error": "timeout (12s)"
+    },
+    {
+      "id": "tt5670764:1:3",
       "provider": "brazuca",
-      "label": "Unknown Soldier S01E03 – Part 3: A Toast To Mannerheim's Officers",
+      "label": "Watership Down S01E03 – The Escape",
       "error": "HTTP 429"
     },
     {
-      "id": "tt9604400:1:4",
+      "id": "tt5670764:1:4",
       "provider": "ytztvio",
-      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
+      "label": "Watership Down S01E04 – The Siege",
       "error": "HTTP 403"
     },
     {
-      "id": "tt9604400:1:4",
-      "provider": "brazuca",
-      "label": "Unknown Soldier S01E04 – Part 4: A Basic Carefree Boy",
-      "error": "HTTP 429"
+      "id": "tt5670764:1:4",
+      "provider": "aniscraper",
+      "label": "Watership Down S01E04 – The Siege",
+      "error": "timeout (12s)"
     },
     {
-      "id": "tt9604400:1:5",
-      "provider": "ytztvio",
-      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
-      "error": "HTTP 403"
-    },
-    {
-      "id": "tt9604400:1:5",
+      "id": "tt5670764:1:4",
       "provider": "brazuca",
-      "label": "Unknown Soldier S01E05 – Part 5: A Benevolent Sun",
+      "label": "Watership Down S01E04 – The Siege",
       "error": "HTTP 429"
     }
   ],
   "perProviderStats": {
     "peerflix": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
-      "skipped": 0,
-      "streams": 0,
-      "rateLimited": 0,
-      "avgMs": 511,
-      "picks": 0,
-      "uniquePicks": 0
-    },
-    "torrentsdb": {
-      "requests": 6,
-      "ok": 6,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 19,
-      "rateLimited": 0,
-      "avgMs": 241,
-      "picks": 2,
-      "uniquePicks": 0
-    },
-    "torrentio": {
-      "requests": 6,
-      "ok": 6,
-      "errors": 0,
-      "skipped": 0,
-      "streams": 44,
-      "rateLimited": 0,
-      "avgMs": 437,
-      "picks": 4,
-      "uniquePicks": 0
-    },
-    "ytztvio": {
-      "requests": 6,
-      "ok": 3,
-      "errors": 3,
       "skipped": 0,
       "streams": 4,
       "rateLimited": 0,
-      "avgMs": 11035,
+      "avgMs": 329,
+      "picks": 2,
+      "uniquePicks": 0
+    },
+    "torrentsdb": {
+      "requests": 5,
+      "ok": 5,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 21,
+      "rateLimited": 0,
+      "avgMs": 181,
+      "picks": 2,
+      "uniquePicks": 1
+    },
+    "torrentio": {
+      "requests": 5,
+      "ok": 5,
+      "errors": 0,
+      "skipped": 0,
+      "streams": 45,
+      "rateLimited": 0,
+      "avgMs": 246,
+      "picks": 5,
+      "uniquePicks": 0
+    },
+    "ytztvio": {
+      "requests": 5,
+      "ok": 3,
+      "errors": 2,
+      "skipped": 0,
+      "streams": 4,
+      "rateLimited": 0,
+      "avgMs": 8670,
       "picks": 1,
       "uniquePicks": 0
     },
     "torrentclaw": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
       "streams": 61,
       "rateLimited": 0,
-      "avgMs": 650,
-      "picks": 4,
+      "avgMs": 462,
+      "picks": 3,
       "uniquePicks": 0
     },
     "aniscraper": {
-      "requests": 6,
-      "ok": 6,
-      "errors": 0,
+      "requests": 5,
+      "ok": 3,
+      "errors": 2,
       "skipped": 0,
       "streams": 8,
       "rateLimited": 0,
-      "avgMs": 2265,
+      "avgMs": 17196,
       "picks": 0,
       "uniquePicks": 0
     },
     "stremthru": {
-      "requests": 6,
-      "ok": 6,
+      "requests": 5,
+      "ok": 5,
       "errors": 0,
       "skipped": 0,
-      "streams": 13,
+      "streams": 29,
       "rateLimited": 0,
-      "avgMs": 394,
-      "picks": 2,
+      "avgMs": 245,
+      "picks": 3,
       "uniquePicks": 0
     },
     "brazuca": {
-      "requests": 6,
+      "requests": 5,
       "ok": 0,
-      "errors": 6,
+      "errors": 5,
       "skipped": 0,
       "streams": 0,
-      "rateLimited": 6,
-      "avgMs": 72330,
+      "rateLimited": 5,
+      "avgMs": 62094,
       "picks": 0,
       "uniquePicks": 0
     }
   },
   "db": {
-    "inserted": 3,
-    "prepared": 3,
+    "inserted": 4,
+    "prepared": 4,
     "rejected": 0,
     "failures": [],
     "dryRun": false,
     "mode": "insert+update",
     "created": 1,
-    "updated": 2
+    "updated": 3
   },
   "progress": {
     "version": 1,
-    "updatedAt": "2026-11-06T11:55:36.983Z",
-    "activeSeries": "tt5670764",
+    "updatedAt": "2026-11-07T10:58:22.763Z",
+    "activeSeries": "tt1325113",
     "series": {
-      "tt9604400": {
-        "name": "Unknown Soldier",
-        "status": "complete",
-        "done": 5,
-        "total": 5,
-        "lastSeason": 1,
-        "lastEpisode": 5,
-        "nextSeason": null,
-        "nextEpisode": null,
-        "updatedAt": "2026-11-06T11:55:36.983Z",
-        "startedAt": "2026-10-02T21:34:09.794Z"
-      },
       "tt5670764": {
         "name": "Watership Down",
-        "status": "in-progress",
-        "done": 2,
+        "status": "complete",
+        "done": 4,
         "total": 4,
         "lastSeason": 1,
-        "lastEpisode": 2,
-        "nextSeason": 1,
-        "nextEpisode": 3,
-        "updatedAt": "2026-10-02T21:50:16.853Z",
+        "lastEpisode": 4,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-07T10:58:22.763Z",
         "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt1325113": {
@@ -1100,6 +1086,18 @@
         "nextEpisode": 2,
         "updatedAt": "2026-10-02T21:50:16.853Z",
         "startedAt": "2026-10-02T21:50:16.853Z"
+      },
+      "tt9604400": {
+        "name": "Unknown Soldier",
+        "status": "complete",
+        "done": 5,
+        "total": 5,
+        "lastSeason": 1,
+        "lastEpisode": 5,
+        "nextSeason": null,
+        "nextEpisode": null,
+        "updatedAt": "2026-11-06T11:55:36.983Z",
+        "startedAt": "2026-10-02T21:34:09.794Z"
       },
       "tt34929687": {
         "name": "Me and Thee",
@@ -1451,5 +1449,5 @@
       }
     }
   },
-  "durationMs": 254511
+  "durationMs": 254885
 }
