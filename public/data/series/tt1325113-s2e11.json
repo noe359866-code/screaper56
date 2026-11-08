@@ -1,0 +1,154 @@
+{
+  "id": "tt1325113:2:11",
+  "imdbId": "tt1325113",
+  "type": "series",
+  "season": 2,
+  "episode": 11,
+  "label": "Childrens Hospital S02E11 – You Know No One Can Hear You, Right?",
+  "name": "Childrens Hospital",
+  "year": 2008,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt1325113:2:11.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt1325113:2:11.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt1325113:2:11.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt1325113:2:11.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt1325113:2:11.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 5,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Childrens Hospital S02E11 You Know No One Can Hear You Right 1080p Amazon WEB-DL DD+ 2.0 x264-TrollHD.mkv",
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 779091968,
+      "sizeLabel": "743 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "991d4d1df3f2121ac59634bea958348a89889f1d",
+      "fileIdx": 10,
+      "score": 6.71,
+      "magnetUrl": "magnet:?xt=urn:btih:991d4d1df3f2121ac59634bea958348a89889f1d&dn=Childrens%20Hospital%20S02E11%20You%20Know%20No%20One%20Can%20Hear%20You%20Right%201080p%20Amazon%20WEB-DL%20DD%2B%202.0%20x264-TrollHD.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 6,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentio",
+      "error": "HTTP 429"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Childrens Hospital S02E11 You Know No One Can Hear You Right 1080p Amazon WEB-DL DD+ 2.0 x264-TrollHD.mkv",
+      "description": "Childrens Hospital S02E11 You Know No One Can Hear You Right 1080p Amazon WEB-DL DD+ 2.0 x264-TrollHD.mkv\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 6 💾 743 MB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 6.71,
+      "infoHash": "991d4d1df3f2121ac59634bea958348a89889f1d",
+      "fileIdx": 10,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 6,
+      "sizeBytes": 779091968,
+      "sizeLabel": "743 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "TrollHD"
+      ],
+      "filename": "Childrens.Hospital.S02.1080p.AMZN.WEBRip.DDP2.0.x264-TrollHD[rartv]",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://tracker.gmi.gd:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "dht:991d4d1df3f2121ac59634bea958348a89889f1d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:991d4d1df3f2121ac59634bea958348a89889f1d&dn=Childrens%20Hospital%20S02E11%20You%20Know%20No%20One%20Can%20Hear%20You%20Right%201080p%20Amazon%20WEB-DL%20DD%2B%202.0%20x264-TrollHD.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Childrens.Hospital.S02.1080p.AMZN.WEBRip.DDP2.0.x264-TrollHD[rartv]"
+      }
+    }
+  ]
+}
