@@ -14,7 +14,6 @@
     "torrentio": "https://torrentio.strem.fun/stream/movie/tt0299910.json",
     "ytztvio": "https://ytztvio.galacticcapsule.workers.dev/stream/movie/tt0299910.json",
     "torrentclaw": "https://torrentclaw.com/api/stremio/stream/movie/tt0299910.json",
-    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/movie/tt0299910.json",
     "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/movie/tt0299910.json"
   },
   "streamCount": 0,
@@ -30,6 +29,10 @@
   "providers": [],
   "warnings": [],
   "errors": [
+    {
+      "provider": "aniscraper",
+      "error": "HTTP 520"
+    },
     {
       "provider": "brazuca",
       "error": "HTTP 429"

@@ -1,0 +1,253 @@
+{
+  "id": "tt1103987:1:6",
+  "imdbId": "tt1103987",
+  "type": "series",
+  "season": 1,
+  "episode": 6,
+  "label": "Leverage S01E06 – The Stork Job",
+  "name": "Leverage",
+  "year": 2008,
+  "imdbRating": "7.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt1103987:1:6.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt1103987:1:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt1103987:1:6.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt1103987:1:6.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt1103987:1:6.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt1103987:1:6.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 27,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 480p",
+      "title": "Las.Reglas.Del.Juego.1x06.DVB.XviD.[www.DivxTotaL.com].avi",
+      "quality": "480p",
+      "seeders": 1,
+      "sizeBytes": 365072220,
+      "sizeLabel": "348 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "f73fe5e70e8efade894ec6530acc84b2812eac1e",
+      "fileIdx": null,
+      "score": 11.13,
+      "magnetUrl": "magnet:?xt=urn:btih:f73fe5e70e8efade894ec6530acc84b2812eac1e&dn=Las.Reglas.Del.Juego.1x06.DVB.XviD.%5Bwww.DivxTotaL.com%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv",
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 1051721728,
+      "sizeLabel": "1003 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "fa396a4abc6ea389670219c23e3bbb3275808297",
+      "fileIdx": 7,
+      "score": 7.8,
+      "magnetUrl": "magnet:?xt=urn:btih:fa396a4abc6ea389670219c23e3bbb3275808297&dn=Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fbittorrent-tracker.e-n-c-r-y-p-t.net%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 47,
+  "qualities": [
+    "1080p",
+    "480p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentclaw",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 480p",
+      "title": "Las.Reglas.Del.Juego.1x06.DVB.XviD.[www.DivxTotaL.com].avi",
+      "description": "Las.Reglas.Del.Juego.1x06.DVB.XviD.[www.DivxTotaL.com].avi\n🎞️ XviD\n👤 1 💾 348 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 11.13,
+      "infoHash": "f73fe5e70e8efade894ec6530acc84b2812eac1e",
+      "fileIdx": null,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "480p",
+      "seeders": 1,
+      "sizeBytes": 365072220,
+      "sizeLabel": "348 MB",
+      "release": {
+        "source": null,
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "GranTorrent"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.nyaa.vc:6969/announce",
+        "udp://explodie.org:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:f73fe5e70e8efade894ec6530acc84b2812eac1e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:f73fe5e70e8efade894ec6530acc84b2812eac1e&dn=Las.Reglas.Del.Juego.1x06.DVB.XviD.%5Bwww.DivxTotaL.com%5D.avi&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.nyaa.vc%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv",
+      "description": "Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv\n🎞️ WEBRip · HEVC\n👤 47 💾 1003 MB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.8,
+      "infoHash": "fa396a4abc6ea389670219c23e3bbb3275808297",
+      "fileIdx": 7,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 47,
+      "sizeBytes": 1051721728,
+      "sizeLabel": "1003 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "knaben",
+        "1337x",
+        "KONTRAST",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://t.overflow.biz:6969/announce",
+        "udp://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://t.overflow.biz:6969/announce",
+        "tracker:udp://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "dht:fa396a4abc6ea389670219c23e3bbb3275808297"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fa396a4abc6ea389670219c23e3bbb3275808297&dn=Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ft.overflow.biz%3A6969%2Fannounce&tr=udp%3A%2F%2Fbittorrent-tracker.e-n-c-r-y-p-t.net%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Leverage.S01E06.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    }
+  ]
+}
