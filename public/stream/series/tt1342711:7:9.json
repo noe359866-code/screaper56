@@ -1,0 +1,68 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Man.v.Food.S07E09.720p.HDTV.x264-YesTV[rartv]",
+      "description": "Man.v.Food.S07E09.720p.HDTV.x264-YesTV[rartv]\n🎞️ HDTV · AVC\n👤 1 💾 524 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 4.15,
+      "infoHash": "eed5094dc213085da5f630a5b3ba8e9c3747a61d",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 549694996,
+      "sizeLabel": "524 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "man.v.food.0709.720p-yestv.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:eed5094dc213085da5f630a5b3ba8e9c3747a61d"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:eed5094dc213085da5f630a5b3ba8e9c3747a61d&dn=Man.v.Food.S07E09.720p.HDTV.x264-YesTV%5Brartv%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "man.v.food.0709.720p-yestv.mkv"
+      }
+    }
+  ]
+}

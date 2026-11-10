@@ -1,0 +1,141 @@
+{
+  "id": "tt1342711:3:13",
+  "imdbId": "tt1342711",
+  "type": "series",
+  "season": 3,
+  "episode": 13,
+  "label": "Man v. Food S03E13 – Syracuse, NY",
+  "name": "Man v. Food",
+  "year": 2008,
+  "imdbRating": "7.3",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt1342711:3:13.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt1342711:3:13.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt1342711:3:13.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt1342711:3:13.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt1342711:3:13.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt1342711:3:13.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 7,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Man.v.Food.S03E13.720p.HDTV.x264-ORENJI",
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 586153984,
+      "sizeLabel": "559 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "5aae621e2b1b6e8ec63c902704b5339b0e18a0c1",
+      "fileIdx": null,
+      "score": 4.42,
+      "magnetUrl": "magnet:?xt=urn:btih:5aae621e2b1b6e8ec63c902704b5339b0e18a0c1&dn=Man.v.Food.S03E13.720p.HDTV.x264-ORENJI&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 2,
+  "qualities": [
+    "720p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 720p",
+      "title": "Man.v.Food.S03E13.720p.HDTV.x264-ORENJI",
+      "description": "Man.v.Food.S03E13.720p.HDTV.x264-ORENJI\n🎞️ HDTV · AVC\n👤 2 💾 559 MB ⚙️ Torrentio",
+      "pick": "en",
+      "score": 4.42,
+      "infoHash": "5aae621e2b1b6e8ec63c902704b5339b0e18a0c1",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 586153984,
+      "sizeLabel": "559 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:5aae621e2b1b6e8ec63c902704b5339b0e18a0c1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:5aae621e2b1b6e8ec63c902704b5339b0e18a0c1&dn=Man.v.Food.S03E13.720p.HDTV.x264-ORENJI&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en"
+      }
+    }
+  ]
+}

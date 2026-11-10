@@ -1,0 +1,68 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Man.v.Food.S07E04.Worcester.MA.1080p.AMZN.WEB-DL.DD+2.0.H.264-AJP69.mkv",
+      "description": "Man.v.Food.S07E04.Worcester.MA.1080p.AMZN.WEB-DL.DD+2.0.H.264-AJP69.mkv\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 ? 💾 1.9 GB ⚙️ StremThru Torz",
+      "pick": "en",
+      "score": 5.3,
+      "infoHash": "8c71102d87478cda960af7d42954d81cb8693eb0",
+      "fileIdx": null,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": null,
+      "sizeBytes": 2049856964,
+      "sizeLabel": "1.9 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "stremthru"
+      ],
+      "providerNames": [
+        "StremThru Torz"
+      ],
+      "externalProviders": [],
+      "filename": "Man.v.Food.S07E04.Worcester.MA.1080p.AMZN.WEB-DL.DD+2.0.H.264-AJP69.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:8c71102d87478cda960af7d42954d81cb8693eb0"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:8c71102d87478cda960af7d42954d81cb8693eb0&dn=Man.v.Food.S07E04.Worcester.MA.1080p.AMZN.WEB-DL.DD%2B2.0.H.264-AJP69.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Man.v.Food.S07E04.Worcester.MA.1080p.AMZN.WEB-DL.DD+2.0.H.264-AJP69.mkv"
+      }
+    }
+  ]
+}

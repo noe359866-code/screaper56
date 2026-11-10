@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-09T12:42:36.575Z",
-  "activeSeries": "tt1342711",
+  "updatedAt": "2026-11-10T12:19:38.164Z",
+  "activeSeries": "tt0175058",
   "series": {
-    "tt1103987": {
-      "name": "Leverage",
-      "status": "complete",
-      "done": 77,
-      "total": 77,
-      "lastSeason": 5,
-      "lastEpisode": 15,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-11-09T12:42:36.575Z",
-      "startedAt": "2026-10-02T21:34:09.794Z"
-    },
     "tt1342711": {
       "name": "Man v. Food",
-      "status": "in-progress",
-      "done": 2,
+      "status": "complete",
+      "done": 175,
       "total": 175,
-      "lastSeason": 1,
-      "lastEpisode": 2,
-      "nextSeason": 1,
-      "nextEpisode": 3,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 10,
+      "lastEpisode": 10,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-10T12:19:38.164Z",
       "startedAt": "2026-10-02T21:34:09.794Z"
     },
     "tt0175058": {
@@ -230,6 +218,18 @@
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt1103987": {
+      "name": "Leverage",
+      "status": "complete",
+      "done": 77,
+      "total": 77,
+      "lastSeason": 5,
+      "lastEpisode": 15,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-09T12:42:36.575Z",
+      "startedAt": "2026-10-02T21:34:09.794Z"
     },
     "tt1325113": {
       "name": "Childrens Hospital",
