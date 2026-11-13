@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-12T12:22:48.285Z",
-  "activeSeries": "tt0202197",
+  "updatedAt": "2026-11-13T12:01:51.382Z",
+  "activeSeries": "tt0168596",
   "series": {
     "tt0202197": {
       "name": "Muñeca brava",
-      "status": "in-progress",
-      "done": 232,
+      "status": "complete",
+      "done": 271,
       "total": 271,
       "lastSeason": 2,
-      "lastEpisode": 231,
-      "nextSeason": 2,
-      "nextEpisode": 232,
-      "updatedAt": "2026-11-12T12:22:48.285Z",
+      "lastEpisode": 270,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-13T12:01:51.382Z",
       "startedAt": "2026-10-02T21:34:09.794Z"
     },
     "tt0168596": {
