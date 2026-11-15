@@ -1,0 +1,72 @@
+{
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "American.Gladiators.S02.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "description": "American.Gladiators.S02.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]\n🎞️ WEBRip · AVC · DD+ 2.0\n👤 2 💾 512 MB ⚙️ TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 3.45,
+      "infoHash": "7aa7d332f89118329e208295c9e04c1e52ba16d5",
+      "fileIdx": 3,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 2,
+      "sizeBytes": 536870912,
+      "sizeLabel": "512 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ETHiCS"
+      ],
+      "filename": "American.Gladiators.S02.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.peerfect.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "dht:7aa7d332f89118329e208295c9e04c1e52ba16d5"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7aa7d332f89118329e208295c9e04c1e52ba16d5&dn=American.Gladiators.S02.AMZN.WEBRip.DDP2.0.x264-ETHiCS%5Brartv%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "American.Gladiators.S02.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]"
+      }
+    }
+  ]
+}

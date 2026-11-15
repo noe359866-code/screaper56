@@ -1,0 +1,160 @@
+{
+  "id": "tt0096532:5:22",
+  "imdbId": "tt0096532",
+  "type": "series",
+  "season": 5,
+  "episode": 22,
+  "label": "American Gladiators S05E22 – Round Two Finals",
+  "name": "American Gladiators",
+  "year": 1989,
+  "imdbRating": "6.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0096532:5:22.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0096532:5:22.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0096532:5:22.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0096532:5:22.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0096532:5:22.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 1,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 480p",
+      "title": "American.Gladiators.S05.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "quality": "480p",
+      "seeders": 3,
+      "sizeBytes": 494812529,
+      "sizeLabel": "472 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "infoHash": "2078dca796741ddf13aa961c7348ec168b02b185",
+      "fileIdx": 21,
+      "score": 3.79,
+      "magnetUrl": "magnet:?xt=urn:btih:2078dca796741ddf13aa961c7348ec168b02b185&dn=American.Gladiators.S05.AMZN.WEBRip.DDP2.0.x264-ETHiCS%5Brartv%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 3,
+  "qualities": [
+    "480p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "American.Gladiators.S05.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "description": "American.Gladiators.S05.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 3 💾 472 MB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 3.79,
+      "infoHash": "2078dca796741ddf13aa961c7348ec168b02b185",
+      "fileIdx": 21,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 3,
+      "sizeBytes": 494812529,
+      "sizeLabel": "472 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "RARBG",
+        "ETHiCS"
+      ],
+      "filename": "American.Gladiators.S05E22.480p.AMZN.WEB-DL.DDP.2.0.H.264-ETHiCS.mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://tracker.peerfect.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "dht:2078dca796741ddf13aa961c7348ec168b02b185"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2078dca796741ddf13aa961c7348ec168b02b185&dn=American.Gladiators.S05.AMZN.WEBRip.DDP2.0.x264-ETHiCS%5Brartv%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "American.Gladiators.S05E22.480p.AMZN.WEB-DL.DDP.2.0.H.264-ETHiCS.mkv"
+      }
+    }
+  ]
+}

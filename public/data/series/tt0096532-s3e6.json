@@ -1,0 +1,151 @@
+{
+  "id": "tt0096532:3:6",
+  "imdbId": "tt0096532",
+  "type": "series",
+  "season": 3,
+  "episode": 6,
+  "label": "American Gladiators S03E06 – Round One Quarterfinals",
+  "name": "American Gladiators",
+  "year": 1989,
+  "imdbRating": "6.6",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0096532:3:6.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0096532:3:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0096532:3:6.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0096532:3:6.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0096532:3:6.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0096532:3:6.json"
+  },
+  "streamCount": 1,
+  "candidateCount": 1,
+  "picks": [
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 480p",
+      "title": "American.Gladiators.S03.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "quality": "480p",
+      "seeders": 2,
+      "sizeBytes": 459391631,
+      "sizeLabel": "438 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "0d335a516eadbf6ee364ce5520651efd3df6fdaa",
+      "fileIdx": 5,
+      "score": 3.53,
+      "magnetUrl": "magnet:?xt=urn:btih:0d335a516eadbf6ee364ce5520651efd3df6fdaa&dn=American.Gladiators.S03.AMZN.WEBRip.DDP2.0.x264-ETHiCS%5Brartv%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce"
+    }
+  ],
+  "missing": [
+    "es"
+  ],
+  "bestSeeders": 2,
+  "qualities": [
+    "480p"
+  ],
+  "languages": [
+    "en"
+  ],
+  "providers": [
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇬🇧 Inglés 480p",
+      "title": "American.Gladiators.S03.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]",
+      "description": "American.Gladiators.S03.AMZN.WEBRip.DDP2.0.x264-ETHiCS[rartv]\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 2 💾 438 MB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 3.53,
+      "infoHash": "0d335a516eadbf6ee364ce5520651efd3df6fdaa",
+      "fileIdx": 5,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "480p",
+      "seeders": 2,
+      "sizeBytes": 459391631,
+      "sizeLabel": "438 MB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "RARBG"
+      ],
+      "filename": "American.Gladiators.1989.S03E06.480p.AMZN.WEB-DL.DDP.2.0.H.264-ETHiCS.mkv",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:0d335a516eadbf6ee364ce5520651efd3df6fdaa"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:0d335a516eadbf6ee364ce5520651efd3df6fdaa&dn=American.Gladiators.S03.AMZN.WEBRip.DDP2.0.x264-ETHiCS%5Brartv%5D&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "American.Gladiators.1989.S03E06.480p.AMZN.WEB-DL.DDP.2.0.H.264-ETHiCS.mkv"
+      }
+    }
+  ]
+}
