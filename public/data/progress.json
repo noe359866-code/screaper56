@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-16T12:36:02.942Z",
-  "activeSeries": "tt0062570",
+  "updatedAt": "2026-11-17T12:57:00.679Z",
+  "activeSeries": "tt0062578",
   "series": {
-    "tt0062589": {
-      "name": "Mod Squad",
+    "tt0062570": {
+      "name": "Here's Lucy",
       "status": "complete",
-      "done": 124,
-      "total": 124,
-      "lastSeason": 5,
+      "done": 144,
+      "total": 144,
+      "lastSeason": 6,
       "lastEpisode": 24,
       "nextSeason": null,
       "nextEpisode": null,
-      "updatedAt": "2026-11-16T12:36:02.942Z",
-      "startedAt": "2026-10-02T21:50:16.853Z"
-    },
-    "tt0062570": {
-      "name": "Here's Lucy",
-      "status": "in-progress",
-      "done": 1,
-      "total": 144,
-      "lastSeason": 1,
-      "lastEpisode": 1,
-      "nextSeason": 1,
-      "nextEpisode": 2,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "updatedAt": "2026-11-17T12:57:00.679Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0062578": {
@@ -157,6 +145,18 @@
       "nextSeason": 1,
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0062589": {
+      "name": "Mod Squad",
+      "status": "complete",
+      "done": 124,
+      "total": 124,
+      "lastSeason": 5,
+      "lastEpisode": 24,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-16T12:36:02.942Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0096532": {
