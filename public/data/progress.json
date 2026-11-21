@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T12:40:01.219Z",
+  "updatedAt": "2026-11-21T12:20:24.306Z",
   "activeSeries": "tt0051267",
   "series": {
-    "tt0051283": {
-      "name": "The Huckleberry Hound Show",
-      "status": "complete",
-      "done": 57,
-      "total": 57,
-      "lastSeason": 4,
-      "lastEpisode": 9,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-11-20T12:40:01.219Z",
-      "startedAt": "2026-10-02T21:50:16.853Z"
-    },
     "tt0051267": {
       "name": "The Donna Reed Show",
       "status": "in-progress",
-      "done": 1,
+      "done": 231,
       "total": 275,
-      "lastSeason": 1,
-      "lastEpisode": 1,
-      "nextSeason": 1,
-      "nextEpisode": 2,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "lastSeason": 7,
+      "lastEpisode": 13,
+      "nextSeason": 7,
+      "nextEpisode": 14,
+      "updatedAt": "2026-11-21T12:20:24.306Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0411008": {
@@ -109,6 +97,18 @@
       "nextSeason": 1,
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0051283": {
+      "name": "The Huckleberry Hound Show",
+      "status": "complete",
+      "done": 57,
+      "total": 57,
+      "lastSeason": 4,
+      "lastEpisode": 9,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-20T12:40:01.219Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0051308": {
