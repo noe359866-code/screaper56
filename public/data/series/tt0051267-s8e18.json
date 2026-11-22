@@ -1,0 +1,42 @@
+{
+  "id": "tt0051267:8:18",
+  "imdbId": "tt0051267",
+  "type": "series",
+  "season": 8,
+  "episode": 18,
+  "label": "The Donna Reed Show S08E18 – Do It Yourself Donna",
+  "name": "The Donna Reed Show",
+  "year": 1958,
+  "imdbRating": "7.4",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0051267:8:18.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0051267:8:18.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0051267:8:18.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0051267:8:18.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0051267:8:18.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0051267:8:18.json"
+  },
+  "streamCount": 0,
+  "candidateCount": 0,
+  "picks": [],
+  "missing": [
+    "es",
+    "en"
+  ],
+  "bestSeeders": null,
+  "qualities": [],
+  "languages": [],
+  "providers": [],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": []
+}
