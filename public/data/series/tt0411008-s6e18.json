@@ -1,0 +1,246 @@
+{
+  "id": "tt0411008:6:18",
+  "imdbId": "tt0411008",
+  "type": "series",
+  "season": 6,
+  "episode": 18,
+  "label": "Lost S06E18 – The End (2)",
+  "name": "Lost",
+  "year": 2004,
+  "imdbRating": "8.3",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0411008:6:18.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0411008:6:18.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0411008:6:18.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0411008:6:18.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0411008:6:18.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 76,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español",
+      "title": "Perdidos: Lost: Castellano: Temporadas 1 2 3 4 5 6 (Serie Com",
+      "quality": null,
+      "seeders": 8,
+      "sizeBytes": 704391414,
+      "sizeLabel": "672 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "infoHash": "986e9333461082b435bbfb1eb0f15ac91f09d5ad",
+      "fileIdx": 1,
+      "score": 12.66,
+      "magnetUrl": "magnet:?xt=urn:btih:986e9333461082b435bbfb1eb0f15ac91f09d5ad&dn=Perdidos%3A%20Lost%3A%20Castellano%3A%20Temporadas%201%202%203%204%205%206%20(Serie%20Com&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Lost (2004) Season 6 S06 + Extras (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) [QxR]",
+      "quality": "1080p",
+      "seeders": 161,
+      "sizeBytes": 3543348019,
+      "sizeLabel": "3.3 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "infoHash": "cdeaddb73a78225d6f4376d47bd55f497e0d444e",
+      "fileIdx": 54,
+      "score": 8.41,
+      "magnetUrl": "magnet:?xt=urn:btih:cdeaddb73a78225d6f4376d47bd55f497e0d444e&dn=Lost%20(2004)%20Season%206%20S06%20%2B%20Extras%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205%201%20Silence)%20%5BQxR%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 161,
+  "qualities": [
+    "1080p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "torrentclaw",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Perdidos: Lost: Castellano: Temporadas 1 2 3 4 5 6 (Serie Com",
+      "description": "Perdidos: Lost: Castellano: Temporadas 1 2 3 4 5 6 (Serie Com\n👤 8 💾 672 MB ⚙️ Torrentio",
+      "pick": "es",
+      "score": 12.66,
+      "infoHash": "986e9333461082b435bbfb1eb0f15ac91f09d5ad",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 8,
+      "sizeBytes": 704391414,
+      "sizeLabel": "672 MB",
+      "release": {
+        "source": null,
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio"
+      ],
+      "providerNames": [
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "MagnetDL"
+      ],
+      "filename": "Perdidos 6x18.avi",
+      "trackers": [
+        "http://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.ducks.party:1984/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce"
+      ],
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "dht:986e9333461082b435bbfb1eb0f15ac91f09d5ad"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:986e9333461082b435bbfb1eb0f15ac91f09d5ad&dn=Perdidos%3A%20Lost%3A%20Castellano%3A%20Temporadas%201%202%203%204%205%206%20(Serie%20Com&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.ducks.party%3A1984%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Perdidos 6x18.avi"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "Lost (2004) Season 6 S06 + Extras (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) [QxR]",
+      "description": "Lost (2004) Season 6 S06 + Extras (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) [QxR]\n🎞️ BluRay · HEVC · AAC 5.1\n👤 161 💾 3.3 GB ⚙️ Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 8.41,
+      "infoHash": "cdeaddb73a78225d6f4376d47bd55f497e0d444e",
+      "fileIdx": 54,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 161,
+      "sizeBytes": 3543348019,
+      "sizeLabel": "3.3 GB",
+      "release": {
+        "source": "BluRay",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "ThePirateBay"
+      ],
+      "filename": "Lost (2004) - S06E17-E18 - The End (1080p BluRay x265 Silence).mkv",
+      "trackers": [
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.gmi.gd:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "http://tracker.opentrackr.org:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "dht:cdeaddb73a78225d6f4376d47bd55f497e0d444e"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:cdeaddb73a78225d6f4376d47bd55f497e0d444e&dn=Lost%20(2004)%20Season%206%20S06%20%2B%20Extras%20(1080p%20BluRay%20x265%20HEVC%2010bit%20AAC%205%201%20Silence)%20%5BQxR%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.gmi.gd%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "Lost (2004) - S06E17-E18 - The End (1080p BluRay x265 Silence).mkv"
+      }
+    }
+  ]
+}
