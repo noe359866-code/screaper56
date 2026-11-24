@@ -1,30 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-23T14:13:16.276Z",
+  "updatedAt": "2026-11-24T14:43:33.037Z",
   "activeSeries": "tt0364845",
   "series": {
-    "tt0411008": {
-      "name": "Lost",
-      "status": "complete",
-      "done": 120,
-      "total": 120,
-      "lastSeason": 6,
-      "lastEpisode": 18,
-      "nextSeason": null,
-      "nextEpisode": null,
-      "updatedAt": "2026-11-23T14:13:16.276Z",
-      "startedAt": "2026-10-02T21:50:16.853Z"
-    },
     "tt0364845": {
       "name": "NCIS",
       "status": "in-progress",
-      "done": 1,
-      "total": 507,
-      "lastSeason": 1,
-      "lastEpisode": 1,
-      "nextSeason": 1,
-      "nextEpisode": 2,
-      "updatedAt": "2026-10-02T21:50:16.853Z",
+      "done": 231,
+      "total": 513,
+      "lastSeason": 10,
+      "lastEpisode": 21,
+      "nextSeason": 10,
+      "nextEpisode": 22,
+      "updatedAt": "2026-11-24T14:43:33.037Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0108757": {
@@ -85,6 +73,18 @@
       "nextSeason": 1,
       "nextEpisode": 2,
       "updatedAt": "2026-10-02T21:50:16.853Z",
+      "startedAt": "2026-10-02T21:50:16.853Z"
+    },
+    "tt0411008": {
+      "name": "Lost",
+      "status": "complete",
+      "done": 120,
+      "total": 120,
+      "lastSeason": 6,
+      "lastEpisode": 18,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-23T14:13:16.276Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0051267": {
