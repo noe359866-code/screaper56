@@ -1,0 +1,253 @@
+{
+  "id": "tt0364845:20:16",
+  "imdbId": "tt0364845",
+  "type": "series",
+  "season": 20,
+  "episode": 16,
+  "label": "NCIS S20E16 – Butterfly Effect",
+  "name": "NCIS",
+  "year": 2003,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0364845:20:16.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0364845:20:16.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0364845:20:16.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0364845:20:16.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0364845:20:16.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 55,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy Investigacion criminal - Temporada 20 [HDTV 720p][Cap.2016][AC3 5.1 Castellano][www.AtomoHD.love]",
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 1055706316,
+      "sizeLabel": "1007 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "2843a1d53b9a7cf2630f1920d9602b1f5d7a2e68",
+      "fileIdx": 2,
+      "score": 12.49,
+      "magnetUrl": "magnet:?xt=urn:btih:2843a1d53b9a7cf2630f1920d9602b1f5d7a2e68&dn=Navy%20Investigacion%20criminal%20-%20Temporada%2020%20%5BHDTV%20720p%5D%5BCap.2016%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.love%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS.S20.1080p.WEBRip.x265-INFINITY",
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 712402534,
+      "sizeLabel": "679 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "207cca40bfbeebd6b17941236065501a2ab1b2d8",
+      "fileIdx": 17,
+      "score": 7.15,
+      "magnetUrl": "magnet:?xt=urn:btih:207cca40bfbeebd6b17941236065501a2ab1b2d8&dn=NCIS.S20.1080p.WEBRip.x265-INFINITY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 19,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy Investigacion criminal - Temporada 20 [HDTV 720p][Cap.2016][AC3 5.1 Castellano][www.AtomoHD.love]",
+      "description": "Navy Investigacion criminal - Temporada 20 [HDTV 720p][Cap.2016][AC3 5.1 Castellano][www.AtomoHD.love]\n🎞️ HDTV · AC3 5.1\n👤 2 💾 1007 MB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 12.49,
+      "infoHash": "2843a1d53b9a7cf2630f1920d9602b1f5d7a2e68",
+      "fileIdx": 2,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 2,
+      "sizeBytes": 1055706316,
+      "sizeLabel": "1007 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "GranTorrent",
+        "MejorTorrent"
+      ],
+      "filename": "Navy Investigacion criminal - Temporada 20 [HDTV 720p][Cap.2016][AC3 5.1 Castellano][www.AtomoHD.love].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:2843a1d53b9a7cf2630f1920d9602b1f5d7a2e68"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2843a1d53b9a7cf2630f1920d9602b1f5d7a2e68&dn=Navy%20Investigacion%20criminal%20-%20Temporada%2020%20%5BHDTV%20720p%5D%5BCap.2016%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.love%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Navy Investigacion criminal - Temporada 20 [HDTV 720p][Cap.2016][AC3 5.1 Castellano][www.AtomoHD.love].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS.S20.1080p.WEBRip.x265-INFINITY",
+      "description": "NCIS.S20.1080p.WEBRip.x265-INFINITY\n🎞️ WEBRip · HEVC\n👤 19 💾 679 MB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 7.15,
+      "infoHash": "207cca40bfbeebd6b17941236065501a2ab1b2d8",
+      "fileIdx": 17,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 19,
+      "sizeBytes": 712402534,
+      "sizeLabel": "679 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "NCIS.S20E16.1080p.WEBRip.x265-INFINITY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:207cca40bfbeebd6b17941236065501a2ab1b2d8"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:207cca40bfbeebd6b17941236065501a2ab1b2d8&dn=NCIS.S20.1080p.WEBRip.x265-INFINITY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "NCIS.S20E16.1080p.WEBRip.x265-INFINITY.mp4"
+      }
+    }
+  ]
+}

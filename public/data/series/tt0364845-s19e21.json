@@ -1,0 +1,253 @@
+{
+  "id": "tt0364845:19:21",
+  "imdbId": "tt0364845",
+  "type": "series",
+  "season": 19,
+  "episode": 21,
+  "label": "NCIS S19E21 – Birds of a Feather",
+  "name": "NCIS",
+  "year": 2003,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0364845:19:21.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0364845:19:21.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0364845:19:21.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0364845:19:21.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0364845:19:21.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 60,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy Investigacion Criminal - Temporada 19 [HDTV 720p][Cap.1921][AC3 5.1 Castellano][www.AtomoHD.org]",
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 1621350154,
+      "sizeLabel": "1.5 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "infoHash": "c51669f94fbb8057eb7019fc355c0794f4d0f666",
+      "fileIdx": 1,
+      "score": 12.22,
+      "magnetUrl": "magnet:?xt=urn:btih:c51669f94fbb8057eb7019fc355c0794f4d0f666&dn=Navy%20Investigacion%20Criminal%20-%20Temporada%2019%20%5BHDTV%20720p%5D%5BCap.1921%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.org%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS.S19.1080p.WEBRip.x265-INFINITY",
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 713534996,
+      "sizeLabel": "680 MB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "e10a62df9baf1c1d587b1c0b48d430fd01cf0f80",
+      "fileIdx": 22,
+      "score": 7.24,
+      "magnetUrl": "magnet:?xt=urn:btih:e10a62df9baf1c1d587b1c0b48d430fd01cf0f80&dn=NCIS.S19.1080p.WEBRip.x265-INFINITY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 22,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "torrentsdb",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    },
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy Investigacion Criminal - Temporada 19 [HDTV 720p][Cap.1921][AC3 5.1 Castellano][www.AtomoHD.org]",
+      "description": "Navy Investigacion Criminal - Temporada 19 [HDTV 720p][Cap.1921][AC3 5.1 Castellano][www.AtomoHD.org]\n🎞️ HDTV · AC3 5.1\n👤 1 💾 1.5 GB ⚙️ Peerflix+Torrentio",
+      "pick": "es",
+      "score": 12.22,
+      "infoHash": "c51669f94fbb8057eb7019fc355c0794f4d0f666",
+      "fileIdx": 1,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 1621350154,
+      "sizeLabel": "1.5 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "peerflix",
+        "torrentio"
+      ],
+      "providerNames": [
+        "Peerflix",
+        "Torrentio"
+      ],
+      "externalProviders": [
+        "Peerflix",
+        "MejorTorrent"
+      ],
+      "filename": "Navy Investigacion Criminal - Temporada 19 [HDTV 720p][Cap.1921][AC3 5.1 Castellano][www.AtomoHD.org].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:c51669f94fbb8057eb7019fc355c0794f4d0f666"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:c51669f94fbb8057eb7019fc355c0794f4d0f666&dn=Navy%20Investigacion%20Criminal%20-%20Temporada%2019%20%5BHDTV%20720p%5D%5BCap.1921%5D%5BAC3%205.1%20Castellano%5D%5Bwww.AtomoHD.org%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es",
+        "filename": "Navy Investigacion Criminal - Temporada 19 [HDTV 720p][Cap.1921][AC3 5.1 Castellano][www.AtomoHD.org].mkv"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS.S19.1080p.WEBRip.x265-INFINITY",
+      "description": "NCIS.S19.1080p.WEBRip.x265-INFINITY\n🎞️ WEBRip · HEVC\n👤 22 💾 680 MB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 7.24,
+      "infoHash": "e10a62df9baf1c1d587b1c0b48d430fd01cf0f80",
+      "fileIdx": 22,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 713534996,
+      "sizeLabel": "680 MB",
+      "release": {
+        "source": "WEBRip",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "TorrentGalaxy"
+      ],
+      "filename": "NCIS.S19E21.1080p.WEBRip.x265-INFINITY.mp4",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.dler.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "dht:e10a62df9baf1c1d587b1c0b48d430fd01cf0f80"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:e10a62df9baf1c1d587b1c0b48d430fd01cf0f80&dn=NCIS.S19.1080p.WEBRip.x265-INFINITY&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "NCIS.S19E21.1080p.WEBRip.x265-INFINITY.mp4"
+      }
+    }
+  ]
+}
