@@ -1,0 +1,137 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 1080p",
+      "title": "Navy [HDTV 1080p][Cap.2320]",
+      "description": "Navy [HDTV 1080p][Cap.2320]\n🎞️ HDTV\n👤 9 💾 2.5 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 14.71,
+      "infoHash": "6ed5b72fbbfbe8643d806cf3aa3a27a8d74d0af9",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 2738041651,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "PeerflixBot"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:6ed5b72fbbfbe8643d806cf3aa3a27a8d74d0af9"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6ed5b72fbbfbe8643d806cf3aa3a27a8d74d0af9&dn=Navy%20%5BHDTV%201080p%5D%5BCap.2320%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS S23E20 1080p WEB h264-GRACE",
+      "description": "NCIS S23E20 1080p WEB h264-GRACE\n🎞️ WEB · AVC\n👤 924 💾 2.5 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw",
+      "pick": "en",
+      "score": 8.29,
+      "infoHash": "bc6272e735655a515b06fd5acbfba73dc722837b",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 924,
+      "sizeBytes": 2673617142,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": "WEB",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "EZTV",
+        "GRACE"
+      ],
+      "filename": "NCIS.S23E20.1080p.WEB.h264-GRACE[EZTVx.to].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.theoks.net:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "dht:bc6272e735655a515b06fd5acbfba73dc722837b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:bc6272e735655a515b06fd5acbfba73dc722837b&dn=NCIS%20S23E20%201080p%20WEB%20h264-GRACE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "NCIS.S23E20.1080p.WEB.h264-GRACE[EZTVx.to].mkv"
+      }
+    }
+  ]
+}

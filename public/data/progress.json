@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-25T14:03:57.648Z",
-  "activeSeries": "tt0364845",
+  "updatedAt": "2026-11-26T13:43:08.275Z",
+  "activeSeries": "tt0108757",
   "series": {
     "tt0364845": {
       "name": "NCIS",
-      "status": "in-progress",
-      "done": 461,
+      "status": "complete",
+      "done": 513,
       "total": 513,
-      "lastSeason": 21,
-      "lastEpisode": 4,
-      "nextSeason": 21,
-      "nextEpisode": 5,
-      "updatedAt": "2026-11-25T14:03:57.648Z",
+      "lastSeason": 24,
+      "lastEpisode": 6,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-26T13:43:08.275Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt0108757": {

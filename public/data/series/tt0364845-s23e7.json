@@ -1,0 +1,251 @@
+{
+  "id": "tt0364845:23:7",
+  "imdbId": "tt0364845",
+  "type": "series",
+  "season": 23,
+  "episode": 7,
+  "label": "NCIS S23E07 – God Only Knows",
+  "name": "NCIS",
+  "year": 2003,
+  "imdbRating": "7.8",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0364845:23:7.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0364845:23:7.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0364845:23:7.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0364845:23:7.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0364845:23:7.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0364845:23:7.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 54,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy [HDTV 720p][Cap.2307]",
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 1320702443,
+      "sizeLabel": "1.2 GB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "36c26c9cb76e6ad169df205c91435444fe25a245",
+      "fileIdx": 0,
+      "score": 9.16,
+      "magnetUrl": "magnet:?xt=urn:btih:36c26c9cb76e6ad169df205c91435444fe25a245&dn=Navy%20%5BHDTV%20720p%5D%5BCap.2307%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 4K",
+      "title": "NCIS S23E07 God Only Knows 2160p ATV WEB-DL DD 5 1 H 265-playWEB.mkv",
+      "quality": "4K",
+      "seeders": 32,
+      "sizeBytes": 4021666251,
+      "sizeLabel": "3.7 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "30ba0852241e5e58fc99b5b8a9bc5c35ff172f28",
+      "fileIdx": 0,
+      "score": 7.94,
+      "magnetUrl": "magnet:?xt=urn:btih:30ba0852241e5e58fc99b5b8a9bc5c35ff172f28&dn=NCIS%20S23E07%20God%20Only%20Knows%202160p%20ATV%20WEB-DL%20DD%205%201%20H%20265-playWEB.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 32,
+  "qualities": [
+    "4K",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio",
+    "torrentsdb"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "omitido tras 3 errores seguidos (HTTP 403)"
+    },
+    {
+      "provider": "brazuca",
+      "error": "omitido tras 9 avisos seguidos de límite de peticiones (HTTP 429)"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Navy [HDTV 720p][Cap.2307]",
+      "description": "Navy [HDTV 720p][Cap.2307]\n🎞️ HDTV\n👤 1 💾 1.2 GB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 9.16,
+      "infoHash": "36c26c9cb76e6ad169df205c91435444fe25a245",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 1,
+      "sizeBytes": 1320702443,
+      "sizeLabel": "1.2 GB",
+      "release": {
+        "source": "HDTV",
+        "codec": null,
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "PeerflixBot"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:36c26c9cb76e6ad169df205c91435444fe25a245"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:36c26c9cb76e6ad169df205c91435444fe25a245&dn=Navy%20%5BHDTV%20720p%5D%5BCap.2307%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 4K",
+      "title": "NCIS S23E07 God Only Knows 2160p ATV WEB-DL DD 5 1 H 265-playWEB.mkv",
+      "description": "NCIS S23E07 God Only Knows 2160p ATV WEB-DL DD 5 1 H 265-playWEB.mkv\n🎞️ WEB-DL · HEVC · AC3 5.1\n👤 32 💾 3.7 GB ⚙️ TorrentsDB+Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 7.94,
+      "infoHash": "30ba0852241e5e58fc99b5b8a9bc5c35ff172f28",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "4K",
+      "seeders": 32,
+      "sizeBytes": 4021666251,
+      "sizeLabel": "3.7 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay",
+        "TorrentGalaxyClone"
+      ],
+      "filename": "NCIS S23E07 God Only Knows 2160p ATV WEB-DL DD 5 1 H 265-playWEB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.theoks.net:6969/announce",
+        "udp://tracker2.dler.org:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:30ba0852241e5e58fc99b5b8a9bc5c35ff172f28"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:30ba0852241e5e58fc99b5b8a9bc5c35ff172f28&dn=NCIS%20S23E07%20God%20Only%20Knows%202160p%20ATV%20WEB-DL%20DD%205%201%20H%20265-playWEB.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "NCIS S23E07 God Only Knows 2160p ATV WEB-DL DD 5 1 H 265-playWEB.mkv"
+      }
+    }
+  ]
+}

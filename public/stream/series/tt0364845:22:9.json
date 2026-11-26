@@ -1,0 +1,142 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Navy Investigación Criminal 22X8X9X10 HDTV XviD Castellano",
+      "description": "Navy Investigación Criminal 22X8X9X10 HDTV XviD Castellano\n🎞️ HDTV · XviD\n👤 1 💾 555 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 6.68,
+      "infoHash": "409e5a8d4c22a9ef4520a40b34df2877285d165b",
+      "fileIdx": 0,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": null,
+      "seeders": 1,
+      "sizeBytes": 581718507,
+      "sizeLabel": "555 MB",
+      "release": {
+        "source": "HDTV",
+        "codec": "XviD",
+        "hdr": [],
+        "audio": [],
+        "channels": null
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:409e5a8d4c22a9ef4520a40b34df2877285d165b"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:409e5a8d4c22a9ef4520a40b34df2877285d165b&dn=Navy%20Investigaci%C3%B3n%20Criminal%2022X8X9X10%20HDTV%20XviD%20Castellano&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "NCIS S22E09 Humbug 1080p AMZN WEB-DL DDP5 1 H 264-FLUX",
+      "description": "NCIS S22E09 Humbug 1080p AMZN WEB-DL DDP5 1 H 264-FLUX\n🎞️ WEB-DL · AVC · DD+ 5.1\n👤 53 💾 2.5 GB ⚙️ TorrentsDB+Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.95,
+      "infoHash": "cb6fc001974edd2ae3d7d990a1b0fe71670657e1",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 53,
+      "sizeBytes": 2716566815,
+      "sizeLabel": "2.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "5.1"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "EZTV",
+        "FLUX",
+        "Knaben"
+      ],
+      "filename": "NCIS S22E09 Humbug 1080p AMZN WEB-DL DDP5 1 H 264-FLUX[EZTVx.to].mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://open.tracker.cl:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "dht:cb6fc001974edd2ae3d7d990a1b0fe71670657e1"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:cb6fc001974edd2ae3d7d990a1b0fe71670657e1&dn=NCIS%20S22E09%20Humbug%201080p%20AMZN%20WEB-DL%20DDP5%201%20H%20264-FLUX&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "NCIS S22E09 Humbug 1080p AMZN WEB-DL DDP5 1 H 264-FLUX[EZTVx.to].mkv"
+      }
+    }
+  ]
+}
