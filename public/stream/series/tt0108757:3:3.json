@@ -1,0 +1,141 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Urgencias - Temporada 3 Completa [BluRay Rip 720p][Cap. 301_322][AC3 2.0 Castellano]",
+      "description": "Urgencias - Temporada 3 Completa [BluRay Rip 720p][Cap. 301_322][AC3 2.0 Castellano]\n🎞️ BluRay · AC3 2.0\n👤 5 💾 507 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 10.03,
+      "infoHash": "6d669763795a7237b59c4375ec00e2e69704d888",
+      "fileIdx": 11,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 5,
+      "sizeBytes": 532036976,
+      "sizeLabel": "507 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:6d669763795a7237b59c4375ec00e2e69704d888"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:6d669763795a7237b59c4375ec00e2e69704d888&dn=Urgencias%20-%20Temporada%203%20Completa%20%5BBluRay%20Rip%20720p%5D%5BCap.%20301_322%5D%5BAC3%202.0%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "ER.S03E03.Don't.Ask.Don't.Tell.1080p.WEB-DL.DD+2.0.H.264-vlaluk.mkv",
+      "description": "ER.S03E03.Don't.Ask.Don't.Tell.1080p.WEB-DL.DD+2.0.H.264-vlaluk.mkv\n🎞️ WEB-DL · AVC · DD+ 2.0\n👤 22 💾 4.5 GB ⚙️ Torrentio+TorrentClaw+StremThru Torz",
+      "pick": "en",
+      "score": 7.42,
+      "infoHash": "a24a779d237f2b10d0a0a84ee2cc5fc89794b184",
+      "fileIdx": 2,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 22,
+      "sizeBytes": 4831838208,
+      "sizeLabel": "4.5 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "DD+"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "torrentclaw",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "TorrentClaw",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "RARBG",
+        "vlaluk",
+        "The"
+      ],
+      "filename": "ER.S03E03.Don't.Ask.Don't.Tell.1080p.WEB-DL.DD+2.0.H.264-vlaluk.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.dler.org:6969/announce",
+        "udp://retracker01-msk-virt.corbina.net:80/announce",
+        "udp://tracker.peerfect.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "dht:a24a779d237f2b10d0a0a84ee2cc5fc89794b184"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:a24a779d237f2b10d0a0a84ee2cc5fc89794b184&dn=ER.S03E03.Don't.Ask.Don't.Tell.1080p.WEB-DL.DD%2B2.0.H.264-vlaluk.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker01-msk-virt.corbina.net%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.peerfect.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "ER.S03E03.Don't.Ask.Don't.Tell.1080p.WEB-DL.DD+2.0.H.264-vlaluk.mkv"
+      }
+    }
+  ]
+}

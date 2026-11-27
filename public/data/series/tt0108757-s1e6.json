@@ -1,0 +1,249 @@
+{
+  "id": "tt0108757:1:6",
+  "imdbId": "tt0108757",
+  "type": "series",
+  "season": 1,
+  "episode": 6,
+  "label": "ER S01E06 – Chicago Heat",
+  "name": "ER",
+  "year": 1994,
+  "imdbRating": "7.9",
+  "providerUrls": {
+    "peerflix": "https://peerflix.mov/stream/series/tt0108757:1:6.json",
+    "torrentsdb": "https://torrentsdb.com/stream/series/tt0108757:1:6.json",
+    "torrentio": "https://torrentio.strem.fun/stream/series/tt0108757:1:6.json",
+    "torrentclaw": "https://torrentclaw.com/api/stremio/stream/series/tt0108757:1:6.json",
+    "aniscraper": "https://c5541ffce7d3-aniscraper.baby-beamup.club/stream/series/tt0108757:1:6.json",
+    "stremthru": "https://stremthru.13377001.xyz/stremio/torz/eyJzdG9yZXMiOlt7ImMiOiJwMnAiLCJ0IjoiIn1dfQ==/stream/series/tt0108757:1:6.json"
+  },
+  "streamCount": 2,
+  "candidateCount": 55,
+  "picks": [
+    {
+      "pick": "es",
+      "name": "🇪🇸 Español 720p",
+      "title": "Urgencias - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_125][AC3 2.0 Castellano]",
+      "quality": "720p",
+      "seeders": 4,
+      "sizeBytes": 623839805,
+      "sizeLabel": "595 MB",
+      "audioLangs": [
+        "es"
+      ],
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "infoHash": "7631fbf4574ca35bd5e6b38a792ba45e5cc72b99",
+      "fileIdx": 12,
+      "score": 9.91,
+      "magnetUrl": "magnet:?xt=urn:btih:7631fbf4574ca35bd5e6b38a792ba45e5cc72b99&dn=Urgencias%20-%20Temporada%201%20Completa%20%5BBluRay%20Rip%20720p%5D%5BCap.%20101_125%5D%5BAC3%202.0%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    },
+    {
+      "pick": "en",
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "ER S01E06 Chicago Heat 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv",
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 2358930859,
+      "sizeLabel": "2.2 GB",
+      "audioLangs": [
+        "en"
+      ],
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "infoHash": "fea70464cbfb16e039a2660d09f3343bb20529be",
+      "fileIdx": 0,
+      "score": 6.85,
+      "magnetUrl": "magnet:?xt=urn:btih:fea70464cbfb16e039a2660d09f3343bb20529be&dn=ER%20S01E06%20Chicago%20Heat%201080p%20NF%20WEB-DL%20AAC2%200%20H%20264-playWEB.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce"
+    }
+  ],
+  "missing": [],
+  "bestSeeders": 9,
+  "qualities": [
+    "1080p",
+    "720p"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "providers": [
+    "peerflix",
+    "stremthru",
+    "torrentio"
+  ],
+  "warnings": [],
+  "errors": [
+    {
+      "provider": "ytztvio",
+      "error": "HTTP 403"
+    },
+    {
+      "provider": "brazuca",
+      "error": "HTTP 429"
+    }
+  ],
+  "streams": [
+    {
+      "name": "🇪🇸 Español 720p",
+      "title": "Urgencias - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_125][AC3 2.0 Castellano]",
+      "description": "Urgencias - Temporada 1 Completa [BluRay Rip 720p][Cap. 101_125][AC3 2.0 Castellano]\n🎞️ BluRay · AC3 2.0\n👤 4 💾 595 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 9.91,
+      "infoHash": "7631fbf4574ca35bd5e6b38a792ba45e5cc72b99",
+      "fileIdx": 12,
+      "language": "es",
+      "audioLangs": [
+        "es"
+      ],
+      "quality": "720p",
+      "seeders": 4,
+      "sizeBytes": 623839805,
+      "sizeLabel": "595 MB",
+      "release": {
+        "source": "BluRay",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:7631fbf4574ca35bd5e6b38a792ba45e5cc72b99"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:7631fbf4574ca35bd5e6b38a792ba45e5cc72b99&dn=Urgencias%20-%20Temporada%201%20Completa%20%5BBluRay%20Rip%20720p%5D%5BCap.%20101_125%5D%5BAC3%202.0%20Castellano%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "ER S01E06 Chicago Heat 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv",
+      "description": "ER S01E06 Chicago Heat 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv\n🎞️ WEB-DL · AVC · AAC 2.0\n👤 9 💾 2.2 GB ⚙️ Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 6.85,
+      "infoHash": "fea70464cbfb16e039a2660d09f3343bb20529be",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 9,
+      "sizeBytes": 2358930859,
+      "sizeLabel": "2.2 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "ThePirateBay",
+        "Knaben"
+      ],
+      "filename": "ER S01E06 Chicago Heat 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "http://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.corpscorp.online:80/announce",
+        "udp://tracker.bittor.pw:1337/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "dht:fea70464cbfb16e039a2660d09f3343bb20529be"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:fea70464cbfb16e039a2660d09f3343bb20529be&dn=ER%20S01E06%20Chicago%20Heat%201080p%20NF%20WEB-DL%20AAC2%200%20H%20264-playWEB.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "ER S01E06 Chicago Heat 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv"
+      }
+    }
+  ]
+}
