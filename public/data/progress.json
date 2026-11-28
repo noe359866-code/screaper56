@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T13:38:55.389Z",
-  "activeSeries": "tt0108757",
+  "updatedAt": "2026-11-28T12:51:54.360Z",
+  "activeSeries": "tt32864316",
   "series": {
     "tt0108757": {
       "name": "ER",
-      "status": "in-progress",
-      "done": 231,
+      "status": "complete",
+      "done": 331,
       "total": 331,
-      "lastSeason": 11,
-      "lastEpisode": 8,
-      "nextSeason": 11,
-      "nextEpisode": 9,
-      "updatedAt": "2026-11-27T13:38:55.389Z",
+      "lastSeason": 15,
+      "lastEpisode": 22,
+      "nextSeason": null,
+      "nextEpisode": null,
+      "updatedAt": "2026-11-28T12:51:54.360Z",
       "startedAt": "2026-10-02T21:50:16.853Z"
     },
     "tt32864316": {

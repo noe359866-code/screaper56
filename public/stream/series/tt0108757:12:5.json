@@ -1,0 +1,142 @@
+{
+  "streams": [
+    {
+      "name": "🇪🇸 Español",
+      "title": "Urgencias - Temporada 12 Completa [DVD Rip][Cap. 1201_1222][AC3 2.0 Castellano - AC3 2.0 English]",
+      "description": "Urgencias - Temporada 12 Completa [DVD Rip][Cap. 1201_1222][AC3 2.0 Castellano - AC3 2.0 English]\n🎞️ DVD · AC3 2.0\n👤 3 💾 550 MB ⚙️ Peerflix",
+      "pick": "es",
+      "score": 9.14,
+      "infoHash": "2d9ac6e681a6177c02bf3694d0e0a52e511834f7",
+      "fileIdx": 8,
+      "language": "es",
+      "audioLangs": [
+        "es",
+        "en"
+      ],
+      "quality": null,
+      "seeders": 3,
+      "sizeBytes": 577136230,
+      "sizeLabel": "550 MB",
+      "release": {
+        "source": "DVD",
+        "codec": null,
+        "hdr": [],
+        "audio": [
+          "AC3"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "peerflix"
+      ],
+      "providerNames": [
+        "Peerflix"
+      ],
+      "externalProviders": [
+        "Peerflix"
+      ],
+      "filename": null,
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://open.tracker.cl:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker.corpscorp.online:80/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "dht:2d9ac6e681a6177c02bf3694d0e0a52e511834f7"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:2d9ac6e681a6177c02bf3694d0e0a52e511834f7&dn=Urgencias%20-%20Temporada%2012%20Completa%20%5BDVD%20Rip%5D%5BCap.%201201_1222%5D%5BAC3%202.0%20Castellano%20-%20AC3%202.0%20English%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.corpscorp.online%3A80%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-es"
+      }
+    },
+    {
+      "name": "🇬🇧 Inglés 1080p",
+      "title": "ER S12E05 Wake Up 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv",
+      "description": "ER S12E05 Wake Up 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv\n🎞️ WEB-DL · AVC · AAC 2.0\n👤 17 💾 1.6 GB ⚙️ TorrentsDB+Torrentio+StremThru Torz",
+      "pick": "en",
+      "score": 7.2,
+      "infoHash": "ad09847ef3b6a93b35fd53736e4cdb8a6dc5e0f4",
+      "fileIdx": 0,
+      "language": "en",
+      "audioLangs": [
+        "en"
+      ],
+      "quality": "1080p",
+      "seeders": 17,
+      "sizeBytes": 1709926248,
+      "sizeLabel": "1.6 GB",
+      "release": {
+        "source": "WEB-DL",
+        "codec": "AVC",
+        "hdr": [],
+        "audio": [
+          "AAC"
+        ],
+        "channels": "2.0"
+      },
+      "providers": [
+        "torrentsdb",
+        "torrentio",
+        "stremthru"
+      ],
+      "providerNames": [
+        "TorrentsDB",
+        "Torrentio",
+        "StremThru Torz"
+      ],
+      "externalProviders": [
+        "limetorrent",
+        "ThePirateBay",
+        "Knaben"
+      ],
+      "filename": "ER S12E05 Wake Up 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv",
+      "trackers": [
+        "udp://tracker.opentrackr.org:1337/announce",
+        "udp://open.stealth.si:80/announce",
+        "udp://tracker.torrent.eu.org:451/announce",
+        "udp://open.demonii.com:1337/announce",
+        "udp://exodus.desync.com:6969/announce",
+        "udp://tracker.qu.ax:6969/announce",
+        "udp://tracker-udp.gbitt.info:80/announce",
+        "udp://tracker.bittor.pw:1337/announce",
+        "udp://tracker2.dler.org:80/announce",
+        "udp://explodie.org:6969/announce"
+      ],
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "dht:ad09847ef3b6a93b35fd53736e4cdb8a6dc5e0f4"
+      ],
+      "magnetUrl": "magnet:?xt=urn:btih:ad09847ef3b6a93b35fd53736e4cdb8a6dc5e0f4&dn=ER%20S12E05%20Wake%20Up%201080p%20NF%20WEB-DL%20AAC2%200%20H%20264-playWEB.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker-udp.gbitt.info%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+      "behaviorHints": {
+        "bingeGroup": "peerflix-static-en",
+        "filename": "ER S12E05 Wake Up 1080p NF WEB-DL AAC2 0 H 264-playWEB.mkv"
+      }
+    }
+  ]
+}
